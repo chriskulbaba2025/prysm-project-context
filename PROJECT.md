@@ -1,0 +1,47 @@
+# PRYSM Project Context
+
+Project: PRYSM — governed website conversion-readiness and website decision system
+
+Authoritative context repository: `chriskulbaba2025/prysm-project-context`
+
+Primary application repository: `chriskulbaba2025/vantage-platform`
+
+## Governing files
+
+Read these before substantive PRYSM work:
+
+1. `GITHUB_PROJECT_MEMORY_PROTOCOL.md`
+2. `PROJECT_CONTEXT_PROTOCOL.md`
+3. `CURRENT_STATE.md`
+4. `CONSTRAINTS.md`
+5. `DECISIONS.md`
+
+Load additional specifications, skills, and reference material only when required by the active task.
+
+## Authority
+
+GitHub is the authoritative durable project memory. Chats are temporary working sessions. Current GitHub state overrides stale conversational summaries or duplicated Project Sources.
+
+## Startup rule
+
+At the start of a new substantive chat:
+
+- read this file;
+- read the latest `CURRENT_STATE.md`;
+- read active `CONSTRAINTS.md` and `DECISIONS.md`;
+- load only the additional context required;
+- continue from the exact next action in `CURRENT_STATE.md`.
+
+## Handoff rule
+
+When the user asks to leave the chat, start a new chat, create a handoff, summarize for continuation, update project memory, or update source files, execute the complete Handoff Transaction in `GITHUB_PROJECT_MEMORY_PROTOCOL.md` before presenting the final handoff.
+
+A handoff is not complete until the GitHub state update has succeeded and been verified.
+
+## Key specification
+
+The production product requirements are stored under `SPECS/`.
+
+## Relevant skills
+
+Reusable reasoning/governance procedures are stored under `SKILLS/` when they materially govern PRYSM work.
