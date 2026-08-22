@@ -56,3 +56,17 @@ Record hard project boundaries here.
 - Any limited-evidence dimension shown visually must be clearly identified as limited evidence.
 - Do not modify `PROJECT_CONTEXT_PROTOCOL.md` for ordinary project-state changes.
 - Do not rewrite the production PRD or Adam recommendation source merely to record implementation state; those remain governing/reference documents.
+
+## Authorized exception — PRYSM-V2-UAT-RERENDER-01
+
+- User authorization was granted on 2026-08-22 for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` only.
+- The objective is to visually UAT Viewer v2.2.0 using the audit's already-persisted governed inputs without starting a new audit.
+- The permitted implementation is a read-only, in-memory UAT rerender path using persisted AuditRequest, canonical scores/findings, capability evidence, decision evidence, and the already-persisted Narrative v2 release candidate.
+- Provider calls are prohibited.
+- Writer/Judge/model calls are prohibited.
+- The existing approved Viewer v2.1.0 report artifact must not be overwritten, replaced, mutated, or deleted.
+- The audit lifecycle state must not transition or be rewritten as part of UAT rerendering.
+- Canonical evidence, scores, findings, Narrative v2 artifacts, manifests, and existing report artifacts remain immutable inputs.
+- The UAT path may return newly rendered HTML for inspection only; it must not publish or approve anything.
+- Normal report access authorization must still execute before any UAT report bytes are returned.
+- The manual one-source-file-at-a-time implementation method remains active for this work package unless the user explicitly changes it.
