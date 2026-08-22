@@ -20,7 +20,9 @@ Record hard project boundaries here.
 - If multiple approved report pages/functions live in the same supplied source file, they may be updated together as one governed source-file unit.
 - Do not batch changes across separate report source files.
 - Required sequence for every governed source-file unit:
-  verify stable application branch/head → identify exact source file → user provides current file from VS Code/current working copy → inspect → apply the smallest approved report-layer change → return complete replacement file → user pastes into working copy → syntax/test/verify → only then move to another source file.
+  verify stable application branch/head → identify exact source file → user provides current file from VS Code/current working copy → inspect → apply the smallest approved report-layer change → return complete replacement file directly in the conversation → user pastes into working copy → syntax/test/verify → only then move to another source file.
+- PROJECT-WIDE CODE DELIVERY RULE: never deliver source code, replacement code, patches, scripts, configuration code, or other code files through generated/downloadable file links or sandbox downloads. This prohibition applies across the entire PRYSM Project, in every chat and work package.
+- All code-file replacements must be delivered directly in the conversation. If a complete file is too large for one message, provide it in sequential, clearly labeled code blocks in exact copy order, with no omitted middle content, and explicitly mark the final block as complete.
 - Do not directly edit the `vantage-platform` application repository as part of this manual report workflow unless the user explicitly changes that operating method.
 - Do not reconstruct, guess, or edit an application source file that the user has not supplied or whose exact current contents have not been verified.
 - If a supplied file proves that a second file is strictly required, identify that dependency before modifying the second file.
