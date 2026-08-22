@@ -18,6 +18,22 @@ Before substantive PRYSM work, read the governing files in the context repositor
 
 ---
 
+## Decision: Manual VS Code file handoff for report implementation
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Implement each report page through a controlled manual file handoff: the user retrieves the exact current source file from VS Code, provides it in chat, the assistant edits only that supplied file, the user pastes the complete replacement back into VS Code, and the user verifies/tests the result before the next page begins.
+
+Reason:
+This creates the smallest and most observable change boundary, avoids autonomous multi-file drift, and keeps the user in direct control of the production application repository while still allowing precise file-level assistance.
+
+Implication:
+Do not directly edit `vantage-platform` as part of this report-page workflow. Do not infer or reconstruct an unsupplied application file. If a page cannot be completed safely within the supplied file, identify the additional required file before any broader change. One verified page must complete before another begins.
+
+---
+
 ## Decision: Report rebuild is presentation-layer only
 
 Date: 2026-08-22
@@ -222,4 +238,4 @@ Reason:
 A moving baseline creates branch drift and makes page-level verification unreliable.
 
 Implication:
-Finish the GitHub update, confirm the exact stable branch/head, then begin Executive Scorecard implementation.
+Confirm the exact stable `vantage-platform` branch/head before beginning Executive Scorecard implementation.
