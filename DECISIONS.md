@@ -2,6 +2,22 @@
 
 Use this file only for decisions that future work must respect.
 
+## Decision: GitHub context repository is authoritative project memory
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+`chriskulbaba2025/prysm-project-context` is the authoritative durable context repository for PRYSM.
+
+Reason:
+Project continuity must survive chat boundaries and model changes without depending on stale conversational summaries or duplicated Project Sources.
+
+Implication:
+Before substantive PRYSM work, read the governing files in the context repository. At handoff, reconcile verified work, update materially changed context files, commit them to GitHub, verify the write, and only then issue the handoff. Duplicated ChatGPT Project Sources must not override the current GitHub state.
+
+---
+
 ## Decision: Report rebuild is presentation-layer only
 
 Date: 2026-08-22
