@@ -6,6 +6,8 @@ Current objective:
 Finalize the approved client-facing report scaffold, then implement it manually one report page at a time against a stable GitHub baseline.
 
 Verified checkpoint:
+- `chriskulbaba2025/prysm-project-context` is established as the authoritative durable PRYSM project-memory repository.
+- The GitHub Project Memory Protocol, Project Context Protocol, current state, active decisions, active constraints, production PRD, and CRIT skill are stored in the context repository.
 - Report-structure redesign is complete and approved at scaffold level.
 - Adam’s SEO recommendations have been incorporated into the report design intent.
 - No report-build plumbing has been changed in this design session.
@@ -19,11 +21,14 @@ Verified checkpoint:
 - A standalone Accessibility & Mobile Usability Readiness page is part of the approved scaffold, so the final report scaffold contains 16 pages.
 
 Current environment / version / branch:
-- GitHub/repository update is currently being completed outside this design session.
+- Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
+- Primary application repository: `chriskulbaba2025/vantage-platform`.
+- Application-repository update is currently being completed outside this design session.
 - Exact implementation branch/head must be confirmed after that update finishes.
-- Do not begin report code changes against a moving repository baseline.
+- Do not begin report code changes against a moving application-repository baseline.
 
 Completed:
+- Established GitHub-backed persistent project memory and handoff protocol.
 - Approved report-wide client-question pattern.
 - Approved direct-answer-before-evidence pattern.
 - Approved explicit client-facing statuses:
@@ -68,23 +73,24 @@ Completed:
   - current report already contains useful raw elements that can be reorganized rather than replaced wholesale.
 
 In progress:
-- Repository/GitHub update outside this chat.
-- Preparing to begin page-by-page implementation after the repository baseline is settled.
+- Application repository/GitHub update outside this chat.
+- Preparing to begin page-by-page implementation after the application repository baseline is settled.
 
 Blocked:
-- Report code implementation should not begin until the current GitHub update completes and the exact branch/head is stable.
+- Report code implementation should not begin until the current application-repository update completes and the exact branch/head is stable.
 
 Important constraints:
+- GitHub context repository is the authoritative durable project memory; stale chat summaries or duplicated Project Sources do not override it.
 - Report structure/presentation changes only during this rebuild.
 - Do not change evidence collection, providers/adapters, scoring logic, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, or n8n flows.
-- CSS/display work may occur separately, but report-content implementation must be based on a stable repository baseline.
+- CSS/display work may occur separately, but report-content implementation must be based on a stable application-repository baseline.
 - One report page at a time only.
 - Inspect → propose smallest change → user approval → edit → test → verify → next page.
 - Do not batch pages.
 - Do not move to the next page without explicit approval.
 
 Exact next action:
-1. Finish the current GitHub/repository update.
+1. Finish the current `vantage-platform` GitHub/repository update.
 2. Confirm the exact stable branch/head.
 3. Open the approved `PRYSM_FINAL_REPORT_PAGE_BY_PAGE_HANDOFF.md`.
 4. Start with Executive Scorecard only.
