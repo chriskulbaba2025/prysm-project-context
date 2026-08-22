@@ -1,94 +1,62 @@
 # Current State
 
-Project: PRYSM — governed website conversion-readiness report
+Project:
+PRYSM — governed website conversion-readiness report
 
 Current objective:
-Complete visual production UAT for the merged Report v2 16-page viewer without changing audit/report plumbing unless UAT proves a specific presentation defect.
+Execute authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce a read-only Viewer v2.2.0 UAT render for existing audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` from already-persisted governed inputs, with zero provider calls, zero Writer/Judge/model calls, no new audit, no lifecycle transition, and no mutation of the approved report artifact.
 
 Verified checkpoint:
-- `chriskulbaba2025/prysm-project-context` is the authoritative durable PRYSM project-memory repository.
-- Primary application repository: `chriskulbaba2025/vantage-platform`.
-- Report design metadata remains v2.0.0.
-- Viewer contract is Viewer v2.2.0 with 16 governed pages.
-- Standalone Accessibility & Mobile Usability Readiness is wired after Performance and before Internal-Link Opportunities.
-- `services/worker/src/report/sections-conversion.js` remained frozen and was not edited.
-- Final merged application files:
-  - `services/worker/src/report/render-report-v2.js`
-  - `services/worker/src/report/report-detail-sections.js`
-  - `services/worker/src/report/render-report-v2-section-viewer.test.js`
-  - `services/worker/src/report/render-report-v2-conversion.test.js`
-- Local syntax verification: 4/4 PASS.
-- Viewer regression: 9/9 PASS.
-- Report conversion/depth regression: 46/46 PASS.
-- Core Report v2 regression: 10/10 PASS.
-- Total targeted tests: 65/65 PASS.
-- CR-43 full-render golden hashes pass.
-- CR-44 claim-bearing renderer branch coverage passes.
-- v1 locked renderer path remains passing.
-- GitHub Vantage Worker CI run `32599132507` completed SUCCESS on exact PR head `9068038fa78b7fbd8a600fa66a03967b5b620fdf`.
-- PR #78 — `design(report-v2): complete governed 16-page report` — merged 2026-08-22T21:24:27Z.
-- Merge commit: `c116e730a38539066852f107582959693e666781`.
-- GitHub `main` points to `c116e730a38539066852f107582959693e666781`.
-- User local `C:\Users\kulba\Desktop\vantage-platform` is switched to `main`, fast-forwarded to the same merge commit, and `git status --short` is clean.
-- Vercel project `vantage-platform` deployment `dpl_9UCH1pvjhJU5qMDtYVUYP8YJtDcz` is READY and targets production for exact merge `c116e730a38539066852f107582959693e666781`.
-- The production custom domain `prysm.omnipressence.com` is served by Vercel project `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`), deployment `dpl_EdXeiBvZM1bEPRJHyMnHnsGuTtiZ`, which is READY, targets production, and has exact Git SHA `c116e730a38539066852f107582959693e666781`.
-- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` was opened in authenticated production for UAT. Its persisted report header identifies Viewer v2.1.0, so it predates the current Viewer v2.2.0 artifact.
-- Current `render-report-v2.js` source at the merged application head identifies Viewer v2.2.0 and defines 16 governed pages.
-- Report v2 output is a persisted governed artifact; deploying a newer renderer does not rewrite an already-approved report artifact.
-- The production resume path accepts only `scored`, `narrative_pending`, and `narrative_ready`. An already-approved audit cannot be rerendered through the current resume API.
-- No paid production audit was run.
-- No evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, auth, or audit-plumbing code was changed.
-- Persistent workflow-efficiency measurement is active in `EFFICIENCY_METRICS.md`.
-- Integration work package `PRYSM-V2-REPO-INTEGRATION-01` is recorded with 4 file replacement events, 1 failed iteration, 0 context-recovery turns, and an exact PR lifecycle of 7m41s; full package elapsed time was not retrospectively invented.
-- Visual production UAT of the actual Viewer v2.2.0 artifact has not yet been completed.
+- Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
+- Application repository: `chriskulbaba2025/vantage-platform`.
+- Application `main`: `c116e730a38539066852f107582959693e666781`.
+- PR #78 — `design(report-v2): complete governed 16-page report` — is merged.
+- Current governed viewer contract: Viewer v2.2.0 / 16 pages.
+- Targeted verification at PR #78: syntax 4/4 PASS; viewer 9/9 PASS; conversion/depth 46/46 PASS; core Report v2 10/10 PASS; total 65/65 PASS; GitHub CI SUCCESS.
+- Production custom domain `prysm.omnipressence.com` is served by Vercel project `prysm`, deployment `dpl_EdXeiBvZM1bEPRJHyMnHnsGuTtiZ`, READY, target production, exact Git SHA `c116e730a38539066852f107582959693e666781`.
+- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` currently serves persisted Viewer v2.1.0 report bytes.
+- Deploying Viewer v2.2.0 does not rewrite that approved persisted artifact.
+- Existing resume behavior cannot rerender the audit because resume accepts only `scored`, `narrative_pending`, and `narrative_ready`, not `approved`.
+- `render-report-v2.js` at the verified application head identifies Viewer v2.2.0 and defines 16 governed pages.
+- The Narrative v2 render path already reconstructs its deterministic renderer model from persisted AuditRequest, canonical scores/findings, capability evidence, decision evidence, and persisted Narrative v2 Writer/Judge release-candidate artifacts.
+- User explicitly authorized `PRYSM-V2-UAT-RERENDER-01` on 2026-08-22.
+- `CONSTRAINTS.md` now contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
 
 Current environment / branch / version:
-- Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Primary application repository: `chriskulbaba2025/vantage-platform`, branch `main`.
-- Exact merged application head: `c116e730a38539066852f107582959693e666781`.
-- Verified custom-domain production deployment: Vercel `dpl_EdXeiBvZM1bEPRJHyMnHnsGuTtiZ`, READY, target `production`, exact Git SHA `c116e730a38539066852f107582959693e666781`.
-- User local Git working repo: `C:\Users\kulba\Desktop\vantage-platform`.
-- Current governed viewer contract: 16 pages / Viewer v2.2.0.
+- Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
+- Application repository: `chriskulbaba2025/vantage-platform`, stable `main` at `c116e730a38539066852f107582959693e666781`.
+- Production viewer target: v2.2.0 / 16 pages.
+- Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
 
 Completed:
-- Established GitHub-backed persistent project memory and handoff protocol.
-- Added persistent workflow-efficiency measurement in `EFFICIENCY_METRICS.md`.
-- Approved, implemented, tested, committed, pushed, CI-verified, and merged the full 16-page Report v2 scaffold.
-- Preserved the dark left navigation and one-page-at-a-time viewer.
-- Preserved the frozen v1 conversion section path protected by V2R-07.
-- Completed governed report presentation work in `render-report-v2.js` and `report-detail-sections.js`.
-- Corrected governed E-E-A-T dimension rendering, technical-header detail, schema/entity distinction, performance wording, accessibility readiness handling, and related client-facing evidence-status presentation without changing source evidence or scoring.
-- Completed deliberate viewer migration from 15 pages / Viewer v2.1.0 to 16 pages / Viewer v2.2.0.
-- Merged PR #78 and synchronized the user's local `main` to the exact merge commit with a clean working tree.
-- Reconciled the persistent constraint file so it now reflects the verified 16-page / Viewer v2.2.0 contract rather than the superseded 15-page state.
-- Verified both Vercel production deployments associated with the app merge, including the `prysm.omnipressence.com` custom-domain deployment, are on exact merge commit `c116e730a38539066852f107582959693e666781`.
-- Completed the first production UAT attempt and proved the supplied report is a persisted Viewer v2.1.0 artifact rather than a Viewer v2.2.0 presentation failure.
+- Report v2 rebuild coding, targeted tests, CI, merge, and production deployment verification.
+- First visual UAT attempt proved the available approved audit is a persisted Viewer v2.1.0 artifact rather than a v2.2.0 presentation regression.
+- Root cause of the UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
+- Bounded UAT rerender objective was explicitly authorized and persisted into project constraints.
+- Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
 
 In progress:
-- Visual production UAT of an actual Viewer v2.2.0 report artifact.
+- `PRYSM-V2-UAT-RERENDER-01` implementation using the existing manual governed source-file workflow.
 
 Blocked:
-- The available completed production audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` is already approved and persists Viewer v2.1.0 report bytes.
-- There is no current governed production endpoint that rerenders an approved audit from existing stored evidence. The existing resume endpoint excludes approved audits.
-- Creating such a bounded re-materialization path would touch report-artifact/storage/lifecycle plumbing and therefore requires a new explicitly authorized governed objective before any application-code change.
+- No technical blocker currently.
+- The active manual implementation rule requires the user to provide the exact current application source file from the synchronized working copy before that source-file unit is edited.
 
 Important constraints:
-- GitHub context repository is authoritative; stale chat summaries or duplicated Project Sources do not override it.
-- Report structure/presentation only unless a new governed objective explicitly changes scope.
-- Do not change evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, n8n flows, or auth as part of report-only work.
-- Do not run a paid audit merely to verify presentation work.
-- Use an existing completed production audit for visual UAT where possible.
-- Do not edit `services/worker/src/report/sections-conversion.js` for Report v2.
-- After each source-file change, syntax and relevant targeted tests must pass before moving on.
-- Do not update tests merely to silence regressions. Test-contract changes are allowed only when deliberately migrating an approved contract.
-- Preserve the dark left-hand navigation and one-page-at-a-time viewer concept.
-- Accessibility & Mobile Usability Readiness is readiness analysis, not AODA/WCAG legal certification.
-- Client-facing status vocabulary remains PASS / FINDING / PARTIAL / UNAVAILABLE / NOT APPLICABLE.
-- Update `EFFICIENCY_METRICS.md` at each materially completed governed work package. Preserve raw measures, label estimates, and never convert unknown values into zero.
+- Work one verified application source file at a time.
+- Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
+- For this work package only, a read-only UAT rerender path is authorized for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c`.
+- No provider, Writer, Judge, or other model calls.
+- No new audit.
+- No lifecycle transition or state rewrite.
+- No overwrite/delete/mutation of existing report, canonical evidence, scoring, findings, Narrative v2, or manifest artifacts.
+- Normal tenant/report authorization must remain in force.
+- Do not edit `services/worker/src/report/sections-conversion.js`.
+- After each source-file change, syntax and relevant targeted tests must pass before proceeding to another source file.
 
 Exact next action:
-Obtain explicit user authorization for a bounded zero-provider/model Report v2 UAT re-materialization objective for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` before changing any report-artifact, storage, or lifecycle path.
+User supplies the exact current `services/worker/src/narrative-v2/production-path.js` from local `vantage-platform` main `c116e730a38539066852f107582959693e666781`; add only a pure persisted-artifact UAT render helper, then run its focused tests before touching the next source file.
 
 Last verified:
 2026-08-22
