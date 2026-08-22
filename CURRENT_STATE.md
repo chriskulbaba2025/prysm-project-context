@@ -9,53 +9,44 @@ Execute authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce a read-only 
 Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Application `main`: `c116e730a38539066852f107582959693e666781`.
-- PR #78 — `design(report-v2): complete governed 16-page report` — is merged.
+- Application base `main`: `c116e730a38539066852f107582959693e666781`.
+- PR #78 — `design(report-v2): complete governed 16-page report` — is merged and deployed.
 - Current governed viewer contract: Viewer v2.2.0 / 16 pages.
-- Targeted verification at PR #78: syntax 4/4 PASS; viewer 9/9 PASS; conversion/depth 46/46 PASS; core Report v2 10/10 PASS; total 65/65 PASS; GitHub CI SUCCESS.
-- Production custom domain `prysm.omnipressence.com` is served by Vercel project `prysm`, deployment `dpl_EdXeiBvZM1bEPRJHyMnHnsGuTtiZ`, READY, target production, exact Git SHA `c116e730a38539066852f107582959693e666781`.
-- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` currently serves persisted Viewer v2.1.0 report bytes.
-- Deploying Viewer v2.2.0 does not rewrite that approved persisted artifact.
-- Existing resume behavior cannot rerender the audit because resume accepts only `scored`, `narrative_pending`, and `narrative_ready`, not `approved`.
-- `render-report-v2.js` at the verified application head identifies Viewer v2.2.0 and defines 16 governed pages.
-- The Narrative v2 render path already reconstructs its deterministic renderer model from persisted AuditRequest, canonical scores/findings, capability evidence, decision evidence, and persisted Narrative v2 Writer/Judge release-candidate artifacts.
+- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; deploying Viewer v2.2.0 does not rewrite that artifact.
 - User explicitly authorized `PRYSM-V2-UAT-RERENDER-01` on 2026-08-22.
 - `CONSTRAINTS.md` contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
-- User supplied the exact current `services/worker/src/narrative-v2/production-path.js` source for the first governed source-file unit.
-- A complete replacement for that file was provided inline with only a bounded `renderNarrativeV2UatFromPersistedArtifacts` helper plus the authorized audit/viewer constants.
-- The prepared replacement passed `node --check` in the assistant sandbox and in the user working copy before the stash-isolation attempt.
-- Focused test `src/application/narrative-v2-production-path.test.js` produced 5 PASS / 1 FAIL with the UAT replacement applied: `NV2-PROD-02` expected `draft_rendered` but observed `narrative_failed`.
-- Clean untouched `main` at exact HEAD `c116e730a38539066852f107582959693e666781` produced the same 5 PASS / 1 FAIL and the same `NV2-PROD-02` failure.
-- Therefore `NV2-PROD-02` is a verified pre-existing baseline failure and is not caused by `PRYSM-V2-UAT-RERENDER-01`.
-- The UAT helper is not called by `NV2-PROD-02`; do not broaden this work package into repairing that unrelated baseline defect.
-- After the stash-pop collision, `git diff -- src/narrative-v2/production-path.js` is empty. The target file is currently clean and matches application `main`.
-- Existing stashes are unrelated historical stashes: `stash@{0}` = `temp-before-pr45-lifecycle-test`; `stash@{1}` = `pre-claude-auto-mode`. Neither is the UAT replacement. Do not modify or delete them.
+- First governed application source-file unit is `services/worker/src/narrative-v2/production-path.js`.
+- User supplied the exact current source, then pasted the complete inline replacement containing only the bounded `renderNarrativeV2UatFromPersistedArtifacts` helper plus the authorized audit/viewer constants.
+- Local `node --check src/narrative-v2/production-path.js` passes.
+- Focused suite with the UAT change applied: 5 PASS / 1 FAIL.
+- Clean untouched `main` at `c116e730a38539066852f107582959693e666781` produced the exact same 5 PASS / 1 FAIL.
+- The sole failure is `NV2-PROD-02`, which expects `draft_rendered` but receives `narrative_failed` on clean main as well.
+- Therefore `NV2-PROD-02` is a verified pre-existing baseline defect and is not caused by `PRYSM-V2-UAT-RERENDER-01`.
+- The first UAT source-file unit is accepted: no new regression was introduced by the change.
+- Existing unrelated historical stash entries remain untouched.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
-- `services/worker/src/narrative-v2/production-path.js` is currently clean and must have the already-supplied inline UAT replacement reapplied.
+- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` with the accepted first UAT source-file change in the working copy.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
 
 Completed:
 - Report v2 rebuild coding, targeted tests, CI, merge, and production deployment verification.
-- First visual UAT attempt proved the available approved audit is a persisted Viewer v2.1.0 artifact rather than a v2.2.0 presentation regression.
-- Root cause of the UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
-- Bounded UAT rerender objective was explicitly authorized and persisted into project constraints.
+- Root cause of the visual-UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
+- Bounded UAT rerender objective was authorized and persisted into project constraints.
 - Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
-- First source-file replacement was prepared inline and syntax-checked.
-- Baseline isolation is complete: `NV2-PROD-02` is proven pre-existing on clean main and is not a regression from the UAT change.
-- Historical stash entries remain untouched.
+- First source-file unit `production-path.js` is implemented, syntax-green, and verified not to introduce any new focused-test regression.
+- Baseline isolation proved `NV2-PROD-02` is pre-existing and out of scope for this UAT work package.
 
 In progress:
-- Reapply the already-prepared inline `production-path.js` UAT replacement and confirm it preserves the exact same focused-test result as baseline while syntax remains green.
+- Continue `PRYSM-V2-UAT-RERENDER-01` to the second governed source-file unit needed to expose the pure read-only renderer through the production runtime.
 
 Blocked:
-- No design or architecture blocker.
-- First source-file unit is not yet complete because the UAT replacement was removed during baseline isolation and must be reapplied and reverified.
+- No technical blocker.
+- Manual source-file workflow requires the user to supply the exact current second source file before editing it.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -69,11 +60,10 @@ Important constraints:
 - Normal tenant/report authorization must remain in force.
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair the pre-existing `NV2-PROD-02` baseline failure inside `PRYSM-V2-UAT-RERENDER-01`.
-- Do not touch a second application source file until the first source-file unit is reapplied and verified.
 - Do not pop, drop, or otherwise modify the two historical stash entries.
 
 Exact next action:
-Reapply the complete three-chunk inline replacement previously provided for `services/worker/src/narrative-v2/production-path.js`, then from `services/worker` run `node --check src/narrative-v2/production-path.js` and `node --test src/application/narrative-v2-production-path.test.js`. Accept the first source-file unit if syntax passes and the focused suite remains exactly 5 PASS / 1 FAIL with only the same pre-existing `NV2-PROD-02` failure; any additional/different failure is a regression and must be investigated before touching another file.
+User supplies the exact current local `services/worker/src/application/production-runtime.js` from the synchronized `vantage-platform` working copy. Inspect that file and add only the smallest read-only runtime method needed to call `renderNarrativeV2UatFromPersistedArtifacts` for the authorized already-approved/published audit; run syntax and focused verification before touching `server.js`.
 
 Last verified:
 2026-08-22
