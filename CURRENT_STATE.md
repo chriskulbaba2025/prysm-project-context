@@ -23,18 +23,19 @@ Verified checkpoint:
 - `CONSTRAINTS.md` contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
 - User supplied the exact current `services/worker/src/narrative-v2/production-path.js` source for the first governed source-file unit.
 - A complete replacement for that file was provided inline with only a bounded `renderNarrativeV2UatFromPersistedArtifacts` helper plus the authorized audit/viewer constants.
-- The prepared replacement passed `node --check` in the assistant sandbox.
-- An initial focused test produced 5 PASS / 1 FAIL: `NV2-PROD-02` expected `draft_rendered` but observed `narrative_failed`.
-- `NV2-PROD-02` exercises the existing enabled Narrative v2 Writer/Judge production path; the new UAT helper is not called by that test, so causation requires a clean baseline run.
+- The prepared replacement passed `node --check` in the assistant sandbox and in the user working copy before the stash-isolation attempt.
+- Focused test `src/application/narrative-v2-production-path.test.js` produced 5 PASS / 1 FAIL with the UAT replacement applied: `NV2-PROD-02` expected `draft_rendered` but observed `narrative_failed`.
+- Clean untouched `main` at exact HEAD `c116e730a38539066852f107582959693e666781` produced the same 5 PASS / 1 FAIL and the same `NV2-PROD-02` failure.
+- Therefore `NV2-PROD-02` is a verified pre-existing baseline failure and is not caused by `PRYSM-V2-UAT-RERENDER-01`.
+- The UAT helper is not called by `NV2-PROD-02`; do not broaden this work package into repairing that unrelated baseline defect.
 - After the stash-pop collision, `git diff -- src/narrative-v2/production-path.js` is empty. The target file is currently clean and matches application `main`.
 - Existing stashes are unrelated historical stashes: `stash@{0}` = `temp-before-pr45-lifecycle-test`; `stash@{1}` = `pre-claude-auto-mode`. Neither is the UAT replacement. Do not modify or delete them.
-- The UAT replacement is therefore not currently applied to the working tree and is not preserved in those existing stashes; it remains recoverable from the authoritative inline chat delivery.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
 - Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
-- `services/worker/src/narrative-v2/production-path.js` currently has no local diff and is suitable for an untouched-main baseline test.
+- `services/worker/src/narrative-v2/production-path.js` is currently clean and must have the already-supplied inline UAT replacement reapplied.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
@@ -46,13 +47,15 @@ Completed:
 - Bounded UAT rerender objective was explicitly authorized and persisted into project constraints.
 - Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
 - First source-file replacement was prepared inline and syntax-checked.
-- The stash collision has been isolated without deleting any historical stash or unrelated untracked file.
+- Baseline isolation is complete: `NV2-PROD-02` is proven pre-existing on clean main and is not a regression from the UAT change.
+- Historical stash entries remain untouched.
 
 In progress:
-- Run the focused Narrative v2 test against clean untouched `main` to determine whether `NV2-PROD-02` is a pre-existing baseline failure.
+- Reapply the already-prepared inline `production-path.js` UAT replacement and confirm it preserves the exact same focused-test result as baseline while syntax remains green.
 
 Blocked:
-- First source-file unit cannot be accepted until the clean baseline test is run and the focused-test failure is causally classified.
+- No design or architecture blocker.
+- First source-file unit is not yet complete because the UAT replacement was removed during baseline isolation and must be reapplied and reverified.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -65,11 +68,12 @@ Important constraints:
 - No overwrite/delete/mutation of existing report, canonical evidence, scoring, findings, Narrative v2, or manifest artifacts.
 - Normal tenant/report authorization must remain in force.
 - Do not edit `services/worker/src/report/sections-conversion.js`.
-- Do not touch a second application source file until the first source-file unit is resolved.
+- Do not repair the pre-existing `NV2-PROD-02` baseline failure inside `PRYSM-V2-UAT-RERENDER-01`.
+- Do not touch a second application source file until the first source-file unit is reapplied and verified.
 - Do not pop, drop, or otherwise modify the two historical stash entries.
 
 Exact next action:
-From `services/worker`, with clean `production-path.js`, run `node --test src/application/narrative-v2-production-path.test.js` once. If `NV2-PROD-02` fails the same way, classify it as a pre-existing baseline failure and do not alter the UAT helper to fix it. If it passes, reapply the prepared inline UAT replacement and investigate only the introduced delta.
+Reapply the complete three-chunk inline replacement previously provided for `services/worker/src/narrative-v2/production-path.js`, then from `services/worker` run `node --check src/narrative-v2/production-path.js` and `node --test src/application/narrative-v2-production-path.test.js`. Accept the first source-file unit if syntax passes and the focused suite remains exactly 5 PASS / 1 FAIL with only the same pre-existing `NV2-PROD-02` failure; any additional/different failure is a regression and must be investigated before touching another file.
 
 Last verified:
 2026-08-22
