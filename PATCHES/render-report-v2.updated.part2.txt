@@ -1,0 +1,193 @@
+>
+    ${actionsHtml}
+
+    <h3>What is already working?</h3>
+    ${strengths.length
+      ? `<ul>${strengths.slice(0, 5).map((s) => `<li>${e(s)}</li>`).join("")}</ul>`
+      : `<p>No readiness dimension reached the positive reporting threshold in the currently assessed evidence.</p>`}
+
+    <h3>What could we not determine?</h3>
+    ${limitationItems.length
+      ? `<div class="note"><strong>PARTIAL:</strong> ${e(limitationItems.join(" "))}</div>`
+      : `<div class="note"><strong>PASS:</strong> The intended executive evidence was sufficiently available for the reported conclusion.</div>`}
+
+    <h3>Where to go next</h3>
+    <p>Continue to <strong>Priority Fixes</strong> for the ranked actions, supporting evidence, and verification steps behind these executive priorities.</p>
+  </section>`;
+}
+
+
+
+function pillarSection(pillars) {
+  const available = (pillars || []).filter((p) => typeof p.score === "number");
+  const weak = available.filter((p) => p.score < 60).sort((a, b) => a.score - b.score);
+  const strong = available.filter((p) => p.score >= 60).sort((a, b) => b.score - a.score);
+
+  const bandLabel = (score) => {
+    if (score === null || score === undefined) return "Limited Evidence";
+    if (score >= 80) return "Strong";
+    if (score >= 60) return "Adequate";
+    if (score >= 40) return "Needs Attention";
+    return "Material Gap";
+  };
+
+  const cx = 230;
+  const cy = 170;
+  const radius = 112;
+  const angleFor = (index) => (-Math.PI / 2) + (index * 2 * Math.PI / Math.max(1, pillars.length));
+  const pointFor = (index, value) => {
+    const angle = angleFor(index);
+    const r = radius * (value / 100);
+    return [cx + Math.cos(angle) * r, cy + Math.sin(angle) * r];
+  };
+  const polygonFor = (value) =>
+    pillars.map((_, index) => pointFor(index, value).map((n) => n.toFixed(1)).join(",")).join(" ");
+
+  const allAvailable = pillars.length === 5 && pillars.every((p) => typeof p.score === "number");
+  const dataPolygon = allAvailable
+    ? pillars.map((p, index) => pointFor(index, p.score).map((n) => n.toFixed(1)).join(",")).join(" ")
+    : "";
+
+  const axes = pillars.map((p, index) => {
+    const [x, y] = pointFor(index, 100);
+    const [lx, ly] = pointFor(index, 126);
+    const short = [
+      "Conversion",
+      "Trust",
+      "Content",
+      "Technical",
+      "Entity / AI",
+    ][index] || p.label;
+    const marker = typeof p.score === "number"
+      ? (() => {
+          const [mx, my] = pointFor(index, p.score);
+          return `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="4"><title>${e(p.label)}: ${e(p.score)}</title></circle>`;
+        })()
+      : "";
+    return `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="currentColor" opacity=".22"/>
+      ${marker}
+      <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="11">${e(short)}${typeof p.score === "number" ? "" : "*"}</text>`;
+  }).join("");
+
+  const cards = pillars.map((p) => {
+    const scoreHtml = p.score === null
+      ? `<div class="pillar-score none">Not Assessed</div>`
+      : `<div class="pillar-score">${e(p.score)}<span class="readiness-max">/100</span></div>`;
+    const modules = p.modules
+      .map((m) => `<li>${e(m.moduleId)}: ${m.score === null ? "suppressed" : e(m.score)} (weight ${e(m.weight)})</li>`)
+      .join("");
+    const caps = p.capabilities
+      .map((c) => `<span class="chip ${capabilityStatusClass(c.status)}">${e(c.key)}: ${e(c.status)}</span>`)
+      .join(" ");
+    return `
+      <div class="pillar">
+        <h3>${e(p.label)}</h3>
+        ${scoreHtml}
+        <p class="small"><strong>${e(bandLabel(p.score))}</strong></p>
+        <ul class="pillar-modules">${modules}</ul>
+        <div class="pillar-caps">${caps}</div>
+      </div>`;
+  }).join("");
+
+  const directAnswer = weak.length
+    ? `Readiness is uneven. ${weak[0].label} is the weakest assessed dimension at ${weak[0].score}/100, while stronger dimensions provide a foundation to build on.`
+    : available.length
+      ? "The assessed readiness dimensions are broadly adequate or strong, with no dimension currently below the Adequate band."
+      : "PRYSM could not produce dimension-level readiness scores from the available evidence.";
+
+  return `<section id="pillars">
+    <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">Where is the site helping or hurting conversion?</p>
+    <p class="muted small">Conversion Readiness Map</p>
+    <h2>D. Where are the problems?</h2>
+    <p>${e(directAnswer)}</p>
+
+    <div style="overflow-x:auto;margin:16px 0">
+      <svg viewBox="0 0 460 340" role="img" aria-label="Five-axis Conversion Readiness radar" style="width:100%;max-width:620px;display:block;margin:0 auto">
+        <polygon points="${polygonFor(100)}" fill="none" stroke="currentColor" opacity=".22"/>
+        <polygon points="${polygonFor(75)}" fill="none" stroke="currentColor" opacity=".16"/>
+        <polygon points="${polygonFor(50)}" fill="none" stroke="currentColor" opacity=".13"/>
+        <polygon points="${polygonFor(25)}" fill="none" stroke="currentColor" opacity=".10"/>
+        ${axes}
+        ${dataPolygon ? `<polygon points="${dataPolygon}" fill="currentColor" fill-opacity=".10" stroke="currentColor" stroke-width="2"/>` : ""}
+      </svg>
+    </div>
+
+    ${!allAvailable ? `<div class="note"><strong>PARTIAL:</strong> An asterisk marks a limited-evidence dimension. Unavailable evidence is not plotted as zero.</div>` : ""}
+
+    <div class="pillar-grid">${cards}</div>
+
+    <h3>What is driving weaker areas</h3>
+    ${weak.length
+      ? `<ul>${weak.slice(0, 3).map((p) => `<li><strong>${e(p.label)}:</strong> ${e(p.score)}/100 — ${e(bandLabel(p.score))}.</li>`).join("")}</ul>`
+      : `<p>No assessed readiness dimension fell below the Adequate band.</p>`}
+
+    <h3>Where the foundation is strong</h3>
+    ${strong.length
+      ? `<ul>${strong.slice(0, 3).map((p) => `<li><strong>${e(p.label)}:</strong> ${e(p.score)}/100 — ${e(bandLabel(p.score))}.</li>`).join("")}</ul>`
+      : `<p>No assessed readiness dimension reached the Adequate band.</p>`}
+
+    <h3>Evidence limitations by dimension</h3>
+    ${pillars.some((p) => p.score === null)
+      ? `<ul>${pillars.filter((p) => p.score === null).map((p) => `<li><strong>${e(p.label)}:</strong> Limited Evidence — one or more required modules or capabilities were unavailable or suppressed.</li>`).join("")}</ul>`
+      : `<p>All five dimensions produced an assessed score from eligible evidence.</p>`}
+  </section>`;
+}
+
+
+
+function blockersSection(model, plan) {
+  const actions = (plan.actions || []).slice(0, 5);
+
+  if (actions.length === 0) {
+    return `<section id="blockers" class="card">
+      <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">What should you fix first?</p>
+      <p class="muted small">Priority Findings &amp; Recommendations</p>
+      <h2>E. What should be fixed first?</h2>
+      <p><span class="chip cap-ok">PASS</span> No score-bearing finding produced a priority action from the assessed evidence.</p>
+    </section>`;
+  }
+
+  const rows = actions.map((a) => {
+    const f = a.finding;
+    const classChip = a.actionClass === ACTION_CLASS.FOUNDATION_BLOCKER
+      ? `<span class="chip cap-missing">${e(ACTION_CLASS_LABEL[a.actionClass])}</span>`
+      : `<span class="chip cap-neutral">${e(ACTION_CLASS_LABEL[a.actionClass] || a.actionClass)}</span>`;
+
+    const location = Array.isArray(f.affectedUrls) && f.affectedUrls.length
+      ? f.affectedUrls.slice(0, 3).join(", ")
+      : f.module || f.dimension || "See supporting evidence";
+
+    const verification = a.verificationMethod || f.verificationMethod || "Re-run the relevant PRYSM check after the change.";
+
+    const rankReason = f.finalPriority !== null && f.finalPriority !== undefined
+      ? `Governed priority ${f.finalPriority}; ${impactCategory(f)}; ${e(a.group)}.`
+      : `${impactCategory(f)}; ${e(a.group)}.`;
+
+    return `
+      <tr>
+        <td>${e(a.rank)}</td>
+        <td>${classChip}<br><span class="small">${e(a.group)}</span></td>
+        <td><strong>${e(f.title)}</strong></td>
+        <td>${e(f.businessImpact || "")}</td>
+        <td>${e(f.recommendation || "")}</td>
+        <td class="small">${e(location)}</td>
+        <td class="small">${e(verification)}</td>
+        <td class="small">${rankReason}</td>
+      </tr>`;
+  }).join("");
+
+  const secondaryCount = Math.max(0, (plan.actions || []).length - actions.length);
+
+  return `
+  <section id="blockers" class="card">
+    <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">What should you fix first?</p>
+    <p class="muted small">Priority Findings &amp; Recommendations</p>
+    <h2>E. What should be fixed first?</h2>
+    <p>PRYSM recommends addressing the following actions first, in the governed order shown below.</p>
+    <div class="table-wrap">
+      <table class="blockers">
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Class</th>
+            <th>What we found</th>
