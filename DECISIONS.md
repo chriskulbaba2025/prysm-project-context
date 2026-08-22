@@ -24,13 +24,13 @@ Date: 2026-08-22
 Status: Active
 
 Decision:
-Implement each report page through a controlled manual file handoff: the user retrieves the exact current source file from VS Code, provides it in chat, the assistant edits only that supplied file, the user pastes the complete replacement back into VS Code, and the user verifies/tests the result before the next page begins.
+Implement report changes through a controlled manual file handoff: the user provides the exact current source file, the assistant edits only that governed source-file unit, the user pastes the complete replacement back into the working copy, and the user verifies/tests the result before another source file begins.
 
 Reason:
 This creates the smallest and most observable change boundary, avoids autonomous multi-file drift, and keeps the user in direct control of the production application repository while still allowing precise file-level assistance.
 
 Implication:
-Do not directly edit `vantage-platform` as part of this report-page workflow. Do not infer or reconstruct an unsupplied application file. If a page cannot be completed safely within the supplied file, identify the additional required file before any broader change. One verified page must complete before another begins.
+Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files.
 
 ---
 
@@ -46,23 +46,23 @@ Reason:
 The objective is to improve how existing audit evidence is communicated without destabilizing working evidence collection, scoring, lifecycle, storage, or audit orchestration.
 
 Implication:
-Do not change evidence collection, adapters/providers, scoring logic, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n flows, or audit orchestration as part of this report rebuild.
+Do not change evidence collection, adapters/providers, scoring logic, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n flows, authentication, or audit orchestration as part of this report rebuild.
 
 ---
 
-## Decision: Page-by-page governed implementation
+## Decision: Governed source-file-unit implementation
 
 Date: 2026-08-22
 Status: Active
 
 Decision:
-Implement the final report one page at a time.
+The implementation boundary is one exact report source file at a time, not necessarily one conceptual report page at a time.
 
 Reason:
-The user requires tight review and verification instead of a broad autonomous rewrite.
+The current Report v2 architecture groups several approved report pages/functions in the same source files. Editing the same file repeatedly page-by-page increases copy/paste risk and test churn without creating a stronger governance boundary.
 
 Implication:
-For each page: inspect current implementation → propose the smallest change → obtain approval → edit only that page → test → verify no unrelated change → obtain approval before moving on.
+When several approved pages/functions live in one verified source file, update them together as the smallest coherent source-file unit, then run syntax and relevant targeted tests. Do not move into a second source file until the current source-file unit is green.
 
 ---
 
@@ -226,6 +226,22 @@ Do not redesign the navigation architecture as part of page-content implementati
 
 ---
 
+## Decision: Current viewer contract remains 15 pages until deliberate migration
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Preserve the current Viewer v2.1.0 15-page registry and tests during ordinary report-content work. Add the approved 16th Accessibility page only as a deliberate viewer-contract migration.
+
+Reason:
+The current production viewer tests explicitly govern 15 pages. Mixing content changes with a page-count contract migration creates unnecessary regression ambiguity.
+
+Implication:
+Do not casually add the Accessibility page to `REPORT_V2_VIEWER_PAGES`. When ready, update the viewer registry and corresponding governed viewer test contract together, then run the full targeted report regression suite.
+
+---
+
 ## Decision: Stable Git baseline before report code changes
 
 Date: 2026-08-22
@@ -235,7 +251,7 @@ Decision:
 Do not begin report code changes while the repository is actively being updated elsewhere.
 
 Reason:
-A moving baseline creates branch drift and makes page-level verification unreliable.
+A moving baseline creates branch drift and makes source-file verification unreliable.
 
 Implication:
-Confirm the exact stable `vantage-platform` branch/head before beginning Executive Scorecard implementation.
+Verify the exact stable `vantage-platform` branch/head before beginning a new governed implementation sequence when the baseline may have changed.
