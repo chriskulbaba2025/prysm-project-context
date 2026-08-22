@@ -46,7 +46,23 @@ Reason:
 This creates the smallest and most observable change boundary, avoids autonomous multi-file drift, and keeps the user in direct control of the production application repository while still allowing precise file-level assistance.
 
 Implication:
-Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files. When a complete replacement source file is too large to return reliably as one chat message, do not rely on a generated download link as the delivery mechanism. Share the complete replacement directly in the conversation context in sequential, clearly labeled chunks that can be copied into VS Code in order. Every chunk must be part of the same complete file, with no omitted middle content, and the final chunk must explicitly state that the file is complete.
+Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files. All source-code replacements must be returned directly in the conversation, never as generated/downloadable code files. When a complete replacement source file is too large for one chat message, share the complete replacement directly in sequential, clearly labeled code blocks that can be copied into VS Code in order. Every chunk must be part of the same complete file, with no omitted middle content, and the final chunk must explicitly state that the file is complete.
+
+---
+
+## Decision: Code files are never delivered as downloads
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Across the entire PRYSM Project, source code, replacement code, patches, scripts, configuration code, and other code files must never be delivered through generated/downloadable file links or sandbox downloads.
+
+Reason:
+The governed implementation workflow depends on visible, copyable, reviewable code in the conversation so the user can inspect exactly what is being pasted into VS Code. Download artifacts create an opaque delivery path and break that control boundary.
+
+Implication:
+Every code-file replacement must appear directly in the conversation. If the file is too large for one response, provide it in sequential, clearly labeled code blocks in exact copy order with no omitted content. This rule applies to every PRYSM chat and work package unless the user explicitly reverses this decision in the authoritative context repository.
 
 ---
 
