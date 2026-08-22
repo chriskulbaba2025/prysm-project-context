@@ -3,63 +3,68 @@
 Project: PRYSM — governed website conversion-readiness report
 
 Current objective:
-Move the verified Viewer v2.2.0 / 16-page report changes from the manual ZIP working copy into the actual `vantage-platform` Git working repository, then re-run the same targeted regression suites before any deployment action.
+Proceed from the completed and merged Report v2 16-page viewer checkpoint. Any next work should begin from the exact merged `vantage-platform` `main` state and preserve the report-only boundary unless a new governed objective explicitly changes scope.
 
 Verified checkpoint:
 - `chriskulbaba2025/prysm-project-context` is the authoritative durable PRYSM project-memory repository.
 - Primary application repository: `chriskulbaba2025/vantage-platform`.
-- Manual working copy used for the completed report edits: `C:\Users\kulba\Downloads\vantage-platform-main\vantage-platform-main\services\worker`; this ZIP extraction is not a Git working tree.
 - Report design metadata remains v2.0.0.
-- Viewer contract is now deliberately migrated to Viewer v2.2.0 with 16 governed pages.
-- The standalone Accessibility & Mobile Usability Readiness page is wired into the viewer after Performance and before Internal-Link Opportunities.
+- Viewer contract is Viewer v2.2.0 with 16 governed pages.
+- Standalone Accessibility & Mobile Usability Readiness is wired after Performance and before Internal-Link Opportunities.
 - `services/worker/src/report/sections-conversion.js` remained frozen and was not edited.
-- Verified changed file units for the viewer migration:
+- Final merged application files:
   - `services/worker/src/report/render-report-v2.js`
+  - `services/worker/src/report/report-detail-sections.js`
   - `services/worker/src/report/render-report-v2-section-viewer.test.js`
   - `services/worker/src/report/render-report-v2-conversion.test.js`
-- Viewer regression: 9 tests, 9 PASS, 0 FAIL.
-- Report conversion/depth regression: 46 tests, 46 PASS, 0 FAIL.
-- Core Report v2 regression: 10 tests, 10 PASS, 0 FAIL.
+- Local syntax verification: 4/4 PASS.
+- Viewer regression: 9/9 PASS.
+- Report conversion/depth regression: 46/46 PASS.
+- Core Report v2 regression: 10/10 PASS.
+- Total targeted tests: 65/65 PASS.
 - CR-43 full-render golden hashes pass.
 - CR-44 claim-bearing renderer branch coverage passes.
 - v1 locked renderer path remains passing.
+- GitHub Vantage Worker CI run `32599132507` completed SUCCESS on exact PR head `9068038fa78b7fbd8a600fa66a03967b5b620fdf`.
+- PR #78 — `design(report-v2): complete governed 16-page report` — merged 2026-08-22T21:24:27Z.
+- Merge commit: `c116e730a38539066852f107582959693e666781`.
+- GitHub `main` points to `c116e730a38539066852f107582959693e666781`.
+- User local `C:\Users\kulba\Desktop\vantage-platform` is switched to `main`, fast-forwarded to the same merge commit, and `git status --short` is clean.
 - No paid production audit was run.
 - No evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, auth, or audit-plumbing code was changed.
-- Persistent workflow-efficiency measurement is now active in `EFFICIENCY_METRICS.md`. The prior ~55% efficiency-improvement figure is retained only as an estimate; measured comparisons begin prospectively.
+- Persistent workflow-efficiency measurement is active in `EFFICIENCY_METRICS.md`.
 
 Current environment / branch / version:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Primary application repository stable baseline previously verified at `main` / `6f80547e30a3f3a9ea98c2aed8bcae77cc4d48f3`; verify the actual current Git baseline before copying the completed files because this may have changed.
-- Manual report working copy: `C:\Users\kulba\Downloads\vantage-platform-main\vantage-platform-main\services\worker`.
+- Primary application repository: `chriskulbaba2025/vantage-platform`, branch `main`.
+- Exact merged application head: `c116e730a38539066852f107582959693e666781`.
+- User local Git working repo: `C:\Users\kulba\Desktop\vantage-platform`.
 - Current governed viewer contract: 16 pages / Viewer v2.2.0.
 - Scoring version remains 4.1.1.
 
 Completed:
 - Established GitHub-backed persistent project memory and handoff protocol.
 - Added persistent workflow-efficiency measurement in `EFFICIENCY_METRICS.md`.
-- Approved and implemented the full 16-page report scaffold and report-wide interpretation rules.
-- Restored and preserved the frozen v1 conversion section path protected by V2R-07.
-- Completed and verified the `render-report-v2.js` report presentation work.
-- Completed and verified the `report-detail-sections.js` report-detail/content work.
-- Corrected governed E-E-A-T dimension rendering, technical-header detail, schema/entity distinction, performance wording, accessibility readiness handling, and related client-facing evidence-status presentation without changing source evidence or scoring.
+- Approved, implemented, tested, committed, pushed, CI-verified, and merged the full 16-page Report v2 scaffold.
 - Preserved the dark left navigation and one-page-at-a-time viewer.
+- Preserved the frozen v1 conversion section path protected by V2R-07.
+- Completed governed report presentation work in `render-report-v2.js` and `report-detail-sections.js`.
+- Corrected governed E-E-A-T dimension rendering, technical-header detail, schema/entity distinction, performance wording, accessibility readiness handling, and related client-facing evidence-status presentation without changing source evidence or scoring.
 - Completed deliberate viewer migration from 15 pages / Viewer v2.1.0 to 16 pages / Viewer v2.2.0.
-- Final targeted regression state in the manual working copy: viewer 9/9 PASS; conversion/depth 46/46 PASS; core Report v2 10/10 PASS.
+- Merged PR #78 and synchronized the user's local `main` to the exact merge commit with a clean working tree.
 
 In progress:
-- Transfer the three verified viewer-migration files into the actual `vantage-platform` Git working repository and verify them there.
+- None. This work package is complete.
 
 Blocked:
 - No current technical blocker.
-- The completed application-source changes exist in the manual ZIP working copy and are not yet represented as a verified `vantage-platform` Git commit.
 
 Important constraints:
 - GitHub context repository is authoritative; stale chat summaries or duplicated Project Sources do not override it.
-- Report structure/presentation only.
-- Do not change evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, n8n flows, or auth.
+- Report structure/presentation only unless a new governed objective explicitly changes scope.
+- Do not change evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, n8n flows, or auth as part of report-only work.
 - Do not run a paid audit merely to verify presentation work.
 - Do not edit `services/worker/src/report/sections-conversion.js` for Report v2.
-- Work one report source file at a time. If multiple approved report pages/functions live in the same verified file, they may be updated together as one governed source-file unit; do not batch unrelated files.
 - After each source-file change, syntax and relevant targeted tests must pass before moving on.
 - Do not update tests merely to silence regressions. Test-contract changes are allowed only when deliberately migrating an approved contract.
 - Preserve the dark left-hand navigation and one-page-at-a-time viewer concept.
@@ -68,7 +73,7 @@ Important constraints:
 - Update `EFFICIENCY_METRICS.md` at each materially completed governed work package. Preserve raw measures, label estimates, and never convert unknown values into zero.
 
 Exact next action:
-Verify the exact current branch/head of the real `vantage-platform` Git working repository, copy in the three already-verified viewer-migration files, then re-run the viewer, conversion/depth, and core Report v2 regression suites before committing.
+Before beginning any new PRYSM implementation work, define the next governed objective and verify that `vantage-platform` `main` still matches the expected baseline.
 
 Last verified:
 2026-08-22
