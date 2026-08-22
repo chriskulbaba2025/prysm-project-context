@@ -3,7 +3,7 @@
 Project: PRYSM — governed website conversion-readiness report
 
 Current objective:
-Proceed from the completed and merged Report v2 16-page viewer checkpoint. Any next work should begin from the exact merged `vantage-platform` `main` state and preserve the report-only boundary unless a new governed objective explicitly changes scope.
+Complete release verification and visual UAT for the merged Report v2 16-page viewer without changing audit/report plumbing unless UAT proves a specific presentation defect.
 
 Verified checkpoint:
 - `chriskulbaba2025/prysm-project-context` is the authoritative durable PRYSM project-memory repository.
@@ -33,6 +33,9 @@ Verified checkpoint:
 - No paid production audit was run.
 - No evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, auth, or audit-plumbing code was changed.
 - Persistent workflow-efficiency measurement is active in `EFFICIENCY_METRICS.md`.
+- Integration work package `PRYSM-V2-REPO-INTEGRATION-01` is recorded with 4 file replacement events, 1 failed iteration, 0 context-recovery turns, and an exact PR lifecycle of 7m41s; full package elapsed time was not retrospectively invented.
+- Production deployment of merge `c116e730a38539066852f107582959693e666781` has not yet been verified in this session.
+- Visual production UAT of the 16-page report has not yet been completed.
 
 Current environment / branch / version:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
@@ -52,9 +55,10 @@ Completed:
 - Corrected governed E-E-A-T dimension rendering, technical-header detail, schema/entity distinction, performance wording, accessibility readiness handling, and related client-facing evidence-status presentation without changing source evidence or scoring.
 - Completed deliberate viewer migration from 15 pages / Viewer v2.1.0 to 16 pages / Viewer v2.2.0.
 - Merged PR #78 and synchronized the user's local `main` to the exact merge commit with a clean working tree.
+- Reconciled the persistent constraint file so it now reflects the verified 16-page / Viewer v2.2.0 contract rather than the superseded 15-page state.
 
 In progress:
-- None. This work package is complete.
+- Release verification and visual production UAT only.
 
 Blocked:
 - No current technical blocker.
@@ -64,6 +68,7 @@ Important constraints:
 - Report structure/presentation only unless a new governed objective explicitly changes scope.
 - Do not change evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, n8n flows, or auth as part of report-only work.
 - Do not run a paid audit merely to verify presentation work.
+- Use an existing completed production audit for visual UAT where possible.
 - Do not edit `services/worker/src/report/sections-conversion.js` for Report v2.
 - After each source-file change, syntax and relevant targeted tests must pass before moving on.
 - Do not update tests merely to silence regressions. Test-contract changes are allowed only when deliberately migrating an approved contract.
@@ -73,7 +78,7 @@ Important constraints:
 - Update `EFFICIENCY_METRICS.md` at each materially completed governed work package. Preserve raw measures, label estimates, and never convert unknown values into zero.
 
 Exact next action:
-Before beginning any new PRYSM implementation work, define the next governed objective and verify that `vantage-platform` `main` still matches the expected baseline.
+Verify that production has deployed `vantage-platform` merge commit `c116e730a38539066852f107582959693e666781`; do not run a new paid audit for this check.
 
 Last verified:
 2026-08-22
