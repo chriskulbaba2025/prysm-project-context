@@ -14,18 +14,23 @@ Record hard project boundaries here.
 - Do not modify Writer/Judge governance.
 - Do not modify audit orchestration.
 - Do not modify n8n flows as part of report-page implementation.
-- Do not broaden a page change into an architectural redesign.
-- Do not batch multiple report pages into one implementation change.
-- Work one report page at a time.
-- Required sequence for every page:
-  verify stable application branch/head → identify exact page source file → user provides current file from VS Code → inspect → propose smallest report-layer change → user approval → edit only supplied file → return complete replacement file → user pastes into VS Code → test/verify → user approval to proceed.
-- Do not directly edit the `vantage-platform` application repository as part of this manual report-page workflow.
-- Do not reconstruct, guess, or edit an application source file that the user has not supplied from the current stable repository.
-- If the supplied file proves that a second file is strictly required, stop and identify that dependency before editing anything else.
-- Do not move to the next page without explicit user approval after verification.
-- Do not begin report code work until the exact stable `vantage-platform` branch/head is confirmed.
-- Preserve the current left-hand navigation concept unless a page-specific approved change requires a minimal label/section update.
+- Do not modify authentication as part of report-page implementation.
+- Do not broaden a report change into an architectural redesign.
+- Work one report source file at a time.
+- If multiple approved report pages/functions live in the same supplied source file, they may be updated together as one governed source-file unit.
+- Do not batch changes across separate report source files.
+- Required sequence for every governed source-file unit:
+  verify stable application branch/head → identify exact source file → user provides current file from VS Code/current working copy → inspect → apply the smallest approved report-layer change → return complete replacement file → user pastes into working copy → syntax/test/verify → only then move to another source file.
+- Do not directly edit the `vantage-platform` application repository as part of this manual report workflow unless the user explicitly changes that operating method.
+- Do not reconstruct, guess, or edit an application source file that the user has not supplied or whose exact current contents have not been verified.
+- If a supplied file proves that a second file is strictly required, identify that dependency before modifying the second file.
+- Do not move to another source file until the current source-file unit passes its relevant verification.
+- Preserve the current left-hand navigation concept unless an approved viewer-contract change requires a minimal section update.
 - The final approved scaffold contains a standalone Accessibility & Mobile Usability Readiness page.
+- The currently implemented viewer contract remains 15 pages / Viewer v2.1.0 until the deliberate 16-page migration is performed with its governed test-contract update.
+- Do not update tests merely to silence a regression; test changes require an intentional approved contract migration.
+- Do not edit `services/worker/src/report/sections-conversion.js` for Report v2. It belongs to the frozen v1 path protected by V2R-07.
+- Do not run a paid production audit merely to verify report-presentation changes.
 - Every report page must begin with a plain-language client question and answer it before technical evidence.
 - Client-facing status labels are:
   PASS / FINDING / PARTIAL / UNAVAILABLE / NOT APPLICABLE.
