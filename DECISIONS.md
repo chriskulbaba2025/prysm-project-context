@@ -18,6 +18,22 @@ Before substantive PRYSM work, read the governing files in the context repositor
 
 ---
 
+## Decision: Measure workflow efficiency persistently
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+PRYSM governed work packages will record elapsed time, edit events, failed iterations, and context-recovery turns in `EFFICIENCY_METRICS.md` so workflow-efficiency claims can be measured and revised from durable evidence.
+
+Reason:
+The current estimate that project-memory use improves practical development efficiency by roughly 55% is directionally useful but not yet a defensible measured benchmark. Persistent raw measures are required to compare comparable work packages and separate genuine process improvement from impression.
+
+Implication:
+At each materially completed governed work package, update `EFFICIENCY_METRICS.md`. Preserve raw measures, label estimates as estimates, never turn unknown values into zero, and calculate a percentage improvement only when comparable baseline/current data exists. Future PRYSM handoffs should preserve this measurement record.
+
+---
+
 ## Decision: Manual VS Code file handoff for report implementation
 
 Date: 2026-08-22
@@ -229,16 +245,16 @@ Do not redesign the navigation architecture as part of page-content implementati
 ## Decision: Current viewer contract remains 15 pages until deliberate migration
 
 Date: 2026-08-22
-Status: Active
+Status: Superseded by completed Viewer v2.2.0 migration
 
 Decision:
 Preserve the current Viewer v2.1.0 15-page registry and tests during ordinary report-content work. Add the approved 16th Accessibility page only as a deliberate viewer-contract migration.
 
 Reason:
-The current production viewer tests explicitly govern 15 pages. Mixing content changes with a page-count contract migration creates unnecessary regression ambiguity.
+The current production viewer tests explicitly governed 15 pages. Mixing content changes with a page-count contract migration creates unnecessary regression ambiguity.
 
 Implication:
-Do not casually add the Accessibility page to `REPORT_V2_VIEWER_PAGES`. When ready, update the viewer registry and corresponding governed viewer test contract together, then run the full targeted report regression suite.
+The deliberate migration has now been completed and verified. The current governed target is Viewer v2.2.0 with 16 pages.
 
 ---
 
