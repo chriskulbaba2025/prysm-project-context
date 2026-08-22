@@ -25,10 +25,17 @@ Verified checkpoint:
 - The first UAT source-file unit is accepted: no new regression was introduced by the change.
 - Existing unrelated historical stash entries remain untouched.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
+- User supplied exact current `services/worker/src/application/production-runtime.js`; it matches application base `c116e730a38539066852f107582959693e666781`.
+- A complete three-chunk inline replacement was supplied for `production-runtime.js` with only the minimum runtime exposure for `renderNarrativeV2UatFromPersistedArtifacts`.
+- After the user attempted to paste/save the replacement, `node --check src/application/production-runtime.js` passed, but `git diff -- src/application/production-runtime.js` was empty.
+- Follow-up `git status --short` showed only unrelated untracked `../../lifecycle-failure.txt`; there is no tracked modification to `production-runtime.js`.
+- `git rev-parse HEAD` remains exactly `c116e730a38539066852f107582959693e666781`.
+- Therefore the intended second-file change is not currently present in the tracked working copy. Do not proceed to `server.js` until the exact file is edited and Git shows it as modified.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` with the accepted first UAT source-file change in the working copy.
+- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` with the accepted first UAT source-file change intended in the working copy.
+- `services/worker/src/application/production-runtime.js` currently has no tracked diff from `c116e730a38539066852f107582959693e666781`.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
@@ -40,13 +47,13 @@ Completed:
 - Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
 - First source-file unit `production-path.js` is implemented, syntax-green, and verified not to introduce any new focused-test regression.
 - Baseline isolation proved `NV2-PROD-02` is pre-existing and out of scope for this UAT work package.
+- Exact current second source file was supplied and inspected.
 
 In progress:
-- Continue `PRYSM-V2-UAT-RERENDER-01` to the second governed source-file unit needed to expose the pure read-only renderer through the production runtime.
+- Get the prepared `production-runtime.js` replacement into the actual tracked application file and verify Git sees the intended delta.
 
 Blocked:
-- No technical blocker.
-- Manual source-file workflow requires the user to supply the exact current second source file before editing it.
+- The prepared `production-runtime.js` replacement is not currently present in the tracked working copy; `git status` shows no modification for that file.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -61,9 +68,10 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair the pre-existing `NV2-PROD-02` baseline failure inside `PRYSM-V2-UAT-RERENDER-01`.
 - Do not pop, drop, or otherwise modify the two historical stash entries.
+- Do not proceed to `server.js` until `production-runtime.js` shows the intended tracked modification and passes syntax verification.
 
 Exact next action:
-User supplies the exact current local `services/worker/src/application/production-runtime.js` from the synchronized `vantage-platform` working copy. Inspect that file and add only the smallest read-only runtime method needed to call `renderNarrativeV2UatFromPersistedArtifacts` for the authorized already-approved/published audit; run syntax and focused verification before touching `server.js`.
+In VS Code, open the exact tracked file `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\application\production-runtime.js` using the full path, confirm the editor tab path is that file, then verify whether the text `renderReportV2Uat` exists. If absent, reapply the already-supplied complete three-chunk replacement to that exact tracked file and save. Then from `services/worker` run `git status --short` and `git diff -- src/application/production-runtime.js`; do not proceed until Git shows `M src/application/production-runtime.js` and the intended delta.
 
 Last verified:
 2026-08-22
