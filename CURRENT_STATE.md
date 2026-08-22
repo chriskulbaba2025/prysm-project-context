@@ -20,11 +20,15 @@ Verified checkpoint:
 - `render-report-v2.js` at the verified application head identifies Viewer v2.2.0 and defines 16 governed pages.
 - The Narrative v2 render path already reconstructs its deterministic renderer model from persisted AuditRequest, canonical scores/findings, capability evidence, decision evidence, and persisted Narrative v2 Writer/Judge release-candidate artifacts.
 - User explicitly authorized `PRYSM-V2-UAT-RERENDER-01` on 2026-08-22.
-- `CONSTRAINTS.md` now contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
+- `CONSTRAINTS.md` contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
+- User supplied the exact current `services/worker/src/narrative-v2/production-path.js` source for the first governed source-file unit.
+- A complete replacement for that file has been prepared with only a bounded `renderNarrativeV2UatFromPersistedArtifacts` helper plus the authorized audit/viewer constants.
+- The prepared replacement passes `node --check` in the assistant sandbox.
+- Diff review confirms the prepared change is limited to the two UAT constants and the new read-only helper; existing execution paths are otherwise unchanged.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repository: `chriskulbaba2025/vantage-platform`, stable `main` at `c116e730a38539066852f107582959693e666781`.
+- Application repository: `chriskulbaba2025/vantage-platform`, stable `main` at `c116e730a38539066852f107582959693e666781` before the user applies the prepared replacement.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
@@ -35,13 +39,14 @@ Completed:
 - Root cause of the UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
 - Bounded UAT rerender objective was explicitly authorized and persisted into project constraints.
 - Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
+- First source-file replacement has been prepared and syntax-checked, but has not yet been verified in the user's working repository.
 
 In progress:
 - `PRYSM-V2-UAT-RERENDER-01` implementation using the existing manual governed source-file workflow.
 
 Blocked:
 - No technical blocker currently.
-- The active manual implementation rule requires the user to provide the exact current application source file from the synchronized working copy before that source-file unit is edited.
+- The first source-file unit cannot be marked complete until the user pastes the prepared `production-path.js` replacement into the synchronized working copy and runs the focused local verification.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -56,7 +61,7 @@ Important constraints:
 - After each source-file change, syntax and relevant targeted tests must pass before proceeding to another source file.
 
 Exact next action:
-User supplies the exact current `services/worker/src/narrative-v2/production-path.js` from local `vantage-platform` main `c116e730a38539066852f107582959693e666781`; add only a pure persisted-artifact UAT render helper, then run its focused tests before touching the next source file.
+User replaces local `services/worker/src/narrative-v2/production-path.js` with the prepared complete replacement, then from `services/worker` runs `node --check src/narrative-v2/production-path.js` and `node --test src/application/narrative-v2-production-path.test.js`; do not touch a second application source file until both pass.
 
 Last verified:
 2026-08-22
