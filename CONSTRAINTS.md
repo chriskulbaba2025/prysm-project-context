@@ -26,8 +26,8 @@ Record hard project boundaries here.
 - If a supplied file proves that a second file is strictly required, identify that dependency before modifying the second file.
 - Do not move to another source file until the current source-file unit passes its relevant verification.
 - Preserve the current left-hand navigation concept unless an approved viewer-contract change requires a minimal section update.
-- The final approved scaffold contains a standalone Accessibility & Mobile Usability Readiness page.
-- The currently implemented viewer contract remains 15 pages / Viewer v2.1.0 until the deliberate 16-page migration is performed with its governed test-contract update.
+- The current governed viewer contract is 16 pages / Viewer v2.2.0, including standalone Accessibility & Mobile Usability Readiness after Performance and before Internal-Link Opportunities.
+- Do not change the governed page count or viewer contract except through a deliberate approved migration with corresponding test-contract verification.
 - Do not update tests merely to silence a regression; test changes require an intentional approved contract migration.
 - Do not edit `services/worker/src/report/sections-conversion.js` for Report v2. It belongs to the frozen v1 path protected by V2R-07.
 - Do not run a paid production audit merely to verify report-presentation changes.
