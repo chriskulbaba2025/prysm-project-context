@@ -1,0 +1,209 @@
+# Decisions
+
+Use this file only for decisions that future work must respect.
+
+## Decision: Report rebuild is presentation-layer only
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+The current PRYSM report rebuild changes report structure, presentation, hierarchy, and interpretation only.
+
+Reason:
+The objective is to improve how existing audit evidence is communicated without destabilizing working evidence collection, scoring, lifecycle, storage, or audit orchestration.
+
+Implication:
+Do not change evidence collection, adapters/providers, scoring logic, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n flows, or audit orchestration as part of this report rebuild.
+
+---
+
+## Decision: Page-by-page governed implementation
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Implement the final report one page at a time.
+
+Reason:
+The user requires tight review and verification instead of a broad autonomous rewrite.
+
+Implication:
+For each page: inspect current implementation → propose the smallest change → obtain approval → edit only that page → test → verify no unrelated change → obtain approval before moving on.
+
+---
+
+## Decision: Client-facing questions lead report pages
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Every report page begins with a plain-language client question, followed by the formal report category.
+
+Reason:
+Clients should understand the purpose of a page before encountering technical terminology or evidence.
+
+Implication:
+Each page must answer its question before presenting technical detail.
+
+---
+
+## Decision: Evidence status must always be explained
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Client-facing report states are PASS, FINDING, PARTIAL, UNAVAILABLE, and NOT APPLICABLE, and every state requires an explanation.
+
+Reason:
+A status or blank result without context leaves the client unable to distinguish success, failure, partial evidence, or absence of evidence.
+
+Implication:
+No unavailable, partial, blocked, not-connected, not-applicable, or passing state may appear without explaining what was assessed and what the state means. Missing evidence is not a negative finding.
+
+---
+
+## Decision: Important pages drive the narrative
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Client-facing conclusions should emphasize commercially important and conversion-relevant pages rather than allowing low-value utility pages to dominate the report narrative.
+
+Reason:
+A crawl may find technically valid issues on utility pages that do not materially reflect homepage, service, trust, content, or conversion readiness.
+
+Implication:
+Raw page-level observations may remain visible as supporting evidence, but site-level conclusions should emphasize the pages that matter to search discovery, buyer understanding, trust, and conversion.
+
+---
+
+## Decision: Observations and findings are distinct
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+A technically true observation does not automatically become a client-facing finding or recommendation.
+
+Reason:
+PRYSM must preserve its judgment layer and avoid becoming a generic checklist crawler.
+
+Implication:
+Recommendations require material relevance to search visibility, conversion, trust, accessibility, usability, crawl/indexation, or a defined business objective.
+
+---
+
+## Decision: Show strengths, not only defects
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Every relevant report page should explicitly show what is already working.
+
+Reason:
+A report that only displays defects misrepresents the assessed condition and weakens client comprehension.
+
+Implication:
+Passing evidence should be summarized in plain language where useful, not silently omitted.
+
+---
+
+## Decision: Technical SEO is organized by client purpose
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Technical SEO Hygiene is organized around Reach → Index → Understand → Deliver, supported by an SEO Coverage Matrix.
+
+Reason:
+This better reflects Adam’s intent than presenting a flat crawler checklist.
+
+Implication:
+Technical checks should be framed by whether search engines can reach, index, understand, and reliably receive important pages. Adam’s additional checks should appear in the relevant purpose group when evidence exists.
+
+---
+
+## Decision: Accessibility is readiness, not certification
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+The report includes a standalone Accessibility & Mobile Usability Readiness section.
+
+Reason:
+Accessibility and deeper mobile usability were identified as major genuine gaps in Adam’s recommendations.
+
+Implication:
+The report may identify observable barriers and risks but must not claim legal AODA/WCAG compliance certification.
+
+---
+
+## Decision: Deterministic report visuals use inline SVG
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Structured report visuals should default to lightweight inline SVG driven by existing report values.
+
+Reason:
+These visuals need accuracy, repeatability, print stability, and no additional image-generation workflow.
+
+Implication:
+Do not use AI image generation for radar charts, internal-link pathways, entity relationships, or similar deterministic report graphics.
+
+---
+
+## Decision: Conversion Readiness Map uses a radar visual
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+The Conversion Readiness Map includes a five-axis radar/spider visual using the five existing PRYSM readiness dimensions.
+
+Reason:
+The visual makes imbalance across readiness dimensions immediately understandable.
+
+Implication:
+The chart is explanatory only, uses existing dimension scores, and must visibly identify limited evidence rather than implying full confidence.
+
+---
+
+## Decision: Existing left navigation concept remains
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Keep the current dark left-hand numbered report navigation and one-page-at-a-time viewer concept.
+
+Reason:
+The approved redesign is primarily about report content hierarchy and interpretation; the current navigation concept already supports the desired report experience.
+
+Implication:
+Do not redesign the navigation architecture as part of page-content implementation. Section names may be refined, and the approved standalone Accessibility & Mobile Usability page adds one report section to the final scaffold.
+
+---
+
+## Decision: Stable Git baseline before report code changes
+
+Date: 2026-08-22
+Status: Active
+
+Decision:
+Do not begin report code changes while the repository is actively being updated elsewhere.
+
+Reason:
+A moving baseline creates branch drift and makes page-level verification unreliable.
+
+Implication:
+Finish the GitHub update, confirm the exact stable branch/head, then begin Executive Scorecard implementation.
