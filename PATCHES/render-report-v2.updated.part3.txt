@@ -1,0 +1,174 @@
+         <th>Why it matters</th>
+            <th>What to do</th>
+            <th>Where</th>
+            <th>How to verify</th>
+            <th>Why this rank</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    ${secondaryCount
+      ? `<div class="note"><strong>Secondary observations:</strong> ${e(secondaryCount)} additional lower-priority action${secondaryCount === 1 ? "" : "s"} remain in the governed action plan but are not elevated onto this primary page.</div>`
+      : ""}
+  </section>`;
+}
+
+
+
+function conversionPathSection(model) {
+  const paths = Array.isArray(model.conversionPaths) ? model.conversionPaths : [];
+  const assessed = paths.filter((p) => p.status !== "Not Assessed");
+  const clear = assessed.filter((p) => p.status === "Clear");
+  const weak = assessed.filter((p) => p.status !== "Clear");
+
+  const directAnswer = paths.length === 0 || assessed.length === 0
+    ? "PRYSM could not determine whether visitors can move cleanly from interest to action because conversion-path evidence was unavailable."
+    : weak.length === 0
+      ? `${clear.length} assessed conversion path${clear.length === 1 ? " is" : "s are"} clear from entry through action.`
+      : `${weak.length} of ${assessed.length} assessed conversion path${assessed.length === 1 ? "" : "s"} contains friction that can weaken confidence or interrupt movement toward action.`;
+
+  const pathRows = paths.map((p) => {
+    const status = p.status === "Clear"
+      ? "PASS"
+      : p.status === "Not Assessed"
+        ? "UNAVAILABLE"
+        : "FINDING";
+    const explanation = p.status === "Clear"
+      ? "The visible route contains a usable sequence toward action."
+      : p.status === "Not Assessed"
+        ? "The path could not be assessed from the available evidence."
+        : (p.blockers || []).join("; ") || "The visible route contains friction before conversion.";
+    return `<tr>
+      <td><strong>${e(p.name || "Conversion path")}</strong></td>
+      <td>${e((p.steps || []).join(" → ") || "Unavailable")}</td>
+      <td><span class="chip ${status === "PASS" ? "cap-ok" : status === "FINDING" ? "cap-missing" : "cap-neutral"}">${e(status)}</span></td>
+      <td class="small">${e(explanation)}</td>
+    </tr>`;
+  }).join("");
+
+  const blockers = [...new Set(paths.flatMap((p) => p.blockers || []))];
+
+  return `<section id="paths" class="card">
+    <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">Can visitors easily move from interest to action?</p>
+    <p class="muted small">Conversion Path Architecture</p>
+    <h2>Conversion path architecture</h2>
+    <p>${e(directAnswer)}</p>
+
+    <h3>Primary conversion sequence</h3>
+    <div style="overflow-x:auto;margin:16px 0">
+      <svg viewBox="0 0 820 120" role="img" aria-label="Entry to service understanding to trust to primary CTA to conversion destination" style="width:100%;min-width:700px">
+        <defs>
+          <marker id="pathArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        ${["Entry","Service understanding","Trust / proof","Primary CTA","Conversion destination"].map((label, index) => {
+          const x = 10 + index * 162;
+          const width = 140;
+          const line = index < 4 ? `<line x1="${x + width}" y1="58" x2="${x + 158}" y2="58" stroke="currentColor" marker-end="url(#pathArrow)" opacity=".45"/>` : "";
+          return `<rect x="${x}" y="30" width="${width}" height="56" rx="10" fill="none" stroke="currentColor" opacity=".45"/>
+            <text x="${x + width / 2}" y="62" text-anchor="middle" font-size="12">${e(label)}</text>${line}`;
+        }).join("")}
+      </svg>
+    </div>
+
+    <h3>Important path status</h3>
+    ${pathRows
+      ? `<div class="table-wrap"><table>
+          <thead><tr><th>Path</th><th>Observed route</th><th>Status</th><th>Explanation</th></tr></thead>
+          <tbody>${pathRows}</tbody>
+        </table></div>`
+      : `<p><span class="chip cap-neutral">UNAVAILABLE</span> No conversion-path evidence was available.</p>`}
+
+    <h3>Where visitors may hesitate</h3>
+    ${blockers.length
+      ? `<ul>${blockers.map((b) => `<li><strong>${e(b)}</strong> — this weakens confidence or clarity before the action is completed.</li>`).join("")}</ul>`
+      : `<p>No material hesitation point was identified in the assessed path evidence.</p>`}
+
+    <h3>What is working</h3>
+    ${clear.length
+      ? `<ul>${clear.map((p) => `<li><strong>${e(p.name || "Conversion path")}:</strong> the assessed route is clear.</li>`).join("")}</ul>`
+      : `<p>No assessed conversion path was strong enough to present as a clear strength.</p>`}
+
+    <h3>Material findings only</h3>
+    ${weak.length
+      ? `<p>${e(weak.length)} assessed path${weak.length === 1 ? " requires" : "s require"} attention. Supporting blockers are shown above.</p>`
+      : `<p>No material conversion-path finding was established.</p>`}
+
+    <h3>Limitations</h3>
+    ${paths.some((p) => p.status === "Not Assessed")
+      ? `<div class="note"><strong>PARTIAL:</strong> At least one path could not be assessed. Missing path evidence was not treated as a failure.</div>`
+      : `<p>The visible conversion paths shown above were assessable from the available model evidence.</p>`}
+  </section>`;
+}
+
+
+
+function competitorSection(model) {
+  const comparisons = model.competitors?.comparisons || [];
+  const opportunities = model.competitors?.opportunities || model.competitorOpportunities || {};
+  const limitations = opportunities.limitations || [];
+
+  if (comparisons.length === 0) {
+    return `<section id="competitors" class="card">
+      <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">How does your website compare with the competitors buyers are likely to consider?</p>
+      <p class="muted small">Competitor Benchmark</p>
+      <h2>Competitive context</h2>
+      <p><span class="chip cap-neutral">UNAVAILABLE</span> No comparable competitor evidence was supplied or collected, so PRYSM does not make a competitor-positioning judgment.</p>
+      ${limitations.length ? `<ul class="small">${limitations.map((l) => `<li>${e(l)}</li>`).join("")}</ul>` : ""}
+    </section>`;
+  }
+
+  const site = model.evidence?.site || {};
+  const trustBand = model.bands?.trust;
+  const ownSite = {
+    offerClarity: (site.services || []).length ? `${(site.services || []).length} service topic(s)` : "Not Assessed",
+    trustProof: trustBand && trustBand !== "Not Assessed" ? trustBand : "Not Assessed",
+    contentDepth: typeof model.scores?.contentDepth === "number" ? model.scores.contentDepth : "Not Assessed",
+    buyerQuestions: (model.contentIdeas?.tofu || []).length + (model.contentIdeas?.mofu || []).length + (model.contentIdeas?.bofu || []).length,
+    pathClarity: typeof model.scores?.conversionPathways === "number" ? model.scores.conversionPathways : "Not Assessed",
+  };
+
+  const SIGNALS = [
+    ["Offer clarity", "offerClarity"],
+    ["Trust evidence", "trustProof"],
+    ["Service depth", "contentDepth"],
+    ["Buyer questions", "buyerQuestions"],
+    ["Conversion path", "pathClarity"],
+  ];
+
+  const header = comparisons.map((c) => `<th>${e(c.name || c.url || "Competitor")}</th>`).join("");
+  const signalRows = SIGNALS.map(([label, key]) => `<tr>
+    <td><strong>${e(label)}</strong></td>
+    <td>${e(ownSite[key])}</td>
+    ${comparisons.map((c) => `<td>${e(c[key] ?? c[key === "buyerQuestions" ? "contentDepth" : key] ?? "Not Assessed")}</td>`).join("")}
+  </tr>`).join("");
+
+  const sourceRows = comparisons.map((c) => `<tr>
+    <td>${e(c.name || "Competitor")}</td>
+    <td class="small">${e(c.url || "")}</td>
+    <td>${e(c.status || "AVAILABLE")}</td>
+    <td class="small">${e(c.topic || c.note || "Supplied comparison")}</td>
+  </tr>`).join("");
+
+  const gaps = opportunities.gaps || [];
+  const gapRows = gaps.map((gap) => `<tr>
+    <td>${e(gap.clientTopic || gap.topic || "Comparison area")}</td>
+    <td>${e((gap.observedCompetitorCoverage || []).join(", ") || gap.competitorDomain || "Competitor evidence")}</td>
+    <td>${e(gap.clientCoverage || "Not Assessed")}</td>
+    <td>${e(gap.conversionRelevance || "Materiality not stated")}</td>
+    <td>${e(gap.recommendation || "No recommendation issued")}</td>
+  </tr>`).join("");
+
+  return `
+  <section id="competitors" class="card">
+    <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">How does your website compare with the competitors buyers are likely to consider?</p>
+    <p class="muted small">Competitor Benchmark</p>
+    <h2>Competitive context</h2>
+
+    <p>PRYSM compared the target site with ${e(comparisons.length)} competitor site${comparisons.length === 1 ? "" : "s"} using visible conversion-readiness evidence only. The comparison does not claim traffic, rankings, backlinks, market share, or domain authority.</p>
+
+    <h3>Who was compared and why</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Competitor</th>
