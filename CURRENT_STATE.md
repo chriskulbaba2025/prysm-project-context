@@ -3,51 +3,49 @@
 Project: PRYSM — governed website conversion-readiness report
 
 Current objective:
-Continue the approved PRYSM client-facing report redesign using governed source-file units: inspect one exact current report source file, apply the smallest approved report-layer changes contained in that file, then verify before moving to another source file.
+Perform the deliberate viewer-contract migration from the current 15-page Viewer v2.1.0 registry to the approved 16-page report scaffold, adding standalone Accessibility & Mobile Usability Readiness without changing audit, evidence, scoring, lifecycle, storage, Writer/Judge, n8n, auth, or other non-report behavior.
 
 Verified checkpoint:
 - `chriskulbaba2025/prysm-project-context` is the authoritative durable PRYSM project-memory repository.
 - Primary application repository: `chriskulbaba2025/vantage-platform`.
-- Stable application baseline verified during this session: branch `main`, head `6f80547e30a3f3a9ea98c2aed8bcae77cc4d48f3`.
-- Approved report design metadata remains Report design v2.0.0; Viewer v2.1.0; Scoring version 4.1.1.
+- Stable application baseline previously verified during this workflow: branch `main`, head `6f80547e30a3f3a9ea98c2aed8bcae77cc4d48f3`.
+- Approved report design metadata remains Report design v2.0.0; Viewer v2.1.0; Scoring version 4.1.1 until the deliberate viewer migration changes the viewer contract.
 - The approved final scaffold contains 16 pages, including standalone Accessibility & Mobile Usability Readiness.
 - The currently implemented viewer contract remains 15 pages / Viewer v2.1.0. The approved Accessibility page has not yet been wired into the viewer registry.
-- `services/worker/src/report/sections-conversion.js` was restored to the exact frozen baseline and must not be edited for Report v2 work.
-- The Report v2 implementation path is `services/worker/src/report/render-report-v2.js` plus its report-detail section dependencies.
-- The user manually replaced `render-report-v2.js` in a local ZIP extraction working copy with the governed Pages 1–6 report-layer update and compatibility fixes.
-- Final verification for that source-file unit passed:
-  - `node --check src/report/render-report-v2.js` — PASS.
-  - targeted report suite — 36/36 PASS.
-  - viewer suite — 8/8 PASS.
-  - Karen regression — 6/6 PASS.
-  - V2R-07 frozen v1 golden hash — PASS.
-  - deterministic rendering / no invented evidence checks — PASS.
+- `services/worker/src/report/sections-conversion.js` remains frozen and must not be edited for Report v2 work.
+- `services/worker/src/report/render-report-v2.js` governed Pages 1–6 presentation unit was completed earlier and verified.
+- `services/worker/src/report/report-detail-sections.js` remaining report-detail/content unit is now completed in the user’s local ZIP extraction working copy.
+- `services/worker/src/report/render-report-v2-conversion.test.js` was updated only where required to preserve/freeze the intentional Report v2 renderer contract after the approved presentation changes.
+- Final targeted verification for the report-detail unit: `node --test src/report/render-report-v2-conversion.test.js` — 46 tests, 46 PASS, 0 FAIL.
+- CR-43 full-render golden hashes pass.
+- CR-44 claim-bearing renderer branch coverage passes.
 - No paid production audit was run.
-- No evidence collection, scoring, lifecycle, storage, Writer/Judge, n8n, auth, or audit-plumbing code was changed.
+- No evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, auth, or audit-plumbing code was changed.
 
 Current environment / branch / version:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Primary application repository stable baseline verified at `main` / `6f80547e30a3f3a9ea98c2aed8bcae77cc4d48f3`.
-- Manual working copy used for this session: ZIP extraction under `C:\Users\kulba\Downloads\vantage-platform-main\vantage-platform-main\services\worker`; it is not a Git working tree.
-- Current viewer contract: 15 governed pages, Viewer v2.1.0.
-- Approved final scaffold: 16 pages.
+- Primary application repository stable baseline previously verified at `main` / `6f80547e30a3f3a9ea98c2aed8bcae77cc4d48f3`.
+- Manual working copy used for report edits: `C:\Users\kulba\Downloads\vantage-platform-main\vantage-platform-main\services\worker`; this ZIP extraction is not a Git working tree.
+- Current implemented viewer contract: 15 governed pages, Viewer v2.1.0.
+- Approved target scaffold: 16 pages.
 
 Completed:
 - Established GitHub-backed persistent project memory and handoff protocol.
 - Approved the full 16-page report scaffold and report-wide interpretation rules.
-- Verified the stable `vantage-platform` baseline.
-- Restored the frozen v1 conversion section file after an earlier wrong-path edit; V2R-07 proves v1 remains unchanged.
-- Completed and verified the `render-report-v2.js` governed source-file unit covering the approved Pages 1–6 presentation work.
-- Preserved the existing dark left navigation and one-page-at-a-time viewer.
-- Preserved the 15-page viewer contract during this content update so existing viewer tests remained governed and green.
-- Verified all targeted report regressions green: 36/36.
+- Restored and preserved the frozen v1 conversion section path protected by V2R-07.
+- Completed and verified the `render-report-v2.js` governed Pages 1–6 presentation unit.
+- Completed and verified the `report-detail-sections.js` governed remaining-page presentation unit.
+- Corrected governed E-E-A-T dimension rendering, technical-header detail, schema/entity distinction, performance wording, accessibility readiness handling, and related client-facing evidence-status presentation without changing source evidence or scoring.
+- Preserved the dark left navigation and one-page-at-a-time viewer.
+- Preserved the 15-page viewer contract while report-content work was being completed.
+- Final targeted Report v2 conversion regression suite: 46/46 PASS.
 
 In progress:
-- Remaining report-detail/content work for later pages and the separate deliberate migration from the current 15-page viewer contract to the approved 16-page scaffold.
+- Deliberate migration of the viewer registry/test contract from 15 pages to the approved 16-page scaffold.
 
 Blocked:
 - No current technical blocker.
-- The 16th Accessibility page must not be added casually; it requires an explicit viewer-contract change together with the corresponding governed test-contract update.
+- The application working copy is not a Git working tree, so application-source changes completed in this manual workflow are verified locally but are not represented here as a new `vantage-platform` commit.
 
 Important constraints:
 - GitHub context repository is authoritative; stale chat summaries or duplicated Project Sources do not override it.
@@ -55,13 +53,15 @@ Important constraints:
 - Do not change evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, audit orchestration, n8n flows, or auth.
 - Do not run a paid audit merely to verify presentation work.
 - Do not edit `services/worker/src/report/sections-conversion.js` for Report v2.
-- Work one report source file at a time. If multiple approved report pages/functions live in that same file, they may be updated together as one governed source-file unit; do not batch changes across separate source files.
+- Work one report source file at a time. If multiple approved report pages/functions live in the same verified file, they may be updated together as one governed source-file unit; do not batch unrelated files.
 - After each source-file change, syntax and relevant targeted tests must pass before moving on.
-- Do not update tests merely to silence a regression. Test-contract changes are allowed only when deliberately migrating an approved contract, such as 15 pages to 16 pages.
-- The current 15-page viewer contract remains authoritative until the explicit 16-page migration is performed and verified.
+- Do not update tests merely to silence regressions. Test-contract changes are allowed only when deliberately migrating an approved contract, including this 15→16 viewer migration.
+- Preserve the dark left-hand navigation and one-page-at-a-time viewer concept.
+- Accessibility & Mobile Usability Readiness is readiness analysis, not AODA/WCAG legal certification.
+- Client-facing status vocabulary remains PASS / FINDING / PARTIAL / UNAVAILABLE / NOT APPLICABLE.
 
 Exact next action:
-Inspect the exact current `services/worker/src/report/report-detail-sections.js` implementation against the approved specs for the remaining report pages, then make only the smallest report-layer changes required in that single file and run its targeted syntax/regression tests before touching the viewer registry or test contract.
+Verify the exact current viewer registry implementation and its governed viewer tests, then update that single viewer-contract source-file unit to the approved 16-page sequence with standalone Accessibility & Mobile Usability Readiness and run the relevant viewer/report regression tests.
 
 Last verified:
 2026-08-22
