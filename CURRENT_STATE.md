@@ -3,7 +3,7 @@
 Project: PRYSM — governed website conversion-readiness report
 
 Current objective:
-Complete release verification and visual UAT for the merged Report v2 16-page viewer without changing audit/report plumbing unless UAT proves a specific presentation defect.
+Complete visual production UAT for the merged Report v2 16-page viewer without changing audit/report plumbing unless UAT proves a specific presentation defect.
 
 Verified checkpoint:
 - `chriskulbaba2025/prysm-project-context` is the authoritative durable PRYSM project-memory repository.
@@ -30,17 +30,20 @@ Verified checkpoint:
 - Merge commit: `c116e730a38539066852f107582959693e666781`.
 - GitHub `main` points to `c116e730a38539066852f107582959693e666781`.
 - User local `C:\Users\kulba\Desktop\vantage-platform` is switched to `main`, fast-forwarded to the same merge commit, and `git status --short` is clean.
+- Vercel production deployment `dpl_9UCH1pvjhJU5qMDtYVUYP8YJtDcz` is READY and targets production for project `prj_gkxQfSdmASNbMI4y8TcJ0DbRQqZA` (`vantage-platform`).
+- The verified Vercel deployment Git metadata is exact merge commit `c116e730a38539066852f107582959693e666781`, branch `main`, from PR #78.
+- The deployed production HTML references deployment `dpl_9UCH1pvjhJU5qMDtYVUYP8YJtDcz`.
 - No paid production audit was run.
 - No evidence collection, adapters/providers, scoring, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, auth, or audit-plumbing code was changed.
 - Persistent workflow-efficiency measurement is active in `EFFICIENCY_METRICS.md`.
 - Integration work package `PRYSM-V2-REPO-INTEGRATION-01` is recorded with 4 file replacement events, 1 failed iteration, 0 context-recovery turns, and an exact PR lifecycle of 7m41s; full package elapsed time was not retrospectively invented.
-- Production deployment of merge `c116e730a38539066852f107582959693e666781` has not yet been verified in this session.
 - Visual production UAT of the 16-page report has not yet been completed.
 
 Current environment / branch / version:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
 - Primary application repository: `chriskulbaba2025/vantage-platform`, branch `main`.
 - Exact merged application head: `c116e730a38539066852f107582959693e666781`.
+- Verified production deployment: Vercel `dpl_9UCH1pvjhJU5qMDtYVUYP8YJtDcz`, READY, target `production`.
 - User local Git working repo: `C:\Users\kulba\Desktop\vantage-platform`.
 - Current governed viewer contract: 16 pages / Viewer v2.2.0.
 - Scoring version remains 4.1.1.
@@ -56,12 +59,13 @@ Completed:
 - Completed deliberate viewer migration from 15 pages / Viewer v2.1.0 to 16 pages / Viewer v2.2.0.
 - Merged PR #78 and synchronized the user's local `main` to the exact merge commit with a clean working tree.
 - Reconciled the persistent constraint file so it now reflects the verified 16-page / Viewer v2.2.0 contract rather than the superseded 15-page state.
+- Verified that Vercel production has deployed exact application merge commit `c116e730a38539066852f107582959693e666781` with deployment state READY.
 
 In progress:
-- Release verification and visual production UAT only.
+- Visual production UAT only.
 
 Blocked:
-- No current technical blocker.
+- Assistant tooling has no authenticated Prysm portal principal or governed reviewer session. Production report routes require one of those before returning report HTML, so visual UAT requires the existing completed report to be opened in the user's authenticated production browser session and supplied for inspection.
 
 Important constraints:
 - GitHub context repository is authoritative; stale chat summaries or duplicated Project Sources do not override it.
@@ -78,7 +82,7 @@ Important constraints:
 - Update `EFFICIENCY_METRICS.md` at each materially completed governed work package. Preserve raw measures, label estimates, and never convert unknown values into zero.
 
 Exact next action:
-Verify that production has deployed `vantage-platform` merge commit `c116e730a38539066852f107582959693e666781`; do not run a new paid audit for this check.
+Open an existing completed audit's 16-page Report v2 in the authenticated production Prysm browser session and provide the first report-page screenshot for visual UAT; do not run a new paid audit.
 
 Last verified:
 2026-08-22
