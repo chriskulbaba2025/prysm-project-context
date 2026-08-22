@@ -30,7 +30,7 @@ Reason:
 This creates the smallest and most observable change boundary, avoids autonomous multi-file drift, and keeps the user in direct control of the production application repository while still allowing precise file-level assistance.
 
 Implication:
-Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files.
+Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files. When a complete replacement source file is too large to return reliably as one chat message, do not rely on a generated download link as the delivery mechanism. Share the complete replacement directly in the conversation context in sequential, clearly labeled chunks that can be copied into VS Code in order. Every chunk must be part of the same complete file, with no omitted middle content, and the final chunk must explicitly state that the file is complete.
 
 ---
 
