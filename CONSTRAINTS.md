@@ -18,9 +18,12 @@ Record hard project boundaries here.
 - Do not batch multiple report pages into one implementation change.
 - Work one report page at a time.
 - Required sequence for every page:
-  inspect current implementation → propose smallest report-layer change → user approval → edit → test → verify → user approval to proceed.
-- Do not move to the next page without explicit user approval.
-- Do not begin report code work until the current GitHub/repository update has completed and the exact stable branch/head is confirmed.
+  verify stable application branch/head → identify exact page source file → user provides current file from VS Code → inspect → propose smallest report-layer change → user approval → edit only supplied file → return complete replacement file → user pastes into VS Code → test/verify → user approval to proceed.
+- Do not directly edit the `vantage-platform` application repository as part of this manual report-page workflow.
+- Do not reconstruct, guess, or edit an application source file that the user has not supplied from the current stable repository.
+- If the supplied file proves that a second file is strictly required, stop and identify that dependency before editing anything else.
+- Do not move to the next page without explicit user approval after verification.
+- Do not begin report code work until the exact stable `vantage-platform` branch/head is confirmed.
 - Preserve the current left-hand navigation concept unless a page-specific approved change requires a minimal label/section update.
 - The final approved scaffold contains a standalone Accessibility & Mobile Usability Readiness page.
 - Every report page must begin with a plain-language client question and answer it before technical evidence.
