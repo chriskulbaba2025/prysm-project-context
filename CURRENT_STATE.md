@@ -26,12 +26,14 @@ Verified checkpoint:
 - The prepared replacement passed `node --check` in the assistant sandbox.
 - The user pasted the replacement into local `main` at `c116e730a38539066852f107582959693e666781` and local syntax check passed.
 - Focused test `src/application/narrative-v2-production-path.test.js` produced 5 PASS / 1 FAIL. `NV2-PROD-02` expected `draft_rendered` but observed `narrative_failed`.
-- `NV2-PROD-02` exercises the existing enabled Narrative v2 Writer/Judge production path; the newly added UAT helper is not called by that test. Therefore causation is unresolved until an untouched-main A/B run is performed.
+- `NV2-PROD-02` exercises the existing enabled Narrative v2 Writer/Judge production path; the newly added UAT helper is not called by that test. Therefore causation remains unresolved.
+- The attempted A/B stash restore did not complete cleanly because `git stash pop` encountered existing untracked `.next/*` files and `lifecycle-failure.txt`; Git kept the stash entry. No destructive cleanup has been authorized or performed.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` with the first UAT source-file change currently uncommitted.
+- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781`.
+- Exact working-tree state of `src/narrative-v2/production-path.js` is not yet re-verified after the stash-pop collision.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
 - Scoring version remains 4.1.1.
@@ -42,13 +44,13 @@ Completed:
 - Root cause of the UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
 - Bounded UAT rerender objective was explicitly authorized and persisted into project constraints.
 - Minimum architecture was identified: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
-- First source-file replacement has been pasted locally and syntax-checks successfully.
+- First source-file replacement was prepared inline and syntax-checked before the stash-isolation attempt.
 
 In progress:
-- Isolate whether the single focused-test failure is pre-existing at clean `c116e730...` or introduced by the first UAT source-file change.
+- Recover a known-safe local working-tree/stash state, then complete the untouched-main A/B test for `NV2-PROD-02`.
 
 Blocked:
-- First source-file unit cannot be accepted until the `NV2-PROD-02` failure is causally isolated and the relevant focused verification is green or a proven pre-existing baseline defect is separately governed.
+- First source-file unit cannot be accepted until the stash state and current `production-path.js` contents are verified, followed by causal isolation of the focused-test failure.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -62,9 +64,10 @@ Important constraints:
 - Normal tenant/report authorization must remain in force.
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not touch a second application source file until the first source-file unit is resolved.
+- Do not delete `.next`, `lifecycle-failure.txt`, or any stash entry until the stash contents and current working tree are explicitly inspected.
 
 Exact next action:
-From `services/worker`, stash only `src/narrative-v2/production-path.js`, rerun `node --test src/application/narrative-v2-production-path.test.js` against untouched application `main` `c116e730a38539066852f107582959693e666781`, then restore the stash; use that A/B result to determine whether `NV2-PROD-02` is a pre-existing baseline failure or was introduced by the UAT change.
+From `services/worker`, run `git status --short`, `git stash list --max-count=5`, `git diff -- src/narrative-v2/production-path.js`, and `git show stash@{0}:services/worker/src/narrative-v2/production-path.js | Select-String "PRYSM-V2-UAT-RERENDER-01"`; use those four outputs to determine where the UAT replacement currently resides before any further stash, checkout, deletion, or test action.
 
 Last verified:
 2026-08-22
