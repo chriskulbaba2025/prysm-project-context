@@ -1,0 +1,179 @@
+/**
+ * PRYSM-NEXT-01 WP-G — Report Design v2 renderer.
+ *
+ * Report content/data contract remains v2.0.0. PRYSM-V2-SECTION-VIEWER-01
+ * versions the presentation layer as 2.1.0: the same governed index.html
+ * artifact is presented as 15 conceptual pages with left navigation and
+ * current-page browser printing. No evidence, scoring, lifecycle, storage,
+ * route, or report-artifact contract is changed here.
+ */
+
+import { REPORT_DESIGN_V2 } from "./report-design.js";
+import { computePillars } from "./v2-pillars.js";
+import { ACTION_CLASS, buildActionPlan } from "./action-priority.js";
+import { buildFoundationChecklist } from "./foundation-readiness.js";
+import {
+  foundationSection,
+  eeatSection,
+  technicalDetailSection,
+  headingSection,
+  schemaSection,
+  performanceDetailSection,
+  machineReadinessSection,
+  strengthsSection,
+  actionPlanSection,
+  phase2Section,
+} from "./report-detail-sections.js";
+
+export const REPORT_V2_VIEWER_VERSION = "2.1.0";
+
+export const REPORT_V2_VIEWER_PAGES = Object.freeze([
+  Object.freeze({ pageId: "executive-scorecard", title: "Executive Scorecard", sectionIds: Object.freeze(["executive", "strengths"]) }),
+  Object.freeze({ pageId: "priority-fixes", title: "Priority Fixes", sectionIds: Object.freeze(["blockers", "foundations", "action-plan"]) }),
+  Object.freeze({ pageId: "conversion-paths", title: "Conversion Path Architecture", sectionIds: Object.freeze(["paths"]) }),
+  Object.freeze({ pageId: "readiness-map", title: "Conversion Readiness Map", sectionIds: Object.freeze(["pillars"]) }),
+  Object.freeze({ pageId: "content-ideas", title: "Topical Map & Qualified Content Opportunities", sectionIds: Object.freeze(["content-ideas"]) }),
+  Object.freeze({ pageId: "competitor-benchmark", title: "Competitor Benchmark", sectionIds: Object.freeze(["competitors"]) }),
+  Object.freeze({ pageId: "trust-eeat", title: "Trust & E-E-A-T Readiness", sectionIds: Object.freeze(["eeat"]) }),
+  Object.freeze({ pageId: "cms-constraints", title: "CMS & Platform Constraints", sectionIds: Object.freeze(["cms"]) }),
+  Object.freeze({ pageId: "technical-seo", title: "Technical SEO Hygiene", sectionIds: Object.freeze(["technical"]) }),
+  Object.freeze({ pageId: "headings", title: "Heading & Semantic Structure", sectionIds: Object.freeze(["headings"]) }),
+  Object.freeze({ pageId: "schema", title: "Schema & Entity Clarity", sectionIds: Object.freeze(["schema", "machine-readiness"]) }),
+  Object.freeze({ pageId: "performance", title: "Performance", sectionIds: Object.freeze(["performance"]) }),
+  Object.freeze({ pageId: "internal-links", title: "Internal-Link Opportunities", sectionIds: Object.freeze(["internal-links"]) }),
+  Object.freeze({ pageId: "evidence-appendix", title: "Evidence Appendix", sectionIds: Object.freeze(["evidence"]) }),
+  Object.freeze({ pageId: "deferred", title: "Deferred & Unavailable Analysis", sectionIds: Object.freeze(["phase2"]) }),
+]);
+
+function e(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function bandChip(band) {
+  const cls = {
+    Strong: "band-strong",
+    Moderate: "band-moderate",
+    Limited: "band-limited",
+    Weak: "band-weak",
+    High: "band-strong",
+    Directional: "band-weak",
+  }[band] || "band-moderate";
+  return `<span class="chip ${cls}">${e(band)}</span>`;
+}
+
+function impactCategory(finding) {
+  if (finding.severity === "High") return "High impact";
+  if (finding.severity === "Medium") return "Medium impact";
+  return "Low impact";
+}
+
+const EFFORT_LABEL = { H: "High effort", M: "Medium effort", L: "Low effort" };
+
+function capabilityStatusClass(status) {
+  if (status === "AVAILABLE") return "cap-ok";
+  if (status === "PARTIAL") return "cap-partial";
+  if (status === "FAILED") return "cap-missing";
+  return "cap-neutral";
+}
+
+
+function executiveScorecard(model, pillars) {
+  const readiness = model.scores.conversionReadiness;
+  const confidence = model.evidenceConfidenceScore;
+  const assessedWeight = model.assessedWeight ?? 0;
+  const findings = (model.findings || []).slice(0, 3);
+  const plan = buildActionPlan(model, buildFoundationChecklist(model));
+  const actions = (plan.actions || []).slice(0, 3);
+
+  const readinessLine =
+    readiness === null
+      ? `<div class="readiness-none">${e(model.readinessStatus || "Insufficient Evidence for Overall Score")}</div>`
+      : `<div class="readiness">${e(readiness)}<span class="readiness-max">/100</span></div>
+         <div class="readiness-band">${bandChip(model.bands.conversionReadiness)}</div>`;
+
+  const availability = model.evidenceConfidenceFactorAvailability || [];
+  const unknownFactors = availability.filter((f) => f.available === false).map((f) => f.factor);
+  const knownFactors = availability.filter((f) => f.available === true).map((f) => f.factor);
+  const capSummary = model.capabilityEvidence?.summary || { total: 0, assessed: 0 };
+  const assessedCapabilities = `${capSummary.assessed ?? 0} of ${capSummary.total ?? 0} evidence capabilities`;
+
+  const verdict =
+    readiness === null
+      ? "PRYSM could not produce a dependable overall conversion-readiness score from the available evidence. The report therefore separates what was assessed from what remains unavailable."
+      : model.readinessStatus === "Provisional"
+        ? `The site has a measurable conversion-readiness baseline of ${readiness}/100, but the result is provisional because some intended evidence was unavailable.`
+        : `The site has a conversion-readiness score of ${readiness}/100. The priority is to address the highest-impact issues that most directly affect clarity, trust, and movement toward action.`;
+
+  const rootCause =
+    model.rootCause ||
+    "No single primary constraint was established from the available evidence.";
+
+  const findingsHtml = findings.length
+    ? `<ol>${findings.map((f) => `<li><strong>${e(f.title || "Finding")}</strong> — ${e(f.businessImpact || "Material impact identified in the assessed evidence.")}</li>`).join("")}</ol>`
+    : `<p><span class="chip cap-ok">PASS</span> No material score-bearing finding was produced from the assessed evidence.</p>`;
+
+  const actionsHtml = actions.length
+    ? `<ol>${actions.map((a) => `<li><strong>${e(a.finding?.title || "Priority action")}</strong> — ${e(a.finding?.recommendation || "Address the governed finding and verify the change.")}</li>`).join("")}</ol>`
+    : `<p>No priority action was generated from the assessed evidence.</p>`;
+
+  const strengths = [];
+  for (const p of pillars || []) {
+    if (typeof p.score === "number" && p.score >= 60) {
+      strengths.push(`${p.label}: ${p.score}/100`);
+    }
+  }
+
+  const limitationItems = [];
+  if (assessedWeight < 100) {
+    limitationItems.push(`${assessedWeight}% of intended dimension weight was assessed.`);
+  }
+  if (unknownFactors.length) {
+    limitationItems.push(`Evidence-confidence factors not available: ${unknownFactors.join(", ")}.`);
+  }
+  if (model.readinessStatus === "Provisional") {
+    limitationItems.push("The overall readiness result is provisional.");
+  }
+  if (readiness === null) {
+    limitationItems.push("PRYSM withheld the overall numeric readiness score because evidence coverage was insufficient.");
+  }
+
+  return `
+  <section id="executive" class="card">
+    <p style="font-size:1.15rem;font-weight:700;margin-bottom:6px">How ready is your website to convert the right visitors?</p>
+    <p class="muted small">Executive Scorecard</p>
+
+    <h2>Executive verdict</h2>
+    <p>${e(verdict)}</p>
+
+    <div class="grid-3">
+      <div>
+        <h2>A. Conversion Readiness</h2>
+        ${readinessLine}
+        <p class="muted">${e(model.readinessStatusDetail || model.readinessStatus || "")}</p>
+        <p class="muted small">How effectively the assessed site supports a visitor moving toward action.</p>
+      </div>
+      <div>
+        <h2>B. Evidence Confidence</h2>
+        <div class="confidence">${e(confidence)}<span class="readiness-max">/100</span></div>
+        ${bandChip(model.bands.evidenceConfidence)}
+        <p class="muted">Known factors: ${e(knownFactors.length)} · Unknown (excluded): ${e(unknownFactors.length)}</p>
+        <p class="muted small">How dependable and complete the available audit evidence is.</p>
+      </div>
+      <div>
+        <h2>C. Evidence Coverage</h2>
+        <div class="coverage">${e(assessedWeight)}<span class="readiness-max">%</span></div>
+        <p class="muted">${e(assessedCapabilities)}</p>
+        <p class="muted">Modules assessed: ${Object.values(model.moduleScores || {}).filter((m) => m?.score !== null && m?.score !== undefined).length} of ${Object.values(model.moduleScores || {}).length}</p>
+        <p class="muted small">Missing evidence is not treated as a negative site finding.</p>
+      </div>
+    </div>
+
+    <h3>What is really holding the site back?</h3>
+    <p><strong>Primary root cause:</strong> ${e(rootCause)}</p>
+    ${findingsHtml}
+
+    <h3>What should you do first?</h3>
