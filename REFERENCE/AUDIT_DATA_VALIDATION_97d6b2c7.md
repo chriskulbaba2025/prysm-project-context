@@ -7,239 +7,256 @@ Status: Active investigation
 
 ## Purpose
 
-Durable evidence and impact ledger for the read-only audit-data investigation. This file records verified defects, unresolved questions, proposed diagnostics, and the expected downstream reaction of any later code change. It is not a transcript and does not authorize application changes by itself.
+Durable evidence and impact ledger for the selected audit-data investigation. It records verified defects, diagnostics, code-boundary findings, downstream impact, and the exact verification state. It is not a transcript and does not itself authorize application deployment or production mutation.
 
 ## Investigation rules
 
-- Existing audit artifacts are evidence and remain immutable.
-- Do not create another paid audit merely to diagnose this audit.
-- Prefer persisted-artifact inspection and no-cost provider reads before paid live calls.
-- A paid/provider diagnostic call must be isolated to the smallest request needed to prove or disprove one hypothesis.
-- Before an application-code change, record: proven root cause, exact source file(s), upstream inputs, downstream consumers, artifact/contracts affected, regression risks, and required tests.
-- Application source changes still follow the governed manual VS Code file-handoff method unless the user explicitly changes it.
-- Do not alter scoring, lifecycle, storage, Writer/Judge, report design, or unrelated provider behavior as collateral work.
+- Existing persisted artifacts for this audit remain immutable evidence.
+- Do not create or rerun a full paid production audit merely to diagnose this audit.
+- Prefer persisted-artifact inspection and no-cost diagnostics before paid provider requests.
+- Any paid/provider diagnostic must be isolated to the smallest request needed to prove or disprove one hypothesis.
+- Before an application-code change, record the proven root cause, source file(s), upstream inputs, downstream consumers, artifact/contracts affected, regression risks, and required tests.
+- Application source changes use the governed manual VS Code workflow unless the user explicitly changes it.
+- Simple surgical edits are acceptable when reference points and replacement boundaries are unambiguous; otherwise provide the coherent complete file directly in chat, split into ordered chunks if needed.
+- After editing: syntax check → targeted/relevant regression tests → correct failures → only then update/commit the application.
+- Do not broaden a repair into unrelated scoring, lifecycle, storage, Writer/Judge, authentication, report-design, n8n, or architecture changes.
 
 ## Verified artifact baseline
 
-The user exported the production S3 bundle for this audit. The bundle contains 35 files spanning raw, normalized, canonical, findings/scores, Narrative v2, final report, lifecycle, and manifests.
+The production S3 bundle for this audit was exported read-only and inspected. It contains 35 files spanning raw, normalized, canonical, findings/scores, Narrative v2, report HTML, lifecycle, and manifests.
 
-Persisted source status evidence:
+Persisted source status baseline:
 - DataForSEO On-Page: `PARTIAL`.
-- PageSpeed: `AVAILABLE` for lab evidence; CrUX field calls failed with 403.
+- PageSpeed: lab evidence `AVAILABLE`; CrUX field calls failed with 403.
 - Backlinks: `AVAILABLE`.
-- DataForSEO SERP/competitors: `FAILED` after timeout and retries; no raw SERP artifact persisted.
-- GA4: not connected/not requested for this audit.
-- GSC: not connected/not requested for this audit.
+- DataForSEO SERP/competitors: `FAILED` after timeout/retries; no raw SERP artifact persisted.
+- GA4/GSC: not connected/not requested for this audit.
 
 ## DQV-001 — SERP / competitor source loses usable evidence at the outer timeout boundary
 
-Classification: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. Exact historical in-adapter operation at timeout is unrecoverable from persisted artifacts.
+Classification: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT.
 
 Persisted evidence:
-- `normalized/dataforseo-serp.json`:
-  - provider: `mock`
-  - adapterVersion: `1.1.0`
-  - status: `FAILED`
-  - retryCount: `2`
-  - expectedRecords: `0`
-  - returnedRecords: `0`
-  - limitation: `Source execution failed: Source execution timed out`
-  - errorCategory: `timeout`
+- `normalized/dataforseo-serp.json` records `FAILED`, retryCount `2`, returnedRecords `0`, limitation `Source execution failed: Source execution timed out`, errorCategory `timeout`.
 - `source-checkpoint-dataforseo-serp.json` has `rawArtifact: null`.
-- Audit request explicitly contains three supplied competitor URLs and four services.
+- Audit request contains three supplied competitor URLs and four services.
 
 Code-path evidence at application commit `33ec9b63083f62141141ea6363828c9e8152f188`:
 - Production runtime gives the whole `dataforseo-serp` source a 60,000 ms timeout and up to three attempts.
-- The SERP adapter first direct-crawls up to three supplied competitors, then runs up to five DataForSEO live SERP requests serially. This audit has three supplied competitors and four service keywords.
-- Each individual DataForSEO SERP client request is independently allowed up to 45,000 ms.
-- The outer retry boundary uses `Promise.race`. When it wins, it aborts the orchestration signal, rejects the attempt, and after retries are exhausted creates a synthetic `FAILED` result with `rawBytes: null` and no partial evidence.
-- Normalized/raw persistence happens only after `executeSource()` returns. Therefore evidence accumulated inside an adapter attempt is not persisted if the outer timeout wins.
-- `querySerp()` does not receive the orchestration `AbortSignal`. Its `withTimeout()` helper only races the fetch promise against a timer; it does not abort the underlying HTTP fetch. Therefore an outer timeout does not reliably cancel an in-flight DataForSEO request before the orchestration layer starts a retry. This creates a proven overlap/duplicate-cost risk under timeout conditions.
+- Adapter direct-crawls supplied competitors, then performs service-keyword DataForSEO SERP requests serially.
+- Individual SERP requests can wait up to 45,000 ms.
+- Outer retry boundary is a `Promise.race`; when the timeout wins it rejects the attempt and can ultimately synthesize `FAILED` with `rawBytes: null`.
+- Raw/normalized persistence occurs only after the adapter returns, so valid partial evidence accumulated inside a timed-out attempt can be lost.
+- The orchestration AbortSignal is not propagated into the DataForSEO SERP HTTP request and shared `withTimeout()` does not abort the underlying fetch, creating a proven overlap/duplicate-cost risk when retries begin.
 
-### Isolated direct-crawl diagnostic — 2026-08-23
+### Direct competitor diagnostic — 2026-08-23
 
-Exact supplied competitors, current application commit, no persistence:
-- `https://ginakeeping.ca/` — `AVAILABLE`, 8 pages, 1.9 seconds, no limitations.
-- `https://traceyjazmin.com/` — `AVAILABLE`, 8 pages, 3.0 seconds, no limitations.
-- `https://clarityofgoalsandvision.com/` — `AVAILABLE`, 8 pages, 3.7 seconds, no limitations.
-- Total direct-crawl wall time: approximately 8.6 seconds.
+- `https://ginakeeping.ca/` — `AVAILABLE`, 8 pages, ~1.9s.
+- `https://traceyjazmin.com/` — `AVAILABLE`, 8 pages, ~3.0s.
+- `https://clarityofgoalsandvision.com/` — `AVAILABLE`, 8 pages, ~3.7s.
+- Total ~8.6s.
 
-Conclusion:
-The three supplied competitor sites are currently reachable and direct crawling is not a systemic 60-second bottleneck.
+Conclusion: the supplied competitors are currently crawlable; direct crawling is not a systemic 60-second bottleneck.
 
-### Isolated one-keyword DataForSEO diagnostic — 2026-08-23
+### One-keyword DataForSEO diagnostic — 2026-08-23
 
-Using the production Railway `vantage-platform` environment and current production SERP client:
 - Keyword: `Group Coaching`.
-- Elapsed: 5.25 seconds.
-- Result: success.
+- Elapsed: 5.25s.
+- Success: true.
 - Task ID: `08232042-1281-0139-0000-2eda65f9fe51`.
-- PRYSM client result count: 18.
-- No provider/client error.
+- Result count: 18.
 
-Conclusion:
-A generally broken DataForSEO credential/client/provider path is ruled out as the explanation for the selected audit.
+Conclusion: a generally broken DataForSEO credential/client/provider path is ruled out.
 
 ### Full composite adapter diagnostic — 2026-08-23
 
-Executed the existing `dataforseo-serp` adapter once in isolation using the exact three supplied competitors and four service keywords, production Railway credentials/environment, and a 60-second outer diagnostic race. No audit/S3/Postgres/lifecycle/report persistence was invoked.
+Exact three competitors + four audit services, production environment, isolated 60-second outer diagnostic race, no persistence:
+- elapsed: 43.51s
+- status: `PARTIAL`
+- expected 7 / returned 6
+- coverage requested 7 / completed 6 / failed 1
+- 3/3 supplied competitors preserved, 8 pages each
+- 58 combined SERP results
+- one keyword failed cleanly: `4-Week Reboot Series` with status 40101 `Internal SE Server Error`
 
-Observed result:
-- outcome: `COMPLETED`
-- elapsed: `43.51` seconds
-- source status: `PARTIAL`
-- provider: `DataForSEO + Prysm direct crawl`
-- expected records: `7`
-- returned records: `6`
-- coverage: requested `7`, completed `6`, failed `1`
-- SERP status: `PARTIAL`
-- keyword count: `4`
-- combined result count: `58`
-- supplied competitor coverage: requested `3`, completed `3`, failed `0`
-- all three supplied competitors produced 8-page direct-crawl evidence
-- one service query failed cleanly: `4-Week Reboot Series: SERP task 0 failed: status_code=40101, message="Internal SE Server Error."`
-
-Interpretation:
-- The adapter's intended graceful-degradation behavior works when the adapter is allowed to finish: a provider task failure for one keyword produced `PARTIAL`, while preserving three supplied competitor crawls plus successful SERP evidence.
-- The full attempt used 43.51 seconds, or about 72.5% of the 60-second outer budget, leaving only about 16.5 seconds of margin under current conditions.
-- The historical production timeout was not reproduced, but it is technically credible from normal network/provider variance because the internal work budget is much larger than the outer source budget.
-- Most importantly, the selected audit's all-or-nothing loss is now explained by the boundary design: if the outer 60-second timer fires before this same adapter returns, the orchestrator discards already-collected supplied-competitor and completed-keyword evidence and persists a synthetic total failure instead.
-- The historical artifact cannot reveal which specific competitor crawl or SERP keyword was active at the timeout because no partial/raw payload survives that boundary.
+Conclusion:
+- Graceful partial semantics work if the adapter is allowed to return.
+- 43.51s uses ~72.5% of the current 60s source budget, leaving ~16.5s margin.
+- If the outer timeout wins, valid supplied-competitor and completed-keyword evidence can be erased.
+- Historical exact in-adapter operation at timeout is unrecoverable because no partial/raw payload survived.
 
 Current downstream effect:
-- The selected audit has no usable persisted competitor evidence even though the same supplied competitors are demonstrably crawlable and the adapter can produce meaningful partial evidence.
-- Competitor opportunity generation and competitor report sections were deprived of evidence that should have survived a later SERP delay/failure.
-- A timeout can also trigger a retry while a prior DataForSEO HTTP request remains in flight, creating duplicate-call/cost and nondeterministic-result risk.
-- Report status propagation remains separately defective: canonical `FAILED` is later represented as `NOT_APPLICABLE` / `NOT_CONNECTED` in report-layer artifacts.
+- Selected audit lost usable competitor evidence.
+- Competitor opportunity/report sections were deprived of evidence that should have survived a later delay/failure.
+- Retry overlap can create duplicate paid provider calls and nondeterministic results.
 
-Potential change boundary — NOT YET AUTHORIZED:
-- `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js` — accept/propagate a cooperative abort signal so provider requests actually stop when the source attempt is cancelled.
-- `services/worker/src/adapters/dataforseo-serp/serp-adapter.js` — align internal sequencing/deadline behavior with the governed source budget and preserve partial evidence before the hard outer boundary.
-- `services/worker/src/application/production-runtime.js` — source-specific SERP timeout may need adjustment only after the internal deadline/cost model is chosen.
-- `services/worker/src/orchestration/retry-policy.js` — review all-or-nothing timeout/retry semantics, but avoid broad generic-orchestrator changes if the defect can be fixed safely inside the SERP source boundary.
+Potential future repair boundary — DEFERRED:
+- `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js`
+- `services/worker/src/adapters/dataforseo-serp/serp-adapter.js`
+- possibly `services/worker/src/application/production-runtime.js`
+- review generic retry-policy/orchestrator only if source-bounded repair cannot safely close the defect.
 
-Required impact review before change:
-- provider request cancellation and in-flight overlap;
-- retry/idempotency behavior;
-- duplicate DataForSEO cost risk;
-- maximum audit wall-clock duration;
-- supplied competitor crawl behavior;
-- preservation of partial direct-crawl evidence;
-- serial vs bounded-parallel SERP request behavior and API-rate implications;
-- source checkpoint/raw artifact semantics;
-- canonical competitor source status (`AVAILABLE` / `PARTIAL` / `FAILED`);
-- competitor opportunity derivation;
-- report source-status propagation;
-- deterministic regression tests for outer-timeout, one-keyword provider failure, and mixed partial evidence.
+Any later DQV-001 repair must preserve partial evidence, propagate true HTTP cancellation, prevent overlapping paid retries, keep bounded wall-clock/cost, and preserve correct source-status semantics.
 
 ## DQV-002 — On-Page content parsing succeeds, then usable body content is lost in normalization
 
-Classification: PROVEN DATA-LOSS DEFECT.
+Classification: PROVEN DATA-LOSS DEFECT. RAW DATA QUALITY PASS. LOCAL REPAIR IN VERIFICATION; NOT COMMITTED.
 
-Persisted raw evidence:
-- On-Page `contentParsing` acquisition requested 5 key pages, completed 5, failed 0.
-- Each of the five responses contains one `content_parsing_element` with `page_content`.
-- Extractable text is materially present in the raw provider payload:
-  - `/`: ~473 words
-  - `/about`: ~765
-  - `/services`: ~685
-  - `/home`: ~473
-  - `/insights`: ~310
+### Persisted raw evidence
 
-Persisted normalized evidence:
-- All five normalized `contentParsing` records contain `text: ""`, `hasMainContent: false`, and null content metrics.
-- All normalized site pages retain `_contentAvailable: false` and empty `bodyText`.
-- Site-level `_contentEvidenceAvailable` is false.
+On-Page `contentParsing`:
+- requested 5
+- completed 5
+- failed 0
+- retryCount 0
+- provider finalCode 20000 / `Ok.`
+- each result includes real `content_parsing_element.page_content`
 
-Code-path evidence:
-- `normalizeContentParsing()` chooses `res.result` before `res.items[0]`.
-- The provider response wrapper stored at `res.result` contains an `items` array; the actual `page_content` lives on the first element of that array.
-- The normalizer therefore evaluates the wrapper object instead of the `content_parsing_element`, producing empty normalized content despite a successful provider response.
+Production response shape:
+- useful item: `res.result.items[0]`
+- useful content: `res.result.items[0].page_content`
+- `page_content.main_topic[*]` and `page_content.secondary_topic[*]`
+- topic text lives in `primary_content` and `secondary_content`
+- provider-classified `header` and `footer` are separate fields and need not be folded into body evidence
 
-Current downstream effect:
-- `content.body` capability is marked `AVAILABLE` solely because acquisition says 5/5 completed, even though normalized required content fields are empty. This is an internal consistency defect.
-- `offer.clarity` is `UNAVAILABLE` because `_contentEvidenceAvailable` is false.
-- `trust.proof` is `UNAVAILABLE` for the same reason.
-- `conversion.cta`, `conversion.form`, and browser-validated `conversion.path` remain separate capabilities and must not be fabricated from parsed body text.
-- Content/trust/offer report sections understate the evidence actually collected.
-- Readiness coverage and any dependent scoring/module eligibility may change once the normalization defect is corrected and regenerated from valid evidence.
+Validated usable content from the stored production raw payload:
+- `/`: ~473 words / 2996 chars
+- `/about`: ~765 words / 4526 chars
+- `/services`: ~685 words / 4435 chars
+- `/home`: ~473 words / 2996 chars
+- `/insights`: ~310 words / 1913 chars
 
-Potential change boundary if approved:
-- Primary: `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`.
-- Defensive hardening may also be needed in `services/worker/src/evidence/capability-evidence.js` so endpoint completion alone cannot mark `content.body` required fields present when usable normalized content is empty.
+Examples include real business content such as individual/group coaching, the 4-Week Reboot Series, pricing/investment language, testimonials, credentials/experience, and registration calls to action.
 
-Required impact review before change:
-- canonical site evidence shape;
+Conclusion: DataForSEO acquired good/useful body content; PRYSM lost it after acquisition.
+
+### Persisted normalized defect
+
+- Every normalized contentParsing record had `text: ""`, `hasMainContent: false`, and null content metrics.
+- All site pages retained empty `bodyText` and `_contentAvailable: false`.
+- Site `_contentEvidenceAvailable` was false.
+
+### Proven root cause
+
+Primary application file:
+`services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+
+The previous normalizer selected the response wrapper instead of the nested `content_parsing_element`, and it expected legacy `main_content` / `secondary_content` fields rather than the actual production `page_content.main_topic` / `secondary_topic` structure.
+
+Downstream hydration already exists in `summarizeSite()`:
+- normalized content is matched back to pages by normalized URL;
+- when `hasMainContent && text`, the page receives `bodyText`, `_contentAvailable: true`, and trust-signal detection;
+- site `_contentEvidenceAvailable` becomes true when at least one content page has actual content.
+
+Therefore the smallest coherent repair is in the On-Page adapter normalizer; no report/storage/scoring rewrite is required merely to retain the already-collected text.
+
+### Local repair status — 2026-08-23
+
+User explicitly authorized moving ahead with the targeted DQV-002 repair.
+
+Current working-copy file:
+`services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+
+Intended change boundary:
+- adapter version `1.2.1`;
+- unwrap `result.items[0]`;
+- read production `page_content.main_topic` and `secondary_topic`;
+- collect `primary_content` and `secondary_content` text;
+- retain bounded normalized text;
+- exact-text deduplication;
+- exclude provider-classified header/footer from body evidence;
+- preserve the older fixture shape;
+- do not infer CTA/form/path evidence from body text.
+
+Verification history:
+1. After an initial complete-file replacement, `node --check` passed and the existing targeted adapter test suite passed 68/68.
+2. A separate production-shaped no-network diagnostic then returned:
+   - contentParsing text empty
+   - page `_contentAvailable: false`
+   - site `_contentEvidenceAvailable: false`
+   - trust flags false
+   This correctly blocked a premature commit.
+3. Surgical inspection/editing followed. Duplicate `normalizeContentParsing()` definitions were found in the working copy after manual replacement.
+4. The duplicate block was removed.
+5. Latest check after duplicate removal:
+   `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` — PASS.
+
+IMPORTANT CURRENT VERIFICATION GAP:
+- The production-shaped no-network diagnostic has NOT yet been rerun after duplicate-function removal.
+- The 68-test targeted adapter suite has NOT yet been rerun after the final manual cleanup.
+- Therefore the repair is NOT yet verified complete.
+- Do not commit/deploy or mutate production audit data until both stages pass.
+
+Required proof before commit:
+1. Production-shaped nested fixture produces non-empty normalized `contentParsing.text`.
+2. Matching page gets `_contentAvailable: true` and populated `bodyText`.
+3. Site gets `_contentEvidenceAvailable: true`.
+4. Expected content-dependent trust/pricing signal can be detected from that text.
+5. Header/footer sentinel text is not included when separately supplied as provider-classified header/footer.
+6. Exact duplicate body fragments are not duplicated.
+7. Existing targeted adapter regression suite passes after the final code state.
+
+Downstream items to verify only after the adapter repair is proven:
+- canonical site evidence;
 - decision evidence;
-- capability evidence;
-- offer-clarity and trust module eligibility;
-- content/funnel scoring;
-- evidence coverage percentage;
-- Narrative v2 writer input;
-- report claims and strengths/limitations;
-- deterministic tests for real DataForSEO response nesting.
+- `content.body` capability consistency;
+- offer/trust capability eligibility;
+- content/funnel scoring inputs;
+- evidence coverage;
+- Narrative v2 writer input/report conclusions.
+
+Defensive follow-up candidate, NOT YET AUTHORIZED/REQUIRED:
+`services/worker/src/evidence/capability-evidence.js` may need hardening so endpoint completion alone cannot mark `content.body` available when normalized usable content is empty. Do not change this until the primary normalization repair is proven and dependency impact is checked.
 
 ## DQV-003 — Microdata request omits required page URL
 
 Classification: PROVEN PROVIDER-CONTRACT DEFECT.
 
-Persisted evidence:
-- On-Page task was created with `validate_micromarkup: true`.
-- `microdataMeta.requestPayload` contains only `{ id: <taskId> }`.
-- DataForSEO returned code `40501` with `Invalid Field: 'url'.`
-- Acquisition records microdata requested 1, completed 0, failed 1.
+Evidence:
+- task created with `validate_micromarkup: true`;
+- current request payload contains only task ID;
+- DataForSEO returned 40501 `Invalid Field: 'url'.`;
+- acquisition requested 1, completed 0, failed 1.
 
 Code-path evidence:
-- `getMicrodata(taskId)` constructs `[{ id: taskId }]`.
-- Current official DataForSEO On-Page Microdata documentation requires both `id` and the resource `url`.
+- current `getMicrodata(taskId)` constructs `[{ id: taskId }]`;
+- provider requires task ID plus resource URL.
 
 Current downstream effect:
-- `schema.structured_data` is `UNAVAILABLE`.
-- Schema/entity and AI-search modules are not eligible.
-- Report cannot make a dependable structured-data assessment from this acquisition path.
+- `schema.structured_data` unavailable;
+- schema/entity and AI-search dependent modules are not eligible.
 
-Potential change boundary if approved:
-- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-client.js` to request microdata for selected page URLs using both task ID and URL.
-- Calling code in `dataforseo-onpage-adapter.js` may need to pass the deterministic key-page set rather than one task-only request.
+Potential future repair boundary:
+- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-client.js`
+- calling code in `dataforseo-onpage-adapter.js` may need to pass deterministic selected URLs.
 
-Required impact review before change:
-- number of microdata calls;
-- provider cost (DataForSEO documents task-result microdata retrieval as free for the retained task window);
-- acquisition coverage semantics;
-- schema type normalization;
-- capability eligibility;
-- schema/entity scoring and report sections;
-- API-rate and timeout behavior.
+DQV-003 remains deferred until DQV-002 closes.
 
 ## DQV-004 — Seven-page crawl is not currently proven defective
 
-Classification: VERIFIED PROVIDER RESULT; completeness still subject to site-structure validation.
+Classification: VERIFIED PROVIDER RESULT; completeness remains subject to site-structure validation.
 
 Evidence:
-- DataForSEO task max crawl pages: 500.
-- `pages_crawled: 7`.
-- `crawl_stop_reason: empty_queue`.
-- `extended_crawl_status: no_errors`.
-- `pages_in_queue: 0`.
+- max crawl pages 500
+- pages_crawled 7
+- crawl_stop_reason `empty_queue`
+- pages_in_queue 0
+- extended_crawl_status `no_errors`
 
-Interpretation:
-The provider did not stop because it hit the 500-page limit or an explicit crawl error. The seven-page result may accurately reflect the site's discoverable internal crawl graph at collection time. This should be checked against sitemap/current site structure, but it is not presently a proven adapter failure.
+Interpretation: provider did not stop because of the page ceiling or an explicit crawl error. Do not classify this as an adapter failure without contrary sitemap/site evidence.
 
 ## DQV-005 — Report source-status propagation is inconsistent
 
-Classification: PROVEN REPORT-DATA MAPPING DEFECT; repair deferred until acquisition defects are understood.
+Classification: PROVEN REPORT-DATA MAPPING DEFECT; repair deferred.
 
 Evidence:
-- Canonical competitor source: `FAILED`.
-- Report v2 manifest competitors: `NOT_APPLICABLE`.
-- Other report content has also represented competitor evidence as unavailable/not connected.
+- canonical competitor source: `FAILED`
+- report-layer artifacts: `NOT_APPLICABLE` / `NOT_CONNECTED`
 
-Implication:
-`FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially different states and must not be collapsed or substituted.
-
-Potential downstream scope:
-Report manifest/status mapping only after the authoritative source semantics are fixed and tested.
+Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially different states and must not be substituted.
 
 ## Current exact next action
 
-Complete the DQV-001 dependency-impact design before editing code: choose the smallest source-bounded fix that (1) propagates real cancellation into DataForSEO HTTP requests, (2) prevents a 60-second outer timeout from erasing already-valid supplied-competitor/SERP partial evidence, (3) avoids duplicate paid calls on retry, and (4) keeps bounded audit wall-clock/cost behavior. Define the exact files and regression tests, then obtain user approval before any application source edit.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, rerun the same isolated production-shaped, no-network DQV-002 diagnostic against the current working copy after duplicate-function removal. Require non-empty nested content normalization, page/site content-availability true, and expected trust/pricing detection. If and only if that passes, rerun the targeted adapter test suite and require all tests to pass. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts before both stages pass.
+
+After DQV-002 is verified through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
