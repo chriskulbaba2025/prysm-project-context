@@ -23,6 +23,8 @@ Verified checkpoint:
 - No existing report route, report artifact, lifecycle state, provider path, or model path was modified.
 - Server syntax/diff verification passed: `node --check .\src\server.js` and `git diff --check` produced no errors; full no-pager diff showed only the intended bounded route.
 - Existing real-handler authorization regression `node --test .\src\identity\server-auth-fail-closed.test.js` passed 1/1 on 2026-08-22. It dynamically imports the real `createRequestHandler` and confirms the internal/principal auth boundaries remain fail-closed after the UAT route addition.
+- The smallest direct route-test harness is the existing `src/identity/server-auth-fail-closed.test.js`; it already imports the real `createRequestHandler`, provides request/response test doubles, and uses memory identity/lifecycle repositories.
+- `createMemoryLifecycleRepository()` already exposes `findAuditTenant(auditId)`, so the direct UAT route test can exercise the real audit-ownership authorization path without modifying application code.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -36,9 +38,10 @@ Completed:
 - Manual VS Code handoff for exact current `server.js` completed.
 - Bounded server UAT route inserted and syntax/diff verified.
 - Existing server fail-closed authorization regression passed 1/1.
+- Direct UAT route test harness selected: `src/identity/server-auth-fail-closed.test.js`; no new test file is needed.
 
 In progress:
-- Add or run the smallest direct acceptance proof for the new UAT route itself before any commit/deployment step. The test must prove: unauthorized access is denied; authorized access reaches only the read-only UAT service; returned Viewer v2.2.0 HTML bytes are streamed; and no existing report artifact is mutated.
+- Extend only `src/identity/server-auth-fail-closed.test.js` with narrowly-scoped direct route tests proving unauthorized denial and successful authorized Viewer v2.2.0 byte streaming through `auditService.getNarrativeV2UatRender(...)`.
 
 Blocked:
 - No current application-code blocker established.
@@ -46,7 +49,7 @@ Blocked:
 Important constraints:
 - Work one verified application source/test file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- `Pasted code(10).js` is the accepted baseline for `server.js`; do not substitute an earlier copy.
+- User must supply the exact current `src/identity/server-auth-fail-closed.test.js` from the verified Desktop working copy before modification.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -59,7 +62,7 @@ Important constraints:
 - Avoid full-file rewrites; use surgical edits only.
 
 Exact next action:
-Identify the existing smallest test harness around `createRequestHandler(...)` that can directly exercise the exact UAT route without booting provider/model work. If no suitable existing test exists, add one narrowly-scoped server route test file only; do not change application code. The direct proof must cover auth denial and successful authorized streaming of Viewer v2.2.0 bytes from a stubbed `auditService.getNarrativeV2UatRender(...)`.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\identity\server-auth-fail-closed.test.js`. In VS Code, press `Ctrl+A`, then `Ctrl+C`, and paste the exact current test file into the chat. Do not edit it first and do not use the GitHub copy as a substitute for the local working copy.
 
 Last verified:
 2026-08-22
