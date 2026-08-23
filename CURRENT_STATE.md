@@ -9,7 +9,8 @@ Complete authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce a read-only
 Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Application working base: local `main` at `c116e730a38539066852f107582959693e666781` before the current uncommitted work-package edits.
+- Application working base before this work package: local `main` at `c116e730a38539066852f107582959693e666781`.
+- Current local application commit: `33ec9b63083f62141141ea6363828c9e8152f188`.
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Current governed viewer contract: Viewer v2.2.0 / 16 pages; report design metadata 2.0.0; scoring remains 4.1.1.
 - Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes. This work package must not rewrite that artifact.
@@ -20,12 +21,13 @@ Verified checkpoint:
 - `src/identity/server-auth-fail-closed.test.js` contains the direct UAT-route acceptance proof and suppresses the server listen side effect only during test import.
 - Direct UAT-route acceptance proof passed cleanly on 2026-08-22: 5 tests / 5 pass / 0 fail / 0 cancelled.
 - Complete local work-package diff was re-verified on 2026-08-22. The diff contains only the four intended files above; `git diff --check` returned clean.
-- `git status --short` showed only those four modified files plus pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched.
+- The four verified work-package files were committed locally as `33ec9b63083f62141141ea6363828c9e8152f188` with message `feat(report-v2): add read-only UAT rerender route`.
+- `git status --short` after commit shows only pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched and untracked.
 - Historical stash entries remain untouched.
 
 Current environment / branch / version:
 - Context repo: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repo: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` plus four verified uncommitted work-package edits.
+- Application repo: `chriskulbaba2025/vantage-platform`, local branch `main`, local HEAD `33ec9b63083f62141141ea6363828c9e8152f188`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer target: v2.2.0 / 16 pages.
 
@@ -39,9 +41,10 @@ Completed:
 - Existing production-boundary regression passed 3/3.
 - Direct UAT-route acceptance test passed 5/5 with 0 fail and 0 cancelled.
 - Complete local four-file diff verified clean; no unintended application files were modified.
+- Verified work package committed locally at `33ec9b63083f62141141ea6363828c9e8152f188`.
 
 In progress:
-- Commit the verified four-file application work package locally without including unrelated `lifecycle-failure.txt`.
+- Verify the committed file set before any push or deployment.
 
 Blocked:
 - No application-code blocker established. Production deployment/UAT endpoint call has not begun yet.
@@ -58,10 +61,10 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- Do not include `../../lifecycle-failure.txt` in the application commit.
+- Do not push or deploy until the local commit file set is verified.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, stage only the four verified work-package files and create one local commit: `git add src/narrative-v2/production-path.js src/application/production-runtime.js src/server.js src/identity/server-auth-fail-closed.test.js; git commit -m "feat(report-v2): add read-only UAT rerender route"; git status --short; git rev-parse HEAD`. Paste the complete output into the chat. Do not push or deploy yet.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `git --no-pager show --name-status --format=fuller HEAD`. Paste the complete output into the chat. Do not push or deploy yet.
 
 Last verified:
 2026-08-22
