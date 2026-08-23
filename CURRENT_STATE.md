@@ -17,9 +17,9 @@ Verified checkpoint:
 - `src/narrative-v2/production-path.js` has the bounded UAT renderer additions only: Viewer-version import, authorized audit-ID constant, and one exported `renderNarrativeV2UatFromPersistedArtifacts(...)`. Syntax and diff checks passed; accidental duplicate function was removed.
 - `src/application/production-runtime.js` has the bounded read-only runtime wiring only: import UAT renderer, add `getNarrativeV2UatRender(auditId, tenantId)`, expose it through `auditService`. Syntax/diff checks passed. `node --test .\src\application\report-design-boundary.test.js` passed 3/3.
 - `src/server.js` has one bounded GET route only: `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
-- `server.js` syntax/diff checks passed. Existing real-handler fail-closed regression `node --test .\src\identity\server-auth-fail-closed.test.js` passed 1/1 after the route addition.
-- The existing `src/identity/server-auth-fail-closed.test.js` is the selected smallest direct route-test harness. It already imports the real `createRequestHandler`, provides request/response test doubles, and uses memory identity/lifecycle repositories. `createMemoryLifecycleRepository()` already exposes `findAuditTenant(auditId)`.
-- No direct success-path test of the new UAT route has been added yet. The route must not be deployed or treated as complete until that direct proof is added and passes.
+- `server.js` syntax/diff checks passed. Existing real-handler fail-closed regression remained green after the route addition.
+- `src/identity/server-auth-fail-closed.test.js` now contains the direct UAT-route acceptance proof. Because importing `server.js` starts a real listener as a module side effect, the test temporarily suppresses `Server.prototype.listen` only during that import and restores it immediately afterward; no forced `process.exit()` remains.
+- Direct route acceptance proof passed cleanly on 2026-08-22: 5 tests / 5 pass / 0 fail / 0 cancelled in `node --test .\src\identity\server-auth-fail-closed.test.js`. The two UAT-specific assertions prove unauthenticated denial before rendering bytes and successful authorized Viewer v2.2.0 byte streaming through the stubbed read-only UAT service.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -37,13 +37,13 @@ Completed:
 - `production-runtime.js` UAT source-file unit completed and verified.
 - `server.js` bounded UAT route added and syntax/diff verified.
 - Existing production-boundary regression passed 3/3.
-- Existing server fail-closed authorization regression passed 1/1.
+- Direct UAT-route acceptance test completed and passed 5/5 with 0 fail and 0 cancelled.
 
 In progress:
-- Add narrowly-scoped direct route tests to the existing `src/identity/server-auth-fail-closed.test.js` proving unauthorized denial and successful authorized Viewer v2.2.0 byte streaming through the stubbed read-only UAT service.
+- Re-verify the complete local work-package diff before any deployment or production UAT endpoint call.
 
 Blocked:
-- No application-code blocker established. Deployment is intentionally blocked on direct UAT-route acceptance proof.
+- No application-code blocker established. Deployment remains intentionally blocked until the complete local diff is re-verified.
 
 Important constraints:
 - GitHub context is authoritative durable memory; new chats must read `PROJECT.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before substantive work.
@@ -58,10 +58,10 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- Do not deploy or call the production UAT endpoint until the direct route test passes and the complete local diff is re-verified.
+- Do not deploy or call the production UAT endpoint until the complete local diff is re-verified.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\identity\server-auth-fail-closed.test.js`. In VS Code, press `Ctrl+A`, then `Ctrl+C`, and paste the exact current local test file into the new chat. Do not edit it first. The new chat must read the authoritative project context repository before proposing the test edit.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `git status --short; git diff --check; git diff -- src/narrative-v2/production-path.js src/application/production-runtime.js src/server.js src/identity/server-auth-fail-closed.test.js` and paste the complete output into the chat. Do not commit, deploy, or call the production UAT endpoint yet.
 
 Last verified:
 2026-08-22
