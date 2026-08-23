@@ -148,7 +148,7 @@ Downstream hydration already exists in `summarizeSite()`:
 - when `hasMainContent && text`, the page receives `bodyText`, `_contentAvailable: true`, and trust-signal detection;
 - site `_contentEvidenceAvailable` becomes true when at least one content page has actual content.
 
-Therefore the smallest coherent repair is in the On-Page adapter normalizer; no report/storage/scoring rewrite is required merely to retain the already-collected text.
+Therefore the smallest coherent repair remains in the On-Page adapter normalizer; no report/storage/scoring rewrite is required merely to retain the already-collected text.
 
 ### Local repair status — 2026-08-23
 
@@ -178,13 +178,21 @@ Verification history:
    This correctly blocked a premature commit.
 3. Surgical inspection/editing followed. Duplicate `normalizeContentParsing()` definitions were found in the working copy after manual replacement.
 4. The duplicate block was removed.
-5. Latest check after duplicate removal:
-   `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` — PASS.
+5. Syntax check after duplicate removal passed.
+6. A path/version mismatch was then proven: the VS Code tab initially displayed a different copy showing adapter version `1.2.1`, while PowerShell/Node executed `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js` with version `1.2.0`.
+7. The exact executing file was reopened from PowerShell using `code -r`, its adapter version was set to `1.2.1`, saved, and `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passed.
+8. The production-shaped no-network diagnostic was rerun against that exact executing `1.2.1` file. It failed at `assert.ok(cp.text?.length > 0, "contentParsing.text is empty")`.
+
+Conclusion from latest diagnostic:
+- the path/version mismatch is real but is no longer the cause of the empty normalized content;
+- the current executing normalizer still does not successfully transform the production-shaped nested fixture;
+- the exact current `normalizeContentParsing()` implementation must be inspected before another edit;
+- the targeted adapter suite must not be rerun yet because the primary diagnostic is still red.
 
 IMPORTANT CURRENT VERIFICATION GAP:
-- The production-shaped no-network diagnostic has NOT yet been rerun after duplicate-function removal.
-- The 68-test targeted adapter suite has NOT yet been rerun after the final manual cleanup.
-- Therefore the repair is NOT yet verified complete.
+- The production-shaped no-network diagnostic still FAILS because normalized content text is empty.
+- The 68-test targeted adapter suite has NOT been rerun after the final current-file/path correction.
+- Therefore the repair is NOT verified complete.
 - Do not commit/deploy or mutate production audit data until both stages pass.
 
 Required proof before commit:
@@ -257,6 +265,6 @@ Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially diff
 
 ## Current exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, rerun the same isolated production-shaped, no-network DQV-002 diagnostic against the current working copy after duplicate-function removal. Require non-empty nested content normalization, page/site content-availability true, and expected trust/pricing detection. If and only if that passes, rerun the targeted adapter test suite and require all tests to pass. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts before both stages pass.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact current `normalizeContentParsing()` implementation in the executing working-copy file `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` without editing it. The latest production-shaped no-network fixture diagnostic still fails with `contentParsing.text is empty` after the exact executing file was reopened, versioned `1.2.1`, saved, and syntax-checked. Determine the single coherent normalization defect from the current function before another code edit. Do not run the targeted suite, commit, deploy, rerun the production audit, or mutate persisted artifacts until the diagnostic passes.
 
 After DQV-002 is verified through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
