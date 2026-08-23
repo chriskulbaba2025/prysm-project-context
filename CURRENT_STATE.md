@@ -20,14 +20,14 @@ Verified checkpoint:
 - The production S3 artifact bundle for this audit was exported read-only and inspected. It contains 35 files covering raw, normalized, canonical, findings/scores, Narrative v2, report HTML, lifecycle, and manifests.
 - Detailed durable investigation ledger: `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md`.
 - Proven/high-confidence data defects now recorded:
-  1. DataForSEO SERP/competitor source failed after three 60-second source attempts; the composite adapter performs serial supplied-competitor crawling plus serial live SERP work inside the same 60-second envelope. Exact in-adapter timeout point remains unresolved, but the timeout-budget mismatch is high confidence.
+  1. Historical DataForSEO SERP/competitor source failure is proven. Current direct crawling of the three supplied competitors succeeds in ~8.6 seconds total, and one isolated live DataForSEO SERP call for `Group Coaching` succeeds in 5.25 seconds with 18 results. Therefore neither current competitor reachability nor a generally broken DataForSEO client/provider path explains the audit failure. The exact historical internal timeout point remains unrecoverable from persisted artifacts. The composite adapter remains structurally unsafe because four serial SERP calls, each permitted up to 45 seconds, plus direct crawling are wrapped in one 60-second outer timeout; an outer timeout discards the whole composite result.
   2. DataForSEO On-Page content parsing successfully returned usable body content for 5/5 selected pages, but normalization lost it. Raw responses contain hundreds of words per page while normalized content is empty and `_contentEvidenceAvailable` is false. This is a proven data-loss defect.
   3. DataForSEO microdata acquisition sends task ID without the required page URL. The provider returned 40501 `Invalid Field: 'url'`. This is a proven provider-contract defect.
   4. Competitor canonical source is `FAILED`, while the Report v2 manifest records competitors as `NOT_APPLICABLE`. This is a proven status-propagation defect.
 - Seven-page On-Page crawl is not currently proven defective: provider reported `crawl_stop_reason: empty_queue`, `pages_in_queue: 0`, and `extended_crawl_status: no_errors` with max crawl pages 500.
 - No application code has been changed for this investigation.
 - No new audit has been created and no persisted audit artifact has been mutated.
-- No paid provider/model rerun has been performed during this investigation yet.
+- One isolated paid DataForSEO SERP diagnostic has now been performed; it was not an audit rerun and did not persist audit state.
 - `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope unless explicitly reopened.
 - Historical stash entries remain untouched.
 
@@ -45,14 +45,16 @@ Completed:
 - Read-only production artifact export for the selected Rebootbusinesscoaching audit.
 - Initial evidence inventory and acquisition-path reconciliation.
 - Durable defect/impact ledger created at `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md`.
+- Isolated direct competitor crawl diagnostic: 3/3 sites available, 8 pages each, ~8.6 seconds total.
+- Isolated live DataForSEO SERP diagnostic: `Group Coaching`, success, 5.25 seconds, 18 results.
 
 In progress:
 - Root-cause validation of the DataForSEO acquisition path before trusting page-level report conclusions.
-- Priority order: SERP/competitor timeout → On-Page content normalization → microdata contract → downstream capability/scoring/report reactions.
+- Priority order: complete composite SERP/competitor timing proof → On-Page content normalization → microdata contract → downstream capability/scoring/report reactions.
 
 Blocked:
 - No infrastructure blocker.
-- Application changes are intentionally blocked until the smallest live diagnostics confirm the remaining DQV-001 timeout point and the downstream impact map is complete.
+- Application changes are intentionally blocked until the isolated composite SERP adapter diagnostic is complete and the downstream impact map is complete.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
@@ -66,7 +68,7 @@ Important constraints:
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
 
 Exact next action:
-Run isolated, non-mutating diagnostics for DQV-001: measure the three supplied competitor direct-crawl boundaries independently, then run one minimal DataForSEO SERP live request for one service keyword and record timing, status, and cost. Do not rerun the full audit and do not change application code yet.
+Run the existing `dataforseo-serp` adapter once in isolation with the exact three supplied competitor URLs and four service keywords from audit `97d6b2c7-03b9-4530-8ea7-16557502c638`, using the production Railway environment but no persistence/orchestration wrapper. Record total elapsed time, source status, supplied-competitor evidence count, SERP result count, and limitations/errors. Do not rerun the audit and do not change application code yet.
 
 Last verified:
 2026-08-23
