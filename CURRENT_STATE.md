@@ -14,12 +14,15 @@ Verified checkpoint:
 - Current governed viewer contract: Viewer v2.2.0 / 16 pages.
 - Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; this work package must not rewrite that artifact.
 - `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
-- `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function. The earlier accidental duplicate was removed.
+- `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function.
 - `Pasted code(9).js` is the accepted manual baseline for `src/application/production-runtime.js`.
-- First `production-runtime.js` edit is Git-verified: import `renderNarrativeV2UatFromPersistedArtifacts` from `../narrative-v2/production-path.js`.
-- Second `production-runtime.js` edit is Git-verified by full diff: one new `getNarrativeV2UatRender(auditId, tenantId)` method was added immediately before `getAuditStatus(...)`.
-- The new runtime method only loads existing audit metadata, resolves the persisted audit scope, loads the persisted AuditRequest, and calls `renderNarrativeV2UatFromPersistedArtifacts(...)`. It does not execute an audit, call providers/models, write artifacts, or transition lifecycle state.
-- Latest full `production-runtime.js` diff shows only the intended import replacement and the new read-only runtime method.
+- `production-runtime.js` now contains exactly the intended additive UAT wiring:
+  1. import `renderNarrativeV2UatFromPersistedArtifacts` from `../narrative-v2/production-path.js`;
+  2. one `getNarrativeV2UatRender(auditId, tenantId)` method that loads existing audit metadata, resolves `clientId`, loads the persisted AuditRequest, and calls only the read-only persisted-artifact renderer;
+  3. one `getNarrativeV2UatRender,` property exposed through the existing frozen `auditService` object.
+- Latest full `production-runtime.js` diff shows only those intended additions. No lifecycle transition, audit execution, artifact write, provider call, or model call was added.
+- `node --check .\src\application\production-runtime.js` and `git diff --check` both passed silently before the final diff was shown.
+- Existing runtime-focused regression candidate confirmed in the repository: `src/application/report-design-boundary.test.js`. It imports `createProductionRuntime` and exercises the production composition boundary, so it is an appropriate existing regression check before moving to `server.js`.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -30,10 +33,10 @@ Completed:
 - Local shell-path mismatch resolved.
 - `production-path.js` UAT source-file unit completed and verified.
 - Manual VS Code handoff for exact `production-runtime.js` completed.
-- `production-runtime.js` import and read-only UAT method are now present and Git-diff verified.
+- `production-runtime.js` import, read-only UAT method, and `auditService` exposure are complete and syntax/diff verified.
 
 In progress:
-- Expose `getNarrativeV2UatRender` through the existing `auditService` object in `production-runtime.js`, then run syntax/diff verification for the complete source-file unit before moving to `server.js`.
+- Run one existing runtime composition regression test before moving to `server.js`.
 
 Blocked:
 - No current application-code blocker established.
@@ -41,7 +44,6 @@ Blocked:
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- `Pasted code(9).js` is the accepted baseline for `production-runtime.js`; do not substitute an earlier copy.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -52,11 +54,10 @@ Important constraints:
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries.
 - Avoid full-file rewrites; use surgical edits only.
-- Give one exact edit at a time with an exact search anchor, insertion/replacement text, and verification command set.
-- Do not move to `server.js` until `production-runtime.js` is modified and verified by syntax plus Git diff.
+- Do not move to `server.js` until the `production-runtime.js` regression check passes.
 
 Exact next action:
-In the already-open `src/application/production-runtime.js`, locate the `const auditService = Object.freeze({` block near the end of the file. Inside that object, add exactly one property line `getNarrativeV2UatRender,` immediately after `getAuditStatus,`. Save the file. Make no other change. Then run `node --check .\src\application\production-runtime.js`, `git diff --check`, and `git --no-pager diff -- src/application/production-runtime.js`, and paste the complete output before proceeding.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `node --test .\src\application\report-design-boundary.test.js` and paste the complete output. Do not edit any file first.
 
 Last verified:
 2026-08-22
