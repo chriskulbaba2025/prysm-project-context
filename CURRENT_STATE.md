@@ -17,10 +17,12 @@ Verified checkpoint:
 - `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function.
 - `src/application/production-runtime.js` is complete for this work-package stage. It imports the UAT renderer, exposes one read-only `getNarrativeV2UatRender(auditId, tenantId)` method, and exposes that method through `auditService`.
 - `production-runtime.js` verification passed: syntax, `git diff --check`, full Git diff, and `node --test .\src\application\report-design-boundary.test.js` with 3/3 PASS.
-- The exact current `src/server.js` was opened from the verified Desktop working copy and supplied as `Pasted code(10).js`; it is the accepted manual baseline for the third source-file unit.
-- `Pasted code(10).js` already contains the required reusable security boundaries: `authorizeAuditAccess(...)`, `authorizeReportAccess(...)`, `reportPageLimiter`, `sendRouteError(...)`, and the governed `/api/v1/audits` request boundary.
-- The smallest server implementation is one exact read-only GET route for the single authorized UAT audit ID. It will reuse the existing tenant ownership check, report-role authorization, and report rate limiter, then call only `auditService.getNarrativeV2UatRender(...)` and stream the returned in-memory HTML bytes.
-- No existing report route, report artifact, lifecycle state, provider path, or model path needs to be modified.
+- `Pasted code(10).js` is the accepted manual baseline for `src/server.js`.
+- `server.js` now contains one exact bounded GET route at `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render` inserted immediately before the existing audit-status route matcher.
+- Latest server diff shows only that route addition. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
+- No existing report route, report artifact, lifecycle state, provider path, or model path was modified.
+- The server verification command sequence included `node --check .\src\server.js`, `git diff --check`, and full no-pager Git diff; the first two produced no error output and the full diff shows only the intended route.
+- Existing real-handler server authorization regression exists at `src/identity/server-auth-fail-closed.test.js`; it dynamically imports the real `createRequestHandler` and proves the internal/principal boundaries fail closed.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -32,9 +34,10 @@ Completed:
 - `production-path.js` UAT source-file unit completed and verified.
 - `production-runtime.js` UAT source-file unit completed and verified.
 - Manual VS Code handoff for exact current `server.js` completed.
+- Bounded server UAT route inserted and syntax/diff verified.
 
 In progress:
-- Add the one bounded authenticated UAT GET route to `src/server.js`, then verify syntax and full diff before any test or deployment step.
+- Run the existing real-handler fail-closed server regression before any further code change or deployment step.
 
 Blocked:
 - No current application-code blocker established.
@@ -55,7 +58,7 @@ Important constraints:
 - Avoid full-file rewrites; use surgical edits only.
 
 Exact next action:
-In the already-open `src/server.js`, locate the comment `// GET /api/v1/audits/:auditId — audit status`. Immediately above that comment, insert the complete bounded GET route supplied in the current chat for `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`. The route must: require `auditService.getNarrativeV2UatRender`; call `authorizeAuditAccess`; resolve current audit state through `auditService.getAuditStatus`; call `authorizeReportAccess`; apply `reportPageLimiter`; call only `auditService.getNarrativeV2UatRender`; and stream returned HTML bytes with `no-store`. Save the file. Make no other change. Then run `node --check .\src\server.js`, `git diff --check`, and `git --no-pager diff -- src/server.js`, and paste the complete output before proceeding.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `node --test .\src\identity\server-auth-fail-closed.test.js` and paste the complete output. Do not edit any file first.
 
 Last verified:
 2026-08-22
