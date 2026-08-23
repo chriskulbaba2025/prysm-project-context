@@ -22,6 +22,7 @@ Verified checkpoint:
 - Direct UAT-route acceptance proof passed cleanly on 2026-08-22: 5 tests / 5 pass / 0 fail / 0 cancelled.
 - Complete local work-package diff was re-verified on 2026-08-22. The diff contains only the four intended files above; `git diff --check` returned clean.
 - The four verified work-package files were committed locally as `33ec9b63083f62141141ea6363828c9e8152f188` with message `feat(report-v2): add read-only UAT rerender route`.
+- `git --no-pager show --name-status --format=fuller HEAD` verified that commit `33ec9b63083f62141141ea6363828c9e8152f188` contains exactly the four intended files and no others.
 - `git status --short` after commit shows only pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched and untracked.
 - Historical stash entries remain untouched.
 
@@ -42,9 +43,10 @@ Completed:
 - Direct UAT-route acceptance test passed 5/5 with 0 fail and 0 cancelled.
 - Complete local four-file diff verified clean; no unintended application files were modified.
 - Verified work package committed locally at `33ec9b63083f62141141ea6363828c9e8152f188`.
+- Committed file set verified: exactly four intended files.
 
 In progress:
-- Verify the committed file set before any push or deployment.
+- Push the verified application commit to `origin/main`; then verify the remote commit/CI before deployment or production UAT endpoint use.
 
 Blocked:
 - No application-code blocker established. Production deployment/UAT endpoint call has not begun yet.
@@ -61,10 +63,10 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- Do not push or deploy until the local commit file set is verified.
+- Do not deploy or call the production UAT endpoint until the pushed commit and CI are verified.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `git --no-pager show --name-status --format=fuller HEAD`. Paste the complete output into the chat. Do not push or deploy yet.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `git push origin main`. Paste the complete output into the chat. Do not deploy or call the production UAT endpoint yet.
 
 Last verified:
 2026-08-22
