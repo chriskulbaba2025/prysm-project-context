@@ -15,18 +15,12 @@ Verified checkpoint:
 - Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; this work package must not rewrite that artifact.
 - `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
 - `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function.
-- `Pasted code(9).js` is the accepted manual baseline for `src/application/production-runtime.js`.
-- `production-runtime.js` now contains exactly the intended additive UAT wiring:
-  1. import `renderNarrativeV2UatFromPersistedArtifacts` from `../narrative-v2/production-path.js`;
-  2. one `getNarrativeV2UatRender(auditId, tenantId)` method that loads existing audit metadata, resolves `clientId`, loads the persisted AuditRequest, and calls only the read-only persisted-artifact renderer;
-  3. one `getNarrativeV2UatRender,` property exposed through the existing frozen `auditService` object.
-- Latest full `production-runtime.js` diff shows only those intended additions. No lifecycle transition, audit execution, artifact write, provider call, or model call was added.
-- `node --check .\src\application\production-runtime.js` and `git diff --check` both passed silently.
-- Targeted runtime regression test `node --test .\src\application\report-design-boundary.test.js` passed 3/3:
-  - `PRYSM-V2-PROD-01a` PASS
-  - `PRYSM-V2-PROD-01b` PASS
-  - `PRYSM-V2-PROD-01c` PASS
-  - 0 fail, 0 skipped, 0 todo.
+- `src/application/production-runtime.js` is complete for this work-package stage. It imports the UAT renderer, exposes one read-only `getNarrativeV2UatRender(auditId, tenantId)` method, and exposes that method through `auditService`.
+- `production-runtime.js` verification passed: syntax, `git diff --check`, full Git diff, and `node --test .\src\application\report-design-boundary.test.js` with 3/3 PASS.
+- The exact current `src/server.js` was opened from the verified Desktop working copy and supplied as `Pasted code(10).js`; it is the accepted manual baseline for the third source-file unit.
+- `Pasted code(10).js` already contains the required reusable security boundaries: `authorizeAuditAccess(...)`, `authorizeReportAccess(...)`, `reportPageLimiter`, `sendRouteError(...)`, and the governed `/api/v1/audits` request boundary.
+- The smallest server implementation is one exact read-only GET route for the single authorized UAT audit ID. It will reuse the existing tenant ownership check, report-role authorization, and report rate limiter, then call only `auditService.getNarrativeV2UatRender(...)` and stream the returned in-memory HTML bytes.
+- No existing report route, report artifact, lifecycle state, provider path, or model path needs to be modified.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -36,11 +30,11 @@ Completed:
 - Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
 - Local shell-path mismatch resolved.
 - `production-path.js` UAT source-file unit completed and verified.
-- Manual VS Code handoff for exact `production-runtime.js` completed.
-- `production-runtime.js` import, read-only UAT method, and `auditService` exposure are complete and verified by syntax, diff check, full Git diff, and the existing production-boundary regression suite (3/3 PASS).
+- `production-runtime.js` UAT source-file unit completed and verified.
+- Manual VS Code handoff for exact current `server.js` completed.
 
 In progress:
-- Move to the third and final planned application source-file unit, `src/server.js`, using the same manual VS Code handoff method before any edit.
+- Add the one bounded authenticated UAT GET route to `src/server.js`, then verify syntax and full diff before any test or deployment step.
 
 Blocked:
 - No current application-code blocker established.
@@ -48,7 +42,7 @@ Blocked:
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- User must supply the exact current `server.js` from the verified working copy before modification.
+- `Pasted code(10).js` is the accepted baseline for `server.js`; do not substitute an earlier copy.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -61,7 +55,7 @@ Important constraints:
 - Avoid full-file rewrites; use surgical edits only.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\server.js`. In the VS Code editor that opens, press `Ctrl+A`, then `Ctrl+C`, and paste that exact current file into the chat. Do not edit it first and do not use an earlier copy.
+In the already-open `src/server.js`, locate the comment `// GET /api/v1/audits/:auditId — audit status`. Immediately above that comment, insert the complete bounded GET route supplied in the current chat for `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`. The route must: require `auditService.getNarrativeV2UatRender`; call `authorizeAuditAccess`; resolve current audit state through `auditService.getAuditStatus`; call `authorizeReportAccess`; apply `reportPageLimiter`; call only `auditService.getNarrativeV2UatRender`; and stream returned HTML bytes with `no-store`. Save the file. Make no other change. Then run `node --check .\src\server.js`, `git diff --check`, and `git --no-pager diff -- src/server.js`, and paste the complete output before proceeding.
 
 Last verified:
 2026-08-22
