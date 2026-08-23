@@ -26,6 +26,9 @@ Verified checkpoint:
   - `git diff --check`
 - Latest `git --no-pager diff -- src/narrative-v2/production-path.js` shows exactly one import, one authorized audit-ID constant, and one read-only UAT renderer function; no other application-source change is present in this file.
 - The UAT renderer reads persisted WriterInput, orchestration result, canonical findings/scores, capability evidence, and decision evidence; validates the persisted release candidate; runs the deterministic finalization gate; renders Viewer v2.2.0 HTML in memory; returns bytes; and does not write artifacts or transition lifecycle state.
+- The exact current `src/application/production-runtime.js` was opened from the verified Desktop working copy and supplied as `Pasted code(9).js`; it is the accepted manual baseline for the second source-file unit.
+- `Pasted code(9).js` contains no UAT rerender wiring. It currently imports only `createNarrativeV2ProductionPath` from `../narrative-v2/production-path.js`, and the returned `auditService` does not expose any UAT report method.
+- The minimum runtime change remains additive and read-only: import the persisted-artifact UAT renderer, add one runtime method that loads the existing persisted AuditRequest for the requested tenant/audit and returns the in-memory UAT render, then expose that method through `auditService`. No audit execution, lifecycle transition, artifact write, provider call, or model call is permitted.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -36,9 +39,10 @@ Completed:
 - Local shell-path mismatch resolved.
 - Manual VS Code handoff for exact `production-path.js` completed.
 - `production-path.js` UAT source-file unit is now modified and verified by syntax check, diff check, and full Git diff.
+- Manual VS Code handoff for exact `production-runtime.js` is complete.
 
 In progress:
-- Move to the next required application source-file unit, `src/application/production-runtime.js`, using the same manual VS Code handoff method.
+- Add the bounded read-only UAT wiring to `src/application/production-runtime.js` one verified surgical edit at a time.
 
 Blocked:
 - No current application-code blocker established.
@@ -46,7 +50,7 @@ Blocked:
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- User supplies the exact current file from the verified working copy before modification.
+- `Pasted code(9).js` is the accepted baseline for `production-runtime.js`; do not substitute an earlier copy.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -58,9 +62,10 @@ Important constraints:
 - Do not modify historical stash entries.
 - Avoid full-file rewrites; use surgical edits only.
 - Give one exact edit at a time with an exact search anchor, insertion/replacement text, and verification command set.
+- Do not move to `server.js` until `production-runtime.js` is modified and verified by syntax plus Git diff.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\application\production-runtime.js`. In the VS Code editor that opens, press `Ctrl+A`, then `Ctrl+C`, and paste that exact current file into the chat. Do not edit it first and do not use any earlier copy.
+In the already-open `src/application/production-runtime.js`, replace the exact line `import { createNarrativeV2ProductionPath } from "../narrative-v2/production-path.js";` with a multiline import that adds `renderNarrativeV2UatFromPersistedArtifacts` from the same module. Save the file. Make no other change. Then run `git --no-pager diff -- src/application/production-runtime.js` and paste the complete output before proceeding.
 
 Last verified:
 2026-08-22
