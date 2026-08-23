@@ -13,19 +13,19 @@ Verified checkpoint:
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Current governed viewer contract: Viewer v2.2.0 / 16 pages; report design metadata 2.0.0; scoring remains 4.1.1.
 - Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes. This work package must not rewrite that artifact.
-- `NV2-PROD-02` is a verified pre-existing clean-main defect (5 PASS / 1 FAIL in `src/application/narrative-v2-production-path.test.js`) and remains out of scope.
-- `src/narrative-v2/production-path.js` has the bounded UAT renderer additions only: Viewer-version import, authorized audit-ID constant, and one exported `renderNarrativeV2UatFromPersistedArtifacts(...)`. Syntax and diff checks passed; accidental duplicate function was removed.
-- `src/application/production-runtime.js` has the bounded read-only runtime wiring only: import UAT renderer, add `getNarrativeV2UatRender(auditId, tenantId)`, expose it through `auditService`. Syntax/diff checks passed. `node --test .\src\application\report-design-boundary.test.js` passed 3/3.
-- `src/server.js` has one bounded GET route only: `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
-- `server.js` syntax/diff checks passed. Existing real-handler fail-closed regression remained green after the route addition.
-- `src/identity/server-auth-fail-closed.test.js` now contains the direct UAT-route acceptance proof. Because importing `server.js` starts a real listener as a module side effect, the test temporarily suppresses `Server.prototype.listen` only during that import and restores it immediately afterward; no forced `process.exit()` remains.
-- Direct route acceptance proof passed cleanly on 2026-08-22: 5 tests / 5 pass / 0 fail / 0 cancelled in `node --test .\src\identity\server-auth-fail-closed.test.js`. The two UAT-specific assertions prove unauthenticated denial before rendering bytes and successful authorized Viewer v2.2.0 byte streaming through the stubbed read-only UAT service.
-- Unrelated `../../lifecycle-failure.txt` remains untouched.
+- `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
+- `src/narrative-v2/production-path.js` contains the bounded read-only persisted-artifact UAT renderer only.
+- `src/application/production-runtime.js` contains the bounded UAT renderer wiring only.
+- `src/server.js` contains the one bounded GET route `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`, with normal audit/report authorization and report rate limiting before returned bytes.
+- `src/identity/server-auth-fail-closed.test.js` contains the direct UAT-route acceptance proof and suppresses the server listen side effect only during test import.
+- Direct UAT-route acceptance proof passed cleanly on 2026-08-22: 5 tests / 5 pass / 0 fail / 0 cancelled.
+- Complete local work-package diff was re-verified on 2026-08-22. The diff contains only the four intended files above; `git diff --check` returned clean.
+- `git status --short` showed only those four modified files plus pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched.
 - Historical stash entries remain untouched.
 
 Current environment / branch / version:
 - Context repo: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repo: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` plus current uncommitted work-package edits.
+- Application repo: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` plus four verified uncommitted work-package edits.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer target: v2.2.0 / 16 pages.
 
@@ -33,22 +33,22 @@ Completed:
 - Report v2 rebuild, targeted tests, CI, merge, and production deployment verification.
 - Root cause of visual-UAT blocker verified: immutable persisted report bytes are older than deployed Viewer v2.2.0 renderer.
 - Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
-- `production-path.js` UAT source-file unit completed and verified.
-- `production-runtime.js` UAT source-file unit completed and verified.
-- `server.js` bounded UAT route added and syntax/diff verified.
+- UAT renderer source-file unit completed and verified.
+- UAT runtime wiring source-file unit completed and verified.
+- Bounded UAT route source-file unit completed and verified.
 - Existing production-boundary regression passed 3/3.
-- Direct UAT-route acceptance test completed and passed 5/5 with 0 fail and 0 cancelled.
+- Direct UAT-route acceptance test passed 5/5 with 0 fail and 0 cancelled.
+- Complete local four-file diff verified clean; no unintended application files were modified.
 
 In progress:
-- Re-verify the complete local work-package diff before any deployment or production UAT endpoint call.
+- Commit the verified four-file application work package locally without including unrelated `lifecycle-failure.txt`.
 
 Blocked:
-- No application-code blocker established. Deployment remains intentionally blocked until the complete local diff is re-verified.
+- No application-code blocker established. Production deployment/UAT endpoint call has not begun yet.
 
 Important constraints:
-- GitHub context is authoritative durable memory; new chats must read `PROJECT.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before substantive work.
-- Manual VS Code workflow remains mandatory: one verified source/test file at a time; do not directly edit `vantage-platform` unless the user explicitly changes the method.
-- User supplies the exact current local file before modification. Do not substitute a stale or repository copy when the local working copy is required.
+- GitHub context is authoritative durable memory.
+- Manual VS Code workflow remains mandatory; do not directly edit `vantage-platform` unless the user explicitly changes the method.
 - Code is inline-only; never deliver PRYSM code as downloadable files.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -58,10 +58,10 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- Do not deploy or call the production UAT endpoint until the complete local diff is re-verified.
+- Do not include `../../lifecycle-failure.txt` in the application commit.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `git status --short; git diff --check; git diff -- src/narrative-v2/production-path.js src/application/production-runtime.js src/server.js src/identity/server-auth-fail-closed.test.js` and paste the complete output into the chat. Do not commit, deploy, or call the production UAT endpoint yet.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, stage only the four verified work-package files and create one local commit: `git add src/narrative-v2/production-path.js src/application/production-runtime.js src/server.js src/identity/server-auth-fail-closed.test.js; git commit -m "feat(report-v2): add read-only UAT rerender route"; git status --short; git rev-parse HEAD`. Paste the complete output into the chat. Do not push or deploy yet.
 
 Last verified:
 2026-08-22
