@@ -53,17 +53,19 @@ Persisted normalized defect:
 - Pages retained empty `bodyText` and `_contentAvailable: false`.
 - Site `_contentEvidenceAvailable` was false.
 
-Local repair status — NOT COMMITTED:
+Local repair status — VERIFIED LOCALLY, NOT COMMITTED:
 - User authorized the smallest coherent DQV-002 adapter repair.
 - Current working-copy file: `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`.
 - Adapter version is `1.2.1` in the exact executing working-copy file.
-- Diagnostic reset proved the current root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
+- Diagnostic reset proved the root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
 - The normalizer was replaced as one coherent bounded repair: unwrap `result.items[0]`, read `page_content.main_topic` and `secondary_topic`, collect primary/secondary topic text, deduplicate exact body fragments, exclude provider-classified header/footer content, preserve the older fixture shape, and retain bounded normalized text.
 - No scoring, lifecycle, storage, report, competitor, microdata, authentication, or orchestration behavior is intentionally changed by this repair.
 - `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passes after the coherent normalizer repair.
-- Production-shaped, fixture-only, no-network DQV-002 diagnostic now PASSES against the exact executing file.
+- Production-shaped, fixture-only, no-network DQV-002 diagnostic PASSES against the exact executing file.
 - Verified diagnostic output: adapterVersion `1.2.1`; normalized content text length 261; `hasMainContent: true`; page `_contentAvailable: true`; site `_contentEvidenceAvailable: true`; testimonials true; credentials true; pricing true; duplicate fragment count 1; header excluded true; footer excluded true.
-- The targeted adapter suite has NOT yet been rerun after this final repair. Therefore DQV-002 is not yet verified complete and must not be committed/deployed.
+- The existing targeted adapter suite was rerun after final repair and now passes 68/68.
+- One stale hard-coded test assertion requiring adapter version `1.2.0` was removed because the adjacent assertion already requires `payload.adapterVersion === ADAPTER_VERSION`; no production behavior was changed by that test cleanup.
+- DQV-002 is therefore verified locally. It remains uncommitted and undeployed.
 
 ### DQV-003 — microdata provider contract
 
@@ -101,6 +103,7 @@ Proven report-data mapping defect.
 - Default code flow: verify current source file → inspect complete file → make one coherent bounded repair → provide complete replacement directly in chat or clear surgical reference-point instructions when simple → user applies it → syntax check → targeted/relevant regression tests → correct failures → only after verification update/commit the application.
 - Do not make the user repeatedly edit the same file when the coherent change can be grouped safely.
 - Project-wide three-attempt diagnostic reset is active: after three unsuccessful attempts on the same failure, stop fixes and perform a deeper diagnostic reset before any fourth attempt.
+- Open exact application files from the active PowerShell working path with `code -r <exact-path>` before manual editing when duplicate workspace/file-copy ambiguity is possible.
 - Code must not be delivered through generated download links; use conversation code/chunks.
 - No application repository write, commit, merge, deployment, production audit rerun, provider/model rerun, or production artifact mutation without the appropriate explicit approval.
 - Existing selected-audit artifacts remain immutable.
@@ -108,9 +111,9 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run `node --test src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` against the current exact executing working copy and require all tests to PASS (previous intentional count was 68). Do not commit, deploy, rerun the production audit, or mutate persisted artifacts until this targeted suite passes.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact local application diff before any commit: run `git status --short` and `git diff -- src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`. Confirm that only the intended DQV-002 adapter normalizer/version change and the stale duplicate version assertion removal are present. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts without explicit user approval.
 
-After DQV-002 is verified and committed through the governed application workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
+After the DQV-002 application change is reviewed and committed through the governed workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
 
 Last verified:
 2026-08-23
