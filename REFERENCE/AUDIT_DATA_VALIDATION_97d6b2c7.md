@@ -141,7 +141,7 @@ Conclusion: DataForSEO acquired good/useful body content; PRYSM lost it after ac
 Primary application file:
 `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
 
-The previous normalizer selected the response wrapper instead of the nested `content_parsing_element`, and it expected legacy `main_content` / `secondary_content` fields rather than the actual production `page_content.main_topic` / `secondary_topic` structure.
+The executing normalizer selected `res.result` as the item, stopping one level too shallow. The production content is under `res.result.items[0].page_content`. The old function then attempted to read legacy `item.main_content` / `item.secondary_content`, which are absent from the production shape. This deterministically produced empty normalized text.
 
 Downstream hydration already exists in `summarizeSite()`:
 - normalized content is matched back to pages by normalized URL;
@@ -157,7 +157,7 @@ User explicitly authorized moving ahead with the targeted DQV-002 repair.
 Current working-copy file:
 `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
 
-Intended change boundary:
+Implemented local change boundary:
 - adapter version `1.2.1`;
 - unwrap `result.items[0]`;
 - read production `page_content.main_topic` and `secondary_topic`;
@@ -170,39 +170,42 @@ Intended change boundary:
 
 Verification history:
 1. After an initial complete-file replacement, `node --check` passed and the existing targeted adapter test suite passed 68/68.
-2. A separate production-shaped no-network diagnostic then returned:
-   - contentParsing text empty
-   - page `_contentAvailable: false`
-   - site `_contentEvidenceAvailable: false`
-   - trust flags false
-   This correctly blocked a premature commit.
-3. Surgical inspection/editing followed. Duplicate `normalizeContentParsing()` definitions were found in the working copy after manual replacement.
-4. The duplicate block was removed.
-5. Syntax check after duplicate removal passed.
-6. A path/version mismatch was then proven: the VS Code tab initially displayed a different copy showing adapter version `1.2.1`, while PowerShell/Node executed `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js` with version `1.2.0`.
-7. The exact executing file was reopened from PowerShell using `code -r`, its adapter version was set to `1.2.1`, saved, and `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passed.
-8. The production-shaped no-network diagnostic was rerun against that exact executing `1.2.1` file. It failed at `assert.ok(cp.text?.length > 0, "contentParsing.text is empty")`.
+2. A separate production-shaped no-network diagnostic then returned empty content and correctly blocked a premature commit.
+3. Duplicate `normalizeContentParsing()` definitions were found in the working copy and the duplicate was removed.
+4. A path/version mismatch was proven: VS Code initially displayed a different file copy while PowerShell/Node executed the actual working-copy file with adapter version `1.2.0`.
+5. The exact executing file was reopened from PowerShell, versioned `1.2.1`, saved, and syntax-checked.
+6. The production-shaped no-network diagnostic still failed with `contentParsing.text is empty`, proving path/version was no longer the cause.
+7. Under the project-wide three-attempt diagnostic-reset rule, the exact executing `normalizeContentParsing()` function was inspected before any further repair.
+8. That inspection proved the one-level-too-shallow unwrapping plus legacy-field read described above.
+9. The entire `normalizeContentParsing()` function was replaced as one coherent bounded repair implementing the production shape plus legacy compatibility, exact-fragment deduplication, header/footer exclusion, and bounded text retention.
+10. `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` PASS after the final coherent repair.
+11. The production-shaped, fixture-only, no-network diagnostic PASS after the final repair with:
+   - adapterVersion `1.2.1`
+   - normalized content text length 261
+   - `hasMainContent: true`
+   - page `_contentAvailable: true`
+   - site `_contentEvidenceAvailable: true`
+   - testimonials: true
+   - credentials: true
+   - pricing: true
+   - duplicate fragment count: 1
+   - header excluded: true
+   - footer excluded: true
 
-Conclusion from latest diagnostic:
-- the path/version mismatch is real but is no longer the cause of the empty normalized content;
-- the current executing normalizer still does not successfully transform the production-shaped nested fixture;
-- the exact current `normalizeContentParsing()` implementation must be inspected before another edit;
-- the targeted adapter suite must not be rerun yet because the primary diagnostic is still red.
-
-IMPORTANT CURRENT VERIFICATION GAP:
-- The production-shaped no-network diagnostic still FAILS because normalized content text is empty.
-- The 68-test targeted adapter suite has NOT been rerun after the final current-file/path correction.
-- Therefore the repair is NOT verified complete.
-- Do not commit/deploy or mutate production audit data until both stages pass.
+Current verification gap:
+- Primary production-shaped normalization diagnostic is now GREEN.
+- The targeted adapter suite has NOT yet been rerun after the final coherent repair.
+- Therefore DQV-002 is not yet verified complete.
+- Do not commit/deploy or mutate production audit data until the targeted adapter suite also passes.
 
 Required proof before commit:
-1. Production-shaped nested fixture produces non-empty normalized `contentParsing.text`.
-2. Matching page gets `_contentAvailable: true` and populated `bodyText`.
-3. Site gets `_contentEvidenceAvailable: true`.
-4. Expected content-dependent trust/pricing signal can be detected from that text.
-5. Header/footer sentinel text is not included when separately supplied as provider-classified header/footer.
-6. Exact duplicate body fragments are not duplicated.
-7. Existing targeted adapter regression suite passes after the final code state.
+1. Production-shaped nested fixture produces non-empty normalized `contentParsing.text`. — PASS.
+2. Matching page gets `_contentAvailable: true` and populated `bodyText`. — PASS.
+3. Site gets `_contentEvidenceAvailable: true`. — PASS.
+4. Expected content-dependent trust/pricing signal can be detected from that text. — PASS.
+5. Header/footer sentinel text is not included when separately supplied as provider-classified header/footer. — PASS.
+6. Exact duplicate body fragments are not duplicated. — PASS.
+7. Existing targeted adapter regression suite passes after the final code state. — PENDING.
 
 Downstream items to verify only after the adapter repair is proven:
 - canonical site evidence;
@@ -265,6 +268,6 @@ Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially diff
 
 ## Current exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact current `normalizeContentParsing()` implementation in the executing working-copy file `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` without editing it. The latest production-shaped no-network fixture diagnostic still fails with `contentParsing.text is empty` after the exact executing file was reopened, versioned `1.2.1`, saved, and syntax-checked. Determine the single coherent normalization defect from the current function before another code edit. Do not run the targeted suite, commit, deploy, rerun the production audit, or mutate persisted artifacts until the diagnostic passes.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run `node --test src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` against the current exact executing working copy and require all tests to PASS (previous intentional count was 68). Do not commit, deploy, rerun the production audit, or mutate persisted artifacts until this targeted suite passes.
 
 After DQV-002 is verified through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
