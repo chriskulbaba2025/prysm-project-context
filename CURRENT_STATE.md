@@ -18,14 +18,14 @@ Verified checkpoint:
 - Clean untouched `main` at `c116e730a38539066852f107582959693e666781` produces 5 PASS / 1 FAIL in `src/application/narrative-v2-production-path.test.js`.
 - The sole failure is `NV2-PROD-02`, which expects `draft_rendered` but receives `narrative_failed` on clean main. This is a verified pre-existing baseline defect and is out of scope for this UAT work package.
 - Direct symbol checks confirmed neither `renderNarrativeV2UatFromPersistedArtifacts` nor `renderReportV2Uat` exists in the clean tracked baseline.
-- The earlier PowerShell/.NET path mismatch is resolved. `Get-Location`, `git rev-parse --show-toplevel`, `Resolve-Path .\src\narrative-v2\production-path.js`, and `[Environment]::CurrentDirectory` all reconcile to the intended Desktop working copy under `C:\Users\kulba\Desktop\vantage-platform`.
+- The earlier PowerShell/.NET path mismatch is resolved. All four path checks reconcile to the intended Desktop working copy under `C:\Users\kulba\Desktop\vantage-platform`.
 - Verified local file path: `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\production-path.js`.
 - Local HEAD remains exactly `c116e730a38539066852f107582959693e666781`.
-- The uploaded `Pasted code(7).js` contained UAT rerender code and duplicate `UAT_RERENDER_*` constants, but that content did not match the verified tracked Desktop file and is disqualified as an edit baseline.
-- The user then opened `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\production-path.js` from the already-verified PowerShell location with VS Code and supplied its complete current contents as `Pasted code(8).js`.
-- `Pasted code(8).js` contains no UAT rerender additions and matches the expected clean baseline structure for `production-path.js`; it is the accepted manual edit baseline for this source-file unit.
-- First surgical UAT edit is complete and Git-verified: one import was added immediately after the existing Narrative v2 renderer import: `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";`.
-- `git diff -- src/narrative-v2/production-path.js` verified that this is the only application-source change currently present in `production-path.js`.
+- `Pasted code(7).js` is disqualified as stale/non-authoritative.
+- The exact current Desktop file was opened from the verified PowerShell location and supplied as `Pasted code(8).js`; it is the accepted manual baseline for this source-file unit.
+- First surgical UAT edit is Git-verified: `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";` was added immediately after the existing Narrative v2 renderer import.
+- Second surgical UAT edit is Git-verified: `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";` was added immediately after `NARRATIVE_V2_VERSION`.
+- Latest `git diff -- src/narrative-v2/production-path.js` contains exactly those two additions and no other application-source change.
 - Prior full-file paste attempts are abandoned.
 - Existing unrelated historical stash entries remain untouched.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
@@ -34,9 +34,9 @@ Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
 - Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Verified target source file: `src/narrative-v2/production-path.js` in that working directory.
-- Accepted manual baseline for this source-file unit: the complete current contents supplied as `Pasted code(8).js`.
-- Current tracked UAT edit in `production-path.js`: one verified Viewer-version import only.
+- Verified target source file: `src/narrative-v2/production-path.js`.
+- Accepted manual baseline: `Pasted code(8).js`.
+- Current UAT edits in `production-path.js`: Viewer-version import + authorized audit-ID constant only.
 - Unrelated untracked `?? ../../lifecycle-failure.txt` remains untouched.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
@@ -46,16 +46,13 @@ Completed:
 - Report v2 rebuild coding, targeted tests, CI, merge, and production deployment verification.
 - Root cause of the visual-UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
 - Bounded UAT rerender objective was authorized and persisted into project constraints.
-- Minimum architecture remains: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
 - Baseline isolation proved `NV2-PROD-02` is pre-existing and out of scope.
 - Local shell-path reconciliation is complete.
-- Working-copy verification proved all prior UAT paste attempts are absent from the clean baseline.
-- The stale uploaded code copy has been explicitly disqualified as an edit baseline.
-- The required manual VS Code handoff for the exact current `production-path.js` is complete.
-- First surgical edit to `production-path.js` is complete and verified by Git diff.
+- Manual VS Code handoff for the exact current `production-path.js` is complete.
+- First and second surgical edits to `production-path.js` are complete and verified by Git diff.
 
 In progress:
-- Continue the bounded `production-path.js` UAT implementation one verified surgical edit at a time.
+- Add the bounded read-only UAT renderer function to `production-path.js`, then verify that complete source-file unit before moving to any second application file.
 
 Blocked:
 - No application-code blocker is currently established.
@@ -74,12 +71,12 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair the pre-existing `NV2-PROD-02` baseline failure inside `PRYSM-V2-UAT-RERENDER-01`.
 - Do not pop, drop, or otherwise modify the two historical stash entries.
-- Do not proceed to `production-runtime.js` or `server.js` until `production-path.js` is actually modified and verified by Git.
+- Do not proceed to `production-runtime.js` or `server.js` until `production-path.js` is modified and verified by syntax plus Git diff.
 - Avoid full-file rewrites; use small surgical edits only.
 - Give the user one exact edit at a time with an exact search anchor, exact insertion/replacement text, and one verification command set after the edit.
 
 Exact next action:
-In the already-open VS Code file `src/narrative-v2/production-path.js`, find the exact line `const NARRATIVE_V2_VERSION = "2.0.0";` and add exactly one new line immediately below it: `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";`. Save the file. Make no other change. Then run `git diff -- src/narrative-v2/production-path.js` and paste the output before proceeding.
+In the already-open `src/narrative-v2/production-path.js`, locate the end of `buildV2Model(...)`, immediately before `async function runNarrativeV2FromScored({`. Insert the complete exported `renderNarrativeV2UatFromPersistedArtifacts(...)` function supplied in the current chat. Save the file. Make no other change. Then run `node --check .\src\narrative-v2\production-path.js`, `git diff --check`, and `git diff -- src/narrative-v2/production-path.js`, and paste the complete output before proceeding.
 
 Last verified:
 2026-08-22
