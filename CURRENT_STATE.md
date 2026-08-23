@@ -56,17 +56,14 @@ Persisted normalized defect:
 Local repair status — NOT COMMITTED:
 - User authorized the smallest coherent DQV-002 adapter repair.
 - Current working-copy file: `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`.
-- Intended adapter version: `1.2.1`.
-- Repair is intended to unwrap `result.items[0]`, read `page_content.main_topic` and `secondary_topic`, retain bounded normalized text, deduplicate exact text fragments, exclude provider-classified header/footer content, and preserve the older fixture shape.
+- Adapter version is `1.2.1` in the exact executing working-copy file.
+- Diagnostic reset proved the current root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
+- The normalizer was replaced as one coherent bounded repair: unwrap `result.items[0]`, read `page_content.main_topic` and `secondary_topic`, collect primary/secondary topic text, deduplicate exact body fragments, exclude provider-classified header/footer content, preserve the older fixture shape, and retain bounded normalized text.
 - No scoring, lifecycle, storage, report, competitor, microdata, authentication, or orchestration behavior is intentionally changed by this repair.
-- Initial syntax check plus the existing targeted adapter suite passed 68/68 before subsequent manual cleanup.
-- A production-shaped no-network diagnostic initially returned empty normalized content and exposed duplicate `normalizeContentParsing()` definitions in the working copy.
-- The duplicate definition was removed and syntax passed.
-- A separate path/version mismatch was then proven: VS Code had been displaying a different file copy while PowerShell/Node executed `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js`. The exact executing file was reopened from PowerShell, its adapter version was set to `1.2.1`, saved, and `node --check` passed.
-- The production-shaped no-network diagnostic was rerun against that exact executing file on 2026-08-23 and still failed at `contentParsing.text is empty`.
-- The diagnostic reset then inspected the exact executing `normalizeContentParsing()` implementation. It currently sets `item = res.result || (res.items && res.items[0])`, so for the production shape `item` is the wrapper object, not `res.result.items[0]`. It then reads legacy `item.main_content` / `item.secondary_content`, which are absent. This deterministically produces empty normalized text.
-- Therefore the single verified current root cause is one-level-too-shallow unwrapping plus legacy-field reading inside `normalizeContentParsing()`.
-- The targeted 68-test suite has NOT been rerun after this latest failed diagnostic. The DQV-002 repair is not verified complete and must not be committed/deployed.
+- `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passes after the coherent normalizer repair.
+- Production-shaped, fixture-only, no-network DQV-002 diagnostic now PASSES against the exact executing file.
+- Verified diagnostic output: adapterVersion `1.2.1`; normalized content text length 261; `hasMainContent: true`; page `_contentAvailable: true`; site `_contentEvidenceAvailable: true`; testimonials true; credentials true; pricing true; duplicate fragment count 1; header excluded true; footer excluded true.
+- The targeted adapter suite has NOT yet been rerun after this final repair. Therefore DQV-002 is not yet verified complete and must not be committed/deployed.
 
 ### DQV-003 — microdata provider contract
 
@@ -111,7 +108,7 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-In the exact executing working-copy file `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js`, replace the current `normalizeContentParsing()` function as one coherent bounded repair so it unwraps `res.result.items[0]`, reads only `page_content.main_topic` and `page_content.secondary_topic` body topics for the production shape, preserves the older fixture shape, deduplicates exact body fragments, excludes provider-classified header/footer content, and retains bounded normalized text. Then run `node --check` first and rerun the production-shaped no-network diagnostic. Do not run the targeted adapter suite until that diagnostic passes. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts before both verification stages pass.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run `node --test src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` against the current exact executing working copy and require all tests to PASS (previous intentional count was 68). Do not commit, deploy, rerun the production audit, or mutate persisted artifacts until this targeted suite passes.
 
 After DQV-002 is verified and committed through the governed application workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
 
