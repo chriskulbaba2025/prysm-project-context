@@ -287,3 +287,19 @@ A moving baseline creates branch drift and makes source-file verification unreli
 
 Implication:
 Verify the exact stable `vantage-platform` branch/head before beginning a new governed implementation sequence when the baseline may have changed.
+
+---
+
+## Decision: Audit-data fixes require a durable dependency-impact ledger
+
+Date: 2026-08-23
+Status: Active
+
+Decision:
+Any proposed fix to PRYSM evidence acquisition, provider adapters, normalization, capability evidence, or scoring eligibility must be preceded by a durable impact record that identifies the proven defect, exact source-file boundary, upstream inputs, downstream consumers, artifact/contracts affected, cost/retry implications, regression risks, and required verification.
+
+Reason:
+Data-layer fixes can change many downstream conclusions at once. The user requires every material reaction to an action to be understood and retained so debugging is not repeated and a local repair does not silently destabilize another part of the governed system.
+
+Implication:
+Use `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md` as the active ledger for the current audit-data investigation. Do not change application code merely because a symptom appears in the report. Prove the acquisition/normalization defect first, record the dependency map, then make the smallest approved source-file change and test both the direct fix and all listed downstream boundaries.
