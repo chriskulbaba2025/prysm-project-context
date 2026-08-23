@@ -57,13 +57,15 @@ Local repair status — NOT COMMITTED:
 - User authorized the smallest coherent DQV-002 adapter repair.
 - Current working-copy file: `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`.
 - Intended adapter version: `1.2.1`.
-- Repair unwraps `result.items[0]`, reads `page_content.main_topic` and `secondary_topic`, retains bounded normalized text, deduplicates exact text fragments, excludes provider-classified header/footer content, and preserves the older fixture shape.
+- Repair is intended to unwrap `result.items[0]`, read `page_content.main_topic` and `secondary_topic`, retain bounded normalized text, deduplicate exact text fragments, exclude provider-classified header/footer content, and preserve the older fixture shape.
 - No scoring, lifecycle, storage, report, competitor, microdata, authentication, or orchestration behavior is intentionally changed by this repair.
 - Initial syntax check plus the existing targeted adapter suite passed 68/68 before subsequent manual cleanup.
-- A production-shaped no-network diagnostic then returned empty normalized content, proving the exact production response shape was still not being executed correctly in the working copy.
-- Surgical inspection found duplicate `normalizeContentParsing()` definitions after manual editing. The duplicate block was removed.
-- Latest verification: `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passes after duplicate removal.
-- IMPORTANT: the production-shaped diagnostic has NOT yet been rerun after duplicate removal, and the 68-test suite has NOT yet been rerun after the final cleanup. Therefore the DQV-002 repair is not yet verified complete and must not be committed/deployed yet.
+- A production-shaped no-network diagnostic initially returned empty normalized content and exposed duplicate `normalizeContentParsing()` definitions in the working copy.
+- The duplicate definition was removed and syntax passed.
+- A separate path/version mismatch was then proven: VS Code had been displaying a different file copy while PowerShell/Node executed `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js`. The exact executing file was reopened from PowerShell, its adapter version was set to `1.2.1`, saved, and `node --check` passed.
+- The production-shaped no-network diagnostic was rerun against that exact executing file on 2026-08-23 and still failed at `contentParsing.text is empty`.
+- Therefore the version/path issue is no longer the explanation for DQV-002. The current executing `normalizeContentParsing()` logic must be inspected before any further code change.
+- The targeted 68-test suite has NOT been rerun after this latest failed diagnostic. The DQV-002 repair is not verified complete and must not be committed/deployed.
 
 ### DQV-003 — microdata provider contract
 
@@ -107,7 +109,7 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, rerun the same isolated production-shaped, no-network DQV-002 normalization diagnostic against the current working copy after duplicate-function removal. It must prove that nested `result.items[0].page_content` produces non-empty `contentParsing.text`, page `_contentAvailable: true`, site `_contentEvidenceAvailable: true`, and expected trust/pricing detection. If and only if that passes, rerun `node --test src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` and require 68/68 (or the current intentional count) PASS. Do not commit or deploy before both verification stages pass.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact `normalizeContentParsing()` function from the current executing working-copy file `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` without editing it. The latest fixture-only production-shaped diagnostic, run after reopening the exact executing file and confirming adapter version `1.2.1`, still fails because `contentParsing.text` is empty. Determine the one coherent normalization defect from the current function before making any further code change. Do not run the targeted suite, commit, deploy, rerun the production audit, or mutate persisted artifacts until the diagnostic passes.
 
 After DQV-002 is verified and committed through the governed application workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
 
