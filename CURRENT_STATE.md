@@ -18,11 +18,11 @@ Verified checkpoint:
 - `src/application/production-runtime.js` is complete for this work-package stage. It imports the UAT renderer, exposes one read-only `getNarrativeV2UatRender(auditId, tenantId)` method, and exposes that method through `auditService`.
 - `production-runtime.js` verification passed: syntax, `git diff --check`, full Git diff, and `node --test .\src\application\report-design-boundary.test.js` with 3/3 PASS.
 - `Pasted code(10).js` is the accepted manual baseline for `src/server.js`.
-- `server.js` now contains one exact bounded GET route at `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render` inserted immediately before the existing audit-status route matcher.
+- `server.js` contains one exact bounded GET route at `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render` inserted immediately before the existing audit-status route matcher.
 - Latest server diff shows only that route addition. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
 - No existing report route, report artifact, lifecycle state, provider path, or model path was modified.
-- The server verification command sequence included `node --check .\src\server.js`, `git diff --check`, and full no-pager Git diff; the first two produced no error output and the full diff shows only the intended route.
-- Existing real-handler server authorization regression exists at `src/identity/server-auth-fail-closed.test.js`; it dynamically imports the real `createRequestHandler` and proves the internal/principal boundaries fail closed.
+- Server syntax/diff verification passed: `node --check .\src\server.js` and `git diff --check` produced no errors; full no-pager diff showed only the intended bounded route.
+- Existing real-handler authorization regression `node --test .\src\identity\server-auth-fail-closed.test.js` passed 1/1 on 2026-08-22. It dynamically imports the real `createRequestHandler` and confirms the internal/principal auth boundaries remain fail-closed after the UAT route addition.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -35,15 +35,16 @@ Completed:
 - `production-runtime.js` UAT source-file unit completed and verified.
 - Manual VS Code handoff for exact current `server.js` completed.
 - Bounded server UAT route inserted and syntax/diff verified.
+- Existing server fail-closed authorization regression passed 1/1.
 
 In progress:
-- Run the existing real-handler fail-closed server regression before any further code change or deployment step.
+- Add or run the smallest direct acceptance proof for the new UAT route itself before any commit/deployment step. The test must prove: unauthorized access is denied; authorized access reaches only the read-only UAT service; returned Viewer v2.2.0 HTML bytes are streamed; and no existing report artifact is mutated.
 
 Blocked:
 - No current application-code blocker established.
 
 Important constraints:
-- Work one verified application source file at a time.
+- Work one verified application source/test file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
 - `Pasted code(10).js` is the accepted baseline for `server.js`; do not substitute an earlier copy.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
@@ -58,7 +59,7 @@ Important constraints:
 - Avoid full-file rewrites; use surgical edits only.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `node --test .\src\identity\server-auth-fail-closed.test.js` and paste the complete output. Do not edit any file first.
+Identify the existing smallest test harness around `createRequestHandler(...)` that can directly exercise the exact UAT route without booting provider/model work. If no suitable existing test exists, add one narrowly-scoped server route test file only; do not change application code. The direct proof must cover auth denial and successful authorized streaming of Viewer v2.2.0 bytes from a stubbed `auditService.getNarrativeV2UatRender(...)`.
 
 Last verified:
 2026-08-22
