@@ -31,9 +31,9 @@ Persisted source status evidence:
 - GA4: not connected/not requested for this audit.
 - GSC: not connected/not requested for this audit.
 
-## DQV-001 — SERP / competitor source times out before dependable acquisition
+## DQV-001 — SERP / competitor source loses usable evidence at the outer timeout boundary
 
-Classification: VERIFIED HISTORICAL FAILURE; CURRENT DIRECT-CRAWL BOTTLENECK DISPROVED; CURRENT SINGLE SERP PROVIDER FAILURE DISPROVED; exact historical timeout point UNRESOLVED; composite timeout-budget risk remains PROVEN BY CODE STRUCTURE.
+Classification: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. Exact historical in-adapter operation at timeout is unrecoverable from persisted artifacts.
 
 Persisted evidence:
 - `normalized/dataforseo-serp.json`:
@@ -49,67 +49,88 @@ Persisted evidence:
 - Audit request explicitly contains three supplied competitor URLs and four services.
 
 Code-path evidence at application commit `33ec9b63083f62141141ea6363828c9e8152f188`:
-- Production runtime wraps the whole `dataforseo-serp` adapter in a 60,000 ms source timeout.
-- The SERP adapter first direct-crawls up to three supplied competitors serially, up to eight pages each.
-- The direct crawler allows up to 20,000 ms for a page fetch/read, plus robots/sitemap discovery.
-- Only after direct supplied-competitor crawling does the adapter run DataForSEO live SERP queries serially for service-derived keywords.
-- Each DataForSEO SERP request has its own 45,000 ms timeout.
+- Production runtime gives the whole `dataforseo-serp` source a 60,000 ms timeout and up to three attempts.
+- The SERP adapter first direct-crawls up to three supplied competitors, then runs up to five DataForSEO live SERP requests serially. This audit has three supplied competitors and four service keywords.
+- Each individual DataForSEO SERP client request is independently allowed up to 45,000 ms.
+- The outer retry boundary uses `Promise.race`. When it wins, it aborts the orchestration signal, rejects the attempt, and after retries are exhausted creates a synthetic `FAILED` result with `rawBytes: null` and no partial evidence.
+- Normalized/raw persistence happens only after `executeSource()` returns. Therefore evidence accumulated inside an adapter attempt is not persisted if the outer timeout wins.
+- `querySerp()` does not receive the orchestration `AbortSignal`. Its `withTimeout()` helper only races the fetch promise against a timer; it does not abort the underlying HTTP fetch. Therefore an outer timeout does not reliably cancel an in-flight DataForSEO request before the orchestration layer starts a retry. This creates a proven overlap/duplicate-cost risk under timeout conditions.
 
-Isolated direct-crawl diagnostic on 2026-08-23 against exact application commit `33ec9b63083f62141141ea6363828c9e8152f188`:
+### Isolated direct-crawl diagnostic — 2026-08-23
+
+Exact supplied competitors, current application commit, no persistence:
 - `https://ginakeeping.ca/` — `AVAILABLE`, 8 pages, 1.9 seconds, no limitations.
 - `https://traceyjazmin.com/` — `AVAILABLE`, 8 pages, 3.0 seconds, no limitations.
 - `https://clarityofgoalsandvision.com/` — `AVAILABLE`, 8 pages, 3.7 seconds, no limitations.
-- Total current direct-crawl wall time: approximately 8.6 seconds.
-- Diagnostic was local/read-only: no DataForSEO call, no audit mutation, no S3/database/lifecycle/report mutation.
+- Total direct-crawl wall time: approximately 8.6 seconds.
 
-Isolated DataForSEO SERP diagnostic on 2026-08-23 using the production Railway `vantage-platform` environment and the current production client path:
+Conclusion:
+The three supplied competitor sites are currently reachable and direct crawling is not a systemic 60-second bottleneck.
+
+### Isolated one-keyword DataForSEO diagnostic — 2026-08-23
+
+Using the production Railway `vantage-platform` environment and current production SERP client:
 - Keyword: `Group Coaching`.
-- Elapsed time: 5.25 seconds.
+- Elapsed: 5.25 seconds.
 - Result: success.
-- DataForSEO task ID: `08232042-1281-0139-0000-2eda65f9fe51`.
-- Result count returned by the PRYSM client: 18.
-- Top returned domains included `coactive.com`, `coachingfederation.org`, `groupcoachingessentials.ca`, `royalroads.ca`, and `groupcoachinghq.com`.
-- No provider/client error was returned.
-- This was one isolated provider call only; it did not create an audit or mutate S3, Postgres, lifecycle, or report artifacts.
-- The Railway CLI printed an upgrade warning, but the diagnostic itself completed successfully.
+- Task ID: `08232042-1281-0139-0000-2eda65f9fe51`.
+- PRYSM client result count: 18.
+- No provider/client error.
 
-Interpretation of diagnostics:
-- The supplied competitor sites are currently reachable and their direct-crawl phase is not a systemic 60-second bottleneck.
-- A single live DataForSEO SERP request is also currently healthy and returned 18 results in 5.25 seconds, so missing local credentials and a generally broken provider/client path are ruled out as explanations for this audit.
-- Using today's measured timings as a representative estimate, direct competitor crawling (8.6s) plus four SERP calls at 5.25s each would be about 29.6 seconds, below the 60-second source envelope.
-- This means today's diagnostics do not reproduce the historical production timeout.
-- The architecture is nevertheless objectively unsafe under slower provider conditions: the outer source receives only 60 seconds while four serial internal SERP requests may each consume up to 45 seconds, in addition to direct crawl time. One slow request or moderate cumulative latency can cause the orchestration timeout to discard the entire composite source result.
-- The historical artifact proves that exactly this outer timeout occurred after three attempts; it does not identify which internal operation was active at timeout because the orchestration failure replaces the partial adapter result with a synthetic failure and persists no raw SERP artifact.
-- Therefore DQV-001 is now narrowed from “provider or crawl may be broken” to “historical composite-source timeout with all-or-nothing loss; exact internal historical timing cannot be recovered from persisted artifacts.”
+Conclusion:
+A generally broken DataForSEO credential/client/provider path is ruled out as the explanation for the selected audit.
+
+### Full composite adapter diagnostic — 2026-08-23
+
+Executed the existing `dataforseo-serp` adapter once in isolation using the exact three supplied competitors and four service keywords, production Railway credentials/environment, and a 60-second outer diagnostic race. No audit/S3/Postgres/lifecycle/report persistence was invoked.
+
+Observed result:
+- outcome: `COMPLETED`
+- elapsed: `43.51` seconds
+- source status: `PARTIAL`
+- provider: `DataForSEO + Prysm direct crawl`
+- expected records: `7`
+- returned records: `6`
+- coverage: requested `7`, completed `6`, failed `1`
+- SERP status: `PARTIAL`
+- keyword count: `4`
+- combined result count: `58`
+- supplied competitor coverage: requested `3`, completed `3`, failed `0`
+- all three supplied competitors produced 8-page direct-crawl evidence
+- one service query failed cleanly: `4-Week Reboot Series: SERP task 0 failed: status_code=40101, message="Internal SE Server Error."`
+
+Interpretation:
+- The adapter's intended graceful-degradation behavior works when the adapter is allowed to finish: a provider task failure for one keyword produced `PARTIAL`, while preserving three supplied competitor crawls plus successful SERP evidence.
+- The full attempt used 43.51 seconds, or about 72.5% of the 60-second outer budget, leaving only about 16.5 seconds of margin under current conditions.
+- The historical production timeout was not reproduced, but it is technically credible from normal network/provider variance because the internal work budget is much larger than the outer source budget.
+- Most importantly, the selected audit's all-or-nothing loss is now explained by the boundary design: if the outer 60-second timer fires before this same adapter returns, the orchestrator discards already-collected supplied-competitor and completed-keyword evidence and persists a synthetic total failure instead.
+- The historical artifact cannot reveal which specific competitor crawl or SERP keyword was active at the timeout because no partial/raw payload survives that boundary.
 
 Current downstream effect:
-- Competitor canonical evidence is absent/failed.
-- Direct-crawl evidence that could have been available is lost when the broader composite source times out.
-- Competitor opportunity generation cannot be dependable.
-- Report competitor sections are deprived of intended evidence.
-- Report status mapping is inconsistent: canonical source failure is later represented as `NOT_APPLICABLE` in the Report v2 manifest.
+- The selected audit has no usable persisted competitor evidence even though the same supplied competitors are demonstrably crawlable and the adapter can produce meaningful partial evidence.
+- Competitor opportunity generation and competitor report sections were deprived of evidence that should have survived a later SERP delay/failure.
+- A timeout can also trigger a retry while a prior DataForSEO HTTP request remains in flight, creating duplicate-call/cost and nondeterministic-result risk.
+- Report status propagation remains separately defective: canonical `FAILED` is later represented as `NOT_APPLICABLE` / `NOT_CONNECTED` in report-layer artifacts.
 
-Next diagnostic:
-1. Run the existing `dataforseo-serp` adapter once in isolation with the exact three supplied competitors and four audit service keywords, using the production Railway environment but no orchestration persistence.
-2. Record total elapsed time, direct competitor evidence count, SERP result count, source status, and any limitations/errors.
-3. This diagnostic will make the same four live SERP requests the adapter normally makes, but will not create an audit or write persisted artifacts.
-4. Do not change timeout policy or adapter sequencing until this composite timing result is recorded.
-
-Potential change boundary if confirmed:
-- `services/worker/src/adapters/dataforseo-serp/serp-adapter.js`
-- and/or the source-specific timeout policy in `services/worker/src/application/production-runtime.js`.
-- The current all-or-nothing orchestration failure behavior may also need review so successfully acquired supplied-competitor evidence is not erased by a later SERP timeout, but no orchestration change is authorized yet.
+Potential change boundary — NOT YET AUTHORIZED:
+- `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js` — accept/propagate a cooperative abort signal so provider requests actually stop when the source attempt is cancelled.
+- `services/worker/src/adapters/dataforseo-serp/serp-adapter.js` — align internal sequencing/deadline behavior with the governed source budget and preserve partial evidence before the hard outer boundary.
+- `services/worker/src/application/production-runtime.js` — source-specific SERP timeout may need adjustment only after the internal deadline/cost model is chosen.
+- `services/worker/src/orchestration/retry-policy.js` — review all-or-nothing timeout/retry semantics, but avoid broad generic-orchestrator changes if the defect can be fixed safely inside the SERP source boundary.
 
 Required impact review before change:
+- provider request cancellation and in-flight overlap;
 - retry/idempotency behavior;
-- audit wall-clock duration;
-- duplicate provider cost risk on retries;
+- duplicate DataForSEO cost risk;
+- maximum audit wall-clock duration;
 - supplied competitor crawl behavior;
 - preservation of partial direct-crawl evidence;
-- SERP request count/cost;
-- source checkpoint and raw artifact semantics;
+- serial vs bounded-parallel SERP request behavior and API-rate implications;
+- source checkpoint/raw artifact semantics;
+- canonical competitor source status (`AVAILABLE` / `PARTIAL` / `FAILED`);
 - competitor opportunity derivation;
-- report source-status propagation.
+- report source-status propagation;
+- deterministic regression tests for outer-timeout, one-keyword provider failure, and mixed partial evidence.
 
 ## DQV-002 — On-Page content parsing succeeds, then usable body content is lost in normalization
 
@@ -221,4 +242,4 @@ Report manifest/status mapping only after the authoritative source semantics are
 
 ## Current exact next action
 
-Run the existing `dataforseo-serp` adapter once in isolation with the exact three supplied competitor URLs and four service keywords from audit `97d6b2c7-03b9-4530-8ea7-16557502c638`, using the production Railway environment but no persistence/orchestration wrapper. Record total elapsed time, source status, supplied-competitor evidence count, SERP result count, and limitations/errors. Do not rerun the audit and do not change application code yet.
+Complete the DQV-001 dependency-impact design before editing code: choose the smallest source-bounded fix that (1) propagates real cancellation into DataForSEO HTTP requests, (2) prevents a 60-second outer timeout from erasing already-valid supplied-competitor/SERP partial evidence, (3) avoids duplicate paid calls on retry, and (4) keeps bounded audit wall-clock/cost behavior. Define the exact files and regression tests, then obtain user approval before any application source edit.
