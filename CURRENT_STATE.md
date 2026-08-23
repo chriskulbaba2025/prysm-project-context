@@ -10,76 +10,57 @@ Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Application base `main`: `c116e730a38539066852f107582959693e666781`.
-- PR #78 — `design(report-v2): complete governed 16-page report` — is merged and deployed.
-- Current governed viewer contract: Viewer v2.2.0 / 16 pages.
-- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; deploying Viewer v2.2.0 does not rewrite that artifact.
-- User explicitly authorized `PRYSM-V2-UAT-RERENDER-01` on 2026-08-22.
-- `CONSTRAINTS.md` contains the bounded authorization: read-only/in-memory render only; no artifact mutation; no lifecycle transition; zero provider/model calls; ordinary report authorization remains required.
-- Clean untouched `main` at `c116e730a38539066852f107582959693e666781` produces 5 PASS / 1 FAIL in `src/application/narrative-v2-production-path.test.js`.
-- The sole failure is `NV2-PROD-02`, which expects `draft_rendered` but receives `narrative_failed` on clean main. This is a verified pre-existing baseline defect and is out of scope for this UAT work package.
-- Direct symbol checks confirmed neither `renderNarrativeV2UatFromPersistedArtifacts` nor `renderReportV2Uat` exists in the clean tracked baseline.
-- The earlier PowerShell/.NET path mismatch is resolved. All four path checks reconcile to the intended Desktop working copy under `C:\Users\kulba\Desktop\vantage-platform`.
-- Verified local file path: `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\production-path.js`.
-- Local HEAD remains exactly `c116e730a38539066852f107582959693e666781`.
-- `Pasted code(7).js` is disqualified as stale/non-authoritative.
-- The exact current Desktop file was opened from the verified PowerShell location and supplied as `Pasted code(8).js`; it is the accepted manual baseline for this source-file unit.
-- First surgical UAT edit is Git-verified: `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";` was added immediately after the existing Narrative v2 renderer import.
-- Second surgical UAT edit is Git-verified: `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";` was added immediately after `NARRATIVE_V2_VERSION`.
-- The bounded `renderNarrativeV2UatFromPersistedArtifacts(...)` function was inserted at the correct location before `runNarrativeV2FromScored(...)`, but the latest full Git diff shows the complete function was accidentally inserted twice back-to-back.
-- No evidence shows any other unintended application-source change. The import and audit-ID constant remain correct.
-- The current source-file unit must not proceed until one of the duplicate function copies is removed and syntax/Git diff are re-verified.
-- Prior full-file paste attempts are abandoned.
-- Existing unrelated historical stash entries remain untouched.
-- Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
-
-Current environment / branch / version:
-- Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
-- Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Verified target source file: `src/narrative-v2/production-path.js`.
-- Accepted manual baseline: `Pasted code(8).js` plus the subsequently Git-verified surgical edits.
-- Current UAT edits in `production-path.js`: Viewer-version import + authorized audit-ID constant + two identical copies of the intended UAT renderer function.
-- Unrelated untracked `?? ../../lifecycle-failure.txt` remains untouched.
-- Production viewer target: v2.2.0 / 16 pages.
-- Report design metadata: v2.0.0.
-- Scoring version remains 4.1.1.
+- Current governed viewer contract: Viewer v2.2.0 / 16 pages.
+- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; this work package must not rewrite that artifact.
+- `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
+- `Pasted code(8).js` is the accepted clean manual baseline for `src/narrative-v2/production-path.js`.
+- The stale earlier `Pasted code(7).js` remains disqualified.
+- `production-path.js` now contains exactly these intended UAT additions:
+  1. `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";`
+  2. `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";`
+  3. one exported `renderNarrativeV2UatFromPersistedArtifacts(...)` function inserted immediately after `buildV2Model(...)` and before `runNarrativeV2FromScored(...)`.
+- The accidental duplicate copy of the UAT renderer function has been removed.
+- Latest verification passed silently:
+  - `node --check .\src\narrative-v2\production-path.js`
+  - `git diff --check`
+- Latest `git --no-pager diff -- src/narrative-v2/production-path.js` shows exactly one import, one authorized audit-ID constant, and one read-only UAT renderer function; no other application-source change is present in this file.
+- The UAT renderer reads persisted WriterInput, orchestration result, canonical findings/scores, capability evidence, and decision evidence; validates the persisted release candidate; runs the deterministic finalization gate; renders Viewer v2.2.0 HTML in memory; returns bytes; and does not write artifacts or transition lifecycle state.
+- Unrelated `../../lifecycle-failure.txt` remains untouched.
+- Historical stash entries remain untouched.
 
 Completed:
-- Report v2 rebuild coding, targeted tests, CI, merge, and production deployment verification.
-- Root cause of the visual-UAT blocker was verified: immutable persisted report bytes are older than the deployed renderer.
-- Bounded UAT rerender objective was authorized and persisted into project constraints.
-- Baseline isolation proved `NV2-PROD-02` is pre-existing and out of scope.
-- Local shell-path reconciliation is complete.
-- Manual VS Code handoff for the exact current `production-path.js` is complete.
-- First and second surgical edits to `production-path.js` are complete and verified by Git diff.
-- The first complete UAT renderer insertion was made at the intended source location.
+- Report v2 rebuild, targeted tests, CI, merge, and production deployment verification.
+- Root cause of visual-UAT blocker verified: immutable persisted report bytes are older than deployed Viewer v2.2.0 renderer.
+- Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
+- Local shell-path mismatch resolved.
+- Manual VS Code handoff for exact `production-path.js` completed.
+- `production-path.js` UAT source-file unit is now modified and verified by syntax check, diff check, and full Git diff.
 
 In progress:
-- Correct the accidental duplicate UAT renderer insertion in `production-path.js`, then verify the complete source-file unit before moving to any second application file.
+- Move to the next required application source-file unit, `src/application/production-runtime.js`, using the same manual VS Code handoff method.
 
 Blocked:
-- `production-path.js` currently contains two identical exported `renderNarrativeV2UatFromPersistedArtifacts(...)` declarations. One duplicate must be removed before syntax verification can pass.
+- No current application-code blocker established.
 
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- `Pasted code(8).js` is the accepted baseline for the current `production-path.js` source-file unit; do not substitute an earlier copy.
-- Never deliver PRYSM code files through generated/downloadable file links; all code replacements must be inline in the conversation.
-- For this work package only, a read-only UAT rerender path is authorized for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c`.
+- User supplies the exact current file from the verified working copy before modification.
+- Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
 - No lifecycle transition or state rewrite.
 - No overwrite/delete/mutation of existing report, canonical evidence, scoring, findings, Narrative v2, or manifest artifacts.
 - Normal tenant/report authorization must remain in force.
 - Do not edit `services/worker/src/report/sections-conversion.js`.
-- Do not repair the pre-existing `NV2-PROD-02` baseline failure inside `PRYSM-V2-UAT-RERENDER-01`.
-- Do not pop, drop, or otherwise modify the two historical stash entries.
-- Do not proceed to `production-runtime.js` or `server.js` until `production-path.js` is modified and verified by syntax plus Git diff.
-- Avoid full-file rewrites; use small surgical edits only.
-- Give the user one exact edit at a time with an exact search anchor, exact insertion/replacement text, and one verification command set after the edit.
+- Do not repair `NV2-PROD-02` in this work package.
+- Do not modify historical stash entries.
+- Avoid full-file rewrites; use surgical edits only.
+- Give one exact edit at a time with an exact search anchor, insertion/replacement text, and verification command set.
 
 Exact next action:
-In the already-open `src/narrative-v2/production-path.js`, use `Ctrl+F` to search for `export async function renderNarrativeV2UatFromPersistedArtifacts({`. Keep the first occurrence. Delete the entire second duplicate block only, starting at the second occurrence's preceding `/**` comment and ending at that duplicate function's closing `}` immediately before `async function runNarrativeV2FromScored({`. Save the file. Make no other change. Then run `node --check .\src\narrative-v2\production-path.js`, `git diff --check`, and `git --no-pager diff -- src/narrative-v2/production-path.js`, and paste the complete output before proceeding.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\application\production-runtime.js`. In the VS Code editor that opens, press `Ctrl+A`, then `Ctrl+C`, and paste that exact current file into the chat. Do not edit it first and do not use any earlier copy.
 
 Last verified:
 2026-08-22
