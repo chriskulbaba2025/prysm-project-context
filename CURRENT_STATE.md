@@ -15,12 +15,11 @@ Verified checkpoint:
 - Direct UAT-route acceptance proof passed cleanly: 5 tests / 5 pass / 0 fail / 0 cancelled.
 - Complete local work-package diff was verified clean; `git diff --check` returned no output.
 - The only remaining local status item after commit is pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched and untracked.
-- Commit `33ec9b63083f62141141ea6363828c9e8152f188` was pushed successfully to `origin/main`; a second push returned `Everything up-to-date`.
-- GitHub remote verification confirms the exact commit SHA and message on `main`.
-- Commit statuses currently show SUCCESS for Railway (`GENSEN process - vantage-platform`) and both Vercel deployments (`vantage-platform` and `prysm`).
-- `.github/workflows/worker-ci.yml` is configured to run `Vantage Worker CI` on pushes to `main` and on pull requests.
-- The available GitHub connector did not surface the push-triggered Actions run for this direct `main` push, so the GitHub Actions CI result remains to be verified explicitly before production UAT endpoint use.
-- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes. This work package must not rewrite that artifact.
+- Commit `33ec9b63083f62141141ea6363828c9e8152f188` was pushed successfully to `origin/main`; remote GitHub verification confirms the exact commit SHA and message.
+- Railway and both Vercel deployment statuses attached to the commit are SUCCESS.
+- Push-triggered `Vantage Worker CI` run `32613952114` completed successfully on 2026-08-22. Every configured step passed, including `npm test`, Narrative v2, schemas, artifacts, lifecycle + Postgres, WP2–WP12 acceptance, and provisioning. The Node 20 deprecation annotation is informational and did not fail the run.
+- Production worker base URL is configured in `vercel.json` as `https://vantage-platform-production.up.railway.app`.
+- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes through the normal report path. This work package must not rewrite that artifact.
 - `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
 - Historical stash entries remain untouched.
 
@@ -28,6 +27,7 @@ Current environment / branch / version:
 - Context repo: `chriskulbaba2025/prysm-project-context`, branch `main`.
 - Application repo: `chriskulbaba2025/vantage-platform`, local and remote `main` at `33ec9b63083f62141141ea6363828c9e8152f188` as last verified.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Production worker: `https://vantage-platform-production.up.railway.app`.
 - Viewer target: v2.2.0 / 16 pages.
 
 Completed:
@@ -39,14 +39,16 @@ Completed:
 - Bounded UAT route source-file unit completed and verified.
 - Direct UAT-route acceptance test passed 5/5 with 0 fail and 0 cancelled.
 - Complete local four-file diff verified clean; no unintended application files were modified.
-- Work package committed locally and pushed to `origin/main` at `33ec9b63083f62141141ea6363828c9e8152f188`.
-- Remote commit and successful Railway/Vercel deployment statuses verified.
+- Work package committed and pushed to `origin/main` at `33ec9b63083f62141141ea6363828c9e8152f188`.
+- Commit file set verified: exactly four intended files.
+- Railway/Vercel deployment statuses verified successful.
+- `Vantage Worker CI` run `32613952114` verified SUCCESS tip-to-tail.
 
 In progress:
-- Verify the push-triggered `Vantage Worker CI` run for commit `33ec9b63083f62141141ea6363828c9e8152f188` before calling or visually inspecting the production UAT endpoint.
+- Perform the first authorized production read-only UAT render call for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c`, verify HTTP 200 and `x-prysm-viewer-version: 2.2.0`, save the returned HTML locally, then visually inspect it. This is a transient read-only render only.
 
 Blocked:
-- Production UAT endpoint use is intentionally blocked only on explicit verification of the GitHub Actions CI result for the pushed commit.
+- No code, CI, or deployment blocker remains for the authorized UAT render call.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
@@ -60,10 +62,14 @@ Important constraints:
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- Do not call the production UAT endpoint until the push-triggered GitHub Actions CI result is verified.
+- The UAT HTML must remain a transient local inspection artifact; do not publish it back over the approved report artifact.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `gh run list --workflow worker-ci.yml --commit 33ec9b63083f62141141ea6363828c9e8152f188 --limit 5`. Paste the complete output into the chat. Do not call the production UAT endpoint yet.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly the following one-line command to call the deployed read-only UAT route using the Railway-injected production secret, print only status/viewer metadata, and save the returned bytes locally as `prysm-v2.2.0-uat.html`:
+
+`railway run node -e "const fs=require('fs');fetch('https://vantage-platform-production.up.railway.app/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render',{headers:{'x-vantage-secret':process.env.VANTAGE_WEBHOOK_SECRET}}).then(async r=>{const b=Buffer.from(await r.arrayBuffer());console.log('HTTP',r.status);console.log('Viewer',r.headers.get('x-prysm-viewer-version'));console.log('Cache',r.headers.get('cache-control'));if(!r.ok){console.log(b.toString('utf8'));process.exit(1)}fs.writeFileSync('prysm-v2.2.0-uat.html',b);console.log('Saved',b.length,'bytes')}).catch(e=>{console.error(e);process.exit(1)})"`
+
+Paste the complete output into the chat. Do not open or publish the saved HTML until HTTP 200 and Viewer 2.2.0 are confirmed.
 
 Last verified:
 2026-08-22
