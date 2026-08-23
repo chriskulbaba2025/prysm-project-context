@@ -20,6 +20,7 @@ Durable evidence and impact ledger for the selected audit-data investigation. It
 - Simple surgical edits are acceptable when reference points and replacement boundaries are unambiguous; otherwise provide the coherent complete file directly in chat, split into ordered chunks if needed.
 - After editing: syntax check → targeted/relevant regression tests → correct failures → only then update/commit the application.
 - Do not broaden a repair into unrelated scoring, lifecycle, storage, Writer/Judge, authentication, report-design, n8n, or architecture changes.
+- After three unsuccessful attempts on the same observable failure, stop repair attempts and perform the project-wide diagnostic reset before any fourth attempt.
 
 ## Verified artifact baseline
 
@@ -100,7 +101,7 @@ Any later DQV-001 repair must preserve partial evidence, propagate true HTTP can
 
 ## DQV-002 — On-Page content parsing succeeds, then usable body content is lost in normalization
 
-Classification: PROVEN DATA-LOSS DEFECT. RAW DATA QUALITY PASS. LOCAL REPAIR IN VERIFICATION; NOT COMMITTED.
+Classification: PROVEN DATA-LOSS DEFECT. RAW DATA QUALITY PASS. LOCAL REPAIR VERIFIED; NOT COMMITTED.
 
 ### Persisted raw evidence
 
@@ -154,8 +155,9 @@ Therefore the smallest coherent repair remains in the On-Page adapter normalizer
 
 User explicitly authorized moving ahead with the targeted DQV-002 repair.
 
-Current working-copy file:
-`services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+Application files involved:
+- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
 
 Implemented local change boundary:
 - adapter version `1.2.1`;
@@ -191,12 +193,18 @@ Verification history:
    - duplicate fragment count: 1
    - header excluded: true
    - footer excluded: true
+12. The first post-repair targeted suite run produced 67/68 PASS. The only failure was `WP-B-10`, caused solely by a stale hard-coded assertion requiring artifact adapter version `1.2.0` while the adjacent assertion already required `payload.adapterVersion === ADAPTER_VERSION`.
+13. The redundant hard-coded `1.2.0` assertion was removed from the exact executing test file. No production behavior changed.
+14. `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` PASS.
+15. Final targeted adapter suite PASS: 68 tests, 68 pass, 0 fail, duration ~29.9s.
 
-Current verification gap:
-- Primary production-shaped normalization diagnostic is now GREEN.
-- The targeted adapter suite has NOT yet been rerun after the final coherent repair.
-- Therefore DQV-002 is not yet verified complete.
-- Do not commit/deploy or mutate production audit data until the targeted adapter suite also passes.
+Current verification state:
+- Production-shaped normalization diagnostic: PASS.
+- Adapter syntax: PASS.
+- Test-file syntax: PASS.
+- Targeted adapter regression suite: 68/68 PASS.
+- DQV-002 local repair is verified complete at the application working-copy level.
+- Application changes remain uncommitted and undeployed.
 
 Required proof before commit:
 1. Production-shaped nested fixture produces non-empty normalized `contentParsing.text`. — PASS.
@@ -205,9 +213,9 @@ Required proof before commit:
 4. Expected content-dependent trust/pricing signal can be detected from that text. — PASS.
 5. Header/footer sentinel text is not included when separately supplied as provider-classified header/footer. — PASS.
 6. Exact duplicate body fragments are not duplicated. — PASS.
-7. Existing targeted adapter regression suite passes after the final code state. — PENDING.
+7. Existing targeted adapter regression suite passes after the final code state. — PASS, 68/68.
 
-Downstream items to verify only after the adapter repair is proven:
+Downstream items to verify only after the adapter repair is committed:
 - canonical site evidence;
 - decision evidence;
 - `content.body` capability consistency;
@@ -217,7 +225,7 @@ Downstream items to verify only after the adapter repair is proven:
 - Narrative v2 writer input/report conclusions.
 
 Defensive follow-up candidate, NOT YET AUTHORIZED/REQUIRED:
-`services/worker/src/evidence/capability-evidence.js` may need hardening so endpoint completion alone cannot mark `content.body` available when normalized usable content is empty. Do not change this until the primary normalization repair is proven and dependency impact is checked.
+`services/worker/src/evidence/capability-evidence.js` may need hardening so endpoint completion alone cannot mark `content.body` available when normalized usable content is empty. Do not change this until the primary normalization repair is committed and dependency impact is checked.
 
 ## DQV-003 — Microdata request omits required page URL
 
@@ -268,6 +276,6 @@ Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially diff
 
 ## Current exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run `node --test src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` against the current exact executing working copy and require all tests to PASS (previous intentional count was 68). Do not commit, deploy, rerun the production audit, or mutate persisted artifacts until this targeted suite passes.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact local application diff before any commit by running `git status --short` and `git diff -- src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`. Confirm that only the intended DQV-002 adapter normalizer/version change and redundant stale test-version assertion removal are present. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts without explicit user approval.
 
-After DQV-002 is verified through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
+After DQV-002 is reviewed and committed through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
