@@ -72,3 +72,18 @@ Record hard project boundaries here.
 - The UAT path may return newly rendered HTML for inspection only; it must not publish or approve anything.
 - Normal report access authorization must still execute before any UAT report bytes are returned.
 - The manual one-source-file-at-a-time implementation method remains active for this work package unless the user explicitly changes it.
+
+## Authorized exception — audit-data validation and correction for audit 97d6b2c7
+
+- User authorization was granted on 2026-08-23 to critically test the evidence-acquisition and interpretation path using audit `97d6b2c7-03b9-4530-8ea7-16557502c638` for `https://rebootbusinesscoaching.com/`.
+- This is a separately governed data-quality investigation, not part of the presentation-only report rebuild. The presentation-only freeze therefore does not prevent investigation of proven evidence/provider defects under this exception.
+- Existing persisted artifacts for audit `97d6b2c7-03b9-4530-8ea7-16557502c638` remain immutable evidence. Do not overwrite, delete, or mutate them for diagnosis.
+- Do not create or rerun a full production audit merely to diagnose the selected audit.
+- Read-only artifact inspection, direct HTTP diagnostics, local execution of existing read-only acquisition code, and isolated minimal provider requests are permitted when needed to prove or disprove one defect.
+- Prefer no-cost diagnostics first. Before any paid provider request, state what it tests, expected cost exposure, what it cannot change, and what result would prove or disprove the hypothesis.
+- Writer/Judge/model reruns are prohibited for this investigation unless separately and explicitly authorized later.
+- Before changing application code, the defect must be proven and recorded in `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md` with upstream inputs, downstream consumers, artifact/contracts affected, cost/retry implications, regression risks, and required tests.
+- Any authorized data-layer repair must be the smallest coherent fix for the proven defect. Do not broaden it into unrelated scoring, lifecycle, storage, authentication, n8n, report-design, or architecture changes.
+- If a data repair legitimately changes capability eligibility, scoring inputs, evidence coverage, or report conclusions, treat those as downstream reactions to verify, not as reasons to suppress the correct evidence.
+- Application source changes continue to use the governed manual VS Code source-file workflow unless the user explicitly changes that operating method.
+- After each diagnostic or fix, update the durable investigation ledger when the result materially changes known state or downstream impact.
