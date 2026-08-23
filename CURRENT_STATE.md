@@ -14,22 +14,12 @@ Verified checkpoint:
 - Current governed viewer contract: Viewer v2.2.0 / 16 pages.
 - Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; this work package must not rewrite that artifact.
 - `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
-- `Pasted code(8).js` is the accepted clean manual baseline for `src/narrative-v2/production-path.js`.
-- The stale earlier `Pasted code(7).js` remains disqualified.
-- `production-path.js` now contains exactly these intended UAT additions:
-  1. `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";`
-  2. `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";`
-  3. one exported `renderNarrativeV2UatFromPersistedArtifacts(...)` function inserted immediately after `buildV2Model(...)` and before `runNarrativeV2FromScored(...)`.
-- The accidental duplicate copy of the UAT renderer function has been removed.
-- Latest verification passed silently:
-  - `node --check .\src\narrative-v2\production-path.js`
-  - `git diff --check`
-- Latest `git --no-pager diff -- src/narrative-v2/production-path.js` shows exactly one import, one authorized audit-ID constant, and one read-only UAT renderer function; no other application-source change is present in this file.
-- The UAT renderer reads persisted WriterInput, orchestration result, canonical findings/scores, capability evidence, and decision evidence; validates the persisted release candidate; runs the deterministic finalization gate; renders Viewer v2.2.0 HTML in memory; returns bytes; and does not write artifacts or transition lifecycle state.
-- The exact current `src/application/production-runtime.js` was opened from the verified Desktop working copy and supplied as `Pasted code(9).js`; it is the accepted manual baseline for the second source-file unit.
-- First surgical `production-runtime.js` edit is complete and Git-verified: the single import of `createNarrativeV2ProductionPath` was replaced with a multiline import that also imports `renderNarrativeV2UatFromPersistedArtifacts` from the same module.
-- Latest `git --no-pager diff -- src/application/production-runtime.js` shows exactly that import replacement and no other change in this file.
-- The minimum remaining runtime change is additive and read-only: add one runtime method that loads the existing persisted AuditRequest for the requested tenant/audit and returns the in-memory UAT render, then expose that method through `auditService`. No audit execution, lifecycle transition, artifact write, provider call, or model call is permitted.
+- `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function. The earlier accidental duplicate was removed.
+- `Pasted code(9).js` is the accepted manual baseline for `src/application/production-runtime.js`.
+- First `production-runtime.js` edit is Git-verified: import `renderNarrativeV2UatFromPersistedArtifacts` from `../narrative-v2/production-path.js`.
+- Second `production-runtime.js` edit is Git-verified by full diff: one new `getNarrativeV2UatRender(auditId, tenantId)` method was added immediately before `getAuditStatus(...)`.
+- The new runtime method only loads existing audit metadata, resolves the persisted audit scope, loads the persisted AuditRequest, and calls `renderNarrativeV2UatFromPersistedArtifacts(...)`. It does not execute an audit, call providers/models, write artifacts, or transition lifecycle state.
+- Latest full `production-runtime.js` diff shows only the intended import replacement and the new read-only runtime method.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -38,13 +28,12 @@ Completed:
 - Root cause of visual-UAT blocker verified: immutable persisted report bytes are older than deployed Viewer v2.2.0 renderer.
 - Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
 - Local shell-path mismatch resolved.
-- Manual VS Code handoff for exact `production-path.js` completed.
-- `production-path.js` UAT source-file unit is now modified and verified by syntax check, diff check, and full Git diff.
-- Manual VS Code handoff for exact `production-runtime.js` is complete.
-- First surgical `production-runtime.js` import edit is complete and verified by Git diff.
+- `production-path.js` UAT source-file unit completed and verified.
+- Manual VS Code handoff for exact `production-runtime.js` completed.
+- `production-runtime.js` import and read-only UAT method are now present and Git-diff verified.
 
 In progress:
-- Add the bounded read-only UAT runtime method to `src/application/production-runtime.js`, then verify before exposing it through `auditService`.
+- Expose `getNarrativeV2UatRender` through the existing `auditService` object in `production-runtime.js`, then run syntax/diff verification for the complete source-file unit before moving to `server.js`.
 
 Blocked:
 - No current application-code blocker established.
@@ -67,7 +56,7 @@ Important constraints:
 - Do not move to `server.js` until `production-runtime.js` is modified and verified by syntax plus Git diff.
 
 Exact next action:
-In the already-open `src/application/production-runtime.js`, locate `async function getAuditStatus(auditId, tenantId) {`. Insert a new `async function getNarrativeV2UatRender(auditId, tenantId) { ... }` immediately above it. The method must: load audit metadata; resolve `clientId`; load the persisted AuditRequest through `loadAuditRequest`; fail 404 if the audit or persisted request is missing; call only `renderNarrativeV2UatFromPersistedArtifacts({ auditRequest, artifactStore, validateContract: runtimeValidateContract })`; and return that result. Save the file. Make no other change. Then run `node --check .\src\application\production-runtime.js`, `git diff --check`, and `git --no-pager diff -- src/application/production-runtime.js`, and paste the complete output before proceeding.
+In the already-open `src/application/production-runtime.js`, locate the `const auditService = Object.freeze({` block near the end of the file. Inside that object, add exactly one property line `getNarrativeV2UatRender,` immediately after `getAuditStatus,`. Save the file. Make no other change. Then run `node --check .\src\application\production-runtime.js`, `git diff --check`, and `git --no-pager diff -- src/application/production-runtime.js`, and paste the complete output before proceeding.
 
 Last verified:
 2026-08-22
