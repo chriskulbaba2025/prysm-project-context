@@ -33,7 +33,7 @@ Persisted source status evidence:
 
 ## DQV-001 — SERP / competitor source times out before dependable acquisition
 
-Classification: VERIFIED FAILURE; ROOT-CAUSE BUDGET MISMATCH HIGH CONFIDENCE; exact in-adapter timeout point UNRESOLVED.
+Classification: VERIFIED FAILURE; CURRENT DIRECT-CRAWL BOTTLENECK DISPROVED; exact historical timeout point UNRESOLVED; composite timeout-budget risk remains HIGH CONFIDENCE.
 
 Persisted evidence:
 - `normalized/dataforseo-serp.json`:
@@ -55,8 +55,18 @@ Code-path evidence at application commit `33ec9b63083f62141141ea6363828c9e8152f1
 - Only after direct supplied-competitor crawling does the adapter run DataForSEO live SERP queries serially for service-derived keywords.
 - Each DataForSEO SERP request has its own 45,000 ms timeout.
 
-Implication:
-The 60-second orchestration envelope is structurally capable of expiring before the intended composite work completes. This can erase both supplied-competitor evidence and SERP evidence even when the provider itself is healthy.
+Isolated direct-crawl diagnostic on 2026-08-23 against exact application commit `33ec9b63083f62141141ea6363828c9e8152f188`:
+- `https://ginakeeping.ca/` — `AVAILABLE`, 8 pages, 1.9 seconds, no limitations.
+- `https://traceyjazmin.com/` — `AVAILABLE`, 8 pages, 3.0 seconds, no limitations.
+- `https://clarityofgoalsandvision.com/` — `AVAILABLE`, 8 pages, 3.7 seconds, no limitations.
+- Total current direct-crawl wall time: approximately 8.6 seconds.
+- Diagnostic was local/read-only: no DataForSEO call, no audit mutation, no S3/database/lifecycle/report mutation.
+
+Interpretation of diagnostic:
+- The supplied competitor sites are currently reachable and the direct-crawl phase is not a systemic 60-second bottleneck.
+- This does not prove they were equally fast during the historical production run, but it materially lowers the probability that the direct-crawl phase alone caused the repeated production timeout.
+- With approximately 51 seconds remaining in the 60-second production envelope after a representative 8.6-second direct crawl, the adapter still executes four DataForSEO SERP requests serially. Each individual request is allowed up to 45 seconds, so the composite source timeout is still structurally incompatible with its worst-case internal work budget.
+- The next diagnostic must therefore isolate one live DataForSEO SERP request and measure actual provider latency/status before any timeout-policy or adapter change is considered.
 
 Current downstream effect:
 - Competitor canonical evidence is absent/failed.
@@ -65,9 +75,9 @@ Current downstream effect:
 - Report status mapping is inconsistent: canonical source failure is later represented as `NOT_APPLICABLE` in the Report v2 manifest.
 
 Next diagnostic:
-1. Measure the three supplied competitor direct-crawl boundaries independently, with no audit mutation.
-2. Run one isolated DataForSEO SERP live request for one service keyword and record response time/status/cost.
-3. Do not rerun the full audit.
+1. Run one isolated DataForSEO SERP live request for one service keyword and record response time/status/cost.
+2. Do not rerun the full audit.
+3. Do not change timeout policy or adapter sequencing until the provider timing result is known.
 
 Potential change boundary if confirmed:
 - `services/worker/src/adapters/dataforseo-serp/serp-adapter.js`
@@ -193,4 +203,4 @@ Report manifest/status mapping only after the authoritative source semantics are
 
 ## Current exact next action
 
-Run isolated, non-mutating diagnostics for DQV-001: direct-crawl timing for the three supplied competitor sites, then one minimal DataForSEO SERP live request. Record timing, response status, and cost. Do not rerun this audit and do not change application code yet.
+Run one isolated, minimal DataForSEO SERP live request for one service keyword using the production client path. Record elapsed time, provider/task status, result count, error details if any, and cost exposure. Do not rerun this audit and do not change application code yet.
