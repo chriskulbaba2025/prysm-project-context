@@ -21,8 +21,12 @@ Verified checkpoint:
   2. one `getNarrativeV2UatRender(auditId, tenantId)` method that loads existing audit metadata, resolves `clientId`, loads the persisted AuditRequest, and calls only the read-only persisted-artifact renderer;
   3. one `getNarrativeV2UatRender,` property exposed through the existing frozen `auditService` object.
 - Latest full `production-runtime.js` diff shows only those intended additions. No lifecycle transition, audit execution, artifact write, provider call, or model call was added.
-- `node --check .\src\application\production-runtime.js` and `git diff --check` both passed silently before the final diff was shown.
-- Existing runtime-focused regression candidate confirmed in the repository: `src/application/report-design-boundary.test.js`. It imports `createProductionRuntime` and exercises the production composition boundary, so it is an appropriate existing regression check before moving to `server.js`.
+- `node --check .\src\application\production-runtime.js` and `git diff --check` both passed silently.
+- Targeted runtime regression test `node --test .\src\application\report-design-boundary.test.js` passed 3/3:
+  - `PRYSM-V2-PROD-01a` PASS
+  - `PRYSM-V2-PROD-01b` PASS
+  - `PRYSM-V2-PROD-01c` PASS
+  - 0 fail, 0 skipped, 0 todo.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
 
@@ -33,10 +37,10 @@ Completed:
 - Local shell-path mismatch resolved.
 - `production-path.js` UAT source-file unit completed and verified.
 - Manual VS Code handoff for exact `production-runtime.js` completed.
-- `production-runtime.js` import, read-only UAT method, and `auditService` exposure are complete and syntax/diff verified.
+- `production-runtime.js` import, read-only UAT method, and `auditService` exposure are complete and verified by syntax, diff check, full Git diff, and the existing production-boundary regression suite (3/3 PASS).
 
 In progress:
-- Run one existing runtime composition regression test before moving to `server.js`.
+- Move to the third and final planned application source-file unit, `src/server.js`, using the same manual VS Code handoff method before any edit.
 
 Blocked:
 - No current application-code blocker established.
@@ -44,6 +48,7 @@ Blocked:
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
+- User must supply the exact current `server.js` from the verified working copy before modification.
 - Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
@@ -54,10 +59,9 @@ Important constraints:
 - Do not repair `NV2-PROD-02` in this work package.
 - Do not modify historical stash entries.
 - Avoid full-file rewrites; use surgical edits only.
-- Do not move to `server.js` until the `production-runtime.js` regression check passes.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `node --test .\src\application\report-design-boundary.test.js` and paste the complete output. Do not edit any file first.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\server.js`. In the VS Code editor that opens, press `Ctrl+A`, then `Ctrl+C`, and paste that exact current file into the chat. Do not edit it first and do not use an earlier copy.
 
 Last verified:
 2026-08-22
