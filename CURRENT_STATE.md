@@ -18,16 +18,22 @@ Verified checkpoint:
 - Clean untouched `main` at `c116e730a38539066852f107582959693e666781` produces 5 PASS / 1 FAIL in `src/application/narrative-v2-production-path.test.js`.
 - The sole failure is `NV2-PROD-02`, which expects `draft_rendered` but receives `narrative_failed` on clean main. This is a verified pre-existing baseline defect and is out of scope for this UAT work package.
 - Direct symbol checks confirmed neither `renderNarrativeV2UatFromPersistedArtifacts` nor `renderReportV2Uat` exists in the current tracked working copy.
-- `git status --short` showed only unrelated untracked `../../lifecycle-failure.txt`; there are no tracked UAT source changes.
-- Prior full-file paste attempts are abandoned. No UAT application source-file change is currently accepted.
-- The latest deterministic PowerShell edit also failed before touching source because `[System.IO.File]::ReadAllText("src/narrative-v2/production-path.js")` resolved against `C:\Users\kulba\Downloads\vantage-platform-main`, even though the PowerShell prompt displayed `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Therefore the immediate blocker is a PowerShell/.NET current-directory mismatch, not application code.
+- `git status --short` shows only unrelated untracked `../../lifecycle-failure.txt`; there are no tracked UAT source changes.
+- The earlier PowerShell/.NET path mismatch is resolved. `Get-Location`, `git rev-parse --show-toplevel`, `Resolve-Path .\src\narrative-v2\production-path.js`, and `[Environment]::CurrentDirectory` now all reconcile to the intended Desktop working copy under `C:\Users\kulba\Desktop\vantage-platform`.
+- Verified local file path: `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\production-path.js`.
+- Local HEAD remains exactly `c116e730a38539066852f107582959693e666781`.
+- `git diff -- src/narrative-v2/production-path.js` is empty and `git diff --cached -- src/narrative-v2/production-path.js` is empty.
+- `Select-String` against both the disk file and `HEAD:services/worker/src/narrative-v2/production-path.js` returns no `UAT_RERENDER` symbols.
+- The uploaded `Pasted code(7).js` contained UAT rerender code and duplicate `UAT_RERENDER_*` constants, but that content does not match the verified tracked Desktop file and must be treated as a stale/non-authoritative copy. It must not be used as the edit baseline.
+- Prior full-file paste attempts are abandoned. No UAT application source-file change is currently accepted or present in the tracked working copy.
 - Existing unrelated historical stash entries remain untouched.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
 
 Current environment / branch / version:
 - Context repository: `chriskulbaba2025/prysm-project-context`, branch `main`.
 - Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
+- Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Verified target source file: `src/narrative-v2/production-path.js` in that working directory.
 - Last verified tracked state: no UAT source modifications; only unrelated `?? ../../lifecycle-failure.txt`.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
@@ -39,17 +45,21 @@ Completed:
 - Bounded UAT rerender objective was authorized and persisted into project constraints.
 - Minimum architecture remains: render from persisted governed artifacts in memory and expose the result only through an authenticated UAT read path; do not rewrite S3 or lifecycle state.
 - Baseline isolation proved `NV2-PROD-02` is pre-existing and out of scope.
+- Local shell-path reconciliation is complete.
 - Working-copy verification proved all prior UAT paste attempts are absent from tracked source.
+- The stale uploaded code copy has been explicitly disqualified as an edit baseline.
 
 In progress:
-- Resolve the local shell path mismatch before making any source edit.
+- Obtain the exact current `production-path.js` from the verified Desktop working copy through the manual VS Code handoff before making the first surgical UAT edit.
 
 Blocked:
-- PowerShell prompt path and .NET `Environment.CurrentDirectory` appear to disagree, causing relative file operations to target the wrong repository copy.
+- No application-code blocker is currently established. Work is paused only at the required manual source-file handoff boundary.
 
 Important constraints:
 - Work one verified application source file at a time.
 - Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
+- The user must supply the exact current file from the verified VS Code/current working copy before source modification.
+- Do not use `Pasted code(7).js` or any earlier stale copy as the edit baseline.
 - Never deliver PRYSM code files through generated/downloadable file links; all code replacements must be inline in the conversation.
 - For this work package only, a read-only UAT rerender path is authorized for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c`.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
@@ -64,7 +74,7 @@ Important constraints:
 - Avoid full-file rewrites; use small surgical edits only.
 
 Exact next action:
-In a fresh chat, from the current PowerShell session run only: `Get-Location`, `git rev-parse --show-toplevel`, `Resolve-Path .\src\narrative-v2\production-path.js`, and `[Environment]::CurrentDirectory`. Use those outputs to identify the true tracked file path. Do not edit source until the shell path mismatch is resolved.
+From the already-verified PowerShell location `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\narrative-v2\production-path.js`. In the VS Code editor that opens, press `Ctrl+A`, then `Ctrl+C`, and paste that exact file into the chat. Do not edit it first and do not use any previously uploaded copy.
 
 Last verified:
 2026-08-22
