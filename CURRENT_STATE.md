@@ -4,65 +4,64 @@ Project:
 PRYSM — governed website conversion-readiness report
 
 Current objective:
-Execute authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce a read-only Viewer v2.2.0 UAT render for existing audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` from already-persisted governed inputs, with zero provider calls, zero Writer/Judge/model calls, no new audit, no lifecycle transition, and no mutation of the approved report artifact.
+Complete authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce a read-only Viewer v2.2.0 UAT render for existing audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` from already-persisted governed inputs, with zero provider calls, zero Writer/Judge/model calls, no new audit, no lifecycle transition, and no mutation of the approved report artifact.
 
 Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Application base `main`: `c116e730a38539066852f107582959693e666781`.
+- Application working base: local `main` at `c116e730a38539066852f107582959693e666781` before the current uncommitted work-package edits.
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Current governed viewer contract: Viewer v2.2.0 / 16 pages.
-- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes; this work package must not rewrite that artifact.
-- `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
-- `src/narrative-v2/production-path.js` is complete for this work-package stage and verified by `node --check`, `git diff --check`, and full Git diff. It contains exactly: Viewer-version import, authorized audit-ID constant, and one exported read-only `renderNarrativeV2UatFromPersistedArtifacts(...)` function.
-- `src/application/production-runtime.js` is complete for this work-package stage. It imports the UAT renderer, exposes one read-only `getNarrativeV2UatRender(auditId, tenantId)` method, and exposes that method through `auditService`.
-- `production-runtime.js` verification passed: syntax, `git diff --check`, full Git diff, and `node --test .\src\application\report-design-boundary.test.js` with 3/3 PASS.
-- `Pasted code(10).js` is the accepted manual baseline for `src/server.js`.
-- `server.js` contains one exact bounded GET route at `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render` inserted immediately before the existing audit-status route matcher.
-- Latest server diff shows only that route addition. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
-- No existing report route, report artifact, lifecycle state, provider path, or model path was modified.
-- Server syntax/diff verification passed: `node --check .\src\server.js` and `git diff --check` produced no errors; full no-pager diff showed only the intended bounded route.
-- Existing real-handler authorization regression `node --test .\src\identity\server-auth-fail-closed.test.js` passed 1/1 on 2026-08-22. It dynamically imports the real `createRequestHandler` and confirms the internal/principal auth boundaries remain fail-closed after the UAT route addition.
-- The smallest direct route-test harness is the existing `src/identity/server-auth-fail-closed.test.js`; it already imports the real `createRequestHandler`, provides request/response test doubles, and uses memory identity/lifecycle repositories.
-- `createMemoryLifecycleRepository()` already exposes `findAuditTenant(auditId)`, so the direct UAT route test can exercise the real audit-ownership authorization path without modifying application code.
+- Current governed viewer contract: Viewer v2.2.0 / 16 pages; report design metadata 2.0.0; scoring remains 4.1.1.
+- Existing completed audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` still serves immutable persisted Viewer v2.1.0 bytes. This work package must not rewrite that artifact.
+- `NV2-PROD-02` is a verified pre-existing clean-main defect (5 PASS / 1 FAIL in `src/application/narrative-v2-production-path.test.js`) and remains out of scope.
+- `src/narrative-v2/production-path.js` has the bounded UAT renderer additions only: Viewer-version import, authorized audit-ID constant, and one exported `renderNarrativeV2UatFromPersistedArtifacts(...)`. Syntax and diff checks passed; accidental duplicate function was removed.
+- `src/application/production-runtime.js` has the bounded read-only runtime wiring only: import UAT renderer, add `getNarrativeV2UatRender(auditId, tenantId)`, expose it through `auditService`. Syntax/diff checks passed. `node --test .\src\application\report-design-boundary.test.js` passed 3/3.
+- `src/server.js` has one bounded GET route only: `/api/v1/audits/d3b4cc62-9217-4c0b-b169-e24beb46a79c/uat-render`. It reuses `authorizeAuditAccess(...)`, `auditService.getAuditStatus(...)`, `authorizeReportAccess(...)`, and `reportPageLimiter`, then calls only `auditService.getNarrativeV2UatRender(...)` and streams returned HTML bytes with `cache-control: no-store` and `x-prysm-viewer-version`.
+- `server.js` syntax/diff checks passed. Existing real-handler fail-closed regression `node --test .\src\identity\server-auth-fail-closed.test.js` passed 1/1 after the route addition.
+- The existing `src/identity/server-auth-fail-closed.test.js` is the selected smallest direct route-test harness. It already imports the real `createRequestHandler`, provides request/response test doubles, and uses memory identity/lifecycle repositories. `createMemoryLifecycleRepository()` already exposes `findAuditTenant(auditId)`.
+- No direct success-path test of the new UAT route has been added yet. The route must not be deployed or treated as complete until that direct proof is added and passes.
 - Unrelated `../../lifecycle-failure.txt` remains untouched.
 - Historical stash entries remain untouched.
+
+Current environment / branch / version:
+- Context repo: `chriskulbaba2025/prysm-project-context`, branch `main`.
+- Application repo: `chriskulbaba2025/vantage-platform`, local branch `main`, base HEAD `c116e730a38539066852f107582959693e666781` plus current uncommitted work-package edits.
+- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Viewer target: v2.2.0 / 16 pages.
 
 Completed:
 - Report v2 rebuild, targeted tests, CI, merge, and production deployment verification.
 - Root cause of visual-UAT blocker verified: immutable persisted report bytes are older than deployed Viewer v2.2.0 renderer.
 - Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
-- Local shell-path mismatch resolved.
 - `production-path.js` UAT source-file unit completed and verified.
 - `production-runtime.js` UAT source-file unit completed and verified.
-- Manual VS Code handoff for exact current `server.js` completed.
-- Bounded server UAT route inserted and syntax/diff verified.
+- `server.js` bounded UAT route added and syntax/diff verified.
+- Existing production-boundary regression passed 3/3.
 - Existing server fail-closed authorization regression passed 1/1.
-- Direct UAT route test harness selected: `src/identity/server-auth-fail-closed.test.js`; no new test file is needed.
 
 In progress:
-- Extend only `src/identity/server-auth-fail-closed.test.js` with narrowly-scoped direct route tests proving unauthorized denial and successful authorized Viewer v2.2.0 byte streaming through `auditService.getNarrativeV2UatRender(...)`.
+- Add narrowly-scoped direct route tests to the existing `src/identity/server-auth-fail-closed.test.js` proving unauthorized denial and successful authorized Viewer v2.2.0 byte streaming through the stubbed read-only UAT service.
 
 Blocked:
-- No current application-code blocker established.
+- No application-code blocker established. Deployment is intentionally blocked on direct UAT-route acceptance proof.
 
 Important constraints:
-- Work one verified application source/test file at a time.
-- Do not directly edit `vantage-platform` unless the user explicitly changes the manual operating method.
-- User must supply the exact current `src/identity/server-auth-fail-closed.test.js` from the verified Desktop working copy before modification.
-- Never deliver PRYSM code files through generated/downloadable links; code must be inline in chat.
+- GitHub context is authoritative durable memory; new chats must read `PROJECT.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before substantive work.
+- Manual VS Code workflow remains mandatory: one verified source/test file at a time; do not directly edit `vantage-platform` unless the user explicitly changes the method.
+- User supplies the exact current local file before modification. Do not substitute a stale or repository copy when the local working copy is required.
+- Code is inline-only; never deliver PRYSM code as downloadable files.
 - No provider, Writer, Judge, or other model calls for the UAT rerender path.
 - No new audit.
 - No lifecycle transition or state rewrite.
 - No overwrite/delete/mutation of existing report, canonical evidence, scoring, findings, Narrative v2, or manifest artifacts.
-- Normal tenant/report authorization must remain in force.
+- Normal tenant/report authorization must execute before any UAT bytes are returned.
 - Do not edit `services/worker/src/report/sections-conversion.js`.
 - Do not repair `NV2-PROD-02` in this work package.
-- Do not modify historical stash entries.
-- Avoid full-file rewrites; use surgical edits only.
+- Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
+- Do not deploy or call the production UAT endpoint until the direct route test passes and the complete local diff is re-verified.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\identity\server-auth-fail-closed.test.js`. In VS Code, press `Ctrl+A`, then `Ctrl+C`, and paste the exact current test file into the chat. Do not edit it first and do not use the GitHub copy as a substitute for the local working copy.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `code .\src\identity\server-auth-fail-closed.test.js`. In VS Code, press `Ctrl+A`, then `Ctrl+C`, and paste the exact current local test file into the new chat. Do not edit it first. The new chat must read the authoritative project context repository before proposing the test edit.
 
 Last verified:
 2026-08-22
