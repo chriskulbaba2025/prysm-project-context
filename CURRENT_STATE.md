@@ -4,24 +4,29 @@ Project:
 PRYSM — governed website conversion-readiness report
 
 Current objective:
-Complete authorized work package `PRYSM-V2-UAT-RERENDER-01`: produce and visually inspect a read-only Viewer v2.2.0 UAT render for existing audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` from already-persisted governed inputs, with zero provider calls, zero Writer/Judge/model calls, no new audit, no lifecycle transition, and no mutation of the approved report artifact.
+Validate the accuracy and completeness of the data and conclusions in the selected PRYSM audit for Rebootbusinesscoaching before making further report or audit-system changes.
 
 Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Application working base before this work package: `main` at `c116e730a38539066852f107582959693e666781`.
-- Verified work-package commit: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
-- The commit contains exactly four intended files: `services/worker/src/application/production-runtime.js`, `services/worker/src/identity/server-auth-fail-closed.test.js`, `services/worker/src/narrative-v2/production-path.js`, and `services/worker/src/server.js`.
-- Direct UAT-route acceptance proof passed cleanly: 5 tests / 5 pass / 0 fail / 0 cancelled.
-- Complete local work-package diff was verified clean; `git diff --check` returned no output.
-- The only remaining local status item after commit is pre-existing unrelated `../../lifecycle-failure.txt`, which remains untouched and untracked.
-- Commit `33ec9b63083f62141141ea6363828c9e8152f188` was pushed successfully to `origin/main`; remote GitHub verification confirms the exact commit SHA and message.
-- Railway and both Vercel deployment statuses attached to the commit are SUCCESS.
-- Push-triggered `Vantage Worker CI` run `32613952114` completed successfully on 2026-08-22. Every configured step passed, including `npm test`, Narrative v2, schemas, artifacts, lifecycle + Postgres, WP2–WP12 acceptance, and provisioning. The Node 20 deprecation annotation is informational and did not fail the run.
+- Current verified application commit on local and remote `main`: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
+- The UAT rerender commit contains exactly four intended files: `services/worker/src/application/production-runtime.js`, `services/worker/src/identity/server-auth-fail-closed.test.js`, `services/worker/src/narrative-v2/production-path.js`, and `services/worker/src/server.js`.
+- Direct UAT-route acceptance proof passed 5/5 with 0 fail and 0 cancelled.
+- Complete local work-package diff was verified clean; `git diff --check` returned no output. Pre-existing unrelated `../../lifecycle-failure.txt` remained untouched and untracked.
+- Commit `33ec9b63083f62141141ea6363828c9e8152f188` was pushed successfully to `origin/main`; remote GitHub verification confirmed the exact commit SHA and message.
+- Railway and both Vercel deployment statuses attached to the commit were SUCCESS.
+- Push-triggered `Vantage Worker CI` run `32613952114` completed successfully. Every configured step passed, including `npm test`, Narrative v2, schemas, artifacts, lifecycle + Postgres, WP2–WP12 acceptance, and provisioning. The Node 20 deprecation annotation was informational only.
 - Production worker base URL is `https://vantage-platform-production.up.railway.app`.
-- First authorized production read-only UAT render call completed successfully on 2026-08-22 for audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c`: HTTP 200, `x-prysm-viewer-version: 2.2.0`, `cache-control: no-store`, 134274 bytes returned and saved locally as `prysm-v2.2.0-uat.html` in the worker directory.
-- The UAT render remains a transient local inspection artifact only. The immutable persisted Viewer v2.1.0 report artifact was not overwritten or mutated.
-- `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope.
+- Authorized production read-only UAT render for historical audit `d3b4cc62-9217-4c0b-b169-e24beb46a79c` succeeded: HTTP 200, `x-prysm-viewer-version: 2.2.0`, `cache-control: no-store`, 134274 bytes saved locally as `prysm-v2.2.0-uat.html`.
+- That UAT HTML remained transient and did not overwrite or mutate the immutable persisted Viewer v2.1.0 artifact.
+- A formal visual-UAT PASS/FAIL disposition for that historical render was not recorded before the user moved to data-quality validation.
+- User-provided PRYSM screen on 2026-08-23 identifies the audit selected for data validation:
+  - Website: `https://rebootbusinesscoaching.com/`
+  - Audit ID: `97d6b2c7-03b9-4530-8ea7-16557502c638`
+  - Version shown in UI: `3`
+  - Created/updated shown in UI: `2026-08-22, 11:09 p.m.`
+- No accuracy/completeness adjudication has yet been performed on audit `97d6b2c7-03b9-4530-8ea7-16557502c638`.
+- `NV2-PROD-02` remains a verified pre-existing clean-main defect and is out of scope unless explicitly reopened.
 - Historical stash entries remain untouched.
 
 Current environment / branch / version:
@@ -29,46 +34,33 @@ Current environment / branch / version:
 - Application repo: `chriskulbaba2025/vantage-platform`, local and remote `main` at `33ec9b63083f62141141ea6363828c9e8152f188` as last verified.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Production worker: `https://vantage-platform-production.up.railway.app`.
-- Viewer target: v2.2.0 / 16 pages.
-- Local UAT file: `C:\Users\kulba\Desktop\vantage-platform\services\worker\prysm-v2.2.0-uat.html`.
+- Governed viewer contract: Viewer v2.2.0 / 16 pages.
+- Selected data-validation audit: `97d6b2c7-03b9-4530-8ea7-16557502c638` for `https://rebootbusinesscoaching.com/`.
 
 Completed:
-- Report v2 rebuild, targeted tests, CI, merge, and production deployment verification for the prior Viewer v2.2.0 release.
-- Root cause of visual-UAT blocker verified: immutable persisted report bytes are older than deployed Viewer v2.2.0 renderer.
-- Bounded UAT rerender authorization persisted in `CONSTRAINTS.md`.
-- UAT renderer source-file unit completed and verified.
-- UAT runtime wiring source-file unit completed and verified.
-- Bounded UAT route source-file unit completed and verified.
-- Direct UAT-route acceptance test passed 5/5 with 0 fail and 0 cancelled.
-- Complete local four-file diff verified clean; no unintended application files were modified.
-- Work package committed and pushed to `origin/main` at `33ec9b63083f62141141ea6363828c9e8152f188`.
-- Commit file set verified: exactly four intended files.
-- Railway/Vercel deployment statuses verified successful.
-- `Vantage Worker CI` run `32613952114` verified SUCCESS tip-to-tail.
-- First production read-only UAT render call verified: HTTP 200 / Viewer 2.2.0 / no-store / 134274 bytes saved locally.
+- Viewer v2.2.0 / 16-page report rebuild and prior release verification.
+- `PRYSM-V2-UAT-RERENDER-01` implementation, direct-route proof, clean diff verification, commit, push, deployment-status verification, and exact-head CI verification.
+- Production read-only UAT endpoint successfully returned Viewer v2.2.0 HTML for the authorized historical audit without mutating persisted artifacts.
+- Selected the Rebootbusinesscoaching audit as the next subject for accuracy/completeness validation.
 
 In progress:
-- Visually inspect the local `prysm-v2.2.0-uat.html` render for the approved Viewer v2.2.0 / 16-page report presentation. Do not alter application code or publish/overwrite the approved persisted report artifact during inspection.
+- Begin a read-only evidence-to-report reconciliation for audit `97d6b2c7-03b9-4530-8ea7-16557502c638`: determine what evidence was actually collected and persisted, what the report says, whether each material claim is supported, and whether material evidence or conclusions are missing.
 
 Blocked:
-- No code, CI, deployment, or UAT-render blocker remains. Work package completion now depends on visual UAT findings.
+- No known code or deployment blocker.
+- Data-quality validation has not started because the selected audit's persisted evidence/artifact inventory and generated report have not yet been reconciled in the new session.
 
 Important constraints:
-- GitHub context is authoritative durable memory.
-- Manual VS Code workflow remains mandatory; do not directly edit `vantage-platform` unless the user explicitly changes the method.
-- Code is inline-only; never deliver PRYSM code as downloadable files.
-- No provider, Writer, Judge, or other model calls for the UAT rerender path.
-- No new audit.
-- No lifecycle transition or state rewrite.
-- No overwrite/delete/mutation of existing report, canonical evidence, scoring, findings, Narrative v2, or manifest artifacts.
-- Normal tenant/report authorization must execute before any UAT bytes are returned.
-- Do not edit `services/worker/src/report/sections-conversion.js`.
-- Do not repair `NV2-PROD-02` in this work package.
+- GitHub context is authoritative durable memory; new chats must read `PROJECT.md`, latest `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before substantive work.
+- Treat accuracy, completeness, and presentation as separate questions. Do not infer data correctness from a visually correct report or green CI.
+- Start with read-only inspection of the existing selected audit. Do not rerun paid providers, Writer/Judge/models, create a new audit, mutate lifecycle state, or overwrite persisted artifacts merely to validate existing audit data unless the user explicitly authorizes that later.
+- Preserve the active report-rebuild constraints in `CONSTRAINTS.md`, including no changes to evidence collection, providers/adapters, scoring, lifecycle, storage, canonical evidence plumbing, Writer/Judge governance, orchestration, n8n, or authentication as part of report-presentation work.
+- Do not repair `NV2-PROD-02` unless explicitly reopened.
 - Do not modify historical stash entries or unrelated `lifecycle-failure.txt`.
-- The UAT HTML must remain a transient local inspection artifact; do not publish it back over the approved report artifact.
+- If code changes become necessary after the data audit identifies a proven defect, return to the governed manual VS Code source-file workflow and applicable governed-coding protocol before editing.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly: `start .\prysm-v2.2.0-uat.html`. Visually inspect the report in the browser. If anything looks wrong, capture a screenshot of the specific page/section and paste it into the chat. Do not edit or publish anything yet.
+In the new chat, read the authoritative governing files first, then use audit `97d6b2c7-03b9-4530-8ea7-16557502c638` as the sole validation target and perform a read-only inventory of its generated report plus persisted canonical evidence/artifacts. Report the inventory and any missing/unavailable evidence before judging individual report claims or proposing code changes.
 
 Last verified:
-2026-08-22
+2026-08-23
