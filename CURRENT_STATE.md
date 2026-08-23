@@ -10,7 +10,9 @@ Critically validate and improve the accuracy/completeness of the audit-data acqu
 
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Last verified committed application `main`: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
+- Last verified remote application `main` before the current local data-quality work: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
+- Current verified local application `main`: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
+- The local DQV-002 commit has not yet been verified as pushed or deployed.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer contract remains Viewer v2.2.0 / 16 governed pages.
 
@@ -35,47 +37,35 @@ Proven historical failure plus timeout/cancellation design defect.
 - One keyword, `4-Week Reboot Series`, failed cleanly with DataForSEO task status 40101 `Internal SE Server Error`.
 - The outer source timeout can erase already-valid partial evidence because persistence occurs only after the adapter returns.
 - The orchestration AbortSignal is not propagated into the DataForSEO SERP HTTP request and shared `withTimeout()` does not abort the underlying fetch, so timed-out attempts can overlap later retries and create duplicate paid-call risk.
-- DQV-001 code repair remains deferred while the current DQV-002 repair is completed and verified.
+- DQV-001 implementation remains deferred until DQV-003 is closed unless the user changes priority.
 
 ### DQV-002 — On-Page content parsing normalization
 
-Proven data-loss defect. Raw DataForSEO acquisition quality is good; PRYSM normalization lost the content.
+Status: VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
-Persisted raw evidence:
-- Content parsing requested 5 key pages, completed 5, failed 0.
-- Actual provider shape is `res.result.items[0].page_content`.
-- Usable text lives under `page_content.main_topic[*].primary_content/secondary_content` and `page_content.secondary_topic[*].primary_content/secondary_content`.
-- Approximate extracted content: `/` 473 words, `/about` 765, `/services` 685, `/home` 473, `/insights` 310.
-- Raw content includes real offers, pricing, testimonials, credentials, coaching services, and calls to action.
-
-Persisted normalized defect:
-- All five normalized contentParsing records had empty `text`, `hasMainContent: false`, null metrics.
-- Pages retained empty `bodyText` and `_contentAvailable: false`.
-- Site `_contentEvidenceAvailable` was false.
-
-Local repair status — VERIFIED LOCALLY, NOT COMMITTED:
-- User authorized the smallest coherent DQV-002 adapter repair.
-- Current working-copy file: `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`.
-- Adapter version is `1.2.1` in the exact executing working-copy file.
-- Diagnostic reset proved the root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
-- The normalizer was replaced as one coherent bounded repair: unwrap `result.items[0]`, read `page_content.main_topic` and `secondary_topic`, collect primary/secondary topic text, deduplicate exact body fragments, exclude provider-classified header/footer content, preserve the older fixture shape, and retain bounded normalized text.
-- No scoring, lifecycle, storage, report, competitor, microdata, authentication, or orchestration behavior is intentionally changed by this repair.
-- `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` passes after the coherent normalizer repair.
-- Production-shaped, fixture-only, no-network DQV-002 diagnostic PASSES against the exact executing file.
-- Verified diagnostic output: adapterVersion `1.2.1`; normalized content text length 261; `hasMainContent: true`; page `_contentAvailable: true`; site `_contentEvidenceAvailable: true`; testimonials true; credentials true; pricing true; duplicate fragment count 1; header excluded true; footer excluded true.
-- The existing targeted adapter suite was rerun after final repair and now passes 68/68.
-- One stale hard-coded test assertion requiring adapter version `1.2.0` was removed because the adjacent assertion already requires `payload.adapterVersion === ADAPTER_VERSION`; no production behavior was changed by that test cleanup.
-- DQV-002 is therefore verified locally. It remains uncommitted and undeployed.
+- Proven root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
+- Repair: adapter version `1.2.1`; unwrap `result.items[0]`; read `page_content.main_topic` and `secondary_topic`; collect primary/secondary topic text; retain bounded normalized text; exact-text deduplication; exclude provider-classified header/footer; preserve older fixture shape.
+- Production-shaped no-network diagnostic PASS: normalized text non-empty; page `_contentAvailable: true`; site `_contentEvidenceAvailable: true`; testimonials/credentials/pricing detected; duplicate fragment count 1; header/footer excluded.
+- Adapter syntax PASS.
+- Test-file syntax PASS.
+- Final targeted adapter suite PASS: 68/68.
+- Final `git diff --check` and cached diff check PASS.
+- Local commit: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
+- Files committed:
+  - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+  - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
+- Unrelated untracked files were intentionally excluded from the commit.
 
 ### DQV-003 — microdata provider contract
 
-Proven provider-contract defect.
+Proven provider-contract defect; now the active repair target.
 
 - On-Page task uses `validate_micromarkup: true`.
 - Current microdata request sends task ID without required page URL.
 - Provider returned 40501 `Invalid Field: 'url'.`
 - `schema.structured_data` is therefore unavailable.
-- Repair is deferred until DQV-002 is closed.
+- Proven client-side boundary: current `getMicrodata(taskId)` constructs `[{ id: taskId }]`; provider requires task ID plus resource URL.
+- Before editing, inspect the exact current local `getMicrodata()` implementation and then the exact caller boundary that supplies its arguments.
 
 ### DQV-004 — seven-page crawl
 
@@ -100,20 +90,21 @@ Proven report-data mapping defect.
 - GitHub context is authoritative durable memory; do not reconstruct project state from chat history when starting a new chat.
 - At the beginning of a new substantive chat, read `PROJECT.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before doing work.
 - Application changes use the governed manual VS Code workflow.
-- Default code flow: verify current source file → inspect complete file → make one coherent bounded repair → provide complete replacement directly in chat or clear surgical reference-point instructions when simple → user applies it → syntax check → targeted/relevant regression tests → correct failures → only after verification update/commit the application.
+- Default code flow: verify current source file → inspect complete relevant boundary → make one coherent bounded repair → user applies it → syntax check → targeted/relevant tests → correct failures → inspect diff → only after verification commit/update.
 - Do not make the user repeatedly edit the same file when the coherent change can be grouped safely.
 - Project-wide three-attempt diagnostic reset is active: after three unsuccessful attempts on the same failure, stop fixes and perform a deeper diagnostic reset before any fourth attempt.
 - Open exact application files from the active PowerShell working path with `code -r <exact-path>` before manual editing when duplicate workspace/file-copy ambiguity is possible.
+- When a command/code block/reference from earlier is needed again, reproduce it in the current reply; do not direct the user to scroll back.
 - Code must not be delivered through generated download links; use conversation code/chunks.
-- No application repository write, commit, merge, deployment, production audit rerun, provider/model rerun, or production artifact mutation without the appropriate explicit approval.
+- No application repository remote write/push, merge, deployment, production audit rerun, provider/model rerun, or production artifact mutation without the appropriate explicit approval.
 - Existing selected-audit artifacts remain immutable.
 - Do not broaden DQV repairs into unrelated scoring, lifecycle, storage, Writer/Judge, authentication, report-design, n8n, or architecture work.
 
 ## Exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact local application diff before any commit: run `git status --short` and `git diff -- src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`. Confirm that only the intended DQV-002 adapter normalizer/version change and the stale duplicate version assertion removal are present. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts without explicit user approval.
+DQV-003: from `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact current local `getMicrodata()` implementation in `src/adapters/dataforseo-onpage/dataforseo-onpage-client.js` without editing it. Verify the request payload and method boundary first. After that, inspect the exact caller in `dataforseo-onpage-adapter.js` to determine the smallest coherent two-file contract repair if the caller must supply a URL. Do not make a paid provider call, deploy, rerun the production audit, or mutate persisted artifacts during this inspection.
 
-After the DQV-002 application change is reviewed and committed through the governed workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
+After DQV-003 is verified through the governed workflow, return to DQV-001 before DQV-005 unless the user explicitly changes priority.
 
 Last verified:
 2026-08-23
