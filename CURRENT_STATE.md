@@ -64,7 +64,8 @@ Local repair status — NOT COMMITTED:
 - The duplicate definition was removed and syntax passed.
 - A separate path/version mismatch was then proven: VS Code had been displaying a different file copy while PowerShell/Node executed `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js`. The exact executing file was reopened from PowerShell, its adapter version was set to `1.2.1`, saved, and `node --check` passed.
 - The production-shaped no-network diagnostic was rerun against that exact executing file on 2026-08-23 and still failed at `contentParsing.text is empty`.
-- Therefore the version/path issue is no longer the explanation for DQV-002. The current executing `normalizeContentParsing()` logic must be inspected before any further code change.
+- The diagnostic reset then inspected the exact executing `normalizeContentParsing()` implementation. It currently sets `item = res.result || (res.items && res.items[0])`, so for the production shape `item` is the wrapper object, not `res.result.items[0]`. It then reads legacy `item.main_content` / `item.secondary_content`, which are absent. This deterministically produces empty normalized text.
+- Therefore the single verified current root cause is one-level-too-shallow unwrapping plus legacy-field reading inside `normalizeContentParsing()`.
 - The targeted 68-test suite has NOT been rerun after this latest failed diagnostic. The DQV-002 repair is not verified complete and must not be committed/deployed.
 
 ### DQV-003 — microdata provider contract
@@ -102,6 +103,7 @@ Proven report-data mapping defect.
 - Application changes use the governed manual VS Code workflow.
 - Default code flow: verify current source file → inspect complete file → make one coherent bounded repair → provide complete replacement directly in chat or clear surgical reference-point instructions when simple → user applies it → syntax check → targeted/relevant regression tests → correct failures → only after verification update/commit the application.
 - Do not make the user repeatedly edit the same file when the coherent change can be grouped safely.
+- Project-wide three-attempt diagnostic reset is active: after three unsuccessful attempts on the same failure, stop fixes and perform a deeper diagnostic reset before any fourth attempt.
 - Code must not be delivered through generated download links; use conversation code/chunks.
 - No application repository write, commit, merge, deployment, production audit rerun, provider/model rerun, or production artifact mutation without the appropriate explicit approval.
 - Existing selected-audit artifacts remain immutable.
@@ -109,7 +111,7 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact `normalizeContentParsing()` function from the current executing working-copy file `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` without editing it. The latest fixture-only production-shaped diagnostic, run after reopening the exact executing file and confirming adapter version `1.2.1`, still fails because `contentParsing.text` is empty. Determine the one coherent normalization defect from the current function before making any further code change. Do not run the targeted suite, commit, deploy, rerun the production audit, or mutate persisted artifacts until the diagnostic passes.
+In the exact executing working-copy file `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\adapters\dataforseo-onpage\dataforseo-onpage-adapter.js`, replace the current `normalizeContentParsing()` function as one coherent bounded repair so it unwraps `res.result.items[0]`, reads only `page_content.main_topic` and `page_content.secondary_topic` body topics for the production shape, preserves the older fixture shape, deduplicates exact body fragments, excludes provider-classified header/footer content, and retains bounded normalized text. Then run `node --check` first and rerun the production-shaped no-network diagnostic. Do not run the targeted adapter suite until that diagnostic passes. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts before both verification stages pass.
 
 After DQV-002 is verified and committed through the governed application workflow, return to DQV-003 isolated microdata repair/diagnostic before DQV-001 implementation unless the user explicitly changes priority.
 
