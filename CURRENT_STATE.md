@@ -25,7 +25,9 @@ Verified checkpoint:
 - The exact current Desktop file was opened from the verified PowerShell location and supplied as `Pasted code(8).js`; it is the accepted manual baseline for this source-file unit.
 - First surgical UAT edit is Git-verified: `import { REPORT_V2_VIEWER_VERSION } from "../report/render-report-v2.js";` was added immediately after the existing Narrative v2 renderer import.
 - Second surgical UAT edit is Git-verified: `const UAT_RERENDER_AUDIT_ID = "d3b4cc62-9217-4c0b-b169-e24beb46a79c";` was added immediately after `NARRATIVE_V2_VERSION`.
-- Latest `git diff -- src/narrative-v2/production-path.js` contains exactly those two additions and no other application-source change.
+- The bounded `renderNarrativeV2UatFromPersistedArtifacts(...)` function was inserted at the correct location before `runNarrativeV2FromScored(...)`, but the latest full Git diff shows the complete function was accidentally inserted twice back-to-back.
+- No evidence shows any other unintended application-source change. The import and audit-ID constant remain correct.
+- The current source-file unit must not proceed until one of the duplicate function copies is removed and syntax/Git diff are re-verified.
 - Prior full-file paste attempts are abandoned.
 - Existing unrelated historical stash entries remain untouched.
 - Project-wide code delivery is inline-only; generated/downloadable code files are prohibited.
@@ -35,8 +37,8 @@ Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`, local branch `main`, HEAD `c116e730a38539066852f107582959693e666781`.
 - Working directory: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Verified target source file: `src/narrative-v2/production-path.js`.
-- Accepted manual baseline: `Pasted code(8).js`.
-- Current UAT edits in `production-path.js`: Viewer-version import + authorized audit-ID constant only.
+- Accepted manual baseline: `Pasted code(8).js` plus the subsequently Git-verified surgical edits.
+- Current UAT edits in `production-path.js`: Viewer-version import + authorized audit-ID constant + two identical copies of the intended UAT renderer function.
 - Unrelated untracked `?? ../../lifecycle-failure.txt` remains untouched.
 - Production viewer target: v2.2.0 / 16 pages.
 - Report design metadata: v2.0.0.
@@ -50,12 +52,13 @@ Completed:
 - Local shell-path reconciliation is complete.
 - Manual VS Code handoff for the exact current `production-path.js` is complete.
 - First and second surgical edits to `production-path.js` are complete and verified by Git diff.
+- The first complete UAT renderer insertion was made at the intended source location.
 
 In progress:
-- Add the bounded read-only UAT renderer function to `production-path.js`, then verify that complete source-file unit before moving to any second application file.
+- Correct the accidental duplicate UAT renderer insertion in `production-path.js`, then verify the complete source-file unit before moving to any second application file.
 
 Blocked:
-- No application-code blocker is currently established.
+- `production-path.js` currently contains two identical exported `renderNarrativeV2UatFromPersistedArtifacts(...)` declarations. One duplicate must be removed before syntax verification can pass.
 
 Important constraints:
 - Work one verified application source file at a time.
@@ -76,7 +79,7 @@ Important constraints:
 - Give the user one exact edit at a time with an exact search anchor, exact insertion/replacement text, and one verification command set after the edit.
 
 Exact next action:
-In the already-open `src/narrative-v2/production-path.js`, locate the end of `buildV2Model(...)`, immediately before `async function runNarrativeV2FromScored({`. Insert the complete exported `renderNarrativeV2UatFromPersistedArtifacts(...)` function supplied in the current chat. Save the file. Make no other change. Then run `node --check .\src\narrative-v2\production-path.js`, `git diff --check`, and `git diff -- src/narrative-v2/production-path.js`, and paste the complete output before proceeding.
+In the already-open `src/narrative-v2/production-path.js`, use `Ctrl+F` to search for `export async function renderNarrativeV2UatFromPersistedArtifacts({`. Keep the first occurrence. Delete the entire second duplicate block only, starting at the second occurrence's preceding `/**` comment and ending at that duplicate function's closing `}` immediately before `async function runNarrativeV2FromScored({`. Save the file. Make no other change. Then run `node --check .\src\narrative-v2\production-path.js`, `git diff --check`, and `git --no-pager diff -- src/narrative-v2/production-path.js`, and paste the complete output before proceeding.
 
 Last verified:
 2026-08-22
