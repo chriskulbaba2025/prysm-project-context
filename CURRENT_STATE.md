@@ -11,8 +11,8 @@ Critically validate and improve the accuracy/completeness of the audit-data acqu
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Last verified remote application `main` before the current local data-quality work: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
-- Current verified local application `main` baseline before DQV-003 working-copy edits: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
-- DQV-002 local commit has not yet been verified as pushed or deployed.
+- Current verified local application `main`: `10bf22cb7f9ad74183fa626fcc696fd86e6a34e1` — `fix(onpage): send page URL with microdata request`.
+- DQV-002 and DQV-003 local commits have not yet been verified as pushed or deployed.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer contract remains Viewer v2.2.0 / 16 governed pages.
 
@@ -28,7 +28,7 @@ Critically validate and improve the accuracy/completeness of the audit-data acqu
 
 ### DQV-001 — competitor/SERP timeout boundary
 
-Proven historical failure plus timeout/cancellation design defect.
+Status: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT; NOW ACTIVE.
 
 - Historical competitor source timed out after retries and persisted synthetic `FAILED` with no raw SERP artifact.
 - Exact three supplied competitor crawls currently succeed: 3/3, 8 pages each, ~8.6 seconds total.
@@ -37,7 +37,7 @@ Proven historical failure plus timeout/cancellation design defect.
 - One keyword, `4-Week Reboot Series`, failed cleanly with DataForSEO task status 40101 `Internal SE Server Error`.
 - The outer source timeout can erase already-valid partial evidence because persistence occurs only after the adapter returns.
 - The orchestration AbortSignal is not propagated into the DataForSEO SERP HTTP request and shared `withTimeout()` does not abort the underlying fetch, so timed-out attempts can overlap later retries and create duplicate paid-call risk.
-- DQV-001 implementation remains deferred until DQV-003 is committed through the governed workflow unless the user changes priority.
+- Current task is to inspect the exact executing SERP client/adapter/runtime timeout and cancellation boundaries before making any edit.
 
 ### DQV-002 — On-Page content parsing normalization
 
@@ -52,7 +52,7 @@ Status: VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
 ### DQV-003 — microdata provider contract
 
-Status: PROVEN DEFECT; LOCAL REPAIR VERIFIED; NOT YET COMMITTED.
+Status: VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
 Persisted production defect:
 - On-Page task uses `validate_micromarkup: true`.
@@ -63,16 +63,17 @@ Persisted production defect:
 Proven code root cause:
 - `getMicrodata(taskId)` constructed `[{ id: taskId }]`.
 - DataForSEO requires task ID plus page URL.
-- PRYSM already creates deterministic `keyPageUrls` for URL-scoped deep acquisitions, so no new page-selection logic is needed.
+- PRYSM already creates deterministic `keyPageUrls` for URL-scoped deep acquisitions, so no new page-selection logic was needed.
 
-Current local repair:
-- `dataforseo-onpage-client.js`: `getMicrodata(taskId, url, options)` now requires a URL and posts `[{ id: taskId, url }]`.
-- `dataforseo-onpage-adapter.js`: adapter version advanced to `1.2.2`; microdata acquisition moved to occur after deterministic `keyPageUrls` are built and uses `keyPageUrls[0]` plus existing sub-endpoint poll options.
-- Existing deep-acquisition behavior remains bounded; no paid provider call or production audit rerun was used for verification.
-- `dataforseo-onpage-adapter.test.js`: added `DQV-003: live microdata client posts required task ID and page URL`, asserting both live POST payload and recorded request metadata contain exact task ID + URL.
-- Syntax checks PASS for client, adapter, and adapter test file.
-- Targeted adapter regression suite PASS: 69 tests, 69 pass, 0 fail, duration ~30.0s.
-- DQV-003 is verified locally but has not yet passed final diff review or been committed.
+Verified repair:
+- `dataforseo-onpage-client.js`: `getMicrodata(taskId, url, options)` requires a URL and posts `[{ id: taskId, url }]`.
+- `dataforseo-onpage-adapter.js`: adapter version `1.2.2`; microdata acquisition occurs after deterministic `keyPageUrls` are built and uses `keyPageUrls[0]` plus existing sub-endpoint poll options.
+- `dataforseo-onpage-adapter.test.js`: added `DQV-003: live microdata client posts required task ID and page URL`, asserting exact live POST payload and recorded request metadata.
+- Syntax checks PASS for client, adapter, and test file.
+- Targeted adapter regression suite PASS: 69/69.
+- Final `git diff --check` PASS.
+- Local commit: `10bf22cb7f9ad74183fa626fcc696fd86e6a34e1` — `fix(onpage): send page URL with microdata request`.
+- No paid provider call or production audit rerun was used to verify the repair.
 
 ### DQV-004 — seven-page crawl
 
@@ -109,9 +110,9 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact DQV-003 working-copy diff before commit. Confirm only the intended three files changed for DQV-003: `dataforseo-onpage-client.js`, `dataforseo-onpage-adapter.js`, and `dataforseo-onpage-adapter.test.js`, and confirm the diff contains only the URL contract repair, deterministic key-page call-site move, adapter version `1.2.2`, and regression test. Do not push, deploy, rerun the production audit, or mutate persisted artifacts.
+DQV-001: from `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact executing DataForSEO SERP client/adapter call path and the production-runtime source timeout/retry boundary. Verify where the orchestration AbortSignal is created, whether it reaches the SERP HTTP fetch, where the 60-second outer timeout is enforced, and where partial evidence exists before adapter return. Do not edit code, make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during this inspection.
 
-After DQV-003 is committed through the governed local workflow, return to DQV-001 before DQV-005 unless the user explicitly changes priority.
+After DQV-001 is verified through the governed workflow, return to DQV-005 unless new evidence changes priority.
 
 Last verified:
 2026-08-23
