@@ -4,14 +4,14 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Implement the locked DQV-001 Track B representative-evidence acquisition design. After acquisition semantics pass, return to DQV-005/report review.
+Complete DQV-001 Track B representative-evidence acquisition. After acquisition semantics pass, return to DQV-005/report review.
 
 ## Authoritative repositories
 
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Last verified remote application `main` before current local data-quality work: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
-- Current verified local application HEAD: `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`.
+- Current verified local application HEAD: `d56217d` — `feat(onpage): add representative crawl task policy`.
 - Current local DQV work is not yet verified pushed or deployed.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer contract remains Viewer v2.2.0 / 16 governed pages.
@@ -27,120 +27,141 @@ Implement the locked DQV-001 Track B representative-evidence acquisition design.
 
 ## DQV-001 — SERP reliability + enterprise evidence depth
 
-Status: **PRE-EDIT GATE PASS; TRACK A COMPLETE LOCALLY; TRACK B NEXT.**
+Status: **TRACK A COMPLETE LOCALLY; TRACK B IN PROGRESS LOCALLY.**
 
-Verified historical defect:
+### Track A — COMPLETE
 
-- persisted competitor/SERP source `FAILED` after retryCount 2 with no raw SERP artifact;
-- full isolated adapter completed in 43.51s as `PARTIAL`, preserving 3/3 supplied competitors and 58 SERP results while one keyword returned DataForSEO 40101;
-- 60-second whole-source timeout could erase already-valid in-memory evidence;
-- orchestration AbortSignal did not reach the SERP HTTP fetch;
-- shared 45-second `withTimeout()` did not cancel the underlying fetch;
-- whole-source retries could overlap abandoned paid requests and repeat completed work.
-
-### Track A locked reliability contract
+Locked reliability contract is implemented and proven locally:
 
 - live SERP fetch gets caller AbortSignal;
 - per-request hard ceiling 120 seconds;
 - at most one sequential retry for transient transport/timeout/HTTP-5xx failure;
 - no PRYSM retry for task-level 40101;
 - `dataforseo-serp`: 30-minute safety ceiling, one whole-source attempt;
-- preserve supplied competitors and completed keyword evidence across later individual failures;
-- generic `retry-policy.js` remains unchanged.
+- supplied competitors and completed keyword evidence survive later individual failures;
+- generic retry behavior for other sources remains unchanged.
 
-### Track A completed source-file units
+Local commits:
 
-#### 1. `dataforseo-serp-client.js` — COMPLETE
+- `3841fa729c6a232ba45b9a794ae9504c86505f0f` — `fix(serp): make request cancellation cooperative`.
+- `6465890daa6beeff96d7ba265c1f804065e603d6` — `fix(serp): preserve partial evidence on cancellation`.
+- `b8d3ae404cbea75207d7a75bd2011ea62b122dd5` — `fix(serp): govern composite source policy`.
 
-Implemented:
-
-- caller AbortSignal reaches the actual live fetch;
-- request-local AbortController enforces 120-second default ceiling;
-- timeout aborts the underlying fetch rather than abandoning it with Promise.race;
-- one sequential transient retry maximum;
-- caller cancellation prevents any later request;
-- HTTP 5xx may retry once;
-- DataForSEO task-level failures including 40101 are terminal for that keyword.
-
-Verification:
-
-- client syntax PASS;
-- existing SERP regressions PASS 26/26;
-- new client cancellation/retry contract PASS 5/5;
-- focused combined contract PASS 31/31;
-- `git diff --check` PASS apart from informational Windows LF→CRLF warning.
-
-Local commit:
-`3841fa729c6a232ba45b9a794ae9504c86505f0f` — `fix(serp): make request cancellation cooperative`.
-
-#### 2. `serp-adapter.js` — COMPLETE
-
-Implemented:
-
-- orchestration signal is passed into every `querySerp()` call;
-- no new keyword request begins after caller cancellation;
-- completed keyword evidence survives a later task failure or cancellation;
-- supplied competitor evidence remains preserved;
-- graceful PARTIAL/FAILED outcomes retain raw artifact evidence;
-- adapter version advanced to `1.2.0`.
-
-Verification:
-
-- adapter syntax PASS;
-- new adapter cancellation/preservation contract PASS 3/3;
-- full focused SERP suite PASS 34/34;
-- `git diff --check` PASS apart from informational Windows LF→CRLF warning.
-
-Local commit:
-`6465890daa6beeff96d7ba265c1f804065e603d6` — `fix(serp): preserve partial evidence on cancellation`.
-
-A temporary false hang (~114 seconds) was traced to a duplicate Downloads repo while the governed Desktop repo still had v1.1.0. The governed Desktop file was corrected and the adapter test passed 3/3 in ~0.4 seconds.
-
-#### 3. `production-runtime.js` source policy — COMPLETE
-
-Implemented:
-
-- `dataforseo-serp` default whole-source timeout changed from 60 seconds to **1,800,000 ms / 30 minutes**;
-- `dataforseo-serp` whole-source attempts changed from 3 to **1**;
-- generic retry behavior for other sources remains unchanged;
-- new no-network `production-runtime-source-policy.test.js` proves the exact policy;
-- stale supplied-competitor regression contract was updated from adapter v1.1.0 to the already-governed v1.2.0.
-
-Verification:
-
-- runtime syntax PASS;
-- focused source-policy test PASS 1/1;
-- full SERP + source-policy regression boundary PASS **102/102**;
-- `git diff --check` PASS;
-- staged diff contained only the governed policy/test changes;
-- no paid provider call was used.
-
-Local commit:
-`b8d3ae404cbea75207d7a75bd2011ea62b122dd5` — `fix(serp): govern composite source policy`.
-
-During this unit, an initial edit was made from the wrong VS Code repository (`vantage-platform-main`). The contaminated governed-file replacement was detected from the diff, restored to HEAD, and then reapplied from the exact Desktop-repo file. Final commit is clean. Future file editing must confirm the governed Desktop repository before copying/testing.
-
-### Track A result
-
-**PASS.** All eight locked reliability requirements are proven by local no-network/focused regressions. Track A is committed locally but not verified pushed or deployed.
+Track A full SERP/source-policy regression boundary passed 102/102 with no paid provider call.
 
 ## Track B — locked large-site representative-evidence design
 
-Next implementation phase:
+Required design remains:
 
 - recursively discover public sitemap footprint, bounded to 200 sitemap documents / 100,000 retained URLs;
 - deterministic structural URL-family clustering;
 - up to 20 representative `priority_urls`;
-- use DataForSEO `respect_sitemap: true` and `return_despite_timeout: true` where applicable;
-- retain default general On-Page crawl cap at 500 but make the sample structurally representative;
-- `dataforseo-onpage`: 60-minute safety ceiling, one whole-source attempt, 30-minute poll budget;
-- merge business-critical important pages with material cluster representatives for up to 20 deep content-parsing pages;
+- DataForSEO OnPage `respect_sitemap: true` where usable sitemap evidence exists;
+- DataForSEO OnPage `return_despite_timeout: true`;
+- retain default general OnPage crawl cap at 500 while making the sample structurally representative;
+- `dataforseo-onpage`: 60-minute whole-source safety ceiling, one whole-source attempt, 30-minute client poll budget;
+- merge business-critical important pages with material-cluster representatives for up to 20 deep content-parsing pages;
 - add explicit `siteFootprint` and `programmaticSeo` normalized/decision evidence;
-- assess thin/near-duplicate content, offer/conversion signals available from collected evidence, trust/E-E-A-T, schema/entity evidence, and geographic trust alignment without fabricating unknowns.
+- assess thin/near-duplicate content, conversion/offer, trust/E-E-A-T, schema/entity and geographic trust without fabricating unknowns.
 
-Scoring v4.1.1 must not change silently. Any capability/scoring/report reaction follows only after acquisition evidence is proven and requires deliberate versioned/calibrated work.
+Scoring v4.1.1 must not change silently. Capability/scoring/report reactions follow only after acquisition evidence is proven and require deliberate versioned/calibrated work.
 
-Expected Track B source-file set remains governed by `SPECS/ENTERPRISE_EVIDENCE_ACQUISITION_v1.0.0.md`, beginning with new `services/worker/src/evidence/sitemap-footprint.js`.
+### Track B completed local units
+
+#### 1. Sitemap footprint — COMPLETE
+
+Files:
+
+- `src/evidence/sitemap-footprint.js`
+- `src/evidence/sitemap-footprint.test.js`
+
+Implemented:
+
+- recursive sitemap/sitemap-index discovery;
+- robots.txt sitemap directives plus standard sitemap fallbacks;
+- same-origin filtering;
+- deterministic canonicalization/deduplication;
+- explicit 200-document / 100,000-retained-URL caps and incomplete coverage;
+- deterministic structural URL-family clustering;
+- deterministic representative selection bounded to 20 URLs;
+- fail-soft unavailable semantics that never treat missing sitemap evidence as proof of no programmatic SEO.
+
+Verification:
+
+- syntax PASS;
+- focused no-network tests PASS 5/5;
+- staged diff check PASS.
+
+Local commit:
+`9257317` — `feat(evidence): add representative sitemap footprint discovery`.
+
+#### 2. Programmatic SEO analysis — COMPLETE
+
+Files:
+
+- `src/evidence/programmatic-seo-analysis.js`
+- `src/evidence/programmatic-seo-analysis.test.js`
+
+Implemented:
+
+- `NOT_DETECTED` / `LIKELY` / `INSUFFICIENT_EVIDENCE` semantics;
+- large repeated/template-family assessment without equating scale with poor quality;
+- thin-content and near-duplicate representative evidence;
+- trust/proof, schema/entity and conversion/offer evidence;
+- bounded geographic trust alignment;
+- unknown geography remains unknown;
+- deterministic output.
+
+Verification:
+
+- Track B evidence regressions PASS 12/12;
+- staged diff check PASS.
+
+Local commit:
+`fe408dd` — `feat(evidence): add programmatic SEO analysis`.
+
+#### 3. DataForSEO OnPage client policy — COMPLETE
+
+Files:
+
+- `src/adapters/dataforseo-onpage/dataforseo-onpage-client.js`
+- `src/adapters/dataforseo-onpage/dataforseo-onpage-client-policy.test.js`
+- existing `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` migrated from the obsolete paid-task retry expectation to the governed single-submit contract.
+
+Implemented:
+
+- deterministic deduplicated `priority_urls`, capped at 20;
+- `respect_sitemap` task option;
+- `return_despite_timeout: true` default;
+- 30-minute main OnPage client poll policy;
+- paid `task_post` is single-submit so transport uncertainty cannot automatically create a duplicate paid provider task.
+
+A first regression run produced 74/75 PASS because one legacy adapter test still required automatic retries of `task_post`. That test contradicted the governed paid-task idempotency contract and was migrated. Final focused OnPage regression boundary passed **75/75**.
+
+Local amended commit:
+`d56217d` — `feat(onpage): add representative crawl task policy`.
+
+No paid provider call was used.
+
+### Track B remaining integration
+
+Still required:
+
+1. DataForSEO OnPage adapter integration:
+   - accept/forward representative `priorityUrls` and sitemap policy to the client;
+   - preserve existing paid-task resume/idempotency behavior;
+   - deep content-parsing set must merge business-critical important pages with material sitemap-cluster representatives, bounded to 20;
+   - expose/preserve site-footprint/programmatic-analysis acquisition evidence for runtime normalization.
+2. Production runtime integration:
+   - discover sitemap footprint before OnPage acquisition where the locked source boundary requires it;
+   - feed deterministic representative acquisition inputs to OnPage;
+   - `dataforseo-onpage` whole-source safety ceiling 60 minutes / one whole-source attempt;
+   - preserve source independence and existing non-OnPage retry policies.
+3. Decision-evidence integration:
+   - expose explicit `siteFootprint` and `programmaticSeo` evidence with correct unavailable/partial semantics;
+   - do not change scoring v4.1.1 silently.
+4. Full no-network/focused regression boundary for Track B.
+5. Only after Track B acquisition semantics pass, return to DQV-005/report status propagation.
 
 ## DQV-002 — On-Page content parsing normalization
 
@@ -159,7 +180,6 @@ Status: **VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.**
 - Root cause: microdata request omitted required page URL.
 - Repair posts task ID + deterministic key-page URL.
 - Targeted adapter suite PASS 69/69.
-- `git diff --check` PASS.
 - Local commit: `10bf22cb7f9ad74183fa626fcc696fd86e6a34e1`.
 - No paid provider call or production audit rerun used.
 
@@ -187,10 +207,10 @@ Status: **PROVEN; DEFERRED UNTIL DQV-001 ACQUISITION SEMANTICS PASS.**
 - GitHub context is authoritative durable memory.
 - At substantive chat start, read `PROJECT.md`, `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md`.
 - DQV-001 Mandatory Pre-Edit Gate has passed; do not reopen design unless genuinely new evidence materially changes the boundary.
-- Application changes proceed through the governed manual VS Code workflow, one verified source-file unit at a time.
-- For each file, apply every already-approved change belonging to that file in one coherent replacement whenever safely possible.
+- Application changes use the governed Desktop repository at `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Manual editing remains user-applied; do not directly modify the application repo through tools.
+- Accelerated workflow: collect the complete current local files for the next coherent integration boundary, design all already-approved changes across that boundary, return complete coherent file changes, then use one combined syntax/test/diff/commit verification block rather than conversational micro-steps.
 - Do not make the user repeatedly edit the same file for requirements already known.
-- Before testing or copying a manually edited file, verify it is under `C:\Users\kulba\Desktop\vantage-platform\services\worker`; duplicate repositories must not be treated as authoritative.
 - Project-wide three-attempt diagnostic reset remains active.
 - Source code is delivered directly in conversation, never as generated/downloadable code files.
 - No application remote write/push, merge, deployment, production audit rerun, provider/model rerun, or persisted-artifact mutation without explicit approval.
@@ -199,16 +219,14 @@ Status: **PROVEN; DEFERRED UNTIL DQV-001 ACQUISITION SEMANTICS PASS.**
 
 ## Exact next action
 
-Start DQV-001 Track B source-file unit 1 from local application HEAD `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`.
+Continue DQV-001 Track B from local application HEAD `d56217d`.
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`:
+To avoid piecemeal edits, collect the complete current local versions of both:
 
-1. verify `git rev-parse HEAD` is `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`;
-2. begin the new `src\evidence\sitemap-footprint.js` unit under the already-approved Track B contract;
-3. implement recursive sitemap/sitemap-index discovery, same-origin filtering, deterministic deduplication, 200-document / 100,000-URL caps, deterministic structural clustering inputs, explicit capped/incomplete coverage, and deterministic representative selection bounded to 20 priority URLs;
-4. add the focused no-network unit regression for this new source-file unit and verify syntax/tests/diff before moving to `programmatic-seo-analysis.js`.
+- `src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+- `src/application/production-runtime.js`
 
-Do not make a paid provider call, push, deploy, rerun the production audit, or mutate persisted artifacts during this step.
+Then design the remaining approved OnPage adapter/runtime representative-acquisition integration as one coherent boundary, while still applying each file once. Include focused no-network regressions and one consolidated verification block. Preserve existing paid-task resume/idempotency behavior. Do not make a paid provider call, push, deploy, rerun the production audit, or mutate persisted artifacts.
 
 Last verified:
-2026-08-23
+2026-08-24
