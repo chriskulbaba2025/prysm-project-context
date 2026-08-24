@@ -26,18 +26,26 @@ Critically validate and improve the accuracy/completeness of the audit-data acqu
 
 ## Verified defects / findings
 
-### DQV-001 — competitor/SERP timeout boundary
+### DQV-001 — competitor/SERP timeout and enterprise evidence-depth boundary
 
-Status: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT; NOW ACTIVE.
+Status: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT; FAILURE BOUNDARY FULLY MAPPED; REPAIR-DESIGN GATE ACTIVE.
 
 - Historical competitor source timed out after retries and persisted synthetic `FAILED` with no raw SERP artifact.
 - Exact three supplied competitor crawls currently succeed: 3/3, 8 pages each, ~8.6 seconds total.
 - One live `Group Coaching` DataForSEO SERP request succeeded in 5.25 seconds with 18 results.
 - Full isolated current competitor adapter using the exact three competitors + four audit services completed in 43.51 seconds and returned `PARTIAL`: 6/7 completed, 58 combined SERP results, all three supplied competitors preserved.
 - One keyword, `4-Week Reboot Series`, failed cleanly with DataForSEO task status 40101 `Internal SE Server Error`.
-- The outer source timeout can erase already-valid partial evidence because persistence occurs only after the adapter returns.
-- The orchestration AbortSignal is not propagated into the DataForSEO SERP HTTP request and shared `withTimeout()` does not abort the underlying fetch, so timed-out attempts can overlap later retries and create duplicate paid-call risk.
-- Current task is to inspect the exact executing SERP client/adapter/runtime timeout and cancellation boundaries before making any edit.
+- Production registers `serp-adapter.js` as the executing `dataforseo-serp` adapter.
+- Production runtime currently gives the whole source a 60,000 ms outer timeout and up to three attempts.
+- `executeWithRetry()` creates an `AbortController`, passes its signal into the adapter, and aborts it when the outer timeout wins.
+- The adapter checks the signal between operations but does not pass it into `querySerp()`; `querySerp()` therefore calls the DataForSEO HTTP fetch without the orchestration signal.
+- Each SERP request is separately wrapped in a 45,000 ms shared `withTimeout()` implemented as `Promise.race`; it does not abort the underlying fetch.
+- Therefore a timed-out attempt can leave a paid HTTP request running while orchestration begins a later retry, creating duplicate-call overlap risk.
+- Valid partial evidence exists in memory before adapter return: supplied competitor evidence in `suppliedItems`, completed SERP evidence in `allItems`, completion count in `totalCompleted`, and per-keyword errors in `errors`.
+- Raw/normalized persistence occurs only after the adapter returns, so the 60-second outer timeout can erase already-valid in-memory evidence and synthesize `FAILED` with `rawBytes: null`.
+- No application code has been edited for DQV-001.
+- Product direction is now explicit: PRYSM must optimize evidence acquisition for enterprise-grade conversion decision quality, not arbitrary short timeouts or minimal provider spend. Large sites must be handled through broad footprint discovery plus representative structure-aware sampling rather than exhaustive crawling or arbitrary fixed-page truncation.
+- Programmatic SEO must be detectable as a site pattern, with representative cluster sampling deep enough to assess thin/duplicated content, conversion quality, trust/E-E-A-T, geographic/entity consistency, local proof, schema/entity signals, and material downstream recommendations.
 
 ### DQV-002 — On-Page content parsing normalization
 
@@ -96,9 +104,11 @@ Proven report-data mapping defect.
 ## Active operating rules
 
 - GitHub context is authoritative durable memory; do not reconstruct project state from chat history when starting a new chat.
-- At the beginning of a new substantive chat, read `PROJECT.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before doing work.
-- Application changes use the governed manual VS Code workflow.
-- Default code flow: verify current source file → inspect complete relevant boundary → make one coherent bounded repair → user applies it → syntax check → targeted/relevant tests → correct failures → inspect diff → only after verification commit/update.
+- At the beginning of a new substantive chat, read `PROJECT.md`, `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md` before doing work.
+- The Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass before asking the user to open/paste an application file or before proposing an application edit.
+- Complete the whole repair design, expected application file set, required tests, material downstream reactions, cost/performance implications, and implementation sequence before beginning the one-source-file-at-a-time manual workflow.
+- Application changes use the governed manual VS Code workflow only after the pre-edit gate passes.
+- Default code flow after the gate passes: verify current source file → inspect complete current file → apply every already-approved change belonging to that source-file unit in one coherent replacement → user applies it → syntax check → targeted/relevant tests → correct failures → inspect diff → only after verification commit/update.
 - Do not make the user repeatedly edit the same file when the coherent change can be grouped safely.
 - Project-wide three-attempt diagnostic reset is active: after three unsuccessful attempts on the same failure, stop fixes and perform a deeper diagnostic reset before any fourth attempt.
 - Open exact application files from the active PowerShell working path with `code -r <exact-path>` before manual editing when duplicate workspace/file-copy ambiguity is possible.
@@ -110,7 +120,7 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-DQV-001: from `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact executing DataForSEO SERP client/adapter call path and the production-runtime source timeout/retry boundary. Verify where the orchestration AbortSignal is created, whether it reaches the SERP HTTP fetch, where the 60-second outer timeout is enforced, and where partial evidence exists before adapter return. Do not edit code, make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during this inspection.
+DQV-001: complete the Mandatory Pre-Edit Gate before requesting any application source file. Define the smallest coherent enterprise-grade production repair and expected file/test set that jointly covers reliable source completion, true HTTP cancellation, non-overlapping retries, a generous safety timeout rather than an evidence-depth control, preservation of already-acquired evidence, broad site-footprint discovery, representative structure-aware sampling for large sites, programmatic-SEO/template-cluster detection, and deep conversion/trust/E-E-A-T/geographic-entity consistency assessment. Map material downstream reactions and explicitly identify what remains out of scope. Only after this design is complete and coherent may the governed one-source-file-at-a-time implementation workflow begin. Do not make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during this design step.
 
 After DQV-001 is verified through the governed workflow, return to DQV-005 unless new evidence changes priority.
 
