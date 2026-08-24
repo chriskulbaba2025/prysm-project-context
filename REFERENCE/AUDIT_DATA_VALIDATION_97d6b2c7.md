@@ -35,7 +35,7 @@ Persisted source status baseline:
 
 ## DQV-001 — SERP / competitor source loses usable evidence at the outer timeout boundary
 
-Classification: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT.
+Classification: PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. ACTIVE REPAIR TARGET.
 
 Persisted evidence:
 - `normalized/dataforseo-serp.json` records `FAILED`, retryCount `2`, returnedRecords `0`, limitation `Source execution failed: Source execution timed out`, errorCategory `timeout`.
@@ -91,17 +91,23 @@ Current downstream effect:
 - Competitor opportunity/report sections were deprived of evidence that should have survived a later delay/failure.
 - Retry overlap can create duplicate paid provider calls and nondeterministic results.
 
-Potential future repair boundary — DEFERRED:
+Current inspection boundary:
 - `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js`
 - `services/worker/src/adapters/dataforseo-serp/serp-adapter.js`
-- possibly `services/worker/src/application/production-runtime.js`
+- `services/worker/src/application/production-runtime.js`
 - review generic retry-policy/orchestrator only if source-bounded repair cannot safely close the defect.
 
-Any later DQV-001 repair must preserve partial evidence, propagate true HTTP cancellation, prevent overlapping paid retries, keep bounded wall-clock/cost, and preserve correct source-status semantics.
+Required repair properties:
+- preserve partial evidence already acquired before a later delay/failure;
+- propagate true HTTP cancellation to the DataForSEO request;
+- prevent overlapping paid retries;
+- keep bounded wall-clock and cost;
+- preserve correct source-status semantics;
+- do not broaden into unrelated report/scoring/storage changes.
 
 ## DQV-002 — On-Page content parsing succeeds, then usable body content is lost in normalization
 
-Classification: PROVEN DATA-LOSS DEFECT. RAW DATA QUALITY PASS. LOCAL REPAIR VERIFIED; NOT COMMITTED.
+Classification: PROVEN DATA-LOSS DEFECT. RAW DATA QUALITY PASS. REPAIR VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
 ### Persisted raw evidence
 
@@ -131,12 +137,6 @@ Examples include real business content such as individual/group coaching, the 4-
 
 Conclusion: DataForSEO acquired good/useful body content; PRYSM lost it after acquisition.
 
-### Persisted normalized defect
-
-- Every normalized contentParsing record had `text: ""`, `hasMainContent: false`, and null content metrics.
-- All site pages retained empty `bodyText` and `_contentAvailable: false`.
-- Site `_contentEvidenceAvailable` was false.
-
 ### Proven root cause
 
 Primary application file:
@@ -144,22 +144,15 @@ Primary application file:
 
 The executing normalizer selected `res.result` as the item, stopping one level too shallow. The production content is under `res.result.items[0].page_content`. The old function then attempted to read legacy `item.main_content` / `item.secondary_content`, which are absent from the production shape. This deterministically produced empty normalized text.
 
-Downstream hydration already exists in `summarizeSite()`:
-- normalized content is matched back to pages by normalized URL;
-- when `hasMainContent && text`, the page receives `bodyText`, `_contentAvailable: true`, and trust-signal detection;
-- site `_contentEvidenceAvailable` becomes true when at least one content page has actual content.
+Downstream hydration already existed in `summarizeSite()` and required no rewrite.
 
-Therefore the smallest coherent repair remains in the On-Page adapter normalizer; no report/storage/scoring rewrite is required merely to retain the already-collected text.
+### Verified repair — 2026-08-23
 
-### Local repair status — 2026-08-23
-
-User explicitly authorized moving ahead with the targeted DQV-002 repair.
-
-Application files involved:
+Application files:
 - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
 - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
 
-Implemented local change boundary:
+Implemented:
 - adapter version `1.2.1`;
 - unwrap `result.items[0]`;
 - read production `page_content.main_topic` and `secondary_topic`;
@@ -167,55 +160,24 @@ Implemented local change boundary:
 - retain bounded normalized text;
 - exact-text deduplication;
 - exclude provider-classified header/footer from body evidence;
-- preserve the older fixture shape;
-- do not infer CTA/form/path evidence from body text.
+- preserve older fixture shape.
 
-Verification history:
-1. After an initial complete-file replacement, `node --check` passed and the existing targeted adapter test suite passed 68/68.
-2. A separate production-shaped no-network diagnostic then returned empty content and correctly blocked a premature commit.
-3. Duplicate `normalizeContentParsing()` definitions were found in the working copy and the duplicate was removed.
-4. A path/version mismatch was proven: VS Code initially displayed a different file copy while PowerShell/Node executed the actual working-copy file with adapter version `1.2.0`.
-5. The exact executing file was reopened from PowerShell, versioned `1.2.1`, saved, and syntax-checked.
-6. The production-shaped no-network diagnostic still failed with `contentParsing.text is empty`, proving path/version was no longer the cause.
-7. Under the project-wide three-attempt diagnostic-reset rule, the exact executing `normalizeContentParsing()` function was inspected before any further repair.
-8. That inspection proved the one-level-too-shallow unwrapping plus legacy-field read described above.
-9. The entire `normalizeContentParsing()` function was replaced as one coherent bounded repair implementing the production shape plus legacy compatibility, exact-fragment deduplication, header/footer exclusion, and bounded text retention.
-10. `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` PASS after the final coherent repair.
-11. The production-shaped, fixture-only, no-network diagnostic PASS after the final repair with:
-   - adapterVersion `1.2.1`
-   - normalized content text length 261
-   - `hasMainContent: true`
-   - page `_contentAvailable: true`
-   - site `_contentEvidenceAvailable: true`
-   - testimonials: true
-   - credentials: true
-   - pricing: true
-   - duplicate fragment count: 1
-   - header excluded: true
-   - footer excluded: true
-12. The first post-repair targeted suite run produced 67/68 PASS. The only failure was `WP-B-10`, caused solely by a stale hard-coded assertion requiring artifact adapter version `1.2.0` while the adjacent assertion already required `payload.adapterVersion === ADAPTER_VERSION`.
-13. The redundant hard-coded `1.2.0` assertion was removed from the exact executing test file. No production behavior changed.
-14. `node --check src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js` PASS.
-15. Final targeted adapter suite PASS: 68 tests, 68 pass, 0 fail, duration ~29.9s.
+Verification:
+- production-shaped no-network diagnostic PASS;
+- normalized content text non-empty;
+- page `_contentAvailable: true`;
+- site `_contentEvidenceAvailable: true`;
+- testimonials, credentials, pricing detected;
+- duplicate fragment count 1;
+- header/footer excluded;
+- syntax checks PASS;
+- final targeted adapter suite PASS 68/68;
+- final diff checks PASS.
 
-Current verification state:
-- Production-shaped normalization diagnostic: PASS.
-- Adapter syntax: PASS.
-- Test-file syntax: PASS.
-- Targeted adapter regression suite: 68/68 PASS.
-- DQV-002 local repair is verified complete at the application working-copy level.
-- Application changes remain uncommitted and undeployed.
+Local commit:
+`82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
 
-Required proof before commit:
-1. Production-shaped nested fixture produces non-empty normalized `contentParsing.text`. — PASS.
-2. Matching page gets `_contentAvailable: true` and populated `bodyText`. — PASS.
-3. Site gets `_contentEvidenceAvailable: true`. — PASS.
-4. Expected content-dependent trust/pricing signal can be detected from that text. — PASS.
-5. Header/footer sentinel text is not included when separately supplied as provider-classified header/footer. — PASS.
-6. Exact duplicate body fragments are not duplicated. — PASS.
-7. Existing targeted adapter regression suite passes after the final code state. — PASS, 68/68.
-
-Downstream items to verify only after the adapter repair is committed:
+Downstream items still to verify after the acquisition defects are resolved through the governed workflow:
 - canonical site evidence;
 - decision evidence;
 - `content.body` capability consistency;
@@ -224,32 +186,49 @@ Downstream items to verify only after the adapter repair is committed:
 - evidence coverage;
 - Narrative v2 writer input/report conclusions.
 
-Defensive follow-up candidate, NOT YET AUTHORIZED/REQUIRED:
-`services/worker/src/evidence/capability-evidence.js` may need hardening so endpoint completion alone cannot mark `content.body` available when normalized usable content is empty. Do not change this until the primary normalization repair is committed and dependency impact is checked.
-
 ## DQV-003 — Microdata request omits required page URL
 
-Classification: PROVEN PROVIDER-CONTRACT DEFECT.
+Classification: PROVEN PROVIDER-CONTRACT DEFECT. REPAIR VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
-Evidence:
+### Persisted production defect
+
 - task created with `validate_micromarkup: true`;
-- current request payload contains only task ID;
+- previous request payload contained only task ID;
 - DataForSEO returned 40501 `Invalid Field: 'url'.`;
-- acquisition requested 1, completed 0, failed 1.
+- acquisition requested 1, completed 0, failed 1;
+- `schema.structured_data` was unavailable.
 
-Code-path evidence:
-- current `getMicrodata(taskId)` constructs `[{ id: taskId }]`;
-- provider requires task ID plus resource URL.
+### Proven root cause
 
-Current downstream effect:
-- `schema.structured_data` unavailable;
-- schema/entity and AI-search dependent modules are not eligible.
+- previous `getMicrodata(taskId)` constructed `[{ id: taskId }]`;
+- provider requires task ID plus resource URL;
+- PRYSM already builds deterministic `keyPageUrls`, so no new URL-selection policy was needed.
 
-Potential future repair boundary:
+### Verified repair — 2026-08-23
+
+Application files:
 - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-client.js`
-- calling code in `dataforseo-onpage-adapter.js` may need to pass deterministic selected URLs.
+- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
+- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
 
-DQV-003 remains deferred until DQV-002 closes.
+Implemented:
+- client `getMicrodata(taskId, url, options)` requires URL and posts `[{ id: taskId, url }]`;
+- adapter version advanced to `1.2.2`;
+- microdata acquisition moved after deterministic key-page selection;
+- request uses `keyPageUrls[0]` and existing sub-endpoint poll options;
+- no new selection logic and no unrelated behavior change;
+- added regression test `DQV-003: live microdata client posts required task ID and page URL` proving exact endpoint payload and request metadata.
+
+Verification:
+- client syntax PASS;
+- adapter syntax PASS;
+- test-file syntax PASS;
+- targeted adapter suite PASS: 69/69;
+- `git diff --check` PASS after cleanup;
+- no paid provider call or production audit rerun used.
+
+Local commit:
+`10bf22cb7f9ad74183fa626fcc696fd86e6a34e1` — `fix(onpage): send page URL with microdata request`.
 
 ## DQV-004 — Seven-page crawl is not currently proven defective
 
@@ -276,6 +255,6 @@ Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially diff
 
 ## Current exact next action
 
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact local application diff before any commit by running `git status --short` and `git diff -- src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`. Confirm that only the intended DQV-002 adapter normalizer/version change and redundant stale test-version assertion removal are present. Do not commit, deploy, rerun the production audit, or mutate persisted artifacts without explicit user approval.
+DQV-001: from `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact executing DataForSEO SERP client/adapter call path plus the production-runtime source timeout/retry boundary. Verify where the orchestration AbortSignal is created, whether it reaches the SERP HTTP fetch, where the 60-second outer timeout is enforced, and where partial evidence exists before adapter return. Do not edit code, make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during this inspection.
 
-After DQV-002 is reviewed and committed through the governed application workflow, return to DQV-003 before implementing DQV-001 unless the user explicitly changes priority.
+After DQV-001 is verified through the governed workflow, return to DQV-005 unless new evidence changes priority.
