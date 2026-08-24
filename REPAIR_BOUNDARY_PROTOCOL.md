@@ -1,8 +1,8 @@
 # PRYSM Repair Boundary Protocol
 
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Status:** Governing project instruction  
-**Purpose:** Prevent premature file editing, repeated user edits, local fixes that miss the full problem, and implementation drift across PRYSM work packages.
+**Purpose:** Prevent premature file editing, repeated user edits, local fixes that miss the full problem, implementation drift across PRYSM work packages, and ambiguity during manual VS Code edits.
 
 ## 1. Governing Rule
 
@@ -44,7 +44,7 @@ Examples:
 
 Before the first edit, identify the expected file set for the coherent repair.
 
-This does **not** authorize batch editing across files. The existing manual VS Code workflow remains active: one verified source-file unit at a time.
+This does **not** authorize uncontrolled batch editing across files. The manual VS Code workflow remains active, but coherent source units may be grouped when the complete boundary is already known and a single integrated verification is safer and faster.
 
 The purpose of identifying the full file set first is to prevent this failure mode:
 
@@ -52,7 +52,7 @@ The purpose of identifying the full file set first is to prevent this failure mo
 
 The intended sequence is:
 
-`map whole repair → identify file set/tests → user approves direction → edit file A once → verify → edit file B once → verify → complete integrated regression verification`
+`map whole repair → identify file set/tests → user approves direction → apply each known file change once → verify the coherent unit → complete integrated regression verification`
 
 ## 5. No Premature File Requests
 
@@ -76,7 +76,40 @@ Do not knowingly stage multiple edits to the same file merely to simplify assist
 
 The user should not have to manage the assistant's decomposition by repeatedly reopening and repasting the same source file.
 
-## 7. New Evidence During Implementation
+## 7. Manual Edit Instruction Format
+
+When the user is manually editing an existing source file in VS Code, instructions must be mechanical and unambiguous.
+
+For every edit to an existing file, the assistant must provide:
+
+1. the exact repository-relative file path;
+2. the change number when more than one edit belongs to the file;
+3. the exact starting line number from the verified current file;
+4. the exact starting anchor text;
+5. the exact ending line number from the verified current file;
+6. the exact ending anchor text;
+7. a clear instruction stating whether to replace, insert before, insert after, or delete;
+8. the complete replacement or inserted code required for that change.
+
+**Line numbers must never be the only locator.** Anchor text is required because prior edits may shift later line numbers.
+
+When a file has multiple edits whose line numbers would shift as changes are applied, the assistant should instruct the user to work **from the bottom of the file upward**. The assistant should present the changes in that bottom-up order unless there is a concrete technical reason not to.
+
+For a bottom-up edit set:
+
+- identify the original line ranges before any edits are made;
+- present the highest line-number change first;
+- continue toward the top of the file;
+- use both line ranges and start/end anchors for every change;
+- do not require the user to recalculate shifted line numbers.
+
+For a single-line change, explicitly say that only that line is replaced.
+
+For a new file, provide the complete path and complete file contents; no line-range instructions are required.
+
+After all edits in the coherent unit are saved, provide one consolidated syntax/test/diff/commit block whenever practical. Do not split routine verification into unnecessary micro-commands unless a failure requires diagnosis.
+
+## 8. New Evidence During Implementation
 
 If genuinely new evidence discovered during implementation materially changes the repair boundary:
 
@@ -88,7 +121,7 @@ If genuinely new evidence discovered during implementation materially changes th
 
 Do not silently expand scope while editing.
 
-## 8. Enterprise-Product Standard
+## 9. Enterprise-Product Standard
 
 When the repair affects evidence acquisition, crawl depth, competitor intelligence, search visibility, conversion analysis, trust, or E-E-A-T, optimize for **defensible decision quality**, not merely minimum execution time or minimum provider spend.
 
@@ -96,7 +129,7 @@ Cost controls and timeouts are safety boundaries. They must not arbitrarily prev
 
 For large sites, prefer representative, structure-aware evidence acquisition over either exhaustive crawling or arbitrary fixed-page truncation. Where programmatic SEO or template-scale content exists, the design must preserve enough evidence to assess material conversion/search/trust patterns without requiring every duplicate or near-duplicate URL to be deeply processed.
 
-## 9. Completion Test for the Gate
+## 10. Completion Test for the Gate
 
 The pre-edit gate is PASS only when the assistant can answer, before touching code:
 
@@ -113,7 +146,7 @@ The pre-edit gate is PASS only when the assistant can answer, before touching co
 
 If those answers are not available, continue diagnosis/design instead of implementation.
 
-## 10. Relationship to Other PRYSM Rules
+## 11. Relationship to Other PRYSM Rules
 
 This protocol supplements, and does not replace:
 
@@ -123,4 +156,4 @@ This protocol supplements, and does not replace:
 - the durable dependency-impact ledger requirement;
 - all production/provider/persistence approval boundaries.
 
-Where there is tension, choose the sequence that preserves both requirements: **design the complete repair first, then implement it through the governed one-source-file-at-a-time workflow.**
+Where there is tension, choose the sequence that preserves both requirements: **design the complete repair first, then implement it through clear, one-pass, mechanically locatable manual edits with integrated verification.**
