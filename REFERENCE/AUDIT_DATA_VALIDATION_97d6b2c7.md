@@ -37,7 +37,7 @@ Persisted source status baseline:
 
 ## DQV-001 — SERP timeout + enterprise evidence-depth boundary
 
-Classification: **PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. PRE-EDIT DESIGN GATE PASS. IMPLEMENTATION ACTIVE.**
+Classification: **PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. PRE-EDIT DESIGN GATE PASS. TRACK A COMPLETE LOCALLY; TRACK B NEXT.**
 
 Governing implementation design:
 `SPECS/ENTERPRISE_EVIDENCE_ACQUISITION_v1.0.0.md`
@@ -75,23 +75,23 @@ Full composite adapter, exact three competitors + four services:
 
 Conclusion: direct competitors and the provider path are functional. Graceful partial semantics work when the adapter is allowed to return.
 
-### Exact executing failure boundary
+### Proven original executing failure boundary
 
-Production execution:
+Production execution at the defect baseline:
 
 `production-bootstrap.js` → `production-runtime.js` source policy → `audit-orchestrator.js` → `executeWithRetry()` → `serp-adapter.execute()` → `querySerp()` → live `fetch()`.
 
-Verified:
+Verified at the defect baseline:
 
-- Production currently gives the whole `dataforseo-serp` source a 60,000 ms timeout and up to three attempts.
-- `executeWithRetry()` creates an `AbortController`, passes its signal into the adapter, aborts at timeout, then may begin another whole-source attempt.
-- The adapter checks the signal between operations but does not pass it into `querySerp()` options.
-- `querySerp()` calls the DataForSEO HTTP fetch without the orchestration signal.
-- Its 45-second shared `withTimeout()` is a `Promise.race` and does not abort the underlying HTTP request.
-- Therefore a timed-out paid request may still be running when a later whole-source retry starts.
-- Valid partial evidence exists before return in `suppliedItems`, `allItems`, `totalCompleted`, and `errors`.
-- Raw and normalized persistence begins only after the adapter returns.
-- If the outer race wins, valid in-memory evidence can be replaced with synthetic `FAILED` and `rawBytes: null`.
+- Production gave the whole `dataforseo-serp` source a 60,000 ms timeout and up to three attempts.
+- `executeWithRetry()` created an `AbortController`, passed its signal into the adapter, aborted at timeout, then could begin another whole-source attempt.
+- The adapter checked the signal between operations but did not pass it into `querySerp()` options.
+- `querySerp()` called the DataForSEO HTTP fetch without the orchestration signal.
+- Its 45-second shared `withTimeout()` used `Promise.race` and did not abort the underlying HTTP request.
+- A timed-out paid request could therefore still be running when a later whole-source retry started.
+- Valid partial evidence existed before return in `suppliedItems`, `allItems`, `totalCompleted`, and `errors`.
+- Raw and normalized persistence began only after the adapter returned.
+- If the outer race won, valid in-memory evidence could be replaced with synthetic `FAILED` and `rawBytes: null`.
 
 ### Provider behavior relevant to repair
 
@@ -101,7 +101,7 @@ Current DataForSEO documentation/help was rechecked on 2026-08-23:
 - On-Page supports `return_despite_timeout: true` for page-load timeouts.
 - DataForSEO 40101 means the search-engine request was submitted and DataForSEO already retried it several times before returning the failure; the task can still be billable.
 
-Implication: PRYSM should not repeat an entire composite SERP source because one keyword returned 40101.
+Implication: PRYSM must not repeat an entire composite SERP source because one keyword returned 40101.
 
 ### User outcome being protected
 
@@ -178,7 +178,69 @@ On-Page:
 - keep general provider crawl default at 500 pages, making the sample structurally representative rather than increasing it blindly;
 - deep content parsing becomes bounded at up to 20 important + cluster-representative pages.
 
-### Large-site design
+### Track A verified implementation result — 2026-08-23
+
+Track A status: **PASS, committed locally, not pushed/deployed.**
+
+Unit 1 — SERP client:
+
+- caller AbortSignal reaches the live fetch;
+- request-local 120-second AbortController ceiling;
+- underlying fetch is aborted on timeout;
+- at most one sequential transient retry;
+- no later request after caller cancellation;
+- HTTP 5xx may retry once;
+- task-level 40101 is terminal for that keyword.
+
+Local commit:
+`3841fa729c6a232ba45b9a794ae9504c86505f0f` — `fix(serp): make request cancellation cooperative`.
+
+Verification:
+
+- focused client boundary PASS 31/31.
+
+Unit 2 — SERP adapter:
+
+- orchestration signal passed into every `querySerp()` call;
+- no new keyword request begins after cancellation;
+- completed keyword evidence survives later failure/cancellation;
+- supplied competitor evidence remains preserved;
+- graceful PARTIAL/FAILED outcomes retain raw evidence;
+- adapter version advanced to `1.2.0`.
+
+Local commit:
+`6465890daa6beeff96d7ba265c1f804065e603d6` — `fix(serp): preserve partial evidence on cancellation`.
+
+Verification:
+
+- focused adapter boundary PASS 34/34.
+
+Unit 3 — production source policy:
+
+- `dataforseo-serp` whole-source default timeout is now 1,800,000 ms / 30 minutes;
+- `dataforseo-serp` whole-source attempts are now 1;
+- generic retry policy remains unchanged;
+- focused no-network policy test proves the exact values;
+- stale supplied-competitor test assertion was intentionally updated from adapter v1.1.0 to the already-governed v1.2.0.
+
+Local commit:
+`b8d3ae404cbea75207d7a75bd2011ea62b122dd5` — `fix(serp): govern composite source policy`.
+
+Final Track A verification:
+
+- full SERP + production-policy regression boundary PASS **102/102**;
+- `git diff --check` PASS;
+- staged diff clean and limited to governed changes;
+- no paid provider call, production audit rerun, application push, or deployment used.
+
+Workspace-control note:
+
+- two duplicate-repository incidents were detected during Track A;
+- the governed application path is `C:\Users\kulba\Desktop\vantage-platform\services\worker`;
+- wrong-repository edits were not retained in the final governed commit;
+- future manual file work must verify the Desktop path before editing/testing.
+
+### Large-site Track B design
 
 A new bounded sitemap-footprint layer will:
 
@@ -194,16 +256,16 @@ A deterministic programmatic analysis layer will use the footprint plus represen
 
 ### Expected application files
 
-Track A — SERP reliability:
+Track A — SERP reliability — COMPLETE:
 
 - `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js`
 - `services/worker/src/adapters/dataforseo-serp/serp-adapter.js`
 - `services/worker/src/application/production-runtime.js`
 - focused SERP cancellation/retry/policy tests plus existing SERP production/failure aggregation regressions.
 
-Generic `services/worker/src/orchestration/retry-policy.js` is not expected to change.
+Generic `services/worker/src/orchestration/retry-policy.js` did not change.
 
-Track B — representative large-site acquisition:
+Track B — representative large-site acquisition — NEXT:
 
 - new `services/worker/src/evidence/sitemap-footprint.js`
 - new `services/worker/src/evidence/programmatic-seo-analysis.js`
@@ -231,10 +293,6 @@ Track C — downstream semantics after acquisition PASS:
 
 Must guard against:
 
-- aborted fetches continuing after source cancellation;
-- accidental whole-source retries;
-- false `AVAILABLE` after incomplete keyword coverage;
-- lost completed keyword evidence;
 - false programmatic classification on ordinary small sites;
 - false thin-content findings from pages without body evidence;
 - false geographic mismatch when geography is unknown;
@@ -245,7 +303,7 @@ Must guard against:
 
 ### Required verification
 
-Before Track A PASS:
+Track A requirements — all PASS locally:
 
 1. AbortSignal reaches actual SERP fetch.
 2. Local timeout aborts the fetch.
@@ -277,7 +335,7 @@ Before Track B PASS:
 
 `REPAIR_BOUNDARY_PROTOCOL.md` Mandatory Pre-Edit Gate: **PASS**.
 
-The next application action may now begin with Track A, file unit 1: the exact local current `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js`.
+The complete Track B repair boundary and expected source/test set are already approved. Do not reopen design unless genuinely new evidence materially changes the boundary.
 
 ---
 
@@ -383,6 +441,13 @@ DQV-005 remains deferred until DQV-001 acquisition semantics are verified.
 
 ## Current exact next action
 
-Begin DQV-001 Track A through the governed manual VS Code workflow. Verify and obtain the exact local current `services/worker/src/adapters/dataforseo-serp/dataforseo-serp-client.js` from application HEAD `10bf22cb7f9ad74183fa626fcc696fd86e6a34e1`, then make the complete client-level cancellation/request-boundary change in one source-file unit and run syntax plus focused no-network regressions before moving to `serp-adapter.js`.
+Begin DQV-001 Track B source-file unit 1 from local application HEAD `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`.
 
-Do not make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during Track A implementation unless explicitly authorized.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`:
+
+1. verify `git rev-parse HEAD` is `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`;
+2. begin the new `src\evidence\sitemap-footprint.js` unit;
+3. implement the already-approved recursive sitemap/sitemap-index discovery, same-origin filtering, deterministic deduplication, 200-document / 100,000-URL caps, explicit capped/incomplete coverage, deterministic structural clustering inputs, and representative selection bounded to 20 priority URLs;
+4. add the focused no-network unit regression and run syntax/tests/diff before moving to `programmatic-seo-analysis.js`.
+
+Do not make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during Track B implementation unless explicitly authorized.
