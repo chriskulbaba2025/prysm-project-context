@@ -11,8 +11,8 @@ Critically validate and improve the accuracy/completeness of the audit-data acqu
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Last verified remote application `main` before the current local data-quality work: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
-- Current verified local application `main`: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
-- The local DQV-002 commit has not yet been verified as pushed or deployed.
+- Current verified local application `main` baseline before DQV-003 working-copy edits: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
+- DQV-002 local commit has not yet been verified as pushed or deployed.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Viewer contract remains Viewer v2.2.0 / 16 governed pages.
 
@@ -37,35 +37,42 @@ Proven historical failure plus timeout/cancellation design defect.
 - One keyword, `4-Week Reboot Series`, failed cleanly with DataForSEO task status 40101 `Internal SE Server Error`.
 - The outer source timeout can erase already-valid partial evidence because persistence occurs only after the adapter returns.
 - The orchestration AbortSignal is not propagated into the DataForSEO SERP HTTP request and shared `withTimeout()` does not abort the underlying fetch, so timed-out attempts can overlap later retries and create duplicate paid-call risk.
-- DQV-001 implementation remains deferred until DQV-003 is closed unless the user changes priority.
+- DQV-001 implementation remains deferred until DQV-003 is committed through the governed workflow unless the user changes priority.
 
 ### DQV-002 — On-Page content parsing normalization
 
 Status: VERIFIED AND COMMITTED LOCALLY; NOT YET VERIFIED PUSHED/DEPLOYED.
 
-- Proven root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields that do not exist in the production shape.
+- Proven root cause: the old normalizer stopped at `res.result` instead of descending into `res.result.items[0].page_content`, then read legacy `main_content` / `secondary_content` fields absent from the production shape.
 - Repair: adapter version `1.2.1`; unwrap `result.items[0]`; read `page_content.main_topic` and `secondary_topic`; collect primary/secondary topic text; retain bounded normalized text; exact-text deduplication; exclude provider-classified header/footer; preserve older fixture shape.
 - Production-shaped no-network diagnostic PASS: normalized text non-empty; page `_contentAvailable: true`; site `_contentEvidenceAvailable: true`; testimonials/credentials/pricing detected; duplicate fragment count 1; header/footer excluded.
-- Adapter syntax PASS.
-- Test-file syntax PASS.
 - Final targeted adapter suite PASS: 68/68.
-- Final `git diff --check` and cached diff check PASS.
+- Final diff checks PASS.
 - Local commit: `82a9f84f8c96bcd44a3b307abe024442d1903336` — `fix(onpage): retain DataForSEO parsed page content`.
-- Files committed:
-  - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
-  - `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
-- Unrelated untracked files were intentionally excluded from the commit.
 
 ### DQV-003 — microdata provider contract
 
-Proven provider-contract defect; now the active repair target.
+Status: PROVEN DEFECT; LOCAL REPAIR VERIFIED; NOT YET COMMITTED.
 
+Persisted production defect:
 - On-Page task uses `validate_micromarkup: true`.
-- Current microdata request sends task ID without required page URL.
-- Provider returned 40501 `Invalid Field: 'url'.`
-- `schema.structured_data` is therefore unavailable.
-- Proven client-side boundary: current `getMicrodata(taskId)` constructs `[{ id: taskId }]`; provider requires task ID plus resource URL.
-- Before editing, inspect the exact current local `getMicrodata()` implementation and then the exact caller boundary that supplies its arguments.
+- Existing microdata request sent only task ID.
+- DataForSEO returned 40501 `Invalid Field: 'url'.`
+- `schema.structured_data` was therefore unavailable.
+
+Proven code root cause:
+- `getMicrodata(taskId)` constructed `[{ id: taskId }]`.
+- DataForSEO requires task ID plus page URL.
+- PRYSM already creates deterministic `keyPageUrls` for URL-scoped deep acquisitions, so no new page-selection logic is needed.
+
+Current local repair:
+- `dataforseo-onpage-client.js`: `getMicrodata(taskId, url, options)` now requires a URL and posts `[{ id: taskId, url }]`.
+- `dataforseo-onpage-adapter.js`: adapter version advanced to `1.2.2`; microdata acquisition moved to occur after deterministic `keyPageUrls` are built and uses `keyPageUrls[0]` plus existing sub-endpoint poll options.
+- Existing deep-acquisition behavior remains bounded; no paid provider call or production audit rerun was used for verification.
+- `dataforseo-onpage-adapter.test.js`: added `DQV-003: live microdata client posts required task ID and page URL`, asserting both live POST payload and recorded request metadata contain exact task ID + URL.
+- Syntax checks PASS for client, adapter, and adapter test file.
+- Targeted adapter regression suite PASS: 69 tests, 69 pass, 0 fail, duration ~30.0s.
+- DQV-003 is verified locally but has not yet passed final diff review or been committed.
 
 ### DQV-004 — seven-page crawl
 
@@ -102,9 +109,9 @@ Proven report-data mapping defect.
 
 ## Exact next action
 
-DQV-003: from `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact current local `getMicrodata()` implementation in `src/adapters/dataforseo-onpage/dataforseo-onpage-client.js` without editing it. Verify the request payload and method boundary first. After that, inspect the exact caller in `dataforseo-onpage-adapter.js` to determine the smallest coherent two-file contract repair if the caller must supply a URL. Do not make a paid provider call, deploy, rerun the production audit, or mutate persisted artifacts during this inspection.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the exact DQV-003 working-copy diff before commit. Confirm only the intended three files changed for DQV-003: `dataforseo-onpage-client.js`, `dataforseo-onpage-adapter.js`, and `dataforseo-onpage-adapter.test.js`, and confirm the diff contains only the URL contract repair, deterministic key-page call-site move, adapter version `1.2.2`, and regression test. Do not push, deploy, rerun the production audit, or mutate persisted artifacts.
 
-After DQV-003 is verified through the governed workflow, return to DQV-001 before DQV-005 unless the user explicitly changes priority.
+After DQV-003 is committed through the governed local workflow, return to DQV-001 before DQV-005 unless the user explicitly changes priority.
 
 Last verified:
 2026-08-23
