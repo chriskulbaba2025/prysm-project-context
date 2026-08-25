@@ -89,3 +89,17 @@ Record hard project boundaries here.
 - If a data repair legitimately changes capability eligibility, scoring inputs, evidence coverage, or report conclusions, treat those as downstream reactions to verify, not as reasons to suppress the correct evidence.
 - Application source changes continue to use the governed manual VS Code source-file workflow unless the user explicitly changes that operating method.
 - After each diagnostic or fix, update the durable investigation ledger when the result materially changes known state or downstream impact.
+
+## Authorized exception — Narrative v2 human-review continuation repair
+
+- User authorization was granted on 2026-08-25 to repair the production workflow that currently stops an otherwise scored audit at `narrative_failed` when Narrative v2 returns `HUMAN_REVIEW_REQUIRED` after the bounded automatic rounds.
+- The repair may modify Narrative v2 orchestration, live-binding, production-runtime/API, and portal review-action code only as required to provide a governed continuation path.
+- The existing Narrative v2 quality gate remains unchanged; do not lower the 92/100 release threshold, evidence-fidelity requirement, dimension floors, hard gates, or major-defect protections.
+- The continuation must reuse already-persisted governed evidence and scores. It must not rerun DataForSEO, PageSpeed, backlinks, GA4, GSC, collection, evidence locking, or scoring.
+- The existing first/second-round narrative artifacts remain immutable evidence of the prior execution. Any final third-round artifacts must be additive and auditable.
+- The final third Writer/Judge round requires explicit human authorization. No hidden automatic third round is permitted.
+- If the final third round still does not pass, stop for genuine manual review; do not add a fourth Writer/Judge round or an unbounded repair loop.
+- Before any paid Writer/Judge continuation, run the existing governed cost preflight. The user has approved ordinary paid validation below **USD $2 projected exposure**; if projected exposure would exceed $2, stop and warn the user before any paid call.
+- The Writer-model upgrade to the approved higher-tier Terra model is a deployment-configuration change, not a hardcoded source-code change. Verify the exact provider model identifier and governed price-table entry before production configuration is changed.
+- Keep the current Judge model unchanged unless separately approved.
+- No production deployment, configuration mutation, paid continuation call, new audit, push, or persisted production-artifact mutation may occur without the applicable explicit approval at that step.
