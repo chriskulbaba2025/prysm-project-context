@@ -335,3 +335,19 @@ A stronger Writer is expected to improve synthesis, root-cause interpretation, b
 
 Implication:
 Do not hardcode the Writer model into application logic. Continue using the existing deployment configuration boundary (`PRYSM_NARRATIVE_V2_WRITER_MODEL` and governed price table). Change production configuration only after the continuation repair is verified and explicit deployment approval is obtained. The Judge quality contract and model remain unchanged unless separately approved.
+
+---
+
+## Decision: Large sites use bounded representative acquisition
+
+Date: 2026-08-25
+Status: Active
+
+Decision:
+PRYSM must support very large sites without attempting full-site crawling. The acquisition model is: discover and understand the broad sitemap/site footprint, classify material page families, prioritize the most important commercial/conversion pages and representative family examples, then enforce a bounded DataForSEO On-Page crawl with a target hard ceiling of 250 pages.
+
+Reason:
+PRYSM is a governed conversion-readiness audit product, not an enterprise exhaustive crawler. Large repetitive/programmatic sites can consume crawl time and budget without improving the quality of conversion, UX, trust, SEO, or readiness conclusions. The existing code already supports broad sitemap discovery, URL clustering, representative families, and priority URLs; the missing product behavior is to connect that intelligence to bounded provider acquisition.
+
+Implication:
+Do not solve large-site failures by simply increasing timeout or crawl volume. Preserve whole-site footprint evidence separately from assessed-page evidence. A report may truthfully state that a very large footprint was discovered while only a bounded representative sample was assessed. The next work package should design and implement representative crawl enforcement using existing footprint intelligence, with roughly 20 must-have priority URLs and a maximum 250-page provider crawl. Any exact implementation details must be verified against the current DataForSEO adapter/client before code changes.
