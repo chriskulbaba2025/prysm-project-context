@@ -60,6 +60,8 @@ Record hard project boundaries here.
 - Any limited-evidence dimension shown visually must be clearly identified as limited evidence.
 - Do not modify `PROJECT_CONTEXT_PROTOCOL.md` for ordinary project-state changes.
 - Do not rewrite the production PRD or Adam recommendation source merely to record implementation state; those remain governing/reference documents.
+- PROJECT-WIDE CONCISE DIAGNOSTICS RULE: diagnostic, verification, Railway, GitHub, and similar shell commands must default to the shortest command that returns only the evidence required for the current decision. Avoid full JSON, full logs, or broad output unless a deeper diagnostic reset specifically requires it.
+- PROJECT-WIDE DURABLE-MEMORY RULE: when a stable milestone materially changes verified checkpoint, blocker, exact next action, SHA/deployment, durable decision, hard constraint, or governing procedure, update the authoritative GitHub context before presenting a new-chat handoff. A chat summary alone is not a completed handoff.
 
 ## Authorized exception — PRYSM-V2-UAT-RERENDER-01
 
@@ -92,14 +94,14 @@ Record hard project boundaries here.
 
 ## Authorized exception — Narrative v2 human-review continuation repair
 
-- User authorization was granted on 2026-08-25 to repair the production workflow that currently stops an otherwise scored audit at `narrative_failed` when Narrative v2 returns `HUMAN_REVIEW_REQUIRED` after the bounded automatic rounds.
-- The repair may modify Narrative v2 orchestration, live-binding, production-runtime/API, and portal review-action code only as required to provide a governed continuation path.
+- User authorization was granted on 2026-08-25 to repair the production workflow that stopped an otherwise scored audit at `narrative_failed` when Narrative v2 returned `HUMAN_REVIEW_REQUIRED` after the bounded automatic rounds.
+- The repair may modify Narrative v2 orchestration, live-binding, production-runtime/API, portal review-action code, and deterministic Narrative v2 rendering only as required to provide and complete the governed continuation path.
 - The existing Narrative v2 quality gate remains unchanged; do not lower the 92/100 release threshold, evidence-fidelity requirement, dimension floors, hard gates, or major-defect protections.
 - The continuation must reuse already-persisted governed evidence and scores. It must not rerun DataForSEO, PageSpeed, backlinks, GA4, GSC, collection, evidence locking, or scoring.
-- The existing first/second-round narrative artifacts remain immutable evidence of the prior execution. Any final third-round artifacts must be additive and auditable.
-- The final third Writer/Judge round requires explicit human authorization. No hidden automatic third round is permitted.
-- If the final third round still does not pass, stop for genuine manual review; do not add a fourth Writer/Judge round or an unbounded repair loop.
-- Before any paid Writer/Judge continuation, run the existing governed cost preflight. The user has approved ordinary paid validation below **USD $2 projected exposure**; if projected exposure would exceed $2, stop and warn the user before any paid call.
-- The Writer-model upgrade to the approved higher-tier Terra model is a deployment-configuration change, not a hardcoded source-code change. Verify the exact provider model identifier and governed price-table entry before production configuration is changed.
-- Keep the current Judge model unchanged unless separately approved.
-- No production deployment, configuration mutation, paid continuation call, new audit, push, or persisted production-artifact mutation may occur without the applicable explicit approval at that step.
+- The existing first/second-round narrative artifacts remain immutable evidence of the prior execution. The final third-round artifacts are additive and auditable.
+- The final third Writer/Judge round required explicit human authorization. It has now been completed successfully for audit `5d22dcef-7d98-422f-8415-933e7b02003e`; no fourth Writer/Judge round is permitted.
+- The controlled audit reached a governed release candidate and then `draft_rendered` after deterministic render recovery. Do not rerun the audit or re-authorize another final narrative pass merely to verify the completed result.
+- Production Writer remains the approved Terra model; Judge remains unchanged.
+- Current production budget implementation for Narrative v2 uses `PRYSM_LLM_HARD_BUDGET_USD=1.50` as an individual model-call hard ceiling and `PRYSM_LLM_DAILY_HARD_BUDGET_USD=30.00` as the cumulative daily hard ceiling.
+- The implementation does not enforce a true cumulative USD $2 per-audit hard cap. Any $2 figure used in approval discussions is a human approval/policy threshold, not a technical cumulative per-audit budget limit.
+- No new paid continuation call, new audit, recollection, rescoring, deployment, configuration mutation, push, or persisted production-artifact mutation may occur without the applicable explicit approval at that step.
