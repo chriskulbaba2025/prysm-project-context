@@ -3,7 +3,7 @@
 Audit ID: `97d6b2c7-03b9-4530-8ea7-16557502c638`  
 Target: `https://rebootbusinesscoaching.com/`  
 Date opened: 2026-08-23  
-Status: Active investigation
+Status: Active investigation — local repair boundary complete; production validation pending approval
 
 ## Purpose
 
@@ -37,7 +37,7 @@ Persisted source status baseline:
 
 ## DQV-001 — SERP timeout + enterprise evidence-depth boundary
 
-Classification: **PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. PRE-EDIT DESIGN GATE PASS. TRACK A COMPLETE LOCALLY; TRACK B NEXT.**
+Classification: **PROVEN HISTORICAL FAILURE + PROVEN TIMEOUT/CANCELLATION DESIGN DEFECT. TRACK A + TRACK B COMPLETE LOCALLY; PRODUCTION VALIDATION PENDING APPROVAL.**
 
 Governing implementation design:
 `SPECS/ENTERPRISE_EVIDENCE_ACQUISITION_v1.0.0.md`
@@ -265,7 +265,7 @@ Track A — SERP reliability — COMPLETE:
 
 Generic `services/worker/src/orchestration/retry-policy.js` did not change.
 
-Track B — representative large-site acquisition — NEXT:
+Track B — representative large-site acquisition — COMPLETE LOCALLY:
 
 - new `services/worker/src/evidence/sitemap-footprint.js`
 - new `services/worker/src/evidence/programmatic-seo-analysis.js`
@@ -314,7 +314,7 @@ Track A requirements — all PASS locally:
 7. Supplied competitor evidence survives SERP failure.
 8. Production SERP policy is 30 minutes / one whole-source attempt.
 
-Before Track B PASS:
+Track B requirements — all verified locally:
 
 1. recursive sitemap-index discovery;
 2. deterministic same-origin deduplication and caps;
@@ -323,19 +323,34 @@ Before Track B PASS:
 5. ordinary small site is not falsely classified as programmatic;
 6. large location/template family is detected as likely template-scale;
 7. thin/near-duplicate samples are surfaced only from collected content;
-8. Pennsylvania-target + Texas-only supporting-evidence fixture produces a bounded geographic trust concern;
+8. bounded geographic trust concern is supported only by collected evidence;
 9. unknown geography remains unknown;
 10. On-Page task payload carries `priority_urls`, `respect_sitemap`, `return_despite_timeout`;
 11. important pages and cluster representatives both enter the bounded deep set;
 12. `siteFootprint` / `programmaticSeo` survive SourceResult → DecisionEvidence;
 13. DQV-002 and DQV-003 regressions remain green;
-14. scoring does not change merely because new acquisition fields exist.
+14. scoring v4.1.1 remains unchanged merely because new acquisition fields exist.
+
+### Track B verified implementation result — 2026-08-25
+
+Track B status: **PASS locally; not verified pushed/deployed; no production rerun.**
+
+Verified outcomes:
+
+- representative sitemap footprint discovery and programmatic SEO evidence are integrated into the On-Page acquisition path;
+- representative selection stays bounded and business-aware;
+- bounded deep parsing merges important business pages with material cluster representatives;
+- unavailable sitemap evidence remains explicit rather than becoming a false `NOT_DETECTED` conclusion;
+- On-Page whole-source policy is 60 minutes / one attempt; main task polling budget is 30 minutes;
+- DecisionEvidence preserves representative site evidence losslessly;
+- representative acquisition integration previously PASS **92/92** with no paid provider call;
+- DQV-002 On-Page normalization and DQV-003 microdata contract remained green in the final integrated boundary.
 
 ### Pre-edit gate
 
-`REPAIR_BOUNDARY_PROTOCOL.md` Mandatory Pre-Edit Gate: **PASS**.
+`REPAIR_BOUNDARY_PROTOCOL.md` Mandatory Pre-Edit Gate: **PASS** for the completed Track B repair.
 
-The complete Track B repair boundary and expected source/test set are already approved. Do not reopen design unless genuinely new evidence materially changes the boundary.
+Track B implementation is closed locally. Reopen design only if production validation produces genuinely new evidence that materially changes the boundary.
 
 ---
 
@@ -426,28 +441,50 @@ Interpretation: provider did not stop because of the page ceiling or explicit cr
 
 ## DQV-005 — Report source-status propagation
 
-Classification: **PROVEN REPORT-DATA MAPPING DEFECT; REPAIR DEFERRED.**
+Classification: **PROVEN REPORT-DATA MAPPING DEFECT; REPAIR COMPLETE LOCALLY; INTEGRATED REGRESSION PASS.**
 
-Evidence:
+Original evidence:
 
 - canonical competitor source: `FAILED`;
 - report layer represented it as `NOT_APPLICABLE` / `NOT_CONNECTED`.
 
-Implication: `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially different states and must not be substituted.
+Required semantic rule:
 
-DQV-005 remains deferred until DQV-001 acquisition semantics are verified.
+`FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` are materially different states and must not be substituted.
+
+Verified repair — 2026-08-25:
+
+- DecisionEvidence carries root canonical `sourceStatus` independently from hydrated item collections;
+- `report-content/build-package.js` consumes canonical `decisionEvidence.sourceStatus.competitors` with bounded legacy fallback for older evidence lacking the root map;
+- Viewer v2 no-comparison rendering distinguishes `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE`;
+- Narrative v2 model and persisted report manifest consume the canonical competitor source status with bounded legacy fallback;
+- end-to-end Narrative v2 regression proves canonical `FAILED` reaches Viewer v2 and manifest without degrading to `NOT_APPLICABLE`;
+- report-content focused boundary PASS **25/25**;
+- Viewer v2 conversion boundary PASS **46/46**;
+- Narrative v2 production-path boundary PASS **7/7**;
+- DE-16 real On-Page adapter → DecisionEvidence → production render regression PASS **1/1** after aligning a stale test-only adapter-version literal to current `1.3.0`;
+- final integrated DQV/Track B boundary PASS **185/185**, 0 failures, ~18.3s;
+- `git diff --check` PASS;
+- governed working tree clean except known unrelated `../../lifecycle-failure.txt` and `prysm-v2.2.0-uat.html`.
+
+Known local checkpoints:
+
+- `3776b9e7f39f7fcf396464330f4c889976d4158b` — `fix(report): preserve competitor source status`;
+- `86f134b` — `fix(narrative-v2): preserve competitor source status` was the last explicitly pasted local HEAD before the final test-only adapter-version alignment.
+
+The exact resulting local HEAD after the final test-only alignment was not pasted. Do not guess it; re-verify at the start of the next chat.
+
+No paid provider call, push, deploy, production audit rerun, or persisted production-artifact mutation was used to close DQV-005.
 
 ---
 
 ## Current exact next action
 
-Begin DQV-001 Track B source-file unit 1 from local application HEAD `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`.
-
 From `C:\Users\kulba\Desktop\vantage-platform\services\worker`:
 
-1. verify `git rev-parse HEAD` is `b8d3ae404cbea75207d7a75bd2011ea62b122dd5`;
-2. begin the new `src\evidence\sitemap-footprint.js` unit;
-3. implement the already-approved recursive sitemap/sitemap-index discovery, same-origin filtering, deterministic deduplication, 200-document / 100,000-URL caps, explicit capped/incomplete coverage, deterministic structural clustering inputs, and representative selection bounded to 20 priority URLs;
-4. add the focused no-network unit regression and run syntax/tests/diff before moving to `programmatic-seo-analysis.js`.
+1. verify the exact current local `HEAD` and confirm the governed working tree remains clean except the two known unrelated untracked artifacts;
+2. prepare the controlled production audit/UAT validation plan to prove the real acquisition → DecisionEvidence → report path yields robust, representative evidence for site structure/content, conversion, technical/performance health, competitors, backlinks, and connected GA4/GSC when available;
+3. state paid-provider/cost exposure, runtime boundaries, immutable-artifact rules, and objective success/failure criteria before execution;
+4. obtain explicit user approval before any paid provider call, production audit rerun, push, deployment, or persisted production-artifact mutation.
 
-Do not make paid provider calls, push, deploy, rerun the production audit, or mutate persisted artifacts during Track B implementation unless explicitly authorized.
+Do not begin a production audit rerun merely because the local regression boundary is green.
