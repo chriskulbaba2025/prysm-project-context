@@ -13,9 +13,10 @@ Read these before substantive PRYSM work:
 1. `GITHUB_PROJECT_MEMORY_PROTOCOL.md`
 2. `PROJECT_CONTEXT_PROTOCOL.md`
 3. `REPAIR_BOUNDARY_PROTOCOL.md`
-4. `CURRENT_STATE.md`
-5. `CONSTRAINTS.md`
-6. `DECISIONS.md`
+4. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
+5. `CURRENT_STATE.md`
+6. `CONSTRAINTS.md`
+7. `DECISIONS.md`
 
 Load additional specifications, skills, and reference material only when required by the active task.
 
@@ -28,13 +29,15 @@ GitHub is the authoritative durable project memory. Chats are temporary working 
 At the start of a new substantive chat:
 
 - read this file;
-- read `GITHUB_PROJECT_MEMORY_PROTOCOL.md` and `REPAIR_BOUNDARY_PROTOCOL.md`;
+- read `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, and `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`;
 - read the latest `CURRENT_STATE.md`;
 - read active `CONSTRAINTS.md` and `DECISIONS.md`;
 - load only the additional context required;
 - continue from the exact next action in `CURRENT_STATE.md`.
 
 Before any application-file edit or request for a source file, the Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass. Complete the repair design and expected file/test boundary first; only then begin the governed one-source-file-at-a-time implementation workflow.
+
+For diagnostics, troubleshooting, defect analysis, and repair planning, follow `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`: verify the executing boundary and direct evidence before stating a root cause or directing the user through a diagnostic path.
 
 ## Handoff rule
 
