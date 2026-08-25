@@ -62,6 +62,7 @@ Record hard project boundaries here.
 - Do not rewrite the production PRD or Adam recommendation source merely to record implementation state; those remain governing/reference documents.
 - PROJECT-WIDE CONCISE DIAGNOSTICS RULE: diagnostic, verification, Railway, GitHub, and similar shell commands must default to the shortest command that returns only the evidence required for the current decision. Avoid full JSON, full logs, or broad output unless a deeper diagnostic reset specifically requires it.
 - PROJECT-WIDE DURABLE-MEMORY RULE: when a stable milestone materially changes verified checkpoint, blocker, exact next action, SHA/deployment, durable decision, hard constraint, or governing procedure, update the authoritative GitHub context before presenting a new-chat handoff. A chat summary alone is not a completed handoff.
+- PROJECT-WIDE ACTION-FIRST RULE: every technical or diagnostic response must include a concrete executable action when further work is required. Do not return explanation-only progress updates, intentions, or descriptions of what the assistant plans to do. Perform available verification/tool work immediately; when user action is required, give the single next action directly.
 
 ## Authorized exception — PRYSM-V2-UAT-RERENDER-01
 
@@ -96,7 +97,7 @@ Record hard project boundaries here.
 
 - User authorization was granted on 2026-08-25 to repair the production workflow that stopped an otherwise scored audit at `narrative_failed` when Narrative v2 returned `HUMAN_REVIEW_REQUIRED` after the bounded automatic rounds.
 - The repair may modify Narrative v2 orchestration, live-binding, production-runtime/API, portal review-action code, and deterministic Narrative v2 rendering only as required to provide and complete the governed continuation path.
-- The existing Narrative v2 quality gate remains unchanged; do not lower the 92/100 release threshold, evidence-fidelity requirement, dimension floors, hard gates, or major-defect protections.
+- The existing Narrative v2 quality gate remains unchanged; do not lower the 92/100 release threshold, evidence-fidelity requirement, dimension floors, hard-gate protections, or major-defect protections.
 - The continuation must reuse already-persisted governed evidence and scores. It must not rerun DataForSEO, PageSpeed, backlinks, GA4, GSC, collection, evidence locking, or scoring.
 - The existing first/second-round narrative artifacts remain immutable evidence of the prior execution. The final third-round artifacts are additive and auditable.
 - The final third Writer/Judge round required explicit human authorization. It has now been completed successfully for audit `5d22dcef-7d98-422f-8415-933e7b02003e`; no fourth Writer/Judge round is permitted.
