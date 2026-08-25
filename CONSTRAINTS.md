@@ -63,6 +63,9 @@ Record hard project boundaries here.
 - PROJECT-WIDE CONCISE DIAGNOSTICS RULE: diagnostic, verification, Railway, GitHub, and similar shell commands must default to the shortest command that returns only the evidence required for the current decision. Avoid full JSON, full logs, or broad output unless a deeper diagnostic reset specifically requires it.
 - PROJECT-WIDE DURABLE-MEMORY RULE: when a stable milestone materially changes verified checkpoint, blocker, exact next action, SHA/deployment, durable decision, hard constraint, or governing procedure, update the authoritative GitHub context before presenting a new-chat handoff. A chat summary alone is not a completed handoff.
 - PROJECT-WIDE ACTION-FIRST RULE: every technical or diagnostic response must include a concrete executable action when further work is required. Do not return explanation-only progress updates, intentions, or descriptions of what the assistant plans to do. Perform available verification/tool work immediately; when user action is required, give the single next action directly.
+- PROJECT-WIDE NO-GUESS RULE: do not state a technical cause, runtime behavior, provider behavior, storage path, configuration value, or repair recommendation as fact until the executing boundary and direct evidence support it. If evidence is incomplete, say the cause is unresolved and run the shortest diagnostic that can resolve it.
+- PROJECT-WIDE FORWARD-LOOKING RULE: recommendations must account for the next likely failure boundary, downstream dependency, operational cost, and product constraint before implementation. Prefer a design that removes repeat failure classes over a local patch that only fixes one observed symptom.
+- PROJECT-WIDE RESPONSE BIAS: when work can advance safely, prefer the next executable action over extended explanation. Keep rationale brief unless the user asks for depth or a deeper diagnostic reset requires it.
 
 ## Authorized exception — PRYSM-V2-UAT-RERENDER-01
 
