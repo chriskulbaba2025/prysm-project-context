@@ -303,3 +303,35 @@ Data-layer fixes can change many downstream conclusions at once. The user requir
 
 Implication:
 Use `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md` as the active ledger for the current audit-data investigation. Do not change application code merely because a symptom appears in the report. Prove the acquisition/normalization defect first, record the dependency map, then make the smallest approved source-file change and test both the direct fix and all listed downstream boundaries.
+
+---
+
+## Decision: Preserve narrative quality gate and add governed final revision
+
+Date: 2026-08-25
+Status: Active
+
+Decision:
+Keep the existing Narrative v2 client-release quality gate unchanged. Do not lower the 92/100 release threshold, the perfect evidence-fidelity requirement, the per-dimension floor, hard-gate protections, or major-defect protections. When an audit reaches `HUMAN_REVIEW_REQUIRED` after the two automatic production Writer/Judge rounds, expose the exact Judge defects and allow one explicitly human-authorized final third Writer/Judge round using the already-persisted evidence and scores.
+
+Reason:
+The production validation audit reached scoring successfully and stopped because the narrative did not reach the governed release threshold within the production two-round automatic limit. The quality standard protects the client-facing report; the operational gap is that the system currently has no governed continuation path for the third pass already allowed by the Judge contract.
+
+Implication:
+The repair must preserve the original audit, evidence, scores, and prior narrative artifacts; must not recollect providers or rescore; must require explicit human authorization before the final round; must show the Judge defects that caused review; and must stop for genuine manual review if the final governed round still does not pass.
+
+---
+
+## Decision: Upgrade the Narrative v2 Writer while keeping the Judge stable
+
+Date: 2026-08-25
+Status: Active
+
+Decision:
+For the next controlled production validation, move the Narrative v2 Writer to the approved higher-tier Terra model while keeping the current Judge model unchanged. The exact production provider model identifier and price-table entry must be verified before changing deployment configuration.
+
+Reason:
+A stronger Writer is expected to improve synthesis, root-cause interpretation, business clarity, and non-repetition while retaining the same deterministic Judge standard. The user accepted the modest incremental cost in exchange for a lower probability of unnecessary narrative revision.
+
+Implication:
+Do not hardcode the Writer model into application logic. Continue using the existing deployment configuration boundary (`PRYSM_NARRATIVE_V2_WRITER_MODEL` and governed price table). Change production configuration only after the continuation repair is verified and explicit deployment approval is obtained. The Judge quality contract and model remain unchanged unless separately approved.
