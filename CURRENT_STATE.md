@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Preserve the successful Narrative v2 production checkpoint while continuing only through explicitly approved UI, workflow, or defect repairs. The draft-report dashboard return control is implemented and deployed. A GitHub Actions SERP cancellation defect has been repaired at source; the replacement Vantage Worker CI run is still awaiting final conclusion verification.
+Preserve the successful Narrative v2 production checkpoint while continuing only through explicitly approved UI, workflow, or defect repairs. The draft-report dashboard return control is implemented and deployed, and the GitHub Actions SERP cancellation defect is now fully repaired and verified green in CI.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
@@ -21,7 +21,8 @@ Verified checkpoint:
 - Targeted SERP cancellation suite after repair verified **5/5 PASS**, 0 fail, 0 cancelled, duration ~119 ms; syntax verification and `git diff --check` passed.
 - `edd034b` was pushed to `origin/main` successfully.
 - GitHub combined deployment/status checks for `edd034b` are verified successful for Vercel PRYSM, Vercel vantage-platform, and Railway/GENSEN.
-- Vantage Worker CI run `32905857982` / run number `367` was triggered by `edd034b`; at the last direct GitHub check it was `in_progress`, so its final workflow conclusion is not yet recorded as verified.
+- GitHub Actions `Vantage Worker CI` run `32905857982` / run `#367`, triggered by `edd034b`, is directly verified `completed` with conclusion `success`.
+- The prior CI cancellation issue is therefore closed at the current application checkpoint.
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring remains v4.1.1 unchanged.
 - Controlled production validation audit remains `5d22dcef-7d98-422f-8415-933e7b02003e` for `https://rebootbusinesscoaching.com/`, previously recovered to `draft_rendered` from persisted artifacts.
@@ -48,16 +49,16 @@ Completed:
 - SERP CI cancellation root cause was isolated to the unref'd request-local timeout.
 - Smallest coherent production repair applied: remove `timeoutHandle.unref()` while leaving timeout/cancellation semantics otherwise unchanged.
 - Targeted cancellation regression suite is green at 5/5 with zero cancellations.
-- Repair committed as `edd034b` and pushed to `main`; deployment/status checks succeeded.
+- Repair committed as `edd034b`, pushed to `main`, deployment/status checks succeeded, and Vantage Worker CI run `#367` completed successfully.
 - No audit rerun, evidence recollection, rescoring, or paid Writer/Judge call occurred during these UI/CI repairs.
 
 In progress:
-- Final verification of Vantage Worker CI run `32905857982` / `#367` for application commit `edd034b`.
-- Human visual/UAT confirmation of the deployed draft-report dashboard return control may still be performed if useful.
+- No active repair is currently in progress.
+- Human visual/UAT confirmation of the deployed draft-report dashboard return control may still be performed if useful, but it is not blocking the next unrelated PRYSM problem.
 
 Blocked:
 - No known production Narrative v2 blocker remains.
-- No known SERP source-code blocker remains after the targeted repair; only the final GitHub Actions workflow conclusion remains to be verified.
+- No known SERP CI blocker remains.
 
 Important constraints:
 - GitHub context is authoritative durable memory and must be updated at stable milestones and before a handoff/new-chat transition when state materially changed.
@@ -71,7 +72,7 @@ Important constraints:
 - Same-failure repair attempts remain capped at three before a deeper diagnostic reset.
 
 Exact next action:
-Verify the final conclusion of GitHub Actions `Vantage Worker CI` run `32905857982` / run `#367` for commit `edd034b62529a4d7317c1416cdb37c71b7cfb517`; if it is green, record the CI repair as fully closed and then proceed to the user's newly selected PRYSM problem without reopening the completed audit, evidence, scoring, or Narrative v2 work.
+Start the next PRYSM chat from this verified `edd034b62529a4d7317c1416cdb37c71b7cfb517` checkpoint, read the governing GitHub context files first, and address the user's newly selected problem without reopening the now-closed SERP CI repair unless new evidence specifically requires it.
 
 Last verified:
 2026-08-25 America/Toronto
