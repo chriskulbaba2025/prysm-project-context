@@ -4,75 +4,84 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Move from locally verified DQV-001 Track B + DQV-005 repair into controlled production audit/UAT validation of the real evidence-acquisition → DecisionEvidence → report path.
+Repair the Narrative v2 human-review continuation path discovered during controlled production validation, then resume the same scored audit without recollecting evidence or rescoring.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Last verified remote application `main` before current local data-quality work: `33ec9b63083f62141141ea6363828c9e8152f188` — `feat(report-v2): add read-only UAT rerender route`.
-- Last explicitly captured local application HEAD before the final test-only adapter-version alignment: `86f134b` — `fix(narrative-v2): preserve competitor source status`.
-- After the final test-only adapter-version alignment, `git status --short` was clean for governed files and showed only the two known unrelated untracked artifacts. The exact resulting local HEAD SHA was not pasted and must be re-verified at the next chat before production work.
-- Integrated DQV/Track B regression boundary PASS **185/185**, 0 failures, duration ~18.3s.
-- Current local DQV work is not verified pushed, deployed, or production-rerun.
-- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Viewer contract remains Viewer v2.2.0 / 16 governed pages.
+- Remote application `main` verified at `fd56a7e2901a505bd9416934a38dd47e026a68a6` — `test(evidence): align onpage adapter version`.
+- The repaired application commit was pushed and the production deployment was verified active/successful before the validation audit.
+- Local full worker test command was user-verified PASS **917/917**, 0 failures, 0 cancelled, duration ~19.7s. A prior GitHub Actions cancellation was not reproducible locally; no source change was warranted from that CI symptom.
+- Integrated DQV/Track B regression boundary previously PASS **185/185**, 0 failures.
+- Viewer remains v2.2.0 / 16 governed pages.
 - Scoring remains v4.1.1 unchanged.
-- Unrelated untracked local artifacts remain outside DQV scope: `../../lifecycle-failure.txt` and `prysm-v2.2.0-uat.html`.
+- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Controlled production validation audit: `5d22dcef-7d98-422f-8415-933e7b02003e` for `https://rebootbusinesscoaching.com/`.
+- That audit successfully advanced through evidence collection and scoring, then reached `narrative_pending → narrative_failed` with lifecycle reason `narrative-v2-human-review-required`.
+- The failure is therefore a Narrative v2 release/continuation workflow issue, not evidence-collection or scoring failure.
+- Current production Narrative v2 live binding allows two automatic Writer/Judge rounds (maximum four model calls), while the governed Judge contract supports three total narrative passes.
+- Existing `resumeAudit()` currently treats only `scored`, `narrative_pending`, and `narrative_ready` as resumable; the lifecycle contract itself permits `narrative_failed → narrative_pending`.
+- The portal currently has review actions only after `draft_rendered`; it does not expose Judge defects or a governed final-revision authorization action from `narrative_failed`.
 
 Current environment / branch / version:
-- Governed manual VS Code workflow on Desktop application repository, local branch `main`.
-- Selected immutable validation audit remains `97d6b2c7-03b9-4530-8ea7-16557502c638` for `https://rebootbusinesscoaching.com/`.
-- No production audit rerun has been authorized in this checkpoint.
+- Governed manual VS Code workflow on Desktop application repository, expected local branch `main`.
+- Remote `main` currently `fd56a7e2901a505bd9416934a38dd47e026a68a6`.
+- No application code for the Narrative v2 continuation repair has been changed yet.
+- No additional production audit, provider recollection, third Writer/Judge round, deployment, or production configuration change has been performed.
 
 Completed:
-- DQV-001 Track A SERP reliability complete locally; full SERP/source-policy boundary PASS 102/102.
-- DQV-001 Track B representative large-site acquisition complete locally:
-  - recursive same-origin sitemap/sitemap-index footprint discovery;
-  - deterministic URL-family clustering and representative selection bounded to 20 URLs;
-  - bounded deep On-Page parsing for important pages plus material cluster representatives;
-  - explicit incomplete/unavailable footprint semantics;
-  - `siteFootprint` / `programmaticSeo` propagation through DecisionEvidence;
-  - governed whole-source On-Page policy of 60 minutes / one attempt and 30-minute task polling;
-  - DQV-002 content normalization and DQV-003 microdata contracts remain green.
-- Representative acquisition integration previously PASS 92/92 with no paid provider call.
-- DQV-001 DecisionEvidence propagation complete locally at commit `b4a32aca11d5cc78d9edcd5acc3b37ec734abf1b` — `feat(evidence): propagate representative site evidence`.
-- DQV-005 source-level status foundation complete locally at commit `64c4e01f0f6d53c178d89b9c52756293a21bb4a4` — `fix(evidence): preserve canonical source status`.
-- DQV-005 downstream competitor-status propagation complete locally:
-  - `report-content/build-package.js` consumes canonical `decisionEvidence.sourceStatus.competitors` with bounded legacy fallback;
-  - Viewer v2 distinguishes canonical `FAILED`, `NOT_CONNECTED`, and `NOT_APPLICABLE` instead of collapsing them;
-  - Narrative v2 model and report manifest preserve canonical competitor source status;
-  - end-to-end Narrative v2 regression proves canonical `FAILED` reaches Viewer v2 and persisted manifest;
-  - focused Narrative v2 production-path suite PASS 7/7;
-  - report-content focused suite PASS 25/25;
-  - Viewer v2 conversion suite PASS 46/46.
-- DQV-005 report-content local commit verified earlier: `3776b9e7f39f7fcf396464330f4c889976d4158b` — `fix(report): preserve competitor source status`.
-- Narrative v2 local commit explicitly captured: `86f134b` — `fix(narrative-v2): preserve competitor source status`.
-- Final stale On-Page adapter-version literal in `decision-evidence-production-regression.test.js` was aligned from `1.2.0` to current `1.3.0`; focused DE-16 regression PASS 1/1 before the final integrated run.
-- Final integrated DQV/Track B boundary PASS **185/185**; `git diff --check` PASS; governed working tree clean except the known unrelated untracked artifacts.
-- No paid provider call, application push, deployment, production audit rerun, or persisted production-artifact mutation was performed during the final DQV-005/Track B regression closure.
+- DQV-001 Track A SERP reliability and Track B representative large-site evidence acquisition are complete and deployed in the current production baseline.
+- DQV-005 canonical/downstream source-status propagation is complete and deployed in the current production baseline.
+- Controlled production audit proved the repaired evidence/scoring path can reach `scored` on the live target.
+- Narrative v2 quality-gate behavior was mapped: release requires the existing governed threshold; the quality standard itself is not being lowered.
+- Mandatory Pre-Edit Gate for the human-review continuation repair is **PASS**.
+- Approved repair design:
+  - preserve audit `5d22dcef-7d98-422f-8415-933e7b02003e`;
+  - reuse persisted evidence and scores;
+  - expose exact Judge defects when human review is required;
+  - require explicit human authorization for one final third Writer/Judge round;
+  - no DataForSEO/PageSpeed/backlinks/GA4/GSC recollection and no scoring rerun;
+  - preserve prior narrative artifacts; final-round artifacts must be additive/auditable;
+  - stop for genuine manual review if pass 3 still fails;
+  - no fourth pass/unbounded repair loop.
+- User also approved moving the Narrative v2 Writer to the higher-tier Terra model for the next controlled production validation while keeping the Judge model unchanged. The exact provider model identifier and price-table entry must be verified before deployment configuration changes.
+- Cost guard: projected paid exposure below USD $2 is approved for ordinary validation; if a paid action is projected to exceed $2, stop and warn the user before the call.
 
 In progress:
-- No application repair is currently in progress.
-- The next phase is controlled production validation proving that the real audit gathers and preserves a robust, representative evidence set and that the final client report accurately reflects site structure/content, conversion signals, technical/performance health, competitor context, backlinks, and connected analytics/search-console evidence when available.
+- Narrative v2 governed human-review continuation repair has been fully designed but implementation has not started.
+- Expected application boundary is approximately:
+  - `services/worker/src/narrative-v2/orchestrator.js`
+  - `services/worker/src/narrative-v2/live-binding.js`
+  - `services/worker/src/narrative-v2/production-path.js`
+  - `services/worker/src/application/production-runtime.js`
+  - `services/worker/src/server.js`
+  - `lib/worker-client.ts`
+  - a narrow Next.js narrative-review/continuation API route
+  - `components/AuditReviewActions.tsx`
+  - `app/audits/[auditId]/page.tsx` only if required to surface the Judge review summary
+  - focused orchestration/live-binding/production-path/API/UI regression tests.
+- Implementation must remain one verified source-file unit at a time under the manual VS Code workflow.
 
 Blocked:
-- No code/test blocker.
-- Production audit rerun remains blocked pending explicit user approval.
-- Before any production action, the exact current local application HEAD must be re-verified because the post–test-only-fix SHA was not captured in the prior chat.
+- No design blocker.
+- Before editing the first source file, the exact local application `HEAD` and governed working-tree cleanliness must be verified against the remote baseline because only remote `main` is currently re-verified in GitHub.
+- The exact persisted Judge defect list for audit `5d22dcef-7d98-422f-8415-933e7b02003e` has not yet been inspected; implementation must expose it generically from the governed orchestration artifact rather than hardcoding this audit's defects.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
 - At substantive chat start, read `PROJECT.md`, `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, and active `DECISIONS.md`.
 - Manual application edits remain user-applied in VS Code; do not directly modify `vantage-platform` through tools.
-- Before any new application-file edit, complete the Mandatory Pre-Edit Gate and use the complete current local source supplied by the user; do not reconstruct unverified application code.
-- **Strict manual-edit rule:** every manual code change instruction must include the exact repository-relative path, exact current/original start and end line numbers, start/end anchor text, explicit replace/insert/delete direction, and the complete code example. Line numbers alone are never sufficient. Use bottom-up order when multiple edits would shift lines.
-- Do not make paid provider calls, push, deploy, rerun a production audit, or mutate persisted artifacts without explicit approval.
-- Preserve scoring v4.1.1 and Viewer v2.2.0 / 16 pages unless a deliberate approved migration occurs.
-- Do not touch `../../lifecycle-failure.txt` or `prysm-v2.2.0-uat.html`.
+- The Mandatory Pre-Edit Gate for this repair is already PASS; do not remap it unless new evidence materially changes the boundary.
+- For every manual code edit, provide exact repository-relative path, exact original start/end line numbers, start/end anchor text, explicit replace/insert/delete direction, complete replacement code, and bottom-up order when multiple edits shift lines.
+- No paid provider/model call, push, deploy, production configuration mutation, new production audit, or persisted production-artifact mutation without explicit approval.
+- Preserve scoring v4.1.1 and Viewer v2.2.0 / 16 pages.
+- Preserve the existing Narrative v2 quality gate. Do not lower it as part of this repair.
+- A final third Writer/Judge round must be explicitly human-authorized and cost-preflighted; stop/warn above the user's USD $2 projected-exposure threshold.
+- Keep the Judge model unchanged; Writer model upgrade is configuration-driven and must not be hardcoded.
 - Same-failure repair attempts remain capped at three before a deeper diagnostic reset.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, verify the exact local `HEAD` and clean governed working tree first. Then prepare the controlled production audit/UAT validation plan for audit-data quality and report completeness, including provider/cost boundaries and success criteria, and obtain explicit user approval before any paid provider call or production audit rerun.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, verify the exact local `HEAD` and governed clean working tree against remote `main` `fd56a7e2901a505bd9416934a38dd47e026a68a6`; do not request or edit the first source file until that baseline check passes.
 
 Last verified:
-2026-08-25
+2026-08-25 11:26 America/Toronto
