@@ -4,78 +4,76 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Complete the governed production validation of the deployed Narrative v2 human-review continuation repair without recollecting evidence or rescoring the preserved audit unless separately authorized.
+Preserve the now-successful Narrative v2 production continuation/render checkpoint, complete human review of the rendered draft, and continue only through explicitly approved UI or workflow changes without rerunning evidence collection, scoring, or the paid final narrative pass.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Governed application branch: `main`.
-- Local application HEAD verified at `6a142d75936d01c9741c9d52bc0fe74754f86ca2` — `test(narrative-v2): cover governed continuation routes`.
-- GitHub remote `main` independently verified at `6a142d75936d01c9741c9d52bc0fe74754f86ca2` after the user-authorized push.
-- Railway production deployment `69890310-fbf1-4f3e-b041-2bdb4129cec8` is SUCCESS and its deployed commit hash is verified as `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
+- Local and GitHub remote application HEAD verified at `f37553020243759762ad75e9330a3e6f21528136` — `fix(narrative-v2): revalidate final pass render history`.
+- Railway production is verified deployed at exact application SHA `f37553020243759762ad75e9330a3e6f21528136`.
 - Production service: `vantage-platform` in Railway `production`, service ID `d6012de3-a174-4a59-bf8f-db4e9b01d91f`.
-- Final local targeted verification: **28/28 PASS**, 0 fail, 0 cancelled, duration ~441 ms.
-- Root TypeScript verification `npx tsc --noEmit --pretty false` PASS.
-- `git diff --check` clean and working tree clean at final local verification.
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring remains v4.1.1 unchanged.
-- Controlled production validation audit remains `5d22dcef-7d98-422f-8415-933e7b02003e` for `https://rebootbusinesscoaching.com/`.
-- That audit previously reached `narrative_pending → narrative_failed` with lifecycle reason `narrative-v2-human-review-required`; the deployed repair is specifically for that continuation boundary.
-- Production Writer configuration was user-verified as `gpt-5.6-terra` with governed price-table entry `inputPricePer1K: 0.002`, `outputPricePer1K: 0.012`; Judge pricing entry remains present for `gpt-5.6-sol` and the Judge model is unchanged.
-- No paid Writer/Judge continuation, new production audit, recollection, rescoring, or persisted production-artifact mutation has yet been performed for the final continuation.
+- Controlled production validation audit: `5d22dcef-7d98-422f-8415-933e7b02003e` for `https://rebootbusinesscoaching.com/`.
+- Production Writer configuration: `gpt-5.6-terra`; Judge remains `gpt-5.6-sol`.
+- Production Narrative v2 final human-authorized Writer 3 → Judge 3 round completed successfully and reached `narrative_ready` with reason `narrative-v2-final-pass-release-candidate`.
+- The first post-final-pass render failed deterministically because Pass 3 revalidation omitted persisted Pass 2 revision context; no additional model call was required to repair this.
+- Render repair commit `f37553020243759762ad75e9330a3e6f21528136` forwards the prior persisted Writer output and prior Judge revision directive into final WriterOutput revalidation.
+- Render regression suite verified **7/7 PASS**, 0 fail, 0 cancelled, duration ~171 ms; syntax and `git diff --check` passed.
+- After deployment, stranded-audit recovery reused persisted artifacts and successfully advanced the controlled audit through `narrative_ready` to `draft_rendered` with reason `governed-narrative-v2-rendering-complete`.
+- The rendered draft is available for human review. No further Writer/Judge pass is required or permitted for this completed continuation.
+- Review checklist semantics verified: a checked box means the reviewer has reviewed that area; it does not mean the item is missing or defective.
+- User requested a future small UI-only improvement: add a clear `← Back to Dashboard` button at the top of the draft-report view. This has not yet been implemented.
 
 Current environment / branch / version:
 - Governed manual VS Code workflow on Desktop application repository.
 - Application path: `C:\Users\kulba\Desktop\vantage-platform`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Branch: `main`.
-- Local HEAD: `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
-- Remote `origin/main`: `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
-- Railway production deployment: `69890310-fbf1-4f3e-b041-2bdb4129cec8` — SUCCESS at deployed commit `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
+- Local HEAD: `f37553020243759762ad75e9330a3e6f21528136`.
+- Remote `origin/main`: `f37553020243759762ad75e9330a3e6f21528136`.
+- Railway deployed source SHA: `f37553020243759762ad75e9330a3e6f21528136`.
+- Production Narrative v2 daily hard-budget environment setting is `PRYSM_LLM_DAILY_HARD_BUDGET_USD=30.00`.
+- Individual-call hard budget remains `PRYSM_LLM_HARD_BUDGET_USD=1.50`.
+- The implementation does **not** enforce a true cumulative USD $2 per-audit hard cap; any $2 figure is an approval/policy boundary, not the technical cumulative budget implementation.
 
 Completed:
-- Mandatory Pre-Edit Gate for the Narrative v2 human-review continuation repair remains PASS.
-- Governed continuation is implemented, published, and deployed across the full required boundary:
-  - `205bc2195e253ebf1a51088545deb255148b0e5d` — governed orchestrator final-pass continuation.
-  - `d5804a9d3b952c4fc5dbee430c91fe72f9ec2fa6` — governed live-binding final-pass authorization.
-  - `9ccbe92fa0d672340dcfadc67af072e62d7b8f0a` — governed production-path final-pass continuation.
-  - `c4b04d4eb6f9246b1b6d26c73eb746d414f04139` — expose governed final-pass runtime continuation.
-  - `8e74d671a2cd695dd63a8d691110d5d7630621cb` — add governed worker review/continuation routes.
-  - `3029daa2a0d6d6b988aaea4d47a9913f3d9b2e75` — add governed continuation worker client.
-  - `63ec09330fb8b8563a0df2a5c4a0aa3a5662eec1` — add Next.js governed continuation API route.
-  - `e5262707b0583e5440c72384ec0328269b292af9` — add human review continuation UI action.
-  - `6a142d75936d01c9741c9d52bc0fe74754f86ca2` — cover governed continuation HTTP routes.
-- `services/worker/src/application/production-runtime.js` exposes governed read-only Narrative v2 human-review retrieval and explicit final-pass continuation while preserving the ordinary `resumeAudit()` state boundary.
-- `services/worker/src/server.js` exposes authenticated `GET /api/v1/audits/:auditId/narrative-review` and explicit `POST /api/v1/audits/:auditId/narrative-final-pass` routes.
-- `lib/worker-client.ts` supports the two continuation operations; the final-pass call has a bounded 20-minute client timeout.
-- `app/api/audits/[auditId]/narrative-review/route.ts` provides the authenticated portal boundary and generates a unique server-side authorization identifier only after explicit final-pass confirmation.
-- `components/AuditReviewActions.tsx` handles `narrative_failed`, loads the governed Judge review, displays it, and presents the explicit one-time final-pass authorization action.
-- `services/worker/src/identity/server-auth-fail-closed.test.js` covers unauthenticated denial, read-only Judge review retrieval, missing authorization failure, and exactly-once authorized final-pass forwarding.
-- Existing quality gate is unchanged; persisted evidence/scores and prior narrative artifacts remain the governing inputs; no fourth pass or unbounded loop was added.
-- User explicitly authorized the application push and production deployment on 2026-08-25; Railway deployment is independently verified successful at the intended commit.
+- Governed human-review continuation path is implemented end-to-end across orchestrator, live binding, production path/runtime, worker routes/client, Next.js API, portal UI, and tests.
+- Runtime authorization-binding omission was proven after the first production continuation attempt failed before any Writer 3 provider call.
+- Repair commit `b50bee437fdea89b403b2c1cd4dddae91a91f01c` bound `authorizeFinalPass` through production runtime and added a production-runtime composition regression test; targeted regression verification was **20/20 PASS**.
+- `b50bee4` was pushed and its Railway deployment SHA was explicitly verified before the user re-authorized the paid final pass.
+- User explicitly authorized exactly one new final-pass attempt after the repair deployment.
+- Writer 3 → Judge 3 succeeded and produced a governed release candidate.
+- Deterministic rendering then exposed the missing prior-pass revalidation context; root cause was isolated to `services/worker/src/report/render-narrative-v2.js`.
+- Render repair and Pass 3 regression coverage were committed as `f37553020243759762ad75e9330a3e6f21528136`, pushed, deployed, and exact Railway source SHA verified.
+- Automatic stranded-audit recovery completed the deterministic render from persisted artifacts without another paid model call or full audit rerun.
+- Controlled audit is now `draft_rendered` and ready for human review.
+- No fourth Writer/Judge pass was added or run.
+- Evidence collection and scoring were not rerun.
+- Process improvement adopted: diagnostics and verification should default to concise commands that return only the required fields; avoid full JSON/log dumps unless deeper diagnosis requires them.
 
 In progress:
-- Source implementation, GitHub publication, production Writer configuration verification, and production deployment are complete.
-- Controlled paid final Narrative v2 continuation remains pending the governed cost preflight and explicit final-pass human authorization.
+- Human visual/UAT review of the rendered draft report.
+- Separate future UI-only improvement requested: add `← Back to Dashboard` at the top of the draft report view.
 
 Blocked:
-- No source-code, publication, configuration, or deployment blocker.
-- Paid production continuation remains intentionally blocked until the governed cost preflight is checked and the explicit final-pass authorization boundary is satisfied.
+- No production Narrative v2 continuation or render blocker remains.
+- No additional paid model work is required for the controlled audit.
 
 Important constraints:
-- GitHub context is authoritative durable memory.
-- Manual application edits remain user-applied in VS Code; do not directly modify `vantage-platform` through tools.
-- Preserve scoring v4.1.1 and Viewer v2.2.0 / 16 pages.
+- GitHub context is authoritative durable memory and must be updated at stable milestones and before a handoff/new-chat transition when state materially changed.
+- Manual application edits remain user-applied in VS Code; do not directly modify `vantage-platform` through tools unless the user explicitly changes that operating method.
+- For diagnostics/verification, use the shortest command that returns the required evidence; only broaden output when necessary for deeper diagnosis.
+- Preserve scoring v4.1.1 and Viewer v2.2.0 / 16 pages unless a separately approved migration changes them.
 - Preserve the existing Narrative v2 quality gate; do not lower the 92/100 release threshold or related hard gates.
-- The third Writer/Judge round must remain explicitly human-authorized, additive/auditable, and bounded to one final round.
-- Reuse persisted evidence and scores; do not recollect providers or rescore for this continuation.
-- Before any paid Writer/Judge continuation, run the governed cost preflight. Ordinary validation below USD $2 projected exposure is approved; stop and warn above $2.
-- Keep the Judge model unchanged.
-- No paid continuation, new production audit, recollection, rescoring, or persisted production-artifact mutation without the applicable explicit approval.
+- Reuse persisted evidence and scores for continuation/recovery work; do not recollect providers or rescore unless separately authorized.
+- The completed final third Writer/Judge round was the last governed model round for this audit; no fourth pass.
+- Do not rerun this production audit or re-authorize another final narrative pass merely to verify the completed render.
 - Same-failure repair attempts remain capped at three before a deeper diagnostic reset.
 
 Exact next action:
-Run the governed cost preflight for the explicit final Narrative v2 Writer 3 → Judge 3 continuation of audit `5d22dcef-7d98-422f-8415-933e7b02003e`. If projected exposure is below USD $2, present the result and obtain explicit final-pass human authorization before making the paid continuation call; if it exceeds $2, stop and warn.
+Perform the human visual/UAT review of the existing `draft_rendered` report for audit `5d22dcef-7d98-422f-8415-933e7b02003e`; do not rerun the audit or authorize another Writer/Judge pass. If the user chooses to implement the requested `← Back to Dashboard` control, treat it as a separate UI-only governed source-file unit after locating and verifying the exact current report-view source file.
 
 Last verified:
 2026-08-25 America/Toronto
