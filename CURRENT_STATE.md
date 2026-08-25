@@ -4,21 +4,22 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Complete the governed release of the locally verified Narrative v2 human-review continuation repair, then perform the next controlled production validation without recollecting evidence or rescoring the preserved audit unless separately authorized.
+Complete the governed release of the verified Narrative v2 human-review continuation repair, then perform the next controlled production validation without recollecting evidence or rescoring the preserved audit unless separately authorized.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Governed local application branch: `main`.
+- Governed application branch: `main`.
 - Local application HEAD verified at `6a142d75936d01c9741c9d52bc0fe74754f86ca2` — `test(narrative-v2): cover governed continuation routes`.
+- GitHub remote `main` independently verified at `6a142d75936d01c9741c9d52bc0fe74754f86ca2` after the user-authorized push.
 - Final local targeted verification: **28/28 PASS**, 0 fail, 0 cancelled, duration ~441 ms.
 - Root TypeScript verification `npx tsc --noEmit --pretty false` PASS.
-- `git diff --check` clean and working tree clean at final verification.
+- `git diff --check` clean and working tree clean at final local verification.
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring remains v4.1.1 unchanged.
 - Controlled production validation audit remains `5d22dcef-7d98-422f-8415-933e7b02003e` for `https://rebootbusinesscoaching.com/`.
 - That audit previously reached `narrative_pending → narrative_failed` with lifecycle reason `narrative-v2-human-review-required`; the repair is specifically for that continuation boundary.
-- No application push, deployment, production configuration mutation, paid Writer/Judge continuation, new production audit, or persisted production-artifact mutation was performed during this repair package.
+- No deployment, production configuration mutation, paid Writer/Judge continuation, new production audit, or persisted production-artifact mutation has been performed for this repair package.
 
 Current environment / branch / version:
 - Governed manual VS Code workflow on Desktop application repository.
@@ -26,11 +27,12 @@ Current environment / branch / version:
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Branch: `main`.
 - Local HEAD: `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
-- The locally completed repair commit stack is not yet authorized for push/deployment in this handoff.
+- Remote `origin/main`: `6a142d75936d01c9741c9d52bc0fe74754f86ca2`.
+- Completed continuation commit stack is now published to GitHub `main`; deployment remains unauthorized.
 
 Completed:
 - Mandatory Pre-Edit Gate for the Narrative v2 human-review continuation repair remains PASS.
-- Governed continuation is implemented locally across the full required boundary:
+- Governed continuation is implemented and published across the full required boundary:
   - `205bc2195e253ebf1a51088545deb255148b0e5d` — governed orchestrator final-pass continuation.
   - `d5804a9d3b952c4fc5dbee430c91fe72f9ec2fa6` — governed live-binding final-pass authorization.
   - `9ccbe92fa0d672340dcfadc67af072e62d7b8f0a` — governed production-path final-pass continuation.
@@ -48,15 +50,16 @@ Completed:
 - `app/audits/[auditId]/page.tsx` was reviewed as a conditional boundary and was not changed because the review component now retrieves/displays the Judge result directly.
 - `services/worker/src/identity/server-auth-fail-closed.test.js` now covers unauthenticated denial, read-only Judge review retrieval, missing authorization failure, and exactly-once authorized final-pass forwarding.
 - Existing quality gate is unchanged; persisted evidence/scores and prior narrative artifacts remain the governing inputs; no fourth pass or unbounded loop was added.
+- User explicitly authorized the application push on 2026-08-25; `main` was pushed from prior remote `fd56a7e2901a505bd9416934a38dd47e026a68a6` to `6a142d75936d01c9741c9d52bc0fe74754f86ca2` and the remote branch was independently re-read and verified at the target SHA.
 
 In progress:
-- Source implementation is complete locally.
-- Remote publication/deployment and controlled production continuation remain pending explicit user approval.
+- Source implementation and GitHub publication are complete.
+- Production deployment and controlled production continuation remain pending explicit user approval.
 - The approved higher-tier Terra Writer configuration change remains pending verification of the exact provider model identifier and governed price-table entry before any deployment configuration mutation.
 
 Blocked:
-- No source-code blocker.
-- Push/deploy/configuration/paid production continuation are intentionally blocked by the explicit-approval constraints.
+- No source-code or publication blocker.
+- Deployment/configuration/paid production continuation are intentionally blocked by the explicit-approval constraints.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
@@ -68,11 +71,11 @@ Important constraints:
 - Reuse persisted evidence and scores; do not recollect providers or rescore for this continuation.
 - Before any paid Writer/Judge continuation, run the governed cost preflight. Ordinary validation below USD $2 projected exposure is approved; stop and warn above $2.
 - Keep the Judge model unchanged. Writer upgrade is deployment configuration, not hardcoded application logic.
-- No push, deployment, production configuration mutation, paid continuation, new production audit, or persisted production-artifact mutation without the applicable explicit user approval.
+- No deployment, production configuration mutation, paid continuation, new production audit, or persisted production-artifact mutation without the applicable explicit user approval.
 - Same-failure repair attempts remain capped at three before a deeper diagnostic reset.
 
 Exact next action:
-In a new chat, verify the current local application HEAD is still `6a142d75936d01c9741c9d52bc0fe74754f86ca2` with a clean working tree, then obtain the user's explicit approval before pushing the completed Narrative v2 continuation commit stack. Do not deploy or run the paid final continuation yet.
+Verify the exact approved higher-tier Terra Writer provider model identifier and its governed price-table entry, then obtain the user's explicit approval before production deployment or configuration mutation. Do not deploy or run the paid final continuation yet.
 
 Last verified:
 2026-08-25 America/Toronto
