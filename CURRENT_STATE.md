@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Diagnose, from direct production evidence only, why Stripe audit `75992ac9-e2f1-4efe-b315-7ee8d6bda13b` produced only about 10% evidence coverage and a report with almost no assessable modules. Do not infer the cause from the rendered report alone.
+Design and implement bounded representative acquisition so PRYSM can audit very large sites without attempting exhaustive crawling or allowing repetitive/programmatic URL families to consume the provider crawl budget.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
@@ -16,16 +16,17 @@ Verified checkpoint:
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring remains v4.1.1 unchanged.
 - Controlled production Narrative v2 audit `5d22dcef-7d98-422f-8415-933e7b02003e` remains recovered to `draft_rendered`; no fourth Writer/Judge pass is permitted.
-- Stripe audit `75992ac9-e2f1-4efe-b315-7ee8d6bda13b` is verified from the portal record as `draft_rendered`, created at approximately 18:07 and reaching `evidence_stored` at approximately 18:20 before scoring, Narrative v2, and rendering completed.
-- The rendered Stripe report shows approximately 10% evidence coverage, 1 of 13 evidence capabilities, 0 assessed modules, and crawl-dependent evidence unavailable.
-- That symptom is not yet a verified root cause.
-- Browser-relative `/api/v1/audits/...` diagnostics were proven to hit the Next.js web origin rather than the Railway worker and therefore were not a valid direct worker diagnostic.
-- Current Railway log output did not contain the historical Stripe audit lines; absence from the current log stream does not prove a source failure cause.
-- Local filesystem search was not an appropriate production-artifact diagnostic because the production worker is configured to require durable governed S3 artifact storage.
-- Authoritative code verification established that the Next.js audit detail page calls `workerClient.getAuditStatus()` server-side; the worker audit service returns `sourceStatus` from the most recent `evidence_locked` lifecycle event.
-- Production governed artifacts use tenant/client/audit scoped object keys and normalized source artifacts such as `normalized/dataforseo-onpage.json`.
-- A new governing `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` has been created and verified in GitHub. It prohibits guess-driven diagnosis, requires the executing boundary and direct evidence to be verified before stating root cause, and requires unresolved causes to remain explicitly unresolved.
-- `PROJECT.md` has been updated and verified so every substantive PRYSM chat must load `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` during startup.
+- Stripe audit `75992ac9-e2f1-4efe-b315-7ee8d6bda13b` reached `draft_rendered` but had approximately 10% evidence coverage, 1 of 13 evidence capabilities, 0 assessed modules, and crawl-dependent evidence unavailable.
+- Direct S3 evidence proved `dataforseo-onpage` failed with `errorCategory: timeout`, returned zero records, produced no evidence, and persisted no raw OnPage artifact.
+- The persisted normalized OnPage result records limitation `Source execution failed: Source execution timed out`.
+- Direct runtime config verification proved the loaded production values are `onpagePollTimeoutMs: 600000`, `onpageMaxPages: 500`, and `onpagePollIntervalMs: 10000`.
+- Application code proves `VANTAGE_ONPAGE_POLL_TIMEOUT_MS` defaults to 600000 ms, `VANTAGE_ONPAGE_MAX_PAGES` defaults to 500, and the orchestration retry boundary returns `Source execution timed out` when its hard timeout fires.
+- The prior speculative environment-variable names were wrong and are not evidence. Do not repeat that diagnostic path.
+- Current product decision: do not solve large-site failures by simply increasing timeout or crawl volume.
+- Current large-site strategy: PRYSM should understand a broad footprint, classify material page families, select important/representative pages, and cap provider acquisition at approximately 250 pages.
+- Current code already contains broad sitemap-footprint discovery, clustering of repeated/variable URL families, representative URLs, business-role priority scoring, DataForSEO `priority_urls`, and representative evidence integration.
+- Current DataForSEO client caps `priority_urls` at 20 and currently submits `max_crawl_pages` from the configured `maxPages` value.
+- The missing behavior is representative crawl enforcement: use footprint intelligence to govern the bounded acquisition plan before the paid provider crawl rather than merely analyzing representative evidence after the crawl.
 
 Current environment / branch / version:
 - Governed manual VS Code workflow on Desktop application repository.
@@ -40,28 +41,32 @@ Completed:
 - Prior Narrative v2 production closure remains complete.
 - Draft dashboard-return UI repair remains complete.
 - SERP CI cancellation repair remains complete and CI-green.
-- Diagnostic governance has been strengthened with the new evidence-first, no-guess protocol and mandatory startup loading.
-- The failed speculative diagnostic routes used during the initial Stripe investigation have been identified and closed; they must not be repeated as evidence of root cause.
+- Diagnostic governance remains strengthened with evidence-first, no-guess rules.
+- Stripe OnPage failure boundary is now directly verified from persisted production evidence and loaded runtime configuration.
+- Large-site product direction has been decided: bounded representative acquisition rather than exhaustive crawling or timeout inflation.
 
 In progress:
-- Stripe audit evidence-acquisition diagnosis for audit `75992ac9-e2f1-4efe-b315-7ee8d6bda13b`.
-- Root cause status: UNRESOLVED pending direct source-status / persisted normalized evidence.
+- New work package: Representative Crawl Enforcement.
+- Design target: broad footprint discovery → page-family classification → deterministic priority/representative plan → approximately 20 must-have priority URLs → hard 250-page DataForSEO acquisition ceiling → explicit reporting of discovered footprint versus assessed sample.
 
 Blocked:
-- No application repair is authorized or ready because the Stripe root cause has not yet been proven.
+- No implementation should begin until the current application baseline is reverified in the fresh chat and the exact current source-file contents for the first governed source-file unit are inspected.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
-- `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` is mandatory governing instruction: do not guess, do not present inferred architecture/provider/storage/failure behavior as fact, and do not send the user through a diagnostic path until the relevant code/runtime boundary proves that path can return the needed evidence.
-- Use the shortest read-only diagnostic that retrieves the authoritative evidence.
-- Do not change application code until the root cause is proven and the `REPAIR_BOUNDARY_PROTOCOL.md` pre-edit gate passes.
+- `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` remains mandatory: no guessing; do not present inferred architecture/provider/storage/failure behavior as fact; verify the executing boundary and direct evidence first.
+- Every technical/diagnostic response must include a concrete executable action when further work is required.
+- Prefer action over explanation. Keep rationale concise unless deeper explanation is requested or needed for a diagnostic reset.
+- Recommendations must be forward-looking: account for likely downstream failure boundaries, dependencies, cost, and product constraints before implementation.
+- Do not increase timeout or crawl volume merely to accommodate giant sites without evidence that doing so improves the product outcome.
+- Preserve whole-site footprint evidence separately from bounded assessed-page evidence; never imply that a 250-page assessment is an exhaustive full-site crawl.
 - Manual application edits remain user-applied in VS Code unless the user explicitly changes that method.
 - Preserve scoring v4.1.1 and Viewer v2.2.0 / 16 pages unless separately approved.
-- Do not rerun production audits, recollect provider evidence, rescore, invoke paid Writer/Judge calls, deploy, or mutate persisted production artifacts without explicit approval.
+- Do not rerun production audits, recollect provider evidence, rescore, invoke paid Writer/Judge calls, deploy, push, or mutate persisted production artifacts without explicit approval.
 - Same-failure repair attempts remain capped at three before a deeper diagnostic reset.
 
 Exact next action:
-Before issuing any further user diagnostic command, verify from authoritative application code the single read-only production path that can retrieve the Stripe audit's `sourceStatus` or persisted normalized source records. Then give the user only that proven diagnostic. Do not state why Stripe failed until that direct evidence is returned.
+Start a fresh chat. Read `PROJECT.md`, `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, `CURRENT_STATE.md`, active `CONSTRAINTS.md`, active `DECISIONS.md`, and `EFFICIENCY_METRICS.md` first. Treat GitHub as authoritative. Reverify the current `vantage-platform` `main` HEAD before implementation. Then design the exact Representative Crawl Enforcement contract against the verified current code before editing. The first likely governed source-file unit is `services/worker/src/evidence/sitemap-footprint.js`, but do not assume that boundary until the fresh-chat code verification confirms it.
 
 Last verified:
 2026-08-25 America/Toronto
