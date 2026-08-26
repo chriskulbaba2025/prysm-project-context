@@ -3,7 +3,7 @@
 Audit ID: `97d6b2c7-03b9-4530-8ea7-16557502c638`  
 Target: `https://rebootbusinesscoaching.com/`  
 Opened: 2026-08-26  
-Status: Active — defects 1–4 closed locally; defect 5 diagnosed and ready for bounded repair; defects 6–7 remain
+Status: COMPLETE LOCALLY — 7/7 known Interpretation Integrity defects closed; awaiting reconciliation with Brad's Evidence Integrity stream
 
 ## Purpose
 
@@ -37,17 +37,17 @@ Chris's boundary is:
 
 This track determines whether available evidence is actually used, weighted correctly, scoped correctly, and expressed no more strongly than the evidence supports.
 
-The two workstreams must be reconciled before final integrity sign-off, but explicit user authorization permits proven, bounded Interpretation Integrity repairs to proceed locally while Brad completes his forensic review.
+The Interpretation Integrity stream is now complete locally. Final integrity sign-off still requires reconciliation with Brad's Evidence Integrity findings and the final Data Utilization Audit.
 
 ## Verified application baseline
 
 Application repository: `chriskulbaba2025/vantage-platform`  
 Governed branch: `main`  
-Verified local application HEAD for this repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`
+Verified application baseline before this local repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`
 
 No application push, deployment, paid provider call, production audit rerun, Writer/Judge rerun, rescoring of persisted production artifacts, or production-artifact mutation was performed during this Interpretation Integrity repair session.
 
-Local manual edits exist in the user's Desktop working copy and must be verified with `git status --short` before any application commit.
+Local manual edits remain in the user's Desktop working copy and must be verified with `git status --short` before any application commit.
 
 ## Offline replay harness
 
@@ -78,7 +78,7 @@ Status: **CLOSED LOCALLY**
 
 Observed defect:
 
-The historical finding `VAN-TECH-004` could state an impossible result such as `3 of 0 images`. Canonical decision evidence showed image counters were not actually available (`_metaCountersAvailable: false`), yet the finding builder treated a non-zero `imagesMissingAlt` value as confirmed evidence and hardcoded `sourceStatus: AVAILABLE`.
+The historical finding `VAN-TECH-004` could state an impossible result such as `3 of 0 images`. Canonical decision evidence showed image counters were not actually available (`_metaCountersAvailable: false`), yet the finding builder treated a non-zero `imagesMissingAlt` value as confirmed evidence.
 
 Repair:
 
@@ -170,19 +170,7 @@ Repair files:
 
 The repair creates a decision-scoped copy for scoring/report interpretation while preserving raw canonical evidence unchanged.
 
-Decision scope excludes clearly non-commercial utility/infrastructure/legal/error URL patterns from page-quality site conclusions, while leaving canonical evidence intact.
-
-The scoped site is used for commercial scoring and downstream deterministic interpretation including:
-
-- module scoring;
-- funnel scoring;
-- findings;
-- rendering diagnostics;
-- conversion paths;
-- readiness map inputs;
-- topic/content ideas.
-
-Capability evidence and raw evidence confidence continue to use canonical evidence.
+The scoped site is used for commercial scoring and downstream deterministic interpretation including module scoring, funnel scoring, findings, rendering diagnostics, conversion paths, readiness map inputs, and topic/content ideas.
 
 Regression:
 
@@ -223,8 +211,6 @@ Local repair files:
 
 `siteFootprint` is now an admitted `DETERMINISTIC_ANALYSIS_FIELDS` field and therefore appears in `WriterInput.deterministicAnalysis` and `WriterInput.referenceIndex` when present.
 
-No Writer prompt change is required because the governed prompt serializes the complete WriterInput. No Judge orchestration change is required because the Judge already receives the identical governed WriterInput object.
-
 Verified existing Writer boundary output after local edits:
 
 - tests: 11
@@ -244,114 +230,256 @@ Verified output:
 - duration: 130.3129 ms
 - `git --no-pager diff --check`: clean
 
-The dedicated regression proves:
-
-`ScoreSet.siteFootprint → WriterInput.deterministicAnalysis.siteFootprint → referenceIndex analysis:siteFootprint`
-
 Expected outcome:
 
 PRYSM can truthfully distinguish discovered site size from assessed representative coverage, preventing a representative sample from being described as an exhaustive whole-site assessment.
 
 ---
 
-## Defect 5 — Business-impact wording can exceed what evidence proves
+## Defect 5 — Business-impact wording exceeded what evidence proved
 
-Status: **DIAGNOSED — BOUNDED REPAIR READY; NOT YET APPLIED**
+Status: **CLOSED LOCALLY**
 
 Observed defect:
 
-The historical canonical finding `VAN-PERF-001` contained:
+The historical canonical finding `VAN-PERF-001` contained measured mobile LCP evidence of approximately `6962 ms`, but its `businessImpact` asserted `Slow first impressions increase mobile abandonment`. The evidence proved a slow measured LCP in the recorded lab test; it did not measure visitor abandonment or prove causation.
 
-- observed evidence: mobile LCP approximately `6962 ms` from PageSpeed lab evidence;
-- canonical `businessImpact`: `Slow first impressions increase mobile abandonment`.
+Root cause:
 
-The evidence proves a slow measured LCP in the recorded lab test. It does not measure visitor abandonment or establish that the observed LCP caused abandonment. Narrative v2 reused the canonical causal statement in client-facing prose.
+Canonical finding and rendering-diagnostic construction accepted business-impact prose without a shared certainty constraint. Downstream Writer/report pass-through then reused those claims.
 
-Verified root cause:
+Repair:
 
-`services/worker/src/scoring/score-components.js` builds canonical findings and copies `opts.businessImpact` directly into both `businessImpact` and the display alias `impact` without an evidence-certainty constraint. Several deterministic finding templates therefore encode a business consequence more strongly than the evidence establishes.
+A shared deterministic bounded business-impact policy was added:
 
-`services/worker/src/narrative-v2/writer-findings.js` deliberately preserves canonical `businessImpact` unchanged, and `services/worker/src/report-content/build-package.js` likewise copies it rather than reinterpreting it. Those pass-through boundaries are not the origin of the defect.
+- `services/worker/src/scoring/business-impact-policy.js`
+- `services/worker/src/scoring/business-impact-policy.test.js`
 
-Rendering-integrity diagnostics are a second producer feeding the same canonical concept. `services/worker/src/scoring/diagnostic-contracts.js` contains client-facing `impact` templates, and `buildRenderingDiagnosticFindings()` in `score-components.js` carries diagnostic `businessImpact` into findings. The Defect 5 repair must therefore cover both canonical impact producers.
+Canonical finding and rendering-diagnostic impact templates now express unsupported downstream business consequences as bounded risks/opportunities rather than established causal outcomes.
 
-Repair boundary:
+Representative requirement:
 
-- introduce one shared deterministic bounded-business-impact policy at scoring/diagnostic construction;
-- require business-impact prose to be framed as a potential risk/opportunity rather than an observed causal/commercial outcome unless the underlying evidence itself directly proves that outcome;
-- revise existing finding and rendering-diagnostic impact templates that violate the policy;
-- test the shared policy directly and test representative canonical finding/diagnostic outputs;
-- leave Writer/report pass-through unchanged;
-- leave Judge changes for Defect 6.
+A technical, search, rendering, trust, or conversion observation may support a bounded business risk or opportunity, but cannot state lost conversions, abandonment, ranking loss, revenue loss, or other downstream outcomes as facts unless directly evidenced.
 
-Expected application file set:
+Verified output:
 
-- new `services/worker/src/scoring/business-impact-policy.js`;
-- new `services/worker/src/scoring/business-impact-policy.test.js`;
-- `services/worker/src/scoring/score-components.js`;
-- `services/worker/src/scoring/score-components.test.js`;
-- `services/worker/src/scoring/diagnostic-contracts.js`;
-- `services/worker/src/scoring/rendering-diagnostics.test.js`.
+- tests: 92
+- pass: 92
+- fail: 0
+- `git --no-pager diff --check`: clean
 
 Expected outcome:
 
-A technical, search, rendering, trust, or conversion observation may support a bounded business risk or opportunity, but the canonical finding layer cannot present lost conversions, abandonment, ranking loss, revenue loss, or other downstream outcomes as established facts unless directly evidenced.
+Business-impact wording now reflects the actual evidence certainty at the canonical producer boundary.
 
 ---
 
-## Defect 6 — Judge may not independently challenge overreach embedded in canonical findings
+## Defect 6 — Judge did not independently challenge upstream overreach
 
-Status: **REMAINING**
+Status: **CLOSED LOCALLY**
 
-Risk:
+Observed defect:
 
-The Judge validates Writer output against the governed WriterInput. If an overstatement is already embedded in a canonical finding or deterministic analysis field, the Judge may treat that upstream interpretation as authoritative rather than testing whether the narrative conclusion exceeds the underlying evidence.
+The live Narrative v2 Judge prompt required evaluation against WriterInput and prohibited invented evidence/facts, but did not explicitly require the Judge to independently challenge causal claims, root-cause claims, commercial outcomes, conversion/revenue/traffic/ranking/engagement/abandonment claims, or interpretations already embedded upstream in findings/businessImpact.
 
-Required repair objective:
+Root cause:
 
-Prove the exact Judge evidence-fidelity boundary and determine the smallest way to let the Judge challenge unsupported interpretation without allowing it to invent or rescore facts.
+The Judge could treat an upstream interpretation as authoritative merely because it was already present in governed input.
 
-Do not weaken the existing Narrative v2 quality gate.
+Repair:
+
+`services/worker/src/narrative-v2/live-binding.js`
+
+The Judge prompt now explicitly requires:
+
+- independent challenge of factual, causal, and commercial claims;
+- evidence must support the stated level of certainty;
+- technical conditions, correlation, or missing evidence cannot prove downstream outcomes;
+- unsupported overstatement must be treated as `UNSUPPORTED_FACT` plus an evidenceFidelity failure;
+- inferred implications must remain bounded;
+- the Judge must not trust a claim merely because it exists upstream;
+- UNKNOWN / UNAVAILABLE / PARTIAL / not-deeply-parsed cannot become ABSENT / FALSE / ZERO / fully assessed.
+
+Regression:
+
+`services/worker/src/narrative-v2/live-binding.test.js`
+
+The regression inspects the actual outgoing Judge request and proves the governed user prompt contains the independent-overreach requirements.
+
+Verified output:
+
+- tests: 10
+- pass: 10
+- fail: 0
+- duration: approximately 287.8688 ms
+- `git --no-pager diff --check`: clean
+
+Expected outcome:
+
+Judge evidence-fidelity review is now independent of upstream interpretation and can challenge unsupported overstatement without inventing or rescoring evidence.
 
 ---
 
-## Defect 7 — Finding evidence can hardcode `sourceStatus: AVAILABLE`
+## Defect 7 — Finding evidence silently promoted source state to AVAILABLE
 
-Status: **REMAINING**
+Status: **CLOSED LOCALLY**
 
-Risk:
+Observed defect:
 
-Some finding evidence records can declare `sourceStatus: AVAILABLE` instead of deriving the actual governed source/capability status. This can overstate certainty and create inconsistent limitations/provenance.
+`services/worker/src/scoring/score-components.js` contained finding-construction paths that could hardcode or default `sourceStatus` to `AVAILABLE`, including generic evidence mapping, performance evidence fallback, conversion-path evidence, and rendering-diagnostic evidence.
 
-Required repair objective:
+This created a risk that PARTIAL or missing governed state could be represented downstream as fully AVAILABLE.
 
-Find every hardcoded source-status path relevant to governed findings and derive status from the actual canonical source/capability state. Unknown/partial/unavailable must remain distinct.
+Repair:
+
+- generic finding evidence no longer silently defaults missing status to `AVAILABLE`;
+- DataForSEO/on-page finding evidence inherits the actual site source status;
+- invalid/missing evidence statuses suppress affected findings instead of inventing availability;
+- slow-LCP evidence preserves actual mobile/performance source state;
+- conversion-path evidence uses the governed `conversion.path` capability status;
+- rendering-diagnostic findings require a valid provider status rather than defaulting to `AVAILABLE`.
+
+Regression:
+
+`services/worker/src/scoring/score-components.test.js`
+
+New regression:
+
+`INTERPRETATION-07: PARTIAL source status is preserved in finding evidence`
+
+It proves a PARTIAL site crawl generating `VAN-TECH-001` retains:
+
+`sourceStatus: PARTIAL`
+
+and is not promoted to:
+
+`sourceStatus: AVAILABLE`.
+
+Verified output:
+
+- tests: 27
+- pass: 27
+- fail: 0
+- duration: approximately 186.9034 ms
+- `git --no-pager diff --check`: clean
+
+Expected outcome:
+
+A downstream finding can no longer increase certainty merely because it was constructed successfully.
 
 ---
 
-## Final Data Utilization Audit — planned
+## Interpretation Integrity final status
 
-After Brad's Evidence Integrity findings and Chris's Interpretation Integrity repairs are available, run one coordinated utilization audit across the important evidence fields.
+Known defects: 7  
+Closed locally: 7 / 7  
+Open known Interpretation Integrity defects: 0
 
-For each important field/signal, trace:
+Do not create a Defect 8 merely to continue investigation. A new defect requires direct evidence from reconciliation or the final Data Utilization Audit.
+
+Canonical source states remain:
+
+- AVAILABLE
+- PARTIAL
+- FAILED
+- NOT_CONNECTED
+- UNAVAILABLE
+- BLOCKED
+- NOT_APPLICABLE
+
+Core invariant:
+
+A downstream layer must never increase certainty without evidence.
+
+Examples:
+
+- PARTIAL ≠ AVAILABLE
+- UNAVAILABLE ≠ ABSENT
+- FAILED ≠ ZERO
+- NOT_CONNECTED ≠ ZERO
+- unknown ≠ false
+- not parsed ≠ absent
+- not assessed ≠ passed
+- request completed ≠ evidence obtained
+
+## Local application state boundary
+
+The Interpretation Integrity repairs are LOCAL and UNCOMMITTED/UNPUSHED unless separately approved.
+
+At minimum, the local repair stream touched:
+
+- `services/worker/src/scoring/score-components.js`
+- `services/worker/src/scoring/score-components.test.js`
+- `services/worker/src/evidence/capability-evidence.js`
+- related capability/scoring regression tests
+- `services/worker/src/scoring/decision-scope.js`
+- `services/worker/src/scoring/vantage-score.js`
+- `services/worker/src/scoring/decision-scope.test.js`
+- `services/worker/src/scoring/scoring-service.js`
+- `services/worker/src/narrative-v2/writer-input.js`
+- `services/worker/src/narrative-v2/site-footprint-propagation.test.js`
+- `services/worker/src/scoring/business-impact-policy.js`
+- `services/worker/src/scoring/business-impact-policy.test.js`
+- `services/worker/src/narrative-v2/live-binding.js`
+- `services/worker/src/narrative-v2/live-binding.test.js`
+
+This is not guaranteed to be the complete dirty working-tree diff. Verify the actual local state before any application commit.
+
+## Reconciliation phase — next
+
+Before any new repair, retrieve Brad / Omni-BG's Evidence Integrity report/state from:
+
+`chriskulbaba2025/betty-prysm-audit`
+
+Produce one evidence-backed reconciliation table:
+
+`ISSUE → STREAM THAT FOUND IT → PIPELINE STAGE → VERIFIED EVIDENCE → CURRENT STATUS → OVERLAP/CONFLICT → ACTION REQUIRED`
+
+Do not repair suspicious code merely because it exists. A repair requires:
+
+`observable defect → executing path → direct evidence → bounded root cause → smallest repair → deterministic regression`
+
+## Final Data Utilization Audit — planned next
+
+After reconciliation, trace each important evidence family through:
 
 `COLLECTED → NORMALIZED → CANONICAL → SCORED → WRITER-VISIBLE → JUDGE-VISIBLE → REPORT-USED`
 
-Classify every gap as one of:
+For each transition answer:
 
-1. not collected;
-2. collected but lost/changed before canonical evidence;
-3. canonical but not used in scoring;
-4. canonical/scored but not visible to Writer/Judge;
-5. visible but not used in report;
-6. used incorrectly or with excessive certainty;
-7. correctly used.
+1. What field/value enters?
+2. What transformation occurs?
+3. What source status accompanies it?
+4. Can certainty increase here?
+5. Is anything dropped?
+6. Is anything defaulted?
+7. Is anything converted from unknown to false/zero/absent?
+8. Is the field score-bearing?
+9. Is the field Writer-visible?
+10. Is the field Judge-visible?
+11. Does the final report actually use it?
+12. If it is not used, is that intentional and documented?
 
-This audit is intended to answer the product-level question: **Are we fully using the valuable evidence PRYSM already collects, and can every report conclusion be traced back to evidence that actually supports it?**
+Classify each material evidence family as:
+
+- FULLY UTILIZED
+- PARTIALLY UTILIZED
+- COLLECTED BUT UNUSED
+- TRANSFORMED INCORRECTLY
+- STATUS DEGRADED
+- STATUS IMPROPERLY UPGRADED
+- NOT WRITER-VISIBLE
+- NOT JUDGE-VISIBLE
+- NOT REPORT-USED
+- INTENTIONALLY EXCLUDED
+
+This audit answers the product-level question:
+
+**Are we fully using the valuable evidence PRYSM already collects, and can every report conclusion be traced back to evidence that actually supports it?**
 
 ## Product boundary / tool-size risk
 
-Current direction: do not expand PRYSM into a feature-for-feature replacement for every SEO, CRO, accessibility, analytics, crawler, and competitive-intelligence platform.
+Do not expand PRYSM into a feature-for-feature replacement for every SEO, CRO, accessibility, analytics, crawler, and competitive-intelligence platform.
 
 The preferred product role is a governed website decision system:
 
@@ -359,12 +487,11 @@ The preferred product role is a governed website decision system:
 
 Specialist providers may collect signals. PRYSM's differentiator is defensible synthesis, explicit uncertainty, representative coverage, prioritization, and actionable business interpretation.
 
-Do not add a new capability merely because more data is technically collectible. A capability should materially improve business diagnosis or decision quality.
-
 ## Exact next action
 
-1. Implement the shared bounded-business-impact policy as a new no-network scoring unit and verify it independently.
-2. Apply the policy to the current local `score-components.js` canonical finding paths and update targeted scoring regressions.
-3. Apply the same policy to `diagnostic-contracts.js` rendering-impact templates and update rendering diagnostics regressions.
-4. When Defect 5 is green, mark it closed and diagnose Defect 6 from the exact Judge evidence-fidelity boundary.
-5. Brad's Evidence Integrity stream remains read-only and must not be modified by this workstream.
+1. Start the next session by reading the authoritative project-context files.
+2. Verify local application state with read-only commands only: `git rev-parse HEAD`, `git status --short`, `git --no-pager diff --stat`.
+3. Do not clean, reset, commit, push, deploy, or mutate the local application state.
+4. Retrieve Brad's Evidence Integrity findings from `chriskulbaba2025/betty-prysm-audit`.
+5. Produce the reconciliation table before proposing any additional application repair.
+6. After reconciliation, begin the final Data Utilization Audit.
