@@ -4,9 +4,9 @@ Project:
 PRYSM — governed website conversion-readiness report and audit-data system
 
 Current objective:
-Complete the coordinated PRYSM audit-integrity program and prove whether missing or weak report conclusions are caused by collection, evidence preservation, downstream non-use, or interpretation error.
+Reconcile the completed local Interpretation Integrity repair stream with Brad's independent Evidence Integrity findings, then run the final end-to-end Data Utilization Audit to prove that valuable evidence is preserved, correctly scoped, correctly interpreted, visible to Writer/Judge where intended, and actually used in the final report.
 
-Two coordinated workstreams are active:
+Two coordinated workstreams:
 1. Evidence Integrity — Brad, using the private sandbox `chriskulbaba2025/betty-prysm-audit`.
 2. Interpretation Integrity — Chris + primary assistant, using the local `vantage-platform` working copy and authoritative context repository.
 
@@ -18,17 +18,17 @@ Verified checkpoint:
 - Evidence-review sandbox: `chriskulbaba2025/betty-prysm-audit` — PRIVATE.
 - Brad GitHub account: `Omni-BG`.
 - Governed application branch: `main`.
-- Verified local application HEAD: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`.
+- Verified GitHub/local application baseline before the current local Interpretation Integrity repairs: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`.
 - Current governed acquisition contract remains: broad discovered footprint separate from assessed sample; deterministic must-have/representative priority plan; maximum 20 DataForSEO priority URLs; hard 250-page provider crawl ceiling; DataForSEO On-Page adapter v1.4.0.
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring production version remains v4.1.1.
 - Historical audit used for the integrity investigation: `97d6b2c7-03b9-4530-8ea7-16557502c638` for `https://rebootbusinesscoaching.com/`.
 - Controlled production Narrative v2 audit `5d22dcef-7d98-422f-8415-933e7b02003e` remains `draft_rendered`; no fourth Writer/Judge pass is permitted.
 - Detailed Interpretation Integrity ledger: `REFERENCE/INTERPRETATION_INTEGRITY_97d6b2c7.md`.
-- Detailed acquisition/data investigation ledger remains: `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md`.
+- Detailed acquisition/data investigation ledger: `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md`.
 
 Workstream authority split — explicit:
-- Chris / Interpretation Integrity: user authorization is ACTIVE for local application-code edits required by proven, bounded Interpretation Integrity repairs, using the governed manual VS Code workflow and existing approval boundaries for push/deploy/paid/production actions.
+- Chris / Interpretation Integrity: user authorization was ACTIVE for local application-code edits required by proven, bounded Interpretation Integrity repairs, using the governed manual VS Code workflow and existing approval boundaries for push/deploy/paid/production actions.
 - Brad / Evidence Integrity: READ-ONLY forensic authority only. Brad is NOT authorized by this workstream to edit production PRYSM application code, push, deploy, rerun audits, rescore, invoke providers/models, or mutate production artifacts.
 - Do not conflate Brad's read-only investigation boundary with Chris's authorized local repair boundary.
 
@@ -37,11 +37,12 @@ Evidence Integrity workstream — Brad:
 - His boundary is RAW → NORMALIZED → CANONICAL → CAPABILITY/DECISION → SCORES/FINDINGS.
 - He is determining whether useful evidence was PRESERVED, DROPPED, CHANGED, OVERWRITTEN, MISCLASSIFIED, INSUFFICIENT, or UNKNOWN.
 - Brad's review remains read-only with respect to production PRYSM unless separately authorized.
-- No Brad findings have yet been reconciled into this current state; do not invent or infer his conclusions.
+- Brad's final findings must be reconciled with Chris's completed Interpretation Integrity stream before product-level integrity sign-off.
 
 Interpretation Integrity workstream — Chris + primary assistant:
-- User explicitly authorized proven, bounded Interpretation Integrity repairs to proceed locally while Brad completes his Evidence Integrity review.
-- Final integrity sign-off still requires reconciliation of both workstreams.
+- Status: COMPLETE LOCALLY — 7/7 known Interpretation Integrity defects closed with deterministic local verification.
+- No known Interpretation Integrity defect remains open.
+- Do not invent a Defect 8 merely to continue testing. A new defect requires direct evidence from reconciliation or the final utilization trace.
 - Core semantic rule: UNKNOWN / UNAVAILABLE / NOT DEEPLY PARSED / PARTIAL must never become ABSENT / FALSE / ZERO / FULLY ASSESSED.
 - Important commercial/conversion pages must drive site-level narrative and scoring; utility/infrastructure pages may remain in canonical evidence but must not distort commercial conclusions.
 
@@ -59,7 +60,7 @@ Interpretation defect status:
 
 3. Utility/infrastructure/legal pages could distort commercial page counts, content averages, metadata findings, heading findings, and downstream interpretation.
    - Status: CLOSED LOCALLY.
-   - Repair: new decision-scoped site projection used for commercial scoring/report interpretation while canonical evidence remains unchanged.
+   - Repair: decision-scoped site projection is used for commercial scoring/report interpretation while canonical evidence remains unchanged.
    - Verified targeted result: 4/4 PASS, 0 fail, 96.3603 ms.
 
 4. Representative-site coverage (`siteFootprint`) was preserved in DecisionEvidence but did not reach Writer/Judge.
@@ -67,21 +68,29 @@ Interpretation defect status:
    - Repair: ScoreSet carries governed `siteFootprint`; WriterInput admits it into `deterministicAnalysis` and `referenceIndex`; Judge receives the same governed WriterInput.
    - Existing WriterInput/reference-index result: 11/11 PASS, 0 fail, 96.0013 ms.
    - Dedicated no-network propagation regression: 1/1 PASS, 0 fail, 130.3129 ms.
-   - Dedicated proof covers ScoreSet → WriterInput.deterministicAnalysis → `analysis:siteFootprint` reference indexing.
-   - `git --no-pager diff --check`: clean after the dedicated regression was added.
+   - `git --no-pager diff --check`: clean after the dedicated regression.
 
-5. Some business-impact wording can exceed what the underlying evidence proves.
-   - Status: DIAGNOSED — repair not yet applied.
-   - Verified root cause: canonical finding construction accepts `businessImpact` prose verbatim with no evidence-certainty constraint. Historical audit evidence measured mobile LCP at about 6962 ms while the canonical finding asserted `Slow first impressions increase mobile abandonment`; Narrative v2 then reused that causal claim.
-   - Repair boundary: constrain business-impact language at canonical finding/diagnostic construction, not in Writer/report pass-through. Judge independence remains Defect 6.
+5. Business-impact wording could exceed what the underlying evidence proves.
+   - Status: CLOSED LOCALLY.
+   - Repair: shared deterministic bounded business-impact policy added at canonical finding/rendering-diagnostic construction.
+   - New shared policy files: `services/worker/src/scoring/business-impact-policy.js` and `services/worker/src/scoring/business-impact-policy.test.js`.
+   - Canonical findings and rendering diagnostics now enforce bounded commercial/business-impact wording.
+   - Verified result: 92/92 PASS, 0 fail; `git --no-pager diff --check` clean.
 
-6. Judge may be unable to independently challenge overreach already embedded in canonical findings/deterministic interpretation.
-   - Status: REMAINING.
+6. Judge could fail to independently challenge unsupported causal/commercial interpretation already embedded upstream.
+   - Status: CLOSED LOCALLY.
+   - Root cause: the live Judge prompt did not explicitly require independent challenge of causal claims, root-cause claims, commercial outcomes, conversion/revenue/traffic/ranking/engagement/abandonment claims, or upstream interpretations already embedded in findings/businessImpact.
+   - Repair: `services/worker/src/narrative-v2/live-binding.js` now requires independent factual/causal/commercial challenge; evidence must support the stated certainty; technical conditions/correlation/missing evidence cannot prove downstream outcomes; unsupported overstatement maps to `UNSUPPORTED_FACT` + evidenceFidelity failure; inferred implications must remain bounded; upstream presence does not make a claim authoritative; UNKNOWN/UNAVAILABLE/PARTIAL/not-deeply-parsed cannot become ABSENT/FALSE/ZERO/fully assessed.
+   - Regression: `services/worker/src/narrative-v2/live-binding.test.js` inspects the actual outgoing Judge request and proves the governed prompt contains the independent-overreach requirements.
+   - Verified result: 10/10 PASS, 0 fail, approximately 287.8688 ms; `git --no-pager diff --check` clean.
 
-7. Some finding evidence paths can hardcode `sourceStatus: AVAILABLE` rather than preserve the actual governed source state.
-   - Status: REMAINING.
+7. Finding evidence could silently hardcode/default `sourceStatus` to `AVAILABLE` rather than preserve governed source state.
+   - Status: CLOSED LOCALLY.
+   - Repair: `services/worker/src/scoring/score-components.js` no longer silently promotes missing/partial evidence to AVAILABLE in finding construction; DataForSEO/on-page evidence inherits actual site source status; invalid/missing statuses suppress affected findings rather than invent availability; LCP evidence preserves actual mobile/performance source state; conversion-path evidence uses the governed capability status; rendering diagnostics require a valid provider status.
+   - Regression: `INTERPRETATION-07: PARTIAL source status is preserved in finding evidence` in `services/worker/src/scoring/score-components.test.js`.
+   - Verified result: 27/27 PASS, 0 fail, approximately 186.9034 ms; `git --no-pager diff --check` clean.
 
-Local Interpretation Integrity application files touched during the current manual work package include:
+Local Interpretation Integrity application files touched during the repair stream include at minimum:
 - `services/worker/src/scoring/score-components.js`
 - `services/worker/src/scoring/score-components.test.js`
 - `services/worker/src/evidence/capability-evidence.js`
@@ -92,26 +101,58 @@ Local Interpretation Integrity application files touched during the current manu
 - `services/worker/src/scoring/scoring-service.js`
 - `services/worker/src/narrative-v2/writer-input.js`
 - new `services/worker/src/narrative-v2/site-footprint-propagation.test.js`
+- new `services/worker/src/scoring/business-impact-policy.js`
+- new `services/worker/src/scoring/business-impact-policy.test.js`
+- `services/worker/src/narrative-v2/live-binding.js`
+- `services/worker/src/narrative-v2/live-binding.test.js`
 
-No application commit/push/deploy was performed as part of the current Interpretation Integrity session. The local working tree was verified against HEAD `46d92a346763a8e3ab252d1c32fe79632e7110a4` before the Defect 4 regression was added.
+This list is not guaranteed to be the complete dirty working-tree diff. Before any application commit or reconciliation edit, inspect the actual local state with `git status --short` and `git --no-pager diff --stat`.
+
+No application commit/push/deploy was performed as part of the completed Interpretation Integrity repair stream. Local application repairs remain uncommitted/unpushed until explicitly approved.
 
 Offline replay harness:
 - Local `scripts/replay-report.js` and fixture `test-fixtures/report-replay/audit-97d6b2c7` were previously verified 1/1 PASS in no-network mode.
 - Do not rerun this harness merely for reassurance. Reopen only if a later defect directly implicates deterministic replay/rendering.
 
-Final Data Utilization Audit — planned:
-After Brad's Evidence Integrity findings and Chris's Interpretation Integrity repairs are available, trace each important signal through:
+Next coordinated phase — reconciliation:
+Before any new repair, reconcile Brad's Evidence Integrity findings with Chris's completed Interpretation Integrity findings.
+
+Required reconciliation table:
+ISSUE → STREAM THAT FOUND IT → PIPELINE STAGE → VERIFIED EVIDENCE → CURRENT STATUS → OVERLAP/CONFLICT → ACTION REQUIRED
+
+Do not begin a repair merely because code looks suspicious. A repair requires:
+observable defect → executing path → direct evidence → bounded root cause → smallest repair → deterministic regression.
+
+Final Data Utilization Audit — next after reconciliation:
+Trace each important evidence family through:
 
 COLLECTED → NORMALIZED → CANONICAL → SCORED → WRITER-VISIBLE → JUDGE-VISIBLE → REPORT-USED
 
-Classify each gap as:
-1. not collected;
-2. collected but lost/changed before canonical evidence;
-3. canonical but not used in scoring;
-4. canonical/scored but not visible to Writer/Judge;
-5. visible but not used in report;
-6. used incorrectly or with excessive certainty;
-7. correctly used.
+For each transition determine:
+1. what field/value enters;
+2. what transformation occurs;
+3. what source status accompanies it;
+4. whether certainty can increase;
+5. whether anything is dropped;
+6. whether anything is defaulted;
+7. whether unknown becomes false/zero/absent;
+8. whether the field is score-bearing;
+9. whether it is Writer-visible;
+10. whether it is Judge-visible;
+11. whether the final report actually uses it;
+12. if unused, whether exclusion is intentional and documented.
+
+Classify material evidence families as:
+- FULLY UTILIZED
+- PARTIALLY UTILIZED
+- COLLECTED BUT UNUSED
+- TRANSFORMED INCORRECTLY
+- STATUS DEGRADED
+- STATUS IMPROPERLY UPGRADED
+- NOT WRITER-VISIBLE
+- NOT JUDGE-VISIBLE
+- NOT REPORT-USED
+- INTENTIONALLY EXCLUDED
 
 Current product boundary / tool-size position:
 - Do not expand PRYSM into a feature-for-feature replacement for every SEO, CRO, accessibility, analytics, crawler, and competitive-intelligence platform.
@@ -123,7 +164,7 @@ Current environment / branch / version:
 - Application path: `C:\Users\kulba\Desktop\vantage-platform`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Branch: `main`.
-- Verified local application HEAD: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
+- Verified baseline before local repairs: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
 - On-Page adapter: v1.4.0.
 - Governed provider crawl ceiling: 250 pages.
 - Governed provider priority URL cap: 20.
@@ -133,21 +174,18 @@ Current environment / branch / version:
 Completed:
 - Representative Crawl Enforcement implementation is complete, pushed, and remotely green.
 - Private Evidence Integrity sandbox is active for Brad.
-- Interpretation Integrity defects 1, 2, 3, and 4 are closed locally with targeted regressions green.
-- Defect 4 has dedicated no-network propagation proof 1/1 PASS.
+- Interpretation Integrity defects 1–7 are closed locally with deterministic regressions green.
 - Durable Interpretation Integrity ledger exists in the authoritative context repository.
-- Workstream code-edit authority is explicitly separated: Chris may perform governed local Interpretation Integrity repairs; Brad remains read-only.
+- Workstream code-edit authority remains explicitly separated: Chris may perform governed local repairs when directly proven; Brad remains read-only.
 
 In progress:
-- Implement the bounded Defect 5 business-impact repair at the canonical finding/diagnostic construction boundary.
-- Diagnose and repair defects 6 and 7 one at a time after Defect 5 is verified.
-- Brad continues independent read-only Evidence Integrity forensic review.
-- Reconcile both streams before final integrity sign-off.
-- Run the final Data Utilization Audit after both tracks are ready.
+- Brad completes/submits Evidence Integrity findings.
+- Reconcile Brad's Evidence Integrity stream with Chris's completed Interpretation Integrity stream.
+- Run the final Data Utilization Audit after reconciliation.
 
 Blocked:
 - No known technical blocker.
-- Brad's final Evidence Integrity findings are not yet available for reconciliation.
+- Final coordinated integrity sign-off waits on Brad's Evidence Integrity findings/reconciliation.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
@@ -159,12 +197,17 @@ Important constraints:
 - Preserve discovered-footprint evidence separately from assessed-page evidence.
 - Never imply a representative sample is exhaustive coverage of a larger site.
 - Unknown/partial/unavailable evidence must not become negative evidence.
-- Chris is authorized to edit local application code for proven, bounded Interpretation Integrity repairs. This does not itself authorize push, deploy, paid provider calls, production audit reruns, persisted production rescoring, Writer/Judge calls, or production-artifact mutation.
+- Chris may edit local application code only for proven, bounded repairs. This does not itself authorize push, deploy, paid provider calls, production audit reruns, persisted production rescoring, Writer/Judge calls, or production-artifact mutation.
 - Brad's Evidence Integrity workstream is read-only. Brad must not edit production PRYSM code or mutate production behavior under this workstream.
-- Do not broaden Interpretation Integrity repairs into unrelated acquisition, lifecycle, storage, authentication, n8n, Viewer redesign, or general architecture work.
+- Do not broaden the final integrity work into unrelated acquisition, lifecycle, storage, authentication, n8n, Viewer redesign, or general architecture work.
 
 Exact next action:
-Implement Defect 5 through the governed manual workflow. First create and verify the bounded business-impact policy unit, then apply it to canonical findings in `services/worker/src/scoring/score-components.js`, then to rendering diagnostic impact templates in `services/worker/src/scoring/diagnostic-contracts.js`, with targeted regressions proving unsupported causal/commercial outcomes cannot be emitted as established facts. Do not modify Writer/report pass-through or Judge code as part of Defect 5.
+1. In a fresh chat, read the authoritative project-context files.
+2. Verify local application HEAD and dirty working tree with read-only commands only: `git rev-parse HEAD`, `git status --short`, `git --no-pager diff --stat`.
+3. Do not alter or clean the working tree.
+4. Retrieve Brad / Omni-BG's Evidence Integrity report/state from `chriskulbaba2025/betty-prysm-audit`.
+5. Produce the evidence-backed reconciliation table before proposing any new repair.
+6. After reconciliation, begin the final Data Utilization Audit.
 
 Last verified:
 2026-08-26 America/Toronto
