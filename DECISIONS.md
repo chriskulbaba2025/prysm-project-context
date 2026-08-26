@@ -46,7 +46,7 @@ Reason:
 This creates the smallest and most observable change boundary, avoids autonomous multi-file drift, and keeps the user in direct control of the production application repository while still allowing precise file-level assistance.
 
 Implication:
-Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files. All source-code replacements must be returned directly in the conversation, never as generated/downloadable code files. When a complete replacement source file is too large for one chat message, share the complete replacement directly in sequential, clearly labeled code blocks that can be copied into VS Code in order. Every chunk must be part of the same complete file, with no omitted middle content, and the final chunk must explicitly state that the file is complete.
+Do not directly edit `vantage-platform` as part of this workflow unless the user explicitly changes the operating method. Do not infer or reconstruct an unverified application file. If a source file contains multiple approved report pages/functions, those may be updated together as one governed source-file unit. Do not batch changes across separate source files. All source-code replacements must be returned directly in the conversation, never as generated/downloadable code files. `WORKFLOW_INSTRUCTIONS.md` now governs the exact delivery form, including surgical-vs-whole-file choice, exact lines/anchors, and mandatory bottom-up ordering for multiple edits.
 
 ---
 
@@ -344,10 +344,42 @@ Date: 2026-08-25
 Status: Active
 
 Decision:
-PRYSM must support very large sites without attempting full-site crawling. The acquisition model is: discover and understand the broad sitemap/site footprint, classify material page families, prioritize the most important commercial/conversion pages and representative family examples, then enforce a bounded DataForSEO On-Page crawl with a target hard ceiling of 250 pages.
+PRYSM must support very large sites without attempting full-site crawling. The acquisition model is: discover and understand the broad sitemap/site footprint, classify material page families, prioritize the most important commercial/conversion pages and representative family examples, then enforce a bounded DataForSEO On-Page crawl with a hard ceiling of 250 pages.
 
 Reason:
-PRYSM is a governed conversion-readiness audit product, not an enterprise exhaustive crawler. Large repetitive/programmatic sites can consume crawl time and budget without improving the quality of conversion, UX, trust, SEO, or readiness conclusions. The existing code already supports broad sitemap discovery, URL clustering, representative families, and priority URLs; the missing product behavior is to connect that intelligence to bounded provider acquisition.
+PRYSM is a governed conversion-readiness audit product, not an enterprise exhaustive crawler. Large repetitive/programmatic sites can consume crawl time and budget without improving the quality of conversion, UX, trust, SEO, or readiness conclusions.
 
 Implication:
-Do not solve large-site failures by simply increasing timeout or crawl volume. Preserve whole-site footprint evidence separately from assessed-page evidence. A report may truthfully state that a very large footprint was discovered while only a bounded representative sample was assessed. The next work package should design and implement representative crawl enforcement using existing footprint intelligence, with roughly 20 must-have priority URLs and a maximum 250-page provider crawl. Any exact implementation details must be verified against the current DataForSEO adapter/client before code changes.
+Do not solve large-site failures by increasing timeout or crawl volume. Preserve whole-site footprint evidence separately from assessed-page evidence. A report may truthfully state that a very large footprint was discovered while only a bounded representative sample was assessed. The provider crawl ceiling is 250 pages and the provider priority-URL cap is 20.
+
+---
+
+## Decision: Representative acquisition does not override site robots policy
+
+Date: 2026-08-25
+Status: Active
+
+Decision:
+Do not use a custom robots override as the core mechanism for representative acquisition. Do not rely on undocumented provider URL-filter behavior as a crawl-selection guarantee.
+
+Reason:
+The product needs deterministic cost and coverage governance without replacing a client site’s own robots policy or depending on provider behavior that has not been directly verified. Priority URLs and hard crawl ceilings are documented and safely enforceable; robots override would create an unnecessary governance risk.
+
+Implication:
+The current representative-acquisition guarantee is: broad footprint intelligence, deterministic priority selection, maximum 20 provider priority URLs, hard 250-page provider crawl, and explicit representation/limitation truth. Any future stronger family-suppression mechanism requires separate evidence, design, tests, and approval before adoption.
+
+---
+
+## Decision: Manual edit delivery is exact and bottom-up
+
+Date: 2026-08-25
+Status: Active
+
+Decision:
+`WORKFLOW_INSTRUCTIONS.md` governs all manual application-code edit delivery. Multiple edits in one file must always be presented highest-line-number first. Exact current line numbers/ranges, anchor text, complete replacement blocks, and a single consolidated verification block are mandatory.
+
+Reason:
+Repeated deviations from this ordering created avoidable copy/paste and formatting risk during otherwise correct code work. The rule must be durable and model-independent rather than dependent on chat memory.
+
+Implication:
+For files roughly under 750–900 lines, whole-file replacement is acceptable/preferred when safer; larger files use surgical edits. The assistant must not move to the next source-file unit until the user confirms verification. The assistant must not ask the user to recover code or instructions from earlier messages.
