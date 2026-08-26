@@ -18,7 +18,7 @@ Verified checkpoint:
 - Evidence-review sandbox: `chriskulbaba2025/betty-prysm-audit` — PRIVATE.
 - Brad GitHub account: `Omni-BG`.
 - Governed application branch: `main`.
-- Last verified remote application baseline before the current local Interpretation Integrity repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`.
+- Verified local application HEAD: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`.
 - Current governed acquisition contract remains: broad discovered footprint separate from assessed sample; deterministic must-have/representative priority plan; maximum 20 DataForSEO priority URLs; hard 250-page provider crawl ceiling; DataForSEO On-Page adapter v1.4.0.
 - Viewer remains v2.2.0 / 16 governed pages.
 - Scoring production version remains v4.1.1.
@@ -63,12 +63,17 @@ Interpretation defect status:
    - Verified targeted result: 4/4 PASS, 0 fail, 96.3603 ms.
 
 4. Representative-site coverage (`siteFootprint`) was preserved in DecisionEvidence but did not reach Writer/Judge.
-   - Status: IMPLEMENTED LOCALLY; dedicated defect-specific regression proof still required before closure.
-   - Local repair: ScoreSet now carries governed `siteFootprint`; WriterInput admits it into `deterministicAnalysis` and `referenceIndex`; Judge already receives the same governed WriterInput.
-   - Existing WriterInput/reference-index tests after the local edit: 11/11 PASS, 0 fail, 96.0013 ms.
+   - Status: CLOSED LOCALLY.
+   - Repair: ScoreSet carries governed `siteFootprint`; WriterInput admits it into `deterministicAnalysis` and `referenceIndex`; Judge receives the same governed WriterInput.
+   - Existing WriterInput/reference-index result: 11/11 PASS, 0 fail, 96.0013 ms.
+   - Dedicated no-network propagation regression: 1/1 PASS, 0 fail, 130.3129 ms.
+   - Dedicated proof covers ScoreSet → WriterInput.deterministicAnalysis → `analysis:siteFootprint` reference indexing.
+   - `git --no-pager diff --check`: clean after the dedicated regression was added.
 
 5. Some business-impact wording can exceed what the underlying evidence proves.
-   - Status: REMAINING.
+   - Status: DIAGNOSED — repair not yet applied.
+   - Verified root cause: canonical finding construction accepts `businessImpact` prose verbatim with no evidence-certainty constraint. Historical audit evidence measured mobile LCP at about 6962 ms while the canonical finding asserted `Slow first impressions increase mobile abandonment`; Narrative v2 then reused that causal claim.
+   - Repair boundary: constrain business-impact language at canonical finding/diagnostic construction, not in Writer/report pass-through. Judge independence remains Defect 6.
 
 6. Judge may be unable to independently challenge overreach already embedded in canonical findings/deterministic interpretation.
    - Status: REMAINING.
@@ -86,12 +91,13 @@ Local Interpretation Integrity application files touched during the current manu
 - new `services/worker/src/scoring/decision-scope.test.js`
 - `services/worker/src/scoring/scoring-service.js`
 - `services/worker/src/narrative-v2/writer-input.js`
+- new `services/worker/src/narrative-v2/site-footprint-propagation.test.js`
 
-No application commit/push/deploy was performed as part of the current Interpretation Integrity session. Exact local working-tree state must be reverified before further editing or any application commit.
+No application commit/push/deploy was performed as part of the current Interpretation Integrity session. The local working tree was verified against HEAD `46d92a346763a8e3ab252d1c32fe79632e7110a4` before the Defect 4 regression was added.
 
 Offline replay harness:
 - Local `scripts/replay-report.js` and fixture `test-fixtures/report-replay/audit-97d6b2c7` were previously verified 1/1 PASS in no-network mode.
-- Do not rerun the replay harness merely for reassurance. Reopen only if a later defect directly implicates deterministic replay/rendering.
+- Do not rerun this harness merely for reassurance. Reopen only if a later defect directly implicates deterministic replay/rendering.
 
 Final Data Utilization Audit — planned:
 After Brad's Evidence Integrity findings and Chris's Interpretation Integrity repairs are available, trace each important signal through:
@@ -117,7 +123,7 @@ Current environment / branch / version:
 - Application path: `C:\Users\kulba\Desktop\vantage-platform`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Branch: `main`.
-- Last verified remote application baseline before the current local repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
+- Verified local application HEAD: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
 - On-Page adapter: v1.4.0.
 - Governed provider crawl ceiling: 250 pages.
 - Governed provider priority URL cap: 20.
@@ -127,21 +133,20 @@ Current environment / branch / version:
 Completed:
 - Representative Crawl Enforcement implementation is complete, pushed, and remotely green.
 - Private Evidence Integrity sandbox is active for Brad.
-- Interpretation Integrity defects 1, 2, and 3 are closed locally with targeted regressions green.
-- Interpretation Integrity defect 4 production-path edits are applied locally and existing Writer boundary tests are green.
-- Durable Interpretation Integrity ledger has been added to the authoritative context repository.
+- Interpretation Integrity defects 1, 2, 3, and 4 are closed locally with targeted regressions green.
+- Defect 4 has dedicated no-network propagation proof 1/1 PASS.
+- Durable Interpretation Integrity ledger exists in the authoritative context repository.
 - Workstream code-edit authority is explicitly separated: Chris may perform governed local Interpretation Integrity repairs; Brad remains read-only.
 
 In progress:
-- Close defect 4 with one dedicated no-network regression proving `siteFootprint` survives canonical scoring projection into WriterInput/referenceIndex.
-- Diagnose and repair defects 5, 6, and 7 one at a time.
+- Implement the bounded Defect 5 business-impact repair at the canonical finding/diagnostic construction boundary.
+- Diagnose and repair defects 6 and 7 one at a time after Defect 5 is verified.
 - Brad continues independent read-only Evidence Integrity forensic review.
 - Reconcile both streams before final integrity sign-off.
 - Run the final Data Utilization Audit after both tracks are ready.
 
 Blocked:
 - No known technical blocker.
-- Defect 4 is not yet closed because its specific end-to-end propagation regression has not yet been run.
 - Brad's final Evidence Integrity findings are not yet available for reconciliation.
 
 Important constraints:
@@ -159,7 +164,7 @@ Important constraints:
 - Do not broaden Interpretation Integrity repairs into unrelated acquisition, lifecycle, storage, authentication, n8n, Viewer redesign, or general architecture work.
 
 Exact next action:
-Start the next chat by reading the governing context files and `REFERENCE/INTERPRETATION_INTEGRITY_97d6b2c7.md`. Then, in `C:\Users\kulba\Desktop\vantage-platform\services\worker`, verify the local application state with `git rev-parse HEAD` and `git status --short`. After that, close Interpretation Integrity defect 4 with one dedicated no-network regression proving `siteFootprint` survives ScoreSet → WriterInput.deterministicAnalysis → `analysis:siteFootprint` reference indexing. If green, mark defect 4 closed and proceed immediately to defect 5 diagnosis. Do not rerun defects 1–3 or the offline replay harness unless new evidence directly implicates them.
+Implement Defect 5 through the governed manual workflow. First create and verify the bounded business-impact policy unit, then apply it to canonical findings in `services/worker/src/scoring/score-components.js`, then to rendering diagnostic impact templates in `services/worker/src/scoring/diagnostic-contracts.js`, with targeted regressions proving unsupported causal/commercial outcomes cannot be emitted as established facts. Do not modify Writer/report pass-through or Judge code as part of Defect 5.
 
 Last verified:
 2026-08-26 America/Toronto
