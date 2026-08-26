@@ -26,6 +26,8 @@ Load additional specifications, skills, and reference material only when require
 
 GitHub is the authoritative durable project memory. Chats are temporary working sessions. Current GitHub state overrides stale conversational summaries or duplicated Project Sources.
 
+`WORKFLOW_INSTRUCTIONS.md` is the current governing manual-edit delivery protocol and supersedes older manual-code-flow wording elsewhere in the context repository when that older wording is inconsistent with it. Hard production/authorization constraints remain unaffected.
+
 ## Startup rule
 
 At the start of a new substantive chat:
