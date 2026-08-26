@@ -3,7 +3,7 @@
 Audit ID: `97d6b2c7-03b9-4530-8ea7-16557502c638`  
 Target: `https://rebootbusinesscoaching.com/`  
 Opened: 2026-08-26  
-Status: Active — defects 1–3 closed locally; defect 4 implemented with boundary tests green; defects 5–7 remain
+Status: Active — defects 1–4 closed locally; defect 5 diagnosed and ready for bounded repair; defects 6–7 remain
 
 ## Purpose
 
@@ -43,7 +43,7 @@ The two workstreams must be reconciled before final integrity sign-off, but expl
 
 Application repository: `chriskulbaba2025/vantage-platform`  
 Governed branch: `main`  
-Last verified remote application baseline before this local repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`
+Verified local application HEAD for this repair package: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`
 
 No application push, deployment, paid provider call, production audit rerun, Writer/Judge rerun, rescoring of persisted production artifacts, or production-artifact mutation was performed during this Interpretation Integrity repair session.
 
@@ -203,7 +203,7 @@ Commercial conclusions reflect the pages that matter to buyers/search/conversion
 
 ## Defect 4 — Representative-site coverage did not reach Writer/Judge
 
-Status: **IMPLEMENTED LOCALLY — EXISTING WRITER BOUNDARY TESTS GREEN; DEDICATED REGRESSION PROOF STILL REQUIRED**
+Status: **CLOSED LOCALLY**
 
 Observed defect:
 
@@ -232,9 +232,21 @@ Verified existing Writer boundary output after local edits:
 - fail: 0
 - duration: 96.0013 ms
 
-The dedicated regression still must prove the complete specific property:
+Dedicated no-network regression:
 
-`canonical siteFootprint → ScoreSet.siteFootprint → WriterInput.deterministicAnalysis.siteFootprint → referenceIndex analysis:siteFootprint`
+`C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\site-footprint-propagation.test.js`
+
+Verified output:
+
+- tests: 1
+- pass: 1
+- fail: 0
+- duration: 130.3129 ms
+- `git --no-pager diff --check`: clean
+
+The dedicated regression proves:
+
+`ScoreSet.siteFootprint → WriterInput.deterministicAnalysis.siteFootprint → referenceIndex analysis:siteFootprint`
 
 Expected outcome:
 
@@ -244,17 +256,46 @@ PRYSM can truthfully distinguish discovered site size from assessed representati
 
 ## Defect 5 — Business-impact wording can exceed what evidence proves
 
-Status: **REMAINING**
+Status: **DIAGNOSED — BOUNDED REPAIR READY; NOT YET APPLIED**
 
-Risk:
+Observed defect:
 
-Some client-facing business consequence language can express causal or commercial certainty stronger than the underlying deterministic evidence supports.
+The historical canonical finding `VAN-PERF-001` contained:
 
-Required repair objective:
+- observed evidence: mobile LCP approximately `6962 ms` from PageSpeed lab evidence;
+- canonical `businessImpact`: `Slow first impressions increase mobile abandonment`.
 
-Trace where business-impact prose is created and constrain wording to the governing evidence class/status/confidence. A technical observation may support a bounded risk or opportunity without proving actual lost revenue, lost conversions, lost rankings, or other outcomes unless those outcomes are directly evidenced.
+The evidence proves a slow measured LCP in the recorded lab test. It does not measure visitor abandonment or establish that the observed LCP caused abandonment. Narrative v2 reused the canonical causal statement in client-facing prose.
 
-Do not edit until the exact generation/validation boundary and affected fields are proven.
+Verified root cause:
+
+`services/worker/src/scoring/score-components.js` builds canonical findings and copies `opts.businessImpact` directly into both `businessImpact` and the display alias `impact` without an evidence-certainty constraint. Several deterministic finding templates therefore encode a business consequence more strongly than the evidence establishes.
+
+`services/worker/src/narrative-v2/writer-findings.js` deliberately preserves canonical `businessImpact` unchanged, and `services/worker/src/report-content/build-package.js` likewise copies it rather than reinterpreting it. Those pass-through boundaries are not the origin of the defect.
+
+Rendering-integrity diagnostics are a second producer feeding the same canonical concept. `services/worker/src/scoring/diagnostic-contracts.js` contains client-facing `impact` templates, and `buildRenderingDiagnosticFindings()` in `score-components.js` carries diagnostic `businessImpact` into findings. The Defect 5 repair must therefore cover both canonical impact producers.
+
+Repair boundary:
+
+- introduce one shared deterministic bounded-business-impact policy at scoring/diagnostic construction;
+- require business-impact prose to be framed as a potential risk/opportunity rather than an observed causal/commercial outcome unless the underlying evidence itself directly proves that outcome;
+- revise existing finding and rendering-diagnostic impact templates that violate the policy;
+- test the shared policy directly and test representative canonical finding/diagnostic outputs;
+- leave Writer/report pass-through unchanged;
+- leave Judge changes for Defect 6.
+
+Expected application file set:
+
+- new `services/worker/src/scoring/business-impact-policy.js`;
+- new `services/worker/src/scoring/business-impact-policy.test.js`;
+- `services/worker/src/scoring/score-components.js`;
+- `services/worker/src/scoring/score-components.test.js`;
+- `services/worker/src/scoring/diagnostic-contracts.js`;
+- `services/worker/src/scoring/rendering-diagnostics.test.js`.
+
+Expected outcome:
+
+A technical, search, rendering, trust, or conversion observation may support a bounded business risk or opportunity, but the canonical finding layer cannot present lost conversions, abandonment, ranking loss, revenue loss, or other downstream outcomes as established facts unless directly evidenced.
 
 ---
 
@@ -322,8 +363,8 @@ Do not add a new capability merely because more data is technically collectible.
 
 ## Exact next action
 
-1. Verify the user's local application working copy with `git rev-parse HEAD` and `git status --short` before any further edit.
-2. Close Defect 4 with one dedicated no-network regression proving `siteFootprint` survives ScoreSet → WriterInput/referenceIndex.
-3. Diagnose and repair Defects 5, 6, and 7 one at a time using the Diagnostic Evidence and Repair Boundary protocols.
-4. Reconcile Brad's Evidence Integrity output with this ledger.
-5. Run the final Data Utilization Audit before calling the integrity work complete.
+1. Implement the shared bounded-business-impact policy as a new no-network scoring unit and verify it independently.
+2. Apply the policy to the current local `score-components.js` canonical finding paths and update targeted scoring regressions.
+3. Apply the same policy to `diagnostic-contracts.js` rendering-impact templates and update rendering diagnostics regressions.
+4. When Defect 5 is green, mark it closed and diagnose Defect 6 from the exact Judge evidence-fidelity boundary.
+5. Brad's Evidence Integrity stream remains read-only and must not be modified by this workstream.
