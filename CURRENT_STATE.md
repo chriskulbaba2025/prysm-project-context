@@ -27,6 +27,11 @@ Verified checkpoint:
 - Detailed Interpretation Integrity ledger: `REFERENCE/INTERPRETATION_INTEGRITY_97d6b2c7.md`.
 - Detailed acquisition/data investigation ledger remains: `REFERENCE/AUDIT_DATA_VALIDATION_97d6b2c7.md`.
 
+Workstream authority split — explicit:
+- Chris / Interpretation Integrity: user authorization is ACTIVE for local application-code edits required by proven, bounded Interpretation Integrity repairs, using the governed manual VS Code workflow and existing approval boundaries for push/deploy/paid/production actions.
+- Brad / Evidence Integrity: READ-ONLY forensic authority only. Brad is NOT authorized by this workstream to edit production PRYSM application code, push, deploy, rerun audits, rescore, invoke providers/models, or mutate production artifacts.
+- Do not conflate Brad's read-only investigation boundary with Chris's authorized local repair boundary.
+
 Evidence Integrity workstream — Brad:
 - Brad continues the independent forensic review in `chriskulbaba2025/betty-prysm-audit`.
 - His boundary is RAW → NORMALIZED → CANONICAL → CAPABILITY/DECISION → SCORES/FINDINGS.
@@ -125,11 +130,12 @@ Completed:
 - Interpretation Integrity defects 1, 2, and 3 are closed locally with targeted regressions green.
 - Interpretation Integrity defect 4 production-path edits are applied locally and existing Writer boundary tests are green.
 - Durable Interpretation Integrity ledger has been added to the authoritative context repository.
+- Workstream code-edit authority is explicitly separated: Chris may perform governed local Interpretation Integrity repairs; Brad remains read-only.
 
 In progress:
 - Close defect 4 with one dedicated no-network regression proving `siteFootprint` survives canonical scoring projection into WriterInput/referenceIndex.
 - Diagnose and repair defects 5, 6, and 7 one at a time.
-- Brad continues independent Evidence Integrity forensic review.
+- Brad continues independent read-only Evidence Integrity forensic review.
 - Reconcile both streams before final integrity sign-off.
 - Run the final Data Utilization Audit after both tracks are ready.
 
@@ -148,8 +154,8 @@ Important constraints:
 - Preserve discovered-footprint evidence separately from assessed-page evidence.
 - Never imply a representative sample is exhaustive coverage of a larger site.
 - Unknown/partial/unavailable evidence must not become negative evidence.
-- Do not push, deploy, rerun a production audit, recollect paid provider evidence, rescore persisted production artifacts, invoke paid Writer/Judge calls, or mutate persisted production artifacts without explicit approval at the applicable step.
-- Brad and Chris may continue their explicitly authorized independent workstreams on proven bounded defects, but final integrity completion requires reconciliation of both streams.
+- Chris is authorized to edit local application code for proven, bounded Interpretation Integrity repairs. This does not itself authorize push, deploy, paid provider calls, production audit reruns, persisted production rescoring, Writer/Judge calls, or production-artifact mutation.
+- Brad's Evidence Integrity workstream is read-only. Brad must not edit production PRYSM code or mutate production behavior under this workstream.
 - Do not broaden Interpretation Integrity repairs into unrelated acquisition, lifecycle, storage, authentication, n8n, Viewer redesign, or general architecture work.
 
 Exact next action:
