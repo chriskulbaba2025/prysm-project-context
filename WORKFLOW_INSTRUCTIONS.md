@@ -11,7 +11,7 @@ PRYSM application changes use a governed manual VS Code workflow. The assistant 
 
 For every manual source-file change:
 
-1. Give the exact repo-relative file path.
+1. Give the exact full local Windows file path first, not only a repo-relative path. For the primary PRYSM worker repo, use paths such as `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\scoring\score-components.test.js`. A repo-relative path may follow for reference, but it must never replace the full local path.
 2. Give the exact current line number or line range for every edit when the current file has been supplied or otherwise verified.
 3. Give exact anchor text so the edit can be located even if line numbers shift slightly.
 4. When multiple edits are required in one file, present them strictly **bottom-up: highest line number first, then work upward**.
@@ -54,7 +54,8 @@ Report test totals, failures, and duration when available.
 
 Technical responses should default to:
 
-- exact file/path;
+- exact full local Windows file path first;
+- repo-relative path only as secondary reference when useful;
 - exact line(s) and anchor;
 - exact replacement;
 - one verification block;
