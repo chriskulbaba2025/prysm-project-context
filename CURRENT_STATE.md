@@ -13,6 +13,7 @@ Verified application checkpoint:
 - Current GitHub application checkpoint used for this investigation: `43188fd6700c1ca95cec4ae55a93144819ffa51e` — `fix(prysm): prioritize conversion impact and clean report URLs`.
 - Previous Railway verification recorded deployment `e5a417f6-e4ba-4469-846d-5afbf4218b4a` as SUCCESS for that SHA.
 - Viewer remains v2.2.0 / 16 governed pages.
+- Local working tree was verified clean at the above SHA before the final evidence repairs began.
 
 Fresh TBK production evidence:
 Target: `https://www.tbkcreative.com/`
@@ -54,36 +55,37 @@ Production-proven repairs already completed:
 - Incomplete but usable representative deep-content evidence remains score-bearing as PARTIAL rather than being forced to UNAVAILABLE.
 - Current TBK production audit completed all 37 selected deep-content pages.
 
-Remaining suppressed modules:
+Final evidence repair progress:
 
-1. `conversion_paths`
-   - Suppressed because `conversion.cta` and `conversion.form` are UNAVAILABLE.
-   - Current `conversion.path` is also UNAVAILABLE with limitation `Browser validation not enabled for this run`.
-   - Persisted current audit request proves there is no `crawl` property at all (`HasCrawlProperty: False`).
-   - Root cause is now traced to the real production request boundary: `services/worker/src/application/production-runtime.js` has its own `createAudit()` implementation and only creates `auditRequest.crawl` when incoming UI input already contains a crawl object.
-   - Therefore normal UI audits persist no `pathValidationLiveBrowser` flag.
-   - The orchestrator requires `auditRequest.crawl?.pathValidationLiveBrowser === true`; missing becomes `allowLiveBrowser: false`, which produces the exact observed limitation.
-   - `services/worker/src/application/audit-service.js` contains the intended normal-production browser default, but the real production runtime request builder does not currently mirror that logic.
-   - Playwright/Chromium installation is not the current defect: the production Dockerfile installs Playwright Chromium.
+Repair 1 — production browser activation: VERIFIED LOCAL PASS.
+- `services/worker/src/application/production-runtime.js` now applies the governed live-browser default at the actual production request builder.
+- Normal UI-style production intake persists `crawl.pathValidationLiveBrowser: true`.
+- Explicit `pathValidationLiveBrowser: false` remains false.
+- `PRYSM_DISABLE_LIVE_BROWSER` forces false.
+- Unrelated crawl configuration survives.
+- Focused production-shaped proof: `production-runtime-browser-default.test.js` — 1/1 PASS, 0 fail, duration 6897.9255 ms.
+- No provider calls, deployment, push, or production audit rerun occurred.
 
-2. Browser evidence bridge
+Remaining suppressed modules / repairs:
+
+1. Browser evidence bridge
    - The Playwright validator can observe CTA visibility/interactability, form readiness, destination loading, mobile behavior, and obstruction.
    - Current capability derivation upgrades `conversion.path` from path-validation evidence but does not correspondingly make `conversion.cta` and `conversion.form` evidence-bearing from those browser observations.
    - The `conversion_paths` scoring module is gated by `conversion.cta` + `conversion.form`, so enabling the browser alone may still leave the module suppressed.
    - Repair must bridge only genuinely observed browser evidence into CTA/form/path capabilities; unknown must remain unknown and browser failure remains NOT_ASSESSED/non-penalizing.
 
-3. `risk_reduction`
+2. `risk_reduction`
    - Suppressed because `technical.headers` is UNAVAILABLE.
    - DataForSEO On-Page does not provide the response headers required by the existing security-header evidence path.
    - Do not solve this by weakening the gate or treating unknown headers as absent/healthy.
    - Required repair is bounded, read-only collection of genuine response-header evidence, preferably during the governed browser/HTTP observation path, then populate `technical.headers` only from actually collected headers.
 
 Approved repair sequence:
-1. Production browser activation — make the real `production-runtime.js` request builder apply the governed live-browser default: normal production ON; explicit false preserved; `PRYSM_DISABLE_LIVE_BROWSER` remains the kill switch; other crawl settings survive.
+1. Production browser activation — COMPLETE / VERIFIED LOCAL PASS.
 2. Browser evidence bridge — let actual browser observations support `conversion.cta`, `conversion.form`, and `conversion.path` without fabricating absence or weakening eligibility.
 3. Real technical-header evidence — collect actual response headers through a bounded read-only path and use them to support `technical.headers`.
 4. One focused behavioral proof per repair. Do not stack redundant syntax/test/diff checks when one high-information test proves the contract.
-5. After all three repairs pass locally, make one coherent commit/push/deploy when practical.
+5. After all three repairs pass locally, make one coherent application commit/push/deploy when practical.
 6. Run one final paid TBK production audit only after the complete repair is deployed. Do not spend production audits validating partial fixes.
 
 Target architecture:
@@ -117,7 +119,7 @@ Operating constraints:
 - Do not run a paid TBK audit until the complete final evidence repair is deployed.
 
 Exact next action:
-Verify the local application baseline with `git status --short` and `git rev-parse HEAD`. If the tree/baseline is understood, begin Repair 1 in `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\application\production-runtime.js` and add one focused production-shaped proof that a normal UI-style request with no crawl override persists `pathValidationLiveBrowser: true` while explicit false and the environment kill-switch still disable it.
+Map and implement Repair 2 at the verified browser-observation → capability-evidence → conversion-path scoring boundary. Use one focused behavioral proof that genuine browser observations make `conversion.cta`, `conversion.form`, and `conversion.path` assessable while unknown/NOT_ASSESSED remains non-penalizing.
 
 Last verified:
 2026-08-27 America/Toronto
