@@ -20,8 +20,8 @@ For every manual source-file change:
 7. When a whole-file replacement is used, provide the complete file directly in chat. Never omit middle content.
 8. Never deliver application source code through downloadable/sandbox files.
 9. Do not ask the user to scroll back or recover code from an earlier message. Restate every required replacement in the current response.
-10. After edits, provide one consolidated verification block for that source-file unit.
-11. Do not move to the next source-file unit until the user confirms the current verification result.
+10. After edits, provide the single verification action that most directly proves the changed behavior or contract.
+11. Do not move to the next source-file unit until the user confirms that proving check passed.
 
 ## Diagnostic discipline
 
@@ -33,22 +33,19 @@ For every manual source-file change:
 
 ## Verification discipline
 
-For each source-file unit, use the smallest sufficient sequence, normally:
-
-1. `node --check` for changed JavaScript files;
-2. focused targeted tests for the changed contract;
-3. relevant regression set when the unit closes;
-4. `git --no-pager diff --check`;
-5. final diff review before commit when the change set is material.
-
-Report test totals, failures, and duration when available.
+- Default rule: **one check that directly proves the change, then move on.**
+- Do not stack syntax checks, focused tests, regression suites, diff checks, and repeated inspections when one targeted check already proves the changed behavior or contract.
+- Choose the highest-information verification for the actual change. For logic or policy changes, prefer the focused behavioral/contract test over generic syntax or diff checks.
+- Add another check only when the first check cannot prove a separate material risk created by the same change. Do not add redundant verification for reassurance.
+- Once the proving check passes, continue immediately to the next authorized step.
+- Report pass/fail and duration when the chosen check provides them.
 
 ## Repository and approval boundaries
 
 - GitHub context is authoritative durable memory.
 - Reverify the stable application branch/HEAD when a new chat begins or baseline drift is possible.
 - Do not push, deploy, rerun a production audit, invoke paid providers/models, rescore, or mutate persisted production artifacts without explicit approval.
-- Do not commit until the current governed unit and its required regression set are green.
+- Do not commit until the current governed unit's single proving verification is green.
 
 ## Response form
 
@@ -58,7 +55,7 @@ Technical responses should default to:
 - repo-relative path only as secondary reference when useful;
 - exact line(s) and anchor;
 - exact replacement;
-- one verification block;
+- one proving verification action;
 - stop and wait for the result.
 
 When multiple edits exist in a file, **last edit first** is mandatory, not optional.
