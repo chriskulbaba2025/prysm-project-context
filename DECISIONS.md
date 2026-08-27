@@ -383,3 +383,19 @@ Repeated deviations from this ordering created avoidable copy/paste and formatti
 
 Implication:
 For files roughly under 750–900 lines, whole-file replacement is acceptable/preferred when safer; larger files use surgical edits. The assistant must not move to the next source-file unit until the user confirms verification. The assistant must not ask the user to recover code or instructions from earlier messages.
+
+---
+
+## Decision: Offline report styling and Netlify packaging use derived artifacts only
+
+Date: 2026-08-26
+Status: Active
+
+Decision:
+The next PRYSM work package will style and package a static client-facing report from the saved/offline audit replay artifacts for audit `97d6b2c7`. The target deliverable is a polished Netlify-ready static ZIP. This is presentation and packaging work only.
+
+Reason:
+The Audit Integrity repair checkpoint is now verified and committed locally. Styling and deployment packaging should be isolated from evidence acquisition, scoring, interpretation, orchestration, Writer/Judge, production persistence, and the immutable saved audit evidence so visual iteration cannot reopen or contaminate verified audit logic.
+
+Implication:
+Use the stored audit/replay artifacts as read-only inputs. Create or work from a derived static-report output for styling. Do not edit the canonical/raw/normalized/governed source evidence merely to change appearance. Do not call providers or models, rerun production, rescore persisted data, mutate production artifacts, or change scoring/evidence/crawl/Writer/Judge logic as part of styling. The final ZIP may be created as a user-facing deployment artifact because it is a packaged static report, not a source-code handoff. Before styling begins, identify and verify the safest derived static-report source/output path.
