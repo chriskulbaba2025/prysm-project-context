@@ -4,79 +4,96 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Close the final two suppressed audit modules on the fresh TBK production audit by completing the browser-validation evidence path and real response-header evidence, without weakening governance or rerunning paid production audits between partial fixes.
+Redesign the client-facing decision model so PRYSM is genuinely conversion-first rather than a broad technical website audit with conversion language. Preserve the evidence-integrity repairs already proven and deployed. Do not weaken unknown-evidence handling, capability gates, or provenance.
 
 Verified application checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Governed application branch: `main`.
-- Current GitHub application checkpoint: `20e439f6e4bac37b06528236ebe5f3f58c95e79d` — `style(prysm): apply branded report theme`.
-- The styling commit changed only `services/worker/src/report/render-report-v2.js` and was pushed from `43188fd6700c1ca95cec4ae55a93144819ffa51e` to `20e439f6e4bac37b06528236ebe5f3f58c95e79d` on `main`.
-- The local working tree currently also contains preserved, unrelated uncommitted evidence-repair work in `services/worker/src/application/production-runtime.js` and `services/worker/src/application/production-runtime-browser-default.test.js`. These files were not included in the styling commit and must not be discarded or overwritten.
+- Current deployed application checkpoint: `a00d1d1d21114b0809875b635d593bebc01aadcb` — `fix(prysm): complete final TBK evidence repairs`.
+- Railway deployment for this commit was visually verified ACTIVE / Deployment successful on 2026-08-27.
 
-Current TBK production audit:
-- Target: `https://www.tbkcreative.com/`
-- Audit: `dcaee3bd-c38b-4443-9563-eead4a5f3685`
-- 250 pages; 37/37 deep-content pages; 8/13 capabilities; 8/10 modules; 76% assessed scoring weight; 95/100 confidence; Conversion Readiness 58; Provisional.
+Evidence-integrity repair package — COMPLETE / PUSHED / DEPLOYED:
+1. Production browser activation — PASS.
+   - Normal production intake defaults `crawl.pathValidationLiveBrowser` to true unless explicitly disabled or killed by `PRYSM_DISABLE_LIVE_BROWSER`.
+   - Focused proof: `production-runtime-browser-default.test.js` — 1/1 PASS.
+2. Browser evidence bridge — PASS.
+   - Genuine browser observations can support `conversion.cta`, `conversion.form`, and `conversion.path` only where actually assessed.
+   - NOT_ASSESSED remains suppressed/non-penalizing.
+   - Browser-observed readiness is consumed by conversion scoring/report projection rather than stale empty site arrays.
+   - Focused proof: `browser-evidence-bridge.test.js` — 1/1 PASS, 0 fail, duration 132.0491 ms.
+3. Real response-header evidence — PASS.
+   - Existing bounded Playwright document navigation captures only the four governed response-header signals.
+   - `technical.headers`, Risk Reduction scoring, technical subscore, and missing-header finding consume real browser-observed evidence when available.
+   - Header collection failure remains unknown and cannot create false missing-header findings.
+   - Focused proof: `response-header-evidence-bridge.test.js` — 1/1 PASS, 0 fail, duration 95.525 ms.
 
-Production-proven repairs already complete:
-- Whole-source On-Page timeout separated from provider polling budget.
-- 250-page governed On-Page ceiling reached.
-- Deep-content budget increased to up to 50 representative pages.
-- Incomplete but usable representative evidence remains PARTIAL rather than UNAVAILABLE.
+Application commit/push:
+- Commit: `a00d1d1d21114b0809875b635d593bebc01aadcb`.
+- Message: `fix(prysm): complete final TBK evidence repairs`.
+- 9 intended files; no unrelated files in the committed repair package.
+- Remote `main` verified at the commit.
 
-Final evidence repair progress:
-Repair 1 — production browser activation: VERIFIED LOCAL PASS / UNCOMMITTED.
-- `services/worker/src/application/production-runtime.js` now applies the governed live-browser default at the actual production request builder.
-- Normal UI-style production intake persists `crawl.pathValidationLiveBrowser: true`.
-- Explicit false remains false.
-- `PRYSM_DISABLE_LIVE_BROWSER` forces false.
-- Unrelated crawl settings survive.
-- Focused proof: `production-runtime-browser-default.test.js` — 1/1 PASS, 0 fail, duration 6897.9255 ms.
-- This Repair 1 work remains in the local working tree and was intentionally excluded from the report-styling commit.
-- No provider calls, deployment, push of Repair 1, or production audit rerun occurred.
+Final TBK production verification audit:
+- Target: `https://www.tbkcreative.com/`.
+- Audit ID: `f7e5e17c-0828-4803-843f-20213f9ad8b9`.
+- Started from the normal production UI after deployment.
+- Last observed lifecycle state: `collecting`.
+- Do not infer final module coverage/results until the production audit completes.
 
-Report branding milestone — COMPLETE / PUSHED / VISUALLY VERIFIED.
-- Production Report v2 renderer now carries the approved PRYSM visual theme while preserving Viewer v2.2.0 structure and behavior.
-- Brand palette uses PRYSM greens/mint states; body/UI typography uses DM Sans and headings use Manrope.
-- Existing left-hand navigation, page switching, responsive viewer behavior, print isolation, page count, evidence, scoring, lifecycle, storage, Writer/Judge, and orchestration contracts were not changed.
-- Focused Viewer verification: `render-report-v2-section-viewer.test.js` — 9/9 PASS, 0 fail, duration 134.2245 ms.
-- Offline replay verification for fixture `97d6b2c7-03b9-4530-8ea7-16557502c638`: 1/1 PASS, Viewer 2.2.0.
-- Human visual UAT of the regenerated Executive Scorecard: PASS.
-- Application commit/push: `20e439f6e4bac37b06528236ebe5f3f58c95e79d` — `style(prysm): apply branded report theme`.
-- Previously generated/static report HTML is not retroactively restyled. New reports and older reports that are deliberately re-rendered use the updated production theme.
+New active work package:
+PRYSM CONVERSION-FIRST REDESIGN
 
-Remaining repairs:
-1. Browser evidence bridge — genuine browser observations must support `conversion.cta`, `conversion.form`, and `conversion.path` only where actually assessed. Unknown remains unknown; NOT_ASSESSED remains non-penalizing.
-2. Real response-header evidence — collect genuine headers through a bounded read-only path and support `technical.headers` only from collected evidence.
+Verified product problem:
+- PRYSM contains a conversion-first action planner, but the Executive Scorecard still selects its top three findings directly from raw `model.findings`, allowing technical findings sorted by numeric priority to headline the report.
+- The current overall score is named Conversion Readiness but uses broad readiness dimensions: conversion pathways 25%, trust/risk 25%, content/funnel 20%, technical/performance 20%, entity/schema/AI 10%. This is broader than a strict conversion-readiness construct.
+- The 16-page client report devotes substantial first-class space to technical SEO, headings, schema, performance, accessibility/mobile, and internal links, making the product feel more like a technical/SEO audit than a conversion decision system.
+- Changing only the finding-priority coefficient is insufficient. The current finding priority already weights conversion impact at 40% and a separate conversion-first action planner already ranks domains Conversion → Trust → Performance/UX → Acquisition → Technical.
 
-Approved sequence:
-1. Production browser activation — COMPLETE / VERIFIED LOCAL PASS / UNCOMMITTED.
-2. Browser evidence bridge.
-3. Real technical-header evidence.
-4. One focused behavioral proof per repair.
-5. After all three pass locally, one coherent evidence-repair application commit/push/deploy.
-6. One final paid TBK production audit only after the complete evidence repair is deployed.
+Conversion-first redesign target:
+1. Primary client question: What is stopping more qualified visitors from understanding the offer, trusting it, and completing the desired action?
+2. Executive/top-priority lists must use the governed conversion-first action plan, never raw finding order.
+3. The primary Conversion Readiness score must measure conversion determinants, not broad technical health.
+4. Technical, schema, SEO, and infrastructure evidence remain audited but normally act as diagnostics/supporting evidence unless they create a demonstrated conversion, acquisition, rendering, safety, or measurement blocker.
+5. Technical Health may remain as a secondary diagnostic score/appendix concept, separate from Conversion Readiness.
+6. The first two-thirds of the client-facing report should answer: what is blocking conversion, why, what evidence supports that conclusion, and what should be changed first.
+7. Technical detail should be compressed/deferred unless directly conversion-relevant.
 
-Target architecture:
-`250 structural pages → up to 50 representative deep-content pages → up to 6 browser-validated conversion pages → real response-header evidence → governed capabilities → scoring → findings → report`
+Proposed conversion-readiness domains for design review (NOT YET IMPLEMENTED):
+- Offer clarity and next-action clarity — 30%.
+- Conversion path completion/readiness — 25%.
+- Trust, proof, and buyer risk reduction — 20%.
+- Decision-stage/content support — 15%.
+- UX/performance conversion friction — 10%.
+These weights are a design proposal only and must be validated against existing evidence capabilities and scorer semantics before code changes.
+
+97+ acceptance standard for this work package:
+- Executive top three cannot be dominated by technical hygiene when assessed conversion/trust issues exist.
+- Every top action must trace to collected evidence and a governed finding; no invented conversion claims.
+- Unknown evidence remains unknown and cannot lower the score or create a negative finding.
+- Primary Conversion Readiness must have an explicit, defensible conversion-specific weighting contract.
+- Technical Health must not silently contaminate the primary score outside explicitly conversion-relevant friction/blocker rules.
+- Report ordering and language must make conversion decisions unmistakably primary within the first screen/page and first two-thirds of the report.
+- A technically strong but conversion-weak fixture must score/report as conversion-weak.
+- A technically imperfect but conversion-strong fixture must not be incorrectly prioritized as a technical remediation project unless the technical defect demonstrably blocks conversion/acquisition/safety/measurement.
+- Existing evidence-integrity tests remain green; no regression in browser evidence, response-header evidence, or unknown handling.
 
 Architecture boundary:
-Do not introduce n8n into this repair.
+Do not re-open evidence collection unless the conversion redesign exposes a specific missing conversion signal that cannot be derived from existing collected evidence. No n8n changes.
 
 Operating constraints:
 - GitHub context is authoritative.
-- No guessing; diagnose from direct evidence.
-- Smallest coherent fix only.
+- Diagnose before editing; no guessing.
+- Design scoring/priority/report contract before code.
+- Smallest coherent change set after design is locked.
 - User applies application source edits manually.
 - Exact Windows path, exact lines/anchors, complete replacement blocks; multiple edits bottom-up.
-- One proving check, then move on.
-- Maximum three failed attempts before diagnostic reset.
-- Preserve the current uncommitted Repair 1 files; do not reset, discard, or overwrite them while continuing the evidence repair.
-- No deploy, paid provider/model call, production audit rerun, rescore, or production mutation without explicit approval.
+- One high-information focused test after each coherent repair unit; no redundant check stacking.
+- Maximum three failed attempts on the same defect before deeper diagnosis.
+- No paid provider/model call, production audit rerun, deploy, or production mutation without explicit approval.
 
 Exact next action:
-Continue Repair 2 from the current local working tree: preserve the uncommitted Repair 1 files, then map and implement the browser-observation → capability-evidence → conversion-path scoring bridge with one focused behavioral proof that genuine browser observations make `conversion.cta`, `conversion.form`, and `conversion.path` assessable while unknown/NOT_ASSESSED remains non-penalizing.
+Map the current conversion-readiness score construction, action-priority consumption, executive report selection, pillar/report page structure, and relevant tests. Produce a locked Conversion-First Product Contract containing: primary-score domains/weights, technical-escalation rules, executive-priority rules, report page order, and acceptance fixtures. Do not edit application code until that contract is agreed.
 
 Last verified:
 2026-08-27 America/Toronto
