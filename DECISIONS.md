@@ -415,3 +415,35 @@ The older Reboot replay has too little assessed coverage for strong data represe
 
 Implication:
 Do not build the final showcase report from the fresh TBK audit until its persisted production evidence is inspected. First verify lifecycle completion, then inspect DataForSEO On-Page raw/normalized artifacts, site-footprint evidence, assessed-page count, representative coverage, findings, and scores. Treat the 20-URL value as the priority-URL ceiling, not the total crawl ceiling; the governed provider crawl ceiling remains 250 pages. If the fresh audit still lacks adequate evidence, diagnose that evidence boundary before doing report styling rather than forcing a report from incomplete data.
+
+---
+
+## Decision: Client action ranking follows business-impact domains
+
+Date: 2026-08-27
+Status: Active
+
+Decision:
+Client-facing action ranking is governed by business-impact domain before raw numeric finding priority: proven foundation blockers first, then Conversion, Trust, Performance / UX, Acquisition / SEO, Technical hygiene, then Other. Numeric `finalPriority` ranks work within the same client-impact domain rather than allowing a technical-hygiene issue to outrank a more material conversion-facing category merely because its score is numerically higher.
+
+Reason:
+The prior renderer could label and rank technically severe findings such as missing meta descriptions ahead of more material conversion/friction issues. That order was technically deterministic but commercially misleading for a conversion-readiness report.
+
+Implication:
+Future Report v2 prioritization must preserve the domain hierarchy and the evidence-confidence gate. Low-confidence findings cannot be promoted merely by belonging to a high-impact domain. This is a render-time interpretation/order rule only and must not alter governed evidence or scoring values.
+
+---
+
+## Decision: Infrastructure URLs remain evidence but are not client-facing pages
+
+Date: 2026-08-27
+Status: Active
+
+Decision:
+Infrastructure, proxy, CDN, asset, tracking, storage, and comparable holder URLs may remain in governed collected evidence but must be suppressed from client-facing finding-page examples when they are not meaningful commercial/site pages. The current renderer specifically excludes third-party hosts, `/cdn-cgi/` infrastructure paths, and obvious static asset files from client-facing finding `affectedUrls`.
+
+Reason:
+Raw acquisition can legitimately encounter infrastructure endpoints such as Cloudflare email-protection routes, but presenting those endpoints to a client as meaningful affected website pages distorts the report narrative and makes utility/infrastructure noise appear commercially significant.
+
+Implication:
+Apply this as presentation-layer sanitization only. Do not mutate canonical/raw/normalized evidence to clean the report. Keep regression coverage proving client-facing suppression and non-mutation of the underlying URL evidence.
