@@ -4,144 +4,77 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Finish the local PRYSM Audit Integrity repair checkpoint by assigning the correct On-Page adapter version bump and running the final aggregate deterministic regression. After that, perform the final end-to-end Data Utilization Audit.
+Begin offline/stored-audit report replay and mockup work from the verified Audit Integrity checkpoint without provider/model calls, production reruns, rescoring persisted production data, or production mutation.
 
 Verified checkpoint:
 - Authoritative context repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Evidence-review repository: `chriskulbaba2025/betty-prysm-audit`.
 - Governed application branch: `main`.
-- Verified application baseline before the current local integrity repairs: `46d92a346763a8e3ab252d1c32fe79632e7110a4` — `test(onpage): align representative crawl ceiling`.
-- Local application integrity repairs remain uncommitted/unpushed. No deployment, production rerun, paid provider call, Writer/Judge call, persisted production rescore, or production-artifact mutation has been authorized or performed as part of this repair stream.
-- Viewer remains v2.2.0 / 16 governed pages.
-- Production scoring version remains v4.1.1.
-- Governed DataForSEO On-Page provider ceiling remains 250 pages.
+- Previous pushed baseline before integrity repairs: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
+- Verified local application commit: `dfa5650fa1486b07b34ecc0f61d7747db44c1cc9` — `fix(prysm): close audit interpretation and evidence integrity`.
+- That application commit is LOCAL ONLY and has not been pushed.
+- Interpretation Integrity defects 1–7 are closed in the local commit.
+- Evidence Integrity defects 1–6 are closed in the local commit.
+- DataForSEO On-Page adapter version is now `1.4.1`.
+- Production scoring version remains `4.1.1`.
+- Governed DataForSEO provider crawl ceiling remains 250 pages.
 - Governed provider `priority_urls` ceiling remains 20.
-- On-Page adapter is still v1.4.0 locally until the final repair-version bump is deliberately assigned and verified.
+- Viewer remains v2.2.0 / 16 governed pages.
+- Offline replay harness is committed locally at `services/worker/scripts/replay-report.js` with saved fixture `services/worker/test-fixtures/report-replay/audit-97d6b2c7/`.
+- Historical persisted fixture adapter versions remain historical evidence and were not rewritten.
+- Two optional saved HTML snapshots were deliberately excluded from the commit because they contain pre-existing trailing whitespace and the replay harness treats them as optional comparison artifacts:
+  - `test-fixtures/report-replay/audit-97d6b2c7/governed/report-v2/pages/index.html`
+  - `test-fixtures/report-replay/audit-97d6b2c7/published/index.html`
+- Those two files remain untracked locally and must not be cleaned/reset or silently modified.
 
-Integrity workstreams:
-
-1. Interpretation Integrity — COMPLETE LOCALLY, 7/7 known defects closed.
-   - Unknown image evidence cannot create negative image findings.
-   - Content Parsing request completion is not treated as usable body-content evidence.
-   - Utility/legal/infrastructure pages cannot distort commercial conclusions.
-   - Representative `siteFootprint` reaches Writer/Judge-visible evidence.
-   - Business-impact wording is bounded by deterministic policy.
-   - Judge independently challenges unsupported causal/commercial overreach.
-   - Finding evidence preserves governed source status and no longer silently upgrades to AVAILABLE.
-   - Do not invent an Interpretation Defect 8 without new direct evidence.
-
-2. Evidence Integrity — SIX VERIFIED DEFECTS ARE NOW CLOSED LOCALLY UNDER TARGETED DETERMINISTIC TESTS.
-
-Evidence Defect 1 — governed deep candidates silently truncated at 20 before Content Parsing accounting:
-- CLOSED LOCALLY.
-- Full governed selected set is preserved before the Content Parsing runtime budget.
-- Provider `priority_urls <= 20` remains unchanged and separate.
-- URL-aware Content Parsing ledger now records selected/requested/completed/failed/unassessed truth.
-- Regression: `EVIDENCE-01: governed deep selection survives beyond 20 and budget overflow is explicitly unassessed`.
-- Relevant adapter/representative test run: 76/76 PASS, 0 fail; `git --no-pager diff --check` clean.
-
-Evidence Defect 2 — `contentParsingPageLimit` default/provenance drift:
-- CLOSED LOCALLY.
-- Governed default is 20 in schema, orchestration/source identity, and runtime.
-- Source identity proves omitted limit is equivalent to explicit 20 and explicit 30 remains distinguishable.
-
-Evidence Defect 3 — `maxPages` default/provenance drift:
-- CLOSED LOCALLY.
-- Governed default is 250 in schema, orchestration/source identity, and runtime/provider ceiling.
-- Source identity proves omitted maxPages is equivalent to explicit 250.
-- Focused source-execution identity result for Defects 2/3: 12/12 PASS, 0 fail; schema check returned `{ maxPages: 250, contentParsingPageLimit: 20 }`; `git --no-pager diff --check` clean.
-
-Evidence Defect 4 — incomplete governed deep coverage could be represented too optimistically in score-bearing body/trust/offer capability availability:
-- CLOSED LOCALLY.
-- New URL-aware acquisition ledger is used as the governing coverage truth when present.
-- If selected governed deep URLs are failed or unassessed, site-wide `content.body`, `trust.proof`, and `offer.clarity` fail closed to UNAVAILABLE under the current scoring model.
-- Legacy artifacts without the URL-aware ledger preserve prior derivation semantics rather than being retroactively reclassified.
-- Regression: `EVIDENCE-04: incomplete governed deep coverage fails closed for body, trust, and offer capabilities`.
-
-Evidence Defect 5 — programmatic representative analysis confused crawled pages with deeply assessed pages:
-- CLOSED LOCALLY.
-- Programmatic deep-dependent representative analysis now accepts the Content Parsing acquisition ledger and counts a representative page as deeply assessed only when its normalized URL is in `completedUrls`.
-- Crawled-only representatives do not prove trust/schema/offer deep assessment.
-- Legacy analysis without the new ledger preserves historical behavior.
-- Regression: `EVIDENCE-05: crawled representative pages are not deeply assessed without completed Content Parsing`.
-
-Evidence Defect 6 — configured/provider crawl ceiling used as expected/requested record count and false failures:
-- CLOSED LOCALLY.
-- A complete small crawl no longer turns the 250-page ceiling into `250 requested / 7 completed / 243 failed`.
-- Completed small-site coverage uses observed/returned crawl volume; failed is bounded at actual attempted/expected records.
-- Regression: `EVIDENCE-06: completed small crawl never converts the 250-page ceiling into failed coverage`.
-- Focused adapter result when closed: 72/72 PASS, 0 fail; `git --no-pager diff --check` clean.
-
-Latest combined Defect 4/5 verification:
-- `src/evidence/evidence-integrity-deep-coverage.test.js`
-- `src/evidence/capability-evidence.test.js`
-- `src/evidence/programmatic-seo-analysis.test.js`
-- `src/adapters/dataforseo-onpage/dataforseo-onpage-representative-evidence.test.js`
-- Result: 34/34 PASS, 0 fail, 331.8612 ms.
-- `git --no-pager diff --check`: clean.
-
-Current local repair surface includes at minimum:
-- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js`
-- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.test.js`
-- `services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-representative-evidence.test.js`
-- `services/worker/src/contracts/audit-request.schema.json`
-- `services/worker/src/orchestration/audit-orchestrator.js`
-- `services/worker/src/orchestration/source-execution-identity.test.js`
-- `services/worker/src/evidence/capability-evidence.js`
-- `services/worker/src/evidence/programmatic-seo-analysis.js`
-- new `services/worker/src/evidence/evidence-integrity-deep-coverage.test.js`
-- plus the previously completed local Interpretation Integrity files.
-
-This list is not a substitute for the actual dirty-tree check. Do not clean/reset or overwrite local work.
+Verification:
+- Focused DataForSEO adapter/representative suite: 76/76 PASS, 0 fail.
+- Main worker aggregate regression after the final version-coupling repair: 945/945 PASS, 0 fail, 18401.4338 ms.
+- Narrative v2 regression: 96/96 PASS, 0 fail, 698.5644 ms.
+- Source execution identity regression: 12/12 PASS, 0 fail, 160.6598 ms.
+- Final focused DE-16 production regression: 1/1 PASS, 0 fail, 2291.3302 ms.
+- `git --no-pager diff --cached --check` was clean before commit.
 
 Current environment / branch / version:
 - Desktop application path: `C:\Users\kulba\Desktop\vantage-platform`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Branch: `main`.
-- Verified baseline before local repairs: `46d92a346763a8e3ab252d1c32fe79632e7110a4`.
-- Current adapter version before final bump: v1.4.0.
+- Local HEAD: `dfa5650fa1486b07b34ecc0f61d7747db44c1cc9`.
+- Remote application state has not been advanced by this work package.
+- Adapter: v1.4.1.
+- Scoring: v4.1.1.
 - Provider crawl ceiling: 250.
 - Provider priority URL cap: 20.
 - Viewer: v2.2.0 / 16 governed pages.
-- Production scoring version: v4.1.1.
 
 Completed:
-- Representative Crawl Enforcement is complete, pushed, and remotely green from the earlier work package.
-- Interpretation Integrity defects 1–7 are closed locally.
-- Evidence Integrity defects 1–6 are closed locally under their targeted deterministic regressions.
-- Defect 1 preserves the full governed deep selected set and explicitly records runtime-budget overflow as unassessed rather than failed or silently dropped.
-- Defects 2/3 align 20/250 configuration provenance and source-execution identity.
-- Defect 4 fails score-bearing body/trust/offer availability closed when governed deep coverage is incomplete.
-- Defect 5 distinguishes crawled representatives from deeply completed representatives.
-- Defect 6 separates provider ceiling from actual expected/requested crawl volume.
+- Interpretation Integrity 7/7 closed and committed locally.
+- Evidence Integrity 6/6 closed and committed locally.
+- Final adapter version bump assigned and verified.
+- Final deterministic regression is green.
+- Offline replay harness and saved audit fixture are committed locally.
 
 In progress:
-- Final repair-version assignment for the DataForSEO On-Page adapter.
-- Final aggregate deterministic regression over the combined Interpretation + Evidence Integrity repair surface.
-- Final Data Utilization Audit after the repaired local checkpoint is fully green.
+- Offline replay validation and report-page mockup workflow using stored audit artifacts.
+- Final Data Utilization Audit remains a later governed validation step.
 
 Blocked:
 - No known technical blocker.
-- Integrity repair is not ready to commit/push yet because the adapter version bump and final aggregate regression have not been completed.
+- Application commit is not pushed because no push authorization has been given.
 
 Important constraints:
 - GitHub context is authoritative durable memory.
 - `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md` remain mandatory.
-- Never guess current local line numbers. For every code edit provide the exact full Windows path, exact current line/range, current anchor/FIND text, complete replacement/insertion, and next anchor. Multiple edits must be delivered bottom-up. If current lines may have shifted, obtain a line-numbered local snippet first.
-- Never guess a root cause. Require direct executing-path evidence.
-- Same observable failure is capped at three unsuccessful repair attempts before a deeper diagnostic reset.
-- Do not ask the user to scroll back for code or instructions; restate what is required in the current response.
+- Never guess current local line numbers or runtime behavior.
 - Preserve broad discovered footprint separately from assessed-page/deep-assessment evidence.
 - UNKNOWN / UNAVAILABLE / PARTIAL / NOT DEEPLY PARSED / unassessed must never become ABSENT / FALSE / ZERO / FULLY ASSESSED.
-- The 250-page provider ceiling and 20-provider-priority-URL cap remain unchanged.
-- Do not bump adapter version by assumption. Inspect current versioning convention and all materially coupled adapter-version assertions/fixtures first, then assign the smallest correct version change.
-- Do not update tests merely to silence regressions. Test changes require the intended repaired contract.
-- Do not push, deploy, run production audits, call paid providers/models, rescore persisted production data, run Writer/Judge, or mutate production artifacts without explicit approval.
-- Do not clean/reset the dirty working tree.
+- Provider crawl ceiling remains 250 and provider `priority_urls` cap remains 20.
+- Do not push, deploy, run a production audit, call paid providers/models, rescore persisted production data, run Writer/Judge, or mutate production artifacts without explicit approval.
+- Do not clean/reset the two optional untracked HTML snapshots.
+- Stored-audit replay/mockup work must remain offline/read-only against saved artifacts unless separately authorized.
 
 Exact next action:
-In the fresh chat, after reading the governing context files, run only these read-only local checks first: `git rev-parse HEAD`, `git status --short`, and `git --no-pager diff --stat`. Then inspect the current adapter-version declaration and its exact coupled tests/fixtures before proposing the final version bump.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect the replay harness command-line entry/usage from the current local `scripts/replay-report.js`, then execute the smallest verified offline replay against `test-fixtures\report-replay\audit-97d6b2c7` with no provider/model/production calls.
 
 Last verified:
 2026-08-26 America/Toronto
