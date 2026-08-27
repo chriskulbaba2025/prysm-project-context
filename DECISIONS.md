@@ -389,7 +389,7 @@ For files roughly under 750–900 lines, whole-file replacement is acceptable/pr
 ## Decision: Offline report styling and Netlify packaging use derived artifacts only
 
 Date: 2026-08-26
-Status: Active
+Status: Superseded by fresh TBK showcase-audit decision
 
 Decision:
 The next PRYSM work package will style and package a static client-facing report from the saved/offline audit replay artifacts for audit `97d6b2c7`. The target deliverable is a polished Netlify-ready static ZIP. This is presentation and packaging work only.
@@ -399,3 +399,19 @@ The Audit Integrity repair checkpoint is now verified and committed locally. Sty
 
 Implication:
 Use the stored audit/replay artifacts as read-only inputs. Create or work from a derived static-report output for styling. Do not edit the canonical/raw/normalized/governed source evidence merely to change appearance. Do not call providers or models, rerun production, rescore persisted data, mutate production artifacts, or change scoring/evidence/crawl/Writer/Judge logic as part of styling. The final ZIP may be created as a user-facing deployment artifact because it is a packaged static report, not a source-code handoff. Before styling begins, identify and verify the safest derived static-report source/output path.
+
+---
+
+## Decision: Fresh TBK audit is the preferred showcase report source
+
+Date: 2026-08-26
+Status: Active
+
+Decision:
+Use a fresh production audit of `https://www.tbkcreative.com/`, started only after application commit `dfa5650fa1486b07b34ecc0f61d7747db44c1cc9` was pushed and successfully deployed, as the preferred data source for the next PRYSM showcase/report-review work. The fresh audit ID is `ca8a1171-0d57-4eda-910e-3efe54967af8`.
+
+Reason:
+The older Reboot replay has too little assessed coverage for strong data representation, and the older TBK audit `f8eb3d18-ee2f-46ed-9a48-30ec89f56646` has materially incomplete persisted DataForSEO On-Page evidence. A new TBK audit under the current Brad + Chris integrity and representative-acquisition rules provides the cleanest way to evaluate the current product and report model without retrofitting an incomplete historical run.
+
+Implication:
+Do not build the final showcase report from the fresh TBK audit until its persisted production evidence is inspected. First verify lifecycle completion, then inspect DataForSEO On-Page raw/normalized artifacts, site-footprint evidence, assessed-page count, representative coverage, findings, and scores. Treat the 20-URL value as the priority-URL ceiling, not the total crawl ceiling; the governed provider crawl ceiling remains 250 pages. If the fresh audit still lacks adequate evidence, diagnose that evidence boundary before doing report styling rather than forcing a report from incomplete data.
