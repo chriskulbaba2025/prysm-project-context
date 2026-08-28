@@ -40,6 +40,14 @@ For every manual source-file change:
 - Once the proving check passes, continue immediately to the next authorized step.
 - Report pass/fail and duration when the chosen check provides them.
 
+## Test-report browser review discipline
+
+- When a local/test PRYSM report is generated for visual review, **do not hand the user a raw HTML/text file as the review experience and do not instruct them to open the `.html` file directly from the filesystem**.
+- Serve the report directory through a local Python HTTP server, normally with `python -m http.server <port> --directory "<report-directory>"`, and provide the corresponding `http://localhost:<port>/<report-file>.html` browser address.
+- The user must review the rendered report in a web browser. Browser-rendered report review is a required acceptance gate for client-facing report hierarchy, interpretation, navigation, and presentation changes; green unit/regression/replay tests alone do not prove that the report is acceptable.
+- If an offline replay reuses previously persisted Narrative v2 Writer/Judge artifacts, state that explicitly. Such a replay can validate deterministic rendering and report-model changes, but it **cannot** prove that new Writer prompt/input/Judge behavior produced a new narrative.
+- Do not invoke a fresh Writer/Judge/model run merely to refresh a test report unless that model execution is separately authorized. First make the deterministic/browser-rendered report internally consistent, then obtain any required approval for a fresh narrative generation.
+
 ## Repository and approval boundaries
 
 - GitHub context is authoritative durable memory.
