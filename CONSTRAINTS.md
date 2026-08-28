@@ -106,6 +106,20 @@ Record hard project boundaries here.
 - The final third Writer/Judge round required explicit human authorization. It has now been completed successfully for audit `5d22dcef-7d98-422f-8415-933e7b02003e`; no fourth Writer/Judge round is permitted.
 - The controlled audit reached a governed release candidate and then `draft_rendered` after deterministic render recovery. Do not rerun the audit or re-authorize another final narrative pass merely to verify the completed result.
 - Production Writer remains the approved Terra model; Judge remains unchanged.
-- Current production budget implementation for Narrative v2 uses `PRYSM_LLM_HARD_BUDGET_USD=1.50` as an individual model-call hard ceiling and `PRYSM_LLM_DAILY_HARD_BUDGET_USD=30.00` as the cumulative daily hard ceiling.
+- Current production budget implementation for Narrative v2 uses `PRYSM_LLM_HARD_BUDGET_USD=5.00` as the cumulative per-audit hard ceiling and `PRYSM_LLM_DAILY_HARD_BUDGET_USD=30.00` as the cumulative daily hard ceiling.
 - The implementation does not enforce a true cumulative USD $2 per-audit hard cap. Any $2 figure used in approval discussions is a human approval/policy threshold, not a technical cumulative per-audit budget limit.
 - No new paid continuation call, new audit, recollection, rescoring, deployment, configuration mutation, push, or persisted production-artifact mutation may occur without the applicable explicit approval at that step.
+
+## Authorized exception — Conversion-First v4.2 CF-01 report interpretation repair
+
+- User authorization was granted on 2026-08-28 to implement the already-mapped CF-01 Conversion-First report-process repair against the frozen TBK audit `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`.
+- This exception supersedes the generic presentation-only freeze only where required to repair client-facing interpretation, priority hierarchy, cross-consumer consistency, Writer input/prompt hierarchy, Judge cross-view consistency checks, and competitor report projection.
+- This exception does **not** authorize changes to evidence collection, provider/adaptor behavior, raw/normalized/canonical evidence, scoring weights or scoring versions, audit lifecycle, storage, authentication, n8n, production configuration, provider/model execution, or audit orchestration.
+- Writer/Judge quality governance remains unchanged: do not lower the release threshold, evidence-fidelity requirements, dimension floors, hard-gate protections, major-defect protections, pass limits, or human-authorization requirements. CF-01 may refine Writer inputs/prompts and Judge contract checks only to enforce the governed Conversion-First hierarchy and cross-view consistency.
+- Do not mutate the persisted FindingSet to create the new hierarchy. Conversion influence/order must remain a derived client-facing decision view.
+- Use the frozen local TBK replay fixture and offline replay harness for verification. Do not run a fresh paid production audit, recollect providers, rescore external data, or call Writer/Judge models for CF-01 implementation verification.
+- Scoring weights remain unchanged unless a separate later evidence-backed scoring review proves a scoring-model defect and the user explicitly authorizes that change.
+- Technical findings must remain visible and evidence-grounded; CF-01 changes their client-facing influence/order, not the truth of the underlying evidence.
+- Preserve Viewer v2.2.0, the 250-page provider crawl ceiling, 20 priority-URL ceiling, production content-parsing default of 50, and current evidence-status semantics.
+- The expected implementation sequence and regression gates are governed by `CURRENT_STATE.md` and `HANDOFF_CF01_REPORT_PROCESS_REPAIR_2026-08-28.md`.
+- The manual one-source-file-at-a-time workflow remains mandatory. Do not redo the completed CF-01 architecture investigation unless current source evidence materially contradicts the documented repair boundary.
