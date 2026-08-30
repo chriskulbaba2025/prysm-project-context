@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Finish PF-18, the final open item in the frozen PF pre-run report-integrity repair package. PF-01 through PF-17 are closed by targeted proof. PF-18.1 through PF-18.3 are now also closed; only PF-18.4 action/root-cause hierarchy disagreement and PF-18.5 invalid Narrative semantic state remain. After PF-18 is green, run the selected regression suite, rebuild the frozen TBK report offline, perform browser/report acceptance, and obtain explicit approval before any fresh paid Writer/Judge run.
+Complete the selected integrated regression cleanup after closing PF-01 through PF-18. Repair remaining failure families by root-cause cluster, separating genuine production defects from stale test fixtures/contracts and intentional frozen-output changes. Only after the selected suite is green may the frozen TBK deterministic package be rebuilt and reviewed offline; any fresh paid Writer/Judge execution still requires explicit approval.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -15,10 +15,10 @@ Verified checkpoint:
 - Frozen TBK audit remains `9714c206-8ed3-4686-8fe2-ceeca0ca0f82` for `https://www.tbkcreative.com/`.
 - Frozen governed fixture remains `C:\Users\kulba\Desktop\vantage-platform\services\worker\test-fixtures\report-replay\audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82\governed`.
 - Frozen TBK baseline remains: Conversion Readiness 65/100; Evidence Confidence 95/100; Evidence Coverage 100%; 12/13 capabilities; 10/10 modules; Conversion Path 100/100; Performance & Experience 71/100; browser conversion validation 6/6 selected pages; Viewer 2.2.0.
-- Fresh Narrative identity `ea9a3b49-d393-4633-956b-d6cb1a2a3fc8` is exhausted at six calls / Judge 3 score 91 / `HUMAN_REVIEW_REQUIRED`; no additional call is permitted.
-- Fresh Narrative identity `9c87448a-c1a1-41eb-a0e5-a8dd63cf8da4` is diagnostic evidence only after two passes / Judge 94.5 / `REVISE`; do not use it as release output.
-- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during the PF-18 work recorded here.
-- Continuation handoff: `HANDOFF_PF18_FINALIZATION_CONTINUATION_2026-08-29.md`.
+- Narrative identity `ea9a3b49-d393-4633-956b-d6cb1a2a3fc8` is exhausted at six calls / Judge 3 score 91 / `HUMAN_REVIEW_REQUIRED`; no additional call is permitted.
+- Narrative identity `9c87448a-c1a1-41eb-a0e5-a8dd63cf8da4` remains diagnostic evidence only after two passes / Judge 94.5 / `REVISE`; do not use it as release output.
+- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during the regression cleanup recorded here.
+- Active continuation handoff: `HANDOFF_PF_REGRESSION_CLEANUP_2026-08-29.md`.
 
 Current environment / branch / version:
 - Application branch: `main`.
@@ -34,45 +34,42 @@ Current environment / branch / version:
 
 Completed:
 - CF-01 architecture investigation is complete; do not redo it.
-- Broad PF preflight investigation is complete at approximately 98% confidence; do not redo it absent contradictory evidence.
-- PF-01 — PARTIAL is not complete assessment: PASS.
-- PF-02 — cross-capability scoring isolation: PASS.
-- PF-03 — negative finding certainty: PASS.
-- PF-04 — preserve field-specific evidence certainty: PASS.
-- PF-05 — denominator and decision-scope integrity: PASS.
-- PF-06 — deterministic renderer certainty parity: PASS.
-- PF-07 — Conversion-First consumer parity: PASS.
-- PF-08 — stale root-cause authority: PASS.
-- PF-09 — deterministic action-plan effort/order: PASS.
-- PF-10 — supplied competitor allowlist: PASS.
-- PF-11 — competitor capability viability: PASS.
-- PF-12 — deterministic Narrative evidence-fidelity validator: PASS.
-- PF-13 — neutral Narrative required-field state: PASS.
-- PF-14 — safe Judge locking: PASS. `judge-contract.js` now requires an unresolved material defect section to remain inside that defect's `allowedFields` rewrite scope.
-- PF-15 — Writer source-status reference completeness: PASS; no source change required.
-- PF-16 — contract/version integrity: PASS. Writer/Judge prompt/contract versions are explicit and live-binding uses those constants rather than stale `2.0.0` fallbacks.
-- PF-17 — exact deterministic section filters: PASS.
-- PF-18.1 — impossible denominator finalization backstop: PASS. `src/scoring/report-finalization-gate.js` independently rejects impossible image numerator/denominator states.
-- PF-18.2 — PARTIAL-to-unqualified-absence finalization backstop: PASS. The gate rejects PARTIAL-only evidence used to support an unbounded absence claim. `readinessStatus = "Complete"` remains the governed >=80 assessed-weight score-readiness tier and must not be reinterpreted as 100% evidence coverage.
-- PF-18.3 — supplied competitor allowlist finalization backstop: PASS.
-  - `src/evidence/decision-evidence.js` now carries an immutable copy of `suppliedCompetitors` into DecisionEvidence.
-  - `src/scoring/report-finalization-gate.js` rejects client-facing `model.competitors.comparisons[]` entries outside `evidence.suppliedCompetitors[]` and fails closed when comparisons exist without the allowlist.
-  - Proofs: `PF-18 competitor allowlist DecisionEvidence carry-forward: PASS`; `PF-18 competitor allowlist finalization backstop: PASS`.
+- Broad PF preflight investigation is complete; do not redo it absent contradictory evidence.
+- PF-01 through PF-17: PASS.
+- PF-18.1 impossible denominator finalization backstop: PASS.
+- PF-18.2 PARTIAL-to-unqualified-absence finalization backstop: PASS.
+- PF-18.3 supplied competitor allowlist finalization backstop: PASS.
+- PF-18.4 action/root-cause hierarchy disagreement backstop: PASS. `src/scoring/report-finalization-gate.js` reuses `buildFoundationChecklist(model)` + `buildActionPlan(model, checklist)` and rejects disagreement between the deterministic root cause and governed Conversion-First action hierarchy.
+- PF-18.5 invalid Narrative semantic state: PASS. Existing governed Writer-output/release validation already fails closed for invalid semantic state; no duplicate validator was required.
+- PF-18 is closed. Do not reopen the PF architecture without new direct evidence of a material defect.
+- Selected integrated regression suite was run after PF closure: 260 tests / 231 pass / 29 fail. The failures are being handled by shared root-cause family rather than as 29 independent defects.
+- `score-components.js` structural regression family closed:
+  - accidental PF-04 test block removed from production `calculateEvidenceConfidence()`;
+  - `sourceComplete` declaration restored for PF-01 image scoring semantics;
+  - proof: `src/scoring/score-components.test.js` — 30/30 PASS.
+- PF-05 decision-scope regression family closed:
+  - bounded diagnostics proved the apparent 43 vs 39 technical-score difference was caused by an internally inconsistent test fixture that claimed one image without page-level image evidence after utility filtering;
+  - exploratory `decisionCapabilities` production change was removed because it did not change the result;
+  - fixture was corrected by adding the actual commercial image rather than weakening the PF-05 invariant;
+  - proof: `src/scoring/decision-scope.test.js` — 5/5 PASS.
+- Judge prompt-version regression family closed:
+  - stale test helpers in `judge-contract.test.js`, `live-binding.test.js`, and `render-narrative-v2.test.js` were updated from hard-coded `judgePromptVersion: "2.0.0"` to the governed `2.1.0` contract;
+  - proof: combined family suite — 27/27 PASS.
 
 In progress:
-PF-18 remains active with exactly two defect families open:
-1. PF-18.4 — action/root-cause hierarchy disagreement.
-2. PF-18.5 — invalid Narrative semantic state.
+Selected integrated regression cleanup.
 
-PF-18.4 boundary is already proven and must not be re-investigated broadly:
-- `src/scoring/vantage-score.js` sorts findings by raw `finalPriority` and derives `rootCause` from the first score-bearing finding.
-- `src/report/action-priority.js` derives the governed client action hierarchy through Conversion-First v4.2 using `buildActionPlan(model, checklist)`.
-- `src/narrative-v2/writer-input.js` already uses `buildFoundationChecklist(model)` + `buildActionPlan(model, checklist)` for deterministic Writer action hierarchy.
-- `src/report/action-priority.js` has no imports that create a circular dependency with the finalization gate; `src/report/foundation-readiness.js` exports `buildFoundationChecklist(model)`.
-- The finalization repair must reuse this authority rather than recreate ranking logic.
+Known remaining failure families from the prior 260-test run:
+1. `CONTRACT-CLOSURE-01` through `CONTRACT-CLOSURE-05` — test helper builds WriterInput without newly required `decisionEvidence`.
+2. `WRITER-OUT-01` and `WRITER-OUT-06` — old valid-output fixture prose now violates the deterministic semantic-fidelity rule against unmeasured business outcomes stated with causal certainty.
+3. `T-GATE-INT-02` — old fixture root cause disagrees with the governed Conversion-First action hierarchy.
+4. `CR-26` / `CR-44` — competitor fixtures predate the supplied-competitor allowlist and no longer reach the governed comparison branch.
+5. `CR-43` — frozen rendered-report hashes changed and require explicit no-fabrication review before re-freezing.
+6. Four `vantage-score.test.js` assessed-weight expectations — likely stale relative to PF-01/PF-02 fractional assessed-weight semantics; classify before editing and never update merely to silence failures.
 
 Blocked:
-- Do not spend on another Writer/Judge refresh until PF-18 is fully proven, the selected regression suite is green, and the TBK report has been rebuilt/reviewed offline from frozen evidence.
+- Do not rebuild the deterministic TBK package until the selected regression suite is green.
+- Do not spend on another Writer/Judge refresh until regression cleanup is green and the TBK report has been rebuilt/reviewed offline from frozen evidence.
 - Do not render/release a fresh Narrative v2 report unless final Judge decision is PASS and deterministic release gates pass.
 - Do not commit/push/deploy application changes until the repair package and browser report review are complete and repository action is explicitly authorized.
 
@@ -86,15 +83,16 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, configuration mutation, application push, or production persistence mutation without explicit approval.
 - Preserve Viewer v2.2.0, provider crawl ceiling 250, provider priority-URL ceiling 20, and production content-parsing default 50.
 - Follow `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`.
-- Work one governed source-file unit at a time with the smallest coherent edit and one highest-information proving test; stop for the result before advancing.
+- Work by failure family during regression cleanup: classify shared root cause first, then make the smallest coherent edit and run one family-level proving test.
 - Same observable failure: maximum three unsuccessful attempts before deeper diagnostic reset.
 - Source code must be delivered directly in chat, never through generated/downloadable code files.
 - Exact Windows path, exact current line ranges/anchors, complete replacement blocks, and bottom-up ordering are mandatory for surgical edits.
+- Do not update a test merely to silence a regression. A test change must follow a proven intentional contract/fixture correction or approved frozen-output migration.
 - Prefer the shortest proven repair path. Do not broaden investigation after the repair boundary is already evidenced.
 - Browser-served report review remains an acceptance gate; automated PASS alone is insufficient for final report interpretation acceptance.
 
 Exact next action:
-Begin PF-18.4 only. Use the already-proven `buildFoundationChecklist(model)` + `buildActionPlan(model, checklist)` authority to add the smallest deterministic `src/scoring/report-finalization-gate.js` backstop that rejects a root-cause/action hierarchy disagreement. Do not perform another open-ended diagnostic review. Re-display only the small current line ranges needed to ensure exact line numbers after the existing PF-18 insertions, provide the exact Windows path/line ranges/anchors and complete replacement block(s), run one PF-18.4 proving test, and stop for the result.
+Inspect only the top fixture constructor in `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\narrative-v2\contract-closure.test.js` by displaying current lines 1–80. If that confirms the five `CONTRACT-CLOSURE` failures share the missing `decisionEvidence` helper input, repair the entire family in one bounded fixture edit, then run only `node --test src/narrative-v2/contract-closure.test.js` and stop for the result.
 
 Last verified:
 2026-08-29 America/Toronto
