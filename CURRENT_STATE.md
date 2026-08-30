@@ -4,25 +4,26 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete the selected integrated regression cleanup after closing PF-01 through PF-18. Repair remaining failure families by root-cause cluster, separating genuine production defects from stale test fixtures/contracts and intentional frozen-output changes. Only after the selected suite is green may the frozen TBK deterministic package be rebuilt and reviewed offline; any fresh paid Writer/Judge execution still requires explicit approval.
+Preserve the now-green PF/CF-01 repair package, run final local diff hygiene, then rebuild the deterministic TBK report offline from frozen governed evidence and review the browser-served report before any application commit/push/deploy or paid Writer/Judge refresh.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Branch: `main`.
 - Last verified application SHA: `90916e94f6feba73e7e60df54bd641bb2362454c` — `test(prysm): repair CI regression baselines`.
 - Local worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Application working tree remains intentionally dirty with the governed PF repair package. Preserve all existing local edits, replay fixtures, and diagnostics; never reset/clean/checkout-overwrite unrelated work.
+- Application working tree remains intentionally dirty with the governed PF/CF-01 repair package plus regression-contract corrections. Preserve all local edits, replay fixtures, and diagnostics; never reset/clean/checkout-overwrite unrelated work.
 - Frozen TBK audit remains `9714c206-8ed3-4686-8fe2-ceeca0ca0f82` for `https://www.tbkcreative.com/`.
 - Frozen governed fixture remains `C:\Users\kulba\Desktop\vantage-platform\services\worker\test-fixtures\report-replay\audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82\governed`.
-- Narrative identity `ea9a3b49-d393-4633-956b-d6cb1a2a3fc8` is exhausted at six calls / Judge 3 score 91 / `HUMAN_REVIEW_REQUIRED`; no additional call is permitted.
-- Narrative identity `9c87448a-c1a1-41eb-a0e5-a8dd63cf8da4` remains diagnostic evidence only after two passes / Judge 94.5 / `REVISE`; do not use it as release output.
-- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during the regression cleanup recorded here.
-- Active continuation handoff: `HANDOFF_PF_REGRESSION_CLEANUP_CONTINUATION_2026-08-30.md`.
+- PF-01 through PF-18 remain closed.
+- Full worker regression is green: `npm test` — **957/957 PASS**, 0 fail, 0 cancelled, 0 skipped, duration `18391.4511 ms`.
+- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during this regression-cleanup continuation.
+- Active continuation handoff: `HANDOFF_TBK_OFFLINE_REBUILD_AFTER_PF_CLOSURE_2026-08-30.md`.
 
 Current environment / branch / version:
 - Application branch: `main`.
 - Last verified application SHA: `90916e94f6feba73e7e60df54bd641bb2362454c`.
 - Governed viewer: Viewer v2.2.0.
+- Scoring version remains `4.1.1`; scoring weights were not changed merely to alter results.
 - Narrative Writer model for approved live runs: `gpt-5.6-terra`.
 - Narrative Judge model: `gpt-5.6-sol`.
 - Current truthful Narrative versions:
@@ -35,63 +36,42 @@ Completed:
 - CF-01 architecture investigation is complete; do not redo it.
 - Broad PF preflight investigation is complete; do not redo it absent contradictory evidence.
 - PF-01 through PF-18: PASS. Do not reopen PF architecture without new direct evidence of a material defect.
-- Selected integrated regression suite baseline after PF closure: 260 tests / 231 pass / 29 fail. Failures are handled by shared root-cause family rather than as 29 independent defects.
-- `score-components.js` structural regression family closed; proof: `src/scoring/score-components.test.js` — 30/30 PASS.
-- PF-05 decision-scope regression family closed as an internally inconsistent fixture; proof: `src/scoring/decision-scope.test.js` — 5/5 PASS.
-- Judge prompt-version regression family closed across `judge-contract.test.js`, `live-binding.test.js`, and `render-narrative-v2.test.js`; proof: combined family suite — 27/27 PASS.
-- CONTRACT-CLOSURE family closed:
-  - `productionShapedWriterInput()` was updated with the newly mandatory minimal canonical `decisionEvidence` object;
-  - `rawPassingJudge()` was updated from stale `judgePromptVersion: "2.0.0"` to governed `2.1.0`;
-  - classification: stale fixture/contract drift, not a production runtime defect;
-  - proof: `src/narrative-v2/contract-closure.test.js` — 5/5 PASS.
-- Writer semantic-fidelity family closed:
-  - first fixture wording cleanup alone did not clear the failure;
-  - direct regex diagnostic proved production `causalCertaintyPattern` matched the noun `cause` inside `root-cause assessment` because of `causes?`;
-  - `src/narrative-v2/writer-output.js` was repaired so `cause` / `causes` remain causal-certainty terms except when immediately preceded by governed `root-` or `root ` context;
-  - the valid-output fixture wording was also changed from `needed to generate qualified enquiries` to `associated with the stated qualified-enquiry goal` during diagnosis;
-  - classification: genuine production semantic-validator false positive plus valid fixture wording cleanup;
-  - proof: `src/narrative-v2/writer-output.test.js` — 10/10 PASS.
-- T-GATE-INT-02 hierarchy family closed:
-  - direct gate error proved the fixture derived root cause from `VAN-PERF-001` while Conversion-First ranked `VAN-TRUST-001` first;
-  - the test fixture finding order was corrected to `VAN-TRUST-001`, `VAN-PERF-001`, `VAN-TECH-001`;
-  - classification: stale integration fixture relative to the governed Conversion-First hierarchy;
-  - proof: `node --test --test-name-pattern="T-GATE-INT-02" src/scoring/report-finalization-gate.test.js` — 1/1 PASS.
+- CONTRACT-CLOSURE: 5/5 PASS.
+- Writer semantic-fidelity family: 10/10 PASS after repairing the governed `root-cause` false positive in the causal-certainty validator.
+- T-GATE-INT-02 hierarchy fixture: 1/1 PASS.
+- CR-26 / CR-44 competitor family: CLOSED as stale supplied-competitor fixtures; 2/2 PASS.
+- CR-43 rendered-report freeze: bounded no-fabrication review PASS; all 27 golden hashes deliberately re-frozen; CR-43 1/1 PASS.
+- `vantage-score.test.js` assessed-weight family: CLOSED as stale expectations under fractional assessed-weight semantics; full file 70/70 PASS. Current verified fixture weights include 97 for the fully available fixture and 87 when performance is unavailable.
+- First full `npm test` after known-family cleanup produced 952/957 PASS and exposed five failures in three families.
+- PC-03/07 supplied competitor production-path test: CLOSED as stale test invocation; explicit supplied allowlist added to the direct helper call; 1/1 PASS.
+- `run-audit` artifact/gate family: CLOSED after a genuine production integration repair. `scoreAudit()` now derives canonical root cause from the governed Conversion-First action hierarchy, carries `rootCauseRuleId`, and the finalization gate validates that explicit binding with a legacy fallback. Gate was not weakened. Targeted family 3/3 PASS.
+- TBK-REPAIR-02 browser conversion score: CLOSED as stale expectation. Fully proven browser CTA/form terms normalize to 100 when unassessed trust/cardinality terms are excluded rather than zeroed; targeted test 1/1 PASS.
+- Final full worker aggregate: **957/957 PASS**, 0 fail.
 
 In progress:
-Selected integrated regression cleanup.
-
-Known remaining failure families from the prior 260-test run:
-1. `CR-26` / `CR-44` — competitor fixtures predate the supplied-competitor allowlist and likely no longer reach the governed comparison branch. Classify before editing; current hypothesis is not yet proven.
-2. `CR-43` — frozen rendered-report hashes changed and require explicit no-fabrication review before re-freezing.
-3. Four `vantage-score.test.js` assessed-weight expectations — likely stale relative to PF-01/PF-02 fractional assessed-weight semantics; classify before editing and never update merely to silence failures.
+No known regression family remains. Next phase is deterministic TBK offline rebuild and browser-served report review from frozen evidence.
 
 Blocked:
-- Do not rerun the full selected 260-test suite until the remaining known families are addressed.
-- Do not rebuild the deterministic TBK package until the selected regression suite is green.
-- Do not spend on another Writer/Judge refresh until regression cleanup is green and the TBK report has been rebuilt/reviewed offline from frozen evidence.
+- Browser-served report review is still required before final client interpretation/presentation acceptance.
+- Do not spend on another Writer/Judge refresh until the repaired deterministic TBK report has been rebuilt and reviewed offline and the user explicitly authorizes a paid run.
+- Do not commit/push/deploy application changes until the local repair package has passed diff hygiene and the user explicitly authorizes repository action.
 - Do not render/release a fresh Narrative v2 report unless final Judge decision is PASS and deterministic release gates pass.
-- Do not commit/push/deploy application changes until the repair package and browser report review are complete and repository action is explicitly authorized.
 
 Important constraints:
 - GitHub context is authoritative.
 - Preserve the dirty local application working tree. Never reset, clean, checkout-overwrite, or discard known local PF/Narrative/CF-01 work or replay fixtures.
 - Frozen TBK raw/normalized/canonical evidence is immutable. Derived findings/scores/report inputs may be rebuilt locally/in memory; providers must not be recollected.
-- Do not change scoring weights or scoring version merely to alter results.
-- Do not weaken the Narrative 92 release threshold, evidence-fidelity requirement, dimension floors, hard gates, major-defect protections, pass limits, or human-authorization boundary.
-- No fourth pass on an exhausted six-call Narrative identity.
 - No paid provider/model call, production audit, deployment, configuration mutation, application push, or production persistence mutation without explicit approval.
+- Do not change scoring weights or scoring version merely to alter results.
 - Preserve Viewer v2.2.0, provider crawl ceiling 250, provider priority-URL ceiling 20, and production content-parsing default 50.
+- Preserve Narrative release threshold, evidence-fidelity requirement, dimension floors, hard gates, major-defect protections, pass limits, and human-authorization boundaries.
 - Follow `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`.
-- Work by failure family during regression cleanup: classify shared root cause first, then make the smallest coherent edit and run one family-level proving test.
-- Same observable failure: maximum three unsuccessful attempts before deeper diagnostic reset.
-- Source code must be delivered directly in chat, never through generated/downloadable code files.
-- Exact Windows path, exact current line ranges/anchors, complete replacement blocks, and bottom-up ordering are mandatory for surgical edits.
-- Do not update a test merely to silence a regression. A test change must follow a proven intentional contract/fixture correction or approved frozen-output migration.
-- Prefer the shortest proven repair path. Do not broaden investigation after the repair boundary is already evidenced.
+- Source code remains manual: exact Windows path, exact current lines/ranges and anchors, complete replacement blocks, and bottom-up ordering are mandatory for surgical edits.
+- Do not update a test merely to silence a regression. Test changes require a proven intentional fixture/contract correction or approved frozen-output migration.
 - Browser-served report review remains an acceptance gate; automated PASS alone is insufficient for final report interpretation acceptance.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, inspect only the CR-26 / CR-44 competitor regression family with `rg -n -C 18 "CR-26|CR-44" src/report/render-report-v2-conversion.test.js`. Classify both tests together before any edit. Do not run the full 260-test suite yet.
+From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `git diff --check`. If it passes, preserve the green local package and proceed to rebuild the deterministic TBK report offline from the frozen governed fixture for browser-served review. Do not call providers or Writer/Judge models.
 
 Last verified:
 2026-08-30 America/Toronto
