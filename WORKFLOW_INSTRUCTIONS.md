@@ -27,6 +27,8 @@ For every manual source-file change:
 
 - No guessing. Verify the executing boundary and direct evidence before stating a cause or repair as fact.
 - If evidence is insufficient, run or request the shortest diagnostic that resolves the uncertainty.
+- When requesting diagnostic evidence through PowerShell, default to a command that writes the diagnostic output to a named `.txt` file in the current working directory using `Set-Content` (or an equivalent redirection), then tell the user the exact saved path so that text file can be uploaded back into chat for review. Prefer this over asking the user to paste long terminal output. Direct paste is appropriate only when the expected result is intentionally tiny, such as a single line or short summary.
+- Diagnostic output files are evidence artifacts only. Do not use this rule to deliver source code, replacement code, patches, scripts, or configuration files as downloads.
 - Same observable failure: no more than three unsuccessful repair attempts before a deeper diagnostic reset.
 - Separate formatting/syntax failures from logic/runtime failures; do not change behavior to repair a formatting-only defect.
 - Prefer action-oriented instructions over extended explanation.
