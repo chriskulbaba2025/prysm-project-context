@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resume T4 Replay, ReportContent, and semantic-coherence closure on the newly proven Narrative v2 AuditRequest design-version boundary, using the repaired root-aware autorun controller. Preserve the existing deterministic production-composition proof work and close current-release replay without migrating historical fixtures into current proof.
+Resume T4 Replay, ReportContent, and semantic-coherence closure on the newly proven Narrative v2 publication/retrieval contract boundary, using the repaired root-aware autorun controller. Preserve the existing deterministic production-composition proof work and close current-release replay without migrating historical fixtures into current proof.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -23,7 +23,8 @@ Verified checkpoint:
 - `tools/autorun/PRYSM-AUTORUN-ACCOUNTING.ps1` implements deterministic identity-aware accounting.
 - `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json` now requires `root_defect_id` and `failure_class`.
 - `tools/autorun/PRYSM-AUTORUN.ps1` now resets automatically to Luna / attempt 0 when root identity changes, increments only a same-root `REPAIR_PROOF_FAILED`, preserves external/protocol failures without escalation, and resets to root `NONE` after independent Auditor PASS.
-- Current T4 root defect is `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION`.
+- Current T4 root defect is `T4.V2_PUBLICATION_RETRIEVAL_CONTRACT`.
+- The preserved current production-composition request repair supplies `report.designVersion: 2.0.0`; it reaches `DRAFT_RENDERED` but reveals that v2 approval writes `report-v2/approved-manifest.json` while publication and published retrieval still require legacy report-store status and `report/pages/*` artifacts. This is a distinct finalization/retrieval root boundary.
 - `PRYSM_AUTORUN_STATE.json` is version 2 and reopened at Builder / T4 / Luna / repair attempt 0 for that root identity.
 - The application working tree intentionally contains preserved uncommitted T4 proof work. Do not reset, clean, checkout-overwrite, discard, or mass-rewrite it.
 
@@ -33,7 +34,7 @@ Current environment / branch / version:
 - Current autonomous tranche: T4.
 - Last passed tranche: T3.
 - Autorun status: CONTINUE.
-- Active root defect: `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION`.
+- Active root defect: `T4.V2_PUBLICATION_RETRIEVAL_CONTRACT`.
 - Governed repair attempt: 0 / Luna.
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
@@ -53,11 +54,11 @@ Completed:
 
 In progress:
 - T4 current replay CLI proof through deterministic production composition.
-- Supply required report `designVersion: 2.0.0` at the real AuditRequest boundary without fabricating downstream artifacts.
+- Repair the current v2 approval -> publication -> published retrieval contract without fabricating legacy report artifacts.
 - Preserve current CLI/subprocess end-to-end proof intent and all existing evidence/finalization semantics.
 
 Blocked:
-- No repository-controlled blocker currently prevents Codex from resuming T4 on the new AuditRequest design-version root boundary.
+- No repository-controlled blocker currently prevents Codex from resuming T4 on the new v2 publication/retrieval root boundary.
 - The exhausted historical-fixture migration mechanism must not be retried.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 

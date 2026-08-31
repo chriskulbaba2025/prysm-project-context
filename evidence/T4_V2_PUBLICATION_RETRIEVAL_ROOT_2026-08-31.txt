@@ -1,0 +1,16 @@
+T4 current replay production-composition evidence
+Date: 2026-08-31 America/Toronto
+
+Observed current production path:
+1. acceptance-prysm creates an audit with report.designVersion 2.0.0 and controlled Narrative v2 executors.
+2. The real production runtime reaches DRAFT_RENDERED; the governed V2 index page, manifest, and Narrative artifacts exist.
+3. approveAudit recognizes report-v2/manifest.json and writes report-v2/approved-manifest.json.
+4. publishAudit unconditionally calls reportStore.publishReport(slug, auditId).
+5. reportStore is still at reviewed because V2 approval intentionally does not write legacy report-store pages.
+6. publishAudit fails: Cannot publish audit in "reviewed" status.
+
+Impact:
+The deterministic current artifact export runs after the acceptance publication sequence, so the current CLI replay regression cannot generate valid artifacts. This is not a malformed current fixture and is not the AuditRequest designVersion producer defect. It is a distinct V2 approval -> publication -> retrieval contract mismatch.
+
+Required next repair boundary:
+Define one canonical V2 publication/retrieval path using governed report-v2 artifacts and canonical lifecycle state, retain the legacy report-store branch for V1, and add deterministic current production-composition publication/retrieval regression before rerunning the CLI replay and Whole-App Gate.
