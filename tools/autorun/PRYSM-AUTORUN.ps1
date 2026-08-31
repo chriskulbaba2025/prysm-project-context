@@ -19,6 +19,7 @@ $ErrorActionPreference = 'Stop'
 
 $ScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $SchemaPath = Join-Path $ScriptRoot 'PRYSM-AUTORUN-RESULT.schema.json'
+$AccountingPath = Join-Path $ScriptRoot 'PRYSM-AUTORUN-ACCOUNTING.ps1'
 $BuilderPromptPath = Join-Path $ScriptRoot 'PRYSM-BUILDER-AUTORUN-PROMPT.md'
 $AuditorPromptPath = Join-Path $ScriptRoot 'PRYSM-AUDITOR-AUTORUN-PROMPT.md'
 $AutorunStatePath = Join-Path $GovernanceRepo 'PRYSM_AUTORUN_STATE.json'
@@ -117,6 +118,23 @@ function Get-InitialRepairAttempt {
     }
 }
 
+function Get-InitialRootDefectId {
+    if (-not (Test-Path -LiteralPath $AutorunStatePath)) {
+        return 'NONE'
+    }
+
+    try {
+        $state = Get-Content -LiteralPath $AutorunStatePath -Raw | ConvertFrom-Json
+        if ($state.PSObject.Properties.Name -notcontains 'rootDefectId') {
+            return 'NONE'
+        }
+        return (Normalize-PrysmRootDefectId ([string]$state.rootDefectId))
+    } catch {
+        Write-Warning 'Could not read rootDefectId from PRYSM_AUTORUN_STATE.json; using NONE.'
+        return 'NONE'
+    }
+}
+
 function Test-UsageLimitFailure {
     param([string[]]$Paths)
     foreach ($path in $Paths) {
@@ -169,11 +187,13 @@ function Send-AutorunNotification {
     }
 }
 
-foreach ($requiredFile in @($SchemaPath,$BuilderPromptPath,$AuditorPromptPath)) {
+foreach ($requiredFile in @($SchemaPath,$AccountingPath,$BuilderPromptPath,$AuditorPromptPath)) {
     if (-not (Test-Path -LiteralPath $requiredFile)) {
         throw "Missing autorun contract file: $requiredFile"
     }
 }
+
+. $AccountingPath
 
 $AppRepo = Resolve-RequiredPath $AppRepo 'Application repository'
 $GovernanceRepo = Resolve-RequiredPath $GovernanceRepo 'Governance repository'
@@ -225,11 +245,13 @@ if ($PreflightOnly) {
     Write-Host ''
     Write-Host 'Model escalation policy:'
     Write-Host "  Level 1: $ModelLuna (default / cheapest current GPT-5.6 Codex option)"
-    Write-Host "  Level 2: $ModelTerra (only after first governed repair failure)"
-    Write-Host "  Level 3: $ModelSol (only after second governed repair failure)"
-    Write-Host '  Third governed repair failure: STOP/BLOCKED + Windows alert; no fourth autonomous attempt.'
-    Write-Host '  Successful audited checkpoint: reset next work to Level 1 / Luna.'
+    Write-Host "  Level 2: $ModelTerra (same root defect only after first failed repair proof)"
+    Write-Host "  Level 3: $ModelSol (same root defect only after second failed repair proof)"
+    Write-Host '  Root-defect identity change: reset automatically to Level 1 / Luna.'
+    Write-Host '  Third same-root repair failure: STOP/BLOCKED + Windows alert; no fourth autonomous attempt.'
+    Write-Host '  Successful audited checkpoint: reset next work to Level 1 / Luna and root NONE.'
     Write-Host '  Usage-limit/controller failures do not consume an escalation level.'
+    Write-Host '  Codex repair_attempt is echo-only; controller computes the next level.'
 
     Write-Host ''
     Write-Host 'Application Git state (dirty is allowed and expected initially):'
@@ -285,6 +307,7 @@ foreach ($lockPath in @($AppLockPath,$GovernanceLockPath)) {
 
 $CurrentRole = $StartRole
 $CurrentRepairAttempt = Get-InitialRepairAttempt
+$CurrentRootDefectId = Get-InitialRootDefectId
 $lockBody = @"
 PID=$PID
 Started=$(Get-Date -Format o)
@@ -311,6 +334,7 @@ try {
     Write-Host "Logs:        $LocalRoot"
     Write-Host "Start role:  $CurrentRole"
     Write-Host "Repair level: $($CurrentRepairAttempt + 1) of 3"
+    Write-Host "Root defect:  $CurrentRootDefectId"
     if ($MaxRuns -eq 0) {
         Write-Host 'Run limit:   unlimited'
     } else {
@@ -328,9 +352,9 @@ try {
 
         if ($CurrentRepairAttempt -ge 3) {
             $terminalStatus = 'BLOCKED'
-            $terminalMessage = "PRYSM exhausted all three governed model levels for the same unresolved repair chain.`n`nLuna -> Terra -> Sol were used. No fourth autonomous attempt is allowed.`nInspect durable state and intervene manually before restarting."
+            $terminalMessage = "PRYSM exhausted all three governed model levels for root defect '$CurrentRootDefectId'.`n`nLuna -> Terra -> Sol were used against this unchanged root identity. No fourth autonomous attempt is allowed.`nInspect durable state and intervene manually before restarting."
             $terminalLevel = 'Error'
-            Write-Host 'AUTORUN BLOCKED AFTER THREE GOVERNED REPAIR LEVELS.'
+            Write-Host 'AUTORUN BLOCKED AFTER THREE SAME-ROOT REPAIR LEVELS.'
             break
         }
 
@@ -365,16 +389,27 @@ Invocation time: $(Get-Date -Format o)
 Current governed model: $CurrentModel
 Current repair escalation index: $CurrentRepairAttempt
 Current model level: $($CurrentRepairAttempt + 1) of 3
+Current root defect id: $CurrentRootDefectId
+
+ROOT-DEFECT ACCOUNTING - GOVERNING
+- The controller owns escalation accounting. You do not choose the next repair level.
+- `repair_attempt` in your structured result is an echo of the CURRENT controller index above. Do not increment or decrement it.
+- Return a stable `root_defect_id` for the active repair boundary, or `NONE` when no repair defect is active.
+- `failure_class=REPAIR_PROOF_FAILED` only when an actual repair/proof failed against the SAME root defect identity.
+- `failure_class=NEW_ROOT_CAUSE` when diagnosis/proof exposes a materially different prerequisite or root boundary. Use a NEW non-NONE root_defect_id and return CONTINUE to Builder. A new root does not consume the old repair chain.
+- `failure_class=EXTERNAL_OR_PROTOCOL` for usage, CLI, network, GitHub, or equivalent failures that must not consume repair escalation.
+- `failure_class=NONE` when no repair/proof failure occurred in this invocation.
+- If a returned root_defect_id changes, the controller resets to Luna / repair attempt 0. Identity change wins defensively even if failure_class was mistakenly reported as REPAIR_PROOF_FAILED.
+- After independent Auditor PASS, the controller resets root_defect_id to NONE and repair attempt to 0.
+- Do not return BLOCKED merely because you believe the attempt count is exhausted. For a third same-root proof failure, return CONTINUE with REPAIR_PROOF_FAILED; the controller performs the governed BLOCKED transition.
+- When writing PRYSM_AUTORUN_STATE.json, keep `repairAttempt` consistent with the current controller index unless you have discovered a NEW_ROOT_CAUSE, in which case write the new `rootDefectId` and `repairAttempt: 0`. Never carry a prior root's attempt count into a new root identity.
 
 MODEL ESCALATION POLICY - GOVERNING
-- Level 1 / repair_attempt 0: gpt-5.6-luna. Use for all initial work.
+- Level 1 / repair_attempt 0: gpt-5.6-luna. Use for all initial work on a root defect.
 - Level 2 / repair_attempt 1: gpt-5.6-terra. Use only after the same root defect has failed one evidence-based repair/proof attempt.
 - Level 3 / repair_attempt 2: gpt-5.6-sol. Use only after the same root defect has failed two evidence-based repair/proof attempts.
-- If the same root defect fails at Level 3, return BLOCKED with repair_attempt 3. The controller will stop and alert the user. Never attempt a fourth autonomous repair.
-- Initial defect discovery is not a failed repair attempt.
-- Ordinary CONTINUE, role switching, usage-limit errors, CLI/protocol errors, and infrastructure failures do not consume an escalation level.
-- When a repair/proof of the same root defect actually fails and Builder can safely retry, increment repair_attempt by exactly one before returning CONTINUE to Builder.
-- After an independent Auditor PASS closes the tranche, the controller resets the next work to Luna / repair_attempt 0.
+- The third failed repair against the same unchanged root defect causes the controller to BLOCK. Never attempt a fourth same-root repair.
+- Initial defect discovery, newly proven root causes, ordinary CONTINUE, role switching, usage-limit errors, CLI/protocol errors, and infrastructure failures do not consume an escalation level.
 - Do not request or select a different model yourself. The controller owns model selection.
 
 The external controller launches another fresh Codex invocation automatically when your structured result says CONTINUE. It also switches between Builder and Auditor according to next_role. Recover durable state on every invocation; do not rely on prior run conversational context.
@@ -392,7 +427,7 @@ exit /b %ERRORLEVEL%
         Write-Host ''
         Write-Host '============================================================'
         Write-Host "PRYSM AUTORUN - CODEX RUN $runNumber - $CurrentRole"
-        Write-Host "MODEL: $CurrentModel | LEVEL $($CurrentRepairAttempt + 1)/3"
+        Write-Host "MODEL: $CurrentModel | LEVEL $($CurrentRepairAttempt + 1)/3 | ROOT: $CurrentRootDefectId"
         Write-Host '============================================================'
         Write-Host "Run logs: $runDir"
 
@@ -448,11 +483,18 @@ exit /b %ERRORLEVEL%
         }
 
         $consecutiveFailures = 0
+        $resultRootDefectId = Normalize-PrysmRootDefectId ([string]$result.root_defect_id)
+        $failureClass = [string]$result.failure_class
 
         Write-Host ''
         Write-Host 'RUN RESULT'
         Write-Host "Model:          $CurrentModel"
         Write-Host "Model level:    $($CurrentRepairAttempt + 1)/3"
+        Write-Host "Controller attempt: $CurrentRepairAttempt"
+        Write-Host "Reported attempt:   $($result.repair_attempt) (echo only)"
+        Write-Host "Current root:    $CurrentRootDefectId"
+        Write-Host "Result root:     $resultRootDefectId"
+        Write-Host "Failure class:   $failureClass"
         Write-Host "Role:           $($result.role)"
         Write-Host "Action:         $($result.loop_action)"
         Write-Host "Next role:      $($result.next_role)"
@@ -460,7 +502,6 @@ exit /b %ERRORLEVEL%
         Write-Host "Checkpoint:     $($result.checkpoint)"
         Write-Host "Whole-app:      $($result.whole_app_gate)"
         Write-Host "Material defects: $($result.material_defects)"
-        Write-Host "Repair attempt: $($result.repair_attempt)"
         Write-Host "App branch:     $($result.application_branch)"
         Write-Host "App SHA:        $($result.application_sha)"
         Write-Host "Governance SHA: $($result.governance_sha)"
@@ -468,33 +509,39 @@ exit /b %ERRORLEVEL%
         Write-Host "Reason:         $($result.reason)"
         Write-Host "Next:           $($result.next_action)"
 
+        $isAuditPass = ($result.role -eq 'Auditor' -and $result.checkpoint -eq 'PASS' -and [int]$result.material_defects -eq 0)
+
         switch ($result.loop_action) {
             'CONTINUE' {
-                $nextAttempt = [int]$result.repair_attempt
+                $accounting = Resolve-PrysmRepairAccounting `
+                    -CurrentRepairAttempt $CurrentRepairAttempt `
+                    -CurrentRootDefectId $CurrentRootDefectId `
+                    -ResultRootDefectId $resultRootDefectId `
+                    -FailureClass $failureClass `
+                    -AuditPassed $isAuditPass
 
-                if ($result.role -eq 'Auditor' -and ($result.checkpoint -match '^(FAIL|PASS_WITH_MINOR)$' -or [int]$result.material_defects -gt 0)) {
-                    $nextAttempt = [Math]::Max($nextAttempt, $CurrentRepairAttempt + 1)
-                    Write-Host "Independent audit rejected the candidate. Escalating next Builder repair to attempt $nextAttempt."
+                Write-Host "Accounting event: $($accounting.Event)"
+
+                if ($accounting.Event -eq 'NEW_ROOT_RESET' -or $accounting.Event -eq 'DEFENSIVE_NEW_ROOT_RESET' -or $accounting.Event -eq 'ROOT_CONTEXT_CHANGED') {
+                    Write-Host "Root boundary changed: '$CurrentRootDefectId' -> '$($accounting.RootDefectId)'. Resetting to Luna / repair attempt 0."
+                }
+                if ($accounting.Event -eq 'SAME_ROOT_ESCALATION') {
+                    Write-Host "Same-root repair proof failed for '$($accounting.RootDefectId)'. Next repair attempt: $($accounting.RepairAttempt)."
+                }
+                if ($accounting.Event -eq 'AUDIT_PASS_RESET') {
+                    Write-Host 'Independent audit PASS. Resetting root defect to NONE and next work to Luna / Level 1.'
                 }
 
-                if ($result.role -eq 'Auditor' -and $result.checkpoint -eq 'PASS' -and [int]$result.material_defects -eq 0) {
-                    $nextAttempt = 0
-                    Write-Host 'Independent audit PASS. Resetting next work to Luna / Level 1.'
-                }
-
-                if ($nextAttempt -lt $CurrentRepairAttempt -and -not ($result.role -eq 'Auditor' -and $result.checkpoint -eq 'PASS')) {
-                    $nextAttempt = $CurrentRepairAttempt
-                }
-
-                if ($nextAttempt -ge 3) {
+                if ([int]$accounting.RepairAttempt -ge 3) {
                     $terminalStatus = 'BLOCKED'
-                    $terminalMessage = "PRYSM exhausted the three governed model levels for the same unresolved repair chain.`n`nLuna -> Terra -> Sol have been consumed. Manual intervention is required before another autonomous attempt.`n`nTranche: $($result.tranche)`nReason: $($result.reason)`nNext: $($result.next_action)"
+                    $terminalMessage = "PRYSM exhausted the three governed model levels for the same root defect '$($accounting.RootDefectId)'.`n`nLuna -> Terra -> Sol have been consumed against this unchanged root identity. Manual intervention is required before another same-root attempt.`n`nTranche: $($result.tranche)`nReason: $($result.reason)`nNext: $($result.next_action)"
                     $terminalLevel = 'Error'
-                    Write-Host 'AUTORUN BLOCKED AFTER LEVEL 3 FAILURE. MANUAL INTERVENTION REQUIRED.'
+                    Write-Host 'AUTORUN BLOCKED AFTER LEVEL 3 SAME-ROOT FAILURE. MANUAL INTERVENTION REQUIRED.'
                     break
                 }
 
-                $CurrentRepairAttempt = $nextAttempt
+                $CurrentRepairAttempt = [int]$accounting.RepairAttempt
+                $CurrentRootDefectId = [string]$accounting.RootDefectId
 
                 if ($result.next_role -eq 'Builder' -or $result.next_role -eq 'Auditor') {
                     $CurrentRole = $result.next_role
@@ -510,8 +557,20 @@ exit /b %ERRORLEVEL%
                 break
             }
             'BLOCKED' {
+                if ($failureClass -eq 'NEW_ROOT_CAUSE' -and $resultRootDefectId -ne 'NONE' -and $resultRootDefectId -ne $CurrentRootDefectId) {
+                    # Defensive compatibility with a model that still returns BLOCKED for a newly
+                    # exposed boundary. The controller owns the anti-thrash transition and may
+                    # continue because the previous root chain is not exhausted for this new id.
+                    $CurrentRootDefectId = $resultRootDefectId
+                    $CurrentRepairAttempt = 0
+                    $CurrentRole = 'Builder'
+                    Write-Warning "Codex returned BLOCKED while declaring NEW_ROOT_CAUSE '$resultRootDefectId'. Controller policy converts this to a Luna/0 continuation. Reconcile PRYSM_AUTORUN_STATE.json to the new root before editing."
+                    Start-Sleep -Seconds $DelaySeconds
+                    continue
+                }
+
                 $terminalStatus = 'BLOCKED'
-                $terminalMessage = "PRYSM autorun is blocked.`n`nTranche: $($result.tranche)`nCheckpoint: $($result.checkpoint)`nReason: $($result.reason)`nNext: $($result.next_action)"
+                $terminalMessage = "PRYSM autorun is blocked.`n`nTranche: $($result.tranche)`nCheckpoint: $($result.checkpoint)`nRoot defect: $resultRootDefectId`nReason: $($result.reason)`nNext: $($result.next_action)"
                 $terminalLevel = 'Error'
                 Write-Host 'AUTORUN BLOCKED.'
                 break
