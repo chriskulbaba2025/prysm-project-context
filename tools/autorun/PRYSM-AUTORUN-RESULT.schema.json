@@ -14,7 +14,23 @@
     "governance_sha": {"type": "string"},
     "whole_app_gate": {"type": "string", "enum": ["PASS", "FAIL", "NOT_RUN", "NOT_APPLICABLE"]},
     "material_defects": {"type": "integer", "minimum": 0},
-    "repair_attempt": {"type": "integer", "minimum": 0, "maximum": 3},
+    "repair_attempt": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Echo of the controller-provided current repair index. The controller, not Codex, computes the next repair level."
+    },
+    "root_defect_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "description": "Stable identity of the active root-defect boundary. Use NONE when no repair defect is active."
+    },
+    "failure_class": {
+      "type": "string",
+      "enum": ["NONE", "REPAIR_PROOF_FAILED", "NEW_ROOT_CAUSE", "EXTERNAL_OR_PROTOCOL"],
+      "description": "Classification used by controller-owned repair accounting."
+    },
     "next_action": {"type": "string"},
     "github_state_synced": {"type": "boolean"}
   },
@@ -31,6 +47,8 @@
     "whole_app_gate",
     "material_defects",
     "repair_attempt",
+    "root_defect_id",
+    "failure_class",
     "next_action",
     "github_state_synced"
   ]
