@@ -4,8 +4,8 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
   "currentRole": "Builder",
-  "currentTranche": "T5",
-  "lastPassedTranche": "T4",
+  "currentTranche": "T6",
+  "lastPassedTranche": "T5",
   "repairAttempt": 0,
   "rootDefectId": "T5.APPLICATION_CLOSURE_SURFACE_FAILURES",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
@@ -13,7 +13,7 @@
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "CANDIDATE_FREEZE_HYGIENE_RECONCILED",
-  "reason": "T5 committed candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 matches the pushed repair branch and passed the authoritative closure/Whole-App gates, but Auditor found untracked services/worker/T5-CLOSURE-GATE.txt in the application worktree. This is generated gate evidence, not a product defect. Candidate-freeze hygiene is now non-escalating PROOF_SETUP_FAILURE work.",
-  "nextAction": "Independent Auditor reviews exact candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 on the clean synchronized repair branch."
+  "lastAuditVerdict": "PASS",
+  "reason": "T5 independently passed. T6 deterministic full production spine proofs passed on unchanged candidate dfc8ff4a4aee743d350f2b3337707b9481e95365: acceptance 86/86, closure machine gate PASS, Whole-App Gate PASS, zero live calls, clean tree, unchanged HEAD, and application branch 0/0 synchronized.",
+  "nextAction": "Independent Auditor reviews exact T6 candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 on the clean synchronized repair branch."
 }
