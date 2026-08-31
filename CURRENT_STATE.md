@@ -23,7 +23,7 @@ Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
 - Last committed T2 candidate SHA before the preserved dirty repair: `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe`.
-- Current autonomous tranche: T3.
+- Current autonomous tranche: T4.
 - Autorun status: CONTINUE.
 - Governed repair attempt: 0 / Luna for T4.
 - Last passed tranche: T3.
@@ -42,6 +42,7 @@ Completed:
 - T2 Level-3 failure was diagnosed to the ReportViewModel contract-version boundary rather than treated as another local hydration defect.
 - Owner-guided process reset selected the versioned current ReportViewModel migration as the canonical architecture.
 - T3 candidate `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1` aligns stale Judge-version fixtures with the governed 1.1.0/2.1.0 Judge contract and repairs minimal fixtures to include required persisted hierarchy; Narrative v2 98/98, acceptance, and Whole-App Gate pass.
+- T4 candidate `e0c2ab93481b9c4681da464cf4310e214edc25b2` makes historical Judge 1.0.0/2.0.0 replay explicitly compatibility-only and requires current replay artifacts to carry ScoreSet 2.0.0 plus persisted root-cause identity and decision hierarchy. Targeted replay/parity proofs and the exact-SHA Whole-App Gate pass.
 
 In progress:
 - T4: split current replay from historical compatibility replay, preserve source-state uncertainty in ReportContent, reject stale current artifacts, and consume the canonical current hydration boundary.
@@ -62,7 +63,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Builder must diagnose T4's replay and ReportContent boundaries before editing, then implement the smallest bounded contract/proof closure.
+Independent Auditor must audit T4 candidate `e0c2ab93481b9c4681da464cf4310e214edc25b2` on the exact pushed SHA.
 
 Last verified:
 2026-08-31 America/Toronto — T2 candidate 4f03947517beec98c54dedf028bcc79f8771c7ae pushed; Whole-App Tranche Gate PASS.

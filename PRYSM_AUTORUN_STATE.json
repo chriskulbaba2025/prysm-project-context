@@ -3,16 +3,16 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
-  "currentRole": "Builder",
+  "currentRole": "Auditor",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
   "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1",
+  "applicationSha": "e0c2ab93481b9c4681da464cf4310e214edc25b2",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "T3 exact-SHA independent Auditor PASS recorded for e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1; advancing to T4 replay, ReportContent, and semantic-coherence closure.",
-  "nextAction": "Builder must diagnose and close T4, then run targeted proofs, exact-SHA Whole-App Gate, composite verification, push, and request independent audit."
+  "reason": "T4 replay boundary repair candidate e0c2ab93481b9c4681da464cf4310e214edc25b2 is pushed; default replay now rejects historical Judge provenance and requires current ScoreSet identity. Targeted proofs and exact-SHA Whole-App Gate pass.",
+  "nextAction": "Independent Auditor must audit exact application SHA e0c2ab93481b9c4681da464cf4310e214edc25b2 for T4."
 }
