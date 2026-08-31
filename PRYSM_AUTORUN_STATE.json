@@ -9,11 +9,11 @@
   "repairAttempt": 0,
   "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "repair/prysm-production-closure",
-  "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
+  "applicationBranch": "main",
+  "remoteMainBaselineSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "applicationSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "T0-T7 repository-controlled Production Closure is complete. Final candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 passed the deterministic full production spine and independent audit; application and governance are synchronized. GitHub main branch protection is absent; merge/deploy/fresh paid audit remain owner authorization boundaries.",
-  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merge, deployment, or fresh paid production audit."
+  "reason": "T0-T7 repository-controlled Production Closure is complete and owner-authorized production promotion has occurred. GitHub main was fast-forwarded without force to the exact independently audited candidate dfc8ff4a4aee743d350f2b3337707b9481e95365. Vercel prysm, Vercel vantage-platform, and Railway deployment status checks all report success for that exact commit.",
+  "nextAction": "Run one fresh real production PRYSM audit against the promoted deployment and inspect lifecycle, governed artifacts, Writer/Judge finalization, published retrieval, and rendered report before declaring post-deployment validation complete."
 }
