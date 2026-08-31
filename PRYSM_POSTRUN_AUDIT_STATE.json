@@ -3,12 +3,12 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "COMPLETE",
-  "tranche": "T1",
+  "tranche": "T2",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "67b6c2faf39be5a63149cb1a623d759d2fe4ac8b",
-  "verdict": "PASS",
-  "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_67b6c2f_2026-08-31.md",
-  "reason": "Independent exact-SHA Whole-App Tranche Gate rerun passed with production-composed hierarchy persistence and Narrative v2 path coverage.",
-  "nextAction": "Builder records T1 PASS and advances the roadmap."
+  "applicationSha": "b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1",
+  "verdict": "FAIL",
+  "materialDefects": 1,
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T2_2026-08-31.md",
+  "reason": "AUD-T2-001: current offline replay independently reconstructs the V2 model and is omitted from the whole-app gate, leaving canonical current hierarchy parity unproved.",
+  "nextAction": "Builder repairs AUD-T2-001 in T2, reruns exact-SHA gate, and resubmits for independent audit."
 }
