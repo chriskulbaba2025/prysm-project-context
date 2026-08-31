@@ -59,7 +59,7 @@ In progress:
 - Rerun isolated DE-16, broad `npm test`, and the exact-SHA Whole-App Gate before push/audit handoff.
 
 Blocked:
-- No repository-controlled blocker prevents Codex from resuming T4 at Sol / attempt 2.
+- No repository-controlled blocker prevents Codex from resuming T4 on the new root at repair attempt 0.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 
 Important constraints:
