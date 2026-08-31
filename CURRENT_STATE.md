@@ -44,8 +44,8 @@ Completed:
 - Durable state files `PRYSM_AUTORUN_STATE.json` and `PRYSM_POSTRUN_AUDIT_STATE.json` are initialized.
 
 In progress:
-- T0 — recover exact local application/governance Git state, preserve the dirty repair package, safely establish/recover `repair/prysm-production-closure`, and freeze the complete closure dependency/proof map before further application edits.
-- After T0, the controller advances T1-T7 only through exact-SHA Builder gate -> push/sync -> independent Auditor PASS cycles.
+- T0 — PASS. The dirty repair package was preserved and `repair/prysm-production-closure` was safely created from `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`. `PRYSM_T0_CLOSURE_INVENTORY_2026-08-31.md` freezes the current dependency, duplicated-projection, version-collision, semantic-default, and test-family inventory.
+- T1 — begin persisted versioned Conversion-First decision hierarchy and ScoreSet closure.
 
 Blocked:
 - Exact local dirty application branch/HEAD/diff is not yet durably reconciled; this is intentionally assigned to autonomous T0 recovery rather than another manual diagnostic sequence.
@@ -66,7 +66,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From a local clone of `chriskulbaba2025/prysm-project-context`, pull governance `main`, then run `tools\autorun\PRYSM-AUTORUN.ps1` with `-AppRepo "C:\Users\kulba\Desktop\vantage-platform" -GovernanceRepo <local governance path> -StartRole Builder -PreflightOnly`. If and only if the final line is `PREFLIGHT PASS`, immediately run the same controller with `-MaxRuns 0`. Do not manually alter the application first; T0 must recover the exact dirty local state.
+Builder must diagnose T1's complete producer -> persisted contract -> validated loader -> current consumer chain. The recovered application production-path test directly reproduced a T3 fixture/contract defect: NV2-PROD-07/08 continuation fixtures lack the non-empty current hierarchy now required by the governed Writer fixture. Preserve it for T3; do not weaken the hierarchy assertion.
 
 Last verified:
 2026-08-31 America/Toronto

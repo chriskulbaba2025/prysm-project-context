@@ -4,7 +4,7 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
   "currentRole": "Builder",
-  "currentTranche": "T0",
+  "currentTranche": "T1",
   "lastPassedTranche": null,
   "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
@@ -13,6 +13,6 @@
   "applicationSha": "UNVERIFIED_LOCAL_DIRTY_STATE",
   "wholeAppGate": "NOT_RUN",
   "lastAuditVerdict": "NOT_RUN",
-  "reason": "Systemic audit established that prior closure claims were invalidated by contract-propagation, duplicated projection, stale replay/versioning, false-PASS coverage, and release-control gaps. Autonomous recovery must begin from the exact dirty local working tree without discarding governed repairs.",
-  "nextAction": "Run PRYSM autorun preflight, then start Builder with MaxRuns 0. Builder must recover exact local state, preserve dirty work, establish repair/prysm-production-closure safely, and complete T0 before product edits."
+  "reason": "T0 recovered the governed dirty application worktree on repair/prysm-production-closure and froze PRYSM_T0_CLOSURE_INVENTORY_2026-08-31.md. Direct reproduction shows the recovered fixture migration currently fails NV2-PROD-07/08 because continuation fixtures lack the now-required non-empty hierarchy; this is a T3 fixture/contract boundary, not a reason to discard the repair.",
+  "nextAction": "Begin T1 diagnosis: establish a versioned persisted Conversion-First hierarchy and explicit ScoreSet current-contract validation. Preserve the recovered dirty repairs; T3 must repair the production-shaped continuation fixture and rerun NV2-PROD-07/08."
 }
