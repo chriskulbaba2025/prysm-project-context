@@ -4,15 +4,15 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
   "currentRole": "Builder",
-  "currentTranche": "T2",
-  "lastPassedTranche": "T1",
+  "currentTranche": "T3",
+  "lastPassedTranche": "T2",
   "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "4f03947517beec98c54dedf028bcc79f8771c7ae",
+  "applicationSha": "e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PENDING",
-  "reason": "T2 AUD-T2-002 repaired by passing decisionEvidence and capabilityEvidence under canonical hydrator names, adding a production-shaped base/Narrative/replay parity proof, and migrating current production rendering to a distinct v2 ReportViewModel contract while preserving frozen v1 compatibility.",
-  "nextAction": "Independent Auditor must audit exact application SHA 4f03947517beec98c54dedf028bcc79f8771c7ae. Do not advance T2 until Auditor PASS."
+  "reason": "T3 deterministic WriterInput/Writer/Judge regression suite is green (98/98) after aligning stale Judge-version fixtures and adding required persisted hierarchy fixtures; Whole-App Gate and acceptance pass on exact candidate SHA.",
+  "nextAction": "Independent Auditor must audit exact application SHA e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1. Do not advance T3 until Auditor PASS."
 }

@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Independent audit of the pushed T2 candidate after the ReportViewModel current-contract migration and base/Narrative/replay parity proof.
+T3 WriterInput / Writer / Judge current-contract migration.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -12,7 +12,7 @@ Verified checkpoint:
 - Autonomous application repair branch: `repair/prysm-production-closure`.
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
-- T2 candidate `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe` repaired AUD-T2-001 so current replay consumes `hydrateCurrentReportModel`, fails closed without persisted hierarchy/root-cause identity, and includes replay parity proof in the Whole-App Gate.
+- T2 candidate `4f03947517beec98c54dedf028bcc79f8771c7ae` independently PASSed after the ReportViewModel current-contract migration and base/Narrative/replay parity proof.
 - AUD-T2-002 then exposed the next material boundary: the base consumer had previously avoided canonical current hydration by reconstructing a ScoreSet-shaped object without current contract identity. Preserving the current persisted object correctly activates `rootCauseRuleId` and `decisionHierarchy` in `buildReportViewModel()`.
 - Focused Level-3 T2 proof passed 5/5, but assembled `node scripts/acceptance-prysm.js` failed closed because the current hydrated ReportViewModel emitted those current governed fields while still declaring `contractVersion: 1.0.0`; the frozen v1 ReportViewModel schema has `additionalProperties: false` and does not define them.
 - `DECISION_REPORTVIEWMODEL_V2_CURRENT_CONTRACT_2026-08-31.md` resolves the owner-guided process reset: current production rendering must use a truthfully versioned current ReportViewModel contract; v1 remains historical/compatibility-only. Do not strip or adapt away current hierarchy/root-cause semantics merely to satisfy v1.
@@ -23,10 +23,10 @@ Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
 - Last committed T2 candidate SHA before the preserved dirty repair: `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe`.
-- Current autonomous tranche: T2.
+- Current autonomous tranche: T3.
 - Autorun status: CONTINUE.
 - Governed repair attempt: 0 / Luna for the new ReportViewModel contract-version root cause.
-- Last passed tranche: T1.
+- Last passed tranche: T2.
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
 - Current Narrative WriterOutput version: `1.0.0`.
@@ -41,12 +41,13 @@ Completed:
 - T2 AUD-T2-001 replay canonical-hydration repair reached a pushed candidate and exact-SHA gate proof.
 - T2 Level-3 failure was diagnosed to the ReportViewModel contract-version boundary rather than treated as another local hydration defect.
 - Owner-guided process reset selected the versioned current ReportViewModel migration as the canonical architecture.
+- T3 candidate `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1` aligns stale Judge-version fixtures with the governed 1.1.0/2.1.0 Judge contract and repairs minimal fixtures to include required persisted hierarchy; Narrative v2 98/98, acceptance, and Whole-App Gate pass.
 
 In progress:
-- Reconcile the preserved dirty Level-3 T2 repair into one coherent current ReportViewModel migration: preserve canonical current hydration, add/register a versioned current ReportViewModel schema, give current production/base rendering truthful current contract identity, retain v1 only for explicitly historical/compatibility paths, and keep current `rootCauseRuleId` / `decisionHierarchy` semantics intact through the base-renderer boundary.
+- T3: trace WriterInput -> Writer -> Judge current contract, persistence, validation, and production-shaped Narrative proof; version incompatible current artifacts truthfully while preserving historical compatibility.
 
 Blocked:
-- No repository-controlled blocker prevents Codex from resuming T2 on the newly established contract-version boundary.
+- No repository-controlled blocker prevents Codex from continuing T3; independent audit is pending on the pushed candidate.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 
 Important constraints:
@@ -61,7 +62,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then restart `PRYSM-AUTORUN.ps1` with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty T2 Level-3 work and resume on Luna from `DECISION_REPORTVIEWMODEL_V2_CURRENT_CONTRACT_2026-08-31.md`; do not restart T2 from the old candidate or discard the preserved repair.
+Independent Auditor must audit exact application SHA `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1`; do not advance T3 until Auditor PASS.
 
 Last verified:
 2026-08-31 America/Toronto — T2 candidate 4f03947517beec98c54dedf028bcc79f8771c7ae pushed; Whole-App Tranche Gate PASS.
