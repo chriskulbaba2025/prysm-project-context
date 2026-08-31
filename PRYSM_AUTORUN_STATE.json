@@ -14,6 +14,6 @@
   "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
   "wholeAppGate": "FAIL",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T4-004 third same-root proof attempt failed during divergent-draft fixture setup because its directory did not exist. The setup is corrected locally but has not been rerun under the three-attempt anti-thrash rule.",
-  "nextAction": "Controller applies the governed third same-root proof-failure transition; preserve the uncommitted corrected proof fixture for bounded human/root-boundary review."
+  "reason": "AUD-T4-004 Sol-level run aborted during divergent-draft fixture setup because the temporary fixture directory did not exist. The governed publication/retrieval assertion was never reached, so this is reclassified as PROOF_SETUP_FAILURE and does not consume the final same-root repair level. The setup is already corrected locally and must be preserved.",
+  "nextAction": "Builder resumes T4 on the same root T4.V2_PUBLICATION_RETRIEVAL_CONTRACT at repair attempt 2 / Sol, preserves the dirty corrected proof fixture, reruns the intended divergent-draft and approved-artifact tamper/fail-closed proof once, then proceeds to the exact-SHA Whole-App Gate and independent audit only if that proof reaches the governed assertion and passes."
 }
