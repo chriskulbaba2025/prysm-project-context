@@ -10,9 +10,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe",
-  "wholeAppGate": "FAIL",
-  "lastAuditVerdict": "FAIL",
-  "reason": "Owner-guided process reset resolved the Level-3 AUD-T2-002 blocker as a materially new ReportViewModel contract-version boundary. Current production rendering must use a truthfully versioned current ReportViewModel contract that preserves rootCauseRuleId and decisionHierarchy; frozen v1 remains compatibility-only. The preserved dirty Level-3 application work must be reconciled, not discarded.",
-  "nextAction": "Builder resumes T2 on Luna, preserves and reconciles the dirty Level-3 repair, implements the minimum versioned current ReportViewModel contract/validator/builder migration, reruns focused proof and assembled Whole-App Gate, and returns the exact-SHA candidate for independent audit."
+  "applicationSha": "4f03947517beec98c54dedf028bcc79f8771c7ae",
+  "wholeAppGate": "PASS",
+  "lastAuditVerdict": "PENDING",
+  "reason": "T2 AUD-T2-002 repaired by passing decisionEvidence and capabilityEvidence under canonical hydrator names, adding a production-shaped base/Narrative/replay parity proof, and migrating current production rendering to a distinct v2 ReportViewModel contract while preserving frozen v1 compatibility.",
+  "nextAction": "Independent Auditor must audit exact application SHA 4f03947517beec98c54dedf028bcc79f8771c7ae. Do not advance T2 until Auditor PASS."
 }
