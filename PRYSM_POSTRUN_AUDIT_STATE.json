@@ -5,10 +5,10 @@
   "status": "COMPLETE",
   "tranche": "T2",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe",
-  "verdict": "FAIL",
-  "materialDefects": 1,
+  "applicationSha": "4f03947517beec98c54dedf028bcc79f8771c7ae",
+  "verdict": "PASS",
+  "materialDefects": 0,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T2_2026-08-31.md",
-  "reason": "AUD-T2-002: the base current report-model consumer supplies decision evidence under an ignored parameter name to the canonical hydrator, silently dropping that persisted semantic artifact; the T2 gate does not exercise this consumer.",
-  "nextAction": "Builder repairs AUD-T2-002 in T2, adds a production-shaped base/V2/replay parity proof, reruns the exact-SHA gate, and resubmits for independent audit."
+  "reason": "Independent exact-SHA audit passed; canonical current hydration and whole-app parity proof close T2.",
+  "nextAction": "Builder records tranche PASS and advances roadmap."
 }
