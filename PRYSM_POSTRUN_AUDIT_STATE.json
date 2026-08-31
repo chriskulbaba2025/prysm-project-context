@@ -5,11 +5,11 @@
   "status": "COMPLETE",
   "tranche": "T4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
-  "verdict": "FAIL",
-  "materialDefects": 1,
+  "applicationSha": "2a630ccccdf254564446b963f3b7b22cb6b58557",
+  "verdict": "PASS",
+  "materialDefects": 0,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T4_2026-08-31.md",
-  "rootDefectId": "T4.V2_PUBLICATION_RETRIEVAL_CONTRACT",
-  "reason": "AUD-T4-003's local/S3 artifact contract is repaired, but its replacement proof does not distinguish the verified approved artifact from the still-present draft artifact. The gate can pass if retrieval is redirected to the draft through the same report-store helper.",
-  "nextAction": "Builder repairs AUD-T4-004 in T4: add an independent current-v2 approved-versus-draft (and tamper/fail-closed) regression, incorporate it into the exact-SHA gate, then return a new pushed candidate for independent audit."
+  "rootDefectId": "T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE",
+  "reason": "Independent exact-SHA audit passed DE-16, schema validation, acceptance 86/86, Whole-App Gate, publication fail-closed regressions, and broad npm test 962/962.",
+  "nextAction": "Builder records T4 PASS and advances roadmap."
 }
