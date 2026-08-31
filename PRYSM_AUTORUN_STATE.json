@@ -2,17 +2,17 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "CONTINUE",
+  "status": "BLOCKED",
   "currentRole": "Builder",
   "currentTranche": "T1",
   "lastPassedTranche": null,
-  "repairAttempt": 0,
+  "repairAttempt": 3,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "f488a18ccbbfff86a33a72236b18b4e708664698",
-  "wholeAppGate": "PASS",
-  "lastAuditVerdict": "NOT_RUN",
-  "reason": "T1 repair candidate f488a18ccbbfff86a33a72236b18b4e708664698 addresses AUD-T1-001: current WriterInput now projects only the persisted ScoreSet decisionHierarchy, with deterministic two-finding parity coverage included in the Whole-App Gate (82 acceptance checks, 10 WriterInput checks, and 10 Narrative v2 production-path tests).",
-  "nextAction": "Independent Auditor must audit exact application SHA f488a18ccbbfff86a33a72236b18b4e708664698 for T1 repair AUD-T1-001."
+  "wholeAppGate": "FAIL",
+  "lastAuditVerdict": "FAIL",
+  "reason": "AUD-T1-002 Level-3 proof attempt reached a real three-action scored hierarchy but failed on in-memory versus JSON-reloaded WriterInput identity: the in-memory projection retains optional group: undefined while persistence omits it. The governing escalation policy prohibits a fourth autonomous repair.",
+  "nextAction": "Manual intervention must review the preserved application diff and decide the canonical serialization policy for optional hierarchy metadata before rerunning T1."
 }
