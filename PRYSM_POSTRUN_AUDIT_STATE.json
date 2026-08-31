@@ -3,12 +3,12 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "COMPLETE",
-  "tranche": "T3",
+  "tranche": "T4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1",
-  "verdict": "PASS",
-  "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T3_2026-08-31.md",
-  "reason": "Independent exact-SHA audit passed; T3 current WriterInput/Writer/Judge contract fixture and hierarchy proof is bounded and whole-app gated.",
-  "nextAction": "Builder records tranche PASS and advances roadmap."
+  "applicationSha": "e0c2ab93481b9c4681da464cf4310e214edc25b2",
+  "verdict": "FAIL",
+  "materialDefects": 1,
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T4_2026-08-31.md",
+  "reason": "The exact Whole-App Gate does not execute the changed replay CLI boundary; helper-only replay tests omit default historical rejection and legacy compatibility behavior.",
+  "nextAction": "Builder repairs AUD-T4-001 in T4, reruns the exact-SHA gate, and returns a new pushed candidate for independent audit."
 }
