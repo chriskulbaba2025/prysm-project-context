@@ -1,0 +1,35 @@
+﻿=== WRITER PASS 1 RAW RESPONSE ===
+C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\core\dist-cjs\submodules\protocols\index.js:1862
+        const exception = new ErrorCtor({});
+                          ^
+System.Management.Automation.RemoteException
+NoSuchKey: The specified key does not exist.
+    at S3RestXmlProtocol.handleError (C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\core\dist-cjs\submodules\protocols\index.js:1862:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async S3RestXmlProtocol.deserializeResponse (C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@smithy\core\dist-cjs\submodules\protocols\index.js:356:13)
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@smithy\core\dist-cjs\submodules\schema\index.js:23:24
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\middleware-sdk-s3\dist-cjs\submodules\s3\index.js:365:20
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@smithy\core\dist-cjs\submodules\retry\index.js:170:50
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\middleware-sdk-s3\dist-cjs\submodules\s3\index.js:62:28
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\middleware-sdk-s3\dist-cjs\submodules\s3\index.js:89:20
+    at async C:\Users\kulba\Desktop\vantage-platform\services\worker\node_modules\@aws-sdk\core\dist-cjs\submodules\client\index.js:125:26
+    at async file:///C:/Users/kulba/Desktop/vantage-platform/services/worker/prysm-fetch-call01.mjs:15:16 {
+  '$fault': 'client',
+  '$retryable': undefined,
+  '$metadata': {
+    httpStatusCode: 404,
+    requestId: 'EA57VCY11JQ1P3NP',
+    extendedRequestId: 'DJvpbK9k5M6X3D/NwpVAvG9hE9Fm/9uYz2aOItLog1ZbfOPmVLoyLCWa5spL9iwfyrVvH1AnIYivQG+fdjn7jgIw0CG8Xt5J',
+    cfId: undefined,
+    attempts: 1,
+    totalRetryDelay: 0
+  },
+  Code: 'NoSuchKey',
+  Key: 'tenants/omnipressence/clients/www.tbkcreative.com-tbkcreative/audits/c08a6e65-13ad-4a5d-9614-b7f2fc8e708d/report-v2/narrative-v2/live-usage/call-01-response.json',
+  RequestId: 'EA57VCY11JQ1P3NP',
+  HostId: 'DJvpbK9k5M6X3D/NwpVAvG9hE9Fm/9uYz2aOItLog1ZbfOPmVLoyLCWa5spL9iwfyrVvH1AnIYivQG+fdjn7jgIw0CG8Xt5J'
+}
+System.Management.Automation.RemoteException
+Node.js v24.14.0
+
+=== EXIT CODE: 1 ===
