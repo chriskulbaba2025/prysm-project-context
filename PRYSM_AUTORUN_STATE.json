@@ -2,17 +2,17 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "BLOCKED",
+  "status": "CONTINUE",
   "currentRole": "Builder",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
-  "repairAttempt": 3,
+  "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec",
   "wholeAppGate": "FAIL",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T4-002 Level-3 repair/proof failed. The new CLI-level current persisted-artifact scenario reached the real current replay renderer/finalization path, but the available persisted fixture fails closed on competitor allowlist provenance, an invalid imagesMissingAlt/imageCount denominator, and a PARTIAL-evidence absence claim. The same false-PASS proof defect has exhausted its governed Luna/Terra/Sol attempts; no fourth autonomous repair is permitted. Uncommitted proof work is preserved on the application repair branch.",
-  "nextAction": "Owner-guided root-cause/process reset is required before further T4 edits: decide whether to generate a deterministic current artifact set through production composition or deliberately migrate the historical fixture's full semantic state under a governed fixture contract."
+  "reason": "Owner-guided process reset established a materially new T4 proof boundary: current-release replay artifacts must be generated through deterministic current production composition, while historical fixtures remain compatibility-only. The exhausted historical-fixture migration chain is closed; preserved uncommitted CLI proof work must be reconciled rather than discarded.",
+  "nextAction": "Builder resumes T4 on Luna, preserves the dirty application tree, changes the current replay CLI proof to consume deterministic production-composed current artifacts, reruns focused proof and the exact-SHA Whole-App Tranche Gate, and returns the candidate for independent audit."
 }
