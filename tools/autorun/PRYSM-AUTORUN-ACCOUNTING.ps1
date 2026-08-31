@@ -24,7 +24,7 @@ function Resolve-PrysmRepairAccounting {
         [string]$ResultRootDefectId,
 
         [Parameter(Mandatory = $true)]
-        [ValidateSet('NONE','REPAIR_PROOF_FAILED','NEW_ROOT_CAUSE','EXTERNAL_OR_PROTOCOL')]
+        [ValidateSet('NONE','REPAIR_PROOF_FAILED','NEW_ROOT_CAUSE','PROOF_SETUP_FAILURE','EXTERNAL_OR_PROTOCOL')]
         [string]$FailureClass,
 
         [Parameter(Mandatory = $true)]
@@ -81,6 +81,26 @@ function Resolve-PrysmRepairAccounting {
             }
         }
 
+        'PROOF_SETUP_FAILURE' {
+            # The intended governed assertion was not reached. Examples include a missing
+            # temporary fixture directory, harness syntax/import failure, or malformed
+            # setup that aborts before the repaired product boundary is exercised.
+            # Because no repair/proof verdict exists, the current model level is retained.
+            if ($resultRoot -ne 'NONE' -and $currentRoot -ne 'NONE' -and $resultRoot -ne $currentRoot) {
+                return [pscustomobject]@{
+                    RepairAttempt = 0
+                    RootDefectId = $resultRoot
+                    Event = 'DEFENSIVE_NEW_ROOT_RESET'
+                }
+            }
+
+            return [pscustomobject]@{
+                RepairAttempt = $CurrentRepairAttempt
+                RootDefectId = $currentRoot
+                Event = 'NO_ESCALATION_PROOF_SETUP'
+            }
+        }
+
         'EXTERNAL_OR_PROTOCOL' {
             return [pscustomobject]@{
                 RepairAttempt = $CurrentRepairAttempt
@@ -130,6 +150,9 @@ function Test-PrysmRepairAccountingContract {
     $sameThird = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'REPAIR_PROOF_FAILED' -AuditPassed $false
     Assert-PrysmAccountingResult -Actual $sameThird -ExpectedAttempt 3 -ExpectedRoot 'T4.ROOT.A' -ExpectedEvent 'SAME_ROOT_ESCALATION' -Label 'same root third failure blocks next'
 
+    $proofSetup = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'PROOF_SETUP_FAILURE' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $proofSetup -ExpectedAttempt 2 -ExpectedRoot 'T4.ROOT.A' -ExpectedEvent 'NO_ESCALATION_PROOF_SETUP' -Label 'proof setup failure retains Sol level'
+
     $newRoot = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.B' -FailureClass 'NEW_ROOT_CAUSE' -AuditPassed $false
     Assert-PrysmAccountingResult -Actual $newRoot -ExpectedAttempt 0 -ExpectedRoot 'T4.ROOT.B' -ExpectedEvent 'NEW_ROOT_RESET' -Label 'explicit new root reset'
 
@@ -147,5 +170,5 @@ function Test-PrysmRepairAccountingContract {
 }
 
 # Executed on dot-source. The controller therefore fails before any Codex call if
-# a future edit breaks the governed same-root/new-root accounting invariants.
+# a future edit breaks the governed same-root/new-root/proof-setup accounting invariants.
 Test-PrysmRepairAccountingContract
