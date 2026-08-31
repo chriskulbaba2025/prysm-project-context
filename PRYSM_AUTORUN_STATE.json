@@ -13,7 +13,7 @@
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "BLOCKED_CANDIDATE_FREEZE_HYGIENE",
+  "lastAuditVerdict": "CANDIDATE_FREEZE_HYGIENE_RECONCILED",
   "reason": "T5 committed candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 matches the pushed repair branch and passed the authoritative closure/Whole-App gates, but Auditor found untracked services/worker/T5-CLOSURE-GATE.txt in the application worktree. This is generated gate evidence, not a product defect. Candidate-freeze hygiene is now non-escalating PROOF_SETUP_FAILURE work.",
-  "nextAction": "Builder preserves T5-CLOSURE-GATE.txt outside the application repository or records a governed summary/hash, removes only that proven generated evidence artifact from the application worktree, proves git status clean with HEAD unchanged at dfc8ff4a4aee743d350f2b3337707b9481e95365 and local/remote 0/0, then resubmits the same exact candidate to the independent T5 Auditor."
+  "nextAction": "Independent Auditor reviews exact candidate dfc8ff4a4aee743d350f2b3337707b9481e95365 on the clean synchronized repair branch."
 }
