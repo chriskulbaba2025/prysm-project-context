@@ -4,31 +4,37 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resume T4 Replay, ReportContent, and semantic-coherence closure on the newly governed deterministic current-artifact source boundary. Current-release replay proof must originate from deterministic production composition; historical fixtures remain compatibility-only.
+Resume T4 Replay, ReportContent, and semantic-coherence closure on the newly proven Narrative v2 AuditRequest design-version boundary, using the repaired root-aware autorun controller. Preserve the existing deterministic production-composition proof work and close current-release replay without migrating historical fixtures into current proof.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
+- Current recorded application SHA before preserved uncommitted T4 proof work: `7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec`.
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
 - T2 PASS by independent Auditor after the versioned current ReportViewModel migration and base/Narrative/replay parity proof.
 - T3 PASS. Candidate `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1` aligned current Narrative/Judge fixture and hierarchy requirements and passed Narrative v2, acceptance, Whole-App Gate, and independent audit.
-- T4 candidate `e0c2ab93481b9c4681da464cf4310e214edc25b2` made historical Judge 1.0.0/2.0.0 replay explicitly compatibility-only and required current replay artifacts to carry ScoreSet 2.0.0 plus persisted root-cause identity and decision hierarchy; targeted replay/parity proof and exact-SHA Whole-App Gate passed before AUD-T4-002 exposed the next proof defect.
-- AUD-T4-002 Level-3 proof reached the real current replay/finalization path but failed because the attempted current CLI scenario was created by patching a historical fixture. Finalization correctly rejected stale historical contradictions: unavailable competitor allowlist provenance, `imagesMissingAlt` 222 with `imageCount` 0, and VAN-TECH-002 converting PARTIAL evidence into an unqualified absence claim.
-- The historical-fixture migration repair/proof chain exhausted Luna -> Terra -> Sol and is closed. No fourth attempt against that mechanism is permitted.
-- `DECISION_T4_CURRENT_REPLAY_PRODUCTION_COMPOSITION_2026-08-31.md` establishes the materially new root-cause boundary: generate current replay artifacts through deterministic production composition; historical fixtures remain compatibility-only and are never upgraded field-by-field into current proof.
-- The repository already has deterministic production-composition machinery using `createProductionRuntime`, controlled adapters, current contract builders, and in-memory artifact persistence; this is the governed source for the new current replay proof.
-- The application worktree intentionally contains preserved uncommitted AUD-T4-002 CLI proof work in `services/worker/scripts/replay-report-cli.test.js` plus any generated evidence. It must be reconciled, not discarded.
+- T4 historical/current replay separation is implemented in the candidate line. Historical Judge 1.0.0/2.0.0 replay is compatibility-only; current replay requires ScoreSet 2.0.0 plus persisted root-cause identity and decision hierarchy.
+- AUD-T4-002 first exposed an invalid proof source: a historical fixture was being patched into a current fixture. `DECISION_T4_CURRENT_REPLAY_PRODUCTION_COMPOSITION_2026-08-31.md` closed that mechanism and requires current replay artifacts to originate from deterministic production composition.
+- The deterministic production-composition proof then reached the real Narrative v2 AuditRequest boundary and exposed a materially different prerequisite: the generated request omitted required report `designVersion: 2.0.0`.
+- The previous autorun controller incorrectly charged newly exposed root boundaries to the prior repair chain because it had only `repair_attempt` and no durable root-defect identity. This caused repeated false manual BLOCKED stops.
+- `DECISION_AUTORUN_ROOT_DEFECT_ACCOUNTING_2026-08-31.md` now governs escalation. The controller owns repair accounting using `root_defect_id` plus `failure_class`; Codex no longer chooses the next escalation level.
+- `tools/autorun/PRYSM-AUTORUN-ACCOUNTING.ps1` implements deterministic identity-aware accounting.
+- `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json` now requires `root_defect_id` and `failure_class`.
+- `tools/autorun/PRYSM-AUTORUN.ps1` now resets automatically to Luna / attempt 0 when root identity changes, increments only a same-root `REPAIR_PROOF_FAILED`, preserves external/protocol failures without escalation, and resets to root `NONE` after independent Auditor PASS.
+- Current T4 root defect is `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION`.
+- `PRYSM_AUTORUN_STATE.json` is version 2 and reopened at Builder / T4 / Luna / repair attempt 0 for that root identity.
+- The application working tree intentionally contains preserved uncommitted T4 proof work. Do not reset, clean, checkout-overwrite, discard, or mass-rewrite it.
 
 Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current recorded application SHA before preserved uncommitted proof work: `7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec`.
 - Current autonomous tranche: T4.
-- Autorun status: CONTINUE.
-- Governed repair attempt: 0 / Luna for the deterministic production-composed current replay source boundary.
 - Last passed tranche: T3.
+- Autorun status: CONTINUE.
+- Active root defect: `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION`.
+- Governed repair attempt: 0 / Luna.
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
 - Current Narrative WriterOutput version: `1.0.0`.
@@ -37,20 +43,21 @@ Current environment / branch / version:
 - Current Judge prompt version: `2.1.0`.
 
 Completed:
-- Deep systemic production-closure diagnosis and T0 recovery/inventory are complete.
-- Cheap-first Luna -> Terra -> Sol escalation policy is active.
-- T1 persisted Conversion-First hierarchy / ScoreSet closure is independently PASS.
-- T2 canonical current report-model hydration and versioned ReportViewModel current-contract migration are independently PASS.
-- T3 WriterInput / Writer / Judge current-contract migration is independently PASS.
-- T4 historical/current replay version separation and current ScoreSet hierarchy validation are implemented in the candidate line.
-- Owner-guided AUD-T4-002 process reset selected deterministic production composition as the only trustworthy source for current-release replay fixtures.
+- Deep systemic production-closure diagnosis and T0 recovery/inventory.
+- T1 persisted Conversion-First hierarchy / ScoreSet closure.
+- T2 canonical current report-model hydration and versioned ReportViewModel current-contract migration.
+- T3 WriterInput / Writer / Judge current-contract migration.
+- T4 historical/current replay version separation and current ScoreSet hierarchy validation in the candidate line.
+- T4 current-release replay fixture-source decision: deterministic current production composition only.
+- Autorun controller root-defect accounting repair preventing new root causes from consuming prior Luna -> Terra -> Sol chains.
 
 In progress:
-- T4 current replay CLI proof migration from patched historical fixture input to deterministic production-composed current artifacts.
-- Preserve the CLI/subprocess end-to-end proof intent while changing only the artifact source mechanism.
+- T4 current replay CLI proof through deterministic production composition.
+- Supply required report `designVersion: 2.0.0` at the real AuditRequest boundary without fabricating downstream artifacts.
+- Preserve current CLI/subprocess end-to-end proof intent and all existing evidence/finalization semantics.
 
 Blocked:
-- No repository-controlled blocker prevents Codex from resuming T4 on the new deterministic production-composition boundary.
+- No repository-controlled blocker currently prevents Codex from resuming T4 on the new AuditRequest design-version root boundary.
 - The exhausted historical-fixture migration mechanism must not be retried.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 
@@ -58,16 +65,17 @@ Important constraints:
 - GitHub governance is authoritative durable project memory, but valid uncommitted local application work must be preserved and reconciled rather than overwritten.
 - Never reset hard, clean, checkout-overwrite, discard, or force-push the local application repair work.
 - Historical fixtures are compatibility-only and cannot satisfy current-release readiness.
-- Do not weaken finalization, evidence-integrity validation, source-state semantics, or current root-cause/hierarchy requirements to make stale data pass.
-- Do not fabricate or manually patch semantic values merely to construct a current fixture.
-- Current replay artifacts must be generated through current deterministic production composition with controlled/frozen transports and zero live/paid provider or model calls.
+- Current replay artifacts must be generated through deterministic current production composition with controlled/frozen transports and zero live/paid provider or model calls.
+- Do not weaken finalization, evidence-integrity validation, source-state semantics, or current root-cause/hierarchy requirements to obtain PASS.
 - UNKNOWN / UNAVAILABLE / PARTIAL / not-deeply-parsed must never become absence, false, zero, empty, Complete, AVAILABLE, or fully assessed unless governed evidence establishes that state.
+- Repair escalation is per stable root-defect identity. A newly proven root boundary resets to Luna / 0; only an actual failed repair/proof against the same unchanged identity consumes Terra/Sol escalation.
+- `repair_attempt` returned by Codex is echo-only. The controller computes the next repair level.
 - No application-changing tranche advances on targeted tests alone. Exact-SHA Whole-App Tranche Gate evidence plus independent Auditor PASS is mandatory.
 - For material diagnostic output intended for review, write a named `.txt` evidence file rather than relying on terminal scrollback.
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then restart `PRYSM-AUTORUN.ps1` with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty application tree and resume T4 on Luna from `DECISION_T4_CURRENT_REPLAY_PRODUCTION_COMPOSITION_2026-08-31.md`; do not retry historical-fixture migration.
+From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then run the updated `PRYSM-AUTORUN.ps1` once with `-PreflightOnly`. Confirm `PREFLIGHT PASS` and the root-aware escalation policy lines. Then restart with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty application tree and resume T4 at root `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION` on Luna.
 
 Last verified:
 2026-08-31 America/Toronto
