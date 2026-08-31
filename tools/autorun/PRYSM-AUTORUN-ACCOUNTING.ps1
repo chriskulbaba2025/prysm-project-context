@@ -106,3 +106,46 @@ function Resolve-PrysmRepairAccounting {
         }
     }
 }
+
+function Assert-PrysmAccountingResult {
+    param(
+        [Parameter(Mandatory = $true)]$Actual,
+        [Parameter(Mandatory = $true)][int]$ExpectedAttempt,
+        [Parameter(Mandatory = $true)][string]$ExpectedRoot,
+        [Parameter(Mandatory = $true)][string]$ExpectedEvent,
+        [Parameter(Mandatory = $true)][string]$Label
+    )
+
+    if ([int]$Actual.RepairAttempt -ne $ExpectedAttempt -or
+        [string]$Actual.RootDefectId -ne $ExpectedRoot -or
+        [string]$Actual.Event -ne $ExpectedEvent) {
+        throw "Autorun accounting regression '$Label': expected attempt=$ExpectedAttempt root=$ExpectedRoot event=$ExpectedEvent; got attempt=$($Actual.RepairAttempt) root=$($Actual.RootDefectId) event=$($Actual.Event)."
+    }
+}
+
+function Test-PrysmRepairAccountingContract {
+    $sameFirst = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 0 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'REPAIR_PROOF_FAILED' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $sameFirst -ExpectedAttempt 1 -ExpectedRoot 'T4.ROOT.A' -ExpectedEvent 'SAME_ROOT_ESCALATION' -Label 'same root first failure'
+
+    $sameThird = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'REPAIR_PROOF_FAILED' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $sameThird -ExpectedAttempt 3 -ExpectedRoot 'T4.ROOT.A' -ExpectedEvent 'SAME_ROOT_ESCALATION' -Label 'same root third failure blocks next'
+
+    $newRoot = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.B' -FailureClass 'NEW_ROOT_CAUSE' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $newRoot -ExpectedAttempt 0 -ExpectedRoot 'T4.ROOT.B' -ExpectedEvent 'NEW_ROOT_RESET' -Label 'explicit new root reset'
+
+    $defensive = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.B' -FailureClass 'REPAIR_PROOF_FAILED' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $defensive -ExpectedAttempt 0 -ExpectedRoot 'T4.ROOT.B' -ExpectedEvent 'DEFENSIVE_NEW_ROOT_RESET' -Label 'identity change wins over stale classification'
+
+    $external = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 1 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'EXTERNAL_OR_PROTOCOL' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $external -ExpectedAttempt 1 -ExpectedRoot 'T4.ROOT.A' -ExpectedEvent 'NO_ESCALATION_EXTERNAL' -Label 'external failure no escalation'
+
+    $auditPass = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 2 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.A' -FailureClass 'NONE' -AuditPassed $true
+    Assert-PrysmAccountingResult -Actual $auditPass -ExpectedAttempt 0 -ExpectedRoot 'NONE' -ExpectedEvent 'AUDIT_PASS_RESET' -Label 'audit pass reset'
+
+    $contextChange = Resolve-PrysmRepairAccounting -CurrentRepairAttempt 1 -CurrentRootDefectId 'T4.ROOT.A' -ResultRootDefectId 'T4.ROOT.B' -FailureClass 'NONE' -AuditPassed $false
+    Assert-PrysmAccountingResult -Actual $contextChange -ExpectedAttempt 0 -ExpectedRoot 'T4.ROOT.B' -ExpectedEvent 'ROOT_CONTEXT_CHANGED' -Label 'nonfailure root context change reset'
+}
+
+# Executed on dot-source. The controller therefore fails before any Codex call if
+# a future edit breaks the governed same-root/new-root accounting invariants.
+Test-PrysmRepairAccountingContract
