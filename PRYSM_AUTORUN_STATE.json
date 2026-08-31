@@ -4,16 +4,16 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
   "currentRole": "Builder",
-  "currentTranche": "T4",
-  "lastPassedTranche": "T3",
+  "currentTranche": "T5",
+  "lastPassedTranche": "T4",
   "repairAttempt": 0,
-  "rootDefectId": "T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE",
+  "rootDefectId": "T5.APPLICATION_CLOSURE_SURFACE_FAILURES",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "2a630ccccdf254564446b963f3b7b22cb6b58557",
+  "applicationSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "FAIL",
-  "reason": "DE-16 now registers the current v2 ScoreSet and ReportViewModel schemas under their governed IDs while retaining legacy v1 schemas. DE-16 passes, broad npm test passes 962/962, and the exact-SHA Whole-App Gate passes 86/86 plus all composite sub-gates on candidate 2a630cc.",
-  "nextAction": "Independent Auditor reviews exact application SHA 2a630ccccdf254564446b963f3b7b22cb6b58557 for T4."
+  "lastAuditVerdict": "PASS",
+  "reason": "T4 independent audit passed. T5 repaired the five application closure-surface failures, made the authoritative closure command enumerate application tests and whole-app proof, and passed the exact Whole-App Gate plus closure machine gate on dfc8ff4.",
+  "nextAction": "Independent Auditor reviews exact application SHA dfc8ff4a4aee743d350f2b3337707b9481e95365 for T5."
 }

@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Hand T4 candidate `2a630ccccdf254564446b963f3b7b22cb6b58557` to the independent Auditor after repairing the DE-16 current-schema validator fixture boundary.
+Hand T5 candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365` to the independent Auditor after closing the authoritative application verification surface.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -32,10 +32,10 @@ Verified checkpoint:
 Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current autonomous tranche: T4.
-- Last passed tranche: T3.
+- Current autonomous tranche: T5.
+- Last passed tranche: T4.
 - Autorun status: CONTINUE.
-- Active root defect: `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE`.
+- Active root defect: `T5.APPLICATION_CLOSURE_SURFACE_FAILURES`.
 - Governed repair attempt: 0 / Luna (controller-owned reset on new root).
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
@@ -55,7 +55,7 @@ Completed:
 - Autorun root-defect accounting and proof-setup failure accounting repair.
 
 In progress:
-- Independent Auditor review of exact candidate `2a630ccccdf254564446b963f3b7b22cb6b58557`.
+- Independent Auditor review of exact candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365`.
 
 Blocked:
 - No repository-controlled blocker prevents Codex from resuming T4 on the new root at repair attempt 0.
@@ -75,7 +75,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Independent Auditor reviews T4 candidate `2a630ccccdf254564446b963f3b7b22cb6b58557` on the pushed synchronized repair branch.
+Independent Auditor reviews T5 candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365` on the pushed synchronized repair branch.
 
 Last verified:
 2026-08-31 America/Toronto
