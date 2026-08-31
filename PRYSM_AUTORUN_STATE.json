@@ -10,9 +10,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "d9988ccc6085311a6cf144aa2cd4f822190e9f00",
+  "applicationSha": "f488a18ccbbfff86a33a72236b18b4e708664698",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "NOT_RUN",
-  "reason": "T1 candidate d9988ccc6085311a6cf144aa2cd4f822190e9f00 closes the persisted current ScoreSet hierarchy/root-cause contract, repairs the acceptance harness legacy-schema false PASS boundary, and passes the exact deterministic Whole-App Tranche Gate (82 acceptance checks plus 10/10 Narrative v2 production-path tests).",
-  "nextAction": "Independent Auditor must audit exact application SHA d9988ccc6085311a6cf144aa2cd4f822190e9f00 for T1."
+  "reason": "T1 repair candidate f488a18ccbbfff86a33a72236b18b4e708664698 addresses AUD-T1-001: current WriterInput now projects only the persisted ScoreSet decisionHierarchy, with deterministic two-finding parity coverage included in the Whole-App Gate (82 acceptance checks, 10 WriterInput checks, and 10 Narrative v2 production-path tests).",
+  "nextAction": "Independent Auditor must audit exact application SHA f488a18ccbbfff86a33a72236b18b4e708664698 for T1 repair AUD-T1-001."
 }
