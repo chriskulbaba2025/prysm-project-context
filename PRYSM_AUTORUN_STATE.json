@@ -7,7 +7,7 @@
   "currentTranche": "PDV1",
   "lastPassedTranche": "T7",
   "repairAttempt": 0,
-  "rootDefectId": "PDV1.WRITER_AI_BOUNDED_NEGATION",
+  "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
