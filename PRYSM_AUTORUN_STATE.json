@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8",
+  "applicationSha": "2a630ccccdf254564446b963f3b7b22cb6b58557",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The AUD-T4-004 publication/retrieval assertions executed and passed, and the exact-SHA Whole-App Gate passed on local candidate 3cd0d8a. The broad npm test then exposed a materially different fixture-migration root: DE-16 registers only v1 schemas, so production scoring cannot load the v2 current ScoreSet schema and stops at evidence_locked before the governed render assertion.",
-  "nextAction": "Builder repairs the isolated DE-16 validator fixture under new root T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE at repair attempt 0, reruns DE-16, npm test, and the exact-SHA Whole-App Gate, then pushes and hands T4 back to the Auditor only if all pass."
+  "reason": "DE-16 now registers the current v2 ScoreSet and ReportViewModel schemas under their governed IDs while retaining legacy v1 schemas. DE-16 passes, broad npm test passes 962/962, and the exact-SHA Whole-App Gate passes 86/86 plus all composite sub-gates on candidate 2a630cc.",
+  "nextAction": "Independent Auditor reviews exact application SHA 2a630ccccdf254564446b963f3b7b22cb6b58557 for T4."
 }

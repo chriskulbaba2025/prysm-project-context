@@ -4,13 +4,13 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resume T4 closure on the newly proven DE-16 current-schema validator fixture boundary. The v2 publication/retrieval regression now executes and passes, and the exact-SHA Whole-App Gate passes on local candidate `3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8`, but broad verification exposed a separate fixture migration defect before its governed render assertion.
+Hand T4 candidate `2a630ccccdf254564446b963f3b7b22cb6b58557` to the independent Auditor after repairing the DE-16 current-schema validator fixture boundary.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current local T4 candidate SHA: `3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8` (one local commit ahead of the synchronized remote branch; not yet pushed because composite verification is incomplete).
+- Current T4 candidate SHA: `2a630ccccdf254564446b963f3b7b22cb6b58557` (repair branch pushed and synchronized 0/0).
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
 - T2 PASS by independent Auditor after the versioned current ReportViewModel migration and base/Narrative/replay parity proof.
@@ -26,8 +26,8 @@ Verified checkpoint:
 - `tools/autorun/PRYSM-AUTORUN-ACCOUNTING.ps1` preserves the current repair level for `PROOF_SETUP_FAILURE` and contains a regression proving attempt 2 remains attempt 2.
 - `tools/autorun/PRYSM-BUILDER-AUTORUN-PROMPT.md` now requires proof-setup aborts to be classified separately from `REPAIR_PROOF_FAILED`.
 - The AUD-T4-004 divergent-draft and approved-artifact tamper assertions pass; acceptance is 86/86 and the exact-SHA Whole-App Gate passes on `3cd0d8a`.
-- Broad `npm test` is 961/962: isolated DE-16 fails because its local AJV fixture registers only v1 schemas while production scoring requests `contracts/v2/score-current.schema.json`; execution stops at `evidence_locked` before the governed render assertion.
-- This is a materially new fixture-migration root: `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE`, repair attempt 0.
+- DE-16 now passes after its local AJV fixture registers current v2 schemas under governed IDs while retaining v1 schemas.
+- Broad `npm test` passes 962/962 and the exact-SHA Whole-App Gate passes 86/86 with all composite sub-gates on `2a630ccccdf254564446b963f3b7b22cb6b58557`.
 
 Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
@@ -55,8 +55,7 @@ Completed:
 - Autorun root-defect accounting and proof-setup failure accounting repair.
 
 In progress:
-- T4 DE-16 fixture migration: register the current v2 ScoreSet schema in its test validator so the existing production-path render assertion can execute.
-- Rerun isolated DE-16, broad `npm test`, and the exact-SHA Whole-App Gate before push/audit handoff.
+- Independent Auditor review of exact candidate `2a630ccccdf254564446b963f3b7b22cb6b58557`.
 
 Blocked:
 - No repository-controlled blocker prevents Codex from resuming T4 on the new root at repair attempt 0.
@@ -76,7 +75,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Resume Builder on new root `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE` at repair attempt 0. Preserve local application commit `3cd0d8a`, repair only the DE-16 current-schema validator fixture, then rerun isolated DE-16, broad `npm test`, and the exact-SHA Whole-App Gate before any push or Auditor handoff.
+Independent Auditor reviews T4 candidate `2a630ccccdf254564446b963f3b7b22cb6b58557` on the pushed synchronized repair branch.
 
 Last verified:
 2026-08-31 America/Toronto
