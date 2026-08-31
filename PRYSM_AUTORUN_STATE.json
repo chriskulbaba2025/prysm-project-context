@@ -2,17 +2,17 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "CONTINUE",
+  "status": "BLOCKED",
   "currentRole": "Builder",
   "currentTranche": "T2",
   "lastPassedTranche": "T1",
-  "repairAttempt": 1,
+  "repairAttempt": 3,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe",
-  "wholeAppGate": "PASS",
+  "wholeAppGate": "FAIL",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T2-001 was repaired: current replay now consumes hydrateCurrentReportModel and the exact-SHA Whole-App Gate includes replay parity and fail-closed coverage.",
-  "nextAction": "Independent Auditor audits exact T2 candidate 0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe."
+  "reason": "Level-3 repair of AUD-T2-002 passed five focused canonical-hydration checks but failed assembled acceptance because activating the current base hydrator exposes an incompatible locked ReportViewModel v1 schema boundary. The uncommitted application repair is preserved; a fourth autonomous repair is prohibited.",
+  "nextAction": "Owner-guided root-cause/process reset must decide the versioned base ReportViewModel migration boundary before resuming T2; preserve the dirty application tree."
 }

@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Execute T2 of the governed autonomous PRYSM Production Closure roadmap: establish one canonical fail-closed current report-model hydration boundary consumed by base rendering, Narrative v2, UAT rerender, and current replay.
+T2 is BLOCKED after the Level-3 AUD-T2-002 repair proof failed at the assembled base-renderer schema boundary. Preserve the uncommitted application repair pending an owner-guided root-cause/process reset.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -44,6 +44,8 @@ In progress:
 - T2 candidate `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe` is pushed, synchronized, and passed the exact-SHA Whole-App Tranche Gate (82 acceptance, 10 WriterInput, 10 Narrative production-path, and 2 replay parity checks); independent Auditor review is required.
 
 Blocked:
+- AUD-T2-002 exhausted the governed Luna -> Terra -> Sol sequence. The Sol repair passed five focused T2 checks, then `node scripts/acceptance-prysm.js` failed because canonical current hydration makes the base renderer emit current root-cause/hierarchy semantics that the locked ReportViewModel v1 schema rejects. No fourth autonomous repair is permitted.
+- The application tree intentionally contains the uncommitted Level-3 repair plus generated replay evidence. Do not reset, clean, or discard it.
 - No repository-controlled PRYSM blocker currently prevents Codex from resuming T1.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 
@@ -59,7 +61,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Independent Auditor reviews application SHA `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe` for T2, including current replay's canonical hydration parity, fail-closed current fields, and unchanged gate evidence.
+Owner-guided root-cause/process reset decides whether the base renderer receives a versioned current ReportViewModel contract or an explicit compatibility adapter, then resumes T2 without discarding the preserved Level-3 work.
 
 Last verified:
 2026-08-31 America/Toronto
