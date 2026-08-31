@@ -40,7 +40,7 @@ Completed:
 - Manual review of the preserved diff established the canonical serialization policy and reopened the work on a materially new root-cause boundary.
 
 In progress:
-- T2 canonical report-model hydration boundary diagnosis and implementation.
+- T2 candidate `b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1` is pushed and passed the exact-SHA Whole-App Tranche Gate; independent Auditor review is required.
 
 Blocked:
 - No repository-controlled PRYSM blocker currently prevents Codex from resuming T1.
@@ -58,7 +58,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Diagnose the complete ScoreSet -> report-model paths and identify the canonical hydration boundary for T2 before editing.
+Independent Auditor reviews application SHA `b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1` for T2, including canonical hydration parity, fail-closed current fields, and unchanged gate evidence.
 
 Last verified:
 2026-08-31 America/Toronto
