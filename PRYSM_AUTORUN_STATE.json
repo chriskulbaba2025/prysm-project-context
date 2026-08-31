@@ -2,17 +2,17 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "BLOCKED",
+  "status": "CONTINUE",
   "currentRole": "Builder",
   "currentTranche": "T1",
   "lastPassedTranche": null,
-  "repairAttempt": 3,
+  "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "f488a18ccbbfff86a33a72236b18b4e708664698",
   "wholeAppGate": "FAIL",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T1-002 Level-3 proof attempt reached a real three-action scored hierarchy but failed on in-memory versus JSON-reloaded WriterInput identity: the in-memory projection retains optional group: undefined while persistence omits it. The governing escalation policy prohibits a fourth autonomous repair.",
-  "nextAction": "Manual intervention must review the preserved application diff and decide the canonical serialization policy for optional hierarchy metadata before rerunning T1."
+  "reason": "Manual review of AUD-T1-002 established a materially new root-cause boundary: current WriterInput is not JSON-canonical because optional hierarchy metadata is materialized as undefined in memory and omitted by persistence. DECISION_WRITERINPUT_JSON_CANONICALIZATION_2026-08-31.md governs the repair. The prior hierarchy-propagation repair chain remains closed for escalation accounting; this new boundary resets to Luna / repair attempt 0.",
+  "nextAction": "Builder must preserve the local multi-action proof, repair WriterInput so undefined optional hierarchy metadata is omitted before persistence, retain strict in-memory versus persisted/reloaded parity, then run the governed T1 proof/gate/audit sequence."
 }
