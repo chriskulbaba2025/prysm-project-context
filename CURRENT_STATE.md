@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Preserve the now-green PF/CF-01 repair package, run final local diff hygiene, then rebuild the deterministic TBK report offline from frozen governed evidence and review the browser-served report before any application commit/push/deploy or paid Writer/Judge refresh.
+Recover the exact current local `src/scoring/score-components.js` source boundary, complete only the two remaining PARTIAL-evidence wording repairs for `VAN-TECH-001` and `VAN-TECH-002`, then rerun the offline TBK deterministic rebuild/replay and proceed to browser-served report review before any application commit/push/deploy or paid Writer/Judge refresh.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -15,9 +15,16 @@ Verified checkpoint:
 - Frozen TBK audit remains `9714c206-8ed3-4686-8fe2-ceeca0ca0f82` for `https://www.tbkcreative.com/`.
 - Frozen governed fixture remains `C:\Users\kulba\Desktop\vantage-platform\services\worker\test-fixtures\report-replay\audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82\governed`.
 - PF-01 through PF-18 remain closed.
-- Full worker regression is green: `npm test` — **957/957 PASS**, 0 fail, 0 cancelled, 0 skipped, duration `18391.4511 ms`.
-- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during this regression-cleanup continuation.
-- Active continuation handoff: `HANDOFF_TBK_OFFLINE_REBUILD_AFTER_PF_CLOSURE_2026-08-30.md`.
+- Last fully verified worker aggregate before the latest replay/gate/source edits: `npm test` — **957/957 PASS**, 0 fail, 0 cancelled, 0 skipped, duration `18391.4511 ms`.
+- `src/scoring/report-finalization-gate.test.js` targeted image-denominator family passed **35/35** after the bounded image-denominator provenance repair.
+- Offline TBK deterministic rebuild from frozen evidence successfully produced **4 current findings** and a corrected Conversion-First root cause: `Buyer-question content was not detected in the available partial assessment...`.
+- Latest derived replay still failed at finalization because the replay assembly continued to expose historical/stale gate inputs: supplied competitor allowlist unavailable; historical image denominator contradiction; `VAN-TECH-001` / `VAN-TECH-002` PARTIAL wording; and stale root-cause binding in the replay model.
+- A source-level wording correction was then identified for `VAN-TECH-001` and `VAN-TECH-002` in `src/scoring/score-components.js` so PARTIAL crawl evidence does not read as whole-site absence.
+- The user supplied the full current file in chat. The supplied file was approximately **3,308 lines** before those two intended edits.
+- A later assistant attempt to reconstruct/split the whole file produced an invalid approximately **4,600-line** result. That reconstruction is explicitly rejected and must not be used as source truth.
+- It is currently **UNRESOLVED** whether the user saved any portion of the invalid 4,600-line reconstruction into the local working copy. Therefore the exact current local source must be re-supplied/verified before any further edit.
+- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during this continuation.
+- Active continuation handoff: `HANDOFF_TBK_SCORE_COMPONENTS_PARTIAL_REPAIR_CONTINUATION_2026-08-30.md`.
 
 Current environment / branch / version:
 - Application branch: `main`.
@@ -41,20 +48,24 @@ Completed:
 - T-GATE-INT-02 hierarchy fixture: 1/1 PASS.
 - CR-26 / CR-44 competitor family: CLOSED as stale supplied-competitor fixtures; 2/2 PASS.
 - CR-43 rendered-report freeze: bounded no-fabrication review PASS; all 27 golden hashes deliberately re-frozen; CR-43 1/1 PASS.
-- `vantage-score.test.js` assessed-weight family: CLOSED as stale expectations under fractional assessed-weight semantics; full file 70/70 PASS. Current verified fixture weights include 97 for the fully available fixture and 87 when performance is unavailable.
-- First full `npm test` after known-family cleanup produced 952/957 PASS and exposed five failures in three families.
+- `vantage-score.test.js` assessed-weight family: CLOSED as stale expectations under fractional assessed-weight semantics; full file 70/70 PASS.
 - PC-03/07 supplied competitor production-path test: CLOSED as stale test invocation; explicit supplied allowlist added to the direct helper call; 1/1 PASS.
 - `run-audit` artifact/gate family: CLOSED after a genuine production integration repair. `scoreAudit()` now derives canonical root cause from the governed Conversion-First action hierarchy, carries `rootCauseRuleId`, and the finalization gate validates that explicit binding with a legacy fallback. Gate was not weakened. Targeted family 3/3 PASS.
 - TBK-REPAIR-02 browser conversion score: CLOSED as stale expectation. Fully proven browser CTA/form terms normalize to 100 when unassessed trust/cardinality terms are excluded rather than zeroed; targeted test 1/1 PASS.
-- Final full worker aggregate: **957/957 PASS**, 0 fail.
+- Full worker aggregate reached **957/957 PASS** before the latest replay/gate/source edits.
+- Historical Judge replay compatibility was bounded to the replay harness only; production Judge validation remained untouched.
+- Offline deterministic rebuild proved that current scoring now produces 4 findings and the corrected Conversion-First root cause from frozen TBK evidence.
 
 In progress:
-No known regression family remains. Next phase is deterministic TBK offline rebuild and browser-served report review from frozen evidence.
+- Complete the bounded `VAN-TECH-001` / `VAN-TECH-002` PARTIAL-evidence wording repair in the exact current local `src/scoring/score-components.js`.
+- Then rerun targeted verification and the offline TBK rebuild/replay.
+- After deterministic replay succeeds, serve the rendered report locally and review actual client-facing redundancy/conciseness using progressive disclosure: one primary explanatory home per material conclusion; later pages should reference or add new information rather than repeat the same conclusion, impact, and recommendation.
 
 Blocked:
+- Exact local `score-components.js` source state must be re-verified because an invalid 4,600-line reconstructed version was produced in chat and may or may not have been pasted locally.
 - Browser-served report review is still required before final client interpretation/presentation acceptance.
 - Do not spend on another Writer/Judge refresh until the repaired deterministic TBK report has been rebuilt and reviewed offline and the user explicitly authorizes a paid run.
-- Do not commit/push/deploy application changes until the local repair package has passed diff hygiene and the user explicitly authorizes repository action.
+- Do not commit/push/deploy application changes until the local repair package has passed targeted/full verification and diff hygiene and the user explicitly authorizes repository action.
 - Do not render/release a fresh Narrative v2 report unless final Judge decision is PASS and deterministic release gates pass.
 
 Important constraints:
@@ -66,12 +77,14 @@ Important constraints:
 - Preserve Viewer v2.2.0, provider crawl ceiling 250, provider priority-URL ceiling 20, and production content-parsing default 50.
 - Preserve Narrative release threshold, evidence-fidelity requirement, dimension floors, hard gates, major-defect protections, pass limits, and human-authorization boundaries.
 - Follow `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`.
-- Source code remains manual: exact Windows path, exact current lines/ranges and anchors, complete replacement blocks, and bottom-up ordering are mandatory for surgical edits.
-- Do not update a test merely to silence a regression. Test changes require a proven intentional fixture/contract correction or approved frozen-output migration.
+- Never deliver PRYSM code through downloadable/sandbox files. Code must appear directly in chat.
+- Never reconstruct or approximate a large source file. When whole-file delivery is required, use the exact user-supplied current source and verify that sequential chunks are contiguous, non-overlapping, and sum to the complete source line count before presenting them.
+- For diagnostics with material output, PowerShell should write the result to a named `.txt` file via `Set-Content`/`Out-File` so the user can upload it back into chat.
 - Browser-served report review remains an acceptance gate; automated PASS alone is insufficient for final report interpretation acceptance.
+- After deterministic report acceptance, perform the planned redundancy/conciseness review; do not start another open-ended architecture audit.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run exactly `git diff --check`. If it passes, preserve the green local package and proceed to rebuild the deterministic TBK report offline from the frozen governed fixture for browser-served review. Do not call providers or Writer/Judge models.
+In the next chat, first read the governing GitHub context and this handoff. Then have the user supply the exact current local `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\scoring\score-components.js` from VS Code (or a PowerShell-generated text copy). Verify its line count and exact source state before editing. Do **not** use or reconstruct the rejected ~4,600-line chat version. Once the exact source is verified, apply only the two bounded PARTIAL-evidence wording repairs for `VAN-TECH-001` and `VAN-TECH-002`, verify the complete resulting file boundary, and run the targeted test before replay.
 
 Last verified:
 2026-08-30 America/Toronto
