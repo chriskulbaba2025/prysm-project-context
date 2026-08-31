@@ -28,8 +28,8 @@
     },
     "failure_class": {
       "type": "string",
-      "enum": ["NONE", "REPAIR_PROOF_FAILED", "NEW_ROOT_CAUSE", "EXTERNAL_OR_PROTOCOL"],
-      "description": "Classification used by controller-owned repair accounting."
+      "enum": ["NONE", "REPAIR_PROOF_FAILED", "NEW_ROOT_CAUSE", "PROOF_SETUP_FAILURE", "EXTERNAL_OR_PROTOCOL"],
+      "description": "Classification used by controller-owned repair accounting. PROOF_SETUP_FAILURE means the intended governed assertion was not reached because the proof harness/setup itself failed; it does not consume a repair escalation level."
     },
     "next_action": {"type": "string"},
     "github_state_synced": {"type": "boolean"}
