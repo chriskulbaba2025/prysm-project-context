@@ -4,87 +4,69 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Recover the exact current local `src/scoring/score-components.js` source boundary, complete only the two remaining PARTIAL-evidence wording repairs for `VAN-TECH-001` and `VAN-TECH-002`, then rerun the offline TBK deterministic rebuild/replay and proceed to browser-served report review before any application commit/push/deploy or paid Writer/Judge refresh.
+Execute the governed autonomous PRYSM Production Closure roadmap T0-T7 using the external Codex Builder/Auditor loop. Close the systemic contract-propagation, duplicated-model, stale replay/versioning, semantic-default, false-PASS verification, and release-control defects before another production audit is started.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Branch: `main`.
-- Last verified application SHA: `90916e94f6feba73e7e60df54bd641bb2362454c` — `test(prysm): repair CI regression baselines`.
-- Local worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Application working tree remains intentionally dirty with the governed PF/CF-01 repair package plus regression-contract corrections. Preserve all local edits, replay fixtures, and diagnostics; never reset/clean/checkout-overwrite unrelated work.
-- Frozen TBK audit remains `9714c206-8ed3-4686-8fe2-ceeca0ca0f82` for `https://www.tbkcreative.com/`.
-- Frozen governed fixture remains `C:\Users\kulba\Desktop\vantage-platform\services\worker\test-fixtures\report-replay\audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82\governed`.
-- PF-01 through PF-18 remain closed.
-- Last fully verified worker aggregate before the latest replay/gate/source edits: `npm test` — **957/957 PASS**, 0 fail, 0 cancelled, 0 skipped, duration `18391.4511 ms`.
-- `src/scoring/report-finalization-gate.test.js` targeted image-denominator family passed **35/35** after the bounded image-denominator provenance repair.
-- Offline TBK deterministic rebuild from frozen evidence successfully produced **4 current findings** and a corrected Conversion-First root cause: `Buyer-question content was not detected in the available partial assessment...`.
-- Latest derived replay still failed at finalization because the replay assembly continued to expose historical/stale gate inputs: supplied competitor allowlist unavailable; historical image denominator contradiction; `VAN-TECH-001` / `VAN-TECH-002` PARTIAL wording; and stale root-cause binding in the replay model.
-- A source-level wording correction was then identified for `VAN-TECH-001` and `VAN-TECH-002` in `src/scoring/score-components.js` so PARTIAL crawl evidence does not read as whole-site absence.
-- The user supplied the full current file in chat. The supplied file was approximately **3,308 lines** before those two intended edits.
-- A later assistant attempt to reconstruct/split the whole file produced an invalid approximately **4,600-line** result. That reconstruction is explicitly rejected and must not be used as source truth.
-- It is currently **UNRESOLVED** whether the user saved any portion of the invalid 4,600-line reconstruction into the local working copy. Therefore the exact current local source must be re-supplied/verified before any further edit.
-- No application commit, push, deploy, provider recollection, fresh production audit, production mutation, or paid Writer/Judge call occurred during this continuation.
-- Active continuation handoff: `HANDOFF_TBK_SCORE_COMPONENTS_PARTIAL_REPAIR_CONTINUATION_2026-08-30.md`.
+- Remote application `main` is verified at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
+- Remote `main` is currently unprotected and required status checks are not enforced; `main` alone is therefore not release-proof authority.
+- Local application path remains `C:\Users\kulba\Desktop\vantage-platform`; worker path remains `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- The local application working tree is intentionally dirty with governed PF/Narrative/Conversion-First repairs. Exact local branch/HEAD/diff is not yet reconciled into durable state. Preserve it exactly; T0 must recover it locally before further product edits.
+- Known local repairs that must be preserved include DecisionEvidence propagation into production WriterInput, production-shaped Writer action rank/effort/reference fixture repair, current Judge hierarchy/version fixture repair, and `rootCauseRuleId` propagation through ScoreSet/base/V2 projections.
+- Focused `NV2-PROD-02` passed 1/1 after the root-cause identity propagation repair.
+- Focused `NV2-PROD-06` passed 1/1 for invalid persisted terminal Narrative state fail-closed/no-extra-spend behavior.
+- `npm test` passed 959/959, 0 failures, but this command is explicitly NOT accepted as a full worker/release regression because release-relevant test families such as `src/application` are outside that command.
+- A deep systemic production-closure audit is persisted in `AUDIT_PRYSM_SYSTEMIC_PRODUCTION_CLOSURE_2026-08-31.md`.
+- New direct evidence invalidated dependent global closure assumptions from the prior state. Historical PF/CF/CONTRACT-CLOSURE PASS records remain valid evidence for the exact boundaries they proved, but they are not current whole-system release proof where contradicted by the systemic audit.
+- The autonomous closure roadmap, exact-SHA Whole-App Tranche Gate, independent audit protocol, Builder/Auditor prompts, structured result schema, durable autorun states, Windows PowerShell controller, and launch README have been created in the governance repository.
+- The autonomous workflow pattern was ported from the prior COMPAS2 VS Code Codex loop, including fresh-run `CONTINUE` relaunch, `-MaxRuns 0`, recovery-first state, Windows `codex.cmd` invocation, exact-SHA gating, GitHub synchronization, and independent post-run auditing. PRYSM adds automatic Builder -> Auditor -> Builder switching per application-changing tranche.
 
 Current environment / branch / version:
-- Application branch: `main`.
-- Last verified application SHA: `90916e94f6feba73e7e60df54bd641bb2362454c`.
-- Governed viewer: Viewer v2.2.0.
-- Scoring version remains `4.1.1`; scoring weights were not changed merely to alter results.
-- Narrative Writer model for approved live runs: `gpt-5.6-terra`.
-- Narrative Judge model: `gpt-5.6-sol`.
-- Current truthful Narrative versions:
-  - `WRITER_OUTPUT_VERSION = "1.0.0"`
-  - `WRITER_PROMPT_VERSION = "2.1.0"`
-  - `JUDGE_CONTRACT_VERSION = "1.1.0"`
-  - `JUDGE_PROMPT_VERSION = "2.1.0"`
+- Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
+- Intended autonomous repair branch: `repair/prysm-production-closure`; safe local creation/recovery is T0 work and has not yet been verified from GitHub.
+- Governed viewer remains Viewer v2.2.0.
+- Scoring version remains `4.1.1`; do not change scoring weights/version merely to alter results.
+- Current Narrative WriterOutput version: `1.0.0`.
+- Current Writer prompt version: `2.1.0`.
+- Current Judge contract version: `1.1.0`.
+- Current Judge prompt version: `2.1.0`.
+- WriterInput version/compatibility is an explicit T3 closure item because historical/current `1.0.0` semantics are not trustworthy as one compatibility identity.
 
 Completed:
-- CF-01 architecture investigation is complete; do not redo it.
-- Broad PF preflight investigation is complete; do not redo it absent contradictory evidence.
-- PF-01 through PF-18: PASS. Do not reopen PF architecture without new direct evidence of a material defect.
-- CONTRACT-CLOSURE: 5/5 PASS.
-- Writer semantic-fidelity family: 10/10 PASS after repairing the governed `root-cause` false positive in the causal-certainty validator.
-- T-GATE-INT-02 hierarchy fixture: 1/1 PASS.
-- CR-26 / CR-44 competitor family: CLOSED as stale supplied-competitor fixtures; 2/2 PASS.
-- CR-43 rendered-report freeze: bounded no-fabrication review PASS; all 27 golden hashes deliberately re-frozen; CR-43 1/1 PASS.
-- `vantage-score.test.js` assessed-weight family: CLOSED as stale expectations under fractional assessed-weight semantics; full file 70/70 PASS.
-- PC-03/07 supplied competitor production-path test: CLOSED as stale test invocation; explicit supplied allowlist added to the direct helper call; 1/1 PASS.
-- `run-audit` artifact/gate family: CLOSED after a genuine production integration repair. `scoreAudit()` now derives canonical root cause from the governed Conversion-First action hierarchy, carries `rootCauseRuleId`, and the finalization gate validates that explicit binding with a legacy fallback. Gate was not weakened. Targeted family 3/3 PASS.
-- TBK-REPAIR-02 browser conversion score: CLOSED as stale expectation. Fully proven browser CTA/form terms normalize to 100 when unassessed trust/cardinality terms are excluded rather than zeroed; targeted test 1/1 PASS.
-- Full worker aggregate reached **957/957 PASS** before the latest replay/gate/source edits.
-- Historical Judge replay compatibility was bounded to the replay harness only; production Judge validation remained untouched.
-- Offline deterministic rebuild proved that current scoring now produces 4 findings and the corrected Conversion-First root cause from frozen TBK evidence.
+- Deep systemic diagnosis of the repeated one-more-test failure cycle is complete and durable.
+- The common root cause is established as incomplete semantic contract migration/proof coverage across Producer -> Contract/Persistence -> Loader -> Consumer -> Gate -> Renderer -> Replay/Recovery boundaries.
+- `AUDIT_PRYSM_SYSTEMIC_PRODUCTION_CLOSURE_2026-08-31.md` records SYS-01 through SYS-22 and the known local repair checkpoint.
+- `PRYSM_PRODUCTION_CLOSURE_ROADMAP_2026-08-31.md` governs T0-T7.
+- `PRYSM_WHOLE_APP_TRANCHE_GATE.md` is the mandatory exact-SHA whole-system proof for every application-changing tranche.
+- `PRYSM_POSTRUN_AUDIT_PROTOCOL.md` governs independent fresh-context tranche review.
+- `DECISION_AUTONOMOUS_PRODUCTION_CLOSURE_2026-08-31.md` authorizes direct autonomous local repair work, deterministic verification, coherent commits, normal repair-branch pushes, and governance synchronization for this closure package while preserving external production authorization boundaries.
+- `tools/autorun/PRYSM-AUTORUN.ps1` and its Builder/Auditor contracts are installed in governance.
+- Durable state files `PRYSM_AUTORUN_STATE.json` and `PRYSM_POSTRUN_AUDIT_STATE.json` are initialized.
 
 In progress:
-- Complete the bounded `VAN-TECH-001` / `VAN-TECH-002` PARTIAL-evidence wording repair in the exact current local `src/scoring/score-components.js`.
-- Then rerun targeted verification and the offline TBK rebuild/replay.
-- After deterministic replay succeeds, serve the rendered report locally and review actual client-facing redundancy/conciseness using progressive disclosure: one primary explanatory home per material conclusion; later pages should reference or add new information rather than repeat the same conclusion, impact, and recommendation.
+- T0 — recover exact local application/governance Git state, preserve the dirty repair package, safely establish/recover `repair/prysm-production-closure`, and freeze the complete closure dependency/proof map before further application edits.
+- After T0, the controller advances T1-T7 only through exact-SHA Builder gate -> push/sync -> independent Auditor PASS cycles.
 
 Blocked:
-- Exact local `score-components.js` source state must be re-verified because an invalid 4,600-line reconstructed version was produced in chat and may or may not have been pasted locally.
-- Browser-served report review is still required before final client interpretation/presentation acceptance.
-- Do not spend on another Writer/Judge refresh until the repaired deterministic TBK report has been rebuilt and reviewed offline and the user explicitly authorizes a paid run.
-- Do not commit/push/deploy application changes until the local repair package has passed targeted/full verification and diff hygiene and the user explicitly authorizes repository action.
-- Do not render/release a fresh Narrative v2 report unless final Judge decision is PASS and deterministic release gates pass.
+- Exact local dirty application branch/HEAD/diff is not yet durably reconciled; this is intentionally assigned to autonomous T0 recovery rather than another manual diagnostic sequence.
+- Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit are not authorized by the autonomous closure decision itself.
+- A future repository-controlled COMPLETE state will normally stop at `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION` unless a later explicit durable authorization expands that boundary.
 
 Important constraints:
-- GitHub context is authoritative.
-- Preserve the dirty local application working tree. Never reset, clean, checkout-overwrite, or discard known local PF/Narrative/CF-01 work or replay fixtures.
-- Frozen TBK raw/normalized/canonical evidence is immutable. Derived findings/scores/report inputs may be rebuilt locally/in memory; providers must not be recollected.
-- No paid provider/model call, production audit, deployment, configuration mutation, application push, or production persistence mutation without explicit approval.
-- Do not change scoring weights or scoring version merely to alter results.
-- Preserve Viewer v2.2.0, provider crawl ceiling 250, provider priority-URL ceiling 20, and production content-parsing default 50.
-- Preserve Narrative release threshold, evidence-fidelity requirement, dimension floors, hard gates, major-defect protections, pass limits, and human-authorization boundaries.
-- Follow `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`.
-- Never deliver PRYSM code through downloadable/sandbox files. Code must appear directly in chat.
-- Never reconstruct or approximate a large source file. When whole-file delivery is required, use the exact user-supplied current source and verify that sequential chunks are contiguous, non-overlapping, and sum to the complete source line count before presenting them.
-- For diagnostics with material output, PowerShell should write the result to a named `.txt` file via `Set-Content`/`Out-File` so the user can upload it back into chat.
-- Browser-served report review remains an acceptance gate; automated PASS alone is insufficient for final report interpretation acceptance.
-- After deterministic report acceptance, perform the planned redundancy/conciseness review; do not start another open-ended architecture audit.
+- GitHub governance is authoritative durable project memory, but valid uncommitted local application work must be preserved and reconciled before GitHub can supersede it.
+- Never reset hard, clean, checkout-overwrite, discard, or force-push the local application repair work.
+- Autonomous application work is confined to `repair/prysm-production-closure`; do not push closure commits directly to application `main`.
+- For this Production Closure package, `DECISION_AUTONOMOUS_PRODUCTION_CLOSURE_2026-08-31.md` supersedes older manual-chat-only source-edit mechanics where they conflict with autonomous execution. Evidence integrity, no-guess, repair-boundary, no-destructive-worktree, Narrative quality, and production authorization constraints remain active.
+- Maximum three evidence-based repair attempts against the same root defect. A repeated third failure triggers root-cause/process reset or BLOCKED; no thrashing.
+- Every escaped production defect requires a permanent regression when feasible; every false-PASS escape requires a proof-system correction.
+- No application-changing tranche advances on targeted tests, `npm test`, replay, or build alone. Exact-SHA `PRYSM_WHOLE_APP_TRANCHE_GATE.md` evidence plus independent Auditor PASS is mandatory.
+- UNKNOWN / UNAVAILABLE / PARTIAL / not-deeply-parsed must never become absence, false, zero, empty, Complete, AVAILABLE, or fully assessed unless governed evidence establishes that state.
+- Historical compatibility replay is not current release proof.
+- For material diagnostics/test output intended for later review, write a named `.txt` evidence file rather than depending on terminal scrollback.
+- No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-In the next chat, first read the governing GitHub context and this handoff. Then have the user supply the exact current local `C:\Users\kulba\Desktop\vantage-platform\services\worker\src\scoring\score-components.js` from VS Code (or a PowerShell-generated text copy). Verify its line count and exact source state before editing. Do **not** use or reconstruct the rejected ~4,600-line chat version. Once the exact source is verified, apply only the two bounded PARTIAL-evidence wording repairs for `VAN-TECH-001` and `VAN-TECH-002`, verify the complete resulting file boundary, and run the targeted test before replay.
+From a local clone of `chriskulbaba2025/prysm-project-context`, pull governance `main`, then run `tools\autorun\PRYSM-AUTORUN.ps1` with `-AppRepo "C:\Users\kulba\Desktop\vantage-platform" -GovernanceRepo <local governance path> -StartRole Builder -PreflightOnly`. If and only if the final line is `PREFLIGHT PASS`, immediately run the same controller with `-MaxRuns 0`. Do not manually alter the application first; T0 must recover the exact dirty local state.
 
 Last verified:
-2026-08-30 America/Toronto
+2026-08-31 America/Toronto
