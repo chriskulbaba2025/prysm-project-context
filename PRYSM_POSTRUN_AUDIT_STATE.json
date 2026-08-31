@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "project": "PRYSM",
+  "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
+  "status": "NOT_RUN",
+  "tranche": null,
+  "applicationBranch": "repair/prysm-production-closure",
+  "applicationSha": null,
+  "verdict": "NOT_RUN",
+  "materialDefects": 0,
+  "auditReport": null,
+  "reason": "No autonomous tranche candidate has yet been handed to the independent Auditor.",
+  "nextAction": "Wait for Builder to produce a gated, pushed exact-SHA tranche candidate and return next_role=Auditor."
+}
