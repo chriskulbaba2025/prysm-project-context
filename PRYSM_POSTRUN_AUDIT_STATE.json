@@ -2,13 +2,13 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
-  "status": "FAIL",
+  "status": "BLOCKED",
   "tranche": "T1",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "f488a18ccbbfff86a33a72236b18b4e708664698",
-  "verdict": "FAIL",
-  "materialDefects": 1,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_f488a18_2026-08-31.md",
-  "reason": "AUD-T1-002: the repaired WriterInput projects persisted hierarchy data, but the Whole-App Gate still does not prove a persisted/reloaded multi-finding hierarchy through Writer/Judge/finalization/render consumers.",
-  "nextAction": "Builder repairs AUD-T1-002 on T1, reruns the exact-SHA Whole-App Gate, and returns for independent audit."
+  "applicationSha": "192326cbf1e3d732a3e7132cfe33e2d7c931b0fe",
+  "verdict": "BLOCKED",
+  "materialDefects": 0,
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_192326cb_2026-08-31.md",
+  "reason": "Exact candidate SHA equals the remote branch, but the application worktree is not frozen: two untracked files include the claimed Whole-App Gate evidence.",
+  "nextAction": "Builder reconciles preserved uncommitted evidence, reruns the exact-SHA gate on a clean frozen candidate, and returns T1 for audit."
 }
