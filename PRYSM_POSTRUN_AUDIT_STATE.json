@@ -2,13 +2,13 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
-  "status": "NOT_RUN",
-  "tranche": null,
+  "status": "FAIL",
+  "tranche": "T1",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": null,
-  "verdict": "NOT_RUN",
-  "materialDefects": 0,
-  "auditReport": null,
-  "reason": "No autonomous tranche candidate has yet been handed to the independent Auditor.",
-  "nextAction": "Wait for Builder to produce a gated, pushed exact-SHA tranche candidate and return next_role=Auditor."
+  "applicationSha": "d9988ccc6085311a6cf144aa2cd4f822190e9f00",
+  "verdict": "FAIL",
+  "materialDefects": 1,
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_d9988ccc_2026-08-31.md",
+  "reason": "AUD-T1-001: WriterInput independently reconstructs the persisted Conversion-First hierarchy, and the current gate does not prove multi-finding parity.",
+  "nextAction": "Builder repairs AUD-T1-001 on T1, reruns the exact-SHA Whole-App Gate, and returns for independent audit."
 }
