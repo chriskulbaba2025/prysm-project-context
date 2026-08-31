@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-T4 Replay, ReportContent, and semantic-coherence closure.
+T4 Replay, ReportContent, and semantic-coherence closure — BLOCKED after Level-3 proof failure.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -46,9 +46,10 @@ Completed:
 
 In progress:
 - T4: split current replay from historical compatibility replay, preserve source-state uncertainty in ReportContent, reject stale current artifacts, and consume the canonical current hydration boundary.
+- AUD-T4-002 proof work is preserved uncommitted in `services/worker/scripts/replay-report-cli.test.js`. It adds a current CLI subprocess scenario by migrating the persisted ScoreSet boundary in a temporary fixture. The CLI reaches current validation/rendering but finalization correctly rejects three stale semantic contradictions: unavailable competitor allowlist provenance, `imagesMissingAlt` 222 with `imageCount` 0, and VAN-TECH-002 converting PARTIAL evidence into an unqualified absence claim.
 
 Blocked:
-- No repository-controlled blocker prevents Codex from continuing T3; independent audit is pending on the pushed candidate.
+- The AUD-T4-002 false-PASS proof defect has exhausted the governed Level-3 repair/proof attempt. A fourth autonomous repair is prohibited. Owner-guided process reset must choose a trustworthy current fixture source: generate artifacts through deterministic production composition, or govern a full semantic migration of the historical fixture rather than patching the nearest contradictions.
 - Application merge to `main`, deployment/production configuration mutation, live/paid provider calls, live/paid Writer/Judge calls, and starting a fresh production audit remain unauthorized.
 
 Important constraints:
@@ -63,7 +64,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Independent Auditor must audit T4 candidate `e0c2ab93481b9c4681da464cf4310e214edc25b2` on the exact pushed SHA.
+Owner-guided root-cause/process reset for AUD-T4-002. Preserve the dirty application proof work and do not attempt a fourth autonomous repair.
 
 Last verified:
 2026-08-31 America/Toronto — T2 candidate 4f03947517beec98c54dedf028bcc79f8771c7ae pushed; Whole-App Tranche Gate PASS.

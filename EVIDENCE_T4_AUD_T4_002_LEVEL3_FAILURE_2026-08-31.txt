@@ -1,0 +1,14 @@
+Command: node --test scripts/replay-report-cli.test.js
+Application committed HEAD: 7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec
+Result: 3 PASS / 1 FAIL
+
+Failed scenario:
+T4-REPLAY-CLI-03: default CLI validates and renders a current persisted artifact set
+
+The CLI loaded the temporary persisted artifact set, validated the migrated current ScoreSet, hydrated the current model, and reached the production finalization boundary. Finalization failed closed on:
+1. Client-facing competitor comparisons exist but the supplied competitor allowlist is unavailable.
+2. imagesMissingAlt (222) cannot exceed or exist without a valid imageCount denominator (0).
+3. Finding VAN-TECH-002 converts PARTIAL evidence into an unqualified absence claim.
+
+Classification: FALSE_PASS_PROOF_DEFECT with stale historical/current semantic fixture contradictions.
+Disposition: Level-3 repair/proof failed; repair_attempt becomes 3. No fourth autonomous repair is permitted.
