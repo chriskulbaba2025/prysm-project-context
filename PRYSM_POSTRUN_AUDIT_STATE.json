@@ -5,10 +5,10 @@
   "status": "COMPLETE",
   "tranche": "T2",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1",
+  "applicationSha": "0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe",
   "verdict": "FAIL",
   "materialDefects": 1,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T2_2026-08-31.md",
-  "reason": "AUD-T2-001: current offline replay independently reconstructs the V2 model and is omitted from the whole-app gate, leaving canonical current hierarchy parity unproved.",
-  "nextAction": "Builder repairs AUD-T2-001 in T2, reruns exact-SHA gate, and resubmits for independent audit."
+  "reason": "AUD-T2-002: the base current report-model consumer supplies decision evidence under an ignored parameter name to the canonical hydrator, silently dropping that persisted semantic artifact; the T2 gate does not exercise this consumer.",
+  "nextAction": "Builder repairs AUD-T2-002 in T2, adds a production-shaped base/V2/replay parity proof, reruns the exact-SHA gate, and resubmits for independent audit."
 }
