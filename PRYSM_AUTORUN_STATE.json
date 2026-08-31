@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "project": "PRYSM",
+  "mode": "PRODUCTION_CLOSURE_AUTORUN",
+  "status": "CONTINUE",
+  "currentRole": "Builder",
+  "currentTranche": "T0",
+  "lastPassedTranche": null,
+  "repairAttempt": 0,
+  "applicationRepository": "chriskulbaba2025/vantage-platform",
+  "applicationBranch": "repair/prysm-production-closure",
+  "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
+  "applicationSha": "UNVERIFIED_LOCAL_DIRTY_STATE",
+  "wholeAppGate": "NOT_RUN",
+  "lastAuditVerdict": "NOT_RUN",
+  "reason": "Systemic audit established that prior closure claims were invalidated by contract-propagation, duplicated projection, stale replay/versioning, false-PASS coverage, and release-control gaps. Autonomous recovery must begin from the exact dirty local working tree without discarding governed repairs.",
+  "nextAction": "Run PRYSM autorun preflight, then start Builder with MaxRuns 0. Builder must recover exact local state, preserve dirty work, establish repair/prysm-production-closure safely, and complete T0 before product edits."
+}
