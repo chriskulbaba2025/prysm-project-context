@@ -40,7 +40,8 @@ Completed:
 - Manual review of the preserved diff established the canonical serialization policy and reopened the work on a materially new root-cause boundary.
 
 In progress:
-- T2 candidate `b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1` is pushed and passed the exact-SHA Whole-App Tranche Gate; independent Auditor review is required.
+- AUD-T2-001 was repaired on T2 candidate `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe`: current replay now consumes `hydrateCurrentReportModel`, fails closed without persisted hierarchy/root-cause identity, and the Whole-App Gate executes the replay parity regression.
+- T2 candidate `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe` is pushed, synchronized, and passed the exact-SHA Whole-App Tranche Gate (82 acceptance, 10 WriterInput, 10 Narrative production-path, and 2 replay parity checks); independent Auditor review is required.
 
 Blocked:
 - No repository-controlled PRYSM blocker currently prevents Codex from resuming T1.
@@ -58,7 +59,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Independent Auditor reviews application SHA `b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1` for T2, including canonical hydration parity, fail-closed current fields, and unchanged gate evidence.
+Independent Auditor reviews application SHA `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe` for T2, including current replay's canonical hydration parity, fail-closed current fields, and unchanged gate evidence.
 
 Last verified:
 2026-08-31 America/Toronto

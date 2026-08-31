@@ -6,13 +6,13 @@
   "currentRole": "Builder",
   "currentTranche": "T2",
   "lastPassedTranche": "T1",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1",
+  "applicationSha": "0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PASS",
-  "reason": "T2 Builder candidate b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1 passed targeted proofs and exact-SHA Whole-App Tranche Gate; independent audit required.",
-  "nextAction": "Independent Auditor audits exact T2 candidate b0c936840c8a321c37f5c266a9e8d3e38e7fe6e1."
+  "lastAuditVerdict": "FAIL",
+  "reason": "AUD-T2-001 was repaired: current replay now consumes hydrateCurrentReportModel and the exact-SHA Whole-App Gate includes replay parity and fail-closed coverage.",
+  "nextAction": "Independent Auditor audits exact T2 candidate 0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe."
 }
