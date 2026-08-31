@@ -5,10 +5,10 @@
   "status": "FAIL",
   "tranche": "T1",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "d9988ccc6085311a6cf144aa2cd4f822190e9f00",
+  "applicationSha": "f488a18ccbbfff86a33a72236b18b4e708664698",
   "verdict": "FAIL",
   "materialDefects": 1,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_d9988ccc_2026-08-31.md",
-  "reason": "AUD-T1-001: WriterInput independently reconstructs the persisted Conversion-First hierarchy, and the current gate does not prove multi-finding parity.",
-  "nextAction": "Builder repairs AUD-T1-001 on T1, reruns the exact-SHA Whole-App Gate, and returns for independent audit."
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_f488a18_2026-08-31.md",
+  "reason": "AUD-T1-002: the repaired WriterInput projects persisted hierarchy data, but the Whole-App Gate still does not prove a persisted/reloaded multi-finding hierarchy through Writer/Judge/finalization/render consumers.",
+  "nextAction": "Builder repairs AUD-T1-002 on T1, reruns the exact-SHA Whole-App Gate, and returns for independent audit."
 }
