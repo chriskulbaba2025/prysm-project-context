@@ -10,9 +10,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "192326cbf1e3d732a3e7132cfe33e2d7c931b0fe",
+  "applicationSha": "67b6c2faf39be5a63149cb1a623d759d2fe4ac8b",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T1-002 repaired: WriterInput now omits undefined optional hierarchy fields before persistence, preserving strict in-memory versus persisted/reloaded identity. The preserved multi-action production-composed proof reaches scoring persistence, reload, Writer, Judge, finalization, and render consumers. Exact-SHA Whole-App Tranche Gate passed.",
-  "nextAction": "Independent Auditor must audit T1 candidate application SHA 192326cbf1e3d732a3e7132cfe33e2d7c931b0fe."
+  "reason": "Prior audit was blocked because claimed T1 evidence was untracked. Evidence is now committed on the frozen candidate; the exact-SHA Whole-App Tranche Gate was rerun and passed.",
+  "nextAction": "Independent Auditor must audit T1 candidate application SHA 67b6c2faf39be5a63149cb1a623d759d2fe4ac8b."
 }

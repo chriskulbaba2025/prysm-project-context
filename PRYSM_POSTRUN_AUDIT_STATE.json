@@ -2,13 +2,13 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
-  "status": "BLOCKED",
+  "status": "PENDING",
   "tranche": "T1",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "192326cbf1e3d732a3e7132cfe33e2d7c931b0fe",
-  "verdict": "BLOCKED",
+  "applicationSha": "67b6c2faf39be5a63149cb1a623d759d2fe4ac8b",
+  "verdict": "PENDING",
   "materialDefects": 0,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T1_192326cb_2026-08-31.md",
-  "reason": "Exact candidate SHA equals the remote branch, but the application worktree is not frozen: two untracked files include the claimed Whole-App Gate evidence.",
-  "nextAction": "Builder reconciles preserved uncommitted evidence, reruns the exact-SHA gate on a clean frozen candidate, and returns T1 for audit."
+  "reason": "T1 candidate evidence is committed and the exact-SHA application worktree is frozen and synchronized.",
+  "nextAction": "Independent Auditor audits the exact candidate SHA."
 }
