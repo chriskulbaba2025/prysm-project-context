@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "loop_action": {"type": "string", "enum": ["CONTINUE", "STOP", "BLOCKED", "COMPLETE"]},
+    "role": {"type": "string", "enum": ["Builder", "Auditor"]},
+    "next_role": {"type": "string", "enum": ["Builder", "Auditor", "NONE"]},
+    "tranche": {"type": "string"},
+    "checkpoint": {"type": "string"},
+    "reason": {"type": "string"},
+    "application_branch": {"type": "string"},
+    "application_sha": {"type": "string"},
+    "governance_sha": {"type": "string"},
+    "whole_app_gate": {"type": "string", "enum": ["PASS", "FAIL", "NOT_RUN", "NOT_APPLICABLE"]},
+    "material_defects": {"type": "integer", "minimum": 0},
+    "repair_attempt": {"type": "integer", "minimum": 0, "maximum": 3},
+    "next_action": {"type": "string"},
+    "github_state_synced": {"type": "boolean"}
+  },
+  "required": [
+    "loop_action",
+    "role",
+    "next_role",
+    "tranche",
+    "checkpoint",
+    "reason",
+    "application_branch",
+    "application_sha",
+    "governance_sha",
+    "whole_app_gate",
+    "material_defects",
+    "repair_attempt",
+    "next_action",
+    "github_state_synced"
+  ]
+}
