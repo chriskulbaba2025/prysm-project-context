@@ -1,7 +1,7 @@
 # PRYSM Autonomous Production Closure Handoff
 
 Date: 2026-08-31
-Status: ACTIVE NEW-CHAT / CODEX HANDOFF
+Status: COMPLETE / TERMINAL HANDOFF
 
 ## Repository authority
 
@@ -228,6 +228,12 @@ Dirty application status at initial preflight is expected and must not be cleane
 Leave the terminal open. The controller automatically starts fresh Codex runs and switches Builder/Auditor roles until STOP, BLOCKED, COMPLETE, Ctrl+C, or controller failure.
 
 ## Exact next action
+
+Repository-controlled closure is complete at final candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365`. Independent T6 audit PASSed with zero material defects; T7 final reconciliation verified application and governance synchronization at 0/0. GitHub reports `main` branch protection absent (404). The single next action is owner authorization before merge to `main`, deployment, or a fresh paid production audit.
+
+`READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`
+
+Historical startup instructions below are retained as execution history.
 
 Pull the latest `prysm-project-context` governance state locally, run PRYSM autorun preflight against the existing dirty `C:\Users\kulba\Desktop\vantage-platform`, and if the final line is `PREFLIGHT PASS`, start the same controller with `-MaxRuns 0`.
 
