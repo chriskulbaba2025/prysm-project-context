@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-T3 WriterInput / Writer / Judge current-contract migration.
+T4 Replay, ReportContent, and semantic-coherence closure.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -25,8 +25,8 @@ Current environment / branch / version:
 - Last committed T2 candidate SHA before the preserved dirty repair: `0bc6cfa758b7c6c20efd2f01ae3b3485ea540fbe`.
 - Current autonomous tranche: T3.
 - Autorun status: CONTINUE.
-- Governed repair attempt: 0 / Luna for the new ReportViewModel contract-version root cause.
-- Last passed tranche: T2.
+- Governed repair attempt: 0 / Luna for T4.
+- Last passed tranche: T3.
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
 - Current Narrative WriterOutput version: `1.0.0`.
@@ -44,7 +44,7 @@ Completed:
 - T3 candidate `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1` aligns stale Judge-version fixtures with the governed 1.1.0/2.1.0 Judge contract and repairs minimal fixtures to include required persisted hierarchy; Narrative v2 98/98, acceptance, and Whole-App Gate pass.
 
 In progress:
-- T3: trace WriterInput -> Writer -> Judge current contract, persistence, validation, and production-shaped Narrative proof; version incompatible current artifacts truthfully while preserving historical compatibility.
+- T4: split current replay from historical compatibility replay, preserve source-state uncertainty in ReportContent, reject stale current artifacts, and consume the canonical current hydration boundary.
 
 Blocked:
 - No repository-controlled blocker prevents Codex from continuing T3; independent audit is pending on the pushed candidate.
@@ -62,7 +62,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Independent Auditor must audit exact application SHA `e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1`; do not advance T3 until Auditor PASS.
+Builder must diagnose T4's replay and ReportContent boundaries before editing, then implement the smallest bounded contract/proof closure.
 
 Last verified:
 2026-08-31 America/Toronto — T2 candidate 4f03947517beec98c54dedf028bcc79f8771c7ae pushed; Whole-App Tranche Gate PASS.
