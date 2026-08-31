@@ -6,14 +6,14 @@
   "currentRole": "Builder",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "rootDefectId": "T4.V2_PUBLICATION_RETRIEVAL_CONTRACT",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "0b10e67662b4c2ad7e97ae94b6927e2c47db0903",
+  "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PENDING",
-  "reason": "T4 current replay now exports a valid artifact set from deterministic production composition and the Whole-App Gate executes the replay CLI against it, including current-contract fail-closed coverage.",
-  "nextAction": "Independent Auditor reviews exact application SHA 0b10e67662b4c2ad7e97ae94b6927e2c47db0903 for T4."
+  "reason": "AUD-T4-003 repair binds v2 approval, publication verification, and retrieval to report-v2/approved/index.html in both local and S3 stores; exact-SHA Whole-App Gate passed.",
+  "nextAction": "Independent Auditor reviews exact application SHA 50a3ecf938e18a7b80a7dc1d98e38a3758126667 for T4."
 }

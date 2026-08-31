@@ -1,0 +1,20 @@
+PRYSM T4 publication/retrieval repair evidence
+Candidate: repair/prysm-production-closure @ 50a3ecf938e18a7b80a7dc1d98e38a3758126667
+Root defect: T4.V2_PUBLICATION_RETRIEVAL_CONTRACT
+
+AUD-T4-003 correction
+- Local and S3 report stores persist the approved v2 page at report-v2/approved/index.html.
+- Publication verifies that exact artifact and records UTF-8 byte count plus SHA-256.
+- Published v2 retrieval reads only that verified artifact and fails closed on absent/mismatched verification.
+- The draft report-v2/pages/index.html artifact is no longer a published-retrieval source.
+
+Exact-SHA proofs
+- node --test src/application/publication-path.test.js: PASS, 2/2.
+- node scripts/acceptance-prysm.js: PASS, 84/84.
+- node scripts/prysm-whole-app-gate.js: PASS.
+- Whole-App Gate: WriterInput parity 10/10; Narrative v2 production 10/10; current replay hydration 2/2; replay CLI compatibility/current proof 4/4; semantic-model parity 1/1; current replay CLI 1/1 PASS.
+- Controlled transports only; live paid provider/model calls: 0.
+- git diff --check: PASS; application tree clean; exact HEAD unchanged after gate.
+- Application remote verification: local SHA = origin/repair/prysm-production-closure = 50a3ecf938e18a7b80a7dc1d98e38a3758126667; ahead/behind 0/0.
+
+Audit required: Independent Auditor must inspect this exact candidate before T4 may advance.

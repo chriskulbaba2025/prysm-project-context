@@ -10,7 +10,7 @@ Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current T4 candidate application SHA: `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`.
+- Current T4 candidate application SHA: `50a3ecf938e18a7b80a7dc1d98e38a3758126667`.
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
 - T2 PASS by independent Auditor after the versioned current ReportViewModel migration and base/Narrative/replay parity proof.
@@ -53,7 +53,7 @@ Completed:
 - Autorun controller root-defect accounting repair preventing new root causes from consuming prior Luna -> Terra -> Sol chains.
 
 In progress:
-- T4 independent audit of exact candidate `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`.
+- T4 independent audit of exact candidate `50a3ecf938e18a7b80a7dc1d98e38a3758126667`.
 
 Blocked:
 - No repository-controlled blocker currently prevents Codex from resuming T4 on the new v2 publication/retrieval root boundary.
@@ -74,7 +74,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Run the independent Auditor against exact application SHA `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`; do not advance beyond T4 until that audit PASSes.
+Run the independent Auditor against exact application SHA `50a3ecf938e18a7b80a7dc1d98e38a3758126667`; do not advance beyond T4 until that audit PASSes.
 
 Last verified:
 2026-08-31 America/Toronto
