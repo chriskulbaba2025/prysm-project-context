@@ -4,13 +4,13 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resume T4 Replay, ReportContent, and semantic-coherence closure on the v2 publication/retrieval contract boundary. Preserve the existing deterministic production-composition and corrected divergent-draft proof work. The latest Sol run aborted in proof-fixture setup before the governed assertion executed; that abort is non-escalating and T4 remains on the same root at Sol / repair attempt 2.
+Resume T4 closure on the newly proven DE-16 current-schema validator fixture boundary. The v2 publication/retrieval regression now executes and passes, and the exact-SHA Whole-App Gate passes on local candidate `3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8`, but broad verification exposed a separate fixture migration defect before its governed render assertion.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current recorded T4 application SHA before preserved uncommitted proof work: `50a3ecf938e18a7b80a7dc1d98e38a3758126667`.
+- Current local T4 candidate SHA: `3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8` (one local commit ahead of the synchronized remote branch; not yet pushed because composite verification is incomplete).
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
 - T2 PASS by independent Auditor after the versioned current ReportViewModel migration and base/Narrative/replay parity proof.
@@ -25,9 +25,9 @@ Verified checkpoint:
 - `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json` now allows `PROOF_SETUP_FAILURE`.
 - `tools/autorun/PRYSM-AUTORUN-ACCOUNTING.ps1` preserves the current repair level for `PROOF_SETUP_FAILURE` and contains a regression proving attempt 2 remains attempt 2.
 - `tools/autorun/PRYSM-BUILDER-AUTORUN-PROMPT.md` now requires proof-setup aborts to be classified separately from `REPAIR_PROOF_FAILED`.
-- Active T4 root remains `T4.V2_PUBLICATION_RETRIEVAL_CONTRACT`.
-- `PRYSM_AUTORUN_STATE.json` is reopened at Builder / T4 / repair attempt 2 / Sol for that same root.
-- The application working tree intentionally contains the corrected uncommitted proof fixture. Do not reset, clean, checkout-overwrite, discard, or mass-rewrite it.
+- The AUD-T4-004 divergent-draft and approved-artifact tamper assertions pass; acceptance is 86/86 and the exact-SHA Whole-App Gate passes on `3cd0d8a`.
+- Broad `npm test` is 961/962: isolated DE-16 fails because its local AJV fixture registers only v1 schemas while production scoring requests `contracts/v2/score-current.schema.json`; execution stops at `evidence_locked` before the governed render assertion.
+- This is a materially new fixture-migration root: `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE`, repair attempt 0.
 
 Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
@@ -35,8 +35,8 @@ Current environment / branch / version:
 - Current autonomous tranche: T4.
 - Last passed tranche: T3.
 - Autorun status: CONTINUE.
-- Active root defect: `T4.V2_PUBLICATION_RETRIEVAL_CONTRACT`.
-- Governed repair attempt: 2 / Sol.
+- Active root defect: `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE`.
+- Governed repair attempt: 0 / Luna (controller-owned reset on new root).
 - Governed viewer: Viewer v2.2.0.
 - Scoring version remains `4.1.1`.
 - Current Narrative WriterOutput version: `1.0.0`.
@@ -55,8 +55,8 @@ Completed:
 - Autorun root-defect accounting and proof-setup failure accounting repair.
 
 In progress:
-- T4 AUD-T4-004 permanent regression: make draft and approved v2 bytes observably different, prove published retrieval returns the verified approved bytes, and prove approved-artifact tamper/removal fails closed.
-- Rerun the corrected proof at the existing Sol / attempt-2 level. The run only consumes the final same-root level if the governed assertion actually executes and rejects the repaired publication/retrieval behavior.
+- T4 DE-16 fixture migration: register the current v2 ScoreSet schema in its test validator so the existing production-path render assertion can execute.
+- Rerun isolated DE-16, broad `npm test`, and the exact-SHA Whole-App Gate before push/audit handoff.
 
 Blocked:
 - No repository-controlled blocker prevents Codex from resuming T4 at Sol / attempt 2.
@@ -76,7 +76,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then restart `PRYSM-AUTORUN.ps1` with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty corrected divergent-draft proof and resume T4 on `T4.V2_PUBLICATION_RETRIEVAL_CONTRACT` at repair attempt 2 / Sol. The corrected proof should be rerun once before any further repair classification.
+Resume Builder on new root `T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE` at repair attempt 0. Preserve local application commit `3cd0d8a`, repair only the DE-16 current-schema validator fixture, then rerun isolated DE-16, broad `npm test`, and the exact-SHA Whole-App Gate before any push or Auditor handoff.
 
 Last verified:
 2026-08-31 America/Toronto

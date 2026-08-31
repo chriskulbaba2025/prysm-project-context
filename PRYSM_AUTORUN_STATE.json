@@ -6,14 +6,14 @@
   "currentRole": "Builder",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
-  "repairAttempt": 2,
-  "rootDefectId": "T4.V2_PUBLICATION_RETRIEVAL_CONTRACT",
+  "repairAttempt": 0,
+  "rootDefectId": "T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
-  "wholeAppGate": "FAIL",
+  "applicationSha": "3cd0d8a5e0c9ec073505d9fc6e2df72f73de89d8",
+  "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "AUD-T4-004 Sol-level run aborted during divergent-draft fixture setup because the temporary fixture directory did not exist. The governed publication/retrieval assertion was never reached, so this is reclassified as PROOF_SETUP_FAILURE and does not consume the final same-root repair level. The setup is already corrected locally and must be preserved.",
-  "nextAction": "Builder resumes T4 on the same root T4.V2_PUBLICATION_RETRIEVAL_CONTRACT at repair attempt 2 / Sol, preserves the dirty corrected proof fixture, reruns the intended divergent-draft and approved-artifact tamper/fail-closed proof once, then proceeds to the exact-SHA Whole-App Gate and independent audit only if that proof reaches the governed assertion and passes."
+  "reason": "The AUD-T4-004 publication/retrieval assertions executed and passed, and the exact-SHA Whole-App Gate passed on local candidate 3cd0d8a. The broad npm test then exposed a materially different fixture-migration root: DE-16 registers only v1 schemas, so production scoring cannot load the v2 current ScoreSet schema and stops at evidence_locked before the governed render assertion.",
+  "nextAction": "Builder repairs the isolated DE-16 validator fixture under new root T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE at repair attempt 0, reruns DE-16, npm test, and the exact-SHA Whole-App Gate, then pushes and hands T4 back to the Auditor only if all pass."
 }
