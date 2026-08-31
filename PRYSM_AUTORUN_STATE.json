@@ -5,15 +5,15 @@
   "status": "COMPLETE",
   "currentRole": "Builder",
   "currentTranche": "PDV1",
-  "lastPassedTranche": "T7",
+  "lastPassedTranche": "PDV1",
   "repairAttempt": 0,
   "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "repair/prysm-production-closure",
-  "remoteMainBaselineSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
+  "applicationBranch": "main",
+  "remoteMainBaselineSha": "008dc9af5ea80706e6db7034ccaaa17817490915",
   "applicationSha": "008dc9af5ea80706e6db7034ccaaa17817490915",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "PDV1 independently PASSed on exact application SHA 008dc9af5ea80706e6db7034ccaaa17817490915 with zero material defects. T0-T7 and the bounded post-deployment repair checkpoint are complete.",
-  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merge to main, deployment, or a fresh paid production audit."
+  "reason": "PDV1 independently PASSed with zero material defects and was owner-authorized for production promotion. Application main was fast-forwarded without force to exact tested SHA 008dc9af5ea80706e6db7034ccaaa17817490915. Vercel prysm, Vercel vantage-platform, and Railway deployment status checks all report success for that exact SHA.",
+  "nextAction": "Owner authorization is required before one fresh paid/live production audit. After it runs, verify the full production lifecycle, governed Writer/Judge finalization, persisted artifacts, published retrieval, and rendered report."
 }
