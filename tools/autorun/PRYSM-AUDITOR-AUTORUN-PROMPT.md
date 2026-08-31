@@ -43,15 +43,39 @@ At every invocation:
 4. fetch governance remote refs;
 5. identify one exact Builder tranche candidate SHA from durable state;
 6. prove the local application SHA equals the claimed pushed candidate and the branch is not actively mutating;
-7. if exact target identity cannot be established, return BLOCKED.
+7. classify any dirty-tree condition before deciding whether exact target identity is truly blocked.
 
 Do not audit an uncommitted application working tree as a frozen candidate.
+
+### Candidate-freeze hygiene rule
+
+A dirty worktree caused only by a **proven current-run generated diagnostic/gate evidence artifact** is not a product defect and is not a three-attempt blocker.
+
+If all of the following are true:
+- local `HEAD` equals the claimed pushed candidate SHA;
+- the remote repair branch equals that same SHA;
+- committed application content is not modified;
+- every dirty path is proven to be generated diagnostic/gate evidence from the current closure run (for example a named `.txt` gate transcript);
+- removing or relocating that evidence does not alter the candidate code or governed persisted product artifacts;
+
+then do **not** return terminal `BLOCKED`. Return:
+- `loop_action = CONTINUE`;
+- `next_role = Builder`;
+- checkpoint `CANDIDATE_FREEZE_HYGIENE_REQUIRED`;
+- `failure_class = PROOF_SETUP_FAILURE`;
+- unchanged `root_defect_id` and `repair_attempt`;
+- `material_defects = 0`;
+- exact next action instructing Builder to preserve the evidence outside the application repository (or commit it only if it is intentionally durable), restore a clean exact-SHA application worktree, and resubmit the same candidate for audit.
+
+Use terminal `BLOCKED` only when dirty-path provenance is unknown, the dirty content may materially alter the application candidate, exact SHA identity cannot be established, synchronization is ambiguous, or safe reconciliation requires human judgment.
+
+This rule prevents generated evidence files from repeatedly stopping the autonomous loop while preserving the clean-frozen-candidate requirement.
 
 ## Strict no-repair authority
 
 Do not modify, stage, commit, revert, reset, or rewrite application files or application Git history.
 
-You may run read-only diagnostics/tests and commands that create ephemeral output outside the application repository. If a repository-local diagnostic file is unavoidable, remove it before finalizing and prove application tree unchanged.
+You may run read-only diagnostics/tests and commands that create ephemeral output outside the application repository. Never intentionally create new diagnostic output inside the application repository when an external temp/log path is available.
 
 Your governed writes are limited to audit-owned governance files:
 - `PRYSM_POSTRUN_AUDIT_STATE.json`;
@@ -106,7 +130,7 @@ Use one:
 - `PASS` - no material defect; tranche boundary and proof are sufficient;
 - `PASS_WITH_MINOR` - no material release/integrity defect; minor non-blocking improvement recorded;
 - `FAIL` - one or more material product/contract/proof defects require Builder repair;
-- `BLOCKED` - exact target or required evidence cannot be established.
+- `BLOCKED` - exact target or required evidence truly cannot be established after applying the candidate-freeze hygiene rule.
 
 For this closure roadmap, only `PASS` advances a tranche automatically. `PASS_WITH_MINOR` returns to Builder so the Builder can decide whether the roadmap requires closure of the minor item before advancing; do not silently advance it.
 
@@ -151,13 +175,15 @@ Reject the tranche if:
 ## Audit writes / synchronization
 
 After reaching a bounded verdict:
-1. update/create `PRYSM_POSTRUN_AUDIT_STATE.json`;
-2. write/update the tranche audit report;
+1. update/create `PRYSM_POSTRUN_AUDIT_STATE.json` when an actual audit verdict is reached;
+2. write/update the tranche audit report when an actual audit verdict is reached;
 3. fetch/pull latest governance before committing;
 4. preserve Builder/shared files;
 5. commit/push audit-owned governance files with normal fast-forward push;
 6. prove governance local SHA = remote SHA and ahead/behind = 0/0;
 7. re-read the remote audit state/report.
+
+For candidate-freeze hygiene routing, do not manufacture a product/audit FAIL. Return the hygiene checkpoint to Builder with `material_defects = 0`.
 
 No force push.
 
@@ -168,6 +194,7 @@ If verdict PASS:
 - `next_role = Builder`;
 - checkpoint `PASS`;
 - material_defects = 0;
+- `failure_class = NONE`;
 - exact next action: Builder records tranche PASS and advances roadmap.
 
 If PASS_WITH_MINOR or FAIL:
@@ -175,9 +202,18 @@ If PASS_WITH_MINOR or FAIL:
 - `next_role = Builder`;
 - checkpoint must contain the verdict;
 - material_defects = count of open audit findings requiring Builder disposition;
+- use the current root identity and the failure class actually supported by the finding;
 - exact next action points to the audit report and same tranche repair/disposition.
 
-If exact target/evidence cannot be established safely:
+If candidate-freeze hygiene is the only issue:
+- return `CONTINUE`;
+- `next_role = Builder`;
+- checkpoint `CANDIDATE_FREEZE_HYGIENE_REQUIRED`;
+- `material_defects = 0`;
+- `failure_class = PROOF_SETUP_FAILURE`;
+- preserve current root identity and repair attempt.
+
+If exact target/evidence truly cannot be established safely after applying the hygiene rule:
 - return `BLOCKED`;
 - `next_role = NONE`.
 
@@ -212,7 +248,9 @@ Populate:
 - `governance_sha`
 - `whole_app_gate`
 - `material_defects`
-- `repair_attempt` = current Builder attempt count from durable state, without modifying it
+- `repair_attempt` = echo of the controller-provided current Builder attempt, without modifying it
+- `root_defect_id` = current stable root identity, or `NONE` after PASS reset semantics are consumed by Builder/controller
+- `failure_class` = one of `NONE`, `REPAIR_PROOF_FAILED`, `NEW_ROOT_CAUSE`, `PROOF_SETUP_FAILURE`, `EXTERNAL_OR_PROTOCOL`
 - `next_action`
 - `github_state_synced`
 
