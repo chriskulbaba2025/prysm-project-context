@@ -3,12 +3,12 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "COMPLETE",
-  "tranche": "T2",
+  "tranche": "T3",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "4f03947517beec98c54dedf028bcc79f8771c7ae",
+  "applicationSha": "e9c744d7024ce1af7da3c7b0e25ff67a4bc122a1",
   "verdict": "PASS",
   "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T2_2026-08-31.md",
-  "reason": "Independent exact-SHA audit passed; canonical current hydration and whole-app parity proof close T2.",
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T3_2026-08-31.md",
+  "reason": "Independent exact-SHA audit passed; T3 current WriterInput/Writer/Judge contract fixture and hierarchy proof is bounded and whole-app gated.",
   "nextAction": "Builder records tranche PASS and advances roadmap."
 }
