@@ -28,6 +28,14 @@ GitHub is the authoritative durable project memory. Chats are temporary working 
 
 `WORKFLOW_INSTRUCTIONS.md` is the current governing manual-edit delivery protocol and supersedes older manual-code-flow wording elsewhere in the context repository when that older wording is inconsistent with it. Hard production/authorization constraints remain unaffected.
 
+### Active Production Closure exception
+
+For the active autonomous Production Closure package dated 2026-08-31, `DECISION_AUTONOMOUS_PRODUCTION_CLOSURE_2026-08-31.md`, `PRYSM_PRODUCTION_CLOSURE_ROADMAP_2026-08-31.md`, `PRYSM_WHOLE_APP_TRANCHE_GATE.md`, `PRYSM_POSTRUN_AUDIT_PROTOCOL.md`, and the contracts under `tools/autorun/` are a specifically authorized project-level execution exception.
+
+During that package only, those files supersede the manual-chat/source-file delivery mechanics in `WORKFLOW_INSTRUCTIONS.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `CONSTRAINTS.md`, and older decisions where those mechanics would prohibit direct autonomous local application edits, coherent multi-file contract migrations, deterministic local commits, normal pushes to the dedicated repair branch, or autonomous governance-memory synchronization.
+
+The exception does **not** supersede evidence-integrity semantics, no-guess/root-cause requirements, dirty-worktree preservation, three-attempt anti-thrash rules, Narrative quality gates, no-force-push rules, or production/external authorization boundaries. Merge to application `main`, deployment, production configuration mutation, live/paid provider/model execution, and starting a fresh production audit remain explicitly unauthorized unless a later durable instruction grants them.
+
 ## Startup rule
 
 At the start of a new substantive chat:
@@ -40,9 +48,11 @@ At the start of a new substantive chat:
 - load only the additional context required;
 - continue from the exact next action in `CURRENT_STATE.md`.
 
-Before any application-file edit or request for a source file, the Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass. Complete the repair design and expected file/test boundary first; only then begin the governed one-source-file-at-a-time implementation workflow.
+For ordinary/manual PRYSM work, before any application-file edit or request for a source file, the Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass. Complete the repair design and expected file/test boundary first; only then begin the governed one-source-file-at-a-time implementation workflow.
 
-For every manual source-file edit, `WORKFLOW_INSTRUCTIONS.md` is mandatory. In particular: give the exact path, exact current line numbers/ranges and anchors, present multiple edits bottom-up (highest line first), provide complete replacement blocks, and stop for verification before moving to the next source-file unit.
+For the active autonomous Production Closure package, follow the Active Production Closure exception above instead: the Codex Builder must recover exact local state first, follow the T0-T7 roadmap and Producer -> Contract/Persistence -> Loader -> Consumer dependency discipline, and satisfy the exact-SHA Whole-App Tranche Gate plus independent Auditor before advancing each application-changing tranche.
+
+For every ordinary/manual source-file edit, `WORKFLOW_INSTRUCTIONS.md` is mandatory. In particular: give the exact path, exact current line numbers/ranges and anchors, present multiple edits bottom-up (highest line first), provide complete replacement blocks, and stop for verification before moving to the next source-file unit.
 
 For diagnostics, troubleshooting, defect analysis, and repair planning, follow `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`: verify the executing boundary and direct evidence before stating a root cause or directing the user through a diagnostic path.
 
