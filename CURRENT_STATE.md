@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Repository-controlled Production Closure T0-T7 is complete at final candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365`.
+Post-deployment validation of the promoted PRYSM production candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365` with one fresh real production audit.
 
 Verified checkpoint:
 - T0 PASS.
@@ -13,36 +13,41 @@ Verified checkpoint:
 - T3 PASS.
 - T4 PASS on exact candidate `2a630ccccdf254564446b963f3b7b22cb6b58557`.
 - T5 independently PASSed.
-- T6 candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365` is pushed on `repair/prysm-production-closure` and passed acceptance 86/86, the closure machine gate, and Whole-App Gate.
-- T6 independently PASSed with zero material defects on that exact SHA.
-- T7 final reconciliation PASSed: application and governance remotes are synchronized at 0/0; GitHub `main` branch protection is absent (API 404), so merge/deploy/fresh paid audit remain owner authorization boundaries.
-- Generated T5 gate evidence was preserved outside the application repository and removed from the worktree without changing committed application content.
-- This file is generated gate evidence, not a product-code defect.
-- The Auditor contract now routes proven generated-evidence dirtiness back to Builder as `CANDIDATE_FREEZE_HYGIENE_REQUIRED` with `PROOF_SETUP_FAILURE`, zero material defects, and no repair escalation.
-- The Builder contract now requires generated evidence to be preserved outside the application repository before audit handoff, followed by clean-tree, unchanged-HEAD, and local/remote identity checks.
+- T6 independently PASSed with zero material defects on exact candidate `dfc8ff4a4aee743d350f2b3337707b9481e95365` after acceptance 86/86, closure machine gate PASS, and Whole-App Gate PASS.
+- T7 final reconciliation PASSed.
+- Owner authorized production promotion on 2026-08-31.
+- GitHub application `main` was fast-forwarded without force from `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` to the exact tested/audited SHA `dfc8ff4a4aee743d350f2b3337707b9481e95365`; no new merge commit, squash, rebase, or conflict resolution changed the tested tree.
+- Vercel project `prysm` production deployment is READY/SUCCESS and reports Git commit `dfc8ff4a4aee743d350f2b3337707b9481e95365` from `main`.
+- Vercel project `vantage-platform` production deployment is READY/SUCCESS and reports the same Git commit from `main`.
+- GitHub deployment/status context `GENSEN process - vantage-platform` reports SUCCESS for the same commit, representing the Railway production deployment triggered by the main update.
+- Production worker configuration remains governed by `railway.toml` using `services/worker/Dockerfile`, `/health`, 120-second health timeout, and restart-on-failure policy.
+- The Vercel application is configured to call `https://vantage-platform-production.up.railway.app` through `VANTAGE_WORKER_API_URL`.
 
 Current environment:
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Application branch: `repair/prysm-production-closure`.
-- Current candidate SHA: `dfc8ff4a4aee743d350f2b3337707b9481e95365`.
-- Current tranche: T7.
-- Last passed tranche: T7.
-- Autorun status: COMPLETE.
-- Current role: Builder.
+- Production branch: `main`.
+- Production application SHA: `dfc8ff4a4aee743d350f2b3337707b9481e95365`.
+- Repository-controlled closure: COMPLETE.
+- T0-T7: PASS.
 - Active root defect: NONE.
-- Repair attempt: 0 / Luna.
-- Whole-App Gate: PASS for the committed T5 candidate.
+- Whole-App Gate: PASS on the promoted SHA.
+- Production deployment signals: Vercel `prysm` SUCCESS; Vercel `vantage-platform` SUCCESS; Railway status context SUCCESS.
 
 In progress:
-- None.
+- One fresh real production audit against the newly promoted deployment.
 
 Blocked:
-- No product-code defect currently blocks T5.
-- No model escalation is justified for this evidence-hygiene condition.
-- Merge, deployment, live provider/model calls, and a fresh production audit remain outside the current closure authorization.
+- No repository-controlled product-code blocker is open.
+- Post-deployment validation is not complete until one fresh real production audit is run and its lifecycle, persisted artifacts, governed Writer/Judge finalization, publication/retrieval path, and rendered report are inspected.
+
+Important constraints:
+- The fresh production audit is a validation run, not another speculative repair cycle.
+- If the fresh audit exposes a defect, diagnose the exact production lifecycle/root cause before any code change.
+- Do not silently weaken evidence, scoring, Writer/Judge, finalization, publication, or UNKNOWN/PARTIAL semantics to make the production run pass.
+- Preserve named diagnostic output as `.txt` evidence for upload/review when manual diagnostics are needed.
 
 Exact next action:
-Owner authorization is required before merging `repair/prysm-production-closure` to application `main`, deploying, or starting a fresh paid production audit.
+Start one fresh real production PRYSM audit against the promoted production deployment. After it completes, verify the lifecycle reaches the intended terminal state and inspect the persisted governed artifacts, current Writer/Judge/finalization identity, published retrieval, and rendered report. Do not declare post-deployment validation complete until that production run passes review.
 
 Last verified:
 2026-08-31 America/Toronto
