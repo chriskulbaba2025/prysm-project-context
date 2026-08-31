@@ -21,6 +21,11 @@ $ScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $SchemaPath = Join-Path $ScriptRoot 'PRYSM-AUTORUN-RESULT.schema.json'
 $BuilderPromptPath = Join-Path $ScriptRoot 'PRYSM-BUILDER-AUTORUN-PROMPT.md'
 $AuditorPromptPath = Join-Path $ScriptRoot 'PRYSM-AUDITOR-AUTORUN-PROMPT.md'
+$AutorunStatePath = Join-Path $GovernanceRepo 'PRYSM_AUTORUN_STATE.json'
+
+$ModelLuna = 'gpt-5.6-luna'
+$ModelTerra = 'gpt-5.6-terra'
+$ModelSol = 'gpt-5.6-sol'
 
 function Resolve-RequiredPath {
     param([string]$Path, [string]$Label)
@@ -85,6 +90,45 @@ function Get-PromptPath {
     return $BuilderPromptPath
 }
 
+function Get-ModelForRepairAttempt {
+    param([int]$RepairAttempt)
+    switch ($RepairAttempt) {
+        0 { return $ModelLuna }
+        1 { return $ModelTerra }
+        2 { return $ModelSol }
+        default { return $null }
+    }
+}
+
+function Get-InitialRepairAttempt {
+    if (-not (Test-Path -LiteralPath $AutorunStatePath)) {
+        return 0
+    }
+
+    try {
+        $state = Get-Content -LiteralPath $AutorunStatePath -Raw | ConvertFrom-Json
+        $attempt = [int]$state.repairAttempt
+        if ($attempt -lt 0) { return 0 }
+        if ($attempt -gt 3) { return 3 }
+        return $attempt
+    } catch {
+        Write-Warning 'Could not read repairAttempt from PRYSM_AUTORUN_STATE.json; starting at Luna / level 1.'
+        return 0
+    }
+}
+
+function Test-UsageLimitFailure {
+    param([string[]]$Paths)
+    foreach ($path in $Paths) {
+        if (-not (Test-Path -LiteralPath $path)) { continue }
+        $text = Get-Content -LiteralPath $path -Raw -ErrorAction SilentlyContinue
+        if ($text -match '(?i)hit your usage limit|usage limit.*try again|usage limit.*reset') {
+            return $true
+        }
+    }
+    return $false
+}
+
 function Send-AutorunNotification {
     param(
         [Parameter(Mandatory = $true)][string]$Title,
@@ -133,6 +177,7 @@ foreach ($requiredFile in @($SchemaPath,$BuilderPromptPath,$AuditorPromptPath)) 
 
 $AppRepo = Resolve-RequiredPath $AppRepo 'Application repository'
 $GovernanceRepo = Resolve-RequiredPath $GovernanceRepo 'Governance repository'
+$AutorunStatePath = Join-Path $GovernanceRepo 'PRYSM_AUTORUN_STATE.json'
 Assert-GitRepo $AppRepo 'Application repository'
 Assert-GitRepo $GovernanceRepo 'Governance repository'
 $CodexCmdPath = Resolve-CodexCmd
@@ -167,15 +212,24 @@ if ($PreflightOnly) {
         }
     }
 
-    foreach ($required in @('--output-schema','--output-last-message')) {
-        if ($execHelp -notmatch [regex]::Escape($required)) {
-            throw "Installed Codex exec does not advertise required option: $required"
+    foreach ($required in @('--output-schema','--output-last-message','--model')) {
+        if ($rootHelp -notmatch [regex]::Escape($required) -and $execHelp -notmatch [regex]::Escape($required)) {
+            throw "Installed Codex CLI does not advertise required option: $required"
         }
     }
 
     if ($rootHelp -notmatch 'danger-full-access' -and $execHelp -notmatch 'danger-full-access') {
         throw 'Installed Codex CLI does not advertise danger-full-access, required for governed Git metadata writes on Windows.'
     }
+
+    Write-Host ''
+    Write-Host 'Model escalation policy:'
+    Write-Host "  Level 1: $ModelLuna (default / cheapest current GPT-5.6 Codex option)"
+    Write-Host "  Level 2: $ModelTerra (only after first governed repair failure)"
+    Write-Host "  Level 3: $ModelSol (only after second governed repair failure)"
+    Write-Host '  Third governed repair failure: STOP/BLOCKED + Windows alert; no fourth autonomous attempt.'
+    Write-Host '  Successful audited checkpoint: reset next work to Level 1 / Luna.'
+    Write-Host '  Usage-limit/controller failures do not consume an escalation level.'
 
     Write-Host ''
     Write-Host 'Application Git state (dirty is allowed and expected initially):'
@@ -230,6 +284,7 @@ foreach ($lockPath in @($AppLockPath,$GovernanceLockPath)) {
 }
 
 $CurrentRole = $StartRole
+$CurrentRepairAttempt = Get-InitialRepairAttempt
 $lockBody = @"
 PID=$PID
 Started=$(Get-Date -Format o)
@@ -255,6 +310,7 @@ try {
     Write-Host 'Sandbox:     danger-full-access'
     Write-Host "Logs:        $LocalRoot"
     Write-Host "Start role:  $CurrentRole"
+    Write-Host "Repair level: $($CurrentRepairAttempt + 1) of 3"
     if ($MaxRuns -eq 0) {
         Write-Host 'Run limit:   unlimited'
     } else {
@@ -270,9 +326,22 @@ try {
             break
         }
 
+        if ($CurrentRepairAttempt -ge 3) {
+            $terminalStatus = 'BLOCKED'
+            $terminalMessage = "PRYSM exhausted all three governed model levels for the same unresolved repair chain.`n`nLuna -> Terra -> Sol were used. No fourth autonomous attempt is allowed.`nInspect durable state and intervene manually before restarting."
+            $terminalLevel = 'Error'
+            Write-Host 'AUTORUN BLOCKED AFTER THREE GOVERNED REPAIR LEVELS.'
+            break
+        }
+
+        $CurrentModel = Get-ModelForRepairAttempt $CurrentRepairAttempt
+        if (-not $CurrentModel) {
+            throw "No governed model exists for repair attempt $CurrentRepairAttempt"
+        }
+
         $runNumber++
         $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-        $runDir = Join-Path $LocalRoot ("run-{0:D4}-{1}-{2}" -f $runNumber,$stamp,$CurrentRole.ToLowerInvariant())
+        $runDir = Join-Path $LocalRoot ("run-{0:D4}-{1}-{2}-level{3}" -f $runNumber,$stamp,$CurrentRole.ToLowerInvariant(),($CurrentRepairAttempt + 1))
         New-Item -ItemType Directory -Force -Path $runDir | Out-Null
 
         $LastMessagePath = Join-Path $runDir 'final.json'
@@ -293,6 +362,20 @@ Controller run number: $runNumber
 Application local path: $AppRepo
 Governance local path: $GovernanceRepo
 Invocation time: $(Get-Date -Format o)
+Current governed model: $CurrentModel
+Current repair escalation index: $CurrentRepairAttempt
+Current model level: $($CurrentRepairAttempt + 1) of 3
+
+MODEL ESCALATION POLICY - GOVERNING
+- Level 1 / repair_attempt 0: gpt-5.6-luna. Use for all initial work.
+- Level 2 / repair_attempt 1: gpt-5.6-terra. Use only after the same root defect has failed one evidence-based repair/proof attempt.
+- Level 3 / repair_attempt 2: gpt-5.6-sol. Use only after the same root defect has failed two evidence-based repair/proof attempts.
+- If the same root defect fails at Level 3, return BLOCKED with repair_attempt 3. The controller will stop and alert the user. Never attempt a fourth autonomous repair.
+- Initial defect discovery is not a failed repair attempt.
+- Ordinary CONTINUE, role switching, usage-limit errors, CLI/protocol errors, and infrastructure failures do not consume an escalation level.
+- When a repair/proof of the same root defect actually fails and Builder can safely retry, increment repair_attempt by exactly one before returning CONTINUE to Builder.
+- After an independent Auditor PASS closes the tranche, the controller resets the next work to Luna / repair_attempt 0.
+- Do not request or select a different model yourself. The controller owns model selection.
 
 The external controller launches another fresh Codex invocation automatically when your structured result says CONTINUE. It also switches between Builder and Auditor according to next_role. Recover durable state on every invocation; do not rely on prior run conversational context.
 
@@ -301,7 +384,7 @@ The external controller launches another fresh Codex invocation automatically wh
 
         $runner = @"
 @echo off
-call "$CodexCmdPath" --ask-for-approval never --sandbox danger-full-access --add-dir "$GovernanceRepo" exec -C "$AppRepo" --color never --output-schema "$SchemaPath" --output-last-message "$LastMessagePath" - < "$RunPromptPath" > "$StdoutPath" 2> "$StderrPath"
+call "$CodexCmdPath" --ask-for-approval never --sandbox danger-full-access --add-dir "$GovernanceRepo" exec --model "$CurrentModel" -C "$AppRepo" --color never --output-schema "$SchemaPath" --output-last-message "$LastMessagePath" - < "$RunPromptPath" > "$StdoutPath" 2> "$StderrPath"
 exit /b %ERRORLEVEL%
 "@
         $runner | Set-Content -LiteralPath $RunnerCmdPath -Encoding ASCII
@@ -309,6 +392,7 @@ exit /b %ERRORLEVEL%
         Write-Host ''
         Write-Host '============================================================'
         Write-Host "PRYSM AUTORUN - CODEX RUN $runNumber - $CurrentRole"
+        Write-Host "MODEL: $CurrentModel | LEVEL $($CurrentRepairAttempt + 1)/3"
         Write-Host '============================================================'
         Write-Host "Run logs: $runDir"
 
@@ -331,8 +415,16 @@ exit /b %ERRORLEVEL%
         }
 
         if ($exitCode -ne 0 -or -not (Test-Path -LiteralPath $LastMessagePath)) {
+            if (Test-UsageLimitFailure -Paths @($StdoutPath,$StderrPath,$TranscriptPath)) {
+                $terminalStatus = 'STOP'
+                $terminalMessage = "Codex usage limit reached while PRYSM was using $CurrentModel.`n`nNo governed repair escalation level was consumed. Resume the same controller after the usage allowance resets; recovery-first state will continue from the durable checkpoint."
+                $terminalLevel = 'Warning'
+                Write-Host 'AUTORUN STOPPED ON CODEX USAGE LIMIT. NO MODEL ESCALATION CONSUMED.'
+                break
+            }
+
             $consecutiveFailures++
-            Write-Warning "Codex execution/protocol failure $consecutiveFailures/$MaxConsecutiveFailures. Inspect $TranscriptPath"
+            Write-Warning "Codex execution/protocol failure $consecutiveFailures/$MaxConsecutiveFailures. Model stays $CurrentModel; no governed repair escalation consumed. Inspect $TranscriptPath"
             if (Test-Path -LiteralPath $StderrPath) {
                 Get-Content -LiteralPath $StderrPath -Tail 25 | ForEach-Object { Write-Warning $_ }
             }
@@ -347,7 +439,7 @@ exit /b %ERRORLEVEL%
             $result = Get-Content -LiteralPath $LastMessagePath -Raw | ConvertFrom-Json
         } catch {
             $consecutiveFailures++
-            Write-Warning "Structured response parse failure $consecutiveFailures/$MaxConsecutiveFailures."
+            Write-Warning "Structured response parse failure $consecutiveFailures/$MaxConsecutiveFailures. Model stays $CurrentModel; no governed repair escalation consumed."
             if ($consecutiveFailures -ge $MaxConsecutiveFailures) {
                 throw 'Repeated structured-response parse failures.'
             }
@@ -359,6 +451,8 @@ exit /b %ERRORLEVEL%
 
         Write-Host ''
         Write-Host 'RUN RESULT'
+        Write-Host "Model:          $CurrentModel"
+        Write-Host "Model level:    $($CurrentRepairAttempt + 1)/3"
         Write-Host "Role:           $($result.role)"
         Write-Host "Action:         $($result.loop_action)"
         Write-Host "Next role:      $($result.next_role)"
@@ -376,6 +470,32 @@ exit /b %ERRORLEVEL%
 
         switch ($result.loop_action) {
             'CONTINUE' {
+                $nextAttempt = [int]$result.repair_attempt
+
+                if ($result.role -eq 'Auditor' -and ($result.checkpoint -match '^(FAIL|PASS_WITH_MINOR)$' -or [int]$result.material_defects -gt 0)) {
+                    $nextAttempt = [Math]::Max($nextAttempt, $CurrentRepairAttempt + 1)
+                    Write-Host "Independent audit rejected the candidate. Escalating next Builder repair to attempt $nextAttempt."
+                }
+
+                if ($result.role -eq 'Auditor' -and $result.checkpoint -eq 'PASS' -and [int]$result.material_defects -eq 0) {
+                    $nextAttempt = 0
+                    Write-Host 'Independent audit PASS. Resetting next work to Luna / Level 1.'
+                }
+
+                if ($nextAttempt -lt $CurrentRepairAttempt -and -not ($result.role -eq 'Auditor' -and $result.checkpoint -eq 'PASS')) {
+                    $nextAttempt = $CurrentRepairAttempt
+                }
+
+                if ($nextAttempt -ge 3) {
+                    $terminalStatus = 'BLOCKED'
+                    $terminalMessage = "PRYSM exhausted the three governed model levels for the same unresolved repair chain.`n`nLuna -> Terra -> Sol have been consumed. Manual intervention is required before another autonomous attempt.`n`nTranche: $($result.tranche)`nReason: $($result.reason)`nNext: $($result.next_action)"
+                    $terminalLevel = 'Error'
+                    Write-Host 'AUTORUN BLOCKED AFTER LEVEL 3 FAILURE. MANUAL INTERVENTION REQUIRED.'
+                    break
+                }
+
+                $CurrentRepairAttempt = $nextAttempt
+
                 if ($result.next_role -eq 'Builder' -or $result.next_role -eq 'Auditor') {
                     $CurrentRole = $result.next_role
                 }
