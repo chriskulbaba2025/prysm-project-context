@@ -5,10 +5,10 @@
   "status": "COMPLETE",
   "tranche": "T4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "e0c2ab93481b9c4681da464cf4310e214edc25b2",
+  "applicationSha": "7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec",
   "verdict": "FAIL",
   "materialDefects": 1,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T4_2026-08-31.md",
-  "reason": "The exact Whole-App Gate does not execute the changed replay CLI boundary; helper-only replay tests omit default historical rejection and legacy compatibility behavior.",
-  "nextAction": "Builder repairs AUD-T4-001 in T4, reruns the exact-SHA gate, and returns a new pushed candidate for independent audit."
+  "reason": "AUD-T4-001 is repaired for the historical CLI branch, but the Whole-App Gate still does not execute the changed current replay CLI path with a valid current persisted artifact set. Helper-only current replay coverage cannot prove CLI argument handling, fixture loading, current ScoreSet schema validation, or current render/recovery.",
+  "nextAction": "Builder repairs AUD-T4-002 in T4, adds a deterministic current-artifact CLI replay regression to the exact-SHA Whole-App Gate, reruns the gate, and returns a new pushed candidate for independent audit."
 }
