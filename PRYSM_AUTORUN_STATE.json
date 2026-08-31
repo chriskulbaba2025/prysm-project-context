@@ -6,13 +6,13 @@
   "currentRole": "Auditor",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "e0c2ab93481b9c4681da464cf4310e214edc25b2",
+  "applicationSha": "7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "T4 replay boundary repair candidate e0c2ab93481b9c4681da464cf4310e214edc25b2 is pushed; default replay now rejects historical Judge provenance and requires current ScoreSet identity. Targeted proofs and exact-SHA Whole-App Gate pass.",
-  "nextAction": "Independent Auditor must audit exact application SHA e0c2ab93481b9c4681da464cf4310e214edc25b2 for T4."
+  "reason": "T4 AUD-T4-001 repair candidate 7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec is pushed. The exact gate now subprocesses the replay CLI: default historical rejection, explicit compatibility-only replay, and current ScoreSet validation are covered. Targeted CLI/replay proofs and exact-SHA Whole-App Gate pass.",
+  "nextAction": "Independent Auditor must audit exact application SHA 7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec for repaired T4."
 }
