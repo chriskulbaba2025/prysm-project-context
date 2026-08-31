@@ -117,7 +117,7 @@ For the current tranche:
 1. recover exact local/remote state;
 2. read the tranche objective/gate;
 3. diagnose the complete affected dependency chain before editing;
-4. classify the failure: product defect, contract migration defect, fixture drift, false-PASS proof defect, historical/current compatibility defect, or external/infrastructure issue;
+4. classify the failure: product defect, contract migration defect, fixture drift, false-PASS proof defect, historical/current compatibility defect, proof-setup failure, or external/infrastructure issue;
 5. implement the smallest architecture that closes the entire affected chain;
 6. repair the proof mechanism that allowed any escaped defect;
 7. run targeted tranche proofs;
@@ -152,9 +152,24 @@ Do not silently waive Auditor findings.
 
 Maximum three evidence-based repair attempts against the same root defect.
 
-Attempt means a materially distinct code/contract correction followed by its required proof.
+An attempt means a materially distinct code/contract correction **whose required proof actually reaches the governed product/contract assertion and returns a verdict about that repaired boundary**.
 
-If the same root defect still fails after three attempts:
+A proof-harness/setup abort is not a completed repair attempt. Examples include:
+- missing temporary fixture directories/files;
+- syntax/import/module-resolution errors in newly added proof code;
+- malformed fixture construction that aborts before the target assertion executes;
+- test-runner or harness preconditions that prevent the repaired product boundary from being exercised.
+
+For those cases:
+- correct only the proof setup/harness issue;
+- preserve the same `root_defect_id`;
+- return `failure_class = PROOF_SETUP_FAILURE`;
+- echo the current `repair_attempt` unchanged;
+- return `CONTINUE` to Builder so the intended proof can be rerun at the same governed model level.
+
+Do not use `PROOF_SETUP_FAILURE` when the governed assertion executes and rejects the repaired product behavior. That is `REPAIR_PROOF_FAILED` and consumes one same-root escalation level.
+
+If the same root defect still fails after three completed repair/proof attempts:
 1. stop editing that symptom;
 2. perform a root-cause/process reset across the full dependency chain;
 3. record why the earlier boundary was insufficient;
@@ -248,7 +263,9 @@ Populate:
 - `governance_sha`
 - `whole_app_gate`
 - `material_defects`
-- `repair_attempt`
+- `repair_attempt` = echo of the controller-provided current index only
+- `root_defect_id`
+- `failure_class` = one of `NONE`, `REPAIR_PROOF_FAILED`, `NEW_ROOT_CAUSE`, `PROOF_SETUP_FAILURE`, `EXTERNAL_OR_PROTOCOL`
 - `next_action`
 - `github_state_synced`
 
@@ -256,7 +273,7 @@ Use:
 - `CONTINUE` + `next_role=Builder` when Builder work can continue directly;
 - `CONTINUE` + `next_role=Auditor` only after a tranche candidate is fully gated/pushed and needs independent audit;
 - `STOP` only at a genuine external human/production authorization boundary that prevents further repository-controlled closure work;
-- `BLOCKED` for a proven integrity/synchronization/three-attempt blocker;
+- `BLOCKED` for a proven integrity/synchronization/three-completed-attempt blocker;
 - `COMPLETE` only for fully exhausted T0-T7 repository-controlled closure.
 
 Durable detail belongs in GitHub state/audit files, not in a long final response.
