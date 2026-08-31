@@ -3,13 +3,13 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "COMPLETE",
-  "tranche": "T4",
+  "tranche": "T5",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "2a630ccccdf254564446b963f3b7b22cb6b58557",
+  "applicationSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "verdict": "PASS",
   "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T4_2026-08-31.md",
-  "rootDefectId": "T4.DE16_CURRENT_SCORE_SCHEMA_FIXTURE",
-  "reason": "Independent exact-SHA audit passed DE-16, schema validation, acceptance 86/86, Whole-App Gate, publication fail-closed regressions, and broad npm test 962/962.",
-  "nextAction": "Builder records T4 PASS and advances roadmap."
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T5_2026-08-31.md",
+  "rootDefectId": "T5.APPLICATION_CLOSURE_SURFACE_FAILURES",
+  "reason": "Independent exact-SHA audit passed the authoritative closure gate, 86/86 PRYSM acceptance, Whole-App Gate, persistence/recovery/replay parity, publication fail-closed checks, and zero unauthorized live calls.",
+  "nextAction": "Builder records T5 PASS and advances the roadmap."
 }
