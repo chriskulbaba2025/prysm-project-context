@@ -11,7 +11,7 @@ Verified checkpoint:
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
 - T0 is PASS.
-- T1 candidate application HEAD remains `f488a18ccbbfff86a33a72236b18b4e708664698` — `fix(prysm): consume persisted decision hierarchy in WriterInput`.
+- T1 candidate application HEAD is `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe` — `fix(prysm): canonicalize WriterInput hierarchy serialization`.
 - The preserved local application tree contains one uncommitted bounded production-composed proof in `services/worker/src/application/narrative-v2-production-path.test.js`; the uploaded local review confirmed no other uncommitted T1 application files.
 - That proof reaches multiple scoring-derived hierarchy actions and preserves full ordering through Writer/Judge/report assertions.
 - AUD-T1-002 is now manually resolved at the root-cause/design level: the remaining defect is JSON-canonical identity, not hierarchy propagation. `buildWriterConversionInfluence()` materializes optional `group: undefined` in memory; JSON persistence omits it, so reloaded WriterInput differs.
@@ -21,7 +21,7 @@ Verified checkpoint:
 Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current application candidate HEAD: `f488a18ccbbfff86a33a72236b18b4e708664698` with the preserved local production-path proof uncommitted.
+- Current application candidate HEAD: `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`, pushed and synchronized on `repair/prysm-production-closure`.
 - Current autonomous tranche: T1.
 - Autorun status: CONTINUE.
 - Governed repair attempt: 0 / Luna for the new JSON-canonicalization root cause.
@@ -40,7 +40,7 @@ Completed:
 - Manual review of the preserved diff established the canonical serialization policy and reopened the work on a materially new root-cause boundary.
 
 In progress:
-- T1 WriterInput JSON-canonicalization repair: omit undefined optional hierarchy metadata before persistence while preserving strict parity across in-memory Writer execution, persisted/reloaded WriterInput, Judge action ordering, release-candidate persistence, and rendered output.
+- T1 independent audit of the exact-SHA candidate after JSON-canonicalization repair and Whole-App Tranche Gate PASS.
 
 Blocked:
 - No repository-controlled PRYSM blocker currently prevents Codex from resuming T1.
@@ -58,7 +58,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then run `PRYSM-AUTORUN.ps1` with `-PreflightOnly`. If the last line is `PREFLIGHT PASS`, immediately restart the controller with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty production-path proof and resume T1 on Luna from the JSON-canonicalization decision; do not restart T0.
+Run the independent Auditor against application SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe` for T1. Do not advance to T2 until that exact-SHA audit passes.
 
 Last verified:
 2026-08-31 America/Toronto
