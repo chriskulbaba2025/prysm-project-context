@@ -10,7 +10,7 @@ Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Remote application `main` baseline remains `e7e8477819f8bff0a7e3f0c5969637df9fb787a3` — `fix(prysm): close governed report integrity repairs`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
-- Current recorded application SHA before preserved uncommitted T4 proof work: `7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec`.
+- Current T4 candidate application SHA: `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`.
 - T0 PASS.
 - T1 PASS by independent Auditor on exact candidate SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`.
 - T2 PASS by independent Auditor after the versioned current ReportViewModel migration and base/Narrative/replay parity proof.
@@ -53,9 +53,7 @@ Completed:
 - Autorun controller root-defect accounting repair preventing new root causes from consuming prior Luna -> Terra -> Sol chains.
 
 In progress:
-- T4 current replay CLI proof through deterministic production composition.
-- Repair the current v2 approval -> publication -> published retrieval contract without fabricating legacy report artifacts.
-- Preserve current CLI/subprocess end-to-end proof intent and all existing evidence/finalization semantics.
+- T4 independent audit of exact candidate `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`.
 
 Blocked:
 - No repository-controlled blocker currently prevents Codex from resuming T4 on the new v2 publication/retrieval root boundary.
@@ -76,7 +74,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-From `C:\Users\kulba\Desktop\prysm-project-context`, run `git pull --ff-only`, then run the updated `PRYSM-AUTORUN.ps1` once with `-PreflightOnly`. Confirm `PREFLIGHT PASS` and the root-aware escalation policy lines. Then restart with `-StartRole Builder -MaxRuns 0`. Recovery must preserve the dirty application tree and resume T4 at root `T4.AUD-T4-002.AUDIT_REQUEST_DESIGN_VERSION` on Luna.
+Run the independent Auditor against exact application SHA `0b10e67662b4c2ad7e97ae94b6927e2c47db0903`; do not advance beyond T4 until that audit PASSes.
 
 Last verified:
 2026-08-31 America/Toronto

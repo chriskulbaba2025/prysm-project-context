@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "7baa716ac162c7ce33bdf5dfa051fb4f52cd82ec",
-  "wholeAppGate": "FAIL",
-  "lastAuditVerdict": "FAIL",
-  "reason": "The AuditRequest designVersion repair reaches current Narrative v2 DRAFT_RENDERED and exposes a distinct downstream T4 boundary: v2 approval records governed artifacts while publish/retrieval still require legacy report-store status and report/pages artifacts. The production-composed current replay fixture cannot be exported until this v2 finalization contract is coherent. This root is distinct from AuditRequest designVersion propagation and starts at repair attempt 0.",
-  "nextAction": "Builder resumes T4 on root defect T4.V2_PUBLICATION_RETRIEVAL_CONTRACT, preserves the dirty application tree, traces the v2 approval -> publication -> published retrieval contract, adds a deterministic production-composed regression, reruns current replay CLI proof and the exact-SHA Whole-App Tranche Gate, then returns the candidate for independent audit."
+  "applicationSha": "0b10e67662b4c2ad7e97ae94b6927e2c47db0903",
+  "wholeAppGate": "PASS",
+  "lastAuditVerdict": "PENDING",
+  "reason": "T4 current replay now exports a valid artifact set from deterministic production composition and the Whole-App Gate executes the replay CLI against it, including current-contract fail-closed coverage.",
+  "nextAction": "Independent Auditor reviews exact application SHA 0b10e67662b4c2ad7e97ae94b6927e2c47db0903 for T4."
 }
