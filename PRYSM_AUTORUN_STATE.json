@@ -10,9 +10,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
-  "applicationSha": "UNVERIFIED_LOCAL_DIRTY_STATE",
-  "wholeAppGate": "NOT_RUN",
+  "applicationSha": "d9988ccc6085311a6cf144aa2cd4f822190e9f00",
+  "wholeAppGate": "PASS",
   "lastAuditVerdict": "NOT_RUN",
-  "reason": "T0 recovered the governed dirty application worktree on repair/prysm-production-closure and froze PRYSM_T0_CLOSURE_INVENTORY_2026-08-31.md. Direct reproduction shows the recovered fixture migration currently fails NV2-PROD-07/08 because continuation fixtures lack the now-required non-empty hierarchy; this is a T3 fixture/contract boundary, not a reason to discard the repair.",
-  "nextAction": "Begin T1 diagnosis: establish a versioned persisted Conversion-First hierarchy and explicit ScoreSet current-contract validation. Preserve the recovered dirty repairs; T3 must repair the production-shaped continuation fixture and rerun NV2-PROD-07/08."
+  "reason": "T1 candidate d9988ccc6085311a6cf144aa2cd4f822190e9f00 closes the persisted current ScoreSet hierarchy/root-cause contract, repairs the acceptance harness legacy-schema false PASS boundary, and passes the exact deterministic Whole-App Tranche Gate (82 acceptance checks plus 10/10 Narrative v2 production-path tests).",
+  "nextAction": "Independent Auditor must audit exact application SHA d9988ccc6085311a6cf144aa2cd4f822190e9f00 for T1."
 }
