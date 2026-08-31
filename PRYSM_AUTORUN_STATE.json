@@ -2,7 +2,7 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "CONTINUE",
+  "status": "COMPLETE",
   "currentRole": "Builder",
   "currentTranche": "PDV1",
   "lastPassedTranche": "T7",
@@ -13,7 +13,7 @@
   "remoteMainBaselineSha": "dfc8ff4a4aee743d350f2b3337707b9481e95365",
   "applicationSha": "008dc9af5ea80706e6db7034ccaaa17817490915",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PENDING_INDEPENDENT_AUDIT",
-  "reason": "PDV1 bounded Writer repair passed focused paired regression, deterministic Narrative v2 verification, and the exact-SHA Whole-App Gate. Candidate is frozen and pushed for independent Auditor review.",
-  "nextAction": "Independent Auditor must review exact application SHA 008dc9af5ea80706e6db7034ccaaa17817490915. No paid/live production audit, merge, or deploy is authorized."
+  "lastAuditVerdict": "PASS",
+  "reason": "PDV1 independently PASSed on exact application SHA 008dc9af5ea80706e6db7034ccaaa17817490915 with zero material defects. T0-T7 and the bounded post-deployment repair checkpoint are complete.",
+  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merge to main, deployment, or a fresh paid production audit."
 }
