@@ -4,15 +4,15 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "CONTINUE",
   "currentRole": "Builder",
-  "currentTranche": "T1",
-  "lastPassedTranche": null,
+  "currentTranche": "T2",
+  "lastPassedTranche": "T1",
   "repairAttempt": 0,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "67b6c2faf39be5a63149cb1a623d759d2fe4ac8b",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "FAIL",
-  "reason": "Prior audit was blocked because claimed T1 evidence was untracked. Evidence is now committed on the frozen candidate; the exact-SHA Whole-App Tranche Gate was rerun and passed.",
-  "nextAction": "Independent Auditor must audit T1 candidate application SHA 67b6c2faf39be5a63149cb1a623d759d2fe4ac8b."
+  "lastAuditVerdict": "PASS",
+  "reason": "Independent Auditor PASS for T1 exact candidate SHA 67b6c2faf39be5a63149cb1a623d759d2fe4ac8b; zero material defects.",
+  "nextAction": "Builder begins T2 canonical current report-model hydration boundary diagnosis."
 }

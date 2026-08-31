@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resume T1 of the governed autonomous PRYSM Production Closure roadmap on the newly proven WriterInput JSON-canonicalization boundary, preserving the existing multi-action production proof and closing producer -> persistence -> validated loader -> current-consumer identity before advancing.
+Execute T2 of the governed autonomous PRYSM Production Closure roadmap: establish one canonical fail-closed current report-model hydration boundary consumed by base rendering, Narrative v2, UAT rerender, and current replay.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -22,7 +22,7 @@ Current environment / branch / version:
 - Application remote baseline: `main` at `e7e8477819f8bff0a7e3f0c5969637df9fb787a3`.
 - Autonomous application repair branch: `repair/prysm-production-closure`.
 - Current application candidate HEAD: `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe`, pushed and synchronized on `repair/prysm-production-closure`.
-- Current autonomous tranche: T1.
+- Current autonomous tranche: T2.
 - Autorun status: CONTINUE.
 - Governed repair attempt: 0 / Luna for the new JSON-canonicalization root cause.
 - Governed viewer: Viewer v2.2.0.
@@ -40,7 +40,7 @@ Completed:
 - Manual review of the preserved diff established the canonical serialization policy and reopened the work on a materially new root-cause boundary.
 
 In progress:
-- T1 independent audit of the exact-SHA candidate after JSON-canonicalization repair and Whole-App Tranche Gate PASS.
+- T2 canonical report-model hydration boundary diagnosis and implementation.
 
 Blocked:
 - No repository-controlled PRYSM blocker currently prevents Codex from resuming T1.
@@ -58,7 +58,7 @@ Important constraints:
 - No paid provider/model call, production audit, deployment, production configuration mutation, or production persistence mutation without explicit authorization.
 
 Exact next action:
-Run the independent Auditor against application SHA `192326cbf1e3d732a3e7132cfe33e2d7c931b0fe` for T1. Do not advance to T2 until that exact-SHA audit passes.
+Diagnose the complete ScoreSet -> report-model paths and identify the canonical hydration boundary for T2 before editing.
 
 Last verified:
 2026-08-31 America/Toronto
