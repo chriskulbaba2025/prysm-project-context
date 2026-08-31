@@ -6,14 +6,14 @@
   "currentRole": "Builder",
   "currentTranche": "T4",
   "lastPassedTranche": "T3",
-  "repairAttempt": 1,
+  "repairAttempt": 2,
   "rootDefectId": "T4.V2_PUBLICATION_RETRIEVAL_CONTRACT",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "e7e8477819f8bff0a7e3f0c5969637df9fb787a3",
   "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
-  "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PENDING",
-  "reason": "AUD-T4-003 repair binds v2 approval, publication verification, and retrieval to report-v2/approved/index.html in both local and S3 stores; exact-SHA Whole-App Gate passed.",
-  "nextAction": "Independent Auditor reviews exact application SHA 50a3ecf938e18a7b80a7dc1d98e38a3758126667 for T4."
+  "wholeAppGate": "FAIL",
+  "lastAuditVerdict": "FAIL",
+  "reason": "AUD-T4-004 third same-root proof attempt failed during divergent-draft fixture setup because its directory did not exist. The setup is corrected locally but has not been rerun under the three-attempt anti-thrash rule.",
+  "nextAction": "Controller applies the governed third same-root proof-failure transition; preserve the uncommitted corrected proof fixture for bounded human/root-boundary review."
 }
