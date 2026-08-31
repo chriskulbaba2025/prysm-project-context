@@ -5,11 +5,11 @@
   "status": "COMPLETE",
   "tranche": "T4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "0b10e67662b4c2ad7e97ae94b6927e2c47db0903",
+  "applicationSha": "50a3ecf938e18a7b80a7dc1d98e38a3758126667",
   "verdict": "FAIL",
   "materialDefects": 1,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_T4_2026-08-31.md",
   "rootDefectId": "T4.V2_PUBLICATION_RETRIEVAL_CONTRACT",
-  "reason": "V2 approval writes/verifies a legacy local artifact while published retrieval reads the report-v2 draft artifact; S3 lacks the v2 approval method. The gate does not detect this path mismatch.",
-  "nextAction": "Builder repairs AUD-T4-003 in T4, adds exact approved-versus-draft publication/retrieval regression coverage, reruns the gate, and returns a new pushed candidate for independent audit."
+  "reason": "AUD-T4-003's local/S3 artifact contract is repaired, but its replacement proof does not distinguish the verified approved artifact from the still-present draft artifact. The gate can pass if retrieval is redirected to the draft through the same report-store helper.",
+  "nextAction": "Builder repairs AUD-T4-004 in T4: add an independent current-v2 approved-versus-draft (and tamper/fail-closed) regression, incorporate it into the exact-SHA gate, then return a new pushed candidate for independent audit."
 }
