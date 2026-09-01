@@ -1,7 +1,7 @@
 # PRYSM Whole-App Branch Matrix
 
 Matrix ID: PRYSM-BRANCH-MATRIX-01
-Status: ACTIVE / PDV4 DIAGNOSIS OPEN
+Status: ACTIVE / PDV4 REPAIR OPEN
 Effective: 2026-08-31
 
 ## Rule
@@ -29,8 +29,8 @@ A future application-changing PASS is forbidden while any required implemented b
 | P-B11 | Invalid/stale/incompatible terminal Narrative artifact | recovery validation -> fail closed, zero extra Writer/Judge calls | YES | `replay-report.test.js`, `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Fail-closed recovery assertions. |
 | P-B12 | Current publication/retrieval/render path | approved artifact -> publication -> API retrieval -> Viewer v2 | YES | `acceptance-prysm.js` publication/retrieval | VERIFIED at PDV3 SHA FOR COVERED FIXTURE | Live PDV4 failed before publication because the production-shaped finalization branch differed from the covered fixture. |
 | P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | `prysm-whole-app-gate.js` replay CLI | VERIFIED at PDV3 SHA | Current replay only; historical compatibility separated. |
-| P-B14 | PARTIAL On-Page evidence has positive provider image-issue numerator, unavailable image-array denominator serialized as `0`, while deep body-content evidence is available | DataForSEO adapter availability metadata -> DecisionEvidence integer coercion -> finalization numerator/denominator consistency | YES | UNMAPPED | UNEXECUTED | Production escape `PDV4`. Adapter can retain `imagesMissingAlt` from `page_metrics.checks.no_image_alt` while `imageCount` is unavailable; deep content parsing can make `_contentEvidenceAvailable=true`, so the finalization fallback does not recognize the missing image denominator without an explicit image availability marker. |
-| P-B15 | PARTIAL heading finding uses explicit assessed-scope wording (`assessed pages ... unassessed pages remain unknown`) through the finalization absence-claim guard | deterministic finding text -> finalization PARTIAL semantic validator | YES | UNMAPPED | UNEXECUTED | Production escape `PDV4`. Current finalization bounded-partial recognition does not match this producer wording even though the claim is scope-qualified. Full live reason must be captured before repair scope is frozen. |
+| P-B14 | PARTIAL On-Page evidence has positive provider image-issue numerator, unavailable image-array denominator serialized as `0`, while deep body-content evidence is available | DataForSEO adapter availability metadata -> DecisionEvidence integer coercion -> finalization numerator/denominator consistency | YES | MAPPED — PDV4 P-B14 assembled finalization scenario defined in `PDV4_REPAIR_BOUNDARY_2026-08-31.md`; Builder must wire it into the Whole-App gate | UNEXECUTED | Production escape `PDV4`. Root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`. Required proof preserves an explicit unavailable image denominator through hydration and finalization while retaining the negative sibling where a proven denominator still rejects numerator > denominator. |
+| P-B15 | PARTIAL heading finding uses explicit assessed-scope wording (`assessed pages ... unassessed pages remain unknown`) through the finalization absence-claim guard | deterministic finding text -> finalization PARTIAL semantic validator | YES | MAPPED — PDV4 P-B15 assembled finalization scenario defined in `PDV4_REPAIR_BOUNDARY_2026-08-31.md`; Builder must wire it into the Whole-App gate | UNEXECUTED | Production escape `PDV4`. Root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION`. Required proof accepts explicitly assessed-scope wording while retaining rejection of equivalent unqualified PARTIAL absence wording. |
 
 ## Known branch coverage escapes to retain permanently
 
@@ -39,8 +39,17 @@ A future application-changing PASS is forbidden while any required implemented b
 | PDV1 | Writer pass 1 rejected prompt-compliant bounded AI-search negation | Writer prompt/semantic-validator equivalence branch | bounded neutral AI-search wording accepted while unsupported negative wording remains rejected |
 | PDV2 | Judge pass 2 emitted provider-valid `defects[].section` later rejected by deterministic Judge validator | provider structured-output schema vs deterministic Judge contract handoff | Judge structured schema must constrain `section` to `WRITER_SECTION_FIELDS` |
 | PDV3 | Audit remained `evidence_locked`; scoring log: `Current ScoreSet requires decisionHierarchy` | non-viable/Not-Assessed scoring branch was not exercised against current ScoreSet contract | Not-Assessed model must produce a valid governed empty hierarchy and persist/reload through the real scoring boundary |
-| PDV4 | Fresh production audit reached `narrative_ready` then `render_failed`; visible reason includes impossible image numerator/denominator and begins a `VAN-TECH-002` PARTIAL-evidence rejection | production-shaped finalization branches P-B14/P-B15 were not represented by the PDV3 branch gate | permanent P-B14 and P-B15 assembled finalization regressions; add any additional branch row revealed by the full lifecycle reason before PDV4 PASS |
+| PDV4 | Fresh production audit reached `narrative_ready` then `render_failed`; deterministic replay against its persisted artifacts returned exactly two finalization errors: image numerator/unavailable denominator and `VAN-TECH-002` PARTIAL assessed-scope rejection | production-shaped finalization branches P-B14/P-B15 were not represented by the PDV3 branch gate | permanent P-B14 and P-B15 assembled finalization regressions; no additional PDV4 branch row is required by the completed two-error diagnostic |
+
+## PDV4 diagnostic classification
+
+The complete deterministic replay for audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d` returned `errorCount: 2` and only these two branch families:
+
+- P-B14 -> `site.imagesMissingAlt` / `technical-health`;
+- P-B15 -> `findings[].evidence` / `priority-fixes` for `VAN-TECH-002`.
+
+No P-B16 is opened from this diagnostic.
 
 ## Next matrix action
 
-Obtain the complete `render_failed` lifecycle reason for audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d` once. Classify every finalization error before any edit. Then map and implement permanent deterministic assembled-system coverage for P-B14, P-B15, and any additional materially distinct branch revealed by that complete reason. A new application PASS is prohibited until all required rows are mapped, executed, and green on one exact candidate SHA.
+Builder starts root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` at Luna / repair attempt 0. After its direct proof passes, Builder moves to new root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` at Luna / repair attempt 0. Then wire and execute both mapped scenarios in the exact-SHA Whole-App Branch Coverage Gate. PDV4 cannot PASS until P-B14 and P-B15 both show `VERIFIED` on the same frozen candidate SHA.
