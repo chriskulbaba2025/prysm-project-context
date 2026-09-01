@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-The attempt-zero repair at application SHA `db337201bd60c6fb7154684888e3407a721e901c` restricts AI-search support to canonical AI/schema/entity references and adds a regression proving finding metadata cannot authorize an AI-search limitation. Targeted proof and the exact-SHA Whole-App Branch Coverage Gate pass. Complete the required real Writer and Writer/Judge PDV5 evidence obligations, then hand this exact SHA to the independent Auditor.
+The causal-certainty repair candidate is synchronized at application SHA `790bf1d901c8493c5d505957756e3c4c69901419c`; targeted Narrative proof (103/103) and the exact-SHA Whole-App Branch Coverage Gate pass. The governed real Writer/Judge harness currently cannot enable live binding because the invocation lacks the required `PRYSM_NARRATIVE_V2_*` runtime configuration. Resume the required real Writer and Writer/Judge PDV5 evidence obligations with that configured runtime, then hand this exact SHA to the independent Auditor.
 
 Last verified:
 2026-09-01 America/Toronto
