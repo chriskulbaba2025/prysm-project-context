@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Repair the newly proven post-deployment Judge structured-output contract mismatch exposed by fresh production audit `6c69f909-e3a9-449e-b830-decc3ca2ffd7`.
+Repository-controlled PRYSM Production Closure is complete; preserve the exact audited repair candidate and await owner authorization for promotion.
 
 Verified checkpoint:
 - T0-T7 repository-controlled Production Closure: PASS.
@@ -28,17 +28,16 @@ Current environment:
 - Repair branch: `repair/prysm-production-closure`.
 - Repository-controlled T0-T7 closure: COMPLETE.
 - PDV1: PASS and promoted.
-- Active post-deployment checkpoint: `PDV2`.
-- Active root defect: `PDV2.JUDGE_DEFECT_SECTION_ENUM`.
+- Active post-deployment checkpoint: `PDV2` independently PASSed.
+- Active root defect: none.
 - Repair attempt: 0.
-- Starting governed repair model: Luna.
 
 In progress:
-- One bounded PDV2 repair to align the provider-facing Judge structured-output schema with the existing governed Writer section set.
+- None. T0-T7 repository-controlled closure is complete.
 
 Blocked:
-- No diagnosis blocker remains.
-- Production promotion, deployment, and another fresh paid/live audit remain separately unauthorized until PDV2 deterministic proof and independent Auditor PASS are complete and the owner explicitly authorizes promotion.
+- No repository-controlled blocker remains.
+- Production promotion, deployment, and another fresh paid/live audit remain separately unauthorized until the owner explicitly authorizes them.
 
 Important constraints:
 - Use the existing `WRITER_SECTION_FIELDS` as the single source of truth; do not create another section list.
@@ -50,7 +49,7 @@ Important constraints:
 - Preserve named `.txt` diagnostics as evidence; do not treat them as application source.
 
 Exact next action:
-Independent Auditor must audit PDV2 candidate `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`. The candidate constrains Judge `defects[].section` to `WRITER_SECTION_FIELDS`, adds deterministic schema coverage, passes Narrative v2 targeted proof 100/100, and passes the exact-SHA Whole-App Gate. No merge/deploy/live audit is authorized during this run.
+`READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`: owner authorization is required before merge to `main`, deployment, or a fresh paid/live production audit. The final audited candidate is `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`.
 
 Last verified:
-2026-08-31 America/Toronto; PDV2 candidate c6cb6f7e2b60f350a4021c052c9f9dff4b83411e
+2026-08-31 America/Toronto; PDV2 independently PASSed; final candidate c6cb6f7e2b60f350a4021c052c9f9dff4b83411e
