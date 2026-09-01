@@ -5,11 +5,11 @@
   "status": "COMPLETE",
   "tranche": "PDV5",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
+  "applicationSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
   "verdict": "FAIL",
   "materialDefects": 1,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV5_2026-09-01.md",
-  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
-  "reason": "Required PDV5 model-bearing stress and complete Writer/Judge Narrative proof remain pending; deterministic tests and Whole-App PASS are insufficient for this boundary.",
-  "nextAction": "Builder completes the governed PDV5 evidence obligations and resubmits for independent audit."
+  "rootDefectId": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
+  "reason": "The candidate's observed-conversion-action exception lets unsupported commercial-outcome claims pass semantic validation when they also use action/form/path terminology.",
+  "nextAction": "Builder repairs PDV5-AUD-002, adds the bounded negative semantic regressions, reruns exact-SHA proof, and resubmits the same active root for audit."
 }
