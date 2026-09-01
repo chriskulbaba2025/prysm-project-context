@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "project": "PRYSM",
+  "checkpoint": "PDV5",
+  "status": "FAIL_PENDING",
+  "candidateSha": null,
+  "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
+  "incidentReplay": "PENDING",
+  "runtimeIdentity": "UNPROVEN",
+  "realProductionCorpus": "PENDING",
+  "narrativeOnlyHarness": "PENDING",
+  "promptSchemaValidatorParity": "PENDING",
+  "adversarialAndFailureInjection": "PENDING",
+  "writerSample": {
+    "status": "PENDING",
+    "primaryRequired": 5,
+    "primaryCompleted": 0,
+    "additionalRealInputsRequiredWhenAvailable": 2,
+    "perAdditionalInputRequired": 3,
+    "additionalInputsCompleted": 0,
+    "totalWriterRunsCompleted": 0,
+    "materialFailures": 0
+  },
+  "judgeSample": {
+    "status": "PENDING",
+    "completeRunsRequired": 3,
+    "completeRunsCompleted": 0,
+    "primaryInputRunRequired": true,
+    "primaryInputRunCompleted": false,
+    "materialFailures": 0
+  },
+  "semanticQuality": {
+    "status": "PENDING",
+    "minimumOverallPerSample": 97,
+    "minimumAreaPerSample": 19,
+    "criticalIntegrityDefects": null
+  },
+  "redTeam": "PENDING",
+  "secondVerification": "PENDING",
+  "independentAuditorRescore": "PENDING",
+  "deterministicWholeApp": "FAIL_PENDING",
+  "deploymentIdentity": "PENDING",
+  "finalLiveValidation": "NOT_YET_ELIGIBLE",
+  "nextAction": "Builder executes PDV5 under PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md and PRYSM_MODEL_BEARING_RELEASE_GATE.md. Do not mark this state PASS from deterministic Whole-App alone.",
+  "lastVerified": "2026-09-01 America/Toronto"
+}
