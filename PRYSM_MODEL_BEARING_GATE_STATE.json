@@ -4,17 +4,17 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
+  "candidateSha": "c70d4cdcaa218744319411c6395e4654db14585a",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
-  "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_PENDING_REPLAY",
+  "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
   "writerRootCause": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC",
-  "writerRetryRecovery": "PENDING",
+  "writerRetryRecovery": "PASS_ONE_FROZEN_INPUT_RUN",
   "primaryWriterStress": {
     "status": "PENDING",
     "required": 5,
-    "completed": 0,
-    "passed": 0,
+    "completed": 1,
+    "passed": 1,
     "materialFailures": 0
   },
   "additionalRealInputWriterStress": {
@@ -41,10 +41,10 @@
     "criticalIntegrityDefects": null
   },
   "writerCompletionChallenge": "PENDING",
-  "deterministicWholeAppRegression": "FAIL_PENDING",
+  "deterministicWholeAppRegression": "PASS",
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run the governed real Writer stress and Writer/Judge Narrative samples against exact candidate SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9.",
+  "nextAction": "Continue the governed real Writer stress and Writer/Judge Narrative samples against exact candidate SHA c70d4cdcaa218744319411c6395e4654db14585a. Primary TBK: 1/5 PASS; complete Narrative runs: 1/3 PASS; additional input: pending.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
