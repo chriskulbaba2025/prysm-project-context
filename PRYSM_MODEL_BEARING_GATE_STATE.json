@@ -4,10 +4,10 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "AUDIT_PENDING",
-  "candidateSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
+  "candidateSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
-  "writerRootCause": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
+  "writerRootCause": "PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE",
   "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC_AND_REAL_STRESS",
   "writerRetryRecovery": "PASS_DETERMINISTIC_CHALLENGE",
   "primaryWriterStress": {
@@ -42,9 +42,9 @@
   },
   "writerCompletionChallenge": "PASS: observed conversion actions accepted; asserted downstream outcomes rejected",
   "deterministicWholeAppRegression": "PASS",
-  "independentAuditor": "PENDING_SEMANTIC_CHALLENGE",
+  "independentAuditor": "PENDING_CANDIDATE_AUDIT",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Builder semantic review is recorded in PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md. Hand exact candidate b46e8e5 to the independent Auditor for the required semantic challenge and audit.",
+  "nextAction": "Hand exact candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e to the independent Auditor after required model-bearing evidence is reconciled.",
   "lastVerified": "2026-09-01 America/Toronto"
 }

@@ -26,14 +26,14 @@ Important correction after Builder Run 2:
 Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
-- Active application candidate: `2877686b3f21251280179173efa558c9dbf3636d`.
+- Active application candidate: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
 - Root: `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`.
 - Repair attempt: 0 (manual post-level-3 diagnostic reset to a materially new validator-classification root).
 
 Latest model-bearing / validator evidence:
 - The exhausted prior root `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH` consumed Luna -> Terra -> Sol and may not receive a fourth same-root autonomous repair.
-- Level-3 candidate `2877686b3f21251280179173efa558c9dbf3636d` passed 24/24 focused Writer tests, 113/113 Narrative tests, and the exact-SHA Whole-App gate covering P-B01..P-B15.
+- Candidate `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` passed the focused Writer proof, 114/114 Narrative tests, and the exact-SHA Whole-App gate covering P-B01..P-B15.
 - Normalized replay of 11 governed real Writer outputs rejected one historically valid evidence-supported observation: `Browser validation confirmed a visible, interactable, unobstructed action on all assessed conversion pages.`
 - Direct validator inspection proves contextual `conversion` language plus establishment wording such as `confirmed` can be misclassified as an asserted commercial outcome when `action` and `conversion` are not an adjacent compound phrase.
 - This is a materially new validator-classification root, not authorization for a fourth repair against the exhausted Writer/Judge semantic-support root.
