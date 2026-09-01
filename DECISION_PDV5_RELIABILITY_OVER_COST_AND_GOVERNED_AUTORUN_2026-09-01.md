@@ -25,6 +25,29 @@ PDV5 therefore owns only the path required to make that stage complete reliably:
 
 Do not spend PDV5 on broad governance redesign, crawler redesign, scoring redesign, report styling, unrelated deployment architecture, or general product improvements unless direct evidence proves one of those is actually causing Writer/Narrative completion failure.
 
+## Read-only production artifact access is authorized
+
+The failed audit's persisted artifacts are production persistence, not repository files. For PDV5 diagnosis, the Builder is explicitly authorized to use existing read-only production access through the configured Railway environment, AWS/S3 credentials, production read APIs, or equivalent already-configured read path to locate and retrieve them.
+
+Authorized actions include:
+- list/read S3/object-store keys and prefixes;
+- read/download the failed audit's persisted WriterInput, Writer provider response when persisted, lifecycle/result metadata, DecisionEvidence/findings/scores, and related Narrative artifacts;
+- copy those artifacts to a temporary diagnostic directory outside the application repository;
+- hash and inspect those local copies;
+- use frozen retrieved WriterInput for authorized Writer/Judge completion tests.
+
+This authorization does NOT permit deleting, overwriting, or mutating production artifacts, changing production configuration, deploying, or starting a fresh full production audit.
+
+**Absence from the local worktree or GitHub is not a blocker.** The Builder must attempt the authoritative production artifact store before returning `BLOCKED`.
+
+If the exact parsed failed Writer response was never persisted or cannot be found after the production store is actually checked, prove that absence and continue rather than block. Fallback:
+1. recover the exact persisted WriterInput plus available lifecycle/error metadata;
+2. inspect prompt/schema/input/normalizer/validator congruence directly;
+3. use authorized real Writer calls against that frozen exact WriterInput to reproduce the same or an adjacent Writer validation failure class;
+4. repair the Writer completion path and execute the required stress/completion proof.
+
+Exact Railway worker revision provenance is useful but is **not a prerequisite to continue Writer repair**. If it cannot be proven promptly, record `UNPROVEN` and continue. Exact deployment identity becomes mandatory only before a later deployed live audit is counted as final validation.
+
 ## Required Writer blind-spot review
 
 Builder must inspect all material ways the Writer path can die, especially:
@@ -52,7 +75,7 @@ PDV5 may not close from one green validator test.
 
 Minimum proof:
 
-1. exact persisted production Writer failure reproduced;
+1. exact persisted production Writer failure reproduced when the exact failed output exists; otherwise exact WriterInput plus proven artifact absence and real-Writer reproduction/failure-class proof;
 2. Writer root cause(s) proven;
 3. coherent Writer repair implemented;
 4. 5/5 independent Writer generations PASS on the failed TBK production-shaped WriterInput;
@@ -68,6 +91,12 @@ Minimum proof:
 Cost minimization must not cause a necessary Writer/Judge proof to be skipped.
 
 Prefer repeated Writer/Judge runs against stored evidence over repeated full provider recrawls because the current defect is downstream of collection/scoring.
+
+## Blocking rule
+
+Do not return `BLOCKED` merely because required production artifacts are absent locally or absent from GitHub, or because Railway worker SHA remains unproven.
+
+A genuine external block exists only after the authorized production read path is attempted and either access itself is unavailable or the minimum frozen WriterInput needed to continue cannot be recovered by any authoritative read path.
 
 ## Stop condition
 
