@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "REPAIR_PROOF_FAILED",
+  "status": "CONTINUE",
   "currentRole": "Builder",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
-  "repairAttempt": 2,
-  "rootDefectId": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
+  "repairAttempt": 0,
+  "rootDefectId": "PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "2877686b3f21251280179173efa558c9dbf3636d",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Level-3 candidate 2877686 passed focused, Narrative, and exact-SHA Whole-App proof, but normalized replay of the 11 governed real Writer outputs rejected one valid assessed-action observation. The compound-only exception is too narrow, so the third same-root repair proof failed.",
-  "nextAction": "Do not attempt a fourth repair against PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH. The external controller owns the governed block transition; see PDV5_AUD002_LEVEL3_REPAIR_PROOF_FAILURE_2026-09-01.md."
+  "reason": "Manual post-level-3 diagnostic reset proved a materially new validator root: contextual conversion language in a valid observed action sentence is lexically misclassified as an unmeasured commercial outcome. The prior Writer/Judge semantic-support root remains exhausted; this new validator-classification root starts at repair attempt 0.",
+  "nextAction": "Builder must repair the bounded commercial-outcome contextual-classification false positive, add permanent positive/negative regressions, then rerun targeted Narrative and exact-SHA Whole-App proof before resuming required real Writer/Judge model-bearing evidence. See PDV5_MANUAL_ROOT_RESET_VALID_CONVERSION_OBSERVATION_2026-09-01.md."
 }
