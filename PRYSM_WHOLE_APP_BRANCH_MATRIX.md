@@ -1,8 +1,8 @@
 # PRYSM Whole-App Branch Matrix
 
 Matrix ID: PRYSM-BRANCH-MATRIX-01
-Status: ACTIVE / PDV4 REPAIR OPEN
-Effective: 2026-08-31
+Status: ACTIVE / PDV5 AUDIT RESUBMISSION
+Effective: 2026-09-01
 
 ## Rule
 
@@ -16,21 +16,21 @@ A future application-changing PASS is forbidden while any required implemented b
 
 | Branch ID | Production branch / condition | Material boundary at risk | Required now | Scenario mapping status | Exact-SHA verification | Notes |
 |---|---|---|---|---|---|---|
-| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | `acceptance-prysm.js` assembled lifecycle | VERIFIED at PDV3 SHA | Existing golden-path evidence is exercised by the assembled lifecycle. |
-| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | `acceptance-prysm.js` negative/status assertions | INSUFFICIENT FOR P-B15 | Generic status-honesty coverage passed at PDV3 but did not cover the exact PARTIAL heading wording branch exposed by PDV4. |
-| P-B03 | Crawl/evidence non-viable path enters Not-Assessed scoring model | `buildNotAssessedModel` -> current ScoreSet persistence | YES | `acceptance-prysm.js` P-B03 | VERIFIED at PDV3 SHA | Production escape `PDV3`; deterministic persistence/reload regression added. |
-| P-B04 | Zero findings / empty governed decision hierarchy | scoring -> ScoreSet -> WriterInput/report model | YES | `acceptance-prysm.js` P-B03 empty hierarchy | VERIFIED at PDV3 SHA | Empty hierarchy is asserted as present governed state. |
-| P-B05 | Non-empty single-finding hierarchy/root-cause | scoring -> persistence -> reload -> consumers | YES | `src/scoring/current-score-set.test.js` | VERIFIED at PDV3 SHA | Current contract identity assertions. |
-| P-B06 | Multiple findings with ordered Conversion-First hierarchy | scoring -> persistence -> reload -> Writer action plan -> render | YES | `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Production path asserts ordered action parity. |
-| P-B07 | Narrative first automatic Writer/Judge round reaches PASS | WriterInput -> Writer -> Judge -> release candidate | YES | `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Controlled first-round path. |
-| P-B08 | Judge 1 `REVISE` -> Writer 2 -> Judge 2 | governed revision directive and field locking | YES | `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Controlled revision path. |
-| P-B09 | Judge 2 still not releasable -> HUMAN_REVIEW / explicitly authorized final pass | terminal persistence -> authorization -> Writer 3/Judge 3 | YES where current final-pass feature is enabled | `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Final-pass authorization and no Pass 4 assertions. |
-| P-B10 | Valid persisted release-candidate recovery | persistence -> reload -> render without new model spend | YES | `replay-report.test.js` | VERIFIED at PDV3 SHA | Current replay hydration. |
-| P-B11 | Invalid/stale/incompatible terminal Narrative artifact | recovery validation -> fail closed, zero extra Writer/Judge calls | YES | `replay-report.test.js`, `narrative-v2-production-path.test.js` | VERIFIED at PDV3 SHA | Fail-closed recovery assertions. |
-| P-B12 | Current publication/retrieval/render path | approved artifact -> publication -> API retrieval -> Viewer v2 | YES | `acceptance-prysm.js` publication/retrieval | VERIFIED at PDV3 SHA FOR COVERED FIXTURE | Live PDV4 failed before publication because the production-shaped finalization branch differed from the covered fixture. |
-| P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | `prysm-whole-app-gate.js` replay CLI | VERIFIED at PDV3 SHA | Current replay only; historical compatibility separated. |
-| P-B14 | PARTIAL On-Page evidence has positive provider image-issue numerator, unavailable image-array denominator serialized as `0`, while deep body-content evidence is available | DataForSEO adapter -> DecisionEvidence persistence/read-back -> finalization numerator/denominator consistency | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B14 | VERIFIED at exact candidate SHA `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800` | Audit correction: real adapter output is persisted as DecisionEvidence, schema-validated on reload, then consumed by finalization; proven denominator negative sibling remains in direct regression. |
-| P-B15 | PARTIAL heading finding uses explicit assessed-scope wording (`assessed pages ... unassessed pages remain unknown`) through the finalization absence-claim guard | deterministic score producer -> FindingSet persistence/read-back -> finalization PARTIAL semantic validator | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B15 | VERIFIED at exact candidate SHA `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800` | Audit correction: real PARTIAL producer wording is persisted/validated as FindingSet then consumed by finalization; unqualified negative sibling remains in direct regression. |
+| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | `acceptance-prysm.js` assembled lifecycle | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; assembled lifecycle. |
+| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | `acceptance-prysm.js` negative/status assertions | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; PDV4-specific sibling is P-B15. |
+| P-B03 | Crawl/evidence non-viable path enters Not-Assessed scoring model | `buildNotAssessedModel` -> current ScoreSet persistence | YES | `acceptance-prysm.js` P-B03 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; production escape `PDV3` regression retained. |
+| P-B04 | Zero findings / empty governed decision hierarchy | scoring -> ScoreSet -> WriterInput/report model | YES | `acceptance-prysm.js` P-B03 empty hierarchy | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B05 | Non-empty single-finding hierarchy/root-cause | scoring -> persistence -> reload -> consumers | YES | `src/scoring/current-score-set.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B06 | Multiple findings with ordered Conversion-First hierarchy | scoring -> persistence -> reload -> Writer action plan -> render | YES | `narrative-v2-production-path.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B07 | Narrative first automatic Writer/Judge round reaches PASS | WriterInput -> Writer -> Judge -> release candidate | YES | `narrative-v2-production-path.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B08 | Judge 1 `REVISE` -> Writer 2 -> Judge 2 | governed revision directive and field locking | YES | `narrative-v2-production-path.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B09 | Judge 2 still not releasable -> HUMAN_REVIEW / explicitly authorized final pass | terminal persistence -> authorization -> Writer 3/Judge 3 | YES where current final-pass feature is enabled | `narrative-v2-production-path.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; no Pass 4 assertions. |
+| P-B10 | Valid persisted release-candidate recovery | persistence -> reload -> render without new model spend | YES | `replay-report.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B11 | Invalid/stale/incompatible terminal Narrative artifact | recovery validation -> fail closed, zero extra Writer/Judge calls | YES | `replay-report.test.js`, `narrative-v2-production-path.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; fail-closed recovery. |
+| P-B12 | Current publication/retrieval/render path | approved artifact -> publication -> API retrieval -> Viewer v2 | YES | `acceptance-prysm.js` publication/retrieval | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
+| P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | `prysm-whole-app-gate.js` replay CLI | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; historical compatibility separated. |
+| P-B14 | PARTIAL On-Page evidence has positive provider image-issue numerator, unavailable image-array denominator serialized as `0`, while deep body-content evidence is available | DataForSEO adapter -> DecisionEvidence persistence/read-back -> finalization numerator/denominator consistency | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B14 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; persisted adapter output and negative sibling regression. |
+| P-B15 | PARTIAL heading finding uses explicit assessed-scope wording (`assessed pages ... unassessed pages remain unknown`) through the finalization absence-claim guard | deterministic score producer -> FindingSet persistence/read-back -> finalization PARTIAL semantic validator | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B15 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; persisted producer wording and unqualified negative sibling regression. |
 
 ## Known branch coverage escapes to retain permanently
 
@@ -52,5 +52,5 @@ No P-B16 is opened from this diagnostic.
 
 ## Next matrix action
 
-Builder starts root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` at Luna / repair attempt 0. After its direct proof passes, Builder moves to new root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` at Luna / repair attempt 0. Then wire and execute both mapped scenarios in the exact-SHA Whole-App Branch Coverage Gate. PDV4 cannot PASS until P-B14 and P-B15 both show `VERIFIED` on the same frozen candidate SHA.
+The PDV5 candidate is fully mapped and the exact-SHA Whole-App Branch Coverage Gate PASSed with P-B01 through P-B15 covered. Independent Auditor resubmission is required for application SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 

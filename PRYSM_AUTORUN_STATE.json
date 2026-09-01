@@ -14,6 +14,6 @@
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PENDING",
-  "reason": "PDV5 validator context repair passed 114/114 Narrative tests and the exact-SHA Whole-App Branch Coverage Gate covering P-B01..P-B15. Existing model-bearing evidence is reconciled to the candidate and the exact candidate is ready for independent audit.",
-  "nextAction": "Independent Auditor audits exact application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e."
+  "reason": "PDV5 validator context repair passed 114/114 Narrative tests and the exact-SHA Whole-App Branch Coverage Gate covering P-B01..P-B15. The authoritative branch matrix is reconciled to PDV5 and exact candidate SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e; the frozen candidate is ready for independent audit resubmission.",
+  "nextAction": "Independent Auditor audits exact application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e against active PDV5 root PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE."
 }
