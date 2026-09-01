@@ -5,11 +5,11 @@
   "status": "COMPLETE",
   "tranche": "PDV4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "c5512cc0cd15ec68a8a8318020734c1db64958b8",
+  "applicationSha": "ce62cce60e7deb2bd2ff0bc49ce014acd1b21800",
   "verdict": "FAIL",
   "materialDefects": 1,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV4_2026-08-31.md",
-  "rootDefectId": "PDV4.IMAGE_DENOMINATOR_AVAILABILITY",
-  "reason": "P-B14 and P-B15 direct tests pass, but the claimed Whole-App proof invokes leaf test files rather than assembled producer-to-persistence-to-validated-reload-to-finalization scenarios.",
-  "nextAction": "Builder repairs the PDV4 proof boundary and resubmits the same root for independent audit."
+  "rootDefectId": "PDV4.PARTIAL_HEADING_SCOPE_VALIDATION",
+  "reason": "The replacement P-B14/P-B15 assembled gate reaches P-B15 persistence but JSON-parses findings.json without validating the reloaded FindingSet against the governed finding schema before finalization.",
+  "nextAction": "Builder adds an explicit governed finding-schema validation of the reloaded P-B15 FindingSet before finalization, then freezes and resubmits a new exact-SHA PDV4 candidate."
 }
