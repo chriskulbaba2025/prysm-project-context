@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Repair the two fully classified PDV4 production finalization branch escapes, add permanent deterministic coverage for P-B14/P-B15, then require exact-SHA Whole-App Branch Coverage and independent Auditor PASS before any promotion or another paid/live audit.
+PDV4 is closed at the repository-controlled boundary. Await owner authorization before merge, deployment, or a fresh live/paid audit.
 
 Verified checkpoint:
 - T0-T7 repository-controlled Production Closure: historically PASS.
@@ -32,7 +32,7 @@ Current environment / branch / version:
 - Active root defect: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15 proof correction.
 - Active repair attempt: 0 / Luna.
 - Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`; all mapped branches P-B01 through P-B15 named and executed, including governed FindingSet validation after P-B15 persistence/reload.
-- Independent Auditor verdict for PDV4: FAIL on prior candidate; correction frozen and pending re-audit.
+- Independent Auditor verdict for PDV4: PASS on exact application SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 
 Completed:
 - PDV3 repair, branch-complete exact-SHA verification, independent audit, promotion, deployment, and fresh validation through `narrative_ready`.
@@ -43,13 +43,13 @@ Completed:
 - Permanent branch mapping for P-B14/P-B15 and escape-ledger classification.
 
 In progress:
-- Independent Auditor review of the corrected frozen PDV4 candidate `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
+- None.
 
 Queued:
 - The previous candidate audit correctly rejected leaf-only P-B14/P-B15 proof. The replacement candidate adds assembled producer -> persisted artifact -> validated reload -> finalization scenarios for both branches; direct regressions and the branch-complete Whole-App Gate pass on the same exact SHA. Auditor handoff is pending.
 
 Blocked:
-- PDV4 PASS, promotion, deployment, and another paid/live production audit remain blocked until P-B14 and P-B15 are both verified on the same exact candidate SHA and the independent Auditor returns PASS.
+- No repository-controlled defect. Merge, deployment, and another paid/live production audit remain an explicit owner-authorization boundary.
 
 Important constraints:
 - Do not weaken the finalization gate merely to publish the report.
@@ -64,7 +64,7 @@ Important constraints:
 - No merge to application `main`, deployment, production configuration mutation, live/paid provider call, live/paid Writer/Judge call, or fresh production audit is authorized without later explicit owner approval.
 
 Exact next action:
-Hand exact frozen application candidate `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800` on `repair/prysm-production-closure` to the independent Auditor. Verify that P-B14/P-B15 now traverse producer, governed persistence/read-back, and finalization rather than only leaf tests. No merge, deploy, or fresh live audit is authorized.
+`READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`: owner authorization is required before merge to application `main`, deployment, or a fresh live/paid production audit.
 
 Last verified:
 2026-08-31 America/Toronto
