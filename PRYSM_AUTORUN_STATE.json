@@ -2,8 +2,8 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "CONTINUE",
-  "currentRole": "Builder",
+  "status": "AUDIT_REQUIRED",
+  "currentRole": "Auditor",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 1,
@@ -14,6 +14,6 @@
   "applicationSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Candidate b46e8e5 narrows the causal-certainty validator so observed conversion actions are not misclassified as unmeasured commercial outcomes, while preserving explicit downstream-outcome rejection. Direct Narrative regression and exact-SHA Whole-App PASS cover P-B01..P-B15; model-bearing obligations remain pending.",
-  "nextAction": "Run the governed real Writer and Writer/Judge samples on frozen persisted inputs at b46e8e5, record semantic-quality results, and resubmit only after all model-bearing proof planes pass."
+  "reason": "Candidate b46e8e5 narrows the causal-certainty validator so observed conversion actions are not misclassified as unmeasured commercial outcomes, while preserving explicit downstream-outcome rejection. Direct Narrative regression and exact-SHA Whole-App PASS cover P-B01..P-B15. Real Writer stress passes TBK 5/5 and Stripe 3/3; full Writer/Judge completions pass TBK 2/2 and Stripe 1/1; the Builder five-area semantic review passes every required output with zero critical integrity defects.",
+  "nextAction": "Independent Auditor must perform the required semantic challenge and audit on exact candidate b46e8e5."
 }

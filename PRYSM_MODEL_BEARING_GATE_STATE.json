@@ -3,13 +3,13 @@
   "project": "PRYSM",
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "FAIL_PENDING",
+  "status": "AUDIT_PENDING",
   "candidateSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
   "writerRootCause": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
   "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC_AND_REAL_STRESS",
-  "writerRetryRecovery": "PENDING_CAUSAL_CERTAINTY_REPAIR",
+  "writerRetryRecovery": "PASS_DETERMINISTIC_CHALLENGE",
   "primaryWriterStress": {
     "status": "PASS",
     "required": 5,
@@ -35,16 +35,16 @@
     "materialFailures": 0
   },
   "semanticQuality": {
-    "status": "PENDING",
+    "status": "PASS_BUILDER_REVIEW",
     "minimumOverall": 97,
     "minimumArea": 19,
-    "criticalIntegrityDefects": null
+    "criticalIntegrityDefects": 0
   },
-  "writerCompletionChallenge": "PENDING",
+  "writerCompletionChallenge": "PASS: observed conversion actions accepted; asserted downstream outcomes rejected",
   "deterministicWholeAppRegression": "PASS",
-  "independentAuditor": "PENDING",
+  "independentAuditor": "PENDING_SEMANTIC_CHALLENGE",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Candidate b46e8e5 Writer stress now passes 5/5 TBK and 3/3 additional persisted Stripe input; three Writer/Judge completions pass (TBK 2/2, Stripe 1/1) in isolated ledgers under C:\\Users\\kulba\\Desktop\\prysm-pdv5-evidence\\real-model-ledger. Reconcile the output hashes and complete the required five-area Builder semantic scoring/challenge before audit handoff; retain all evidence outside the application repository.",
+  "nextAction": "Builder semantic review is recorded in PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md. Hand exact candidate b46e8e5 to the independent Auditor for the required semantic challenge and audit.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
