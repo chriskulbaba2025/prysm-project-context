@@ -25,15 +25,15 @@ Verified checkpoint:
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Production branch: `main`.
-- Production application SHA / remote-main baseline: `368763617a6253183de5931da20bfacb373d1f30`.
+- Production application SHA / remote-main baseline: `c5512cc0cd15ec68a8a8318020734c1db64958b8`.
 - Dedicated repair branch: `repair/prysm-production-closure`.
 - Local application branch/worktree must be recovered and verified by the Builder before editing; governance does not assume the local branch has already been switched.
 - Active post-deployment checkpoint: `PDV4` — REPAIR OPEN.
 - Active root defect: `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` — P-B14.
 - Queued independent root: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15.
 - Active repair attempt: 0 / Luna.
-- Whole-App Gate for PDV4: FAIL/PENDING until both P-B14 and P-B15 execute and PASS on one exact frozen candidate SHA.
-- Independent Auditor verdict for PDV4: FAIL/PENDING.
+- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `c5512cc0cd15ec68a8a8318020734c1db64958b8`; all mapped branches P-B01 through P-B15 named and executed.
+- Independent Auditor verdict for PDV4: PENDING handoff.
 
 Completed:
 - PDV3 repair, branch-complete exact-SHA verification, independent audit, promotion, deployment, and fresh validation through `narrative_ready`.
@@ -44,11 +44,10 @@ Completed:
 - Permanent branch mapping for P-B14/P-B15 and escape-ledger classification.
 
 In progress:
-- Autonomous Builder repair for P-B14 under root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`, Luna / attempt 0.
+- Independent Auditor review of the frozen PDV4 candidate `c5512cc0cd15ec68a8a8318020734c1db64958b8`.
 
 Queued:
-- After P-B14 direct proof passes, switch to materially new root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` and reset to Luna / attempt 0.
-- After both direct roots pass, freeze one coherent PDV4 candidate, execute both branch scenarios under the exact-SHA Whole-App Branch Coverage Gate, run applicable composite verification, prove clean tree/unchanged HEAD/local-remote 0/0, and hand that exact SHA to the independent Auditor.
+- Candidate is frozen and both direct roots plus the branch-complete Whole-App Gate pass on the same exact SHA; Auditor handoff is pending.
 
 Blocked:
 - PDV4 PASS, promotion, deployment, and another paid/live production audit remain blocked until P-B14 and P-B15 are both verified on the same exact candidate SHA and the independent Auditor returns PASS.
@@ -66,7 +65,7 @@ Important constraints:
 - No merge to application `main`, deployment, production configuration mutation, live/paid provider call, live/paid Writer/Judge call, or fresh production audit is authorized without later explicit owner approval.
 
 Exact next action:
-Start/restart the governed autonomous PRYSM Builder controller at `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`, Luna / repair attempt 0. The Builder must recover the exact local/remote application state first, preserve all legitimate local work, create/recover `repair/prysm-production-closure` safely, then follow `PDV4_REPAIR_BOUNDARY_2026-08-31.md` for the P-B14 repair and proof. After P-B14 direct proof passes, the controller/Builder must move to `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` as a new root at Luna / attempt 0 before freezing the combined PDV4 candidate.
+Hand exact frozen application candidate `c5512cc0cd15ec68a8a8318020734c1db64958b8` on `repair/prysm-production-closure` to the independent Auditor. No merge, deploy, or fresh live audit is authorized.
 
 Last verified:
 2026-08-31 America/Toronto
