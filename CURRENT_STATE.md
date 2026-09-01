@@ -27,8 +27,8 @@ Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
-- Root: `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY`.
-- Repair attempt: 0 (new root; controller resets escalation from the prior PARTIAL-negation boundary).
+- Root: `PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION`.
+- Repair attempt: 0 (new root; controller resets escalation from the causal-certainty boundary).
 
 Latest model-bearing evidence:
 - The first authorized real Writer generation on the exact failed TBK WriterInput reached Writer semantic validation.
@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-`AUDIT_REQUIRED`: independently audit application SHA `9ee10587caf2c7b49a339ca490fa0a7be501dfb0` for the PDV5 Writer causal-language repair. Direct Writer/Narrative and exact whole-app branch gates pass; model-bearing stress and full completion proof remain governed audit obligations.
+At attempt zero, diagnose and repair `PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION`: the current candidate passed 5/5 primary TBK real Writer generations, but the third additional real Stripe Writer generation reached semantic validation and failed because `writerOutput.aiSearch.answerability.text` converted non-AI evidence into an established AI-search limitation. Preserve the failed output hash `c5d6fee3d122d170698566e2454bf19fcc113d5390367ee33ec3e7e4cd7ebcc1`; restart governed samples after repair.
 
 Last verified:
 2026-09-01 America/Toronto

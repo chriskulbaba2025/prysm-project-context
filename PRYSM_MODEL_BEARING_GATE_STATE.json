@@ -4,26 +4,26 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "22d13a4899c968f403e9ef46e84049995968de4c",
+  "candidateSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "PENDING",
-  "writerRootCause": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "writerRootCause": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "promptSchemaInputValidatorCongruence": "PENDING",
   "writerRetryRecovery": "PENDING",
   "primaryWriterStress": {
     "status": "PENDING",
     "required": 5,
-    "completed": 1,
-    "passed": 0,
-    "materialFailures": 1
+    "completed": 5,
+    "passed": 5,
+    "materialFailures": 0
   },
   "additionalRealInputWriterStress": {
     "status": "PENDING",
     "realInputsRequiredWhenAvailable": 1,
     "runsRequired": 3,
-    "completed": 0,
-    "passed": 0,
-    "materialFailures": 0
+    "completed": 3,
+    "passed": 2,
+    "materialFailures": 1
   },
   "fullNarrativeCompletion": {
     "status": "PENDING",
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Repair the newly proven unmeasured causal-certainty Writer shaping root, prove prompt/schema/validator congruence, then restart the required primary real Writer sample from zero PASS credit.",
+  "nextAction": "At the newly proven AI-evidence-status-conflation root, repair prompt/schema/validator congruence while preserving evidence integrity, then restart required Writer and full-Narrative samples from zero PASS credit.",
   "lastVerified": "2026-09-01 America/Toronto"
 }

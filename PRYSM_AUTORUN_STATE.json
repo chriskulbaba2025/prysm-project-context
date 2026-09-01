@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "rootDefectId": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "PDV5 causal-language shaping repair is committed on the exact candidate SHA. Writer/Narrative tests pass 102/102; closure machine gate and exact whole-app branch gate pass with P-B01 through P-B15 covered. Candidate is ready for independent Auditor review.",
-  "nextAction": "Independent Auditor review of application SHA 9ee10587caf2c7b49a339ca490fa0a7be501dfb0, focusing on Writer causal-language shaping, evidence integrity, and exact gate evidence."
+  "reason": "The causal-certainty repair passed 5/5 real primary TBK Writer generations, but additional corpus Writer run 3 reached validation and failed: aiSearch.answerability converted non-AI evidence into an established AI-search limitation. This is a newly proven Writer semantic-shaping root.",
+  "nextAction": "At repair attempt zero, diagnose and repair PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION; preserve the failed frozen Stripe output hash c5d6fee3d122d170698566e2454bf19fcc113d5390367ee33ec3e7e4cd7ebcc1 and the five successful TBK output hashes in PDV5 evidence."
 }
