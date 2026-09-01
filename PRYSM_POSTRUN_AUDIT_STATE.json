@@ -2,14 +2,14 @@
   "version": 1,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
-  "status": "COMPLETE",
+  "status": "PENDING",
   "tranche": "PDV5",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
-  "verdict": "FAIL",
-  "materialDefects": 1,
+  "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+  "verdict": "PENDING",
+  "materialDefects": 0,
   "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV5_2026-09-01.md",
-  "rootDefectId": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
-  "reason": "The candidate's observed-conversion-action exception lets unsupported commercial-outcome claims pass semantic validation when they also use action/form/path terminology.",
-  "nextAction": "Builder repairs PDV5-AUD-002, adds the bounded negative semantic regressions, reruns exact-SHA proof, and resubmits the same active root for audit."
+  "rootDefectId": "PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE",
+  "reason": "Deterministic validator repair, 114/114 Narrative tests, and exact-SHA Whole-App Branch Coverage Gate P-B01..P-B15 PASSed. Candidate is ready for independent audit.",
+  "nextAction": "Independent Auditor audits exact application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e."
 }

@@ -27,7 +27,7 @@ Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - Active application candidate: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
-- PDV5: ACTIVE / BUILDER AUTHORIZED.
+- PDV5: ACTIVE / AUDIT REQUIRED.
 - Root: `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`.
 - Repair attempt: 0 (manual post-level-3 diagnostic reset to a materially new validator-classification root).
 
@@ -81,7 +81,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-Resume the existing governed Builder autorun at Luna / repair attempt 0 on new root `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`. Builder must make the smallest coherent validator repair that distinguishes evidence-supported observations about conversion interfaces/actions/pages/paths from asserted downstream commercial outcomes, add permanent positive and negative regressions, then rerun targeted Narrative and exact-SHA Whole-App proof before resuming required real Writer/Judge model-bearing evidence. Do not make a fourth repair against `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`.
+Independent Auditor must audit exact application SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` against the active PDV5 root `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`. Deterministic and model-bearing Builder evidence is complete; do not make a fourth repair against `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`.
 
 Prior candidate state:
 On candidate `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`, Builder completed the governed real Writer and Writer/Judge PDV5 evidence obligations. The prior root was `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`: the validator was treating observed assessed conversion actions as unmeasured commercial outcomes. The candidate accepted observed conversion actions while retaining fail-closed rejection for asserted downstream outcomes; its direct Narrative suite and exact branch-complete Whole-App gate passed. On 2026-09-01 the primary TBK Writer sample completed 5/5 PASS; the additional persisted Stripe Writer sample completed 3/3 PASS; and three isolated real Writer/Judge completions reached `RELEASE_CANDIDATE` (TBK 2/2, Stripe 1/1). The five-area Builder semantic review was PASS for every required output (100/100; no area below 20; zero critical integrity defects) and output hashes are reconciled in `PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md`. The earlier `fetch failed` transport abort occurred before Writer validation and is not a product verdict.
