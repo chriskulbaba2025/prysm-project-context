@@ -4,55 +4,56 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Validate the newly promoted PDV2 production repair with one fresh real production audit.
+Repair the production Not-Assessed scoring branch under the new Whole-App Branch Coverage Protocol, then prove every required materially distinct current production branch before another paid/live audit.
 
 Verified checkpoint:
-- T0-T7 repository-controlled Production Closure: PASS.
-- PDV1 independently PASSed and was promoted to production.
-- Fresh production audit `6c69f909-e3a9-449e-b830-decc3ca2ffd7` proved PDV1 cleared the original Writer-pass-1 failure and advanced through Writer pass 1, Judge pass 1, and Writer pass 2 before failing at Judge pass 2.
-- PDV2 independently PASSed with zero material defects on exact application SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`.
-- Owner authorized PDV2 production promotion on 2026-08-31.
-- GitHub application `main` was fast-forwarded without force from `008dc9af5ea80706e6db7034ccaaa17817490915` to exact tested/audited SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`.
-- `main` and `repair/prysm-production-closure` compare identical at 0 ahead / 0 behind after promotion.
-- The PDV2 commit changes only `services/worker/src/narrative-v2/judge-structured-output.js` and `services/worker/src/narrative-v2/judge-structured-output.test.js`.
-- Vercel project `prysm` production deployment for SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e` reports SUCCESS.
-- Vercel project `vantage-platform` production deployment for the same SHA reports SUCCESS.
-- GitHub deployment/status context `GENSEN process - vantage-platform`, representing the Railway production deployment, reports SUCCESS for the same SHA.
-- PDV2 repaired the deterministic Judge contract mismatch by constraining `defects[].section` in provider structured output to the existing governed `WRITER_SECTION_FIELDS` set while preserving the downstream fail-closed validator.
+- T0-T7 repository-controlled Production Closure: PASS under the prior Whole-App gate.
+- PDV1 independently PASSed, was promoted, and the next production audit proved the original Writer-pass-1 failure was cleared.
+- PDV2 independently PASSed on exact SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`, was owner-authorized, fast-forwarded to `main`, and deployed successfully to Vercel/Railway.
+- Fresh production audit `cd63135d-87d9-436f-91cc-6d84f64d7a96` reached `evidence_stored` then `evidence_locked` and never reached `scored`.
+- Railway worker evidence at `2026-09-01T01:23:47.964579224Z` records the exact governed-scoring failure: `Current ScoreSet requires decisionHierarchy`.
+- Current production source proves the normal scoring path constructs `decisionHierarchy`, while alternate `buildNotAssessedModel()` returns a Not-Assessed model with `findings: []` but no `rootCauseRuleId` or `decisionHierarchy`; `scoring-service.js` then copies the missing field into the current ScoreSet and the current fail-closed ScoreSet assertion rejects it.
+- `DECISION_POSTDEPLOY_NOT_ASSESSED_DECISION_HIERARCHY_2026-08-31.md` governs the bounded PDV3 repair.
+- The production escapes PDV1, PDV2, and PDV3 proved the prior Whole-App verification standard did not establish complete coverage of materially distinct production branches.
+- `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md` and `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` are now mandatory. A scenario result such as `6/6 PASS` is no longer sufficient for a new application-changing PASS unless all required current branch IDs are mapped, executed, and green on the exact candidate SHA.
+- P-B03 permanently records the escaped non-viable/Not-Assessed scoring branch. PDV3 must add its deterministic assembled-system regression rather than only a leaf scoring test.
 
 Current environment:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Production branch: `main`.
 - Production application SHA: `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`.
 - Repair branch: `repair/prysm-production-closure`.
-- Repair branch vs production main: identical.
-- Repository-controlled T0-T7 closure: COMPLETE.
+- Production and repair branch were identical immediately after PDV2 promotion.
+- Repository-controlled T0-T7 closure: historically COMPLETE.
 - PDV1: PASS and promoted.
 - PDV2: PASS and promoted.
-- Active root defect: NONE.
-- Repair attempt: 0.
-- Whole-App Gate for PDV2: PASS.
-- Independent Auditor verdict for PDV2: PASS.
-- Production deployment signals: Vercel `prysm` SUCCESS; Vercel `vantage-platform` SUCCESS; Railway status context SUCCESS.
+- Active post-deployment checkpoint: `PDV3`.
+- Active root defect: `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`.
+- Repair attempt: 0 / Luna.
+- Whole-App Gate for PDV3: FAIL/PENDING — branch matrix has not yet been reconciled/executed on a PDV3 candidate.
+- Independent Auditor verdict for PDV3: FAIL/PENDING.
 
 In progress:
-- None.
+- Governance/process upgrade to assembled-system branch completeness is active for PRYSM and mirrored in COMPAS2 governance.
+- PDV3 is ready for bounded Builder implementation.
 
 Blocked:
-- No repository-controlled product-code blocker is open.
-- Post-deployment validation of PDV2 is not complete until a fresh real production audit is run and reviewed.
+- No further production diagnostic is required for the PDV3 root defect.
+- No new application-changing PRYSM checkpoint may be reported PASS from golden-scenario counts alone. Required current branch IDs must be mapped and executed under the branch matrix.
+- Another paid/live production audit is blocked until PDV3 and the required branch matrix pass deterministically and independently at one exact SHA, followed by separate owner authorization for promotion/deployment/live validation.
 
 Important constraints:
-- Do not weaken UNKNOWN, UNAVAILABLE, PARTIAL, or not-deeply-parsed evidence semantics.
-- Do not weaken deterministic Judge validation or accept arbitrary Writer paths as governed sections.
-- Do not silently mutate Writer or Judge output after provider return.
-- Do not add retries, hidden fallbacks, extra paid calls, or automatic model repair loops.
-- Do not change evidence collection, scoring, lifecycle, publication, rendering, or finalization without a newly proven root defect.
-- A fresh production audit is a paid/live validation action and requires explicit owner authorization before starting.
-- Preserve named diagnostic output as `.txt` evidence when manual diagnostics are required.
+- Preserve the current ScoreSet assertion and schema; the stale alternate producer must be repaired rather than weakening the consumer.
+- Preserve Not-Assessed evidence semantics, numeric-score suppression, and `findings: []` when no governed findings are established.
+- The empty governed hierarchy must not invent a root-cause rule: `rootCauseRuleId` remains null, `orderedFindingIds` remains empty, and `actions` remains empty.
+- Do not weaken UNKNOWN, UNAVAILABLE, PARTIAL, or not-deeply-parsed semantics.
+- Do not add retries, hidden fallbacks, extra paid calls, automatic model repair loops, or silent downstream defaults.
+- Do not change provider acquisition, Writer/Judge semantics, publication, or rendering unless deterministic PDV3 proof establishes a directly coupled current-contract requirement.
+- Preserve named `.txt` production diagnostics as evidence.
+- A Whole-App PASS now requires branch-matrix completeness, contract assertions at material handoffs, exact-SHA execution, clean tree, and independent Auditor PASS.
 
 Exact next action:
-Owner authorization is required before running one fresh real production PRYSM audit against production SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`. After that audit completes, verify lifecycle, governed Writer/Judge finalization, persisted artifacts, published retrieval, and rendered report before declaring post-deployment validation complete.
+Builder must repair only `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`: make the Not-Assessed scoring producer emit the current governed empty decision hierarchy/root-cause identity shape, add a permanent P-B03 regression through the real governed scoring/lifecycle composition, reconcile/extend the executable Whole-App gate so required branch IDs are reported and covered, run targeted proof + required branch matrix + full exact-SHA Whole-App/local verification, freeze/push the candidate, and return it to independent Auditor. No merge, deploy, production configuration mutation, paid/live provider/model call, or fresh production audit is authorized.
 
 Last verified:
 2026-08-31 America/Toronto
