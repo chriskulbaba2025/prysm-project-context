@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
+  "applicationSha": "22d13a4899c968f403e9ef46e84049995968de4c",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "PDV5 has one objective: make a normal PRYSM audit reliably get through Writer/Narrative and complete. Builder Run 2 incorrectly blocked because failed-audit Writer artifacts were absent locally/GitHub. Read-only retrieval from existing production persistence through configured Railway/AWS/S3/production read paths is explicitly authorized. Missing local/GitHub copies are not a blocker. If the exact parsed failed Writer output was never persisted, prove that from authoritative storage and continue from the exact recovered WriterInput using authorized real Writer calls. Railway worker SHA may remain UNPROVEN during Writer repair and must not block progress.",
+  "reason": "PDV5 has one objective: make a normal PRYSM audit reliably get through Writer/Narrative and complete. Exact failed WriterInput/output were recovered read-only from authoritative storage and the shaping repair is verified on candidate 22d13a4899c968f403e9ef46e84049995968de4c. Local worker regression is 964/964 and Narrative/application production-path coverage is 111/111. Required real Writer/Judge stress, complete frozen-input runs, semantic quality evidence, and independent Auditor PASS remain open.",
   "nextAction": "PDV5_WRITER_COMPLETION_AUTORUN: exact failed WriterInput and parsed response recovered read-only from authoritative S3 and replayed. Current candidate passes Narrative 101/101, Whole-App branch gate P-B01..P-B15, and Closure Machine Gate. Continue with 5/5 primary real Writer generations, 3/3 additional persisted-input generations when available, and 3/3 complete Writer/Judge Narrative runs; PDV5 remains open until semantic quality and independent audit pass."
 }
