@@ -157,3 +157,27 @@ This protocol supplements, and does not replace:
 - all production/provider/persistence approval boundaries.
 
 Where there is tension, choose the sequence that preserves both requirements: **design the complete repair first, then implement it through clear, one-pass, mechanically locatable manual edits with integrated verification.**
+
+---
+
+## 12. Whole-App Branch Coverage Pre-Edit Amendment
+
+For application-changing production-closure or post-deployment repair work, the Mandatory Pre-Edit Gate now also requires `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md` and `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`.
+
+Before the first application edit, additionally:
+
+1. identify every materially distinct current production branch directly changed by the repair;
+2. identify materially adjacent alternate producers/paths that emit into the same changed contract or consumer;
+3. map those branches to stable matrix IDs;
+4. identify which existing deterministic Whole-App scenarios exercise each branch;
+5. mark any required branch without coverage as a verification gap that must be repaired in the same coherent package;
+6. define the contract assertions required at each producer -> persistence -> reload -> consumer handoff;
+7. state whether the repair creates, removes, or splits a branch and therefore requires a matrix update.
+
+A pre-edit plan that says only “run the Whole-App gate” is insufficient when the materially distinct branch inventory has not been checked.
+
+The intended sequence for governed application work is now:
+
+`diagnose -> map full producer/contract/consumer boundary -> reconcile affected branch IDs -> define direct + branch regressions -> edit coherent unit -> targeted proof -> coherent commit -> exact-SHA branch-matrix Whole-App proof -> full verification -> independent audit`
+
+Do not enumerate every conditional. The required scope is every branch whose omission could materially change contract acceptance, persisted state, lifecycle, scoring/decision semantics, Narrative sequence, recovery/publication, or client-facing output.
