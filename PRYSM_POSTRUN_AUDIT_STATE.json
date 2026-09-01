@@ -3,13 +3,13 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "COMPLETE",
-  "tranche": "PDV3",
+  "tranche": "PDV4",
   "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "368763617a6253183de5931da20bfacb373d1f30",
-  "verdict": "PASS",
-  "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV3_2026-08-31.md",
-  "rootDefectId": "NONE",
-  "reason": "Independent exact-SHA audit passed the PDV3 Not-Assessed current ScoreSet hierarchy repair, assembled P-B03 persistence/reload regression, and Whole-App branch gate P-B01 through P-B13 with zero live/paid calls.",
-  "nextAction": "Builder records PDV3 PASS and advances only as authorized by current state; promotion, deployment, and fresh live validation remain separately unauthorized."
+  "applicationSha": "c5512cc0cd15ec68a8a8318020734c1db64958b8",
+  "verdict": "FAIL",
+  "materialDefects": 1,
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV4_2026-08-31.md",
+  "rootDefectId": "PDV4.IMAGE_DENOMINATOR_AVAILABILITY",
+  "reason": "P-B14 and P-B15 direct tests pass, but the claimed Whole-App proof invokes leaf test files rather than assembled producer-to-persistence-to-validated-reload-to-finalization scenarios.",
+  "nextAction": "Builder repairs the PDV4 proof boundary and resubmits the same root for independent audit."
 }
