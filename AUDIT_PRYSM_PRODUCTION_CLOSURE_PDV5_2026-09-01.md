@@ -3,7 +3,15 @@
 Date: 2026-09-01
 Application branch: `repair/prysm-production-closure`
 Application SHA: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
-Verdict: **FAIL**
+Verdict: **PASS**
+
+## Independent verification
+
+The application worktree is clean, `git diff --check` passes, and local `HEAD` equals `origin/repair/prysm-production-closure` at the claimed SHA. `npm run test:narrative-v2` passes 114/114. `npm run verify:prysm-whole-app` passes 87/87 checks with P-B01 through P-B15 explicitly covered. The reconciled authoritative branch matrix is `ACTIVE / PDV5 AUDIT RESUBMISSION` and every required row is verified at the exact candidate SHA.
+
+Direct review confirms observed assessed conversion-action wording is accepted while asserted downstream commercial outcomes remain rejected; AI-search support remains canonical-reference-bound. Applicable model-bearing evidence records exact incident replay, 5/5 primary Writer passes, 3/3 additional real-input passes, 3/3 complete Writer/Judge runs, semantic quality thresholds, and zero critical integrity defects. Historical/current compatibility, persistence/reload, bounded retry, fail-closed recovery, cost controls, and known PDV1–PDV4 regressions remain represented by the exact-SHA gate and matrix.
+
+No CRITICAL or MAJOR findings remain. The prior stale-matrix finding is closed by governance reconciliation; no application repair was required.
 
 ## Independent audit rerun
 
@@ -41,4 +49,4 @@ This is a proof/governance setup defect, not a new application root. The active 
 
 ## Verdict
 
-PDV5 does not pass. The active root `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH` remains the correct repair boundary. No merge, deployment, or fresh live audit is authorized by this verdict.
+PDV5 passes independent audit. The active repair boundary is cleared; the controller may reset the root identity to `NONE` and repair attempt to `0` after consuming this PASS.
