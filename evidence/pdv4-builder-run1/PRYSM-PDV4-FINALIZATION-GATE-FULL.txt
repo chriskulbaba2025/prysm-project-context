@@ -1,0 +1,21 @@
+﻿{
+  "auditId": "688e0cd2-7e09-4b2c-8e20-d05e507f5b7d",
+  "passed": false,
+  "errorCount": 2,
+  "errors": [
+    {
+      "index": 1,
+      "field": "site.imagesMissingAlt",
+      "section": "technical-health",
+      "message": "imagesMissingAlt (223) cannot exceed or exist without a valid imageCount denominator (0).",
+      "severity": "error"
+    },
+    {
+      "index": 2,
+      "field": "findings[].evidence",
+      "section": "priority-fixes",
+      "message": "Finding VAN-TECH-002 converts PARTIAL evidence into an unqualified absence claim.",
+      "severity": "error"
+    }
+  ]
+}

@@ -32,7 +32,7 @@ Current environment / branch / version:
 - Active root defect: `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` — P-B14.
 - Queued independent root: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15.
 - Active repair attempt: 0 / Luna.
-- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `c5512cc0cd15ec68a8a8318020734c1db64958b8`; all mapped branches P-B01 through P-B15 named and executed.
+- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800`; all mapped branches P-B01 through P-B15 named and executed, including deterministic assembled P-B14/P-B15 persistence/reload scenarios.
 - Independent Auditor verdict for PDV4: PENDING handoff.
 
 Completed:
@@ -44,10 +44,10 @@ Completed:
 - Permanent branch mapping for P-B14/P-B15 and escape-ledger classification.
 
 In progress:
-- Independent Auditor review of the frozen PDV4 candidate `c5512cc0cd15ec68a8a8318020734c1db64958b8`.
+- Independent Auditor review of the frozen PDV4 candidate `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800`.
 
 Queued:
-- Candidate is frozen and both direct roots plus the branch-complete Whole-App Gate pass on the same exact SHA; Auditor handoff is pending.
+- The previous candidate audit correctly rejected leaf-only P-B14/P-B15 proof. The replacement candidate adds assembled producer -> persisted artifact -> validated reload -> finalization scenarios for both branches; direct regressions and the branch-complete Whole-App Gate pass on the same exact SHA. Auditor handoff is pending.
 
 Blocked:
 - PDV4 PASS, promotion, deployment, and another paid/live production audit remain blocked until P-B14 and P-B15 are both verified on the same exact candidate SHA and the independent Auditor returns PASS.
@@ -65,7 +65,7 @@ Important constraints:
 - No merge to application `main`, deployment, production configuration mutation, live/paid provider call, live/paid Writer/Judge call, or fresh production audit is authorized without later explicit owner approval.
 
 Exact next action:
-Hand exact frozen application candidate `c5512cc0cd15ec68a8a8318020734c1db64958b8` on `repair/prysm-production-closure` to the independent Auditor. No merge, deploy, or fresh live audit is authorized.
+Hand exact frozen application candidate `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800` on `repair/prysm-production-closure` to the independent Auditor. Verify that P-B14/P-B15 now traverse producer, governed persistence/read-back, and finalization rather than only leaf tests. No merge, deploy, or fresh live audit is authorized.
 
 Last verified:
 2026-08-31 America/Toronto

@@ -6,14 +6,14 @@
   "currentRole": "Auditor",
   "currentTranche": "PDV4",
   "lastPassedTranche": "PDV3",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "rootDefectId": "PDV4.IMAGE_DENOMINATOR_AVAILABILITY",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "368763617a6253183de5931da20bfacb373d1f30",
-  "applicationSha": "c5512cc0cd15ec68a8a8318020734c1db64958b8",
+  "applicationSha": "ce62cce60e7deb2bd2ff0bc49ce014acd1b21800",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PENDING",
-  "reason": "P-B14 and P-B15 direct regressions pass and the exact candidate c5512cc0cd15ec68a8a8318020734c1db64958b8 passes the PRYSM Whole-App Branch Coverage Gate with all mapped branches P-B01 through P-B15 named and executed. Candidate is frozen and ready for independent Auditor review.",
-  "nextAction": "Auditor: independently audit exact application SHA c5512cc0cd15ec68a8a8318020734c1db64958b8 on repair/prysm-production-closure. No merge, deploy, or fresh live audit authorized."
+  "reason": "Independent audit of c5512cc0cd15ec68a8a8318020734c1db64958b8 found P-B14/P-B15 leaf-test false PASS. ce62cce60e7deb2bd2ff0bc49ce014acd1b21800 adds deterministic assembled adapter -> DecisionEvidence persistence/reload -> FindingSet persistence/reload -> finalization scenarios. The exact candidate passes the Whole-App Branch Coverage Gate with P-B01 through P-B15 named and executed.",
+  "nextAction": "Auditor: independently audit exact application SHA ce62cce60e7deb2bd2ff0bc49ce014acd1b21800 on repair/prysm-production-closure, including the assembled P-B14/P-B15 proof boundary. No merge, deploy, or fresh live audit authorized."
 }
