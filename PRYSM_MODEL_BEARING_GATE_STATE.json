@@ -13,9 +13,9 @@
   "primaryWriterStress": {
     "status": "PENDING",
     "required": 5,
-    "completed": 4,
-    "passed": 3,
-    "materialFailures": 1
+    "completed": 5,
+    "passed": 5,
+    "materialFailures": 0
   },
   "additionalRealInputWriterStress": {
     "status": "PENDING",
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Candidate b46e8e5 is deterministic-gate PASS and repairs the observed-conversion-action semantic-support mismatch. Restart the governed real Writer and Writer/Judge sample obligations on this exact candidate and retain the frozen-input evidence outside the application repository.",
+  "nextAction": "Candidate b46e8e5 primary TBK Writer stress completed 5/5 PASS with frozen-input artifacts under C:\\Users\\kulba\\Desktop\\prysm-pdv5-evidence\\real-model-ledger. The first additional-input request then failed after its durable paid-call reservation with transport error `fetch failed`, before a Writer verdict. Retry the remaining additional-input and complete Writer/Judge samples at the same root/attempt; retain all evidence outside the application repository.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
