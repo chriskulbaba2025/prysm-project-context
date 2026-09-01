@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
+  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "AI-search evidence-status conflation repair is synchronized at exact application SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9; Writer-output tests (16/16), Narrative v2 suite (104/104), and exact-SHA Whole-App gate pass.",
-  "nextAction": "Provide the configured live PRYSM_NARRATIVE_V2 runtime, then complete required real Writer and Writer/Judge evidence obligations against exact SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9."
+  "reason": "The prior AI-search evidence-status repair is synchronized at exact application SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9; the first governed real Writer proof exposed the distinct unsupported causal-certainty boundary. Deterministic Writer-output tests (16/16), Narrative v2 suite (104/104), and exact-SHA Whole-App gate pass.",
+  "nextAction": "Reconcile the causal-certainty root in the governed model-bearing state, then provide the configured live PRYSM_NARRATIVE_V2 runtime and complete required real Writer and Writer/Judge evidence obligations against the exact candidate SHA."
 }
