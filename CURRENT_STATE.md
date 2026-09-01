@@ -4,60 +4,65 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Validate the promoted PDV3 repair in one fresh paid/live production audit after separate owner authorization.
+Complete one bounded diagnosis of the fresh production `render_failed` finalization result, then repair every proven materially distinct PDV4 finalization branch under the Whole-App Branch Coverage Protocol before another paid/live audit.
 
 Verified checkpoint:
-- T0-T7 repository-controlled Production Closure: PASS under the prior Whole-App gate.
-- PDV1 independently PASSed, was promoted, and the next production audit proved the original Writer-pass-1 failure was cleared.
-- PDV2 independently PASSed on exact SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`, was owner-authorized, fast-forwarded to `main`, and deployed successfully.
-- Fresh production audit `cd63135d-87d9-436f-91cc-6d84f64d7a96` reached `evidence_stored` then `evidence_locked`; Railway worker evidence recorded governed scoring failure `Current ScoreSet requires decisionHierarchy`.
-- PDV3 root defect `PDV3.NOT_ASSESSED_DECISION_HIERARCHY` was repaired on exact SHA `368763617a6253183de5931da20bfacb373d1f30`.
-- PDV3 branch-complete Whole-App verification passed on that exact SHA. Gate evidence covers required current branch IDs `P-B01` through `P-B13`, including permanent P-B03 assembled scoring persistence/reload proof.
-- PDV3 independent Auditor verdict: PASS, zero material defects.
-- Owner authorized promotion/deployment of exact SHA `368763617a6253183de5931da20bfacb373d1f30`.
-- Application `main` was fast-forwarded without force from `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e` to `368763617a6253183de5931da20bfacb373d1f30`.
-- `main` and `repair/prysm-production-closure` now compare identical, ahead 0 / behind 0.
-- Exact-SHA deployment signals are green:
-  - Vercel `prysm`: success;
-  - Vercel `vantage-platform`: success;
-  - Railway/GitHub deployment context `GENSEN process - vantage-platform`: success.
-- The PDV3 production commit changes only the Not-Assessed scoring producer/regression and assembled Whole-App branch-coverage reporting/proof files.
-- `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md` and `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` remain mandatory for every future application-changing PASS. Numeric scenario counts alone are not branch-complete proof.
+- T0-T7 repository-controlled Production Closure: historically PASS.
+- PDV1: independently PASSed, promoted, and its original Writer-pass-1 production failure was cleared by later live validation.
+- PDV2: independently PASSed, promoted/deployed, and its Judge-pass-2 production failure was cleared by later live validation.
+- PDV3 root defect `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`: independently PASSed on exact SHA `368763617a6253183de5931da20bfacb373d1f30`, with branch-complete Whole-App Gate PASS and zero material Auditor defects.
+- Owner authorized PDV3 promotion/deployment. Application `main` was fast-forwarded without force to exact SHA `368763617a6253183de5931da20bfacb373d1f30`; `main` and `repair/prysm-production-closure` compare identical.
+- Vercel `prysm`, Vercel `vantage-platform`, and Railway deployment status were all green on exact production SHA `368763617a6253183de5931da20bfacb373d1f30`.
+- Owner then ran one fresh production TBK audit from the PRYSM app:
+  - audit ID `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d`;
+  - target `https://www.tbkcreative.com/`;
+  - created approximately 10:37 p.m. America/Toronto on 2026-08-31.
+- That audit progressed beyond all three earlier failure boundaries: collection completed, governed scoring completed, Writer/Judge Narrative execution completed, and lifecycle reached `narrative_ready` at approximately 10:56 p.m.
+- It then transitioned to `render_failed` at the finalization/render integrity boundary.
+- The visible lifecycle reason begins:
+  `narrative-v2-finalization-gate-failed:imagesMissingAlt (223) cannot exceed or exist without a valid imageCount denominator (0); Finding VAN-TECH-002 converts...`
+- The UI reason is truncated, so the complete semicolon-separated finalization error list is not yet verified.
+- `DECISION_POSTDEPLOY_FINALIZATION_GATE_DIAGNOSIS_2026-08-31.md` governs PDV4 diagnosis.
+- Proven subdefect A (>97% confidence): DataForSEO can supply positive `imagesMissingAlt` from summary `page_metrics` while image arrays/imageCount remain unavailable; DecisionEvidence v1 coerces the unavailable imageCount to integer `0`; the adapter does not currently emit `_metaFieldAvailability.images`; deep content parsing can make `_contentEvidenceAvailable=true`, causing the finalization gate to lose the denominator-unavailable state and reject the positive numerator against coerced zero.
+- Proven subdefect B is strongly supported: `VAN-TECH-002` uses explicit PARTIAL assessed-scope text (`assessed pages ... unassessed pages remain unknown`), while the finalization gate's bounded-PARTIAL recognition does not match that wording; the live reason visibly begins the corresponding rejection. The full lifecycle reason is still required before repair scope is frozen.
+- Branch matrix now includes permanent PDV4 escape rows P-B14 and P-B15. Any additional materially distinct finalization error revealed by the complete live reason must receive its own branch row before PDV4 PASS.
 
-Current environment:
+Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Production branch: `main`.
 - Production application SHA: `368763617a6253183de5931da20bfacb373d1f30`.
 - Repair branch: `repair/prysm-production-closure`.
-- Repair branch vs production main: identical, 0 ahead / 0 behind.
-- Repository-controlled T0-T7 closure: historically COMPLETE.
-- PDV1: PASS and promoted.
-- PDV2: PASS and promoted.
-- PDV3: PASS and promoted/deployed.
-- Active root defect: `NONE`.
-- Repair attempt: 0.
-- Whole-App Branch Coverage Gate for PDV3: PASS on exact SHA `368763617a6253183de5931da20bfacb373d1f30`.
-- Independent Auditor verdict for PDV3: PASS.
-- Production deployment status for exact SHA: Vercel `prysm` success; Vercel `vantage-platform` success; Railway status context success.
+- Production and repair branch were identical immediately after PDV3 promotion.
+- Active post-deployment checkpoint: `PDV4` — DIAGNOSIS OPEN.
+- Diagnostic root ID: `PDV4.FINALIZATION_GATE_POST_NARRATIVE`.
+- Repair attempt: 0; no PDV4 repair attempt has begun.
+- Whole-App Gate for PDV4: FAIL/PENDING because P-B14/P-B15 are currently unmapped/unexecuted.
+- Independent Auditor verdict for PDV4: FAIL/PENDING.
+
+Completed:
+- PDV3 repair, branch-complete exact-SHA verification, independent audit, promotion, and deployment.
+- Fresh production PDV3 validation run reached `narrative_ready`, proving the earlier Writer, Judge, and Not-Assessed scoring failure boundaries were traversed successfully.
+- PDV4 branch escape records P-B14/P-B15 and the integration-escape ledger were opened.
 
 In progress:
-- None.
+- One read-only lifecycle diagnostic is required to capture the complete `render_failed` reason for audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d`.
 
 Blocked:
-- No repository-controlled product-code blocker is open.
-- Post-deployment validation of PDV3 remains incomplete until one fresh paid/live production audit is explicitly authorized, run, and reviewed.
+- Application edits and autonomous PDV4 repair are blocked until the complete live finalization error list is captured once and every semicolon-separated error is classified by root defect/branch.
+- Another paid/live production audit is blocked until PDV4 deterministic branch coverage and independent audit PASS on one exact candidate SHA, followed by separate owner authorization for promotion/deployment/live validation.
 
 Important constraints:
-- Preserve the current ScoreSet assertion and schema; alternate producers must satisfy the current contract rather than weaken the consumer.
-- Preserve Not-Assessed evidence semantics, numeric-score suppression, and empty governed hierarchy semantics when no governed findings are established.
-- Do not weaken UNKNOWN, UNAVAILABLE, PARTIAL, or not-deeply-parsed semantics.
-- Do not add retries, hidden fallbacks, extra paid calls, automatic model repair loops, or silent downstream defaults.
-- The branch matrix must remain current whenever materially distinct production paths are added, removed, split, or changed.
-- A fresh production audit is a paid/live action and still requires separate explicit owner authorization.
-- Preserve named `.txt` production diagnostics as evidence when manual diagnostics are needed.
+- Do not weaken the finalization gate merely to publish the report.
+- Preserve the rule that a positive image issue numerator cannot be divided by a proven zero-image denominator; repair availability propagation so unavailable is not treated as zero.
+- Preserve the rule that PARTIAL evidence cannot become an unqualified absence claim; any wording/validator repair must remain explicitly assessed-scope bounded.
+- Preserve UNKNOWN, UNAVAILABLE, PARTIAL, and not-deeply-parsed semantics.
+- Do not add retries, hidden fallbacks, extra paid calls, automatic model repair loops, or silent defaults.
+- Reconcile every materially distinct finalization branch in `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` before PASS; numeric scenario counts alone are insufficient.
+- Diagnostics should be concise and written to a named `.txt` file for upload rather than relying on terminal scrollback.
+- No merge, deployment, production configuration mutation, provider/model call, or fresh production audit is authorized during diagnosis/repair absent later explicit owner authorization.
 
 Exact next action:
-Owner authorization is required before one fresh paid/live production PRYSM audit against exact production SHA `368763617a6253183de5931da20bfacb373d1f30`. After that audit runs, verify lifecycle through scoring and governed Narrative finalization, persisted artifacts, publication/retrieval, and rendered report before declaring post-deployment validation complete.
+Retrieve the exact audit record/lifecycle for production audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d` once and save the complete output, including the full `render_failed` reason, as `PRYSM-PDV4-FINALIZATION-DIAGNOSTIC.txt`. Do not edit application code before that full reason is reviewed and every finalization error is classified.
 
 Last verified:
 2026-08-31 America/Toronto
