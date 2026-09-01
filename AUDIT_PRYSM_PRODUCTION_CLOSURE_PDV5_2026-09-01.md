@@ -1,8 +1,8 @@
 # Independent Audit — PDV5
 
-Date: 2026-09-01  
-Application branch: `repair/prysm-production-closure`  
-Application SHA: `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`  
+Date: 2026-09-01
+Application branch: `repair/prysm-production-closure`
+Application SHA: `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`
 Verdict: **FAIL**
 
 ## Evidence reviewed
