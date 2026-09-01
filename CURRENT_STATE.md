@@ -4,24 +4,17 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Run PDV5 as a full governed Writer/Narrative acid-test, repair, adversarial verification, repeated real-model validation, and independent semantic audit using the existing GitHub -> PowerShell -> `PRYSM-AUTORUN.ps1` -> Builder/Auditor controller. Repair both the live Writer defect and every material verification weakness that allowed repeated false confidence.
+Fix the Writer/Narrative path so a normal PRYSM audit reliably completes. PDV5 is now strictly a Writer audit-completion repair using the existing GitHub -> PowerShell -> `PRYSM-AUTORUN.ps1` -> Builder/Auditor controller.
+
+This is not a governance redesign. Do not spend PDV5 time finding abstract process improvements or unrelated product blind spots.
 
 Verified checkpoint:
-- PDV4 repository-controlled repair closed with Whole-App Branch Coverage PASS and independent Auditor PASS on exact application SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
-- Application GitHub `main` is `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
-- Fresh TBK production audit `aab3c6f9-0cfd-44fb-a263-5c02f6834d8d` reached `narrative_pending`, then `narrative_failed` on Writer pass 1.
-- The visible lifecycle reason begins `writerOutput.aiSearch.citationReadiness.text ...` but is truncated; the exact full validation error remains to be reproduced from persisted artifacts.
-- The architecture persists governed WriterInput and exact parsed Writer provider output before normalization/validation.
-- Exact Railway PRYSM worker SHA at failure time remains UNPROVEN and must be established separately from GitHub/Vercel identity.
-- The prior proof was strong on deterministic repository composition but insufficient to establish stochastic Writer reliability across real production-shaped inputs.
-- `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md` remains the active repair protocol.
-- `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is now a permanent mandatory release gate for PDV5 and all future materially Writer/Judge/model-bearing PRYSM changes.
-- `PRYSM_MODEL_BEARING_GATE_STATE.json` now tracks this gate separately from the controller's deterministic `wholeAppGate`; it begins `FAIL_PENDING` and must be updated by Builder/Auditor as proof planes complete.
-- `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md` confirms the existing PS1 autorun operating method and authorizes materially useful paid Writer/Judge calls for PDV5.
-- `WORKFLOW_INSTRUCTIONS.md` now distinguishes one direct proving check for edit progression from the layered evidence required for release closure.
-- `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` now requires live-failure triangulation across production outcome, persisted bytes, executing runtime identity, and deterministic reproduction when materially applicable.
-- Whole-App governance now explicitly distinguishes deterministic branch completeness from model-bearing robustness and requires production-shaped semantic coverage for known escapes.
-- `AUDIT_PRYSM_VERIFICATION_PROCESS_BLINDSPOTS_2026-09-01.md` records the systemic proof failures and permanent corrections so the process history cannot be silently rewritten after PDV5 is fixed.
+- PDV4 repository-controlled repair closed and was promoted at application SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
+- Fresh TBK production audit `aab3c6f9-0cfd-44fb-a263-5c02f6834d8d` successfully reached `narrative_pending` and then failed at Writer pass 1 with `narrative_failed`.
+- The visible failure begins at `writerOutput.aiSearch.citationReadiness.text ...`; the complete Writer validation error is still to be recovered from the persisted Writer artifacts.
+- The current failure is downstream of collection/scoring. PDV5 therefore starts at persisted Writer/Narrative inputs and does not reopen crawling/scoring unless direct evidence proves they are causing the Writer failure.
+- Writer/Judge call cost is not a constraint for PDV5. Materially useful real Writer/Judge calls are authorized.
+- The active protocol is `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md`, now narrowed to one outcome: Writer/Narrative must complete reliably.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -29,50 +22,66 @@ Current environment / branch / version:
 - Current GitHub main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - PDV4: CLOSED / PROMOTED.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
-- Active root defect: `PDV5.WRITER_PRODUCTION_SHAPING_UNCLASSIFIED` pending exact persisted-artifact replay/root classification.
+- Active root defect: `PDV5.WRITER_PRODUCTION_SHAPING_UNCLASSIFIED` pending exact persisted Writer replay/root classification.
 - Repair attempt: 0.
-- Deterministic Whole-App Gate: FAIL/PENDING for PDV5.
-- Model-Bearing Release Gate: FAIL/PENDING for PDV5; durable tracker `PRYSM_MODEL_BEARING_GATE_STATE.json`.
-- Independent Auditor: FAIL/PENDING for PDV5.
+- Whole-App: FAIL/PENDING for the eventual PDV5 candidate.
+- Independent Auditor: FAIL/PENDING for the eventual PDV5 candidate.
 
-Completed:
-- PDV4 closure/promotion.
-- One real post-promotion TBK run exposing Writer pass-1 failure.
-- PDV5 full Writer acid-test/repair protocol created.
-- Permanent `PRYSM_MODEL_BEARING_RELEASE_GATE.md` created.
-- Separate durable Model-Bearing Gate state created so Whole-App status cannot masquerade as Writer robustness status.
-- Governing project/startup rules updated so model-bearing changes cannot use deterministic Whole-App PASS as a substitute for stochastic Narrative proof.
-- Verification workflow corrected so the efficient one-check rule applies to bounded edit progression, not release closure.
-- Diagnostic evidence standard tightened for production/runtime/model-sensitive failures.
-- Whole-App branch protocol tightened to record semantic-distribution escapes and real production-shaped/counterexample coverage.
-- Independent post-run audit protocol tightened to require model-bearing evidence review and independent semantic re-scoring when applicable.
-- Integration Escape Ledger now records PDV5 as a semantic-distribution/model-bearing escape in addition to prior branch escapes.
-- Owner authorization for materially useful paid Writer/Judge validation calls and continued PS1 autorun method durably recorded.
+Exact Writer path in scope:
+
+`persisted evidence/scores -> WriterInput -> prompt/schema -> Writer provider output -> normalization -> Writer validation -> bounded correction/retry if required -> Judge/revision if required -> finalization -> completed/renderable report state`
+
+Mandatory Writer-completion blind spots to inspect:
+- prompt rules that the validator enforces but Writer is not told;
+- schema values/structures that validator later rejects;
+- WriterInput that lacks information required to satisfy a mandatory field;
+- AI-search/citation-readiness evidence/reference mismatch;
+- valid evidence IDs that do not semantically support the required statement;
+- word/character/format limits that disagree across prompt/schema/validator;
+- PARTIAL/UNKNOWN/UNAVAILABLE wording traps;
+- statement-class/OPPORTUNITY/INTERPRETATION mismatch;
+- normalization changing valid Writer output into invalid output;
+- Writer pass-1 validation failure being terminal when a bounded correction/retry should be possible;
+- correction/retry not receiving the actual validation errors;
+- corrected Writer output not being revalidated;
+- retry loops or duplicate uncontrolled model spend;
+- Writer output passing locally but failing Judge/finalization because of the same repaired contract;
+- intermittent model-output failure on the same frozen production WriterInput.
+
+Out of scope unless direct evidence proves it causes Writer completion failure:
+- crawler/provider redesign;
+- scoring redesign;
+- report styling;
+- broad governance/process work;
+- unrelated deployment architecture;
+- unrelated branch or product refactors.
+
+Required proof before PDV5 can be called fixed:
+1. Reproduce the exact failed Writer output from persisted artifacts.
+2. Prove the Writer root cause(s).
+3. Repair the Writer path without weakening evidence integrity.
+4. Prove prompt/schema/input/normalizer/validator congruence at the root.
+5. Prove bounded correction/retry behavior if required for reliable completion.
+6. Run 5 independent real Writer generations on the exact failed TBK WriterInput; all 5 must pass and remain able to continue Narrative.
+7. Run 3 independent Writer generations on at least one additional real persisted production WriterInput when available; all 3 must pass.
+8. Run 3 complete real Writer/Judge Narrative completion runs on frozen production-shaped evidence, at least 2 using the failed TBK input; all 3 must reach completed/renderable report state.
+9. Five semantic quality areas must meet >=97/100 overall, no area below 19/20, zero critical evidence-integrity defects.
+10. Brutally challenge Writer completion with the nearby failure cases listed in the active protocol.
+11. Existing Whole-App/Narrative regressions remain green on one exact candidate SHA.
+12. Independent Auditor finds no material Writer-completion or evidence-integrity defect.
 
 In progress:
-- PDV5 Builder autorun must recover exact state, reproduce the exact stored production failure, prove worker runtime identity, map all materially distinct roots, repair runtime and proof escapes, build a real production corpus, create/repair a permanent narrative-only model-bearing harness, run deterministic adversarial/failure-injection/parity tests, execute the required repeated real Writer/Judge sample against frozen production-shaped inputs, update `PRYSM_MODEL_BEARING_GATE_STATE.json` as each proof plane completes, score every required sample in five semantic areas, red-team the candidate, run exact-SHA Whole-App/full regression, repeat verification from original artifacts, and hand the frozen exact candidate to independent Auditor.
+- Builder must recover exact state and start with the persisted failed Writer input/output.
+- Do not spend time on broad governance analysis.
+- Do not stop when a single validator test goes green.
+- The proving end state is three successful full Narrative completion runs from frozen real evidence plus the Writer stress sample.
 
 Blocked:
-- No application source edit before exact production failure reproduction and root-cause mapping.
-- Do not blindly rerun full production crawls merely to reproduce a downstream narrative defect when frozen production evidence can isolate the Writer/Judge path.
-- Merge/deploy remain blocked until deterministic Whole-App, Model-Bearing Release Gate, and independent Auditor all PASS on one exact candidate.
-- A post-deployment live validation cannot count until the exact Railway worker and participating UI deployment identities are proven.
-
-Important constraints:
-- Preserve UNKNOWN, UNAVAILABLE, PARTIAL, and NOT ASSESSED semantics.
-- Do not weaken a correct validator merely to accept invalid Writer prose.
-- A valid evidence reference ID is not enough; semantic relevance must be tested.
-- Prompt/schema/validator parity is permanent.
-- Real persisted production artifacts are the primary Writer benchmark; synthetic fixtures are supplemental.
-- Cost is not the optimization target for Writer/Judge validation. Reliability is.
-- Required real-model sample under `PRYSM_MODEL_BEARING_RELEASE_GATE.md`: primary escaped input >=5 independent Writer generations; >=3 independent generations on each of at least two additional real corpus inputs when available; >=3 complete Writer->Judge runs across the corpus including one on the primary escaped input.
-- Every required model-bearing sample must score >=97/100 overall, no semantic area below 19/20, and zero critical evidence-integrity defects.
-- Independent Auditor must independently re-score/challenge at least three model-bearing outputs when available rather than trust Builder scoring.
-- Same-root repair attempts remain capped by governed anti-thrash rules.
-- No finite stochastic test can prove absolute impossibility of future failure; closure must be described as evidence-backed robustness, not certainty.
+- No application source edit until the exact Writer failure is reproduced and the Writer root is mapped.
+- Merge/deploy remain separate owner authorization boundaries after a candidate passes.
 
 Exact next action:
-`PDV5_WRITER_ACID_TEST_AUTORUN`: start/restart the existing governed PRYSM Production Closure autorun controller with Builder. Builder must follow `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md`, `PRYSM_MODEL_BEARING_RELEASE_GATE.md`, `PRYSM_MODEL_BEARING_GATE_STATE.json`, and `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md`. Do not stop at targeted tests or deterministic Whole-App PASS. Complete exact incident replay, runtime identity, real production corpus, permanent narrative-only harness, adversarial/parity/failure injection, required repeated real Writer/Judge sample, five-area semantic thresholds, red-team, exact-SHA deterministic gates, second clean verification, and independent Auditor. Update the dedicated model-bearing gate state throughout. Highest pre-promotion result is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`; after deployment identity proof it may become `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
+`PDV5_WRITER_COMPLETION_AUTORUN`: start/restart `tools/autorun/PRYSM-AUTORUN.ps1` with Builder. Follow `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md`. Diagnose and fix only Writer/Narrative completion defects. Use real Writer/Judge calls against stored production-shaped inputs. Require 5/5 primary Writer stress, 3/3 additional real-input Writer stress when available, and 3/3 complete Narrative runs through finalization/completed report state. Then run existing Whole-App/Narrative regressions and independent Auditor on the exact candidate. Stop at `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION` after the Writer completion proof passes.
 
 Last verified:
 2026-09-01 America/Toronto
