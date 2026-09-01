@@ -4,16 +4,16 @@
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
   "status": "STOP",
   "currentRole": "Builder",
-  "currentTranche": "PDV4",
+  "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "NONE",
+  "rootDefectId": "UNCLASSIFIED",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "main",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PASS",
-  "reason": "Owner authorized PDV4 promotion and deployment. Application main fast-forwarded without force to exact independently audited SHA 1876c18195e12389fa1d3b5c8679f214655b7bb0. Vercel prysm and vantage-platform production deployments are READY on that SHA, and the Railway-linked GitHub deployment status is success. No fresh live/paid production audit has been started.",
-  "nextAction": "READY_FOR_AUTHORIZED_FRESH_PRODUCTION_VALIDATION: obtain explicit owner authorization before starting one fresh TBK production audit against deployed exact SHA 1876c18195e12389fa1d3b5c8679f214655b7bb0."
+  "wholeAppGate": "FAIL",
+  "lastAuditVerdict": "FAIL",
+  "reason": "Fresh TBK production audit aab3c6f9-0cfd-44fb-a263-5c02f6834d8d reached narrative_pending then narrative_failed on Writer pass 1. The user-facing reason is truncated after writerOutput.aiSearch.citationReadiness.text c..., so the exact root is not yet classified. Fresh live audits and paid Writer/Judge calls are stopped. Railway PRYSM worker SHA at execution time is not yet proven.",
+  "nextAction": "PDV5_STORED_WRITER_REPLAY: read the persisted writer-input.json and exact parsed Writer pass-1 provider JSON for audit aab3c6f9-0cfd-44fb-a263-5c02f6834d8d, replay the exact Writer validation boundary read-only/offline, capture the complete error list, and separately prove the exact Railway PRYSM worker deployment SHA. No source edit and no live/paid call before this diagnosis is complete."
 }
