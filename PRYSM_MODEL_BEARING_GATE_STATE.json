@@ -6,7 +6,7 @@
   "status": "FAIL_PENDING",
   "candidateSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
-  "incidentReplay": "PENDING",
+  "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_PENDING_REPLAY",
   "writerRootCause": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "promptSchemaInputValidatorCongruence": "PENDING",
   "writerRetryRecovery": "PENDING",
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "At the newly proven AI-evidence-status-conflation root, repair prompt/schema/validator congruence while preserving evidence integrity, then restart required Writer and full-Narrative samples from zero PASS credit.",
+  "nextAction": "Replay the recovered exact TBK WriterInput/response through the repaired boundary, then complete required real Writer stress and Writer/Judge Narrative samples.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
