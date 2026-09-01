@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH",
+  "rootDefectId": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "292a5527a9d31d159fe1534e6d4801f442c24c4c",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Exact-SHA closure gate PASSed on 292a552 with P-B01..P-B15 covered. The authoritative S3 read path recovered the failed TBK WriterInput and live call-01 artifacts outside the application repository. Required repeated real Writer/Judge and semantic-quality proof remains pending.",
-  "nextAction": "Use the governed production-shaped model-bearing procedure against the recovered frozen inputs; record 5/5 primary TBK Writer passes, 3/3 additional-input Writer passes, 3/3 complete Writer/Judge runs, and five-area semantic scores before Auditor handoff."
+  "reason": "Exact-SHA closure gate PASSed on 292a552 with P-B01..P-B15 covered. Five fresh frozen TBK Writer/Judge executions produced four release candidates and one correctly bounded HUMAN_REVIEW_REQUIRED result with three semantic-support findings; the AI-search mismatch repair passed, while a distinct Writer/Judge semantic-support root remains open.",
+  "nextAction": "Repair PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH, then rerun the governed model-bearing sample including additional persisted inputs and complete-run/semantic-quality obligations."
 }
