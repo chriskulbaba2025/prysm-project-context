@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-On candidate `3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f`, the fourth independent real Writer generation on the frozen TBK WriterInput reached semantic validation and rejected `writerOutput.executiveConclusion.narrative.text` for an unmeasured business outcome with causal certainty. Treat this as the active new root `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY` at repair attempt 0. Diagnose the full prompt/schema/validator/recovery boundary, add the permanent regression, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations on a new exact candidate.
+On candidate `f5a75ce6c44ca1a38772e6d1843e618568d888b5`, bounded existing regression fixtures that violated the newly enforced atom-wide causal-certainty contract. Rerun the exact branch-complete gate, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations on this exact candidate.
 
 Last verified:
 2026-09-01 America/Toronto

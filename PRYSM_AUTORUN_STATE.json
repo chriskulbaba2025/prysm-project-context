@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "590e0632f48f834bab339c194a23d2090bbd13ce",
+  "applicationSha": "f5a75ce6c44ca1a38772e6d1843e618568d888b5",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Candidate 590e0632f48f834bab339c194a23d2090bbd13ce passes the exact branch-complete Whole-App gate and deterministic Narrative regressions. The disabled-runtime gate branch is hermetically tested; required PDV5 real Writer/Judge evidence remains pending.",
+  "reason": "Candidate f5a75ce6c44ca1a38772e6d1843e618568d888b5 contains the bounded causal-certainty fixture correction and passes the focused Narrative regressions. The exact branch-complete Whole-App gate must be rerun; required PDV5 real Writer/Judge evidence remains pending.",
   "nextAction": "Execute and durably record the required PDV5 real Writer stress, semantic-quality scoring, and complete Writer/Judge runs against frozen production-shaped inputs before independent audit."
 }
