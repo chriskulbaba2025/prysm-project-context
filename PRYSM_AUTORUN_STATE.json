@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "STOP",
+  "status": "CONTINUE",
   "currentRole": "Builder",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "UNCLASSIFIED",
+  "rootDefectId": "PDV5.WRITER_PRODUCTION_SHAPING_UNCLASSIFIED",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "main",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "wholeAppGate": "FAIL",
   "lastAuditVerdict": "FAIL",
-  "reason": "Fresh TBK production audit aab3c6f9-0cfd-44fb-a263-5c02f6834d8d reached narrative_pending then narrative_failed on Writer pass 1. The user-facing reason is truncated after writerOutput.aiSearch.citationReadiness.text c..., so the exact root is not yet classified. Fresh live audits and paid Writer/Judge calls are stopped. Railway PRYSM worker SHA at execution time is not yet proven.",
-  "nextAction": "PDV5_STORED_WRITER_REPLAY: read the persisted writer-input.json and exact parsed Writer pass-1 provider JSON for audit aab3c6f9-0cfd-44fb-a263-5c02f6834d8d, replay the exact Writer validation boundary read-only/offline, capture the complete error list, and separately prove the exact Railway PRYSM worker deployment SHA. No source edit and no live/paid call before this diagnosis is complete."
+  "reason": "Fresh TBK production audit aab3c6f9-0cfd-44fb-a263-5c02f6834d8d failed Writer pass 1 after PDV4 controlled gates had passed, proving both a live Writer/Narrative defect and an inadequate verification surface. Owner explicitly authorizes materially useful paid Writer/Judge calls during PDV5 and removes cost minimization as a constraint. The Builder must follow PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md and must not stop at a narrow unit-test pass.",
+  "nextAction": "PDV5_WRITER_ACID_TEST_AUTORUN: Builder must recover exact state, reproduce the real stored failure and full validation errors, prove the Railway worker identity, classify materially distinct roots, repair the runtime and verification escape, build a real persisted-production corpus, use real Writer/Judge shaping calls against stored production-shaped inputs when useful, create permanent adversarial/failure-injection/prompt-schema-validator parity tests, score the Writer in five semantic areas to >=97/100 with no area below 19/20 and zero critical integrity defects, red-team the candidate, run exact-SHA Whole-App/full regressions, repeat the complete verification from original artifacts, and hand the exact candidate to independent Auditor. Merge/deploy remain blocked until Auditor PASS."
 }
