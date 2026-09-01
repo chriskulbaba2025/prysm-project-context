@@ -11,6 +11,7 @@ Verified checkpoint:
 - PDV1 independently PASSed, was promoted, and the next production audit proved the original Writer-pass-1 failure was cleared.
 - PDV2 independently PASSed on exact SHA `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`, was owner-authorized, fast-forwarded to `main`, and deployed successfully to Vercel/Railway.
 - Fresh production audit `cd63135d-87d9-436f-91cc-6d84f64d7a96` reached `evidence_stored` then `evidence_locked` and never reached `scored`.
+- PDV3 independently PASSed on exact repair SHA `368763617a6253183de5931da20bfacb373d1f30`; the Not-Assessed repair and branch-complete Whole-App gate passed with zero material defects.
 - Railway worker evidence at `2026-09-01T01:23:47.964579224Z` records the exact governed-scoring failure: `Current ScoreSet requires decisionHierarchy`.
 - Current production source proves the normal scoring path constructs `decisionHierarchy`, while alternate `buildNotAssessedModel()` returns a Not-Assessed model with `findings: []` but no `rootCauseRuleId` or `decisionHierarchy`; `scoring-service.js` then copies the missing field into the current ScoreSet and the current fail-closed ScoreSet assertion rejects it.
 - `DECISION_POSTDEPLOY_NOT_ASSESSED_DECISION_HIERARCHY_2026-08-31.md` governs the bounded PDV3 repair.
@@ -27,11 +28,11 @@ Current environment:
 - Repository-controlled T0-T7 closure: historically COMPLETE.
 - PDV1: PASS and promoted.
 - PDV2: PASS and promoted.
-- Active post-deployment checkpoint: `PDV3`.
-- Active root defect: `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`.
-- Repair attempt: 0 / Luna.
-- Whole-App Gate for PDV3: FAIL/PENDING — branch matrix has not yet been reconciled/executed on a PDV3 candidate.
-- Independent Auditor verdict for PDV3: FAIL/PENDING.
+- Active post-deployment checkpoint: `PDV3` — PASS.
+- Active root defect: `NONE`.
+- Repair attempt: 0.
+- Whole-App Gate for PDV3: PASS on exact SHA `368763617a6253183de5931da20bfacb373d1f30`.
+- Independent Auditor verdict for PDV3: PASS.
 
 In progress:
 - Governance/process upgrade to assembled-system branch completeness is active for PRYSM and mirrored in COMPAS2 governance.
@@ -53,7 +54,7 @@ Important constraints:
 - A Whole-App PASS now requires branch-matrix completeness, contract assertions at material handoffs, exact-SHA execution, clean tree, and independent Auditor PASS.
 
 Exact next action:
-Builder must repair only `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`: make the Not-Assessed scoring producer emit the current governed empty decision hierarchy/root-cause identity shape, add a permanent P-B03 regression through the real governed scoring/lifecycle composition, reconcile/extend the executable Whole-App gate so required branch IDs are reported and covered, run targeted proof + required branch matrix + full exact-SHA Whole-App/local verification, freeze/push the candidate, and return it to independent Auditor. No merge, deploy, production configuration mutation, paid/live provider/model call, or fresh production audit is authorized.
+`READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`: owner authorization is required before merge to application `main`, deployment, or a fresh paid/live production audit. Repository-controlled PDV3 repair is complete.
 
 Last verified:
 2026-08-31 America/Toronto

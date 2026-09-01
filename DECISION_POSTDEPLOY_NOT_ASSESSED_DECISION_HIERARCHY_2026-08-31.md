@@ -1,7 +1,7 @@
 # Decision — PDV3 Not-Assessed ScoreSet Decision Hierarchy
 
 Date: 2026-08-31
-Status: ACTIVE / GOVERNING REPAIR
+Status: PASS / GOVERNING REPAIR COMPLETE
 Root defect ID: `PDV3.NOT_ASSESSED_DECISION_HIERARCHY`
 
 ## Production evidence
