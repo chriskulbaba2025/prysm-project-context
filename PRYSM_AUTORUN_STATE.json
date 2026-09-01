@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
+  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "83223ffc7bd26c20f24f3a966c5101ea5639a850",
-  "wholeAppGate": "FAIL",
+  "applicationSha": "3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f",
+  "wholeAppGate": "NOT_RUN",
   "lastAuditVerdict": "FAIL",
-  "reason": "The configured real Writer run against the frozen TBK WriterInput reached semantic validation and rejected writerOutput.aiSearch.citationReadiness.text for converting non-AI evidence into an established AI-search limitation. This is a new root distinct from the PARTIAL unqualified-absence boundary.",
-  "nextAction": "Reconcile Whole-App gate result on exact candidate SHA 83223ffc7bd26c20f24f3a966c5101ea5639a850, then continue PDV5 model-bearing Writer/Judge proof; focused AI-evidence prompt regression passes."
+  "reason": "On exact candidate SHA 3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f, the fourth independent real Writer generation on the frozen TBK input reached semantic validation and rejected executiveConclusion.narrative for an unmeasured business outcome with causal certainty. This is a new root distinct from AI-evidence status conflation.",
+  "nextAction": "Diagnose and repair PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY across the prompt/schema/validator/recovery boundary, add the permanent regression, then restart the governed Writer/Judge evidence obligations on a new exact candidate."
 }

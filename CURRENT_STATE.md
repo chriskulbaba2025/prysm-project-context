@@ -27,7 +27,7 @@ Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
-- Root: `PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION`.
+- Root: `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY`.
 - Repair attempt: 0 (new root; controller resets escalation from the causal-certainty boundary).
 
 Latest model-bearing evidence:
@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-The configured real Writer run against the frozen TBK WriterInput reached semantic validation and rejected `writerOutput.aiSearch.citationReadiness.text` for converting non-AI evidence into an established AI-search limitation. Treat this as the active new root `PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION` at repair attempt 0. Reconcile prompt/schema/validator handling, add the permanent regression, then rerun the governed real Writer and Writer/Judge PDV5 evidence obligations.
+On candidate `3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f`, the fourth independent real Writer generation on the frozen TBK WriterInput reached semantic validation and rejected `writerOutput.executiveConclusion.narrative.text` for an unmeasured business outcome with causal certainty. Treat this as the active new root `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY` at repair attempt 0. Diagnose the full prompt/schema/validator/recovery boundary, add the permanent regression, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations on a new exact candidate.
 
 Last verified:
 2026-09-01 America/Toronto
