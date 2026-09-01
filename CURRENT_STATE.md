@@ -50,7 +50,7 @@ Important constraints:
 - Preserve named `.txt` diagnostics as evidence; do not treat them as application source.
 
 Exact next action:
-Run the governed PRYSM autorun from Builder on `PDV2.JUDGE_DEFECT_SECTION_ENUM`. The Builder must implement only the bounded schema alignment, add deterministic regression coverage, run relevant Narrative v2 proofs plus the exact-SHA Whole-App Gate, freeze/push the repair candidate, and hand the exact SHA to the independent Auditor. No merge/deploy/live audit is authorized during this run.
+Independent Auditor must audit PDV2 candidate `c6cb6f7e2b60f350a4021c052c9f9dff4b83411e`. The candidate constrains Judge `defects[].section` to `WRITER_SECTION_FIELDS`, adds deterministic schema coverage, passes Narrative v2 targeted proof 100/100, and passes the exact-SHA Whole-App Gate. No merge/deploy/live audit is authorized during this run.
 
 Last verified:
-2026-08-31 America/Toronto
+2026-08-31 America/Toronto; PDV2 candidate c6cb6f7e2b60f350a4021c052c9f9dff4b83411e
