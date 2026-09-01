@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "2877686b3f21251280179173efa558c9dbf3636d",
+  "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Manual post-level-3 diagnostic reset proved a materially new validator root: contextual conversion language in a valid observed action sentence is lexically misclassified as an unmeasured commercial outcome. The prior Writer/Judge semantic-support root remains exhausted; this new validator-classification root starts at repair attempt 0.",
-  "nextAction": "Builder must repair the bounded commercial-outcome contextual-classification false positive, add permanent positive/negative regressions, then rerun targeted Narrative and exact-SHA Whole-App proof before resuming required real Writer/Judge model-bearing evidence. See PDV5_MANUAL_ROOT_RESET_VALID_CONVERSION_OBSERVATION_2026-09-01.md."
+  "reason": "PDV5 validator context repair passed focused Narrative proof and the exact-SHA Whole-App Branch Coverage Gate. The prior Writer/Judge semantic-support root remains exhausted; this validator-classification root remains at repair attempt 0 pending model-bearing proof.",
+  "nextAction": "Resume required real Writer/Judge model-bearing evidence against application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. See PDV5_VALIDATOR_CONTEXT_REPAIR_2026-09-01.md."
 }
