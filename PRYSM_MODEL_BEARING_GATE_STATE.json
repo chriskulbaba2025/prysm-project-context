@@ -4,10 +4,10 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "0dd829152bf9ce44bb2ceb5665c8888a61497cbd",
+  "candidateSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
-  "writerRootCause": "PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH",
+  "writerRootCause": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
   "promptSchemaInputValidatorCongruence": "REPAIR_IMPLEMENTED_DETERMINISTIC_WHOLE_APP_PASS_PENDING_REAL_STRESS",
   "writerRetryRecovery": "PENDING_CAUSAL_CERTAINTY_REPAIR",
   "primaryWriterStress": {
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "New root PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH: after five primary TBK Writer passes, the additional persisted input produced prompt-authorized bounded non-assessment language which the validator rejected. Candidate 0dd8291 repairs that parity; rerun the exact-SHA Whole-App gate and restart required samples.",
+  "nextAction": "Candidate b46e8e5 is deterministic-gate PASS and repairs the observed-conversion-action semantic-support mismatch. Restart the governed real Writer and Writer/Judge sample obligations on this exact candidate and retain the frozen-input evidence outside the application repository.",
   "lastVerified": "2026-09-01 America/Toronto"
 }

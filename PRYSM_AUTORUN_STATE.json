@@ -6,14 +6,14 @@
   "currentRole": "Builder",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "rootDefectId": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "240f74c7ee7be8c77a143e2160089d1a2cb684ab",
+  "applicationSha": "b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Candidate 240f74c adds Writer/Judge semantic-support prompt guidance and fail-closed regressions for partial competitor evidence and unmeasured conversion outcomes. Exact-SHA Whole-App gate PASSed with P-B01..P-B15; model-bearing obligations remain pending.",
-  "nextAction": "Rerun the governed model-bearing Writer/Judge sample on 240f74c, including additional persisted inputs and complete-run/semantic-quality obligations."
+  "reason": "Candidate b46e8e5 narrows the causal-certainty validator so observed conversion actions are not misclassified as unmeasured commercial outcomes, while preserving explicit downstream-outcome rejection. Direct Narrative regression and exact-SHA Whole-App PASS cover P-B01..P-B15; model-bearing obligations remain pending.",
+  "nextAction": "Run the governed real Writer and Writer/Judge samples on frozen persisted inputs at b46e8e5, record semantic-quality results, and resubmit only after all model-bearing proof planes pass."
 }

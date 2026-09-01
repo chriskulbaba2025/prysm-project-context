@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-On candidate `0dd829152bf9ce44bb2ceb5665c8888a61497cbd`, run the exact branch-complete gate, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations. The active root is `PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH`: the prompt-authorized bounded sentence `not directly assessed sufficiently to establish a limitation` was rejected by the AI-search validator on an additional persisted real input. The candidate repairs that parity and includes a direct regression.
+On candidate `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`, restart the governed real Writer and Writer/Judge PDV5 evidence obligations. The active root is `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`: the validator was treating observed assessed conversion actions as unmeasured commercial outcomes. The candidate accepts observed conversion actions while retaining fail-closed rejection for asserted downstream outcomes; its direct Narrative suite and exact branch-complete Whole-App gate pass.
 
 Recovery update (2026-09-01 Builder run 24):
 - Exact branch-complete closure gate PASSed on application SHA `292a5527a9d31d159fe1534e6d4801f442c24c4c`, covering P-B01..P-B15.
