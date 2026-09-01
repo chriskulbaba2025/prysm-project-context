@@ -25,8 +25,9 @@ For any application-changing production-closure or post-deployment validation re
 - `PRYSM_WHOLE_APP_TRANCHE_GATE.md`;
 - `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md`;
 - `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`;
+- `PRYSM_MODEL_BEARING_RELEASE_GATE.md` when Writer/Judge/model-bearing behavior or Narrative semantic quality is touched or implicated by an escape;
 - `PRYSM_POSTRUN_AUDIT_PROTOCOL.md`;
-- the active dated decision file named by `CURRENT_STATE.md`.
+- the active dated decision/protocol file named by `CURRENT_STATE.md`.
 
 Load additional specifications, skills, and reference material only when required by the active task.
 
@@ -36,15 +37,17 @@ GitHub is the authoritative durable project memory. Chats are temporary working 
 
 `WORKFLOW_INSTRUCTIONS.md` is the current governing manual-edit delivery protocol and supersedes older manual-code-flow wording elsewhere in the context repository when that older wording is inconsistent with it. Hard production/authorization constraints remain unaffected.
 
+`PRYSM_MODEL_BEARING_RELEASE_GATE.md` is the permanent release-proof standard for Writer/Judge/model-bearing changes. Deterministic Whole-App PASS is necessary but is not sufficient to prove stochastic Narrative reliability.
+
 ### Active Production Closure exception
 
-For the active autonomous Production Closure package dated 2026-08-31, `DECISION_AUTONOMOUS_PRODUCTION_CLOSURE_2026-08-31.md`, `PRYSM_PRODUCTION_CLOSURE_ROADMAP_2026-08-31.md`, `PRYSM_WHOLE_APP_TRANCHE_GATE.md`, `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md`, `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`, `PRYSM_POSTRUN_AUDIT_PROTOCOL.md`, and the contracts under `tools/autorun/` are a specifically authorized project-level execution exception.
+For the active autonomous Production Closure package dated 2026-08-31, `DECISION_AUTONOMOUS_PRODUCTION_CLOSURE_2026-08-31.md`, `PRYSM_PRODUCTION_CLOSURE_ROADMAP_2026-08-31.md`, `PRYSM_WHOLE_APP_TRANCHE_GATE.md`, `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md`, `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`, `PRYSM_MODEL_BEARING_RELEASE_GATE.md` when applicable, `PRYSM_POSTRUN_AUDIT_PROTOCOL.md`, and the contracts under `tools/autorun/` are a specifically authorized project-level execution exception.
 
 During that package only, those files supersede the manual-chat/source-file delivery mechanics in `WORKFLOW_INSTRUCTIONS.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `CONSTRAINTS.md`, and older decisions where those mechanics would prohibit direct autonomous local application edits, coherent multi-file contract migrations, deterministic local commits, normal pushes to the dedicated repair branch, or autonomous governance-memory synchronization.
 
-The same autonomous execution exception remains active for any **single bounded post-deployment validation repair checkpoint `PDVn`** when `CURRENT_STATE.md`, `PRYSM_AUTORUN_STATE.json`, and a dated governing decision explicitly declare that checkpoint active after T7 completion. A PDV checkpoint does not reopen or invalidate T0-T7 or earlier independently PASSed PDV checkpoints. It uses the same repair branch, exact-SHA Whole-App Gate, Whole-App Branch Coverage Matrix, independent Auditor, root-defect accounting, and governance-synchronization controls. Its exact repair scope is governed by the dated post-deployment decision referenced by current state.
+The same autonomous execution exception remains active for any **single bounded post-deployment validation repair checkpoint `PDVn`** when `CURRENT_STATE.md`, `PRYSM_AUTORUN_STATE.json`, and a dated governing decision/protocol explicitly declare that checkpoint active after T7 completion. A PDV checkpoint does not reopen or invalidate T0-T7 or earlier independently PASSed PDV checkpoints. It uses the same repair branch, exact-SHA Whole-App Gate, Whole-App Branch Coverage Matrix, applicable Model-Bearing Release Gate, independent Auditor, root-defect accounting, and governance-synchronization controls. Its exact repair scope is governed by the dated post-deployment decision/protocol referenced by current state.
 
-The exception does **not** supersede evidence-integrity semantics, no-guess/root-cause requirements, dirty-worktree preservation, three-attempt anti-thrash rules, Narrative quality gates, Whole-App branch completeness, no-force-push rules, or production/external authorization boundaries. Merge to application `main`, deployment, production configuration mutation, live/paid provider/model execution, and starting a fresh production audit remain explicitly unauthorized unless a later durable instruction grants them.
+The exception does **not** supersede evidence-integrity semantics, no-guess/root-cause requirements, dirty-worktree preservation, three-attempt anti-thrash rules, Narrative quality gates, Whole-App branch completeness, model-bearing proof requirements, no-force-push rules, or production/external authorization boundaries. Merge to application `main`, deployment, production configuration mutation, live/paid provider/model execution, and starting a fresh production audit remain explicitly unauthorized unless a later durable instruction grants them.
 
 ## Startup rule
 
@@ -55,12 +58,13 @@ At the start of a new substantive chat:
 - read `TERMINOLOGY.md` when the task concerns footprint discovery, representative acquisition, provider crawl limits, assessed pages, or report coverage wording;
 - read the latest `CURRENT_STATE.md`;
 - read active `CONSTRAINTS.md` and `DECISIONS.md`;
+- read `PRYSM_MODEL_BEARING_RELEASE_GATE.md` whenever the active task touches Writer/Judge/model-bearing behavior or Narrative semantic quality;
 - load only the additional context required;
 - continue from the exact next action in `CURRENT_STATE.md`.
 
 For ordinary/manual PRYSM work, before any application-file edit or request for a source file, the Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass. Complete the repair design and expected file/test boundary first; only then begin the governed one-source-file-at-a-time implementation workflow.
 
-For the active autonomous Production Closure package or explicitly active bounded `PDVn` checkpoint, follow the Active Production Closure exception above instead: the Codex Builder must recover exact local state first, follow the T0-T7 roadmap for roadmap work or the explicitly active PDV decision/current-state boundary for post-deployment repair, satisfy the Producer -> Contract/Persistence -> Loader -> Consumer dependency discipline where applicable, reconcile the Whole-App Branch Matrix, and satisfy the exact-SHA Whole-App Tranche Gate plus independent Auditor before closure.
+For the active autonomous Production Closure package or explicitly active bounded `PDVn` checkpoint, follow the Active Production Closure exception above instead: the Codex Builder must recover exact local state first, follow the T0-T7 roadmap for roadmap work or the explicitly active PDV decision/current-state boundary for post-deployment repair, satisfy the Producer -> Contract/Persistence -> Loader -> Consumer dependency discipline where applicable, reconcile the Whole-App Branch Matrix, and satisfy the exact-SHA Whole-App Tranche Gate plus any applicable model-bearing release proof and independent Auditor before closure.
 
 For every ordinary/manual source-file edit, `WORKFLOW_INSTRUCTIONS.md` is mandatory. In particular: give the exact path, exact current line numbers/ranges and anchors, present multiple edits bottom-up (highest line first), provide complete replacement blocks, and stop for verification before moving to the next source-file unit.
 
