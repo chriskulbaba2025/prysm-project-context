@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_PARTIAL_EVIDENCE_UNQUALIFIED_ABSENCE",
+  "rootDefectId": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The configured real Writer run against the frozen TBK WriterInput reached semantic validation and rejected writerOutput.content.businessMeaning.text for converting PARTIAL evidence into an unqualified absence claim. This is a new root distinct from causal-certainty and AI-search evidence-status boundaries.",
-  "nextAction": "At repair attempt 0, reconcile Writer prompt/schema/validator congruence for PARTIAL evidence language, add a permanent regression, then rerun the governed frozen-input Writer/Judge evidence obligations."
+  "reason": "The configured real Writer run against the frozen TBK WriterInput reached semantic validation and rejected writerOutput.aiSearch.citationReadiness.text for converting non-AI evidence into an established AI-search limitation. This is a new root distinct from the PARTIAL unqualified-absence boundary.",
+  "nextAction": "At repair attempt 0, reconcile Writer prompt/schema/validator handling for AI-search evidence-status attribution, add a permanent regression, then rerun the governed frozen-input Writer/Judge evidence obligations."
 }

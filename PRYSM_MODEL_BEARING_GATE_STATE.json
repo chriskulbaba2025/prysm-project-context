@@ -7,7 +7,7 @@
   "candidateSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_PENDING_REPLAY",
-  "writerRootCause": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "writerRootCause": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC",
   "writerRetryRecovery": "PENDING",
   "primaryWriterStress": {
