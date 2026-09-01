@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "c6cb6f7e2b60f350a4021c052c9f9dff4b83411e",
-  "applicationSha": "c6cb6f7e2b60f350a4021c052c9f9dff4b83411e",
-  "wholeAppGate": "FAIL",
+  "applicationSha": "368763617a6253183de5931da20bfacb373d1f30",
+  "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Fresh production audit cd63135d-87d9-436f-91cc-6d84f64d7a96 reached evidence_locked and governed scoring failed with 'Current ScoreSet requires decisionHierarchy'. Current source proves the alternate buildNotAssessedModel producer omits rootCauseRuleId/decisionHierarchy while current ScoreSet persistence correctly requires the governed hierarchy. PDV3 is also the first repair governed by PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md and PRYSM_WHOLE_APP_BRANCH_MATRIX.md; numeric golden-scenario PASS alone is insufficient.",
-  "nextAction": "Builder must repair only PDV3.NOT_ASSESSED_DECISION_HIERARCHY, add the permanent P-B03 assembled-system regression, reconcile/extend executable Whole-App coverage so required branch IDs are mapped and reported, run targeted proof plus required branch matrix and exact-SHA Whole-App/local verification, freeze/push the candidate, and return to independent Auditor. No merge, deploy, production configuration mutation, paid/live call, or fresh production audit is authorized."
+  "reason": "PDV3 candidate 368763617a6253183de5931da20bfacb373d1f30 adds the governed empty decision hierarchy to buildNotAssessedModel, adds the assembled P-B03 persistence/reload regression, and extends Whole-App gate output with covered branch IDs. Targeted scoring and exact Whole-App gate pass with zero live/paid calls.",
+  "nextAction": "Independent Auditor must review exact application SHA 368763617a6253183de5931da20bfacb373d1f30. No merge, deploy, production configuration mutation, paid/live call, or fresh production audit is authorized."
 }

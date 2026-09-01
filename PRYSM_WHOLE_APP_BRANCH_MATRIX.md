@@ -1,7 +1,7 @@
 # PRYSM Whole-App Branch Matrix
 
 Matrix ID: PRYSM-BRANCH-MATRIX-01
-Status: ACTIVE / INVENTORY RECONCILIATION REQUIRED BEFORE NEXT APPLICATION PASS
+Status: ACTIVE / PDV3 CANDIDATE COVERAGE RECONCILED
 Effective: 2026-08-31
 
 ## Rule
@@ -16,19 +16,19 @@ A future application-changing PASS is forbidden while any required implemented b
 
 | Branch ID | Production branch / condition | Material boundary at risk | Required now | Scenario mapping status | Exact-SHA verification | Notes |
 |---|---|---|---|---|---|---|
-| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing golden-path evidence may cover this but must be explicitly mapped. |
-| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing G2 is a likely mapping; exact mapping must be proven. |
-| P-B03 | Crawl/evidence non-viable path enters Not-Assessed scoring model | `buildNotAssessedModel` -> current ScoreSet persistence | YES | UNMAPPED | UNEXECUTED | Production escape `PDV3`: current ScoreSet rejected missing `decisionHierarchy`. Permanent regression required. |
-| P-B04 | Zero findings / empty governed decision hierarchy | scoring -> ScoreSet -> WriterInput/report model | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Must prove an empty hierarchy remains a valid governed hierarchy rather than a missing field. |
-| P-B05 | Non-empty single-finding hierarchy/root-cause | scoring -> persistence -> reload -> consumers | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Must preserve exact root-cause identity. |
-| P-B06 | Multiple findings with ordered Conversion-First hierarchy | scoring -> persistence -> reload -> Writer action plan -> render | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing G3 is a likely mapping; must assert rank/influence/effort parity. |
-| P-B07 | Narrative first automatic Writer/Judge round reaches PASS | WriterInput -> Writer -> Judge -> release candidate | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Current production architecture supports this terminal path. |
-| P-B08 | Judge 1 `REVISE` -> Writer 2 -> Judge 2 | governed revision directive and field locking | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Production runs have traversed this path; deterministic whole-app mapping required. |
-| P-B09 | Judge 2 still not releasable -> HUMAN_REVIEW / explicitly authorized final pass | terminal persistence -> authorization -> Writer 3/Judge 3 | YES where current final-pass feature is enabled | TO RECONCILE | UNEXECUTED UNDER MATRIX | Must prove no automatic third pass and no unauthorized spend. |
-| P-B10 | Valid persisted release-candidate recovery | persistence -> reload -> render without new model spend | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing G4 is a likely mapping. |
-| P-B11 | Invalid/stale/incompatible terminal Narrative artifact | recovery validation -> fail closed, zero extra Writer/Judge calls | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing G5 is a likely mapping. |
-| P-B12 | Current publication/retrieval/render path | approved artifact -> publication -> API retrieval -> Viewer v2 | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Must verify client-facing retrieval uses exact governed release artifact. |
-| P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | TO RECONCILE | UNEXECUTED UNDER MATRIX | Existing G6 is a likely mapping. Historical compatibility replay cannot satisfy it. |
+| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | `acceptance-prysm.js` assembled lifecycle | CANDIDATE GATE | Existing golden-path evidence is exercised by the assembled lifecycle. |
+| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | `acceptance-prysm.js` negative/status assertions | CANDIDATE GATE | Existing status-honesty assertions. |
+| P-B03 | Crawl/evidence non-viable path enters Not-Assessed scoring model | `buildNotAssessedModel` -> current ScoreSet persistence | YES | `acceptance-prysm.js` P-B03 | CANDIDATE GATE | Production escape `PDV3`; deterministic persistence/reload regression added. |
+| P-B04 | Zero findings / empty governed decision hierarchy | scoring -> ScoreSet -> WriterInput/report model | YES | `acceptance-prysm.js` P-B03 empty hierarchy | CANDIDATE GATE | Empty hierarchy is asserted as present governed state. |
+| P-B05 | Non-empty single-finding hierarchy/root-cause | scoring -> persistence -> reload -> consumers | YES | `src/scoring/current-score-set.test.js` | CANDIDATE GATE | Current contract identity assertions. |
+| P-B06 | Multiple findings with ordered Conversion-First hierarchy | scoring -> persistence -> reload -> Writer action plan -> render | YES | `narrative-v2-production-path.test.js` | CANDIDATE GATE | Production path asserts ordered action parity. |
+| P-B07 | Narrative first automatic Writer/Judge round reaches PASS | WriterInput -> Writer -> Judge -> release candidate | YES | `narrative-v2-production-path.test.js` | CANDIDATE GATE | Controlled first-round path. |
+| P-B08 | Judge 1 `REVISE` -> Writer 2 -> Judge 2 | governed revision directive and field locking | YES | `narrative-v2-production-path.test.js` | CANDIDATE GATE | Controlled revision path. |
+| P-B09 | Judge 2 still not releasable -> HUMAN_REVIEW / explicitly authorized final pass | terminal persistence -> authorization -> Writer 3/Judge 3 | YES where current final-pass feature is enabled | `narrative-v2-production-path.test.js` | CANDIDATE GATE | Final-pass authorization and no Pass 4 assertions. |
+| P-B10 | Valid persisted release-candidate recovery | persistence -> reload -> render without new model spend | YES | `replay-report.test.js` | CANDIDATE GATE | Current replay hydration. |
+| P-B11 | Invalid/stale/incompatible terminal Narrative artifact | recovery validation -> fail closed, zero extra Writer/Judge calls | YES | `replay-report.test.js`, `narrative-v2-production-path.test.js` | CANDIDATE GATE | Fail-closed recovery assertions. |
+| P-B12 | Current publication/retrieval/render path | approved artifact -> publication -> API retrieval -> Viewer v2 | YES | `acceptance-prysm.js` publication/retrieval | CANDIDATE GATE | Exact approved-byte retrieval assertions. |
+| P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | `prysm-whole-app-gate.js` replay CLI | CANDIDATE GATE | Current replay only; historical compatibility separated. |
 
 ## Known branch coverage escapes to retain permanently
 
