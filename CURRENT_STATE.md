@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-At attempt zero, diagnose and repair `PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION`: the current candidate passed 5/5 primary TBK real Writer generations, but the third additional real Stripe Writer generation reached semantic validation and failed because `writerOutput.aiSearch.answerability.text` converted non-AI evidence into an established AI-search limitation. Preserve the failed output hash `c5d6fee3d122d170698566e2454bf19fcc113d5390367ee33ec3e7e4cd7ebcc1`; restart governed samples after repair.
+The attempt-zero repair at application SHA `db337201bd60c6fb7154684888e3407a721e901c` restricts AI-search support to canonical AI/schema/entity references and adds a regression proving finding metadata cannot authorize an AI-search limitation. Targeted proof and the exact-SHA Whole-App Branch Coverage Gate pass. Complete the required real Writer and Writer/Judge PDV5 evidence obligations, then hand this exact SHA to the independent Auditor.
 
 Last verified:
 2026-09-01 America/Toronto
