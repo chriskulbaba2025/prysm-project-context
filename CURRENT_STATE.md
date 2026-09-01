@@ -16,10 +16,12 @@ Verified checkpoint:
 - The prior proof was strong on deterministic repository composition but insufficient to establish stochastic Writer reliability across real production-shaped inputs.
 - `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md` remains the active repair protocol.
 - `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is now a permanent mandatory release gate for PDV5 and all future materially Writer/Judge/model-bearing PRYSM changes.
+- `PRYSM_MODEL_BEARING_GATE_STATE.json` now tracks this gate separately from the controller's deterministic `wholeAppGate`; it begins `FAIL_PENDING` and must be updated by Builder/Auditor as proof planes complete.
 - `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md` confirms the existing PS1 autorun operating method and authorizes materially useful paid Writer/Judge calls for PDV5.
 - `WORKFLOW_INSTRUCTIONS.md` now distinguishes one direct proving check for edit progression from the layered evidence required for release closure.
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` now requires live-failure triangulation across production outcome, persisted bytes, executing runtime identity, and deterministic reproduction when materially applicable.
 - Whole-App governance now explicitly distinguishes deterministic branch completeness from model-bearing robustness and requires production-shaped semantic coverage for known escapes.
+- `AUDIT_PRYSM_VERIFICATION_PROCESS_BLINDSPOTS_2026-09-01.md` records the systemic proof failures and permanent corrections so the process history cannot be silently rewritten after PDV5 is fixed.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -30,7 +32,7 @@ Current environment / branch / version:
 - Active root defect: `PDV5.WRITER_PRODUCTION_SHAPING_UNCLASSIFIED` pending exact persisted-artifact replay/root classification.
 - Repair attempt: 0.
 - Deterministic Whole-App Gate: FAIL/PENDING for PDV5.
-- Model-Bearing Release Gate: FAIL/PENDING for PDV5.
+- Model-Bearing Release Gate: FAIL/PENDING for PDV5; durable tracker `PRYSM_MODEL_BEARING_GATE_STATE.json`.
 - Independent Auditor: FAIL/PENDING for PDV5.
 
 Completed:
@@ -38,14 +40,17 @@ Completed:
 - One real post-promotion TBK run exposing Writer pass-1 failure.
 - PDV5 full Writer acid-test/repair protocol created.
 - Permanent `PRYSM_MODEL_BEARING_RELEASE_GATE.md` created.
+- Separate durable Model-Bearing Gate state created so Whole-App status cannot masquerade as Writer robustness status.
 - Governing project/startup rules updated so model-bearing changes cannot use deterministic Whole-App PASS as a substitute for stochastic Narrative proof.
 - Verification workflow corrected so the efficient one-check rule applies to bounded edit progression, not release closure.
 - Diagnostic evidence standard tightened for production/runtime/model-sensitive failures.
 - Whole-App branch protocol tightened to record semantic-distribution escapes and real production-shaped/counterexample coverage.
+- Independent post-run audit protocol tightened to require model-bearing evidence review and independent semantic re-scoring when applicable.
+- Integration Escape Ledger now records PDV5 as a semantic-distribution/model-bearing escape in addition to prior branch escapes.
 - Owner authorization for materially useful paid Writer/Judge validation calls and continued PS1 autorun method durably recorded.
 
 In progress:
-- PDV5 Builder autorun must recover exact state, reproduce the exact stored production failure, prove worker runtime identity, map all materially distinct roots, repair runtime and proof escapes, build a real production corpus, create/repair a permanent narrative-only model-bearing harness, run deterministic adversarial/failure-injection/parity tests, execute the required repeated real Writer/Judge sample against frozen production-shaped inputs, score every required sample in five semantic areas, red-team the candidate, run exact-SHA Whole-App/full regression, repeat verification from original artifacts, and hand the frozen exact candidate to independent Auditor.
+- PDV5 Builder autorun must recover exact state, reproduce the exact stored production failure, prove worker runtime identity, map all materially distinct roots, repair runtime and proof escapes, build a real production corpus, create/repair a permanent narrative-only model-bearing harness, run deterministic adversarial/failure-injection/parity tests, execute the required repeated real Writer/Judge sample against frozen production-shaped inputs, update `PRYSM_MODEL_BEARING_GATE_STATE.json` as each proof plane completes, score every required sample in five semantic areas, red-team the candidate, run exact-SHA Whole-App/full regression, repeat verification from original artifacts, and hand the frozen exact candidate to independent Auditor.
 
 Blocked:
 - No application source edit before exact production failure reproduction and root-cause mapping.
@@ -67,7 +72,7 @@ Important constraints:
 - No finite stochastic test can prove absolute impossibility of future failure; closure must be described as evidence-backed robustness, not certainty.
 
 Exact next action:
-`PDV5_WRITER_ACID_TEST_AUTORUN`: start/restart the existing governed PRYSM Production Closure autorun controller with Builder. Builder must follow `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md`, `PRYSM_MODEL_BEARING_RELEASE_GATE.md`, and `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md`. Do not stop at targeted tests or deterministic Whole-App PASS. Complete exact incident replay, runtime identity, real production corpus, permanent narrative-only harness, adversarial/parity/failure injection, required repeated real Writer/Judge sample, five-area semantic thresholds, red-team, exact-SHA deterministic gates, second clean verification, and independent Auditor. Highest pre-promotion result is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`; after deployment identity proof it may become `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
+`PDV5_WRITER_ACID_TEST_AUTORUN`: start/restart the existing governed PRYSM Production Closure autorun controller with Builder. Builder must follow `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md`, `PRYSM_MODEL_BEARING_RELEASE_GATE.md`, `PRYSM_MODEL_BEARING_GATE_STATE.json`, and `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md`. Do not stop at targeted tests or deterministic Whole-App PASS. Complete exact incident replay, runtime identity, real production corpus, permanent narrative-only harness, adversarial/parity/failure injection, required repeated real Writer/Judge sample, five-area semantic thresholds, red-team, exact-SHA deterministic gates, second clean verification, and independent Auditor. Update the dedicated model-bearing gate state throughout. Highest pre-promotion result is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`; after deployment identity proof it may become `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
 
 Last verified:
 2026-09-01 America/Toronto
