@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-`PDV5_WRITER_COMPLETION_AUTORUN`: diagnose `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY` across prompt/schema/normalizer/validator, implement the smallest evidence-preserving shaping repair with direct positive/negative regression, then restart the required 5/5 Writer stress and continue through 3/3 full Narrative completion proof, regressions, and independent audit.
+`AUDIT_REQUIRED`: independently audit application SHA `9ee10587caf2c7b49a339ca490fa0a7be501dfb0` for the PDV5 Writer causal-language repair. Direct Writer/Narrative and exact whole-app branch gates pass; model-bearing stress and full completion proof remain governed audit obligations.
 
 Last verified:
 2026-09-01 America/Toronto

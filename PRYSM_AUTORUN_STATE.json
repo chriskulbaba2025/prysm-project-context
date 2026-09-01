@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "22d13a4899c968f403e9ef46e84049995968de4c",
+  "applicationSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The first authorized real Writer generation on the exact failed TBK WriterInput reached deterministic Writer validation and failed because executiveConclusion.narrative.text stated an unmeasured business outcome with causal certainty. This is a materially new semantic-shaping root distinct from the repaired PARTIAL-negation boundary. Candidate 22d13a4899c968f403e9ef46e84049995968de4c remains the last deterministic PASS candidate; model-bearing proof is FAIL_PENDING.",
-  "nextAction": "Diagnose PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY across Writer prompt, schema, normalization, and semantic validator; add direct positive/negative proof and the smallest shaping repair before restarting the required real Writer sample."
+  "reason": "PDV5 causal-language shaping repair is committed on the exact candidate SHA. Writer/Narrative tests pass 102/102; closure machine gate and exact whole-app branch gate pass with P-B01 through P-B15 covered. Candidate is ready for independent Auditor review.",
+  "nextAction": "Independent Auditor review of application SHA 9ee10587caf2c7b49a339ca490fa0a7be501dfb0, focusing on Writer causal-language shaping, evidence integrity, and exact gate evidence."
 }
