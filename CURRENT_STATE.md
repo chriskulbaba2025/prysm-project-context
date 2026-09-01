@@ -3,93 +3,87 @@
 Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective:
-Repository-controlled PRYSM Production Closure is complete. PDV5 was the bounded Writer audit-completion repair using the existing GitHub -> PowerShell -> `PRYSM-AUTORUN.ps1` -> Builder/Auditor controller.
+## Current objective
 
-Verified checkpoint:
-- PDV4 closed/promoted at application SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
-- Fresh TBK audit `aab3c6f9-0cfd-44fb-a263-5c02f6834d8d` reached `narrative_pending` and then `narrative_failed` on Writer pass 1.
-- The visible failure begins at `writerOutput.aiSearch.citationReadiness.text ...`.
-- The failure is downstream of collection/scoring.
-- Writer/Judge cost is not a constraint. Materially useful real Writer/Judge calls are authorized.
-- Read-only access to existing production persistence is explicitly authorized for PDV5 artifact recovery and frozen-input Writer/Judge testing.
-- The failed audit artifacts are expected in production persistence, not necessarily in the local worktree or GitHub.
+Complete the authorized production promotion proof for the independently audited PDV5 Writer/Narrative repair.
 
-Important correction after Builder Run 2:
-- `BLOCKED` solely because Writer artifacts are absent locally/GitHub is incorrect.
-- Builder must use the configured Railway/AWS/S3/production read path to list/read the failed audit artifacts.
-- Reading/downloading existing production artifacts is authorized; mutating/deleting/overwriting them is not.
-- Store diagnostic copies outside the application repository.
-- If the exact parsed failed Writer response was not persisted, prove that absence from the authoritative production store and continue using the exact recovered WriterInput, available lifecycle/error metadata, direct prompt/schema/validator inspection, and authorized real Writer calls against that frozen input.
-- Exact Railway worker revision may be recorded `UNPROVEN` and must NOT block Writer diagnosis/repair. Exact deployment identity is required later before a deployed live audit can count as final validation.
+Repository-controlled Production Closure is complete. The remaining work is strictly:
 
-Current environment:
-- Application repo: `chriskulbaba2025/vantage-platform`.
-- Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
-- Active application candidate: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
-- PDV5: PASS / CLOSED.
+`audited candidate -> application main -> exact production deployment identity -> one fresh paid production audit -> completed/renderable report confirmation`
+
+Do not reopen PDV5 or make additional application repairs unless the fresh production audit proves a material product defect.
+
+## Owner authorization
+
+On 2026-09-01 the owner explicitly authorized:
+
+1. PRYSM production promotion; and
+2. one fresh paid production audit after exact deployed revision is verified.
+
+This authorization does not authorize unrelated production changes, additional paid audits, crawler/scoring redesign, or speculative repairs.
+
+## Verified PDV5 closure checkpoint
+
+- Application repository: `chriskulbaba2025/vantage-platform`.
+- Closure branch: `repair/prysm-production-closure`.
+- Exact independently audited candidate: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+- PDV5: **PASS / CLOSED**.
 - Root: `NONE`.
-- Repair attempt: 0.
+- Repair attempt: `0`.
+- Narrative v2: **114/114 PASS**.
+- Whole-App Branch Coverage Gate: **87/87 PASS**.
+- Required branch coverage: **P-B01 through P-B15 PASS**.
+- Primary real Writer sample: **5/5 PASS**.
+- Additional persisted Writer sample: **3/3 PASS**.
+- Complete real Writer/Judge Narrative runs: **3/3 reached release-candidate/completed-renderable proof state**.
+- Five-area semantic review: **PASS**, zero critical evidence-integrity defects.
+- Independent Auditor: **PASS**, zero material defects.
+- Durable audit: `AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV5_2026-09-01.md`.
 
-Latest model-bearing / validator evidence:
-- The exhausted prior root `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH` consumed Luna -> Terra -> Sol and may not receive a fourth same-root autonomous repair.
-- Candidate `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` passed the focused Writer proof, 114/114 Narrative tests, and the exact-SHA Whole-App gate covering P-B01..P-B15.
-- Normalized replay of 11 governed real Writer outputs rejected one historically valid evidence-supported observation: `Browser validation confirmed a visible, interactable, unobstructed action on all assessed conversion pages.`
-- Direct validator inspection proves contextual `conversion` language plus establishment wording such as `confirmed` can be misclassified as an asserted commercial outcome when `action` and `conversion` are not an adjacent compound phrase.
-- This is a materially new validator-classification root, not authorization for a fourth repair against the exhausted Writer/Judge semantic-support root.
-- Durable diagnosis: `PDV5_MANUAL_ROOT_RESET_VALID_CONVERSION_OBSERVATION_2026-09-01.md`.
+## Production promotion checkpoint
 
-Writer path in scope:
-`persisted evidence/scores -> WriterInput -> prompt/schema -> Writer provider output -> normalization -> Writer validation -> bounded correction/retry if required -> Judge/revision if required -> finalization -> completed/renderable report state`
+Before authorization, production `main` was:
 
-Mandatory Writer-completion blind spots:
-- prompt/validator mismatch;
-- schema/validator mismatch;
-- insufficient WriterInput context;
-- AI-search/citation-readiness support mismatch;
-- semantically irrelevant evidence refs;
-- word/character/format limit disagreement;
-- PARTIAL/UNKNOWN/UNAVAILABLE wording traps;
-- statement-class mismatch;
-- normalization damage;
-- pass-1 invalid output treated as terminal when safe bounded correction is possible;
-- correction path not receiving exact validation errors;
-- corrected output not revalidated;
-- retry loops/duplicate spend;
-- downstream Judge/finalization failure caused by Writer contract;
-- intermittent model-output failure on identical frozen WriterInput.
+`1876c18195e12389fa1d3b5c8679f214655b7bb0`
 
-Required proof before PDV5 PASS:
-1. Recover the exact failed TBK WriterInput from production persistence.
-2. Recover/replay the exact failed Writer output when it exists; if it does not exist, prove non-persistence and use the governed real-Writer fallback.
-3. Prove Writer root cause(s).
-4. Repair without weakening evidence integrity.
-5. Prove prompt/schema/input/normalizer/validator congruence.
-6. Prove bounded correction/retry behavior if needed.
-7. 5/5 real Writer generations PASS on the failed TBK WriterInput.
-8. 3/3 Writer generations PASS on one additional real persisted WriterInput when available.
-9. 3/3 complete Writer/Judge Narrative runs on frozen production-shaped evidence reach completed/renderable report state; at least 2 use TBK.
-10. Five semantic areas >=97/100 overall, none below 19/20, zero critical evidence-integrity defects.
-11. Existing Whole-App/Narrative regressions remain green on one exact candidate SHA.
-12. Independent Auditor finds no material Writer-completion/evidence-integrity defect.
+After owner authorization, GitHub verified the closure candidate was exactly 19 commits ahead and 0 commits behind that main baseline. Application `main` was then fast-forward promoted without force to:
 
-Out of scope unless direct evidence proves causation:
+`9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
+
+GitHub now resolves application `main` to the exact independently audited PDV5 candidate.
+
+Production runtime deployment identity is currently **UNPROVEN**. A main-branch promotion alone does not count as deployment verification.
+
+## Exact next action
+
+**Verify the production PRYSM worker is actually running application SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.**
+
+- First inspect the linked production Railway project/environment/service and deployed revision read-only.
+- If the worker is already deployed at the exact SHA, record that evidence and continue.
+- If it is not deployed at the exact SHA, deploy the authorized `main` revision, wait for deployment completion, and verify the resulting production revision exactly.
+- Do not run the paid audit until exact deployment identity is proven.
+
+Once exact deployment identity is proven, run **one** fresh paid production audit through the normal customer/production path.
+
+The final production PASS requires evidence that the fresh audit reaches the normal completed/renderable report state and that the report can actually be retrieved/rendered. If it fails, capture the lifecycle reason and classify the failure before any code change.
+
+## Active boundary
+
+In scope:
+- exact deployment verification;
+- deployment of the authorized audited main revision if required;
+- one fresh paid production audit;
+- read-only lifecycle/report verification;
+- durable production-promotion evidence.
+
+Out of scope unless the live audit proves direct causation:
 - crawler/provider redesign;
 - scoring redesign;
-- styling;
+- report styling redesign;
 - governance redesign;
-- unrelated deployment/product refactors.
+- unrelated application refactors;
+- additional paid production audits.
 
-Exact next action:
-`READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`: owner authorization is required before merge to application `main`, deployment, or a fresh paid production audit. Production was not updated by this repository-controlled closure.
+## Last verified
 
-Prior candidate state:
-On candidate `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`, Builder completed the governed real Writer and Writer/Judge PDV5 evidence obligations. The prior root was `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`: the validator was treating observed assessed conversion actions as unmeasured commercial outcomes. The candidate accepted observed conversion actions while retaining fail-closed rejection for asserted downstream outcomes; its direct Narrative suite and exact branch-complete Whole-App gate passed. On 2026-09-01 the primary TBK Writer sample completed 5/5 PASS; the additional persisted Stripe Writer sample completed 3/3 PASS; and three isolated real Writer/Judge completions reached `RELEASE_CANDIDATE` (TBK 2/2, Stripe 1/1). The five-area Builder semantic review was PASS for every required output (100/100; no area below 20; zero critical integrity defects) and output hashes are reconciled in `PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md`. The earlier `fetch failed` transport abort occurred before Writer validation and is not a product verdict.
-
-Recovery update (2026-09-01 Builder run 24):
-- Exact branch-complete closure gate PASSed on application SHA `292a5527a9d31d159fe1534e6d4801f442c24c4c`, covering P-B01..P-B15.
-- Authoritative S3 read path recovered the failed TBK `writer-input.json` and existing `live-usage/call-01-*` artifacts to `C:\Users\kulba\AppData\Local\Temp\prysm-pdv5-aab3c6f9-recovered` (outside the application repository).
-- No new application defect was proven in that run.
-
-Last verified:
-2026-09-01 America/Toronto — independent PDV5 Auditor PASS at exact application SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-01 America/Toronto — application `main` promoted to exact audited SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; production worker deployment identity remains to be verified before the authorized fresh audit.
