@@ -141,3 +141,25 @@ The Auditor must also inspect whether the gate itself actually executes the chan
 ## Final closure rule
 
 The final Production Closure candidate must run this gate again after all T1-T6 application changes are combined at one exact SHA. Independent earlier tranche PASSes do not prove the combined final application.
+
+---
+
+## Whole-App Branch Coverage Amendment — mandatory after 2026-08-31
+
+`PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md` and `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` are now part of this gate.
+
+The six golden scenarios above are a stable baseline, not a declaration that six scenarios exhaust the assembled application. A result such as `6/6 PASS` is insufficient for a new application-changing PASS unless the current matrix proves that all materially distinct currently implemented production branches are mapped to executed deterministic scenarios on the same exact SHA.
+
+Before the gate may report PASS it must additionally prove:
+
+1. the branch matrix is reconciled to the candidate architecture;
+2. every required implemented branch ID is mapped to one or more whole-app scenarios/tests;
+3. every required mapped branch executed on the exact candidate SHA;
+4. all required branch scenarios passed;
+5. current contracts are asserted at each material producer/persistence/reload/consumer handoff traversed by the scenario;
+6. gate evidence records the branch IDs covered, not only scenario counts;
+7. no required implemented branch remains `UNMAPPED`, `UNEXECUTED`, or materially `UNKNOWN`.
+
+If the application or a tranche introduces or exposes a materially distinct branch that is not represented, extending the branch matrix and deterministic Whole-App coverage is part of the same repair boundary. The result is FAIL/BLOCKED until that coverage exists.
+
+Any material defect found in UAT/live production that escaped because a materially distinct branch was omitted becomes a permanent branch-matrix row and permanent deterministic whole-app regression before another production validation of that class.
