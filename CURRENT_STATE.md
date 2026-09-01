@@ -17,21 +17,22 @@ Verified checkpoint:
   1. `site.imagesMissingAlt` / `technical-health`: `imagesMissingAlt (223) cannot exceed or exist without a valid imageCount denominator (0).`
   2. `findings[].evidence` / `priority-fixes`: `Finding VAN-TECH-002 converts PARTIAL evidence into an unqualified absence claim.`
 - No third materially distinct finalization error was returned. No P-B16 row is required from this diagnostic.
-- P-B14 root is proven: `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`.
-- P-B15 root is proven: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION`.
-- `PDV4_REPAIR_BOUNDARY_2026-08-31.md` freezes the complete pre-edit producer/contract/consumer boundary and direct proof requirements.
-- `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` now maps both P-B14 and P-B15; both remain UNEXECUTED pending repair and exact-SHA verification.
+- P-B14 root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` is repaired and verified.
+- P-B15 root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` is repaired and verified.
+- `PDV4_REPAIR_BOUNDARY_2026-08-31.md` froze the complete pre-edit producer/contract/consumer boundary and direct proof requirements.
+- Whole-App Branch Coverage PASSes on exact candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`, naming and executing P-B01 through P-B15.
+- Independent Auditor PASSes exact candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Production branch: `main`.
-- Production application SHA / remote-main baseline: `c5512cc0cd15ec68a8a8318020734c1db64958b8`.
+- Current production/main SHA / remote-main baseline: `368763617a6253183de5931da20bfacb373d1f30`.
 - Dedicated repair branch: `repair/prysm-production-closure`.
-- Local application branch/worktree must be recovered and verified by the Builder before editing; governance does not assume the local branch has already been switched.
-- Active post-deployment checkpoint: `PDV4` — REPAIR OPEN.
-- Active root defect: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15 proof correction.
-- Active repair attempt: 0 / Luna.
-- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`; all mapped branches P-B01 through P-B15 named and executed, including governed FindingSet validation after P-B15 persistence/reload.
+- Frozen PDV4 candidate SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
+- Active post-deployment checkpoint: `PDV4` — CLOSED / READY FOR AUTHORIZED PRODUCTION PROMOTION.
+- Active root defect: `NONE`.
+- Repair attempt: 0.
+- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - Independent Auditor verdict for PDV4: PASS on exact application SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 
 Completed:
@@ -40,16 +41,21 @@ Completed:
 - Complete deterministic finalization replay against the persisted production artifacts.
 - Classification of every returned finalization error: exactly P-B14 and P-B15.
 - PDV4 repair boundary freeze.
-- Permanent branch mapping for P-B14/P-B15 and escape-ledger classification.
+- Permanent branch mapping and assembled-system regressions for P-B14/P-B15.
+- Direct regressions for both roots.
+- Exact-SHA Whole-App Branch Coverage Gate PASS for P-B01 through P-B15.
+- Independent Auditor PASS on the same exact candidate SHA.
+- Application repair branch pushed and governance synchronized.
 
 In progress:
 - None.
 
 Queued:
-- The previous candidate audit correctly rejected leaf-only P-B14/P-B15 proof. The replacement candidate adds assembled producer -> persisted artifact -> validated reload -> finalization scenarios for both branches; direct regressions and the branch-complete Whole-App Gate pass on the same exact SHA. Auditor handoff is pending.
+- Owner-authorized production promotion only: merge the frozen repair candidate to application `main`, deploy, then separately authorize and run fresh live/paid production validation if desired.
 
 Blocked:
-- No repository-controlled defect. Merge, deployment, and another paid/live production audit remain an explicit owner-authorization boundary.
+- No repository-controlled defect.
+- Merge, deployment, production configuration mutation, and another paid/live production audit remain explicit owner-authorization boundaries.
 
 Important constraints:
 - Do not weaken the finalization gate merely to publish the report.
@@ -59,9 +65,8 @@ Important constraints:
 - Explicit `assessed pages ... unassessed pages remain unknown` wording is bounded evidence and must remain bounded.
 - Preserve UNKNOWN, UNAVAILABLE, PARTIAL, and not-deeply-parsed semantics.
 - Do not add retries, hidden fallbacks, extra paid calls, automatic model repair loops, or silent defaults.
-- P-B14 and P-B15 use separate root-defect accounting. A failed P-B14 proof may escalate only the P-B14 root; P-B15 begins at Luna / attempt 0 when reached.
-- Reconcile both branches in `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`; numeric scenario counts alone cannot establish PASS.
-- No merge to application `main`, deployment, production configuration mutation, live/paid provider call, live/paid Writer/Judge call, or fresh production audit is authorized without later explicit owner approval.
+- P-B14 and P-B15 remain permanent branch-matrix regressions.
+- No merge to application `main`, deployment, production configuration mutation, live/paid provider call, live/paid Writer/Judge call, or fresh production audit is authorized without explicit owner approval.
 
 Exact next action:
 `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`: owner authorization is required before merge to application `main`, deployment, or a fresh live/paid production audit.
