@@ -11,7 +11,6 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "008dc9af5ea80706e6db7034ccaaa17817490915",
-  "applicationSha": "008dc9af5ea80706e6db7034ccaaa17817490915",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PENDING",
   "applicationSha": "c6cb6f7e2b60f350a4021c052c9f9dff4b83411e",
