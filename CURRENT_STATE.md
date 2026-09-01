@@ -26,14 +26,18 @@ Important correction after Builder Run 2:
 Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
+- Active application candidate: `2877686b3f21251280179173efa558c9dbf3636d`.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
-- Root: `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY`.
-- Repair attempt: 0 (new root; controller resets escalation from the causal-certainty boundary).
+- Root: `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`.
+- Repair attempt: 0 (manual post-level-3 diagnostic reset to a materially new validator-classification root).
 
-Latest model-bearing evidence:
-- The first authorized real Writer generation on the exact failed TBK WriterInput reached Writer semantic validation.
-- It failed at `writerOutput.executiveConclusion.narrative.text` for stating an unmeasured business outcome with causal certainty.
-- This is a materially new Writer semantic-shaping root, not a repeat failure of the repaired PARTIAL-negation boundary.
+Latest model-bearing / validator evidence:
+- The exhausted prior root `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH` consumed Luna -> Terra -> Sol and may not receive a fourth same-root autonomous repair.
+- Level-3 candidate `2877686b3f21251280179173efa558c9dbf3636d` passed 24/24 focused Writer tests, 113/113 Narrative tests, and the exact-SHA Whole-App gate covering P-B01..P-B15.
+- Normalized replay of 11 governed real Writer outputs rejected one historically valid evidence-supported observation: `Browser validation confirmed a visible, interactable, unobstructed action on all assessed conversion pages.`
+- Direct validator inspection proves contextual `conversion` language plus establishment wording such as `confirmed` can be misclassified as an asserted commercial outcome when `action` and `conversion` are not an adjacent compound phrase.
+- This is a materially new validator-classification root, not authorization for a fourth repair against the exhausted Writer/Judge semantic-support root.
+- Durable diagnosis: `PDV5_MANUAL_ROOT_RESET_VALID_CONVERSION_OBSERVATION_2026-09-01.md`.
 
 Writer path in scope:
 `persisted evidence/scores -> WriterInput -> prompt/schema -> Writer provider output -> normalization -> Writer validation -> bounded correction/retry if required -> Judge/revision if required -> finalization -> completed/renderable report state`
@@ -77,15 +81,15 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-Level-3 repair candidate `2877686b3f21251280179173efa558c9dbf3636d` passed 24/24 focused Writer tests, 113/113 Narrative tests, and the exact-SHA Whole-App gate covering P-B01..P-B15. Normalized replay of all 11 governed real Writer outputs then rejected one historically valid assessed-action observation: `Browser validation confirmed a visible, interactable, unobstructed action on all assessed conversion pages.` The compound-only exception is too narrow. This is the third completed same-root proof failure for `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`; do not attempt a fourth same-root repair. See `PDV5_AUD002_LEVEL3_REPAIR_PROOF_FAILURE_2026-09-01.md`. The external controller owns the governed block transition.
+Resume the existing governed Builder autorun at Luna / repair attempt 0 on new root `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`. Builder must make the smallest coherent validator repair that distinguishes evidence-supported observations about conversion interfaces/actions/pages/paths from asserted downstream commercial outcomes, add permanent positive and negative regressions, then rerun targeted Narrative and exact-SHA Whole-App proof before resuming required real Writer/Judge model-bearing evidence. Do not make a fourth repair against `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`.
 
 Prior candidate state:
-On candidate `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`, Builder completed the governed real Writer and Writer/Judge PDV5 evidence obligations. The active root is `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`: the validator was treating observed assessed conversion actions as unmeasured commercial outcomes. The candidate accepts observed conversion actions while retaining fail-closed rejection for asserted downstream outcomes; its direct Narrative suite and exact branch-complete Whole-App gate pass. On 2026-09-01 the primary TBK Writer sample completed 5/5 PASS; the additional persisted Stripe Writer sample completed 3/3 PASS; and three isolated real Writer/Judge completions reached `RELEASE_CANDIDATE` (TBK 2/2, Stripe 1/1). The five-area Builder semantic review is PASS for every required output (100/100; no area below 20; zero critical integrity defects) and output hashes are reconciled in `PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md`. The earlier `fetch failed` transport abort occurred before Writer validation and is not a product verdict.
+On candidate `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`, Builder completed the governed real Writer and Writer/Judge PDV5 evidence obligations. The prior root was `PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH`: the validator was treating observed assessed conversion actions as unmeasured commercial outcomes. The candidate accepted observed conversion actions while retaining fail-closed rejection for asserted downstream outcomes; its direct Narrative suite and exact branch-complete Whole-App gate passed. On 2026-09-01 the primary TBK Writer sample completed 5/5 PASS; the additional persisted Stripe Writer sample completed 3/3 PASS; and three isolated real Writer/Judge completions reached `RELEASE_CANDIDATE` (TBK 2/2, Stripe 1/1). The five-area Builder semantic review was PASS for every required output (100/100; no area below 20; zero critical integrity defects) and output hashes are reconciled in `PDV5_MODEL_BEARING_SEMANTIC_QUALITY_2026-09-01.md`. The earlier `fetch failed` transport abort occurred before Writer validation and is not a product verdict.
 
 Recovery update (2026-09-01 Builder run 24):
 - Exact branch-complete closure gate PASSed on application SHA `292a5527a9d31d159fe1534e6d4801f442c24c4c`, covering P-B01..P-B15.
 - Authoritative S3 read path recovered the failed TBK `writer-input.json` and existing `live-usage/call-01-*` artifacts to `C:\Users\kulba\AppData\Local\Temp\prysm-pdv5-aab3c6f9-recovered` (outside the application repository).
-- No new application defect was proven in this run. Required real model-bearing stress/completion and semantic-quality evidence remains pending.
+- No new application defect was proven in that run.
 
 Last verified:
 2026-09-01 America/Toronto
