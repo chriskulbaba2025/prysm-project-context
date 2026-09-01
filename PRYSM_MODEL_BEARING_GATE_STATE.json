@@ -8,30 +8,30 @@
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
   "writerRootCause": "PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH",
-  "promptSchemaInputValidatorCongruence": "REPAIR_IMPLEMENTED_DETERMINISTIC_WHOLE_APP_PASS_PENDING_REAL_STRESS",
+  "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC_AND_REAL_STRESS",
   "writerRetryRecovery": "PENDING_CAUSAL_CERTAINTY_REPAIR",
   "primaryWriterStress": {
-    "status": "PENDING",
+    "status": "PASS",
     "required": 5,
     "completed": 5,
     "passed": 5,
     "materialFailures": 0
   },
   "additionalRealInputWriterStress": {
-    "status": "PENDING",
+    "status": "PASS",
     "realInputsRequiredWhenAvailable": 1,
     "runsRequired": 3,
-    "completed": 0,
-    "passed": 0,
-    "materialFailures": 1
+    "completed": 3,
+    "passed": 3,
+    "materialFailures": 0
   },
   "fullNarrativeCompletion": {
-    "status": "PENDING",
+    "status": "PASS",
     "completeRunsRequired": 3,
-    "completeRunsCompleted": 0,
-    "completeRunsPassed": 0,
+    "completeRunsCompleted": 3,
+    "completeRunsPassed": 3,
     "primaryTbkRunsRequired": 2,
-    "primaryTbkRunsCompleted": 0,
+    "primaryTbkRunsCompleted": 2,
     "materialFailures": 0
   },
   "semanticQuality": {
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Candidate b46e8e5 primary TBK Writer stress completed 5/5 PASS with frozen-input artifacts under C:\\Users\\kulba\\Desktop\\prysm-pdv5-evidence\\real-model-ledger. The first additional-input request then failed after its durable paid-call reservation with transport error `fetch failed`, before a Writer verdict. Retry the remaining additional-input and complete Writer/Judge samples at the same root/attempt; retain all evidence outside the application repository.",
+  "nextAction": "Candidate b46e8e5 Writer stress now passes 5/5 TBK and 3/3 additional persisted Stripe input; three Writer/Judge completions pass (TBK 2/2, Stripe 1/1) in isolated ledgers under C:\\Users\\kulba\\Desktop\\prysm-pdv5-evidence\\real-model-ledger. Reconcile the output hashes and complete the required five-area Builder semantic scoring/challenge before audit handoff; retain all evidence outside the application repository.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
