@@ -27,8 +27,13 @@ Current environment:
 - Application repo: `chriskulbaba2025/vantage-platform`.
 - Production main SHA: `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 - PDV5: ACTIVE / BUILDER AUTHORIZED.
-- Root: `PDV5.WRITER_PRODUCTION_SHAPING_UNCLASSIFIED`.
-- Repair attempt: 0.
+- Root: `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY`.
+- Repair attempt: 0 (new root; controller resets escalation from the prior PARTIAL-negation boundary).
+
+Latest model-bearing evidence:
+- The first authorized real Writer generation on the exact failed TBK WriterInput reached Writer semantic validation.
+- It failed at `writerOutput.executiveConclusion.narrative.text` for stating an unmeasured business outcome with causal certainty.
+- This is a materially new Writer semantic-shaping root, not a repeat failure of the repaired PARTIAL-negation boundary.
 
 Writer path in scope:
 `persisted evidence/scores -> WriterInput -> prompt/schema -> Writer provider output -> normalization -> Writer validation -> bounded correction/retry if required -> Judge/revision if required -> finalization -> completed/renderable report state`
@@ -72,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-`PDV5_WRITER_COMPLETION_AUTORUN`: pull current governance and rerun `tools/autorun/PRYSM-AUTORUN.ps1` with Builder. Builder must first retrieve the failed audit's persisted artifacts read-only from production storage. Absence locally/GitHub is not a stop condition. If exact parsed Writer output is unavailable after authoritative storage check, continue with the exact WriterInput plus authorized real Writer reproduction/stress. Do not block on Railway worker SHA. Then diagnose, repair, run 5/5 Writer stress and 3/3 full Narrative completion proof, regressions, and independent audit.
+`PDV5_WRITER_COMPLETION_AUTORUN`: diagnose `PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY` across prompt/schema/normalizer/validator, implement the smallest evidence-preserving shaping repair with direct positive/negative regression, then restart the required 5/5 Writer stress and continue through 3/3 full Narrative completion proof, regressions, and independent audit.
 
 Last verified:
 2026-09-01 America/Toronto

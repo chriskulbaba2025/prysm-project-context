@@ -4,18 +4,18 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": null,
+  "candidateSha": "22d13a4899c968f403e9ef46e84049995968de4c",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "PENDING",
-  "writerRootCause": "UNCLASSIFIED",
+  "writerRootCause": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
   "promptSchemaInputValidatorCongruence": "PENDING",
   "writerRetryRecovery": "PENDING",
   "primaryWriterStress": {
     "status": "PENDING",
     "required": 5,
-    "completed": 0,
+    "completed": 1,
     "passed": 0,
-    "materialFailures": 0
+    "materialFailures": 1
   },
   "additionalRealInputWriterStress": {
     "status": "PENDING",
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Builder follows PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md. Fix only Writer/Narrative defects that prevent a normal audit from completing. Do not turn this tracker into a separate governance workstream.",
+  "nextAction": "Repair the newly proven unmeasured causal-certainty Writer shaping root, prove prompt/schema/validator congruence, then restart the required primary real Writer sample from zero PASS credit.",
   "lastVerified": "2026-09-01 America/Toronto"
 }
