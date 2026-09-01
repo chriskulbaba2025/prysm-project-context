@@ -2,8 +2,21 @@
 
 Date: 2026-09-01
 Application branch: `repair/prysm-production-closure`
-Application SHA: `b46e8e54016b82c2aa87e6b07aa4b8610a2e1aa4`
+Application SHA: `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
 Verdict: **FAIL**
+
+## Independent audit rerun
+
+The exact candidate is synchronized locally and remotely, and the worktree is clean. `npm run test:narrative-v2` passes 114/114 and `npm run verify:prysm-whole-app` passes 87 checks with P-B01 through P-B15 named and covered. Direct review of the changed validator and its negative/positive regressions found no remaining commercial-outcome false-positive in the active root.
+
+### PDV5-AUD-003 — authoritative branch matrix is stale
+
+- Category: `BRANCH_COVERAGE_DEFECT`; severity: `MAJOR`.
+- Evidence: `PRYSM_WHOLE_APP_BRANCH_MATRIX.md` remains `ACTIVE / PDV4 REPAIR OPEN`; P-B14 and P-B15 exact-SHA verification cite `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800`, while the audited candidate is `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+- Impact: the durable matrix does not prove that required branch rows were verified on the exact audited SHA, despite the fresh gate output. The mandatory branch protocol forbids PASS while exact current verification is stale or materially unknown.
+- Required correction: Builder updates the matrix status/current PDV and reconciles P-B01..P-B15 exact-SHA verification to the fresh gate evidence, without changing application code; then resubmits the same frozen application SHA.
+
+This is a proof/governance setup defect, not a new application root. The active root remains `PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE`; no fourth repair is requested against the exhausted prior root.
 
 ## Evidence reviewed
 
