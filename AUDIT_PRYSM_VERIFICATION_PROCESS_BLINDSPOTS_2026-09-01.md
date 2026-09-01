@@ -125,10 +125,20 @@ Correction:
 - hard deterministic rules remain fail-closed;
 - model-bearing sample, semantic thresholds, independent challenge, and final live confirmation materially reduce risk without pretending to create mathematical certainty.
 
+### B13 — Model-bearing status was not separately durable
+
+The autorun state had a deterministic `wholeAppGate` field but no separate durable model-bearing gate state. That made it too easy for future agents or humans to collapse two different proof claims into one green flag.
+
+Correction:
+- created `PRYSM_MODEL_BEARING_GATE_STATE.json`;
+- it independently tracks incident replay, runtime identity, corpus, narrative-only harness, parity, adversarial/failure injection, required Writer/Judge sample counts, semantic quality, red-team, second verification, Auditor re-score, deterministic Whole-App, deployment identity, and final live-validation eligibility;
+- `PROJECT.md`, `CURRENT_STATE.md`, and `PRYSM_AUTORUN_STATE.json` now require this separate state when the Model-Bearing Release Gate applies.
+
 ## Files created/updated
 
 Created:
 - `PRYSM_MODEL_BEARING_RELEASE_GATE.md`
+- `PRYSM_MODEL_BEARING_GATE_STATE.json`
 - `DECISION_PDV5_RELIABILITY_OVER_COST_AND_GOVERNED_AUTORUN_2026-09-01.md`
 - this audit record.
 
