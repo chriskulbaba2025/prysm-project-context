@@ -1,52 +1,80 @@
-# Decision: PDV5 reliability over cost and governed autorun continuity
+# Decision: PDV5 Writer completion over cost, using existing governed autorun
 
 Date: 2026-09-01
 Status: Active
 
 ## Decision
 
+PDV5 has one objective:
+
+**Make a normal PRYSM audit reliably get through Writer/Narrative and complete.**
+
 PDV5 continues through the existing governed GitHub -> PowerShell -> `tools/autorun/PRYSM-AUTORUN.ps1` -> Builder/Auditor loop.
 
 Do not replace that operating method with an ad-hoc standalone Codex command unless the owner explicitly changes the method.
 
-For PDV5, the owner explicitly prioritizes Writer/Narrative reliability over model-call cost. Materially useful paid Writer/Judge calls are authorized when they are part of the governed diagnostic or model-bearing verification plan.
+The owner explicitly prioritizes Writer/Narrative reliability over Writer/Judge call cost. Materially useful paid Writer/Judge calls are authorized.
 
-## Why
+## Scope
 
-The operating loop itself is not the defect. The defect exposed by audit `aab3c6f9-0cfd-44fb-a263-5c02f6834d8d` is that prior verification established deterministic repository integrity more strongly than it established actual stochastic Writer reliability.
+The active failure is audit `aab3c6f9-0cfd-44fb-a263-5c02f6834d8d`, which reached `narrative_pending` and failed on Writer pass 1.
 
-Changing execution methods would add process variance without addressing that proof gap.
+PDV5 therefore owns only the path required to make that stage complete reliably:
 
-## Implications
+`persisted evidence/scores -> WriterInput -> Writer prompt/schema -> Writer output -> normalization/validation -> bounded retry/revision if required -> Judge if required -> finalization -> completed/renderable report state`
 
-1. Continue to use `PRYSM-AUTORUN.ps1` for PDV5 autonomous Builder/Auditor execution.
-2. `PDV5_WRITER_ACID_TEST_REPAIR_PROTOCOL_2026-09-01.md` governs the active repair.
-3. `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is mandatory for PDV5 and future materially model-bearing PRYSM changes.
-4. Cost minimization must not cause a necessary Writer/Judge robustness test to be skipped.
-5. Model calls are not unlimited noise: they must use governed frozen production-shaped inputs, record provenance/results/cost, and satisfy the sample rules in the Model-Bearing Release Gate.
-6. Prefer narrative-only/model-bearing runs against stored evidence over repeated full crawls when the defect is downstream of evidence collection.
-7. Do not use a new full production audit as the primary mechanism to discover another Writer defect. First pass deterministic, real-artifact, model-bearing, semantic, and deployment-identity gates.
-8. Merge/deploy remain separate authorization boundaries unless current state explicitly authorizes them.
-9. A final fresh production audit remains a confirmation step after pre-production proof, not a substitute for it.
+Do not spend PDV5 on broad governance redesign, crawler redesign, scoring redesign, report styling, unrelated deployment architecture, or general product improvements unless direct evidence proves one of those is actually causing Writer/Narrative completion failure.
 
-## Anti-slop rule
+## Required Writer blind-spot review
 
-For PDV5, no Builder/Auditor may report `fixed`, `works`, `production ready`, or equivalent from any single one of:
+Builder must inspect all material ways the Writer path can die, especially:
 
-- targeted tests;
-- broad regression;
-- Whole-App PASS;
-- one Writer call;
-- one Judge PASS;
-- one rendered report;
-- one semantic score.
+- prompt/validator mismatch;
+- schema/validator mismatch;
+- missing WriterInput context;
+- AI-search/citation-readiness support;
+- semantically irrelevant evidenceRefs;
+- field/word/character/format limits;
+- PARTIAL/UNKNOWN/UNAVAILABLE wording;
+- statement-class mismatch;
+- normalization damage;
+- pass-1 invalid output being treated as terminal;
+- missing bounded correction/retry using actual validation errors;
+- corrected output not being revalidated;
+- retry loops/duplicate spend;
+- Judge/revision handoff failures caused by Writer contract;
+- Writer-valid output failing finalization because of the same Writer contract;
+- intermittent model-output failure against identical frozen production input.
 
-The release claim must identify the proof planes completed under `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
+## Required proof
+
+PDV5 may not close from one green validator test.
+
+Minimum proof:
+
+1. exact persisted production Writer failure reproduced;
+2. Writer root cause(s) proven;
+3. coherent Writer repair implemented;
+4. 5/5 independent Writer generations PASS on the failed TBK production-shaped WriterInput;
+5. 3/3 Writer generations PASS on at least one additional real persisted WriterInput when available;
+6. 3/3 complete real Writer/Judge Narrative runs against frozen production-shaped evidence reach the normal completed/renderable report state, with at least two using the failed TBK input;
+7. generated outputs remain evidence-safe and meet the five semantic quality thresholds in the active protocol;
+8. nearby Writer-completion failure cases are deliberately challenged;
+9. existing Whole-App/Narrative regressions remain green on the exact candidate;
+10. independent Auditor finds no material Writer-completion or evidence-integrity defect.
+
+## Cost
+
+Cost minimization must not cause a necessary Writer/Judge proof to be skipped.
+
+Prefer repeated Writer/Judge runs against stored evidence over repeated full provider recrawls because the current defect is downstream of collection/scoring.
 
 ## Stop condition
 
-The highest pre-promotion state is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION` only after the exact candidate passes all applicable deterministic and model-bearing gates plus independent audit.
+After the Writer repair satisfies the required proof, stop at:
 
-After deployment identity is proven, the next state may be `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
+`READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`
 
-A successful final live confirmation closes PDV5. A failed live confirmation creates a new governed escape and reopens diagnosis.
+The next step is one fresh normal PRYSM audit in the app.
+
+Do not turn PDV5 into another governance project.
