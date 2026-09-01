@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f",
-  "wholeAppGate": "NOT_RUN",
+  "applicationSha": "1995265577d8079c1e47fed2630959d382c03fc0",
+  "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "On exact candidate SHA 3cd0c7274f02ce6fe76ebb16e9b80fe15fb8b12f, the fourth independent real Writer generation on the frozen TBK input reached semantic validation and rejected executiveConclusion.narrative for an unmeasured business outcome with causal certainty. This is a new root distinct from AI-evidence status conflation.",
-  "nextAction": "Diagnose and repair PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY across the prompt/schema/validator/recovery boundary, add the permanent regression, then restart the governed Writer/Judge evidence obligations on a new exact candidate."
+  "reason": "Candidate 1995265577d8079c1e47fed2630959d382c03fc0 adds an atom-wide pre-emission causal-certainty scan/rewrite instruction and permanent prompt regression. Targeted Narrative v2 proof passed 106/106 and the exact-SHA Whole-App Branch Coverage Gate passed with P-B01 through P-B15.",
+  "nextAction": "Execute and durably record the required PDV5 real Writer stress, semantic-quality scoring, and complete Writer/Judge runs against frozen production-shaped inputs; then reconcile model-bearing gate state and resubmit the exact candidate for independent audit."
 }
