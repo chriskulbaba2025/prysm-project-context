@@ -4,10 +4,10 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "590e0632f48f834bab339c194a23d2090bbd13ce",
+  "candidateSha": "0dd829152bf9ce44bb2ceb5665c8888a61497cbd",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
-  "writerRootCause": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "writerRootCause": "PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH",
   "promptSchemaInputValidatorCongruence": "REPAIR_IMPLEMENTED_DETERMINISTIC_WHOLE_APP_PASS_PENDING_REAL_STRESS",
   "writerRetryRecovery": "PENDING_CAUSAL_CERTAINTY_REPAIR",
   "primaryWriterStress": {
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "New root PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY: candidate 3cd0c727 produced 3/4 Writer PASS on primary TBK before a governed causal-certainty rejection. Diagnose/repair this distinct root, then restart required samples on the new exact candidate.",
+  "nextAction": "New root PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH: after five primary TBK Writer passes, the additional persisted input produced prompt-authorized bounded non-assessment language which the validator rejected. Candidate 0dd8291 repairs that parity; rerun the exact-SHA Whole-App gate and restart required samples.",
   "lastVerified": "2026-09-01 America/Toronto"
 }

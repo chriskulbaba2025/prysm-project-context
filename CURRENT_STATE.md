@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-On candidate `f5a75ce6c44ca1a38772e6d1843e618568d888b5`, bounded existing regression fixtures that violated the newly enforced atom-wide causal-certainty contract. Rerun the exact branch-complete gate, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations on this exact candidate.
+On candidate `0dd829152bf9ce44bb2ceb5665c8888a61497cbd`, run the exact branch-complete gate, then restart the governed real Writer and Writer/Judge PDV5 evidence obligations. The active root is `PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH`: the prompt-authorized bounded sentence `not directly assessed sufficiently to establish a limitation` was rejected by the AI-search validator on an additional persisted real input. The candidate repairs that parity and includes a direct regression.
 
 Last verified:
 2026-09-01 America/Toronto

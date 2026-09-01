@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "rootDefectId": "PDV5.WRITER_AI_SEARCH_LIMITATION_SUPPORT_MISMATCH",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "f5a75ce6c44ca1a38772e6d1843e618568d888b5",
-  "wholeAppGate": "PASS",
+  "applicationSha": "0dd829152bf9ce44bb2ceb5665c8888a61497cbd",
+  "wholeAppGate": "NOT_RUN",
   "lastAuditVerdict": "FAIL",
-  "reason": "Candidate f5a75ce6c44ca1a38772e6d1843e618568d888b5 contains the bounded causal-certainty fixture correction and passes the focused Narrative regressions. The exact branch-complete Whole-App gate must be rerun; required PDV5 real Writer/Judge evidence remains pending.",
-  "nextAction": "Execute and durably record the required PDV5 real Writer stress, semantic-quality scoring, and complete Writer/Judge runs against frozen production-shaped inputs before independent audit."
+  "reason": "The restarted real model proof on f5a75ce exposed a distinct prompt/validator mismatch: the Writer prompt authorizes 'not directly assessed sufficiently to establish a limitation' but the AI-search validator rejected it. Candidate 0dd8291 repairs that bounded non-assessment parity without weakening unsupported-claim rejection.",
+  "nextAction": "Run the exact-SHA Whole-App Gate, then restart and durably record the complete PDV5 Writer/Judge model-bearing sample on candidate 0dd8291."
 }
