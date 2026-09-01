@@ -1,9 +1,9 @@
-# Decision — PDV4 Post-Narrative Finalization-Gate Diagnosis
+# Decision — PDV4 Post-Narrative Finalization-Gate Repair
 
 Date: 2026-08-31
-Status: ACTIVE / DIAGNOSTIC BOUNDARY
+Status: ACTIVE / REPAIR BOUNDARY FROZEN / BUILDER AUTHORIZED
 Checkpoint: `PDV4`
-Diagnostic root ID: `PDV4.FINALIZATION_GATE_POST_NARRATIVE`
+Diagnostic umbrella ID: `PDV4.FINALIZATION_GATE_POST_NARRATIVE`
 
 ## Production evidence
 
@@ -12,100 +12,99 @@ Fresh production validation audit:
 - audit ID: `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d`;
 - target: `https://www.tbkcreative.com/`;
 - exact production application SHA: `368763617a6253183de5931da20bfacb373d1f30`;
-- lifecycle progressed through collection, governed scoring, Writer/Judge Narrative execution, and `narrative_ready`;
+- lifecycle traversed collection, governed scoring, Writer/Judge Narrative execution, and `narrative_ready`;
 - it then transitioned to `render_failed` at the finalization/render integrity boundary.
 
-The first bounded diagnostic retrieved the authoritative audit record with HTTP 200. The persisted `render_failed` reason is exactly:
+The first read-only audit-record diagnostic proved that lifecycle persistence itself truncates the joined finalization reason to 120 characters via `message.slice(0, 120)`.
 
-`narrative-v2-finalization-gate-failed:imagesMissingAlt (223) cannot exceed or exist without a valid imageCount denominator (0).; Finding VAN-TECH-002 converts`
+The second read-only deterministic diagnostic re-evaluated only `runFinalizationGate` against the already-persisted governed artifacts for the same live audit. It returned exactly:
 
-Authoritative production source at the exact production SHA proves the truncation occurs before lifecycle persistence: `renderNarrativeV2Draft()` joins the complete `gate.errors` message and then passes `message.slice(0, 120)` into the lifecycle transition reason. Therefore the missing suffix is not recoverable from the persisted lifecycle record or UI.
+- `passed: false`;
+- `errorCount: 2`;
+- error 1: `site.imagesMissingAlt` / `technical-health` — `imagesMissingAlt (223) cannot exceed or exist without a valid imageCount denominator (0).`;
+- error 2: `findings[].evidence` / `priority-fixes` — `Finding VAN-TECH-002 converts PARTIAL evidence into an unqualified absence claim.`
 
-This proves the first lifecycle diagnostic is complete but insufficient by design to enumerate every finalization-gate error. Diagnosis remains open only for one deterministic re-evaluation of the gate against the already-persisted governed inputs.
+No third materially distinct finalization error was returned. No P-B16 row is required from this diagnostic.
 
-## Proven subdefect A — image denominator availability
+`PDV4_REPAIR_BOUNDARY_2026-08-31.md` is the frozen pre-edit repair map.
+
+## Root 1 — P-B14 image denominator availability
+
+Root defect ID:
+`PDV4.IMAGE_DENOMINATOR_AVAILABILITY`
 
 Confidence: >97%.
 
-Current production source establishes:
+Verified chain:
 
-1. DataForSEO On-Page can provide a positive `page_metrics.checks.no_image_alt` even when image arrays are unavailable.
-2. The adapter deliberately returns `imageCount: null` when image arrays are unavailable.
-3. DecisionEvidence v1 requires integer counters, so hydration serializes missing `imageCount` as `0` while retaining the positive `imagesMissingAlt` numerator.
-4. The finalization gate correctly rejects a positive numerator over denominator `0` unless denominator unavailability is explicitly known.
-5. The gate can recognize explicit `_metaFieldAvailability.images === false`, but the adapter does not currently emit that image availability marker.
-6. Deep Content Parsing can make `_contentEvidenceAvailable === true` even while image arrays remain unavailable, defeating the legacy denominator-unavailable fallback.
+1. DataForSEO summary `page_metrics.checks.no_image_alt` can supply a positive `imagesMissingAlt` numerator when the pages response does not supply image arrays.
+2. The On-Page adapter emits `imageCount: null` when that denominator is unavailable.
+3. DecisionEvidence v1 requires integer counters and currently serializes the unavailable denominator as `0` while passing `_metaFieldAvailability` through.
+4. The finalization gate already distinguishes an unavailable denominator when `_metaFieldAvailability.images === false`.
+5. The adapter currently emits field availability for titles, descriptions, canonicals, and headings, but not images.
+6. Deep Content Parsing can make `_contentEvidenceAvailable === true`, so broad content availability cannot stand in for image-array availability.
 
-Therefore the production-shaped branch `positive provider image issue numerator + unavailable image-array denominator + deep body-content evidence available` is not represented correctly at the finalization handoff.
+Required repair direction:
+propagate explicit image-denominator availability at the producer/handoff. Do not weaken the numerator/denominator integrity rule and do not reinterpret unavailable as proven zero.
 
-This is branch escape P-B14.
+## Root 2 — P-B15 PARTIAL heading scope validation
 
-Do not weaken the numerator/denominator integrity check. Preserve unavailable denominator as unavailable.
+Root defect ID:
+`PDV4.PARTIAL_HEADING_SCOPE_VALIDATION`
 
-## Strongly supported subdefect B — PARTIAL heading wording / finalization contract
+Confidence: >97% after the complete deterministic replay.
 
-Current scoring source for `VAN-TECH-002` uses bounded PARTIAL evidence text of the form:
+Verified chain:
 
-`<n> assessed pages missing H1; <n> assessed pages with multiple H1s; unassessed pages remain unknown`
+1. `VAN-TECH-002` deliberately emits bounded PARTIAL text:
+   `<n> assessed pages missing H1; <n> assessed pages with multiple H1s; unassessed pages remain unknown`.
+2. This text preserves the assessed scope and explicitly leaves unassessed pages unknown.
+3. The finalization PARTIAL absence guard sees `missing` but its current bounded recognition pattern does not recognize this assessed-scope form.
+4. The deterministic replay returned exactly the corresponding `VAN-TECH-002` rejection.
 
-The finalization PARTIAL-evidence guard rejects language containing `missing` unless its bounded-partial recognition pattern matches. The current bounded pattern does not recognize that explicit assessed-scope wording.
+Required repair direction:
+recognize explicitly assessed-scope PARTIAL wording while retaining fail-closed rejection for genuinely unqualified absence claims. Do not globally weaken the absence guard.
 
-The persisted production reason proves the second finalization error begins with:
+## Root accounting and order
 
-`Finding VAN-TECH-002 converts`
+The two errors are materially distinct roots and must not share one repair escalation counter.
 
-This is consistent with the producer/finalization-validator mismatch already mapped as P-B15. The complete deterministic gate output is still required to classify the full second message and determine whether additional finalization errors exist.
+Ordered Builder work:
 
-Do not weaken the rule that PARTIAL evidence cannot become an unqualified absence claim.
-
-## Why diagnosis is still open
-
-The authoritative audit record cannot expose the complete finalization list because production lifecycle persistence intentionally truncates the joined gate message to 120 characters.
-
-Do not collect broad logs and do not call the production orchestrator from `render_failed`: that path can transition lifecycle state and is therefore outside the read-only diagnostic boundary.
-
-The shortest safe remaining diagnostic is to re-evaluate the pure deterministic `runFinalizationGate` against the same persisted governed DecisionEvidence, CapabilityEvidence, FindingSet, and ScoreSet using source at exact production SHA `368763617a6253183de5931da20bfacb373d1f30`.
-
-## Exact next diagnostic
-
-From a tracked-clean local checkout at exact application SHA `368763617a6253183de5931da20bfacb373d1f30`:
-
-1. connect read-only to the governed S3 artifact store using the existing Railway environment;
-2. load the persisted AuditRequest, DecisionEvidence, CapabilityEvidence, canonical findings, and canonical scores for audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7d`;
-3. reconstruct the same current report model used by `renderNarrativeV2Draft()`;
-4. execute only `runFinalizationGate`;
-5. save the complete `gate.errors` array to `PRYSM-PDV4-FINALIZATION-GATE-FULL.txt`.
-
-This diagnostic must not call the production orchestrator, transition lifecycle state, write governed artifacts, call providers/models, or edit application code.
+1. active root: `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`, Luna / repair attempt 0;
+2. after its direct proof passes, move to new root `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION`, reset Luna / repair attempt 0;
+3. after both direct roots pass, freeze one coherent PDV4 candidate containing both repairs and permanent P-B14/P-B15 branch regressions;
+4. execute the exact-SHA Whole-App Branch Coverage Gate with P-B14 and P-B15 both executed and PASS;
+5. run applicable composite/local verification, clean-tree proof, push the dedicated repair branch, prove local/remote 0/0, then hand the exact SHA to the independent Auditor.
 
 ## Branch-coverage consequence
 
-The live failure proves at least these permanent coverage escapes:
+Permanent rows:
 
-- P-B14 — image numerator available while image denominator is unavailable/coerced to zero, with other deep content evidence available;
-- P-B15 — PARTIAL heading finding uses explicit assessed-scope wording through the finalization absence-claim guard.
+- P-B14 — positive image issue numerator + unavailable image-array denominator serialized as zero + deep content available;
+- P-B15 — PARTIAL `VAN-TECH-002` assessed-scope wording through finalization absence guard.
 
-If the complete deterministic gate output reveals another materially distinct finalization branch, add another permanent matrix row before PDV4 PASS.
+Both are now `MAPPED / UNEXECUTED` pending Builder implementation and exact-SHA proof.
 
-## Repair authorization boundary
+## Authorization boundary
 
-No application edit is authorized yet.
+Application repair is now authorized only within the frozen PDV4 boundary under the existing autonomous Production Closure decision.
 
-After the deterministic gate output is captured:
-
-1. classify every finalization error by root defect and branch ID;
-2. freeze the complete PDV4 repair boundary;
-3. only then reopen autonomous Builder repair at Luna / attempt 0 for each materially new root under the three-attempt rule;
-4. require targeted regression + exact-SHA branch-complete Whole-App Gate + independent Auditor.
+Authorized:
+- bounded source/test/gate edits needed for P-B14 and P-B15;
+- deterministic local diagnostics/tests and zero-cost assembled Whole-App proof;
+- coherent commits and normal push only to `repair/prysm-production-closure`;
+- governance synchronization and independent Auditor handoff.
 
 Still separately unauthorized without later owner approval:
 
 - merge to application `main`;
 - deployment;
 - production configuration mutation;
-- provider/model calls;
+- live/paid provider calls;
+- live/paid Writer/Judge calls;
 - another production audit.
 
-## Efficiency boundary
+## Exact next action
 
-Do not over-investigate. One deterministic gate re-evaluation against the already-persisted inputs should close the diagnostic boundary if it returns the complete error array.
+Start autonomous Builder at root `PDV4.IMAGE_DENOMINATOR_AVAILABILITY`, Luna / repair attempt 0, following `PDV4_REPAIR_BOUNDARY_2026-08-31.md`. Do not repair P-B15 under the P-B14 attempt counter; switch to the P-B15 root with a reset attempt 0 after P-B14 direct proof passes.
