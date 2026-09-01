@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "COMPLETE",
-  "currentRole": "Auditor",
+  "status": "PRODUCTION_PROMOTION_IN_PROGRESS",
+  "currentRole": "Owner",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV5",
   "repairAttempt": 0,
   "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "repair/prysm-production-closure",
+  "applicationBranch": "main",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "PDV5 independently PASSed on exact application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e with zero material defects. Repository-controlled Production Closure is complete.",
-  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merging to main, deploying, or starting a fresh paid production audit."
+  "reason": "Owner authorized PRYSM production promotion and one fresh paid production audit on 2026-09-01. Application main was fast-forward promoted from 1876c18195e12389fa1d3b5c8679f214655b7bb0 to the exact independently audited PDV5 candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. Repository promotion is complete; production deployment identity is not yet verified.",
+  "nextAction": "Verify the production PRYSM worker is deployed at application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. Only after exact deployed revision is proven, run the one authorized fresh paid production audit and verify it reaches completed/renderable report state."
 }
