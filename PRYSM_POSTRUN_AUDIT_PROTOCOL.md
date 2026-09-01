@@ -156,3 +156,28 @@ It must explicitly review all known systemic escape classes discovered on 2026-0
 - weak exact-head release control.
 
 Final PASS requires one exact combined candidate SHA with no open material repository-controlled defect.
+
+---
+
+## Whole-App Branch Coverage Audit Amendment — mandatory after 2026-08-31
+
+The Auditor must also read and enforce:
+
+- `PRYSM_WHOLE_APP_BRANCH_COVERAGE_PROTOCOL.md`;
+- `PRYSM_WHOLE_APP_BRANCH_MATRIX.md`.
+
+A numeric Whole-App result such as `6/6 PASS` is not sufficient evidence of branch completeness.
+
+For every application-changing candidate, the Auditor must independently challenge:
+
+1. whether the matrix inventories every materially distinct currently implemented production branch relevant to persisted state, scoring eligibility, evidence semantics, hierarchy/root-cause, Narrative sequence, publication, recovery, replay, or rendering;
+2. whether every required implemented branch ID is mapped to executable deterministic whole-app scenarios;
+3. whether those scenarios actually traversed the real current producer -> persistence -> validated reload -> consumer boundaries rather than only leaf validators or richer-than-production fixtures;
+4. whether each required branch executed and passed on the exact audited SHA;
+5. whether gate evidence names the branch IDs covered rather than relying only on scenario names/counts;
+6. whether a new or changed contract has an alternate producer/path that can emit a different shape;
+7. whether any known live/UAT branch coverage escape has a permanent branch row and deterministic regression.
+
+If a required implemented branch is `UNMAPPED`, `UNEXECUTED`, materially `UNKNOWN`, or omitted from the matrix, verdict cannot be PASS or PASS_WITH_MINOR. Return FAIL/BLOCKED according to whether the missing coverage is a repairable verification defect or cannot safely be established.
+
+The known PDV1, PDV2, and PDV3 production escapes are mandatory false-PASS challenge examples. The Auditor must verify that their escaped branch classes remain represented permanently; do not treat the immediate source repair alone as closure.
