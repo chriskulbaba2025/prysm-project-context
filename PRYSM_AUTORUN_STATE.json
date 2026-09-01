@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "7dc6bf9c57c9287bc3c021dac3ccc21a300ee5d6",
-  "wholeAppGate": "FAIL",
+  "applicationSha": "590e0632f48f834bab339c194a23d2090bbd13ce",
+  "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "Current pushed candidate 7dc6bf9c57c9287bc3c021dac3ccc21a300ee5d6 passes all 107 deterministic Narrative v2 tests. The Whole-App gate reached the assembled production checks but failed NV2-PROD-01, so no branch-complete PASS is claimed; required PDV5 real Writer/Judge evidence remains pending.",
-  "nextAction": "Repair or reconcile the Whole-App NV2-PROD-01 failure, then execute and durably record the required PDV5 real Writer stress, semantic-quality scoring, and complete Writer/Judge runs against frozen production-shaped inputs before independent audit."
+  "reason": "Candidate 590e0632f48f834bab339c194a23d2090bbd13ce passes the exact branch-complete Whole-App gate and deterministic Narrative regressions. The disabled-runtime gate branch is hermetically tested; required PDV5 real Writer/Judge evidence remains pending.",
+  "nextAction": "Execute and durably record the required PDV5 real Writer stress, semantic-quality scoring, and complete Writer/Judge runs against frozen production-shaped inputs before independent audit."
 }

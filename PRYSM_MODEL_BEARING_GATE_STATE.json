@@ -4,11 +4,11 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "1995265577d8079c1e47fed2630959d382c03fc0",
+  "candidateSha": "590e0632f48f834bab339c194a23d2090bbd13ce",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
   "writerRootCause": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
-  "promptSchemaInputValidatorCongruence": "REPAIR_IMPLEMENTED_DETERMINISTIC_PROOF_PASS_PENDING_REAL_STRESS",
+  "promptSchemaInputValidatorCongruence": "REPAIR_IMPLEMENTED_DETERMINISTIC_WHOLE_APP_PASS_PENDING_REAL_STRESS",
   "writerRetryRecovery": "PENDING_CAUSAL_CERTAINTY_REPAIR",
   "primaryWriterStress": {
     "status": "PENDING",
