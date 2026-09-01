@@ -16,6 +16,14 @@ The Whole-App Tranche Gate remains mandatory. This protocol strengthens it by re
 
 A count such as `6/6 PASS` proves only that six scenarios passed. It does not prove branch completeness unless the current branch matrix proves those scenarios cover all required implemented branch IDs.
 
+## Scope limitation — branch completeness is not model robustness
+
+This protocol proves deterministic production-branch composition. It does not prove that a stochastic Writer/Judge will reliably generate valid, semantically supported, non-contradictory client-facing output across real production-shaped inputs.
+
+When Writer/Judge/model-bearing behavior or Narrative semantic quality is changed or implicated by a production escape, `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is separately mandatory.
+
+A deterministic branch-complete Whole-App PASS must not be reported as proof of model-bearing production readiness by itself.
+
 ## What counts as a materially distinct production branch
 
 Inventory a branch when it changes one or more of these material behaviours:
@@ -76,6 +84,19 @@ The branch inventory must cover currently implemented variants in these classes 
 
 The matrix, not this prose list, is the authoritative current inventory.
 
+## Semantic-input coverage rule
+
+Branch coverage is necessary but can still overfit synthetic fixtures. For model-bearing or semantic-validation branches, the matrix/evidence must identify which real production-artifact cases and adversarial semantic cases prove the branch where applicable.
+
+At minimum, a known production semantic escape must be linked to:
+
+- the exact persisted incident replay;
+- a positive sibling;
+- a negative/counterexample sibling;
+- the relevant model-bearing corpus case under `PRYSM_MODEL_BEARING_RELEASE_GATE.md` when that gate applies.
+
+A branch row that is technically executed only by an unrealistic fixture does not prove the escaped semantic condition.
+
 ## Gate evolution rule
 
 Any application change that adds, removes, splits, or materially changes a production branch must update the matrix in the same governed work package before PASS.
@@ -86,13 +107,17 @@ If a changed or adjacent production branch is absent from deterministic Whole-Ap
 
 A **branch coverage escape** is a material defect discovered in UAT/live/production that would have been caught had a materially distinct production branch been represented in the deterministic matrix.
 
-For every coverage escape:
+A **semantic-distribution escape** is a material defect where the deterministic branch existed and executed, but the fixtures/model proof did not represent the production-shaped semantic condition that failed.
+
+For every branch or semantic-distribution escape:
 
 1. record the escaped branch and root defect;
 2. add or correct the branch row in the matrix;
-3. add a permanent deterministic whole-app regression for that branch;
-4. rerun the exact-SHA Whole-App gate;
-5. do not run another paid/live validation merely to rediscover the same class before deterministic proof is green.
+3. add a permanent deterministic whole-app regression for the branch;
+4. add exact production-artifact/adversarial corpus coverage when semantic input shape caused the escape;
+5. rerun the exact-SHA Whole-App gate;
+6. run the Model-Bearing Release Gate when model behavior is implicated;
+7. do not run another full live validation merely to rediscover the same class before the applicable deterministic/model-bearing proof is green.
 
 Live production validation is confirmation, not the primary mechanism for discovering repository-controlled branch wiring defects.
 
@@ -105,14 +130,17 @@ After this protocol becomes effective, Whole-App PASS requires all of the follow
 - every mapped required scenario executed on the exact SHA;
 - all required branch scenarios PASS;
 - current contracts are asserted at material handoffs;
-- no prohibited live/paid provider/model calls are used;
+- known semantic-distribution escapes have production-shaped/adversarial coverage rather than only generic fixture coverage;
+- no prohibited live/paid provider/model calls are used inside the deterministic Whole-App gate;
 - gate output records branch IDs covered, not only scenario counts;
 - exact HEAD remains unchanged through verification.
 
-Any `UNMAPPED`, `UNEXECUTED`, or materially `UNKNOWN` required implemented branch forbids PASS.
+Any `UNMAPPED`, `UNEXECUTED`, or materially `UNKNOWN` required implemented branch forbids Whole-App PASS.
+
+For a model-bearing change, Whole-App PASS remains only Plane 1 of the broader `PRYSM_MODEL_BEARING_RELEASE_GATE.md` and must not be used to skip its remaining proof planes.
 
 ## Anti-analysis-paralysis rule
 
 The goal is complete coverage of materially distinct production behaviour, not exhaustive control-flow enumeration.
 
-Stop inventory expansion when every currently implemented path that can materially change persisted state, contract acceptance, lifecycle, decision semantics, Narrative sequence, publication, recovery, or client-facing output has a governed branch ID and deterministic assembled-system proof.
+Stop inventory expansion when every currently implemented path that can materially change persisted state, contract acceptance, lifecycle, decision semantics, Narrative sequence, publication, recovery, or client-facing output has a governed branch ID and deterministic assembled-system proof, and every known semantic escape has a realistic production-shaped/counterexample proof surface.
