@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "292a5527a9d31d159fe1534e6d4801f442c24c4c",
-  "wholeAppGate": "PASS",
+  "applicationSha": "240f74c7ee7be8c77a143e2160089d1a2cb684ab",
+  "wholeAppGate": "NOT_RUN",
   "lastAuditVerdict": "FAIL",
-  "reason": "Exact-SHA closure gate PASSed on 292a552 with P-B01..P-B15 covered. Five fresh frozen TBK Writer/Judge executions produced four release candidates and one correctly bounded HUMAN_REVIEW_REQUIRED result with three semantic-support findings; the AI-search mismatch repair passed, while a distinct Writer/Judge semantic-support root remains open.",
-  "nextAction": "Repair PDV5.WRITER_JUDGE_SEMANTIC_SUPPORT_MISMATCH, then rerun the governed model-bearing sample including additional persisted inputs and complete-run/semantic-quality obligations."
+  "reason": "Candidate 240f74c adds Writer/Judge semantic-support prompt guidance and fail-closed regressions for partial competitor evidence and unmeasured conversion outcomes. Focused tests pass; exact-SHA Whole-App and model-bearing obligations are pending.",
+  "nextAction": "Run the exact-SHA Whole-App gate for 240f74c, then rerun the governed model-bearing Writer/Judge sample including additional persisted inputs and complete-run/semantic-quality obligations."
 }
