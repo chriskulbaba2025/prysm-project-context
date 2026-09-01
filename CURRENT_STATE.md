@@ -77,7 +77,7 @@ Out of scope unless direct evidence proves causation:
 - unrelated deployment/product refactors.
 
 Exact next action:
-The causal-certainty repair candidate is synchronized at application SHA `790bf1d901c8493c5d505957756e3c4c69901419c`; targeted Narrative proof (103/103) and the exact-SHA Whole-App Branch Coverage Gate pass. The governed real Writer/Judge harness currently cannot enable live binding because the invocation lacks the required `PRYSM_NARRATIVE_V2_*` runtime configuration. Resume the required real Writer and Writer/Judge PDV5 evidence obligations with that configured runtime, then hand this exact SHA to the independent Auditor.
+The AI-search evidence-status conflation repair candidate is synchronized at application SHA `b0047bd4e802b5250b961733f98ccf5a44ac18c9`; targeted Writer proof (16/16), Narrative v2 proof (104/104), and the exact-SHA Whole-App Branch Coverage Gate pass. The governed real Writer/Judge harness currently cannot enable live binding because the invocation lacks the required `PRYSM_NARRATIVE_V2_*` runtime configuration. Resume the required real Writer and Writer/Judge PDV5 evidence obligations with that configured runtime, then hand this exact SHA to the independent Auditor.
 
 Last verified:
 2026-09-01 America/Toronto

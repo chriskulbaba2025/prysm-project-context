@@ -4,25 +4,25 @@
   "checkpoint": "PDV5",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
   "status": "FAIL_PENDING",
-  "candidateSha": "9ee10587caf2c7b49a339ca490fa0a7be501dfb0",
+  "candidateSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_PENDING_REPLAY",
   "writerRootCause": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
-  "promptSchemaInputValidatorCongruence": "PENDING",
+  "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC",
   "writerRetryRecovery": "PENDING",
   "primaryWriterStress": {
     "status": "PENDING",
     "required": 5,
-    "completed": 5,
-    "passed": 5,
+    "completed": 0,
+    "passed": 0,
     "materialFailures": 0
   },
   "additionalRealInputWriterStress": {
     "status": "PENDING",
     "realInputsRequiredWhenAvailable": 1,
     "runsRequired": 3,
-    "completed": 3,
-    "passed": 2,
+    "completed": 0,
+    "passed": 0,
     "materialFailures": 1
   },
   "fullNarrativeCompletion": {
@@ -45,6 +45,6 @@
   "independentAuditor": "PENDING",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Replay the recovered exact TBK WriterInput/response through the repaired boundary, then complete required real Writer stress and Writer/Judge Narrative samples.",
+  "nextAction": "Run the governed real Writer stress and Writer/Judge Narrative samples against exact candidate SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9.",
   "lastVerified": "2026-09-01 America/Toronto"
 }

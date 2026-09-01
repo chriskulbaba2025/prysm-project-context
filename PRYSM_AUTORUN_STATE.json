@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "rootDefectId": "PDV5.WRITER_AI_EVIDENCE_STATUS_CONFLATION",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
-  "applicationSha": "790bf1d901c8493c5d505957756e3c4c69901419c",
+  "applicationSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The causal-certainty repair candidate is synchronized at exact application SHA 790bf1d901c8493c5d505957756e3c4c69901419c; targeted Narrative proof (103/103) and the exact-SHA Whole-App Branch Coverage Gate pass. Real Writer/Judge proof setup did not reach the governed assertion because this invocation lacks the required live runtime configuration.",
-  "nextAction": "Provide the configured live PRYSM_NARRATIVE_V2 runtime for the governed harness, then complete required real Writer and Writer/Judge evidence obligations against exact SHA 790bf1d901c8493c5d505957756e3c4c69901419c."
+  "reason": "AI-search evidence-status conflation repair is synchronized at exact application SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9; Writer-output tests (16/16), Narrative v2 suite (104/104), and exact-SHA Whole-App gate pass.",
+  "nextAction": "Provide the configured live PRYSM_NARRATIVE_V2 runtime, then complete required real Writer and Writer/Judge evidence obligations against exact SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9."
 }
