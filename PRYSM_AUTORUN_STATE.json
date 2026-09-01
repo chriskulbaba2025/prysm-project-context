@@ -7,13 +7,13 @@
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV4",
   "repairAttempt": 0,
-  "rootDefectId": "PDV5.WRITER_UNMEASURED_CAUSAL_CERTAINTY",
+  "rootDefectId": "PDV5.WRITER_PARTIAL_EVIDENCE_UNQUALIFIED_ABSENCE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-production-closure",
   "remoteMainBaselineSha": "1876c18195e12389fa1d3b5c8679f214655b7bb0",
   "applicationSha": "b0047bd4e802b5250b961733f98ccf5a44ac18c9",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The prior AI-search evidence-status repair is synchronized at exact application SHA b0047bd4e802b5250b961733f98ccf5a44ac18c9; the first governed real Writer proof exposed the distinct unsupported causal-certainty boundary. Deterministic Writer-output tests (16/16), Narrative v2 suite (104/104), and exact-SHA Whole-App gate pass.",
-  "nextAction": "Reconcile the causal-certainty root in the governed model-bearing state, then provide the configured live PRYSM_NARRATIVE_V2 runtime and complete required real Writer and Writer/Judge evidence obligations against the exact candidate SHA."
+  "reason": "The configured real Writer run against the frozen TBK WriterInput reached semantic validation and rejected writerOutput.content.businessMeaning.text for converting PARTIAL evidence into an unqualified absence claim. This is a new root distinct from causal-certainty and AI-search evidence-status boundaries.",
+  "nextAction": "At repair attempt 0, reconcile Writer prompt/schema/validator congruence for PARTIAL evidence language, add a permanent regression, then rerun the governed frozen-input Writer/Judge evidence obligations."
 }
