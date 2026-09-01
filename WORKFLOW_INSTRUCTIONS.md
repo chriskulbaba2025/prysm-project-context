@@ -35,12 +35,34 @@ For every manual source-file change:
 
 ## Verification discipline
 
-- Default rule: **one check that directly proves the change, then move on.**
-- Do not stack syntax checks, focused tests, regression suites, diff checks, and repeated inspections when one targeted check already proves the changed behavior or contract.
+### Edit-progression rule
+
+- Default rule for a bounded source-file unit: **one check that directly proves the change, then move on.**
+- Do not stack syntax checks, focused tests, regression suites, diff checks, and repeated inspections when one targeted check already proves the changed behavior or contract for the current edit unit.
 - Choose the highest-information verification for the actual change. For logic or policy changes, prefer the focused behavioral/contract test over generic syntax or diff checks.
-- Add another check only when the first check cannot prove a separate material risk created by the same change. Do not add redundant verification for reassurance.
-- Once the proving check passes, continue immediately to the next authorized step.
+- Add another local check only when the first check cannot prove a separate material risk created by the same change. Do not add redundant verification for reassurance.
+- Once the proving check passes, continue immediately to the next authorized implementation step.
 - Report pass/fail and duration when the chosen check provides them.
+
+### Release-closure rule
+
+The edit-progression rule is an efficiency rule. It is **not** a release-readiness standard.
+
+For an application-changing governed tranche/checkpoint, targeted direct proof must be followed by the applicable release gates, including exact-SHA Whole-App branch-complete verification, broad/composite checks, independent audit, and any active specialized gate.
+
+For Writer/Judge/model-bearing or Narrative semantic changes, `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is mandatory. One passing unit test, one passing Whole-App run, one successful Writer generation, one Judge PASS, or one rendered report cannot establish model-bearing release readiness.
+
+The intended distinction is:
+
+`one direct proving check -> continue the bounded implementation`
+
+then, at candidate freeze:
+
+`direct proofs -> exact-SHA deterministic Whole-App -> real production-artifact replay -> required model-bearing robustness -> semantic challenge -> deployment identity -> authorized live confirmation`
+
+when those planes apply.
+
+Do not call a candidate fixed, production-ready, or proven merely because the current edit-level check passed.
 
 ## Test-report browser review discipline
 
@@ -48,14 +70,15 @@ For every manual source-file change:
 - Serve the report directory through a local Python HTTP server, normally with `python -m http.server <port> --directory "<report-directory>"`, and provide the corresponding `http://localhost:<port>/<report-file>.html` browser address.
 - The user must review the rendered report in a web browser. Browser-rendered report review is a required acceptance gate for client-facing report hierarchy, interpretation, navigation, and presentation changes; green unit/regression/replay tests alone do not prove that the report is acceptable.
 - If an offline replay reuses previously persisted Narrative v2 Writer/Judge artifacts, state that explicitly. Such a replay can validate deterministic rendering and report-model changes, but it **cannot** prove that new Writer prompt/input/Judge behavior produced a new narrative.
-- Do not invoke a fresh Writer/Judge/model run merely to refresh a test report unless that model execution is separately authorized. First make the deterministic/browser-rendered report internally consistent, then obtain any required approval for a fresh narrative generation.
+- Do not invoke a fresh Writer/Judge/model run merely to refresh a test report unless that model execution is separately authorized. When model-bearing execution is authorized and required by `PRYSM_MODEL_BEARING_RELEASE_GATE.md`, use frozen production-shaped inputs and the governed model-bearing harness rather than an unnecessary full provider recrawl.
 
 ## Repository and approval boundaries
 
 - GitHub context is authoritative durable memory.
 - Reverify the stable application branch/HEAD when a new chat begins or baseline drift is possible.
-- Do not push, deploy, rerun a production audit, invoke paid providers/models, rescore, or mutate persisted production artifacts without explicit approval.
-- Do not commit until the current governed unit's single proving verification is green.
+- Do not push, deploy, rerun a production audit, invoke paid providers/models, rescore, or mutate persisted production artifacts without explicit approval or an active durable authorization in current governance.
+- Do not commit until the current governed unit's direct proving verification is green.
+- A commit becoming eligible for release still requires every applicable release gate; commit eligibility is not release readiness.
 
 ## Response form
 
