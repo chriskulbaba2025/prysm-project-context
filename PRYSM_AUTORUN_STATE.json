@@ -14,6 +14,6 @@
   "applicationSha": "292a5527a9d31d159fe1534e6d4801f442c24c4c",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "FAIL",
-  "reason": "The restarted real model proof on f5a75ce exposed a distinct prompt/validator mismatch: the Writer prompt authorizes 'not directly assessed sufficiently to establish a limitation' but the AI-search validator rejected it. Candidate 0dd8291 repairs that bounded non-assessment parity without weakening unsupported-claim rejection.",
-  "nextAction": "Run the exact-SHA Whole-App Gate, then restart and durably record the complete PDV5 Writer/Judge model-bearing sample on candidate 0dd8291."
+  "reason": "Exact-SHA closure gate PASSed on 292a552 with P-B01..P-B15 covered. The authoritative S3 read path recovered the failed TBK WriterInput and live call-01 artifacts outside the application repository. Required repeated real Writer/Judge and semantic-quality proof remains pending.",
+  "nextAction": "Use the governed production-shaped model-bearing procedure against the recovered frozen inputs; record 5/5 primary TBK Writer passes, 3/3 additional-input Writer passes, 3/3 complete Writer/Judge runs, and five-area semantic scores before Auditor handoff."
 }
