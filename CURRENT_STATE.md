@@ -29,11 +29,10 @@ Current environment / branch / version:
 - Dedicated repair branch: `repair/prysm-production-closure`.
 - Local application branch/worktree must be recovered and verified by the Builder before editing; governance does not assume the local branch has already been switched.
 - Active post-deployment checkpoint: `PDV4` — REPAIR OPEN.
-- Active root defect: `PDV4.IMAGE_DENOMINATOR_AVAILABILITY` — P-B14.
-- Queued independent root: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15.
+- Active root defect: `PDV4.PARTIAL_HEADING_SCOPE_VALIDATION` — P-B15 proof correction.
 - Active repair attempt: 0 / Luna.
-- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800`; all mapped branches P-B01 through P-B15 named and executed, including deterministic assembled P-B14/P-B15 persistence/reload scenarios.
-- Independent Auditor verdict for PDV4: PENDING handoff.
+- Whole-App Gate for PDV4: PASS on exact frozen candidate SHA `1876c18195e12389fa1d3b5c8679f214655b7bb0`; all mapped branches P-B01 through P-B15 named and executed, including governed FindingSet validation after P-B15 persistence/reload.
+- Independent Auditor verdict for PDV4: FAIL on prior candidate; correction frozen and pending re-audit.
 
 Completed:
 - PDV3 repair, branch-complete exact-SHA verification, independent audit, promotion, deployment, and fresh validation through `narrative_ready`.
@@ -44,7 +43,7 @@ Completed:
 - Permanent branch mapping for P-B14/P-B15 and escape-ledger classification.
 
 In progress:
-- Independent Auditor review of the frozen PDV4 candidate `ce62cce60e7deb2bd2ff0bc49ce014acd1b21800`.
+- Independent Auditor review of the corrected frozen PDV4 candidate `1876c18195e12389fa1d3b5c8679f214655b7bb0`.
 
 Queued:
 - The previous candidate audit correctly rejected leaf-only P-B14/P-B15 proof. The replacement candidate adds assembled producer -> persisted artifact -> validated reload -> finalization scenarios for both branches; direct regressions and the branch-complete Whole-App Gate pass on the same exact SHA. Auditor handoff is pending.
