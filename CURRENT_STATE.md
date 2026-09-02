@@ -51,6 +51,23 @@ The controlled TBK audit completed to `draft_rendered`, the persisted report ope
 Durable production-validation evidence:
 `AUDIT_PRYSM_LIVE_PRODUCTION_VALIDATION_2026-09-02.md`
 
+## Trusted local rollback checkpoint — VERIFIED
+
+Before Codex/GCU report-improvement work, the owner created a local safety backup from:
+
+`C:\Users\kulba\Desktop\vantage-platform`
+
+The backup's `STARTING-SHA.txt` was directly verified to contain:
+
+`9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
+
+Durable backup record:
+`PRYSM_LOCAL_SAFETY_BACKUP_CHECKPOINT_2026-09-02.md`
+
+The exact timestamped Desktop folder name was not supplied back into project memory and must not be guessed. Recover it locally by finding `PRYSM-SAFETY-BACKUP-*` whose `STARTING-SHA.txt` matches the verified SHA above.
+
+This backup is the trusted pre-GCU rollback baseline. It does not authorize destructive restoration, reset, force push, deployment rollback, or overwriting newer valid work without explicit owner authorization.
+
 ## Team report-improvement requirements — COLLATED
 
 The September 1 TBK team review has been converted into a governed work order.
@@ -140,4 +157,4 @@ If P0 proves a root cause/design gap, stop at the proposed Surgical Change Contr
 
 ## Last verified
 
-2026-09-02 America/Toronto — production remains verified at application `main` SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; final live-production validation is PASS. The team report review has been collated into a GCU v2.4.0 Codex work order. The exact current action is P0 evidence tracing only, with no application edit authorized until diagnostic classification and Surgical Change Determinacy requirements are satisfied.
+2026-09-02 America/Toronto — production remains verified at application `main` SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; final live-production validation is PASS. A trusted local pre-GCU safety backup has been created and its `STARTING-SHA.txt` verified at the same SHA. The team report review has been collated into a GCU v2.4.0 Codex work order. The exact current action is P0 evidence tracing only, with no application edit authorized until diagnostic classification and Surgical Change Determinacy requirements are satisfied.
