@@ -5,176 +5,90 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Complete the final live-production validation of the independently audited PDV5 Writer/Narrative repair.
+Design the next PRYSM report-structure revision through owner review before any implementation begins.
 
-Repository-controlled Production Closure is complete. Production promotion and exact Railway deployment verification are also complete.
+Production Closure, PDV5, production promotion, exact Railway deployment verification, and the final fresh live-production validation are complete.
 
-The only active work is:
-
-`fresh live TBK audit -> persisted/renderable report confirmation -> evidence-integrity review -> final production PASS`
-
-Do not reopen PDV5 or make additional application repairs unless the live production audit proves a material product defect.
-
-## Owner authorization
-
-The owner explicitly authorized:
-
-1. PRYSM production promotion; and
-2. one fresh paid production audit after exact deployed revision was verified.
-
-That authorization has now been consumed for the single live TBK audit identified below. Do not start another paid audit without new authorization.
-
-## Verified PDV5 closure checkpoint
+## Verified production checkpoint
 
 Application repository:
 `chriskulbaba2025/vantage-platform`
 
-Exact independently audited candidate:
-`9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
-
-PDV5 status:
-**PASS / CLOSED**
-
-Root:
-`NONE`
-
-Verified proof at exact candidate SHA:
-- Narrative v2: **114/114 PASS**
-- Whole-App Branch Coverage Gate: **87/87 PASS**
-- Required branch coverage: **P-B01 through P-B15 PASS**
-- Primary real Writer sample: **5/5 PASS**
-- Additional persisted Writer sample: **3/3 PASS**
-- Complete real Writer/Judge Narrative runs: **3/3 reached release-candidate/completed-renderable proof state**
-- Five-area semantic review: **PASS**, zero critical evidence-integrity defects
-- Independent Auditor: **PASS**, zero material defects
-
-Durable audit:
-`AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV5_2026-09-01.md`
-
-## Production promotion — COMPLETE
-
-Previous production main:
-`1876c18195e12389fa1d3b5c8679f214655b7bb0`
-
-Application `main` was fast-forward promoted without force to:
-`9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
-
-GitHub resolves application `main` to the exact independently audited PDV5 candidate.
-
-## Production deployment identity — PROVEN
-
-Railway project:
-`GENSEN process`
-
-Environment:
-`production`
-
-Service:
-`vantage-platform`
-
-Service ID:
-`d6012de3-a174-4a59-bf8f-db4e9b01d91f`
-
-Deployment ID:
-`4523295a-b6c1-418e-961e-f456b583e0ca`
-
-Instance ID:
-`8a2839ad-629d-46bd-a39f-4d4ee41c83e2`
-
-Deployed branch:
+Production branch:
 `main`
 
-Deployed commit:
+Exact deployed and independently audited SHA:
 `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
 
-Deployment status:
-`SUCCESS`
+PDV5:
+**PASS / CLOSED**
 
-Instance status:
-`RUNNING`
+Narrative v2:
+**114/114 PASS**
 
-Production worker domain:
-`vantage-platform-production.up.railway.app`
+Whole-App Branch Coverage Gate:
+**87/87 PASS**
 
-Therefore the live production worker is proven to be running the exact independently audited candidate.
+Required branches:
+**P-B01 through P-B15 PASS**
 
-## Fresh production audit — DRAFT RENDERED
+Independent Auditor:
+**PASS — zero material defects**
 
-Audit ID:
+Railway deployment:
+**SUCCESS**
+
+Railway instance:
+**RUNNING**
+
+## Final live production validation — PASS
+
+Controlled audit ID:
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
 
 Target:
 `https://www.tbkcreative.com/`
 
-Business:
-`Tbkcreative`
+Verified production status:
+- HTTP 200
+- state `draft_rendered`
+- version 9
 
-Benchmark inputs:
-- Market: London, Ontario, Canada
-- Goal: Generate qualified enquiries
-- Competitors: https://red-rhino.com, https://www.northern.co, https://www.zoomedia.ca
-
-Verified live status response:
-- HTTP: **200**
-- State: `draft_rendered`
-- Version: `9`
-- Created: `2026-09-01T20:25:06.006Z`
-- Updated: `2026-09-01T20:44:24.784Z`
-- Client ID: `www.tbkcreative.com-tbkcreative`
-- Slug: `tbkcreative`
-
-Observed live lifecycle:
+Observed lifecycle:
 `created -> validated -> collecting -> evidence_stored -> evidence_locked -> scored -> narrative_pending -> narrative_ready -> draft_rendered`
 
-Lifecycle reasons include:
-- `governed-scoring-complete`
-- `narrative-v2-execution-start`
-- `narrative-v2-release-candidate`
-- `governed-narrative-v2-rendering-complete`
+The same audit was opened through the normal authenticated live PRYSM interface. **View Draft Report** successfully retrieved and rendered the persisted report. The owner reviewed the opened report and reported no material evidence-integrity defect.
 
-This proves the single authorized live production audit completed the automated evidence, scoring, Writer/Judge Narrative, and governed rendering path without a lifecycle failure.
+Final production validation verdict:
+**PASS**
 
-`draft_rendered` is the governed human-review boundary, not a failure state. The production runtime is designed to write the rendered report when this state is reached, but persistence/retrieval is not yet independently proven until the same report is successfully opened through the normal live interface.
+Durable evidence:
+`AUDIT_PRYSM_LIVE_PRODUCTION_VALIDATION_2026-09-02.md`
 
-Final live production PASS is therefore **not yet established**.
+No repair is open from this validation.
+
+## Active design discussion
+
+The owner wants to review and revise the client-facing report structure. This is a product/report-design discussion, not a production defect.
+
+Existing active governance says the report rebuild is a presentation-layer concern and must not alter evidence collection, scoring, lifecycle, storage, Writer/Judge governance, audit orchestration, authentication, or n8n flows merely to change report structure.
+
+No report-structure implementation has been authorized in this new design phase yet.
 
 ## Exact next action
 
-Using only audit:
-`8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
+Review the current governed 16-page Viewer v2.2.0 report structure with the owner and define the desired target report hierarchy, page responsibilities, narrative flow, and information density before changing application code or n8n.
 
-Open the same audit through the normal authenticated live PRYSM interface and verify that **View Draft Report** successfully retrieves and renders the persisted report.
+Do not start another paid production audit for report-presentation design work.
 
-Do not start another paid audit.
+## Important constraints
 
-After successful retrieval/render, inspect the rendered report for any material evidence-integrity defect before declaring final production PASS.
-
-If the report is missing or unrenderable:
-- capture the exact retrieval response/error once;
-- classify the failure before any code change;
-- do not rerun another paid audit until the failure is understood;
-- do not reopen unrelated crawler, scoring, styling, or governance work without direct evidence.
-
-## Active boundary
-
-In scope:
-- read-only verification of the single authorized live audit;
-- report persistence/retrieval/render verification;
-- material evidence-integrity review of that rendered report;
-- durable final production-validation evidence.
-
-Out of scope unless the live audit proves direct causation:
-- crawler/provider redesign;
-- scoring redesign;
-- report styling redesign;
-- governance redesign;
-- unrelated application refactors;
-- additional paid production audits.
-
-## Continuation handoff
-
-`HANDOFF_PRYSM_LIVE_PRODUCTION_AUDIT_CONTINUATION_2026-09-02.md`
+- Preserve evidence-integrity semantics.
+- Treat report-structure work as presentation/interpretation unless direct evidence proves a deeper product defect.
+- Do not create a second report-generation source of truth outside the governed application path.
+- Do not modify n8n as part of report-page implementation under the current active report-rebuild boundary.
+- Do not begin application edits until the target report structure and affected source-file boundary are deliberately approved.
 
 ## Last verified
 
-2026-09-02 America/Toronto — exact audited SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` remains the proven Railway production deployment. Fresh TBK production audit `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` returned HTTP 200 and reached `draft_rendered` after the full automated lifecycle through governed Narrative release-candidate and rendering. Normal live-interface report retrieval/render and final evidence-integrity review remain open.
+2026-09-02 America/Toronto — production SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` remains the proven deployed candidate. Live audit `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` completed the automated production lifecycle to `draft_rendered`, its persisted report opened successfully through the normal authenticated live interface, and the owner reported no material evidence-integrity defect. Final live production validation is PASS.
