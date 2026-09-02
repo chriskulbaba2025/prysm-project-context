@@ -1,15 +1,15 @@
 {
   "version": 2,
   "project": "PRYSM",
-  "mode": "GCU_CODEX_REPORT_IMPROVEMENT",
-  "status": "P0_DIAGNOSTIC_READY",
-  "currentRole": "Codex",
+  "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
+  "status": "AUTORUN_PREFLIGHT_REQUIRED",
+  "currentRole": "Builder",
   "currentTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
   "lastPassedTranche": "PDV5",
   "repairAttempt": 0,
   "rootDefectId": "UNRESOLVED_P0",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "main",
+  "applicationBranch": "repair/prysm-report-improvement",
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
@@ -23,9 +23,26 @@
   "governedCodingUpgrade": {
     "repository": "chriskulbaba2025/governed-coding-upgrade-skill",
     "protocolVersion": "2.4.0",
-    "decision": "DECISION_PRYSM_GCU_CODEX_REPORT_IMPROVEMENT_2026-09-02.md",
-    "workOrder": "PRYSM_GCU_REPORT_IMPROVEMENT_WORK_ORDER_2026-09-02.md",
-    "bootstrapPrompt": "CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md"
+    "baseDecision": "DECISION_PRYSM_GCU_CODEX_REPORT_IMPROVEMENT_2026-09-02.md",
+    "unattendedDecision": "DECISION_PRYSM_GCU_UNATTENDED_REPORT_IMPROVEMENT_AUTORUN_2026-09-02.md",
+    "workOrder": "PRYSM_GCU_REPORT_IMPROVEMENT_WORK_ORDER_2026-09-02.md"
+  },
+  "autorun": {
+    "controller": "tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1",
+    "builderPrompt": "tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-BUILDER-PROMPT.md",
+    "auditorPrompt": "tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUDITOR-PROMPT.md",
+    "maxRuns": 0,
+    "heartbeatSeconds": 60,
+    "heartbeatPath": "%LOCALAPPDATA%\\PRYSM-Autorun-Report-Improvement\\heartbeat.json",
+    "remoteNotificationEnv": "PRYSM_AUTORUN_NOTIFY_WEBHOOK",
+    "remoteNotificationEvents": [
+      "STOP",
+      "BLOCKED",
+      "CONTROLLER_FAILURE",
+      "COMPLETE"
+    ],
+    "routineProgressNotifications": false,
+    "requireRemoteNotificationForUnattendedRun": true
   },
   "productionValidation": {
     "status": "PASS",
@@ -34,8 +51,8 @@
     "evidenceIntegrityReview": "PASS_OWNER_REVIEW"
   },
   "p0": {
-    "status": "DIAGNOSTIC_ONLY",
-    "applicationEditAuthorized": false,
+    "status": "DIAGNOSTIC_FIRST_AUTORUN_AUTHORIZED",
+    "applicationEditAuthorizedAfterVerifiedDiagnosisAndSurgicalDeterminacy": true,
     "requiredClassification": [
       "VERIFIED_ROOT_CAUSE",
       "VERIFIED_DESIGN_GAP",
@@ -43,6 +60,17 @@
     ],
     "requiredAcceptanceArtifact": "Selected URL | selection reason | page class | body requested | body returned/status | downstream modules"
   },
-  "reason": "The September 1 TBK team review has been collated into a GCU-governed Codex work order. Before Codex/GCU work, the owner created a local safety backup and verified its STARTING-SHA.txt at 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. P0 must prove the deep-content/page-selection evidence boundary before report rewriting or prompt tuning. No application code change is authorized while the material P0 cause/design gap is unresolved.",
-  "nextAction": "Run Codex with CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md. Execute P0 only, recover exact local repository truth, produce the required page-selection/deep-content/downstream-consumer trace, classify the result under GCU, and stop before implementation."
+  "protectedExternalActions": [
+    "MERGE_TO_MAIN",
+    "PRODUCTION_DEPLOY",
+    "RAILWAY_VERCEL_AWS_PRODUCTION_MUTATION",
+    "PRODUCTION_CONFIG_MUTATION",
+    "PAID_LIVE_PROVIDER_CALL",
+    "PAID_LIVE_MODEL_CALL",
+    "FRESH_PRODUCTION_AUDIT",
+    "DESTRUCTIVE_ROLLBACK_RESET",
+    "FORCE_PUSH"
+  ],
+  "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
+  "nextAction": "Configure PRYSM_AUTORUN_NOTIFY_WEBHOOK for the owner's n8n-to-Telegram notification route, run tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1 with -RequireRemoteNotification -PreflightOnly, and after PREFLIGHT PASS rerun with -MaxRuns 0 -HeartbeatSeconds 60 -RequireRemoteNotification."
 }
