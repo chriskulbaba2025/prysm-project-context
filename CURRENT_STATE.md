@@ -200,7 +200,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder: candidate `58fd04324d7fc654739956798654fafb4d09b770` is pushed to `repair/prysm-report-improvement`; hand exact candidate to Auditor for independent P3 repair challenge.
+Auditor failed candidate `58fd04324d7fc654739956798654fafb4d09b770` on the same root defect: `npm run test:schemas` is 13/14 because the governed valid `score-current` fixture lacks required `contentIdeas`. Builder must repair that fixture and rerun exact contract, persistence/reload, focused, regression, and whole-app proof.
 
 ## Protected invariants
 
