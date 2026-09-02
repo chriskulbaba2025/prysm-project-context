@@ -206,7 +206,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge exact candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25` for the repaired same-root P3 contract fixture. Verify the valid fixture proves a persisted ScoreSet with a complete `contentIdeas` projection validates, while incomplete rows still reject; inspect exact-candidate persistence/consumer parity and all proof claims.
+Auditor must independently challenge exact P4 candidate `ce94e9ad833e72b8bfd10cf7ae1fe7f27d45b440`. Verify conflicting supplied competitor evidence is excluded, valid supplied/SERP candidates preserve the existing approval and consumer contracts, uncertainty remains bounded, and the 87/87 Whole-App proof is exact-candidate evidence.
 
 ## Protected invariants
 
