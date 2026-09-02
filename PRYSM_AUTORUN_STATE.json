@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "AUTORUN_PREFLIGHT_REQUIRED",
-  "currentRole": "Builder",
+  "status": "P0_CANDIDATE_READY_FOR_INDEPENDENT_AUDIT",
+  "currentRole": "Auditor",
   "currentTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
   "lastPassedTranche": "PDV5",
-  "repairAttempt": 0,
-  "rootDefectId": "UNRESOLVED_P0",
+  "repairAttempt": 1,
+  "rootDefectId": "P0_DEEP_TRACE_DESIGN_GAP",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "main",
+  "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+  "applicationSha": "acfc5c1393261bb7733837289bc3adc1062e64d5",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PASS",
+  "lastAuditVerdict": "PENDING_P0_INDEPENDENT_AUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Configure PRYSM_AUTORUN_NOTIFY_WEBHOOK for the owner's n8n-to-Telegram notification route, run tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1 with -RequireRemoteNotification -PreflightOnly, and after PREFLIGHT PASS rerun with -MaxRuns 0 -HeartbeatSeconds 60 -RequireRemoteNotification."
+  "nextAction": "Auditor must independently challenge exact application candidate acfc5c1393261bb7733837289bc3adc1062e64d5 against the P0 diagnostic and surgical-change artifacts; a PASS advances to P1, while a material finding returns the precise boundary to Builder."
 }

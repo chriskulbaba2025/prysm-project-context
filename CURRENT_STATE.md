@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Run the team-driven PRYSM report-improvement program **unattended tip-to-tail through P0-P10** using Codex under Governed Coding Upgrade (GCU), with Builder/Auditor switching, a local heartbeat, and remote notification only for genuine terminal/exception boundaries.
+Independently audit the exact P0 deep-content/page-selection provenance candidate, then continue the unattended P0-P10 program only if that audit passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -117,6 +117,25 @@ The later unattended owner authorization supersedes the earlier requirement to s
 
 P3 prompt/content-strategy tuning remains blocked until P0 proves or repairs the upstream page-selection/deep-content boundary.
 
+## P0 candidate ready for independent audit
+
+Classification: **VERIFIED_DESIGN_GAP** — frozen TBK evidence retains body observations but not the selection/reason/class/request-to-response ledger needed to determine why that sample was selected. No historical selection defect is claimed.
+
+Application candidate:
+`repair/prysm-report-improvement` at `acfc5c1393261bb7733837289bc3adc1062e64d5` (remote equals local; clean tree).
+
+Bounded P0 change:
+`services/worker/src/adapters/dataforseo-onpage/dataforseo-onpage-adapter.js` now retains an additive deep-content trace with selection reason, page class, request state, returned/unavailable status, and direct consumers. It does not alter selection ranking, historical evidence, report rendering, prompts/models, provider policy, n8n, or deployment.
+
+Durable evidence:
+- `DIAGNOSTIC_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`
+- `SURGICAL_CHANGE_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`
+
+Verification at the exact candidate:
+- direct selector/adapter/programmatic-analysis proof: **19/19 PASS**;
+- Whole-App gate: **87/87 PASS**, P-B01 through P-B15 covered;
+- no live provider/model calls; Model-Bearing Release Gate: **N/A**.
+
 ## Heartbeat and notification
 
 Dedicated controller:
@@ -161,18 +180,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-1. Configure the notification webhook in the local PowerShell environment if remote Telegram messaging is required:
-
-`$env:PRYSM_AUTORUN_NOTIFY_WEBHOOK = "<n8n webhook URL>"`
-
-2. From the local `prysm-project-context` root, run the dedicated preflight with `-RequireRemoteNotification`.
-
-3. Only after `PREFLIGHT PASS`, launch the unlimited unattended controller with `-MaxRuns 0`.
-
-Run commands are documented in:
-`tools/report-improvement-autorun/README.md`
-
-No Railway, Vercel, AWS, DataForSEO, or paid-model credential is required simply to begin repository-controlled P0-P10 work. If a later tranche truly reaches one of those protected boundaries, the controller stops and notifies rather than guessing permission.
+Auditor: independently challenge application candidate `acfc5c1393261bb7733837289bc3adc1062e64d5` against the two P0 durable artifacts, including the historical-evidence humility claim, URL-keyed status semantics, P-B01/P-B02 coverage, and exact-candidate proof. On PASS, advance to P1 per the work order; on a material finding, return it to Builder with the exact boundary.
 
 ## Protected invariants
 
@@ -188,4 +196,4 @@ No Railway, Vercel, AWS, DataForSEO, or paid-model credential is required simply
 
 ## Last verified
 
-2026-09-02 America/Toronto — production remains verified at SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; final live-production validation is PASS; the trusted local pre-GCU safety backup is recorded at the same SHA; the P0-P10 team work order is frozen; and the owner has now authorized unattended repository-controlled Codex/GCU execution with 60-second heartbeat and remote terminal/exception notification. The exact next action is notification-webhook configuration plus dedicated autorun preflight, then unlimited execution after `PREFLIGHT PASS`.
+2026-09-02 America/Toronto — P0 candidate `acfc5c1393261bb7733837289bc3adc1062e64d5` is pushed on `repair/prysm-report-improvement`; it has direct 19/19 and Whole-App 87/87 proof. P0 remains open pending independent exact-candidate audit. Production remains the protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.

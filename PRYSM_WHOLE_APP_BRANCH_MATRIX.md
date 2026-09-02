@@ -16,8 +16,8 @@ A future application-changing PASS is forbidden while any required implemented b
 
 | Branch ID | Production branch / condition | Material boundary at risk | Required now | Scenario mapping status | Exact-SHA verification | Notes |
 |---|---|---|---|---|---|---|
-| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | `acceptance-prysm.js` assembled lifecycle | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; assembled lifecycle. |
-| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | `acceptance-prysm.js` negative/status assertions | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; PDV4-specific sibling is P-B15. |
+| P-B01 | Crawl/evidence viable: site `AVAILABLE` or `PARTIAL` and normal governed scoring path | DecisionEvidence -> `scoreAudit` -> current ScoreSet | YES | `acceptance-prysm.js` assembled lifecycle | VERIFIED at exact candidate SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` | P0 exact-candidate gate PASS; assembled lifecycle. |
+| P-B02 | PARTIAL/UNKNOWN evidence survives downstream without absence/zero/false/Complete coercion | evidence -> scoring -> Writer/Judge -> render | YES | `acceptance-prysm.js` negative/status assertions | VERIFIED at exact candidate SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` | P0 exact-candidate gate PASS; PDV4-specific sibling is P-B15. |
 | P-B03 | Crawl/evidence non-viable path enters Not-Assessed scoring model | `buildNotAssessedModel` -> current ScoreSet persistence | YES | `acceptance-prysm.js` P-B03 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; production escape `PDV3` regression retained. |
 | P-B04 | Zero findings / empty governed decision hierarchy | scoring -> ScoreSet -> WriterInput/report model | YES | `acceptance-prysm.js` P-B03 empty hierarchy | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
 | P-B05 | Non-empty single-finding hierarchy/root-cause | scoring -> persistence -> reload -> consumers | YES | `src/scoring/current-score-set.test.js` | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS. |
@@ -52,5 +52,5 @@ No P-B16 is opened from this diagnostic.
 
 ## Next matrix action
 
-The PDV5 candidate is fully mapped and the exact-SHA Whole-App Branch Coverage Gate PASSed with P-B01 through P-B15 covered. Independent Auditor resubmission is required for application SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+P0's additive acquisition trace does not create a new report-production branch. The direct adapter/selector regression proves trace-specific status semantics; the exact-candidate Whole-App Branch Coverage Gate PASSed with P-B01 through P-B15 covered at `acfc5c1393261bb7733837289bc3adc1062e64d5`. Independent Auditor review is required for that exact candidate.
 
