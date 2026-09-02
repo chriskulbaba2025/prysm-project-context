@@ -11,7 +11,7 @@ Repository-controlled Production Closure is complete. Production promotion and e
 
 The only active work is:
 
-`fresh live TBK audit -> normal lifecycle completion -> persisted/renderable report confirmation -> final production PASS`
+`fresh live TBK audit -> persisted/renderable report confirmation -> evidence-integrity review -> final production PASS`
 
 Do not reopen PDV5 or make additional application repairs unless the live production audit proves a material product defect.
 
@@ -98,7 +98,7 @@ Production worker domain:
 
 Therefore the live production worker is proven to be running the exact independently audited candidate.
 
-## Fresh production audit — ACTIVE
+## Fresh production audit — DRAFT RENDERED
 
 Audit ID:
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
@@ -114,31 +114,43 @@ Benchmark inputs:
 - Goal: Generate qualified enquiries
 - Competitors: https://red-rhino.com, https://www.northern.co, https://www.zoomedia.ca
 
-Observed live lifecycle at last verification:
-`created -> validated -> collecting`
+Verified live status response:
+- HTTP: **200**
+- State: `draft_rendered`
+- Version: `9`
+- Created: `2026-09-01T20:25:06.006Z`
+- Updated: `2026-09-01T20:44:24.784Z`
+- Client ID: `www.tbkcreative.com-tbkcreative`
+- Slug: `tbkcreative`
 
-Current observed status:
-`collecting`
+Observed live lifecycle:
+`created -> validated -> collecting -> evidence_stored -> evidence_locked -> scored -> narrative_pending -> narrative_ready -> draft_rendered`
 
-This proves the deployed production path accepted the request and entered real collection. Final live production PASS is not yet established.
+Lifecycle reasons include:
+- `governed-scoring-complete`
+- `narrative-v2-execution-start`
+- `narrative-v2-release-candidate`
+- `governed-narrative-v2-rendering-complete`
+
+This proves the single authorized live production audit completed the automated evidence, scoring, Writer/Judge Narrative, and governed rendering path without a lifecycle failure.
+
+`draft_rendered` is the governed human-review boundary, not a failure state. The production runtime is designed to write the rendered report when this state is reached, but persistence/retrieval is not yet independently proven until the same report is successfully opened through the normal live interface.
+
+Final live production PASS is therefore **not yet established**.
 
 ## Exact next action
 
-Track only audit:
+Using only audit:
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
+
+Open the same audit through the normal authenticated live PRYSM interface and verify that **View Draft Report** successfully retrieves and renders the persisted report.
 
 Do not start another paid audit.
 
-Verify that this same audit advances through the normal production lifecycle and reaches the completed/renderable report state.
+After successful retrieval/render, inspect the rendered report for any material evidence-integrity defect before declaring final production PASS.
 
-Final production PASS requires:
-1. the live audit completes normally;
-2. the report is actually written/persisted;
-3. the report is retrievable/renderable through the normal live interface; and
-4. no material evidence-integrity defect is present.
-
-If the audit fails or materially stalls:
-- capture the exact lifecycle state and transition reason/error once;
+If the report is missing or unrenderable:
+- capture the exact retrieval response/error once;
 - classify the failure before any code change;
 - do not rerun another paid audit until the failure is understood;
 - do not reopen unrelated crawler, scoring, styling, or governance work without direct evidence.
@@ -146,9 +158,9 @@ If the audit fails or materially stalls:
 ## Active boundary
 
 In scope:
-- read-only monitoring of the single authorized live audit;
-- lifecycle/error capture if it fails;
+- read-only verification of the single authorized live audit;
 - report persistence/retrieval/render verification;
+- material evidence-integrity review of that rendered report;
 - durable final production-validation evidence.
 
 Out of scope unless the live audit proves direct causation:
@@ -165,4 +177,4 @@ Out of scope unless the live audit proves direct causation:
 
 ## Last verified
 
-2026-09-01 America/Toronto — exact audited SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` is deployed successfully and RUNNING in Railway production. Fresh TBK production audit `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` has reached `collecting` after `created -> validated`.
+2026-09-02 America/Toronto — exact audited SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` remains the proven Railway production deployment. Fresh TBK production audit `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` returned HTTP 200 and reached `draft_rendered` after the full automated lifecycle through governed Narrative release-candidate and rendering. Normal live-interface report retrieval/render and final evidence-integrity review remain open.
