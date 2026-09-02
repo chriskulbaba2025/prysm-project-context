@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Independently audit the exact P1 cross-report contradiction integrity candidate, then continue the unattended P0-P10 program only if that audit passes.
+Begin P3 Topical Map / Strategic Content Intelligence with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -102,7 +102,7 @@ Do not create a second report-generation source of truth in n8n.
 
 ## Current tranche
 
-`P2 — Client Intelligence Output Contract`
+`P3 — Topical Map / Strategic Content Intelligence`
 
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
@@ -140,11 +140,9 @@ Verification at the exact candidate:
 
 P1 independently **PASSED** at application SHA `9a1612c7e2388297120d5196b0be099762c97e2b` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_REPAIR_2026-09-02.md`. Independent direct proof was **54/54 PASS**, including persisted/tampered/missing-projection behavior; Whole-App gate was **87/87 PASS**, P-B01 through P-B15 covered. The model-bearing gate was N/A and no live provider/model calls occurred. P1 root repair accounting is reset.
 
-P2 begins diagnostic-first. Its goal is to determine the smallest evidence-grounded way to make each material client recommendation convey what was found, where, why it matters, what to do, and how to verify — or explicitly state the missing evidence and next acquisition step.
+P2 independently **PASSED** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P2_CLIENT_INTELLIGENCE_OUTPUT_CONTRACT_2026-09-02.md`. Direct renderer/conversion proof was **61/61 PASS**, worker regression **968/968 PASS**, and Whole-App Tranche Gate **87/87 PASS** with P-B01 through P-B15 covered. Model-Bearing Release Gate was N/A; no live provider/model calls occurred. P2 repair accounting is reset.
 
-P2 candidate is ready for independent audit at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` on `repair/prysm-report-improvement`. Classification: **VERIFIED_DESIGN_GAP** — the report-v2 Priority Findings consumer had governed `affectedUrls` but rendered only evidence fields/providers, and its no-action PASS did not state the criterion. The bounded presentation correction shows vetted client-owned affected pages where present, identifies the governed evidence location where no URL is available, and states the assessed-evidence-scope PASS criterion. It does not change scoring, ranking, persistence, providers, prompts/models, n8n, or deployment.
-
-Exact-candidate proof: direct renderer/conversion matrix **61/61 PASS**; worker regression **968/968 PASS**; Whole-App Tranche Gate **87/87 PASS**, P-B01 through P-B15 covered. Model-Bearing Release Gate: **N/A**; no live provider/model calls.
+P3 begins diagnostic-first. It must establish whether current governed content opportunities can be made site-specific and actionable from the P0-proven selection/deep-content evidence boundary, or whether the remaining limitation is an explicit evidence/capability gap. No prompt/model behavior or content strategy may change merely to improve prose. Any model-bearing change requires the applicable Model-Bearing Release Gate; paid/live model execution remains protected.
 
 P0 independently **PASSED** at application SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`. The direct gate was **19/19 PASS** and Whole-App gate **87/87 PASS** (P-B01 through P-B15). Historical TBK selection reason/class remains `NOT_RECORDED`; it has not been reconstructed.
 
@@ -152,7 +150,7 @@ P1 repair attempt 1 is complete at application SHA `9a1612c7e2388297120d5196b0be
 
 Exact-candidate proof: worker regression **965/965 PASS**; direct missing/tampered projection and consumer/render proofs PASS; Whole-App Tranche Gate **PASS**, 87/87 with P-B01 through P-B15; Writer/Narrative/replay parity PASS; zero live provider/model calls. Model-Bearing Release Gate: N/A (no prompts/model inputs changed).
 
-The current workstream is **P1 — Cross-report contradiction integrity**, ready for independent Auditor challenge. Durable artifacts: `DIAGNOSTIC_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_2026-09-02.md` and `SURGICAL_CHANGE_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_2026-09-02.md`.
+The current workstream is **P3 — Topical Map / Strategic Content Intelligence**, ready for Builder diagnostic-first work.
 
 ## Heartbeat and notification
 
@@ -198,7 +196,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor: independently challenge the exact P2 Client Intelligence Output Contract candidate `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` on `repair/prysm-report-improvement`, including producer-contract-consumer integrity, report rendering/matrix re-freeze scope, evidence humility, and exact-candidate Whole-App branch proof.
+Builder: on `repair/prysm-report-improvement` at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`, preserve the P3 outcome and run the shortest authoritative diagnostic of the topical-map/content-opportunity producer, its P0-governed source evidence, persistence/model-bearing boundary, and client report consumer. Record `VERIFIED_ROOT_CAUSE`, `VERIFIED_DESIGN_GAP`, or `UNRESOLVED` before any application edit.
 
 ## Protected invariants
 
@@ -214,4 +212,4 @@ Auditor: independently challenge the exact P2 Client Intelligence Output Contrac
 
 ## Last verified
 
-2026-09-02 America/Toronto — P2 Builder candidate `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` is ready for independent audit; direct proof was 61/61, worker regression 968/968, and Whole-App 87/87 (P-B01–P-B15) passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P2 independently passed at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`; direct proof was 61/61, worker regression 968/968, and Whole-App 87/87 (P-B01–P-B15) passed. P3 is diagnostic-first. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
