@@ -1,44 +1,63 @@
-# Diagnostic P4 — Competitor Qualification
+# P4 Diagnostic Evidence — Competitor Qualification
 
-Date: 2026-09-02
-Application candidate: `repair/prysm-report-improvement`
-Application SHA: `34f47cb35dd7dba39aa488408d1da1242b66dc25`
-Root defect: `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`
-Classification: **VERIFIED_DESIGN_GAP**
+**Change ID:** `P4_COMPETITOR_QUALIFICATION`
+**Candidate/base SHA:** `34f47cb35dd7dba39aa488408d1da1242b66dc25`
+**Owner:** Builder
 
-## Requirement preserved
+## Protected outcome
 
-P4 must improve competitor/comparator input quality before benchmark prose changes. Qualification must consider service/business similarity, geographic relevance, customer/audience similarity, and actual commercial overlap. If confidence is insufficient, the system must retain a bounded comparator/confirmation state rather than silently asserting competitor status. P8 consultant confirm/reject controls remain out of scope.
+Only evidence-supported, materially comparable competitors may enter client-facing competitor benchmarking. When service, geographic, audience, or commercial relevance is not established, the candidate must remain excluded or bounded as uncertain; P4 must not implement consultant confirmation controls reserved for P8.
 
-Acceptance: known non-competitors from the controlled review are not silently promoted to qualified competitors under the verified qualification contract.
+## Observed condition
 
-## Diagnostic evidence
+The current comparator qualification path can promote a supplied competitor as qualified without using the supplied competitor's observed service evidence. The collector assigns every supplied candidate the first client topic and the qualification checks use page type as a proxy for audience and commercial overlap. This creates an evidence-grounding gap even though the existing five-check unit tests pass.
 
-The authoritative implementation is `services/worker/src/evidence/competitor-opportunity-layer.js`.
+## Executing boundary
 
-* `qualifyCandidate()` declares five checks, but the checks are proxies rather than evidence-backed qualification: geographic relevance defaults true when context is absent and only compares free-text location fragments; service relevance compares the candidate topic to the client service/keyword strings; audience relevance is true for nearly every non-reference/community page; commercial relevance is inferred solely from page type; page comparability is also page-type-only.
-* Supplied candidates are assigned `topic: topics[0]?.topic`, `geographicContext: input.location`, and `pageType: "landing"` regardless of the supplied page's observed business/service, audience, location, or commercial evidence.
-* Every candidate passing those proxies is emitted under `candidates.qualified` with `qualificationPassed: true` and `approvalStatus: pending`. The downstream gap list retains the same candidate and is only gated by later approval; there is no bounded `comparator`/`confirmation_required` state for insufficient qualification confidence.
-* The current candidate therefore cannot distinguish a directory/adjacent business or a geographically irrelevant supplied URL when the source adapter has returned an AVAILABLE row, and it can promote it to the qualified candidate set before human review. This is the verified design gap; no historical production non-competitor is reconstructed or claimed here.
+`collectCompetitorOpportunities()` in `services/worker/src/evidence/competitor-opportunity-layer.js` builds supplied candidates, then calls `qualifyCandidate(candidate, clientContext)`. The resulting qualified/excluded candidate and qualification results flow into `competitorOpportunities`, evidence normalization, scoring/report-model consumers, and the auditor approval gate.
 
-## Required acceptance artifact
+## Evidence
 
-| Selected URL | Selection reason | Page class | Body requested | Body returned/status | Downstream modules |
-|---|---|---|---|---|---|
-| `https://competitor-1.example/services/consulting` | user-supplied; current implementation assigns first client topic | forced `landing` | supplied competitor crawl | `AVAILABLE` fixture row | qualification, competitor opportunities, report benchmark, review gate |
-| `https://competitor-2.example/web-design` | user-supplied; current implementation assigns first client topic | forced `landing` | supplied competitor crawl | `AVAILABLE` fixture row | qualification, competitor opportunities, report benchmark, review gate |
-| SERP candidate | topic query generated from client service/location | provider page type | SERP result/snippet; page evidence may be absent | provider result status | qualification, competitor opportunities, report benchmark |
+| Evidence ID | Source/artifact | Exact identity/SHA | What it proves |
+|---|---|---|---|
+| D4-01 | `competitor-opportunity-layer.js` supplied-candidate construction | `34f47cb35dd7dba39aa488408d1da1242b66dc25` | Supplied candidates receive `topic: topics[0]?.topic` and `geographicContext: input.location`, regardless of their own evidence. |
+| D4-02 | `competitor-opportunity-layer.js` `qualifyCandidate()` | `34f47cb35dd7dba39aa488408d1da1242b66dc25` | Service relevance compares candidate topic to client topics; audience relevance is only a reference/community page-type exclusion; commercial relevance is only an allowlist of page types. |
+| D4-03 | Read-only Node diagnostic counterexample | `34f47cb35dd7dba39aa488408d1da1242b66dc25` | A supplied candidate whose evidence services are `Accounting` is qualified for a client whose service is `Physiotherapy`; output shows `qualificationPassed: true` and all five checks true. |
+| D4-04 | Read-only Node diagnostic counterexamples | `34f47cb35dd7dba39aa488408d1da1242b66dc25` | An explicit unrelated topic and explicit wrong geography are rejected when those fields are present, demonstrating the gap is specifically the supplied-evidence-to-candidate mapping and proxy qualification, not a blanket failure of all checks. |
 
-The rows demonstrate that source availability and page retrieval do not establish competitor identity. The missing qualification evidence is the root boundary.
+## Facts versus unresolved questions
 
-## Shortest authoritative proof
+### Observed facts
 
-Command:
+- The supplied competitor evidence contains `services: ["Accounting"]`, but the constructed candidate topic is the client's first topic, `"Physiotherapy"`.
+- The candidate therefore passes `service_relevance` without a comparison to the supplied competitor's observed services.
+- The collector copies the client's location into `geographicContext`; this is not independently observed competitor geography.
+- `audience_relevance` and `commercial_intent_relevance` are derived from page type, not observed audience or commercial evidence.
+- Existing tests prove the current five-check contract and approval workflow, but do not falsify promotion when supplied evidence conflicts with the client topic.
 
-`npm test -- --test-name-pattern='competitor|Competitor'`
+### Unresolved
 
-Result at the exact candidate: **970/970 PASS**, zero failures. Existing green tests prove the current approval workflow and source-status behavior; they do not prove the P4 requirement because no test asserts rejection/bounded comparator state for a known non-competitor or evidence-backed four-factor overlap.
+- The minimum evidence fields and confidence states needed to establish audience similarity and commercial overlap across all SERP/supplied candidate shapes require contract design before implementation.
+- Whether any downstream consumer requires a new qualification status versus the existing qualified/excluded representation must be mapped in the Surgical Change Contract.
 
-## Decision
+## Highest-information diagnostic
 
-Repair is justified, but no application edit is made in this diagnostic step. A Surgical Change Contract must freeze the bounded qualification evidence/state contract before implementation. The likely causally justified surface is the competitor opportunity producer plus its contract/consumer parity tests; benchmark prose and P8 consultant controls are excluded. No live provider or model calls are required for this diagnosis.
+Run the qualification function and collector with controlled candidates: unrelated topic, wrong geography, excluded directory, and supplied evidence whose service conflicts with the client service. Inspect candidate construction and the exact `qualified`/`excluded` output.
+
+## Cause classification
+
+**`VERIFIED_DESIGN_GAP`**
+
+The current P4 qualification contract does not preserve the distinction between client context and competitor-observed evidence for supplied candidates, and it treats audience/commercial relevance as page-type proxies. This is sufficient direct evidence to design a bounded repair, but not yet to edit: the minimum contract and consumer impact must be frozen first.
+
+## Ownership
+
+Application evidence boundary: `services/worker/src/evidence/competitor-opportunity-layer.js`, with any required evidence-contract/consumer updates identified only after contract mapping. P8 consultant controls remain out of scope.
+
+## Repair-attempt accounting
+
+Same-root evidence-based repair attempts before this checkpoint: `0`
+
+## Gate result
+
+`PASS` for diagnostic classification; Surgical Change Contract required before application implementation.
