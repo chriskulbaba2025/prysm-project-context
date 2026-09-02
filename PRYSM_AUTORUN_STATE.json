@@ -2,7 +2,7 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_AUTORUN",
-  "status": "PRODUCTION_PROMOTION_IN_PROGRESS",
+  "status": "LIVE_PRODUCTION_VALIDATION_IN_PROGRESS",
   "currentRole": "Owner",
   "currentTranche": "PDV5",
   "lastPassedTranche": "PDV5",
@@ -14,6 +14,25 @@
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "reason": "Owner authorized PRYSM production promotion and one fresh paid production audit on 2026-09-01. Application main was fast-forward promoted from 1876c18195e12389fa1d3b5c8679f214655b7bb0 to the exact independently audited PDV5 candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. Repository promotion is complete; production deployment identity is not yet verified.",
-  "nextAction": "Verify the production PRYSM worker is deployed at application SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. Only after exact deployed revision is proven, run the one authorized fresh paid production audit and verify it reaches completed/renderable report state."
+  "productionDeployment": {
+    "provider": "Railway",
+    "project": "GENSEN process",
+    "environment": "production",
+    "service": "vantage-platform",
+    "serviceId": "d6012de3-a174-4a59-bf8f-db4e9b01d91f",
+    "deploymentId": "4523295a-b6c1-418e-961e-f456b583e0ca",
+    "instanceId": "8a2839ad-629d-46bd-a39f-4d4ee41c83e2",
+    "commitSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+    "deploymentStatus": "SUCCESS",
+    "instanceStatus": "RUNNING"
+  },
+  "liveProductionAudit": {
+    "auditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
+    "targetUrl": "https://www.tbkcreative.com/",
+    "businessName": "Tbkcreative",
+    "status": "collecting",
+    "observedLifecycle": ["created", "validated", "collecting"]
+  },
+  "reason": "PDV5 independently PASSed on exact SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e and was promoted to main. Railway production deployment identity is proven at the same SHA with deployment SUCCESS and instance RUNNING. The single owner-authorized fresh TBK production audit is active and has reached collecting.",
+  "nextAction": "Track only live audit 8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3 to normal completed/renderable report state. Do not start another paid audit. If it fails or materially stalls, capture the exact lifecycle reason once and classify before any code change."
 }
