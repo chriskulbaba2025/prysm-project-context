@@ -30,9 +30,22 @@
     "auditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
     "targetUrl": "https://www.tbkcreative.com/",
     "businessName": "Tbkcreative",
-    "status": "collecting",
-    "observedLifecycle": ["created", "validated", "collecting"]
+    "clientId": "www.tbkcreative.com-tbkcreative",
+    "slug": "tbkcreative",
+    "status": "draft_rendered",
+    "version": 9,
+    "observedLifecycle": [
+      "created",
+      "validated",
+      "collecting",
+      "evidence_stored",
+      "evidence_locked",
+      "scored",
+      "narrative_pending",
+      "narrative_ready",
+      "draft_rendered"
+    ]
   },
-  "reason": "PDV5 independently PASSed on exact SHA 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e and was promoted to main. Railway production deployment identity is proven at the same SHA with deployment SUCCESS and instance RUNNING. The single owner-authorized fresh TBK production audit is active and has reached collecting.",
-  "nextAction": "Track only live audit 8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3 to normal completed/renderable report state. Do not start another paid audit. If it fails or materially stalls, capture the exact lifecycle reason once and classify before any code change."
+  "reason": "The single owner-authorized fresh TBK production audit returned HTTP 200 and completed the automated evidence, scoring, Writer/Judge Narrative, and governed rendering path to draft_rendered without lifecycle failure. draft_rendered is the governed human-review boundary. Final production PASS remains open until the persisted report is proven retrievable/renderable through the normal live interface and the rendered report has no material evidence-integrity defect.",
+  "nextAction": "Open only audit 8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3 through the normal authenticated live PRYSM interface and verify View Draft Report retrieves and renders the persisted report. Then inspect that rendered report for material evidence-integrity defects. Do not start another paid audit."
 }
