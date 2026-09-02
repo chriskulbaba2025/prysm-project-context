@@ -138,6 +138,8 @@ Verification at the exact candidate:
 
 ## Current execution status
 
+P3 bounded Builder candidate is ready for independent audit at application SHA `26d0b61fe1ea7e41a916a5e5d9acd23a39bb9806`. `contentIdeas` now carries deterministic stage, topic, business rationale, current evidence/status, bounded gap language, recommended asset, placement, objective, internal-link URLs, funnel stage, and priority-compatible legacy fields. Direct P3 proof passes 7/7, worker regression passes 970/970, Narrative v2 regression passes, and Whole-App Branch Coverage Gate passes 87/87 with P-B01 through P-B15. No live provider/model calls occurred and no model/prompt behavior changed. Independent Auditor review is required next.
+
 P3 diagnostic-first classification is **VERIFIED_DESIGN_GAP** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`. Durable evidence: `DIAGNOSTIC_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_2026-09-02.md`. The authoritative worker regression passed **968/968** with no live provider/model calls. The gap is in the deterministic `contentIdeas` producer/contract/consumer projection: it emits mostly fixed templates and does not carry per-opportunity current evidence, gap basis, recommended asset/location, or explicit evidence status. No application files were edited during diagnosis.
 
 P1 independently **PASSED** at application SHA `9a1612c7e2388297120d5196b0be099762c97e2b` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_REPAIR_2026-09-02.md`. Independent direct proof was **54/54 PASS**, including persisted/tampered/missing-projection behavior; Whole-App gate was **87/87 PASS**, P-B01 through P-B15 covered. The model-bearing gate was N/A and no live provider/model calls occurred. P1 root repair accounting is reset.
@@ -198,7 +200,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder: persist and verify the P3 diagnostic checkpoint, then freeze a Surgical Change Contract for the smallest deterministic producer/contract/consumer repair that adds evidence-grounded opportunity fields without changing prompts/models or n8n.
+Builder: candidate `26d0b61fe1ea7e41a916a5e5d9acd23a39bb9806` is pushed to `repair/prysm-report-improvement`; hand exact candidate to Auditor for independent P3 challenge.
 
 ## Protected invariants
 
