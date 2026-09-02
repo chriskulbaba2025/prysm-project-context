@@ -5,9 +5,9 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Execute the team-driven PRYSM report-improvement program through Codex under Governed Coding Upgrade (GCU), beginning with **P0 — Deep-content/page-selection evidence trace**.
+Run the team-driven PRYSM report-improvement program **unattended tip-to-tail through P0-P10** using Codex under Governed Coding Upgrade (GCU), with Builder/Auditor switching, a local heartbeat, and remote notification only for genuine terminal/exception boundaries.
 
-Do not begin report rewriting until P0 establishes whether downstream report intelligence is receiving the intended commercial/representative page sample.
+The owner does not want routine tranche-by-tranche attendance.
 
 ## Verified production checkpoint
 
@@ -17,10 +17,8 @@ Application repository:
 Production branch:
 `main`
 
-Exact deployed and independently audited SHA:
+Exact deployed and independently audited production SHA:
 `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
-
-GitHub `main` was re-verified at this same SHA when the GCU work order was frozen.
 
 PDV5:
 **PASS / CLOSED**
@@ -46,37 +44,31 @@ Final live production validation:
 Controlled audit:
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
 
-The controlled TBK audit completed to `draft_rendered`, the persisted report opened through the normal authenticated live interface, and no material evidence-integrity defect was reported in the owner review.
-
-Durable production-validation evidence:
-`AUDIT_PRYSM_LIVE_PRODUCTION_VALIDATION_2026-09-02.md`
-
 ## Trusted local rollback checkpoint — VERIFIED
 
 Before Codex/GCU report-improvement work, the owner created a local safety backup from:
 
 `C:\Users\kulba\Desktop\vantage-platform`
 
-The backup's `STARTING-SHA.txt` was directly verified to contain:
+Its `STARTING-SHA.txt` was directly verified as:
 
 `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`
 
-Durable backup record:
+Durable record:
 `PRYSM_LOCAL_SAFETY_BACKUP_CHECKPOINT_2026-09-02.md`
 
-The exact timestamped Desktop folder name was not supplied back into project memory and must not be guessed. Recover it locally by finding `PRYSM-SAFETY-BACKUP-*` whose `STARTING-SHA.txt` matches the verified SHA above.
-
-This backup is the trusted pre-GCU rollback baseline. It does not authorize destructive restoration, reset, force push, deployment rollback, or overwriting newer valid work without explicit owner authorization.
+The exact timestamped Desktop backup directory was not supplied and must not be guessed. Locate it by matching `PRYSM-SAFETY-BACKUP-*` and the verified SHA if restoration is ever explicitly authorized.
 
 ## Team report-improvement requirements — COLLATED
 
-The September 1 TBK team review has been converted into a governed work order.
+Governing work order:
+`PRYSM_GCU_REPORT_IMPROVEMENT_WORK_ORDER_2026-09-02.md`
 
-Primary work-order principle:
+Primary product principle:
 
 `An observation is not yet intelligence.`
 
-Where evidence permits, material client output should progress through:
+Where evidence permits:
 
 `what was found -> where -> why it matters -> what to do -> how to verify`
 
@@ -84,24 +76,27 @@ Where evidence does not permit a conclusion:
 
 `what cannot be determined -> what is missing -> how to obtain/enable it -> what additional insight would then become possible`
 
-Governed workstreams are P0 through P10 in:
+Mandatory workstream order:
+P0 through P10 as defined by the work order.
 
-`PRYSM_GCU_REPORT_IMPROVEMENT_WORK_ORDER_2026-09-02.md`
+## GCU / Codex execution — UNATTENDED AUTHORIZED
 
-## GCU / Codex execution decision — ACTIVE
-
-Decision:
+Base decision:
 `DECISION_PRYSM_GCU_CODEX_REPORT_IMPROVEMENT_2026-09-02.md`
+
+Unattended authorization:
+`DECISION_PRYSM_GCU_UNATTENDED_REPORT_IMPROVEMENT_AUTORUN_2026-09-02.md`
 
 Canonical GCU repository:
 `chriskulbaba2025/governed-coding-upgrade-skill`
 
-Protocol target at adoption:
+Protocol target:
 `v2.4.0 — Verification Integrity`
 
-Codex is the execution agent. GCU governs the change lifecycle. PRYSM GitHub governance remains authoritative project memory.
+Codex may automatically progress through normal repository-controlled GCU work, including diagnosis, Surgical Change Contracts, bounded application edits, verification, dedicated repair-branch commits/pushes, governance synchronization, independent-context Auditor review, bounded repair after audit findings, and progression to the next workstream.
 
-The package replaces ad-hoc/manual report editing with governed tranche execution. Each material tranche must pass Requirement Preservation, Diagnostic Evidence, Surgical Change Determinacy, bounded implementation, direct proof, applicable branch-complete assembled-system proof, exact-candidate verification, applicable Model-Bearing Release proof, and independent audit before closure.
+Application writes are confined to:
+`repair/prysm-report-improvement`
 
 Do not create a second report-generation source of truth in n8n.
 
@@ -109,39 +104,75 @@ Do not create a second report-generation source of truth in n8n.
 
 `P0 — Deep-content/page-selection evidence trace`
 
-Status:
-**DIAGNOSTIC ONLY / NO APPLICATION CODE CHANGE AUTHORIZED YET**
-
-Required trace:
-
-`discovered/crawled URLs -> candidate URLs -> selected deep-content URLs -> body requested -> body returned/unavailable -> page class/selection reason -> downstream modules consuming each page`
-
-Required P0 acceptance artifact:
-
-`Selected URL | selection reason | page class | body requested | body returned/status | downstream modules`
-
-P0 must classify the material cause/design gap as:
+Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
 - `VERIFIED_DESIGN_GAP`;
 - or `UNRESOLVED`.
 
-A material `UNRESOLVED` cause blocks editing.
+Required acceptance artifact:
+
+`Selected URL | selection reason | page class | body requested | body returned/status | downstream modules`
+
+The later unattended owner authorization supersedes the earlier requirement to stop after the P0 Surgical Change Contract. If P0 proves a repairable root cause/design gap and the GCU Surgical Change Determinacy Gate passes, the Builder may implement and prove the bounded P0 correction autonomously on the dedicated repair branch, then hand it to the Auditor.
+
+P3 prompt/content-strategy tuning remains blocked until P0 proves or repairs the upstream page-selection/deep-content boundary.
+
+## Heartbeat and notification
+
+Dedicated controller:
+`tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1`
+
+Builder prompt:
+`tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-BUILDER-PROMPT.md`
+
+Auditor prompt:
+`tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUDITOR-PROMPT.md`
+
+Heartbeat:
+`%LOCALAPPDATA%\PRYSM-Autorun-Report-Improvement\heartbeat.json`
+
+Default heartbeat interval:
+**60 seconds**
+
+Remote notification seam:
+`PRYSM_AUTORUN_NOTIFY_WEBHOOK`
+
+Recommended route:
+`controller -> n8n webhook -> Telegram`
+
+The webhook is operational notification only and must not become part of report generation or receive report/evidence payloads/secrets.
+
+Routine progress and heartbeat ticks do not message the owner. Remote messages are reserved for `STOP`, `BLOCKED`, controller failure, and repository-controlled `COMPLETE`.
+
+## Protected external authority — STILL REQUIRED
+
+Unattended authorization does **not** authorize:
+- merge to application `main`;
+- production deployment;
+- Railway/Vercel/AWS production mutation;
+- production configuration mutation;
+- new paid/live provider calls;
+- new paid/live Writer/Judge/model calls;
+- a fresh production audit;
+- destructive rollback/reset;
+- force push.
+
+The autorun must stop and notify when one of those actions becomes genuinely necessary.
 
 ## Exact next action
 
-Run Codex using:
+1. Configure the notification webhook in the local PowerShell environment if remote Telegram messaging is required:
 
-`CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md`
+`$env:PRYSM_AUTORUN_NOTIFY_WEBHOOK = "<n8n webhook URL>"`
 
-Codex must recover exact local repository truth first and execute **P0 only**.
+2. From the local `prysm-project-context` root, run the dedicated preflight with `-RequireRemoteNotification`.
 
-Do not change application code in P0.
-Do not start P1 automatically.
-Do not start another paid production audit.
-Do not make paid provider/model calls.
-Do not deploy, merge to `main`, or mutate production configuration without explicit owner/release authorization.
+3. Only after `PREFLIGHT PASS`, launch the unlimited unattended controller with `-MaxRuns 0`.
 
-If P0 proves a root cause/design gap, stop at the proposed Surgical Change Contract for governance/owner review before implementation.
+Run commands are documented in:
+`tools/report-improvement-autorun/README.md`
+
+No Railway, Vercel, AWS, DataForSEO, or paid-model credential is required simply to begin repository-controlled P0-P10 work. If a later tranche truly reaches one of those protected boundaries, the controller stops and notifies rather than guessing permission.
 
 ## Protected invariants
 
@@ -149,12 +180,12 @@ If P0 proves a root cause/design gap, stop at the proposed Surgical Change Contr
 - Preserve ranked Priority Fix architecture.
 - Preserve explicit limitations and restrained business-consequence language.
 - Do not mask upstream evidence defects with copy changes.
-- Do not change n8n merely to restructure/improve report output.
-- Preserve canonical evidence and existing production truth unless a separately proven/authorized workstream requires change.
-- Model/prompt-bearing changes require the applicable PRYSM/GCU Model-Bearing Release Gate.
-- Three failed same-root repair attempts require diagnostic reset before another repair.
+- Do not modify n8n merely to restructure/improve report output.
+- Preserve canonical evidence and existing production truth unless a separately proven and authorized workstream requires change.
+- Model/prompt-bearing changes require applicable PRYSM/GCU Model-Bearing Release proof; paid/live model execution remains separately protected.
+- Three failed same-root repair attempts require diagnostic reset/stop according to GCU; no fourth same-root autonomous repair.
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
 
-2026-09-02 America/Toronto — production remains verified at application `main` SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; final live-production validation is PASS. A trusted local pre-GCU safety backup has been created and its `STARTING-SHA.txt` verified at the same SHA. The team report review has been collated into a GCU v2.4.0 Codex work order. The exact current action is P0 evidence tracing only, with no application edit authorized until diagnostic classification and Surgical Change Determinacy requirements are satisfied.
+2026-09-02 America/Toronto — production remains verified at SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`; final live-production validation is PASS; the trusted local pre-GCU safety backup is recorded at the same SHA; the P0-P10 team work order is frozen; and the owner has now authorized unattended repository-controlled Codex/GCU execution with 60-second heartbeat and remote terminal/exception notification. The exact next action is notification-webhook configuration plus dedicated autorun preflight, then unlimited execution after `PREFLIGHT PASS`.
