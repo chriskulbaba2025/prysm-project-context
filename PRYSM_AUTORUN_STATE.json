@@ -13,6 +13,13 @@
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
+  "localSafetyBackup": {
+    "status": "VERIFIED_STARTING_SHA",
+    "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
+    "startingSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+    "record": "PRYSM_LOCAL_SAFETY_BACKUP_CHECKPOINT_2026-09-02.md",
+    "exactTimestampedDirectory": "NOT_RECORDED_DO_NOT_GUESS"
+  },
   "governedCodingUpgrade": {
     "repository": "chriskulbaba2025/governed-coding-upgrade-skill",
     "protocolVersion": "2.4.0",
@@ -36,6 +43,6 @@
     ],
     "requiredAcceptanceArtifact": "Selected URL | selection reason | page class | body requested | body returned/status | downstream modules"
   },
-  "reason": "The September 1 TBK team review has been collated into a GCU-governed Codex work order. P0 must prove the deep-content/page-selection evidence boundary before report rewriting or prompt tuning. No application code change is authorized while the material P0 cause/design gap is unresolved.",
+  "reason": "The September 1 TBK team review has been collated into a GCU-governed Codex work order. Before Codex/GCU work, the owner created a local safety backup and verified its STARTING-SHA.txt at 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e. P0 must prove the deep-content/page-selection evidence boundary before report rewriting or prompt tuning. No application code change is authorized while the material P0 cause/design gap is unresolved.",
   "nextAction": "Run Codex with CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md. Execute P0 only, recover exact local repository truth, produce the required page-selection/deep-content/downstream-consumer trace, classify the result under GCU, and stop before implementation."
 }
