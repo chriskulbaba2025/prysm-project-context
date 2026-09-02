@@ -138,7 +138,7 @@ Verification at the exact candidate:
 
 ## Current execution status
 
-P3 bounded Builder candidate is ready for independent audit at application SHA `26d0b61fe1ea7e41a916a5e5d9acd23a39bb9806`. `contentIdeas` now carries deterministic stage, topic, business rationale, current evidence/status, bounded gap language, recommended asset, placement, objective, internal-link URLs, funnel stage, and priority-compatible legacy fields. Direct P3 proof passes 7/7, worker regression passes 970/970, Narrative v2 regression passes, and Whole-App Branch Coverage Gate passes 87/87 with P-B01 through P-B15. No live provider/model calls occurred and no model/prompt behavior changed. Independent Auditor review is required next.
+P3 repair candidate is ready for independent audit at application SHA `58fd04324d7fc654739956798654fafb4d09b770`. Current ScoreSet/ViewModel schemas govern enriched contentIdeas rows and reject materially incomplete rows. Schema proof 14/14, focused proof 8/8, worker regression 970/970, Narrative v2 114/114, and Whole-App Gate 87/87 passed; no live provider/model calls occurred.
 
 P3 diagnostic-first classification is **VERIFIED_DESIGN_GAP** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`. Durable evidence: `DIAGNOSTIC_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_2026-09-02.md`. The authoritative worker regression passed **968/968** with no live provider/model calls. The gap is in the deterministic `contentIdeas` producer/contract/consumer projection: it emits mostly fixed templates and does not carry per-opportunity current evidence, gap basis, recommended asset/location, or explicit evidence status. No application files were edited during diagnosis.
 
@@ -200,7 +200,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder: candidate `26d0b61fe1ea7e41a916a5e5d9acd23a39bb9806` is pushed to `repair/prysm-report-improvement`; hand exact candidate to Auditor for independent P3 challenge.
+Builder: candidate `58fd04324d7fc654739956798654fafb4d09b770` is pushed to `repair/prysm-report-improvement`; hand exact candidate to Auditor for independent P3 repair challenge.
 
 ## Protected invariants
 

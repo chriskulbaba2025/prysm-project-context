@@ -11,7 +11,7 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "26d0b61fe1ea7e41a916a5e5d9acd23a39bb9806",
+  "applicationSha": "58fd04324d7fc654739956798654fafb4d09b770",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "P3_FAIL_INDEPENDENT_AUDIT_CONTRACT_UNGOVERNED",
   "localSafetyBackup": {
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must repair P3_CONTENT_IDEAS_CONTRACT_UNGOVERNED by governing contentIdeas row validation, proving rejection of incomplete rows and exact persistence/consumer parity, then hand the new exact candidate to Auditor."
+  "nextAction": "Auditor must independently challenge exact candidate 58fd04324d7fc654739956798654fafb4d09b770 for P3 contract validation, persistence/reload parity, and incomplete-row rejection."
 }
