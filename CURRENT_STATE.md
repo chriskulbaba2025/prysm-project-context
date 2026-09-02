@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Begin P3 Topical Map / Strategic Content Intelligence with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
+Begin P4 Competitor Qualification with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -102,7 +102,7 @@ Do not create a second report-generation source of truth in n8n.
 
 ## Current tranche
 
-`P3 — Topical Map / Strategic Content Intelligence`
+`P4 — Competitor Qualification`
 
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
@@ -138,6 +138,10 @@ Verification at the exact candidate:
 
 ## Current execution status
 
+P3 independently **PASSED** at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_REPAIR_PASS_2026-09-02.md`. Independent exact-candidate proof: schema **14/14 PASS**; focused producer/current-consumer/render/Narrative-reference proof **27/27 PASS**; worker regression **970/970 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15 covered. The prior MAJOR fixture/contract false-PASS seam is closed: a valid persisted ScoreSet with a complete evidence-grounded `contentIdeas` projection validates, while materially incomplete rows reject. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P3 repair accounting is reset.
+
+P4 begins diagnostic-first. It must verify the current comparator/competitor qualification boundary for service/business similarity, geographic relevance, customer/audience similarity, and actual commercial overlap. Where confidence is insufficient, it must retain a bounded comparator/confirmation state rather than promote a competitor silently. P4 must not implement P8 consultant confirm/reject controls by scope creep.
+
 P3 repair candidate is ready for independent re-audit at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` (remote equals local; clean tree). The same-root audit finding was repaired solely by completing the governed valid `score-current` fixture with a schema-valid, evidence-grounded `contentIdeas` projection. Current ScoreSet/ViewModel schemas govern enriched rows and reject materially incomplete rows. Exact-candidate proof: schema 14/14; focused producer/current-consumer/render/Narrative-reference proof 25/25; worker regression 970/970; Narrative v2 114/114; Whole-App Gate 87/87 with P-B01 through P-B15 covered. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
 
 P3 diagnostic-first classification is **VERIFIED_DESIGN_GAP** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`. Durable evidence: `DIAGNOSTIC_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_2026-09-02.md`. The authoritative worker regression passed **968/968** with no live provider/model calls. The gap is in the deterministic `contentIdeas` producer/contract/consumer projection: it emits mostly fixed templates and does not carry per-opportunity current evidence, gap basis, recommended asset/location, or explicit evidence status. No application files were edited during diagnosis.
@@ -157,6 +161,8 @@ Exact-candidate proof: worker regression **965/965 PASS**; direct missing/tamper
 The current workstream is **P3 — Topical Map / Strategic Content Intelligence**, ready for Builder diagnostic-first work.
 
 ## Heartbeat and notification
+
+The current workstream is **P4 — Competitor Qualification**, ready for Builder diagnostic-first work.
 
 Dedicated controller:
 `tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1`
@@ -215,5 +221,7 @@ Auditor must independently challenge exact candidate `34f47cb35dd7dba39aa488408d
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — P3 independently PASSED at repair candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25`; P4 is next for Builder diagnostic-first work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — P3 same-root repair candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25` is ready for independent re-audit; all required deterministic exact-candidate proof passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
