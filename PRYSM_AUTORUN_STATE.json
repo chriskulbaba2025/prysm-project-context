@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P4_READY_FOR_BUILDER_DIAGNOSTIC",
-  "currentRole": "Builder",
+  "status": "P4_REPAIR_READY_FOR_AUDITOR",
+  "currentRole": "Auditor",
   "currentTranche": "P4_COMPETITOR_QUALIFICATION",
   "lastPassedTranche": "P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE",
-  "repairAttempt": 0,
-  "rootDefectId": "NONE",
+  "repairAttempt": 1,
+  "rootDefectId": "P4_COMPETITOR_QUALIFICATION_UNGROUNDED",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "34f47cb35dd7dba39aa488408d1da1242b66dc25",
+  "applicationSha": "cc4f0c3a8800f568a8e5949288feeadf494790a5",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "P3_PASS_ZERO_MATERIAL_FINDINGS",
+  "lastAuditVerdict": "P4_PRIOR_CANDIDATE_FAIL_SAME_ROOT_REPAIRED_AWAITING_AUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must perform P4 competitor-qualification diagnostic-first work, preserving uncertainty and excluding P8 consultant controls."
+  "nextAction": "Auditor must independently challenge exact P4 repair candidate cc4f0c3a8800f568a8e5949288feeadf494790a5, including unsupported supplied evidence exclusion, valid candidate approval/consumer parity, and exact-SHA Whole-App proof."
 }

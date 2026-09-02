@@ -138,6 +138,8 @@ Verification at the exact candidate:
 
 ## Current execution status
 
+P4 same-root repair candidate is ready for independent audit at application SHA `cc4f0c3a8800f568a8e5949288feeadf494790a5` (remote equals local; clean tree). Independent audit `P4-MAJOR-01` found that the prior candidate could promote a service-matching supplied URL with no observed geography, audience, or commercial evidence. The bounded correction requires supplied candidates to carry observed geography where client geography is stated plus observed audience and commercial context; absent client geography remains a bounded non-comparison. It retains the existing qualified/excluded and approval representation, excludes unsupported candidates with explicit failed checks, and does not implement P8 controls. Exact proof: direct producer/approval-consumer **35/35 PASS**; worker regression **973/973 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
+
 P3 independently **PASSED** at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_REPAIR_PASS_2026-09-02.md`. Independent exact-candidate proof: schema **14/14 PASS**; focused producer/current-consumer/render/Narrative-reference proof **27/27 PASS**; worker regression **970/970 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15 covered. The prior MAJOR fixture/contract false-PASS seam is closed: a valid persisted ScoreSet with a complete evidence-grounded `contentIdeas` projection validates, while materially incomplete rows reject. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P3 repair accounting is reset.
 
 P4 begins diagnostic-first. It must verify the current comparator/competitor qualification boundary for service/business similarity, geographic relevance, customer/audience similarity, and actual commercial overlap. Where confidence is insufficient, it must retain a bounded comparator/confirmation state rather than promote a competitor silently. P4 must not implement P8 consultant confirm/reject controls by scope creep.
@@ -206,7 +208,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge exact P4 candidate `ce94e9ad833e72b8bfd10cf7ae1fe7f27d45b440`. Verify conflicting supplied competitor evidence is excluded, valid supplied/SERP candidates preserve the existing approval and consumer contracts, uncertainty remains bounded, and the 87/87 Whole-App proof is exact-candidate evidence.
+Auditor must independently challenge exact P4 candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5`. Verify conflicting supplied competitor evidence and service-matching but otherwise unsupported evidence are excluded, valid supplied/SERP candidates preserve the existing approval and consumer contracts, uncertainty remains bounded, and the 87/87 Whole-App proof is exact-candidate evidence.
 
 ## Protected invariants
 
@@ -221,6 +223,8 @@ Auditor must independently challenge exact P4 candidate `ce94e9ad833e72b8bfd10cf
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — P4 same-root repair candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5` has exact deterministic proof and is ready for independent audit. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — P3 independently PASSED at repair candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25`; P4 is next for Builder diagnostic-first work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
