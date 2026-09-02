@@ -6,14 +6,14 @@
   "currentRole": "Builder",
   "currentTranche": "P1_CROSS_REPORT_CONTRADICTION_INTEGRITY",
   "lastPassedTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
-  "repairAttempt": 0,
-  "rootDefectId": null,
+  "repairAttempt": 1,
+  "rootDefectId": "P1-CROSS-REPORT-DERIVATION-001",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "32884562276daacce83a46d5f75bb417925ac54c",
+  "applicationSha": "9a1612c7e2388297120d5196b0be099762c97e2b",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "PASS_P0_INDEPENDENT_AUDIT",
+  "lastAuditVerdict": "P1_REPAIR_READY_FOR_REAUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Auditor must independently challenge P1 candidate 32884562276daacce83a46d5f75bb417925ac54c against the durable diagnostic, contract, direct proof, Whole-App 87/87 proof, and P-B01 through P-B15 coverage."
+  "nextAction": "Auditor must independently challenge P1 repair candidate 9a1612c7e2388297120d5196b0be099762c97e2b against the prior audit finding, durable diagnostic/contract, direct missing/tampered projection proof, Whole-App 87/87 proof, and P-B01 through P-B15 coverage."
 }
