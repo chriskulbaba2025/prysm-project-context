@@ -1,52 +1,41 @@
 {
   "version": 2,
   "project": "PRYSM",
-  "mode": "DESIGN_REVIEW",
-  "status": "FINAL_LIVE_PRODUCTION_VALIDATION_PASS",
-  "currentRole": "Owner",
-  "currentTranche": "REPORT_STRUCTURE_REVIEW",
+  "mode": "GCU_CODEX_REPORT_IMPROVEMENT",
+  "status": "P0_DIAGNOSTIC_READY",
+  "currentRole": "Codex",
+  "currentTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
   "lastPassedTranche": "PDV5",
   "repairAttempt": 0,
-  "rootDefectId": "NONE",
+  "rootDefectId": "UNRESOLVED_P0",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "main",
   "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS",
-  "productionDeployment": {
-    "provider": "Railway",
-    "project": "GENSEN process",
-    "environment": "production",
-    "service": "vantage-platform",
-    "serviceId": "d6012de3-a174-4a59-bf8f-db4e9b01d91f",
-    "deploymentId": "4523295a-b6c1-418e-961e-f456b583e0ca",
-    "instanceId": "8a2839ad-629d-46bd-a39f-4d4ee41c83e2",
-    "commitSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
-    "deploymentStatus": "SUCCESS",
-    "instanceStatus": "RUNNING"
+  "governedCodingUpgrade": {
+    "repository": "chriskulbaba2025/governed-coding-upgrade-skill",
+    "protocolVersion": "2.4.0",
+    "decision": "DECISION_PRYSM_GCU_CODEX_REPORT_IMPROVEMENT_2026-09-02.md",
+    "workOrder": "PRYSM_GCU_REPORT_IMPROVEMENT_WORK_ORDER_2026-09-02.md",
+    "bootstrapPrompt": "CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md"
   },
-  "liveProductionAudit": {
+  "productionValidation": {
+    "status": "PASS",
     "auditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
-    "targetUrl": "https://www.tbkcreative.com/",
-    "businessName": "Tbkcreative",
-    "clientId": "www.tbkcreative.com-tbkcreative",
-    "slug": "tbkcreative",
-    "status": "draft_rendered",
-    "version": 9,
     "reportRetrieval": "PASS",
-    "evidenceIntegrityReview": "PASS_OWNER_REVIEW",
-    "observedLifecycle": [
-      "created",
-      "validated",
-      "collecting",
-      "evidence_stored",
-      "evidence_locked",
-      "scored",
-      "narrative_pending",
-      "narrative_ready",
-      "draft_rendered"
-    ]
+    "evidenceIntegrityReview": "PASS_OWNER_REVIEW"
   },
-  "reason": "The single authorized live TBK audit completed the full automated production path to draft_rendered, the persisted report opened successfully through the normal authenticated live PRYSM interface, and the owner reported no material evidence-integrity defect. Final live production validation is PASS. The next work is report-structure design discussion, not defect repair.",
-  "nextAction": "Review the current governed 16-page Viewer v2.2.0 report structure with the owner and define the approved target hierarchy, page responsibilities, narrative flow, and information density before changing application code or n8n."
+  "p0": {
+    "status": "DIAGNOSTIC_ONLY",
+    "applicationEditAuthorized": false,
+    "requiredClassification": [
+      "VERIFIED_ROOT_CAUSE",
+      "VERIFIED_DESIGN_GAP",
+      "UNRESOLVED"
+    ],
+    "requiredAcceptanceArtifact": "Selected URL | selection reason | page class | body requested | body returned/status | downstream modules"
+  },
+  "reason": "The September 1 TBK team review has been collated into a GCU-governed Codex work order. P0 must prove the deep-content/page-selection evidence boundary before report rewriting or prompt tuning. No application code change is authorized while the material P0 cause/design gap is unresolved.",
+  "nextAction": "Run Codex with CODEX_PROMPT_PRYSM_GCU_REPORT_IMPROVEMENT_P0_2026-09-02.md. Execute P0 only, recover exact local repository truth, produce the required page-selection/deep-content/downstream-consumer trace, classify the result under GCU, and stop before implementation."
 }
