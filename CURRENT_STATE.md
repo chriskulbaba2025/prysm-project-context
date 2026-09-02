@@ -142,6 +142,10 @@ P1 independently **PASSED** at application SHA `9a1612c7e2388297120d5196b0be0997
 
 P2 begins diagnostic-first. Its goal is to determine the smallest evidence-grounded way to make each material client recommendation convey what was found, where, why it matters, what to do, and how to verify — or explicitly state the missing evidence and next acquisition step.
 
+P2 candidate is ready for independent audit at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` on `repair/prysm-report-improvement`. Classification: **VERIFIED_DESIGN_GAP** — the report-v2 Priority Findings consumer had governed `affectedUrls` but rendered only evidence fields/providers, and its no-action PASS did not state the criterion. The bounded presentation correction shows vetted client-owned affected pages where present, identifies the governed evidence location where no URL is available, and states the assessed-evidence-scope PASS criterion. It does not change scoring, ranking, persistence, providers, prompts/models, n8n, or deployment.
+
+Exact-candidate proof: direct renderer/conversion matrix **61/61 PASS**; worker regression **968/968 PASS**; Whole-App Tranche Gate **87/87 PASS**, P-B01 through P-B15 covered. Model-Bearing Release Gate: **N/A**; no live provider/model calls.
+
 P0 independently **PASSED** at application SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`. The direct gate was **19/19 PASS** and Whole-App gate **87/87 PASS** (P-B01 through P-B15). Historical TBK selection reason/class remains `NOT_RECORDED`; it has not been reconstructed.
 
 P1 repair attempt 1 is complete at application SHA `9a1612c7e2388297120d5196b0be099762c97e2b`. The independent audit finding against the prior candidate was verified: the projection was omitted from ScoreSet/ViewModel persistence paths and report consumers could reconstruct it. The bounded correction persists the projection for normal and Not-Assessed score models, requires it at current hydration, carries it through the ScoreSet/ViewModel and v2 assembly paths, and makes affected consumers fail closed rather than re-derive it.
@@ -194,7 +198,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder: begin P2 Client Intelligence Output Contract with Requirement Preservation, a shortest high-information diagnostic, and a `VERIFIED_ROOT_CAUSE` / `VERIFIED_DESIGN_GAP` / `UNRESOLVED` classification before any application code change. Use application candidate `9a1612c7e2388297120d5196b0be099762c97e2b` on `repair/prysm-report-improvement` as the starting truth.
+Auditor: independently challenge the exact P2 Client Intelligence Output Contract candidate `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` on `repair/prysm-report-improvement`, including producer-contract-consumer integrity, report rendering/matrix re-freeze scope, evidence humility, and exact-candidate Whole-App branch proof.
 
 ## Protected invariants
 
@@ -210,4 +214,4 @@ Builder: begin P2 Client Intelligence Output Contract with Requirement Preservat
 
 ## Last verified
 
-2026-09-02 America/Toronto — P1 independently passed at `9a1612c7e2388297120d5196b0be099762c97e2b`; direct P1 audit proof was 54/54 and Whole-App 87/87 (P-B01–P-B15) passed. P2 is ready for diagnostic-first Builder work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P2 Builder candidate `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` is ready for independent audit; direct proof was 61/61, worker regression 968/968, and Whole-App 87/87 (P-B01–P-B15) passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
