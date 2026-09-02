@@ -136,6 +136,12 @@ Verification at the exact candidate:
 - Whole-App gate: **87/87 PASS**, P-B01 through P-B15 covered;
 - no live provider/model calls; Model-Bearing Release Gate: **N/A**.
 
+## Current execution status
+
+P0 independently **PASSED** at application SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`. The direct gate was **19/19 PASS** and Whole-App gate **87/87 PASS** (P-B01 through P-B15). Historical TBK selection reason/class remains `NOT_RECORDED`; it has not been reconstructed.
+
+The current workstream is **P1 — Cross-report contradiction integrity**. Builder must begin with requirement preservation and the shortest governed diagnostic, then classify and freeze a Surgical Change Contract before any application change.
+
 ## Heartbeat and notification
 
 Dedicated controller:
