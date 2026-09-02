@@ -208,7 +208,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge exact P4 candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5`. Verify conflicting supplied competitor evidence and service-matching but otherwise unsupported evidence are excluded, valid supplied/SERP candidates preserve the existing approval and consumer contracts, uncertainty remains bounded, and the 87/87 Whole-App proof is exact-candidate evidence.
+Builder must repair same-root audit finding `P4-MAJOR-02` against exact candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5`. The supplied-candidate repair is valid, but the SERP path still converts the requested query location and inferred page type into competitor geography/audience/commercial qualification. Preserve the query locale as query evidence only; require competitor-observed geography, audience, and commercial evidence for qualification or fail closed into explicit exclusion. Add direct negative proof for a service-matching SERP result with only query-locale/page-type data, positive proof where the contract supports it, then rerun exact-candidate direct, broad, Narrative, and branch-complete Whole-App verification. No P8 control, live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -223,6 +223,8 @@ Auditor must independently challenge exact P4 candidate `cc4f0c3a8800f568a8e5949
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — independent audit **FAILED** P4 repair candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5` with MAJOR `P4-MAJOR-02`. The candidate fail-closes incomplete supplied URLs but leaves SERP candidates qualified from query locale and inferred page type without competitor-observed geography, audience, or commercial evidence. Durable record: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_2_FAIL_2026-09-02.md`. Same root `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`; repair attempt remains controller-provided `1`. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — P4 same-root repair candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5` has exact deterministic proof and is ready for independent audit. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 

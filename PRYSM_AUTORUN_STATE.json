@@ -2,8 +2,8 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P4_REPAIR_READY_FOR_AUDITOR",
-  "currentRole": "Auditor",
+  "status": "P4_REPAIR_2_REQUIRED",
+  "currentRole": "Builder",
   "currentTranche": "P4_COMPETITOR_QUALIFICATION",
   "lastPassedTranche": "P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE",
   "repairAttempt": 1,
@@ -12,8 +12,8 @@
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
   "applicationSha": "cc4f0c3a8800f568a8e5949288feeadf494790a5",
-  "wholeAppGate": "PASS",
-  "lastAuditVerdict": "P4_PRIOR_CANDIDATE_FAIL_SAME_ROOT_REPAIRED_AWAITING_AUDIT",
+  "wholeAppGate": "FAIL_DIRECT_P4_SERP_QUALIFICATION_SEAM",
+  "lastAuditVerdict": "P4_MAJOR_02_FAIL_SAME_ROOT_SERP_QUALIFICATION_UNGROUNDED",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Auditor must independently challenge exact P4 repair candidate cc4f0c3a8800f568a8e5949288feeadf494790a5, including unsupported supplied evidence exclusion, valid candidate approval/consumer parity, and exact-SHA Whole-App proof."
+  "nextAction": "Builder must repair P4-MAJOR-02 at the same root: fail closed for SERP candidates lacking competitor-observed geography, audience, or commercial evidence; distinguish query locale from observed competitor geography; add direct negative/positive proof and rerun exact-candidate verification."
 }
