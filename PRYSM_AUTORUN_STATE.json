@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P1_READY_FOR_AUDIT",
+  "status": "P2_READY_FOR_DIAGNOSTIC",
   "currentRole": "Builder",
-  "currentTranche": "P1_CROSS_REPORT_CONTRADICTION_INTEGRITY",
-  "lastPassedTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
-  "repairAttempt": 1,
-  "rootDefectId": "P1-CROSS-REPORT-DERIVATION-001",
+  "currentTranche": "P2_CLIENT_INTELLIGENCE_OUTPUT_CONTRACT",
+  "lastPassedTranche": "P1_CROSS_REPORT_CONTRADICTION_INTEGRITY",
+  "repairAttempt": 0,
+  "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
   "applicationSha": "9a1612c7e2388297120d5196b0be099762c97e2b",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "P1_REPAIR_READY_FOR_REAUDIT",
+  "lastAuditVerdict": "P1_PASS_INDEPENDENT_AUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Auditor must independently challenge P1 repair candidate 9a1612c7e2388297120d5196b0be099762c97e2b against the prior audit finding, durable diagnostic/contract, direct missing/tampered projection proof, Whole-App 87/87 proof, and P-B01 through P-B15 coverage."
+  "nextAction": "Builder must begin P2 Client Intelligence Output Contract with Requirement Preservation and a diagnostic-first evidence classification at the current repair-branch candidate 9a1612c7e2388297120d5196b0be099762c97e2b."
 }

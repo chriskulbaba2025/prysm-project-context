@@ -102,7 +102,7 @@ Do not create a second report-generation source of truth in n8n.
 
 ## Current tranche
 
-`P1 — Cross-report contradiction integrity`
+`P2 — Client Intelligence Output Contract`
 
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
@@ -137,6 +137,10 @@ Verification at the exact candidate:
 - no live provider/model calls; Model-Bearing Release Gate: **N/A**.
 
 ## Current execution status
+
+P1 independently **PASSED** at application SHA `9a1612c7e2388297120d5196b0be099762c97e2b` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_REPAIR_2026-09-02.md`. Independent direct proof was **54/54 PASS**, including persisted/tampered/missing-projection behavior; Whole-App gate was **87/87 PASS**, P-B01 through P-B15 covered. The model-bearing gate was N/A and no live provider/model calls occurred. P1 root repair accounting is reset.
+
+P2 begins diagnostic-first. Its goal is to determine the smallest evidence-grounded way to make each material client recommendation convey what was found, where, why it matters, what to do, and how to verify — or explicitly state the missing evidence and next acquisition step.
 
 P0 independently **PASSED** at application SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`. The direct gate was **19/19 PASS** and Whole-App gate **87/87 PASS** (P-B01 through P-B15). Historical TBK selection reason/class remains `NOT_RECORDED`; it has not been reconstructed.
 
@@ -190,7 +194,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor: independently challenge application candidate `9a1612c7e2388297120d5196b0be099762c97e2b` against the P1 diagnostic, contract, and prior audit finding, including persisted producer-to-ScoreSet-to-hydration-to-consumer lineage, missing/tampered fail-closed behavior, legitimate construct distinctions, exact-candidate proof, and P-B01–P-B15 coverage. On PASS, advance to P2; on a material finding, return it to Builder with the exact boundary.
+Builder: begin P2 Client Intelligence Output Contract with Requirement Preservation, a shortest high-information diagnostic, and a `VERIFIED_ROOT_CAUSE` / `VERIFIED_DESIGN_GAP` / `UNRESOLVED` classification before any application code change. Use application candidate `9a1612c7e2388297120d5196b0be099762c97e2b` on `repair/prysm-report-improvement` as the starting truth.
 
 ## Protected invariants
 
@@ -206,4 +210,4 @@ Auditor: independently challenge application candidate `9a1612c7e2388297120d5196
 
 ## Last verified
 
-2026-09-02 America/Toronto — P1 repair candidate `9a1612c7e2388297120d5196b0be099762c97e2b` is pushed on `repair/prysm-report-improvement`; worker 965/965 and Whole-App 87/87 (P-B01–P-B15) pass. Awaiting independent exact-candidate P1 re-audit. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P1 independently passed at `9a1612c7e2388297120d5196b0be099762c97e2b`; direct P1 audit proof was 54/54 and Whole-App 87/87 (P-B01–P-B15) passed. P2 is ready for diagnostic-first Builder work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
