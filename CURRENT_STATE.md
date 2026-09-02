@@ -138,7 +138,7 @@ Verification at the exact candidate:
 
 ## Current execution status
 
-P3 repair candidate is ready for independent audit at application SHA `58fd04324d7fc654739956798654fafb4d09b770`. Current ScoreSet/ViewModel schemas govern enriched contentIdeas rows and reject materially incomplete rows. Schema proof 14/14, focused proof 8/8, worker regression 970/970, Narrative v2 114/114, and Whole-App Gate 87/87 passed; no live provider/model calls occurred.
+P3 repair candidate is ready for independent re-audit at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` (remote equals local; clean tree). The same-root audit finding was repaired solely by completing the governed valid `score-current` fixture with a schema-valid, evidence-grounded `contentIdeas` projection. Current ScoreSet/ViewModel schemas govern enriched rows and reject materially incomplete rows. Exact-candidate proof: schema 14/14; focused producer/current-consumer/render/Narrative-reference proof 25/25; worker regression 970/970; Narrative v2 114/114; Whole-App Gate 87/87 with P-B01 through P-B15 covered. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
 
 P3 diagnostic-first classification is **VERIFIED_DESIGN_GAP** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`. Durable evidence: `DIAGNOSTIC_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_2026-09-02.md`. The authoritative worker regression passed **968/968** with no live provider/model calls. The gap is in the deterministic `contentIdeas` producer/contract/consumer projection: it emits mostly fixed templates and does not carry per-opportunity current evidence, gap basis, recommended asset/location, or explicit evidence status. No application files were edited during diagnosis.
 
@@ -200,7 +200,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor failed candidate `58fd04324d7fc654739956798654fafb4d09b770` on the same root defect: `npm run test:schemas` is 13/14 because the governed valid `score-current` fixture lacks required `contentIdeas`. Builder must repair that fixture and rerun exact contract, persistence/reload, focused, regression, and whole-app proof.
+Auditor must independently challenge exact candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25` for the repaired same-root P3 contract fixture. Verify the valid fixture proves a persisted ScoreSet with a complete `contentIdeas` projection validates, while incomplete rows still reject; inspect exact-candidate persistence/consumer parity and all proof claims.
 
 ## Protected invariants
 
@@ -216,4 +216,4 @@ Auditor failed candidate `58fd04324d7fc654739956798654fafb4d09b770` on the same 
 
 ## Last verified
 
-2026-09-02 America/Toronto — P3 diagnostic classified VERIFIED_DESIGN_GAP at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`; worker regression 968/968 passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P3 same-root repair candidate `34f47cb35dd7dba39aa488408d1da1242b66dc25` is ready for independent re-audit; all required deterministic exact-candidate proof passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.

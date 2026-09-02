@@ -3,12 +3,12 @@
 Date: 2026-09-02
 Role: Builder
 Application branch: `repair/prysm-report-improvement`
-Exact candidate: `58fd04324d7fc654739956798654fafb4d09b770`
+Exact candidate: `34f47cb35dd7dba39aa488408d1da1242b66dc25`
 Root defect: `P3_CONTENT_IDEAS_CONTRACT_UNGOVERNED`
-Repair attempt: `0`
+Repair attempt: `1`
 
-The current ScoreSet contract now requires `contentIdeas` and governs all four opportunity arrays. Each row requires stage, topic, rationale, current evidence/status, bounded gap, recommended asset, placement, objective, internal links, funnel stage, and evidence status. The current ReportViewModel references the same definitions. A deterministic negative test proves an incomplete row is rejected.
+The same-root repair is confined to `services/worker/test-fixtures/contracts/valid/score-current.valid.json`. It completes the authoritative valid ScoreSet fixture with a schema-valid, evidence-grounded TOFU `contentIdeas` row plus the other three required arrays. Production code is unchanged. The current ScoreSet contract governs all four opportunity arrays and the current ReportViewModel references the same definitions; a deterministic negative test proves an incomplete row is rejected.
 
-Proof: schema 14/14 PASS; focused producer/consumer proof 8/8 PASS; worker regression 970/970 PASS; Narrative v2 114/114 PASS; Whole-App Gate 87/87 PASS with P-B01 through P-B15 covered; diff check PASS; clean exact-SHA local/remote tree; live provider/model calls 0; model-bearing gate N/A.
+Exact-candidate proof: schema 14/14 PASS; direct producer/current-consumer/render/Narrative-reference proof 25/25 PASS; worker regression 970/970 PASS; Narrative v2 114/114 PASS; Whole-App Gate 87/87 PASS with P-B01 through P-B15 covered; diff check PASS; clean exact-SHA local/remote tree; live provider/model calls 0; Model-Bearing Release Gate N/A.
 
-The prior audit's single MAJOR finding is addressed at the contract/validation boundary. Exact candidate is ready for independent Auditor challenge.
+The prior audit's single MAJOR finding is addressed at the contract/validation boundary. Exact candidate is ready for independent Auditor re-audit.

@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P3_REPAIR_REQUIRED",
+  "status": "P3_CANDIDATE_READY_FOR_INDEPENDENT_REAUDIT",
   "currentRole": "Builder",
   "currentTranche": "P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE",
   "lastPassedTranche": "P2_CLIENT_INTELLIGENCE_OUTPUT_CONTRACT",
-  "repairAttempt": 0,
+  "repairAttempt": 1,
   "rootDefectId": "P3_CONTENT_IDEAS_CONTRACT_UNGOVERNED",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "58fd04324d7fc654739956798654fafb4d09b770",
+  "applicationSha": "34f47cb35dd7dba39aa488408d1da1242b66dc25",
   "wholeAppGate": "PASS",
-  "lastAuditVerdict": "P3_FAIL_INDEPENDENT_AUDIT_REPAIR_CONTRACT_UNGOVERNED",
+  "lastAuditVerdict": "P3_REPAIR_READY_FOR_INDEPENDENT_REAUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must repair the valid ScoreSet fixture required by the governed contentIdeas contract, then rerun exact-candidate schema, persistence/reload, focused, regression, and whole-app gates before Auditor re-review."
+  "nextAction": "Auditor must independently audit exact candidate 34f47cb35dd7dba39aa488408d1da1242b66dc25, including the completed valid ScoreSet contentIdeas fixture, exact contract rejection, consumer parity, and exact-candidate proof."
 }
