@@ -2,7 +2,7 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P1_READY_FOR_DIAGNOSTIC",
+  "status": "P1_READY_FOR_AUDIT",
   "currentRole": "Builder",
   "currentTranche": "P1_CROSS_REPORT_CONTRADICTION_INTEGRITY",
   "lastPassedTranche": "P0_DEEP_CONTENT_PAGE_SELECTION_TRACE",
@@ -11,7 +11,7 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "acfc5c1393261bb7733837289bc3adc1062e64d5",
+  "applicationSha": "32884562276daacce83a46d5f75bb417925ac54c",
   "wholeAppGate": "PASS",
   "lastAuditVerdict": "PASS_P0_INDEPENDENT_AUDIT",
   "localSafetyBackup": {
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must begin P1 Cross-report contradiction integrity with requirement preservation and the shortest governed diagnostic; no application change before classification and Surgical Change Contract."
+  "nextAction": "Auditor must independently challenge P1 candidate 32884562276daacce83a46d5f75bb417925ac54c against the durable diagnostic, contract, direct proof, Whole-App 87/87 proof, and P-B01 through P-B15 coverage."
 }

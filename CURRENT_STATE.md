@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Independently audit the exact P0 deep-content/page-selection provenance candidate, then continue the unattended P0-P10 program only if that audit passes.
+Independently audit the exact P1 cross-report contradiction integrity candidate, then continue the unattended P0-P10 program only if that audit passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -102,7 +102,7 @@ Do not create a second report-generation source of truth in n8n.
 
 ## Current tranche
 
-`P0 — Deep-content/page-selection evidence trace`
+`P1 — Cross-report contradiction integrity`
 
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
@@ -140,7 +140,11 @@ Verification at the exact candidate:
 
 P0 independently **PASSED** at application SHA `acfc5c1393261bb7733837289bc3adc1062e64d5` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P0_DEEP_CONTENT_PAGE_SELECTION_TRACE_2026-09-02.md`. The direct gate was **19/19 PASS** and Whole-App gate **87/87 PASS** (P-B01 through P-B15). Historical TBK selection reason/class remains `NOT_RECORDED`; it has not been reconstructed.
 
-The current workstream is **P1 — Cross-report contradiction integrity**. Builder must begin with requirement preservation and the shortest governed diagnostic, then classify and freeze a Surgical Change Contract before any application change.
+P1 Builder implementation is complete at application SHA `32884562276daacce83a46d5f75bb417925ac54c`. The verified design gap was independently diagnosed as `P1-CROSS-REPORT-DERIVATION-001`: material report consumers re-derived related labels from different inputs. The bounded repair adds a deterministic cross-report interpretation projection, migrates affected consumers, and adds direct regression coverage.
+
+Exact-candidate proof: worker regression **964/964 PASS**; P1 direct/consumer/render tests PASS; Whole-App Tranche Gate **PASS**, 87/87 with P-B01 through P-B15; Writer/Narrative/replay parity PASS; zero live provider/model calls. Model-Bearing Release Gate: N/A (no prompts/model inputs changed).
+
+The current workstream is **P1 — Cross-report contradiction integrity**, ready for independent Auditor challenge. Durable artifacts: `DIAGNOSTIC_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_2026-09-02.md` and `SURGICAL_CHANGE_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_2026-09-02.md`.
 
 ## Heartbeat and notification
 
@@ -186,7 +190,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor: independently challenge application candidate `acfc5c1393261bb7733837289bc3adc1062e64d5` against the two P0 durable artifacts, including the historical-evidence humility claim, URL-keyed status semantics, P-B01/P-B02 coverage, and exact-candidate proof. On PASS, advance to P1 per the work order; on a material finding, return it to Builder with the exact boundary.
+Auditor: independently challenge application candidate `32884562276daacce83a46d5f75bb417925ac54c` against the P1 diagnostic and Surgical Change Contract, including cross-consumer lineage, legitimate construct distinctions, fail-closed/unknown semantics, exact-candidate proof, and P-B01–P-B15 coverage. On PASS, advance to P2; on a material finding, return it to Builder with the exact boundary.
 
 ## Protected invariants
 
@@ -202,4 +206,4 @@ Auditor: independently challenge application candidate `acfc5c1393261bb773383728
 
 ## Last verified
 
-2026-09-02 America/Toronto — P0 candidate `acfc5c1393261bb7733837289bc3adc1062e64d5` is pushed on `repair/prysm-report-improvement`; it has direct 19/19 and Whole-App 87/87 proof. P0 remains open pending independent exact-candidate audit. Production remains the protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P1 candidate `32884562276daacce83a46d5f75bb417925ac54c` is pushed on `repair/prysm-report-improvement`; worker 964/964 and Whole-App 87/87 (P-B01–P-B15) pass. Awaiting independent exact-candidate P1 audit. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
