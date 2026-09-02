@@ -138,6 +138,8 @@ Verification at the exact candidate:
 
 ## Current execution status
 
+P3 diagnostic-first classification is **VERIFIED_DESIGN_GAP** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`. Durable evidence: `DIAGNOSTIC_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_2026-09-02.md`. The authoritative worker regression passed **968/968** with no live provider/model calls. The gap is in the deterministic `contentIdeas` producer/contract/consumer projection: it emits mostly fixed templates and does not carry per-opportunity current evidence, gap basis, recommended asset/location, or explicit evidence status. No application files were edited during diagnosis.
+
 P1 independently **PASSED** at application SHA `9a1612c7e2388297120d5196b0be099762c97e2b` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P1_CROSS_REPORT_CONTRADICTION_INTEGRITY_REPAIR_2026-09-02.md`. Independent direct proof was **54/54 PASS**, including persisted/tampered/missing-projection behavior; Whole-App gate was **87/87 PASS**, P-B01 through P-B15 covered. The model-bearing gate was N/A and no live provider/model calls occurred. P1 root repair accounting is reset.
 
 P2 independently **PASSED** at application SHA `a2c54692ce231c34e4f693a6bb34ed3db527d1d6` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P2_CLIENT_INTELLIGENCE_OUTPUT_CONTRACT_2026-09-02.md`. Direct renderer/conversion proof was **61/61 PASS**, worker regression **968/968 PASS**, and Whole-App Tranche Gate **87/87 PASS** with P-B01 through P-B15 covered. Model-Bearing Release Gate was N/A; no live provider/model calls occurred. P2 repair accounting is reset.
@@ -196,7 +198,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder: on `repair/prysm-report-improvement` at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`, preserve the P3 outcome and run the shortest authoritative diagnostic of the topical-map/content-opportunity producer, its P0-governed source evidence, persistence/model-bearing boundary, and client report consumer. Record `VERIFIED_ROOT_CAUSE`, `VERIFIED_DESIGN_GAP`, or `UNRESOLVED` before any application edit.
+Builder: persist and verify the P3 diagnostic checkpoint, then freeze a Surgical Change Contract for the smallest deterministic producer/contract/consumer repair that adds evidence-grounded opportunity fields without changing prompts/models or n8n.
 
 ## Protected invariants
 
@@ -212,4 +214,4 @@ Builder: on `repair/prysm-report-improvement` at `a2c54692ce231c34e4f693a6bb34ed
 
 ## Last verified
 
-2026-09-02 America/Toronto — P2 independently passed at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`; direct proof was 61/61, worker regression 968/968, and Whole-App 87/87 (P-B01–P-B15) passed. P3 is diagnostic-first. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+2026-09-02 America/Toronto — P3 diagnostic classified VERIFIED_DESIGN_GAP at `a2c54692ce231c34e4f693a6bb34ed3db527d1d6`; worker regression 968/968 passed. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
