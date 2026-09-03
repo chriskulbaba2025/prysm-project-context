@@ -5,40 +5,48 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## 2026-09-03 authoritative continuation override
 
-The VAN-SCHEMA-001 mixed-status provenance PDV is independently PASS and repository-controlled closure is complete at exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`. The next action is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`; owner authorization is required before merge, deploy, or a fresh live/paid production audit.
+The VAN-SCHEMA-001 mixed-status provenance PDV is independently PASS and repository-controlled closure is complete at exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
 
-The current continuation state is governed by:
+Owner has explicitly authorized merge and production deployment of this exact candidate only under:
 
-`HANDOFF_PRYSM_VAN_SCHEMA_MIXED_STATUS_REPAIR_2026-09-03.md`
+`DECISION_PDV_VAN_SCHEMA_PRODUCTION_PROMOTION_2026-09-03.md`
 
-Application production/main SHA:
+Authorized scope:
+- promote exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec` to application `main` without altering candidate contents;
+- deploy that exact SHA to production;
+- perform read-only deployment identity/health verification.
+
+Not authorized:
+- fresh live/paid production audit;
+- new paid provider/model calls;
+- unrelated production configuration mutation;
+- destructive reset or force push.
+
+Application production/main SHA before promotion:
 `08734785c0a0fc415e331ac216e22e64545a533e`
+
+Application repair branch:
+`repair/prysm-van-schema-mixed-status`
+
+Exact independently audited candidate SHA:
+`6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
+
+Verification inherited from exact candidate:
+- focused scoring suite PASS 31/31;
+- PRYSM Whole-App gate PASS 87/87 covering P-B01 through P-B16;
+- closure gate PASS;
+- independent Auditor PASS;
+- material defects: 0;
+- application branch synchronized and clean.
+
+Exact next action:
+Promote exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec` to application `main` using a non-force exact-candidate promotion, deploy that exact SHA, verify production deployment identity/health, then record the promotion result in governance. Do not start a fresh live/paid production audit without separate owner authorization.
+
+## Historical production validation context
 
 Fresh controlled production validation audit:
 `d79f5003-5ab8-4618-8c1c-acd75e7c34be`
 
-The governed final narrative pass stopped at the report-finalization safety gate with:
+That validation exposed `VAN-SCHEMA-001`, which was repaired and independently closed in the exact candidate above. Detailed diagnosis and repair history remain in:
 
-`Finding VAN-SCHEMA-001 converts PARTIAL evidence into an unqualified absence claim.`
-
-This is a proven mixed-status finding-provenance defect. The finalization gate is correct and must not be weakened.
-
-Local governed repair branch:
-`repair/prysm-van-schema-mixed-status`
-
-Branch starting SHA:
-`08734785c0a0fc415e331ac216e22e64545a533e`
-
-A RED regression test already exists in `services/worker/src/scoring/score-components.test.js`:
-
-`VAN-SCHEMA mixed-status: AVAILABLE schema capability must not inherit PARTIAL site status`
-
-Proven RED result: actual `PARTIAL`, expected `AVAILABLE`.
-
-Exact next action: read the handoff above, recover the established PRYSM PowerShell/PS1 governed Codex controller invocation from the governing files, and continue the already-proven local repair through that script-driven workflow. Do not redo diagnosis. Do not substitute ad-hoc Codex CLI/freeform prompts for the established controller workflow.
-
-Protected actions remain blocked unless separately authorized: merge, deploy, production/config mutation, new paid/live provider/model calls, fresh production audit, destructive reset, force push.
-
-## Historical state
-
-The detailed prior P0–P10 history remains available in repository history before this continuation checkpoint. This file now intentionally points to the newest authoritative repair state rather than reproducing stale tranche text.
+`HANDOFF_PRYSM_VAN_SCHEMA_MIXED_STATUS_REPAIR_2026-09-03.md`
