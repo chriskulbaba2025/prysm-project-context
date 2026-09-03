@@ -3,13 +3,13 @@
   "project": "PRYSM",
   "mode": "PRODUCTION_CLOSURE_INDEPENDENT_AUDIT",
   "status": "PASS",
-  "tranche": "PDV5",
-  "applicationBranch": "repair/prysm-production-closure",
-  "applicationSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+  "tranche": "PDV-VAN-SCHEMA-MIXED-STATUS",
+  "applicationBranch": "repair/prysm-van-schema-mixed-status",
+  "applicationSha": "6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec",
   "verdict": "PASS",
   "materialDefects": 0,
-  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV5_2026-09-01.md",
+  "auditReport": "AUDIT_PRYSM_PRODUCTION_CLOSURE_PDV_VAN_SCHEMA_MIXED_STATUS_2026-09-03.md",
   "rootDefectId": "NONE",
-  "reason": "Independent audit passed: exact candidate synchronization, branch-complete Whole-App proof, Narrative regressions, reconciled branch matrix, and applicable model-bearing evidence are sufficient with no open material finding.",
-  "nextAction": "Builder records PDV5 PASS and advances only as authorized by current state."
+  "reason": "Independent audit passed: exact candidate synchronization, focused mixed-status regression 31/31, Whole-App branch-complete proof P-B01 through P-B16 at 87/87, composite closure gate, and zero live provider/model calls.",
+  "nextAction": "Builder records this PDV PASS and advances only to the next boundary authorized by durable current state."
 }
