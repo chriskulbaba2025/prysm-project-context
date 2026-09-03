@@ -5,6 +5,8 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## 2026-09-03 authoritative continuation override
 
+The VAN-SCHEMA-001 mixed-status provenance PDV is independently PASS and repository-controlled closure is complete at exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`. The next action is `READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION`; owner authorization is required before merge, deploy, or a fresh live/paid production audit.
+
 The current continuation state is governed by:
 
 `HANDOFF_PRYSM_VAN_SCHEMA_MIXED_STATUS_REPAIR_2026-09-03.md`

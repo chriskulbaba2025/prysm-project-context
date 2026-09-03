@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "AUDIT_REQUIRED",
+  "status": "COMPLETE",
   "currentRole": "Builder",
   "currentTranche": "PDV-VAN-SCHEMA-MIXED-STATUS",
   "lastPassedTranche": "P10_GENERAL_COPY_AND_NAMING_NORMALIZATION",
   "repairAttempt": 0,
-  "rootDefectId": "VAN-SCHEMA-001-MIXED-STATUS-PROVENANCE",
+  "rootDefectId": "NONE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-van-schema-mixed-status",
   "targetRepairBranch": "repair/prysm-van-schema-mixed-status",
   "applicationSha": "6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_87_OF_87",
-  "lastAuditVerdict": "PENDING_PDV_VAN_SCHEMA_MIXED_STATUS",
+  "lastAuditVerdict": "PASS_PDV_VAN_SCHEMA_MIXED_STATUS",
   "handoff": "AUDIT_REQUIRED_PDV_VAN_SCHEMA_MIXED_STATUS_2026-09-03.md",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
@@ -76,6 +76,6 @@
     "DESTRUCTIVE_ROLLBACK_RESET",
     "FORCE_PUSH"
   ],
-  "reason": "VAN-SCHEMA-001 mixed-status provenance repair is implemented and independently auditable; focused scoring 31/31, finalization 37/37, Whole-App 87/87, and closure machine gate PASS. No live provider/model calls.",
-  "nextAction": "Independent Auditor must review exact application SHA 6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec."
+  "reason": "VAN-SCHEMA-001 mixed-status provenance repair independently passed on exact application SHA 6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec; focused scoring 31/31, finalization 37/37, Whole-App 87/87, and closure machine gate PASS. No live provider/model calls.",
+  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merge, deploy, or any fresh live/paid production audit."
 }
