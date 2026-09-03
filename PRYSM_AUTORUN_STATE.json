@@ -2,8 +2,8 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P8_BUILDER_READY",
-  "currentRole": "Builder",
+  "status": "P8_AUDITOR_READY",
+  "currentRole": "Auditor",
   "currentTranche": "P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS",
   "lastPassedTranche": "P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP",
   "repairAttempt": 0,
@@ -77,5 +77,5 @@
     "FORCE_PUSH"
   ],
   "reason": "P0 through P7 are independently passed under the unattended GCU report-improvement program. P8 is the next design-only workstream. Protected production/paid/destructive actions still require separate authority.",
-  "nextAction": "Builder must begin P8 diagnostic/design work; do not implement consultant override controls unless separately authorized."
+  "nextAction": "Auditor must challenge DESIGN_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_2026-09-03.md; do not implement consultant override controls unless a later tranche is separately authorized."
 }

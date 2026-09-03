@@ -250,7 +250,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must begin P8 Consultant review/override controls as design-only work. Do not implement override controls incidentally. No live call, model change, merge, or deployment is authorized.
+Independent Auditor must challenge the P8 design-only candidate in `DESIGN_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_2026-09-03.md`, including evidence immutability, append-only auditability, authorization, stale-snapshot/replay behavior, fail-closed validation, and the explicit no-implementation boundary. Do not implement P8 controls without a later separately authorized implementation tranche.
 
 ## Protected invariants
 
