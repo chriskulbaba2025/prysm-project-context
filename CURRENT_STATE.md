@@ -252,6 +252,8 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 Independent Auditor must challenge the P8 design-only candidate in `DESIGN_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_2026-09-03.md`, including evidence immutability, append-only auditability, authorization, stale-snapshot/replay behavior, fail-closed validation, and the explicit no-implementation boundary. Do not implement P8 controls without a later separately authorized implementation tranche.
 
+P8 independently **PASSED** as a design-only workstream at application SHA `2e4f40d97a4a197e20948b26fb73c639ba913864` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_PASS_2026-09-03.md`. P9 is next for Builder diagnostic-first work; P8 implementation remains separately unauthorized.
+
 ## Protected invariants
 
 - Preserve evidence humility; unavailable/partial evidence is not a negative finding.

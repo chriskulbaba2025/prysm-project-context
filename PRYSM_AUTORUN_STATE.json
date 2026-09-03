@@ -2,9 +2,9 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P8_AUDITOR_READY",
-  "currentRole": "Auditor",
-  "currentTranche": "P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS",
+  "status": "P9_BUILDER_READY",
+  "currentRole": "Builder",
+  "currentTranche": "P9_WORKFLOW_DIAGRAMS_UI_PRESENTATION_POLISH",
   "lastPassedTranche": "P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP",
   "repairAttempt": 0,
   "rootDefectId": null,
@@ -13,8 +13,8 @@
   "targetRepairBranch": "repair/prysm-report-improvement",
   "applicationSha": "2e4f40d97a4a197e20948b26fb73c639ba913864",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_AND_P_B17_DIRECT_24_OF_24",
-  "lastAuditVerdict": "P7_PASS_ZERO_MATERIAL_FINDINGS",
-  "handoff": "INDEPENDENT_AUDIT_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_PASS_2026-09-03.md",
+  "lastAuditVerdict": "P8_PASS_DESIGN_ONLY_ZERO_MATERIAL_FINDINGS",
+  "handoff": "INDEPENDENT_AUDIT_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_PASS_2026-09-03.md",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -76,6 +76,6 @@
     "DESTRUCTIVE_ROLLBACK_RESET",
     "FORCE_PUSH"
   ],
-  "reason": "P0 through P7 are independently passed under the unattended GCU report-improvement program. P8 is the next design-only workstream. Protected production/paid/destructive actions still require separate authority.",
-  "nextAction": "Auditor must challenge DESIGN_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_2026-09-03.md; do not implement consultant override controls unless a later tranche is separately authorized."
+  "reason": "P0 through P8 are independently passed under the unattended GCU report-improvement program. P9 is the next required workstream. Protected production/paid/destructive actions still require separate authority.",
+  "nextAction": "Builder begins P9 workflow diagrams / UI presentation polish with diagnostic-first scope; preserve analytical meaning and do not use AI image generation for deterministic diagrams."
 }
