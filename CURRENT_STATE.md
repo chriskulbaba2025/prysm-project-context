@@ -176,7 +176,9 @@ P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20ca
 
 ## Current next workstream
 
-`P8 — Consultant review/override controls` (design only)
+`P10 — General copy and naming normalization`
+
+P9 independently **PASSED** at application SHA `13921d7d6c1364a57adc8a27b9f8607ff2e322d4` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P9_WORKFLOW_DIAGRAMS_UI_PRESENTATION_POLISH_PASS_2026-09-03.md`. Independent focused renderer/conversion proof was **62/62 PASS**, conversion matrix **48/48 PASS**, worker regression **982/982 PASS**, and the assembled Whole-App gate was **PASS, 87/87** with P-B01 through P-B16. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P9 repair accounting is reset. P10 begins diagnostic-first; preserve evidence boundaries and do not use copy normalization to mask unresolved upstream defects.
 
 P7 independently **PASSED** at application SHA `2e4f40d97a4a197e20948b26fb73c639ba913864` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_PASS_2026-09-03.md`. Independent exact-candidate proof was focused renderer **48/48 PASS**, worker regression **981/981 PASS**, and Whole-App **87/87 PASS** with P-B01 through P-B16. Repair accounting is reset. P8 must remain design-only unless separately authorized.
 
