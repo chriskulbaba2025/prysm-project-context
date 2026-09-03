@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P4_REPAIR_3_REQUIRED",
+  "status": "P4_REPAIR_3_CANDIDATE_AWAITING_AUDIT",
   "currentRole": "Builder",
   "currentTranche": "P4_COMPETITOR_QUALIFICATION",
   "lastPassedTranche": "P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE",
-  "repairAttempt": 1,
+  "repairAttempt": 2,
   "rootDefectId": "P4_COMPETITOR_QUALIFICATION_UNGROUNDED",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "de94a30426c3fd4c81e8fda0753bf12e6cc09535",
-  "wholeAppGate": "FAIL_P4_MAJOR_03_BRANCH_INCOMPLETE",
-  "lastAuditVerdict": "P4_REPAIR_3_FAIL_MAJOR_QUERY_DERIVED_SERVICE",
+  "applicationSha": "28b25f64e3140968842cfdec265b9583e1c995d9",
+  "wholeAppGate": "PASS_P_B01_THROUGH_P_B16",
+  "lastAuditVerdict": "AWAITING_P4_REPAIR_3_AUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must repair P4-MAJOR-02 at the same root: fail closed for SERP candidates lacking competitor-observed geography, audience, or commercial evidence; distinguish query locale from observed competitor geography; add direct negative/positive proof and rerun exact-candidate verification."
+  "nextAction": "Auditor must independently challenge P4 repair-3 exact candidate 28b25f64e3140968842cfdec265b9583e1c995d9, especially the query-topic versus observed-service provenance branch P-B16."
 }

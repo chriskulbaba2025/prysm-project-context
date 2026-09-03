@@ -68,3 +68,11 @@ Required application surfaces: `dataforseo-serp-client.js` (producer provenance)
 - Re-run focused direct tests, worker regression, Narrative v2, and exact-candidate Whole-App coverage.
 
 Change tier remains **T2_BOUNDARY** and release intent remains **CHANGE_ONLY**. No external call or model-bearing proof is required.
+
+## Same-root repair 3 — observed service/business provenance
+
+Independent audit of candidate `de94a30426c3fd4c81e8fda0753bf12e6cc09535` proved that SERP `topic` is copied from the client query and is still accepted as competitor service evidence. Classification remains **VERIFIED_ROOT_CAUSE** at `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`: discovery metadata is crossing the competitor-observation boundary.
+
+The bounded correction must keep query topic available for discovery/gap context while qualifying service relevance only from an explicit competitor-observed service/business field with provenance. The DataForSEO producer may retain its returned organic-result title as observed competitor evidence and identify that source; supplied candidates must derive the same field from supplied evidence. A query-topic-only SERP candidate, including one whose unrelated returned title conflicts with the query, must fail `service_relevance`. The positive P-B16 path must carry an observed physiotherapy service/business signal and its provenance through producer, qualification, and approved-gap compatibility.
+
+Required surfaces remain the existing producer, common qualification contract, focused producer/qualification tests, P-B16 assembled gate, and Whole-App gate. Protected surfaces and the structural budget are unchanged. Direct proof must include the accounting-title/physiotherapy-query counterexample plus a supported positive. This amendment is frozen before application editing.
