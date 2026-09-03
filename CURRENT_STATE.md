@@ -138,7 +138,7 @@ Verification at the exact candidate:
 
 ## Current execution status
 
-P4 same-root repair-2 candidate is ready for independent audit at application SHA `de94a30426c3fd4c81e8fda0753bf12e6cc09535` (remote equals local; clean tree). It separates SERP query locale from competitor geography and requires observed geography (when client geography is stated), audience, and commercial context for every candidate source. Unsupported candidates remain explicitly excluded; no P8 controls are implemented. Exact proof: focused qualification **24/24 PASS**; SERP adapter **101/101 PASS**; worker regression **975/975 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate PASS with P-B01 through P-B16, including the permanent P-B16 query-locale/page-type negative and observed-evidence positive path. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
+P4 repair-3 is required at the same root after independent audit **FAILED** candidate `de94a30426c3fd4c81e8fda0753bf12e6cc09535` with MAJOR `P4-MAJOR-03`. The repair grounded SERP geography/audience/commercial fields but still derives SERP `topic` from the client query and treats it as competitor service/business evidence. A tax-accounting SERP result can therefore pass all five qualification checks for a physiotherapy client when the remaining fields are supplied. Durable finding: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_3_FAIL_2026-09-02.md`. Preserve the same root `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`; repair attempt remains controller-provided `1`. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 P3 independently **PASSED** at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_REPAIR_PASS_2026-09-02.md`. Independent exact-candidate proof: schema **14/14 PASS**; focused producer/current-consumer/render/Narrative-reference proof **27/27 PASS**; worker regression **970/970 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15 covered. The prior MAJOR fixture/contract false-PASS seam is closed: a valid persisted ScoreSet with a complete evidence-grounded `contentIdeas` projection validates, while materially incomplete rows reject. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P3 repair accounting is reset.
 
@@ -208,7 +208,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge exact candidate `de94a30426c3fd4c81e8fda0753bf12e6cc09535` for P4-MAJOR-02 closure, including the P-B16 query-locale/page-type-only negative branch, an explicit observed-evidence positive branch, alternate producer/consumer continuity, and exact-SHA proof completeness. No P8 control, live call, model change, merge, or deployment is authorized.
+Builder must repair P4-MAJOR-03 at the same root: distinguish the SERP query topic from competitor-observed service/business evidence. Query-topic-only SERP candidates must fail closed; the positive qualification/approval-gap branch must carry explicitly observed service evidence/provenance. Extend P-B16 and rerun exact-SHA direct, adapter, worker, Narrative, and Whole-App proof. No P8 control, live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -223,6 +223,8 @@ Auditor must independently challenge exact candidate `de94a30426c3fd4c81e8fda075
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — independent audit **FAILED** P4 repair candidate `de94a30426c3fd4c81e8fda0753bf12e6cc09535` with MAJOR `P4-MAJOR-03`. The current SERP producer copies client query topic into `candidate.topic`, and the common qualification contract accepts it as service relevance without competitor-observed service/business evidence. A deterministic accounting-result/physiotherapy-query counterexample passes all five checks. Durable record: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_3_FAIL_2026-09-02.md`. Same root `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`; repair attempt remains controller-provided `1`. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — Builder repaired same-root P4-MAJOR-02 at `de94a30426c3fd4c81e8fda0753bf12e6cc09535`, pushed it to `origin/repair/prysm-report-improvement`, and synchronized P4 evidence. Direct 24/24, SERP adapter 101/101, worker 975/975, Narrative v2 114/114, and Whole-App P-B01–P-B16 PASS. The candidate awaits independent audit; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
