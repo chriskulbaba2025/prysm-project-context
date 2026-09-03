@@ -2,19 +2,19 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "COMPLETE",
-  "currentRole": "Auditor",
-  "currentTranche": "P10_GENERAL_COPY_AND_NAMING_NORMALIZATION",
+  "status": "AUDIT_REQUIRED",
+  "currentRole": "Builder",
+  "currentTranche": "PDV-VAN-SCHEMA-MIXED-STATUS",
   "lastPassedTranche": "P10_GENERAL_COPY_AND_NAMING_NORMALIZATION",
   "repairAttempt": 0,
-  "rootDefectId": null,
+  "rootDefectId": "VAN-SCHEMA-001-MIXED-STATUS-PROVENANCE",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "repair/prysm-report-improvement",
-  "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "41e5d04f50eec9f306441264ea2ad52acc7474ee",
+  "applicationBranch": "repair/prysm-van-schema-mixed-status",
+  "targetRepairBranch": "repair/prysm-van-schema-mixed-status",
+  "applicationSha": "6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_87_OF_87",
-  "lastAuditVerdict": "P10_PASS_ZERO_MATERIAL_FINDINGS",
-  "handoff": "INDEPENDENT_AUDIT_P10_GENERAL_COPY_NAMING_NORMALIZATION_PASS_2026-09-03.md",
+  "lastAuditVerdict": "PENDING_PDV_VAN_SCHEMA_MIXED_STATUS",
+  "handoff": "AUDIT_REQUIRED_PDV_VAN_SCHEMA_MIXED_STATUS_2026-09-03.md",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -76,6 +76,6 @@
     "DESTRUCTIVE_ROLLBACK_RESET",
     "FORCE_PUSH"
   ],
-  "reason": "P0 through P10 are independently passed under the unattended GCU report-improvement program. Repository-controlled report-improvement work is exhausted; protected production/paid/destructive actions still require separate authority.",
-  "nextAction": "STOP at protected release boundary: owner/release authority must separately authorize merge to main and any production deployment or mutation."
+  "reason": "VAN-SCHEMA-001 mixed-status provenance repair is implemented and independently auditable; focused scoring 31/31, finalization 37/37, Whole-App 87/87, and closure machine gate PASS. No live provider/model calls.",
+  "nextAction": "Independent Auditor must review exact application SHA 6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec."
 }
