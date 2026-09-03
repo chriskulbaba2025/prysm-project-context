@@ -104,6 +104,10 @@ Do not create a second report-generation source of truth in n8n.
 
 `P5 — Structured Data / Entity Evidence Verification`
 
+P5 diagnostic evidence is verified at application candidate `28b25f64e3140968842cfdec265b9583e1c995d9`.
+Durable evidence: `DIAGNOSTIC_P5_STRUCTURED_DATA_ENTITY_EVIDENCE_2026-09-02.md`.
+Classification: `VERIFIED_ROOT_CAUSE` `P5_SCHEMA_TYPE_ALIAS_LEAK` for provider token `json_ld` being surfaced as a schema/microdata type; separate `VERIFIED_DESIGN_GAP` for the absence of typed, provenance-bearing location/entity observations in the normalized contract. No historical missed-location claim is made.
+
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
 - `VERIFIED_DESIGN_GAP`;
@@ -212,7 +216,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must begin P5 diagnostic-first from exact combined application candidate `28b25f64e3140968842cfdec265b9583e1c995d9`. Trace structured-data/entity evidence end to end and classify the cause/design gap before any copy or application change. No live call, model change, merge, or deployment is authorized.
+Builder must freeze the P5 Surgical Change Contract for the smallest deterministic producer/contract/consumer correction: filter provider category aliases such as `json_ld` from actual schema type collections, preserve actual schema.org types, and decide whether existing acquisition data justifies a typed location/entity evidence field. Then implement/prove only the contracted surface. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -227,6 +231,8 @@ Builder must begin P5 diagnostic-first from exact combined application candidate
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — P5 diagnostic classified verified root cause `P5_SCHEMA_TYPE_ALIAS_LEAK` and verified design gap for typed location/entity evidence at application candidate `28b25f64e3140968842cfdec265b9583e1c995d9`. Durable record: `DIAGNOSTIC_P5_STRUCTURED_DATA_ENTITY_EVIDENCE_2026-09-02.md`. Next action is Surgical Change Contract freeze; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — independent audit **PASSED** P4 repair-3 candidate `28b25f64e3140968842cfdec265b9583e1c995d9` with zero material findings. Focused proof passed 44/44, worker 975/975, Narrative v2 114/114, and Whole-App base 87/87 with P-B01 through P-B16 covered. Durable record: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_3_PASS_2026-09-02.md`. P5 is next for Builder diagnostic-first work; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
