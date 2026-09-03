@@ -40,7 +40,10 @@ Verification inherited from exact candidate:
 - application branch synchronized and clean.
 
 Exact next action:
-Promote exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec` to application `main` using a non-force exact-candidate promotion, deploy that exact SHA, verify production deployment identity/health, then record the promotion result in governance. Do not start a fresh live/paid production audit without separate owner authorization.
+Promotion and deployment completed for exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`. Application `main` now points to that SHA. Railway deployment `cb1fd075-5220-4453-9184-b8bda483ed73` reports SUCCESS with commitHash equal to the exact candidate, and read-only `/health` returned HTTP 200. Vercel production deployment `prysm-geon9sa8z-chriskulbabas-projects.vercel.app` is READY. Repository-controlled work is complete at the external promotion boundary; do not start a fresh live/paid production audit without separate owner authorization.
+
+Promotion evidence:
+`PRYSM_PDV_VAN_SCHEMA_PRODUCTION_PROMOTION_2026-09-03.md`
 
 ## Historical production validation context
 

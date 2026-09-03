@@ -77,5 +77,5 @@
     "FORCE_PUSH"
   ],
   "reason": "VAN-SCHEMA-001 mixed-status provenance repair independently passed on exact application SHA 6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec; focused scoring 31/31, finalization 37/37, Whole-App 87/87, and closure machine gate PASS. No live provider/model calls.",
-  "nextAction": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION: owner authorization is required before merge, deploy, or any fresh live/paid production audit."
+  "nextAction": "PROMOTION_COMPLETE_EXACT_SHA_6ea608a: origin/main promoted, Railway deployment cb1fd075-5220-4453-9184-b8bda483ed73 SUCCESS with exact commitHash, Vercel production READY, read-only health 200; repository-controlled work complete at external promotion boundary. No fresh live/paid production audit without separate authorization."
 }
