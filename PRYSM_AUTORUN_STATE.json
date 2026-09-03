@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P6_REPAIR_CANDIDATE_READY_FOR_AUDIT",
+  "status": "P7_DIAGNOSTIC_READY",
   "currentRole": "Builder",
-  "currentTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
-  "lastPassedTranche": "P5_STRUCTURED_DATA_ENTITY_EVIDENCE_VERIFICATION",
-  "repairAttempt": 1,
-  "rootDefectId": "P6_UNAVAILABLE_ACTIONABILITY_CONTRACT",
+  "currentTranche": "P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP",
+  "lastPassedTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
+  "repairAttempt": 0,
+  "rootDefectId": null,
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
   "applicationSha": "3fb3042c04d874d44ff7f984bf279fd7b452327c",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_AND_P_B17_DIRECT_24_OF_24",
-  "lastAuditVerdict": "REPAIR_PENDING_INDEPENDENT_REAUDIT",
+  "lastAuditVerdict": "PASS_ZERO_MATERIAL_FINDINGS",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Independent Auditor must challenge exact P6 repair candidate 3fb3042c04d874d44ff7f984bf279fd7b452327c, including the permanent Evidence Appendix positive/negative escape regression, before P6 closure."
+  "nextAction": "Builder must begin P7 Performance and Technical Client-Language Cleanup diagnostic-first, trace the current performance and technical evidence through all applicable client-facing consumers, and freeze a Surgical Change Contract before any bounded application edit."
 }

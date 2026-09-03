@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Begin P5 Structured Data / Entity Evidence Verification with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
+Begin P7 Performance and Technical Client-Language Cleanup with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -238,7 +238,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Independent Auditor must challenge exact P6 repair candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c`, including the Evidence Appendix positive/negative escape regression, before P6 closure. No live call, model change, merge, or deployment is authorized.
+Builder must begin P7 Performance and Technical Client-Language Cleanup diagnostic-first, trace current performance/technical evidence through client-facing consumers, and freeze a Surgical Change Contract before any bounded application edit. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -253,6 +253,8 @@ Independent Auditor must challenge exact P6 repair candidate `3fb3042c04d874d44f
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — independent audit **PASSED** P6 repair candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c` with zero material findings. Direct Appendix/actionability proof passed 24/24, worker regression 981/981, Narrative v2 114/114, and Whole-App assembled proof 87/87 with P-B01 through P-B16 plus P-B17 direct proof. Durable audit: `INDEPENDENT_AUDIT_P6_UNAVAILABLE_PARTIAL_EVIDENCE_REPAIR_PASS_2026-09-02.md`. P6 repair accounting is reset; P7 is next for Builder diagnostic-first work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — P5 candidate `89b1957b98ac5064527bc55cf7eb20caf2889051` passed direct adapter proof 74/74 and Whole-App assembled proof 87/87 with P-B01 through P-B16. Durable evidence: `EVIDENCE_P5_STRUCTURED_DATA_ENTITY_EVIDENCE_CANDIDATE_2026-09-02.md`. Candidate awaits independent audit; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
