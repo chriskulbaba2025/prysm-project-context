@@ -170,6 +170,14 @@ Exact-candidate proof: worker regression **965/965 PASS**; direct missing/tamper
 
 The current workstream is **P3 — Topical Map / Strategic Content Intelligence**, ready for Builder diagnostic-first work.
 
+## P5 independent audit — PASSED
+
+P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20caf2889051` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P5_STRUCTURED_DATA_ENTITY_EVIDENCE_PASS_2026-09-02.md`. Independent focused adapter proof was **74/74 PASS**; Whole-App assembled proof was **87/87 PASS** with P-B01 through P-B16, Writer parity **10/10**, and Narrative v2 **10/10**. No live provider/model calls occurred; Model-Bearing Release Gate was N/A. P5 repair accounting is reset.
+
+## Current next workstream
+
+The current workstream is **P6 — Make unavailable/partial evidence useful**, ready for Builder diagnostic-first work. Production remains protected at SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+
 ## Heartbeat and notification
 
 The current workstream is **P5 — Structured Data / Entity Evidence Verification**, ready for Builder diagnostic-first work.
@@ -216,7 +224,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge candidate `89b1957b98ac5064527bc55cf7eb20caf2889051` against the P5 Surgical Change Contract and candidate evidence. No live call, model change, merge, or deployment is authorized.
+Builder must begin P6 diagnostic-first work against exact application candidate `89b1957b98ac5064527bc55cf7eb20caf2889051`: trace unavailable/partial evidence paths and define bounded actionable data-roadmap output without changing evidence semantics. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
