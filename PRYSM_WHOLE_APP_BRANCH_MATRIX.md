@@ -31,6 +31,7 @@ A future application-changing PASS is forbidden while any required implemented b
 | P-B13 | Current replay/recovery identity | persisted current semantic model -> replay -> Viewer v2 | YES | `prysm-whole-app-gate.js` replay CLI | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; historical compatibility separated. |
 | P-B14 | PARTIAL On-Page evidence has positive provider image-issue numerator, unavailable image-array denominator serialized as `0`, while deep body-content evidence is available | DataForSEO adapter -> DecisionEvidence persistence/read-back -> finalization numerator/denominator consistency | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B14 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; persisted adapter output and negative sibling regression. |
 | P-B15 | PARTIAL heading finding uses explicit assessed-scope wording (`assessed pages ... unassessed pages remain unknown`) through the finalization absence-claim guard | deterministic score producer -> FindingSet persistence/read-back -> finalization PARTIAL semantic validator | YES | `prysm-whole-app-gate.js` -> `pdv4-assembled-finalization-gate.js` P-B15 | VERIFIED at exact candidate SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e` | Exact-SHA gate PASS; persisted producer wording and unqualified negative sibling regression. |
+| P-B16 | SERP candidate has only requested query locale and inferred page type, versus explicit observed geography/audience/commercial evidence | DataForSEO SERP producer -> common qualification contract -> approved-gap consumer | YES | `prysm-whole-app-gate.js` -> `p4-serp-qualification-gate.js` | VERIFIED at exact candidate SHA `de94a30426c3fd4c81e8fda0753bf12e6cc09535` | P4-MAJOR-02 permanent regression: query locale/page type fail closed; complete observed evidence is positive-path compatible. |
 
 ## Known branch coverage escapes to retain permanently
 
@@ -52,5 +53,5 @@ No P-B16 is opened from this diagnostic.
 
 ## Next matrix action
 
-P0's additive acquisition trace does not create a new report-production branch. The direct adapter/selector regression proves trace-specific status semantics; the exact-candidate Whole-App Branch Coverage Gate PASSed with P-B01 through P-B15 covered at `acfc5c1393261bb7733837289bc3adc1062e64d5`. Independent Auditor review is required for that exact candidate.
+P4 repair-2 adds P-B16 to close the SERP qualification coverage escape. The exact-candidate Whole-App Branch Coverage Gate PASSed with P-B01 through P-B16 covered at `de94a30426c3fd4c81e8fda0753bf12e6cc09535`. Independent Auditor review is required for that exact candidate.
 

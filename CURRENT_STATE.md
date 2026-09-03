@@ -138,7 +138,7 @@ Verification at the exact candidate:
 
 ## Current execution status
 
-P4 same-root repair candidate is ready for independent audit at application SHA `cc4f0c3a8800f568a8e5949288feeadf494790a5` (remote equals local; clean tree). Independent audit `P4-MAJOR-01` found that the prior candidate could promote a service-matching supplied URL with no observed geography, audience, or commercial evidence. The bounded correction requires supplied candidates to carry observed geography where client geography is stated plus observed audience and commercial context; absent client geography remains a bounded non-comparison. It retains the existing qualified/excluded and approval representation, excludes unsupported candidates with explicit failed checks, and does not implement P8 controls. Exact proof: direct producer/approval-consumer **35/35 PASS**; worker regression **973/973 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
+P4 same-root repair-2 candidate is ready for independent audit at application SHA `de94a30426c3fd4c81e8fda0753bf12e6cc09535` (remote equals local; clean tree). It separates SERP query locale from competitor geography and requires observed geography (when client geography is stated), audience, and commercial context for every candidate source. Unsupported candidates remain explicitly excluded; no P8 controls are implemented. Exact proof: focused qualification **24/24 PASS**; SERP adapter **101/101 PASS**; worker regression **975/975 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate PASS with P-B01 through P-B16, including the permanent P-B16 query-locale/page-type negative and observed-evidence positive path. No live provider/model calls occurred; Model-Bearing Release Gate is N/A.
 
 P3 independently **PASSED** at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_REPAIR_PASS_2026-09-02.md`. Independent exact-candidate proof: schema **14/14 PASS**; focused producer/current-consumer/render/Narrative-reference proof **27/27 PASS**; worker regression **970/970 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15 covered. The prior MAJOR fixture/contract false-PASS seam is closed: a valid persisted ScoreSet with a complete evidence-grounded `contentIdeas` projection validates, while materially incomplete rows reject. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P3 repair accounting is reset.
 
@@ -208,7 +208,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must repair same-root audit finding `P4-MAJOR-02` against exact candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5`. The supplied-candidate repair is valid, but the SERP path still converts the requested query location and inferred page type into competitor geography/audience/commercial qualification. Preserve the query locale as query evidence only; require competitor-observed geography, audience, and commercial evidence for qualification or fail closed into explicit exclusion. Add direct negative proof for a service-matching SERP result with only query-locale/page-type data, positive proof where the contract supports it, then rerun exact-candidate direct, broad, Narrative, and branch-complete Whole-App verification. No P8 control, live call, model change, merge, or deployment is authorized.
+Auditor must independently challenge exact candidate `de94a30426c3fd4c81e8fda0753bf12e6cc09535` for P4-MAJOR-02 closure, including the P-B16 query-locale/page-type-only negative branch, an explicit observed-evidence positive branch, alternate producer/consumer continuity, and exact-SHA proof completeness. No P8 control, live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -223,6 +223,8 @@ Builder must repair same-root audit finding `P4-MAJOR-02` against exact candidat
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — Builder repaired same-root P4-MAJOR-02 at `de94a30426c3fd4c81e8fda0753bf12e6cc09535`, pushed it to `origin/repair/prysm-report-improvement`, and synchronized P4 evidence. Direct 24/24, SERP adapter 101/101, worker 975/975, Narrative v2 114/114, and Whole-App P-B01–P-B16 PASS. The candidate awaits independent audit; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — independent audit **FAILED** P4 repair candidate `cc4f0c3a8800f568a8e5949288feeadf494790a5` with MAJOR `P4-MAJOR-02`. The candidate fail-closes incomplete supplied URLs but leaves SERP candidates qualified from query locale and inferred page type without competitor-observed geography, audience, or commercial evidence. Durable record: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_2_FAIL_2026-09-02.md`. Same root `P4_COMPETITOR_QUALIFICATION_UNGROUNDED`; repair attempt remains controller-provided `1`. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
