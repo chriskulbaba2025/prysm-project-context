@@ -176,6 +176,14 @@ P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20ca
 
 ## Current next workstream
 
+## P7 candidate ready for independent audit
+
+P7 is implemented at exact application candidate `2e4f40d97a4a197e20948b26fb73c639ba913864` on `repair/prysm-report-improvement`. The bounded renderer change formats LCP/CLS/TBT for client readability, defines the metrics in plain language, separates client-safe availability wording from provider diagnostics, preserves lab/field distinction, and reorders technical subsections to the governed order. No provider, scoring, persistence, prompt/model, n8n, or deployment behavior changed.
+
+Exact-candidate proof: focused renderer **48/48 PASS**; worker regression **981/981 PASS**; Whole-App assembled gate **PASS, 87/87** with P-B01 through P-B16 covered; no live provider/model calls. Model-Bearing Release Gate: N/A. Durable evidence: `DIAGNOSTIC_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_2026-09-02.md`, `SURGICAL_CHANGE_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_2026-09-02.md`, and `EVIDENCE_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_CANDIDATE_2026-09-03.md`.
+
+Required next action: independent Auditor must challenge the exact candidate and proof, including metric precision/definitions, availability-language separation, lab/field distinction, technical order, and regression integrity. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+
 ## P6 independent audit — FAILED
 
 P6 candidate `7580d9b479190bc95065f4edc66245d083f575f7` failed independent audit with one MAJOR finding: `P6-MAJOR-01` (`P6_UNAVAILABLE_ACTIONABILITY_CONTRACT`). The candidate adds truthful actionability roadmaps to Deferred & Unavailable Analysis and the applicable Accessibility/Mobile and field-performance detail surfaces, but leaves the required Evidence Appendix unchanged. Its unavailable/partial source rows and limitations therefore remain a dead end without required source/information, enablement/collection, or additional-insight guidance. Direct P6 proof was 22/22 PASS, Narrative v2 114/114 PASS, and the base Whole-App gate 87/87 PASS (P-B01–P-B16), but those checks do not prove the omitted Appendix consumer. Durable audit: `INDEPENDENT_AUDIT_P6_UNAVAILABLE_PARTIAL_EVIDENCE_FAIL_2026-09-02.md`.

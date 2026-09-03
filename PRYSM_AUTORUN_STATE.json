@@ -2,8 +2,8 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P7_DIAGNOSTIC_READY",
-  "currentRole": "Builder",
+  "status": "P7_AUDIT_READY",
+  "currentRole": "Auditor",
   "currentTranche": "P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP",
   "lastPassedTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
   "repairAttempt": 0,
@@ -11,7 +11,7 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "3fb3042c04d874d44ff7f984bf279fd7b452327c",
+  "applicationSha": "2e4f40d97a4a197e20948b26fb73c639ba913864",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_AND_P_B17_DIRECT_24_OF_24",
   "lastAuditVerdict": "PASS_ZERO_MATERIAL_FINDINGS",
   "localSafetyBackup": {
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must begin P7 Performance and Technical Client-Language Cleanup diagnostic-first, trace the current performance and technical evidence through all applicable client-facing consumers, and freeze a Surgical Change Contract before any bounded application edit."
+  "nextAction": "Auditor must independently challenge exact candidate 2e4f40d97a4a197e20948b26fb73c639ba913864 and its P7 proof before any tranche closure or progression."
 }
