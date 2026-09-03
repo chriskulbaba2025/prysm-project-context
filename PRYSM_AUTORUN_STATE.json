@@ -14,6 +14,7 @@
   "applicationSha": "2e4f40d97a4a197e20948b26fb73c639ba913864",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_AND_P_B17_DIRECT_24_OF_24",
   "lastAuditVerdict": "PASS_ZERO_MATERIAL_FINDINGS",
+  "handoff": "HANDOFF_PRYSM_GCU_REPORT_IMPROVEMENT_P7_CONTINUATION_2026-09-03.md",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -49,17 +50,20 @@
     "status": "PASS",
     "auditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
     "reportRetrieval": "PASS",
-    "evidenceIntegrityReview": "PASS_OWNER_REVIEW"
+    "evidenceIntegrityReview": "PASS_OWNER_REVIEW",
+    "productionSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e"
   },
-  "p0": {
-    "status": "DIAGNOSTIC_FIRST_AUTORUN_AUTHORIZED",
-    "applicationEditAuthorizedAfterVerifiedDiagnosisAndSurgicalDeterminacy": true,
-    "requiredClassification": [
-      "VERIFIED_ROOT_CAUSE",
-      "VERIFIED_DESIGN_GAP",
-      "UNRESOLVED"
-    ],
-    "requiredAcceptanceArtifact": "Selected URL | selection reason | page class | body requested | body returned/status | downstream modules"
+  "completedReportImprovementTranches": {
+    "P0": "PASS@acfc5c1393261bb7733837289bc3adc1062e64d5",
+    "P1": "PASS@9a1612c7e2388297120d5196b0be099762c97e2b",
+    "P2": "PASS@a2c54692ce231c34e4f693a6bb34ed3db527d1d6",
+    "P3": "PASS@34f47cb35dd7dba39aa488408d1da1242b66dc25",
+    "P4": "PASS@28b25f64e3140968842cfdec265b9583e1c995d9",
+    "P5": "PASS@89b1957b98ac5064527bc55cf7eb20caf2889051",
+    "P6": "PASS@3fb3042c04d874d44ff7f984bf279fd7b452327c"
+  },
+  "historicalOperationalNotes": {
+    "P4_RUN25_USAGE_LIMIT": "Run 25 stopped before the Level-3 P4 repair because Codex hit its account usage allowance. No final.json was produced and the invocation did not constitute a third same-root repair failure. After allowance reset, unattended execution resumed and P4 later passed independently."
   },
   "protectedExternalActions": [
     "MERGE_TO_MAIN",
@@ -72,6 +76,6 @@
     "DESTRUCTIVE_ROLLBACK_RESET",
     "FORCE_PUSH"
   ],
-  "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
+  "reason": "P0 through P6 are independently passed under the unattended GCU report-improvement program. P7 exact candidate proof is complete and the candidate is ready for independent audit. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
   "nextAction": "Auditor must independently challenge exact candidate 2e4f40d97a4a197e20948b26fb73c639ba913864 and its P7 proof before any tranche closure or progression."
 }
