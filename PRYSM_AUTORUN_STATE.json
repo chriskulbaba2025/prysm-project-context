@@ -2,7 +2,7 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P6_DIAGNOSTIC_READY",
+  "status": "P6_CANDIDATE_READY_FOR_INDEPENDENT_AUDIT",
   "currentRole": "Builder",
   "currentTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
   "lastPassedTranche": "P5_STRUCTURED_DATA_ENTITY_EVIDENCE_VERIFICATION",
@@ -11,8 +11,8 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "89b1957b98ac5064527bc55cf7eb20caf2889051",
-  "wholeAppGate": "PASS_P_B01_THROUGH_P_B16",
+  "applicationSha": "7580d9b479190bc95065f4edc66245d083f575f7",
+  "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_PLUS_P_B17_DIRECT",
   "lastAuditVerdict": "PASS_P5_ZERO_MATERIAL_FINDINGS",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must begin P6 diagnostic-first at exact application candidate 89b1957b98ac5064527bc55cf7eb20caf2889051: trace unavailable/partial evidence paths and define bounded actionable data-roadmap output without changing evidence semantics."
+  "nextAction": "Push the bounded P6 candidate and synchronized governance checkpoint, verify remote identities and clean trees, then hand exact candidate 7580d9b479190bc95065f4edc66245d083f575f7 to the independent Auditor."
 }

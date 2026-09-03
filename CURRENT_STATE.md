@@ -176,7 +176,9 @@ P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20ca
 
 ## Current next workstream
 
-The current workstream is **P6 — Make unavailable/partial evidence useful**, ready for Builder diagnostic-first work. Production remains protected at SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+## P6 candidate ready for independent audit
+
+P6 candidate implementation is at application SHA `7580d9b479190bc95065f4edc66245d083f575f7` on `repair/prysm-report-improvement`. It adds only deterministic presentation metadata for already `UNAVAILABLE`/`PARTIAL` evidence: required source/information, how to enable/collect it, and additional insight enabled. Statuses, scoring, evidence acquisition/persistence, prompts/models, n8n, and production configuration are unchanged. Direct P6 proof passed **22/22**; worker regression passed; Narrative v2 passed **114/114**; Whole-App passed **87/87** with P-B01 through P-B16, and new direct branch P-B17 is mapped and passed. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Durable evidence: `EVIDENCE_P6_UNAVAILABLE_PARTIAL_EVIDENCE_CANDIDATE_2026-09-02.md`. Candidate awaits independent audit; production remains protected.
 
 ## Heartbeat and notification
 
@@ -224,7 +226,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must begin P6 diagnostic-first work against exact application candidate `89b1957b98ac5064527bc55cf7eb20caf2889051`: trace unavailable/partial evidence paths and define bounded actionable data-roadmap output without changing evidence semantics. No live call, model change, merge, or deployment is authorized.
+Builder must push exact P6 candidate `7580d9b479190bc95065f4edc66245d083f575f7` and its governance checkpoint, verify clean remote identities, then hand it to the independent Auditor. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
