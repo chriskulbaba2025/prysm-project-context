@@ -5,7 +5,7 @@ PRYSM — governed website conversion-readiness report and website decision syst
 
 ## Current objective
 
-Begin P4 Competitor Qualification with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
+Begin P5 Structured Data / Entity Evidence Verification with requirement preservation and diagnostic-first evidence, then continue the unattended P0-P10 program only when each governed tranche passes.
 
 The owner does not want routine tranche-by-tranche attendance.
 
@@ -102,7 +102,7 @@ Do not create a second report-generation source of truth in n8n.
 
 ## Current tranche
 
-`P4 — Competitor Qualification`
+`P5 — Structured Data / Entity Evidence Verification`
 
 Initial P0 condition remains diagnostic-first. P0 must first classify the evidence boundary as:
 - `VERIFIED_ROOT_CAUSE`;
@@ -138,6 +138,10 @@ Verification at the exact candidate:
 
 ## Current execution status
 
+P4 independently **PASSED** at application SHA `28b25f64e3140968842cfdec265b9583e1c995d9` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_3_PASS_2026-09-02.md`. Independent exact-candidate proof: focused producer/qualification **44/44 PASS**; direct P-B16 assembled gate **PASS**; worker regression **975/975 PASS**; Narrative v2 **114/114 PASS**; Whole-App base **87/87 PASS** with P-B01 through P-B16 covered. The query topic remains discovery metadata and cannot substitute for competitor-observed service evidence. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P4 repair accounting is reset.
+
+P5 begins diagnostic-first. It must trace actual structured-data/entity acquisition, normalization, persistence, validated read/reopen, consumer, and rendered output; determine whether `json_ld` is incorrectly surfaced as a type; preserve actual schema types; and investigate visible location/market evidence and rendered/include/component acquisition before any copy change.
+
 P4 repair-3 candidate is ready for independent audit at application SHA `28b25f64e3140968842cfdec265b9583e1c995d9` (remote equals local; clean tree). SERP query topic is now separate from competitor-observed service/business evidence: the producer preserves returned title with explicit provenance, and qualification uses only that observed field. Exact-candidate proof passed: focused qualification/producer 44/44, worker 975/975, Narrative v2 114/114, and Whole-App P-B01 through P-B16. Durable evidence: `EVIDENCE_P4_COMPETITOR_QUALIFICATION_REPAIR_3_CANDIDATE_2026-09-02.md`. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 P3 independently **PASSED** at application SHA `34f47cb35dd7dba39aa488408d1da1242b66dc25` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P3_TOPICAL_MAP_STRATEGIC_CONTENT_INTELLIGENCE_REPAIR_PASS_2026-09-02.md`. Independent exact-candidate proof: schema **14/14 PASS**; focused producer/current-consumer/render/Narrative-reference proof **27/27 PASS**; worker regression **970/970 PASS**; Narrative v2 **114/114 PASS**; Whole-App Gate **87/87 PASS** with P-B01 through P-B15 covered. The prior MAJOR fixture/contract false-PASS seam is closed: a valid persisted ScoreSet with a complete evidence-grounded `contentIdeas` projection validates, while materially incomplete rows reject. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. P3 repair accounting is reset.
@@ -164,7 +168,7 @@ The current workstream is **P3 — Topical Map / Strategic Content Intelligence*
 
 ## Heartbeat and notification
 
-The current workstream is **P4 — Competitor Qualification**, ready for Builder diagnostic-first work.
+The current workstream is **P5 — Structured Data / Entity Evidence Verification**, ready for Builder diagnostic-first work.
 
 Dedicated controller:
 `tools/report-improvement-autorun/PRYSM-REPORT-IMPROVEMENT-AUTORUN.ps1`
@@ -208,7 +212,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Auditor must independently challenge exact P4 repair-3 candidate `28b25f64e3140968842cfdec265b9583e1c995d9`, especially P-B16 query-topic versus observed-service provenance and positive approval-gap compatibility. No P8 control, live call, model change, merge, or deployment is authorized.
+Builder must begin P5 diagnostic-first from exact combined application candidate `28b25f64e3140968842cfdec265b9583e1c995d9`. Trace structured-data/entity evidence end to end and classify the cause/design gap before any copy or application change. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
@@ -223,6 +227,8 @@ Auditor must independently challenge exact P4 repair-3 candidate `28b25f64e31409
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-02 America/Toronto — independent audit **PASSED** P4 repair-3 candidate `28b25f64e3140968842cfdec265b9583e1c995d9` with zero material findings. Focused proof passed 44/44, worker 975/975, Narrative v2 114/114, and Whole-App base 87/87 with P-B01 through P-B16 covered. Durable record: `INDEPENDENT_AUDIT_P4_COMPETITOR_QUALIFICATION_REPAIR_3_PASS_2026-09-02.md`. P5 is next for Builder diagnostic-first work; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — Builder repaired P4-MAJOR-03 at exact application candidate `28b25f64e3140968842cfdec265b9583e1c995d9`, pushed the clean branch, and completed exact-candidate proof: focused 44/44, worker 975/975, Narrative v2 114/114, Whole-App P-B01 through P-B16 PASS. The accounting-title/physiotherapy-query producer case now fails service relevance; an explicitly observed physiotherapy service signal remains positive-path compatible. Candidate awaits independent audit. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
