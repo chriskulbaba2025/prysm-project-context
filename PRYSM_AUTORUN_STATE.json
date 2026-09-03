@@ -11,10 +11,10 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "13921d7d6c1364a57adc8a27b9f8607ff2e322d4",
+  "applicationSha": "41e5d04f50eec9f306441264ea2ad52acc7474ee",
   "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_87_OF_87",
   "lastAuditVerdict": "P9_PASS_ZERO_MATERIAL_FINDINGS",
-  "handoff": "INDEPENDENT_AUDIT_P9_WORKFLOW_DIAGRAMS_UI_PRESENTATION_POLISH_PASS_2026-09-03.md",
+  "handoff": "EVIDENCE_P10_GENERAL_COPY_NAMING_NORMALIZATION_CANDIDATE_2026-09-03.md",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -77,5 +77,5 @@
     "FORCE_PUSH"
   ],
   "reason": "P0 through P9 are independently passed under the unattended GCU report-improvement program. P10 is the next required workstream. Protected production/paid/destructive actions still require separate authority.",
-  "nextAction": "Builder begins P10 general copy and naming normalization with diagnostic-first scope; preserve evidence boundaries and do not mask unresolved upstream defects."
+  "nextAction": "Independent Auditor challenges exact P10 candidate 41e5d04f50eec9f306441264ea2ad52acc7474ee and its copy-only scope, stale-golden review, 982/982 worker regression, and 87/87 Whole-App proof."
 }

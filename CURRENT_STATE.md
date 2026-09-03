@@ -252,7 +252,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Independent Auditor must challenge the P8 design-only candidate in `DESIGN_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_2026-09-03.md`, including evidence immutability, append-only auditability, authorization, stale-snapshot/replay behavior, fail-closed validation, and the explicit no-implementation boundary. Do not implement P8 controls without a later separately authorized implementation tranche.
+Independent Auditor must challenge exact P10 candidate `41e5d04f50eec9f306441264ea2ad52acc7474ee`, including copy-only scope, synchronized v1/v2 labels, stale-golden review, worker regression `982/982`, Whole-App `87/87`, protected evidence semantics, and zero live provider/model calls.
 
 P8 independently **PASSED** as a design-only workstream at application SHA `2e4f40d97a4a197e20948b26fb73c639ba913864` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P8_CONSULTANT_REVIEW_OVERRIDE_CONTROLS_PASS_2026-09-03.md`. P9 is next for Builder diagnostic-first work; P8 implementation remains separately unauthorized.
 
@@ -269,6 +269,8 @@ P8 independently **PASSED** as a design-only workstream at application SHA `2e4f
 - Exact-candidate proof becomes stale if governed candidate content changes afterward.
 
 ## Last verified
+
+2026-09-03 America/Toronto — Builder completed P10 bounded copy/naming normalization at application candidate `41e5d04f50eec9f306441264ea2ad52acc7474ee` (remote equals local, clean tree). Direct renderer tests passed `27/27`; worker regression passed `982/982`; closure/assembled Whole-App gate passed `87/87` with P-B01 through P-B16. Durable evidence: `DIAGNOSTIC_P10_GENERAL_COPY_NAMING_NORMALIZATION_2026-09-03.md` and `SURGICAL_CHANGE_P10_GENERAL_COPY_NAMING_NORMALIZATION_2026-09-03.md`. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Candidate awaits independent audit; production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
 2026-09-02 America/Toronto — independent audit **PASSED** P6 repair candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c` with zero material findings. Direct Appendix/actionability proof passed 24/24, worker regression 981/981, Narrative v2 114/114, and Whole-App assembled proof 87/87 with P-B01 through P-B16 plus P-B17 direct proof. Durable audit: `INDEPENDENT_AUDIT_P6_UNAVAILABLE_PARTIAL_EVIDENCE_REPAIR_PASS_2026-09-02.md`. P6 repair accounting is reset; P7 is next for Builder diagnostic-first work. Production remains protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
 
