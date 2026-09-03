@@ -176,6 +176,12 @@ P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20ca
 
 ## Current next workstream
 
+## P6 independent audit — FAILED
+
+P6 candidate `7580d9b479190bc95065f4edc66245d083f575f7` failed independent audit with one MAJOR finding: `P6-MAJOR-01` (`P6_UNAVAILABLE_ACTIONABILITY_CONTRACT`). The candidate adds truthful actionability roadmaps to Deferred & Unavailable Analysis and the applicable Accessibility/Mobile and field-performance detail surfaces, but leaves the required Evidence Appendix unchanged. Its unavailable/partial source rows and limitations therefore remain a dead end without required source/information, enablement/collection, or additional-insight guidance. Direct P6 proof was 22/22 PASS, Narrative v2 114/114 PASS, and the base Whole-App gate 87/87 PASS (P-B01–P-B16), but those checks do not prove the omitted Appendix consumer. Durable audit: `INDEPENDENT_AUDIT_P6_UNAVAILABLE_PARTIAL_EVIDENCE_FAIL_2026-09-02.md`.
+
+Required next action: same-root bounded Builder repair of the Evidence Appendix consumer, positive/negative appendix proof, and fresh exact-candidate verification. Controller-provided repair attempt is 1. Production remains protected.
+
 ## P6 candidate ready for independent audit
 
 P6 candidate implementation is at application SHA `7580d9b479190bc95065f4edc66245d083f575f7` on `repair/prysm-report-improvement`. It adds only deterministic presentation metadata for already `UNAVAILABLE`/`PARTIAL` evidence: required source/information, how to enable/collect it, and additional insight enabled. Statuses, scoring, evidence acquisition/persistence, prompts/models, n8n, and production configuration are unchanged. Direct P6 proof passed **22/22**; worker regression passed; Narrative v2 passed **114/114**; Whole-App passed **87/87** with P-B01 through P-B16, and new direct branch P-B17 is mapped and passed. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Durable evidence: `EVIDENCE_P6_UNAVAILABLE_PARTIAL_EVIDENCE_CANDIDATE_2026-09-02.md`. Candidate awaits independent audit; production remains protected.

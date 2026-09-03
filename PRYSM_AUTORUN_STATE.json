@@ -2,18 +2,18 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P6_CANDIDATE_READY_FOR_INDEPENDENT_AUDIT",
+  "status": "P6_AUDIT_FAIL_REPAIR_REQUIRED",
   "currentRole": "Builder",
   "currentTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
   "lastPassedTranche": "P5_STRUCTURED_DATA_ENTITY_EVIDENCE_VERIFICATION",
-  "repairAttempt": 0,
-  "rootDefectId": null,
+  "repairAttempt": 1,
+  "rootDefectId": "P6_UNAVAILABLE_ACTIONABILITY_CONTRACT",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
   "applicationSha": "7580d9b479190bc95065f4edc66245d083f575f7",
-  "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_PLUS_P_B17_DIRECT",
-  "lastAuditVerdict": "PASS_P5_ZERO_MATERIAL_FINDINGS",
+  "wholeAppGate": "BASE_PASS_P_B01_THROUGH_P_B16_P6_DIRECT_INSUFFICIENT",
+  "lastAuditVerdict": "FAIL_P6_MAJOR_01_EVIDENCE_APPENDIX_ACTIONABILITY_OMITTED",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Push the bounded P6 candidate and synchronized governance checkpoint, verify remote identities and clean trees, then hand exact candidate 7580d9b479190bc95065f4edc66245d083f575f7 to the independent Auditor."
+  "nextAction": "Builder must repair P6-MAJOR-01 at the same root: extend the deterministic unavailable/partial actionability roadmap to the Evidence Appendix, add positive/negative appendix proof, rerun exact-candidate P6 direct, regression/Narrative, and Whole-App evidence, push the candidate, and return it to an independent Auditor."
 }
