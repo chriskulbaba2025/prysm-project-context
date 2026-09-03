@@ -50,3 +50,19 @@ Causal necessity and Surgical Determinacy: **PASS**.
 ## Audit handoff condition
 
 The immutable candidate is `7580d9b479190bc95065f4edc66245d083f575f7`; it must be independently challenged before P6 closure. Production remains the protected SHA `9b9e85d00a0d8b65a5ba6cad37583aa79151b15e`.
+
+## Same-root repair after P6-MAJOR-01
+
+The Evidence Appendix omission is repaired by routing the existing deterministic roadmap into `sections-performance.js::appendix` for non-`AVAILABLE` Website Capture, Performance, Backlinks, and GA4 source states. Fully available sources receive no fabricated roadmap.
+
+Exact repair candidate: `3fb3042c04d874d44ff7f984bf279fd7b452327c`.
+
+- direct P6 positive/negative proof: **24/24 PASS**;
+- worker regression: **981/981 PASS**;
+- Narrative v2: **114/114 PASS**;
+- Whole-App gate: **87/87 PASS**, P-B01 through P-B16, with P-B17 direct appendix proof separately executed;
+- render golden matrix reviewed and re-frozen for the intentional Appendix output change;
+- `git diff --check`: **PASS**;
+- zero live provider/model calls; Model-Bearing Release Gate: **N/A**.
+
+The application branch was pushed and remote equality verified. Independent re-audit is required before P6 closure.

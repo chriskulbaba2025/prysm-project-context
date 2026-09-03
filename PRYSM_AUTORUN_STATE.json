@@ -2,7 +2,7 @@
   "version": 2,
   "project": "PRYSM",
   "mode": "GCU_CODEX_REPORT_IMPROVEMENT_UNATTENDED",
-  "status": "P6_AUDIT_FAIL_REPAIR_REQUIRED",
+  "status": "P6_REPAIR_CANDIDATE_READY_FOR_AUDIT",
   "currentRole": "Builder",
   "currentTranche": "P6_UNAVAILABLE_PARTIAL_EVIDENCE",
   "lastPassedTranche": "P5_STRUCTURED_DATA_ENTITY_EVIDENCE_VERIFICATION",
@@ -11,9 +11,9 @@
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "repair/prysm-report-improvement",
   "targetRepairBranch": "repair/prysm-report-improvement",
-  "applicationSha": "7580d9b479190bc95065f4edc66245d083f575f7",
-  "wholeAppGate": "BASE_PASS_P_B01_THROUGH_P_B16_P6_DIRECT_INSUFFICIENT",
-  "lastAuditVerdict": "FAIL_P6_MAJOR_01_EVIDENCE_APPENDIX_ACTIONABILITY_OMITTED",
+  "applicationSha": "3fb3042c04d874d44ff7f984bf279fd7b452327c",
+  "wholeAppGate": "PASS_P_B01_THROUGH_P_B16_AND_P_B17_DIRECT_24_OF_24",
+  "lastAuditVerdict": "REPAIR_PENDING_INDEPENDENT_REAUDIT",
   "localSafetyBackup": {
     "status": "VERIFIED_STARTING_SHA",
     "repositoryRoot": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -73,5 +73,5 @@
     "FORCE_PUSH"
   ],
   "reason": "The owner authorized unattended repository-controlled execution through the P0-P10 report-improvement work order. Normal GCU diagnosis, bounded changes, verification, dedicated repair-branch commits/pushes, governance synchronization, Builder/Auditor switching, and tranche progression may continue without owner attendance. A 60-second local heartbeat and generic remote notification webhook are defined. The application is still on main at the preflight checkpoint; the Builder may create/use repair/prysm-report-improvement only after recovering exact local truth. Protected production/paid/destructive actions still require separate authority and cause STOP/BLOCKED notification when reached.",
-  "nextAction": "Builder must repair P6-MAJOR-01 at the same root: extend the deterministic unavailable/partial actionability roadmap to the Evidence Appendix, add positive/negative appendix proof, rerun exact-candidate P6 direct, regression/Narrative, and Whole-App evidence, push the candidate, and return it to an independent Auditor."
+  "nextAction": "Independent Auditor must challenge exact P6 repair candidate 3fb3042c04d874d44ff7f984bf279fd7b452327c, including the permanent Evidence Appendix positive/negative escape regression, before P6 closure."
 }

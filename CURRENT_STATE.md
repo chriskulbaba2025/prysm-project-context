@@ -182,7 +182,13 @@ P6 candidate `7580d9b479190bc95065f4edc66245d083f575f7` failed independent audit
 
 Required next action: same-root bounded Builder repair of the Evidence Appendix consumer, positive/negative appendix proof, and fresh exact-candidate verification. Controller-provided repair attempt is 1. Production remains protected.
 
-## P6 candidate ready for independent audit
+## P6 same-root repair candidate ready for independent re-audit
+
+P6-MAJOR-01 is repaired at exact application candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c` on `repair/prysm-report-improvement` (remote equals local; clean tree). The Evidence Appendix now consumes the existing deterministic roadmap for applicable non-`AVAILABLE` source states, while an all-available control receives no fabricated roadmap. The escaped consumer is permanently covered by positive/negative direct proof.
+
+Exact-candidate proof: direct P6 **24/24 PASS**; worker regression **981/981 PASS**; Narrative v2 **114/114 PASS**; Whole-App **87/87 PASS** with P-B01 through P-B16 and P-B17 separately mapped/directly proven. Render golden hashes were reviewed and re-frozen for the intentional Appendix output change. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Durable evidence: `EVIDENCE_P6_UNAVAILABLE_PARTIAL_EVIDENCE_CANDIDATE_2026-09-02.md`.
+
+## Prior P6 candidate ready for independent audit
 
 P6 candidate implementation is at application SHA `7580d9b479190bc95065f4edc66245d083f575f7` on `repair/prysm-report-improvement`. It adds only deterministic presentation metadata for already `UNAVAILABLE`/`PARTIAL` evidence: required source/information, how to enable/collect it, and additional insight enabled. Statuses, scoring, evidence acquisition/persistence, prompts/models, n8n, and production configuration are unchanged. Direct P6 proof passed **22/22**; worker regression passed; Narrative v2 passed **114/114**; Whole-App passed **87/87** with P-B01 through P-B16, and new direct branch P-B17 is mapped and passed. No live provider/model calls occurred; Model-Bearing Release Gate is N/A. Durable evidence: `EVIDENCE_P6_UNAVAILABLE_PARTIAL_EVIDENCE_CANDIDATE_2026-09-02.md`. Candidate awaits independent audit; production remains protected.
 
@@ -232,7 +238,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must push exact P6 candidate `7580d9b479190bc95065f4edc66245d083f575f7` and its governance checkpoint, verify clean remote identities, then hand it to the independent Auditor. No live call, model change, merge, or deployment is authorized.
+Independent Auditor must challenge exact P6 repair candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c`, including the Evidence Appendix positive/negative escape regression, before P6 closure. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
