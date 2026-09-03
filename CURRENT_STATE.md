@@ -176,6 +176,10 @@ P5 independently **PASSED** at application SHA `89b1957b98ac5064527bc55cf7eb20ca
 
 ## Current next workstream
 
+`P8 — Consultant review/override controls` (design only)
+
+P7 independently **PASSED** at application SHA `2e4f40d97a4a197e20948b26fb73c639ba913864` with zero material findings. Durable audit: `INDEPENDENT_AUDIT_P7_PERFORMANCE_TECHNICAL_CLIENT_LANGUAGE_CLEANUP_PASS_2026-09-03.md`. Independent exact-candidate proof was focused renderer **48/48 PASS**, worker regression **981/981 PASS**, and Whole-App **87/87 PASS** with P-B01 through P-B16. Repair accounting is reset. P8 must remain design-only unless separately authorized.
+
 ## P7 candidate ready for independent audit
 
 P7 is implemented at exact application candidate `2e4f40d97a4a197e20948b26fb73c639ba913864` on `repair/prysm-report-improvement`. The bounded renderer change formats LCP/CLS/TBT for client readability, defines the metrics in plain language, separates client-safe availability wording from provider diagnostics, preserves lab/field distinction, and reorders technical subsections to the governed order. No provider, scoring, persistence, prompt/model, n8n, or deployment behavior changed.
@@ -246,7 +250,7 @@ The autorun must stop and notify when one of those actions becomes genuinely nec
 
 ## Exact next action
 
-Builder must begin P7 Performance and Technical Client-Language Cleanup diagnostic-first, trace current performance/technical evidence through client-facing consumers, and freeze a Surgical Change Contract before any bounded application edit. No live call, model change, merge, or deployment is authorized.
+Builder must begin P8 Consultant review/override controls as design-only work. Do not implement override controls incidentally. No live call, model change, merge, or deployment is authorized.
 
 ## Protected invariants
 
