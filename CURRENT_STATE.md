@@ -3,53 +3,57 @@
 Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
-## 2026-09-03 authoritative continuation override
+Current objective:
+Run the new outcome-gated P1-P10 closure program one P# at a time, beginning with P1 only.
 
-The VAN-SCHEMA-001 mixed-status provenance PDV is independently PASS and repository-controlled closure is complete at exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
+Verified checkpoint:
+- Application production/main is `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
+- Railway and Vercel production promotion of that exact SHA were previously verified complete.
+- Prior P0-P10 work produced substantial engineering improvements and strong governance evidence.
+- The new hardening requirement is explicit product/outcome acceptance: technical PASS alone cannot close a P#.
+- The active Chris / Brad / Betty protocol is `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`.
+- Starting P1-P10 outcome status is recorded in `PRYSM_P1_P10_OUTCOME_REBASELINE_2026-09-04.md`.
+- Continuation context is recorded in `HANDOFF_PRYSM_OUTCOME_GOVERNANCE_CONTINUATION_2026-09-04.md`.
 
-Owner has explicitly authorized merge and production deployment of this exact candidate only under:
+Current environment / branch / version:
+- Application repository: `chriskulbaba2025/vantage-platform`
+- Governance repository: `chriskulbaba2025/prysm-project-context`
+- Frozen application baseline: `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
+- Active P#: P1 — Outcome Contract only
+- New repair branch: NOT YET AUTHORIZED/CREATED
 
-`DECISION_PDV_VAN_SCHEMA_PRODUCTION_PROMOTION_2026-09-03.md`
+Completed:
+- Production promotion/health verification of `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
+- P1-P10 outcome rebaseline.
+- Chris / Brad / Betty role separation and stop-gate protocol.
+- Explicit false-PASS/blind-spot review requirement.
+- Explicit rendered/product outcome gate separate from technical proof.
+- Durable continuation handoff for this new workstream.
 
-Authorized scope:
-- promote exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec` to application `main` without altering candidate contents;
-- deploy that exact SHA to production;
-- perform read-only deployment identity/health verification.
+In progress:
+- P1 Outcome Contract preparation and owner approval.
 
-Not authorized:
-- fresh live/paid production audit;
-- new paid provider/model calls;
-- unrelated production configuration mutation;
-- destructive reset or force push.
+Blocked:
+- No P1 code change until the P1 outcome is frozen, read-only diagnosis is verified, Betty pre-repair blind-spot review has zero unresolved CRITICAL/MAJOR findings, and Chris explicitly authorizes the bounded repair.
+- P2-P10 remain blocked until each preceding P# is CLOSED under the new protocol.
+- P3 also retains a standing P0 dependency gate for page/deep-content selection quality.
 
-Application production/main SHA before promotion:
-`08734785c0a0fc415e331ac216e22e64545a533e`
-
-Application repair branch:
-`repair/prysm-van-schema-mixed-status`
-
-Exact independently audited candidate SHA:
-`6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
-
-Verification inherited from exact candidate:
-- focused scoring suite PASS 31/31;
-- PRYSM Whole-App gate PASS 87/87 covering P-B01 through P-B16;
-- closure gate PASS;
-- independent Auditor PASS;
-- material defects: 0;
-- application branch synchronized and clean.
+Important constraints:
+- One active P# at a time.
+- One material outcome/root cause per micro-tranche.
+- Diagnose before coding.
+- Technical PASS is necessary but not sufficient for P# closure.
+- Brad independently reviews the exact client/user-visible artifact.
+- Betty actively searches for false-PASS seams and blind spots.
+- Chris alone approves P# closure and advancement.
+- GitHub durable state must be written and verified before advancement.
+- Existing stored reports are not proof of current renderer behavior unless provenance establishes that exact candidate.
+- Evidence integrity remains controlling: unknown/unavailable/partial evidence must not become unsupported absence/failure/certainty.
+- No fresh live/paid production audit, paid provider/model calls, application-main merge, deployment, production configuration change, destructive reset/clean/discard, or force push without separate explicit owner authorization.
+- After three failed repair attempts against the same root cause, stop and reopen diagnosis.
 
 Exact next action:
-Promotion and deployment completed for exact candidate SHA `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`. Application `main` now points to that SHA. Railway deployment `cb1fd075-5220-4453-9184-b8bda483ed73` reports SUCCESS with commitHash equal to the exact candidate, and read-only `/health` returned HTTP 200. Vercel production deployment `prysm-geon9sa8z-chriskulbabas-projects.vercel.app` is READY. Repository-controlled work is complete at the external promotion boundary; do not start a fresh live/paid production audit without separate owner authorization.
+Create the P1 Outcome Contract from the original P1 goal and current evidence. Freeze the client/business outcome, one-sentence definition of done, observable acceptance criteria, before evidence, dependencies, non-goals, and required rendered/product proof. Stop for Chris approval before read-only P1 diagnosis and before any application edit.
 
-Promotion evidence:
-`PRYSM_PDV_VAN_SCHEMA_PRODUCTION_PROMOTION_2026-09-03.md`
-
-## Historical production validation context
-
-Fresh controlled production validation audit:
-`d79f5003-5ab8-4618-8c1c-acd75e7c34be`
-
-That validation exposed `VAN-SCHEMA-001`, which was repaired and independently closed in the exact candidate above. Detailed diagnosis and repair history remain in:
-
-`HANDOFF_PRYSM_VAN_SCHEMA_MIXED_STATUS_REPAIR_2026-09-03.md`
+Last verified:
+2026-09-04
