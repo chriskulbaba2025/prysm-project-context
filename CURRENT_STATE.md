@@ -59,14 +59,14 @@ Brad's Mac uses the canonical Bash launcher directly, assuming `git`, `bash`, an
 
 ## Current stage
 
-- Current stage: BOUNDED_BUILD
-- Authorized execution stage: BOUNDED_BUILD
+- Current stage: OUTCOME_REVIEW
+- Authorized execution stage: OUTCOME_REVIEW
 - Diagnostic status: COMPLETE
 - Betty pre-repair gate: PASS / 0 / 0
 - Chris repair authorization: APPROVED
-- BOUNDED_BUILD: AUTHORIZED
-- Application repair branch: NOT YET CREATED/VERIFIED
-- Application code edits: NOT YET STARTED
+- BOUNDED_BUILD: COMPLETE / deterministic proof PASS
+- Application repair branch: `p1/bounded-build-cross-report-integrity`
+- Application repair candidate: `de509c30c808115f22fda3688a18dfaa85e9db50`
 
 ## Authorized bounded repair
 
@@ -110,7 +110,7 @@ Both routes must reach the same P1 manifest, evidence checks, exact application 
 
 The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
 
-Brad is not the next P1 reviewer step. Brad returns after technical/system proof and exact client-visible rendered proof are frozen.
+Brad is the next P1 reviewer step. Technical/system proof and exact client-visible rendered proof are frozen for the candidate above.
 
 ## Hard boundaries
 
