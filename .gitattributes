@@ -1,0 +1,5 @@
+# Keep Unix shell launchers executable by Bash on Windows/macOS/Linux.
+*.sh text eol=lf
+
+# Governed gate manifests are line-oriented and should remain stable across platforms.
+*.env text eol=lf
