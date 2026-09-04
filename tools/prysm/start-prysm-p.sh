@@ -19,8 +19,48 @@ APP_ROOT="$WORKSPACE_ROOT/vantage-platform"
 GATE_FILE="$GOV_ROOT/${P_ID}_EXECUTION_GATE.env"
 CURRENT_STATE="$GOV_ROOT/CURRENT_STATE.md"
 
+ensure_codex_cli() {
+  command -v codex >/dev/null 2>&1 && return 0
+
+  local candidate=""
+  local appdata_unix=""
+  local npm_prefix=""
+
+  # Standard npm global shim location for Git-for-Windows / VS Code setups.
+  candidate="$HOME/AppData/Roaming/npm"
+  if [[ -d "$candidate" ]]; then
+    export PATH="$PATH:$candidate"
+    command -v codex >/dev/null 2>&1 && return 0
+  fi
+
+  # Resolve APPDATA when Git Bash receives it in Windows path form.
+  if [[ -n "${APPDATA:-}" ]]; then
+    if command -v cygpath >/dev/null 2>&1; then
+      appdata_unix="$(cygpath -u "$APPDATA" 2>/dev/null || true)"
+    else
+      appdata_unix="$APPDATA"
+    fi
+    candidate="$appdata_unix/npm"
+    if [[ -n "$appdata_unix" && -d "$candidate" ]]; then
+      export PATH="$PATH:$candidate"
+      command -v codex >/dev/null 2>&1 && return 0
+    fi
+  fi
+
+  # Fall back to npm's configured global prefix when npm is already visible.
+  if command -v npm >/dev/null 2>&1; then
+    npm_prefix="$(npm config get prefix 2>/dev/null || true)"
+    if [[ -n "$npm_prefix" && "$npm_prefix" != "undefined" && -d "$npm_prefix" ]]; then
+      export PATH="$PATH:$npm_prefix"
+      command -v codex >/dev/null 2>&1 && return 0
+    fi
+  fi
+
+  return 1
+}
+
 command -v git >/dev/null 2>&1 || fail "git is not installed or not on PATH."
-command -v codex >/dev/null 2>&1 || fail "Codex CLI is not installed or not on PATH."
+ensure_codex_cli || fail "Codex CLI is installed but not discoverable by this shell, or is not installed. Expected Windows npm shim under ~/AppData/Roaming/npm or the configured npm global prefix."
 
 [[ -d "$GOV_ROOT/.git" ]] || fail "Governance repository not found at $GOV_ROOT."
 [[ -d "$APP_ROOT/.git" ]] || fail "Application repository not found at $APP_ROOT. Expected sibling folder: vantage-platform."
