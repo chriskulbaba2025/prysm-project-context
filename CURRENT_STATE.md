@@ -25,8 +25,37 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - Repair authorization commit: `94dce9af240871faffcdb4846a1e5b22c52122b9`
 - `P1_EXECUTION_GATE.env`: `AUTHORIZED_STAGE=BOUNDED_BUILD`
 - Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
-- Windows PowerShell launcher: `tools/prysm/start-prysm-p.ps1`
-- PowerShell launcher commit: `13988cf3ebab7d163420235f685061119ad10462`
+- Canonical cross-platform governed launcher: `tools/prysm/start-prysm-p.sh`
+- Windows PowerShell entry wrapper: `tools/prysm/start-prysm-p.ps1`
+- PowerShell wrapper commit: `13988cf3ebab7d163420235f685061119ad10462`
+
+## Launcher architecture — cross-platform invariant
+
+PRYSM has one governed launcher and must not fork governance by operating system.
+
+Canonical machine/process gate for Windows, macOS, and Linux:
+
+```bash
+bash tools/prysm/start-prysm-p.sh P1
+```
+
+Operating-system entry wrappers may solve shell/path mechanics only. They must delegate to the same canonical Bash launcher and may not duplicate, weaken, replace, or independently reinterpret the governance gate.
+
+Windows / Chris:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
+```
+
+The PowerShell wrapper resolves the Windows Codex/npm path and then delegates to the canonical Bash launcher.
+
+macOS / Brad:
+
+```bash
+bash tools/prysm/start-prysm-p.sh P1
+```
+
+Brad's Mac uses the canonical Bash launcher directly, assuming `git`, `bash`, and `codex` are installed and available on PATH. No Windows-specific path or PowerShell dependency may be introduced into the canonical Bash gate.
 
 ## Current stage
 
@@ -57,35 +86,31 @@ Because the bounded repair may touch WriterInput/reference semantics, Writer pro
 
 This does not block the authorized `BOUNDED_BUILD`. Paid/live model execution remains separately authorization-gated and is not authorized by the build gate.
 
-## Exact next action
+## Exact next action — Chris / Windows
 
-The official Windows launch path is PowerShell from the `prysm-project-context` repository root.
-
-First synchronize governance:
+From the `prysm-project-context` repository root in a normal VS Code PowerShell terminal:
 
 ```powershell
 git pull --ff-only origin main
-```
-
-Then launch P1 through the committed PowerShell wrapper with execution-policy bypass scoped only to this process:
-
-```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
 ```
 
-The PowerShell wrapper deterministically discovers the installed Codex CLI from PowerShell, passes its exact npm shim directory into Git for Windows Bash, then invokes the unchanged governed machine gate internally.
+Do not manually patch PATH and do not invoke this from inside an existing Codex prompt. The wrapper exists only to bridge Windows PowerShell/Codex path mechanics into the canonical Bash gate.
 
-Internal governed machine-gate command retained for gate verification:
+## Equivalent launch — Brad / macOS
+
+From the `prysm-project-context` repository root in the VS Code terminal:
 
 ```bash
+git pull --ff-only origin main
 bash tools/prysm/start-prysm-p.sh P1
 ```
 
-Do not manually patch PATH and do not launch this from an existing Codex prompt. Run the PowerShell commands directly at the VS Code `PS ...>` terminal prompt.
+Both routes must reach the same P1 manifest, evidence checks, exact application SHA verification, semantic process-gate handoff, and authorized `BOUNDED_BUILD` scope.
 
 The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
 
-Brad is not the next step. Brad returns after technical/system proof and exact client-visible rendered proof are frozen.
+Brad is not the next P1 reviewer step. Brad returns after technical/system proof and exact client-visible rendered proof are frozen.
 
 ## Hard boundaries
 
