@@ -59,10 +59,18 @@ This does not block the authorized `BOUNDED_BUILD`. Paid/live model execution re
 
 ## Exact next action
 
-The official Windows launch path is now PowerShell from the `prysm-project-context` repository root:
+The official Windows launch path is PowerShell from the `prysm-project-context` repository root.
+
+First synchronize governance:
 
 ```powershell
-.\tools\prysm\start-prysm-p.ps1 P1
+git pull --ff-only origin main
+```
+
+Then launch P1 through the committed PowerShell wrapper with execution-policy bypass scoped only to this process:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
 ```
 
 The PowerShell wrapper deterministically discovers the installed Codex CLI from PowerShell, passes its exact npm shim directory into Git for Windows Bash, then invokes the unchanged governed machine gate internally.
@@ -73,7 +81,7 @@ Internal governed machine-gate command retained for gate verification:
 bash tools/prysm/start-prysm-p.sh P1
 ```
 
-Do not manually patch PATH and do not launch this from an existing Codex prompt. Run the PowerShell wrapper directly at the VS Code `PS ...>` terminal prompt.
+Do not manually patch PATH and do not launch this from an existing Codex prompt. Run the PowerShell commands directly at the VS Code `PS ...>` terminal prompt.
 
 The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
 
