@@ -14,6 +14,9 @@ Verified checkpoint:
 - The active Chris / Brad / Betty protocol is `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`.
 - Starting P1-P10 outcome status is recorded in `PRYSM_P1_P10_OUTCOME_REBASELINE_2026-09-04.md`.
 - Continuation context is recorded in `HANDOFF_PRYSM_OUTCOME_GOVERNANCE_CONTINUATION_2026-09-04.md`.
+- Revised draft P1 Outcome Contract is recorded in `P1_OUTCOME_CONTRACT_2026-09-04.md`.
+- Brad's first P1 contract review found one material false-PASS gap; the contract was revised to require client-visible reconciliation or point-of-reading construct distinction.
+- Governed Brad Mac/Codex launcher is `tools/brad/start-prysm-p1.sh`.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -29,9 +32,12 @@ Completed:
 - Explicit false-PASS/blind-spot review requirement.
 - Explicit rendered/product outcome gate separate from technical proof.
 - Durable continuation handoff for this new workstream.
+- First Brad P1 Outcome Contract review completed: REVISE CONTRACT due to missing explicit point-of-reading client-visible distinction requirement.
+- Revised draft P1 Outcome Contract created.
+- Governed Mac/VS Code Codex launcher created for Brad to load and re-review P1 from authoritative GitHub state.
 
 In progress:
-- P1 Outcome Contract preparation and owner approval.
+- Brad re-review of the revised P1 Outcome Contract, followed by Chris approval if Brad returns APPROVE CONTRACT.
 
 Blocked:
 - No P1 code change until the P1 outcome is frozen, read-only diagnosis is verified, Betty pre-repair blind-spot review has zero unresolved CRITICAL/MAJOR findings, and Chris explicitly authorizes the bounded repair.
@@ -53,7 +59,7 @@ Important constraints:
 - After three failed repair attempts against the same root cause, stop and reopen diagnosis.
 
 Exact next action:
-Create the P1 Outcome Contract from the original P1 goal and current evidence. Freeze the client/business outcome, one-sentence definition of done, observable acceptance criteria, before evidence, dependencies, non-goals, and required rendered/product proof. Stop for Chris approval before read-only P1 diagnosis and before any application edit.
+Brad runs `bash tools/brad/start-prysm-p1.sh` from the local `prysm-project-context` repository in the VS Code terminal. The launcher must verify clean authoritative repositories and frozen application SHA, load the revised P1 Outcome Contract and governing files into Codex, and return only the Brad P1 Outcome Contract re-review. Stop for Chris approval after an `APPROVE CONTRACT` verdict; do not diagnose or edit application code.
 
 Last verified:
 2026-09-04
