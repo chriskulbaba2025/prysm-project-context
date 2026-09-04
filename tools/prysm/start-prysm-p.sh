@@ -177,7 +177,7 @@ verify_current_state_authorization() {
   local stage="$1"
   local stage_line="- Current stage: $stage"
   local auth_line="- Authorized execution stage: $stage"
-  local command_marker="`bash tools/prysm/start-prysm-p.sh $P_ID`"
+  local command_marker="bash tools/prysm/start-prysm-p.sh $P_ID"
 
   grep -Fxq -- "$stage_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md current stage does not exactly match authorized stage $stage."
   grep -Fxq -- "$auth_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not explicitly authorize execution stage $stage."
