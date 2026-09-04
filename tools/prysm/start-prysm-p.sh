@@ -82,6 +82,37 @@ verify_contains_at_commit() {
   git -C "$GOV_ROOT" show "$commit:$file" | grep -Fxq "$exact_line" || fail "$file does not contain required committed evidence line: $exact_line"
 }
 
+verify_unique_audit_result_at_commit() {
+  local file_key="$1"
+  local commit_key="$2"
+  local expected_manifest_verdict="$3"
+  local file commit content verdict_count critical_count major_count verdict critical major
+
+  file="$(require_value "$file_key")"
+  commit="$(require_value "$commit_key")"
+  content="$(git -C "$GOV_ROOT" show "$commit:$file")"
+
+  verdict_count="$(printf '%s\n' "$content" | grep -Ec '^Verdict: (PASS|FAIL)$' || true)"
+  critical_count="$(printf '%s\n' "$content" | grep -Ec '^Unresolved CRITICAL: [0-9]+$' || true)"
+  major_count="$(printf '%s\n' "$content" | grep -Ec '^Unresolved MAJOR: [0-9]+$' || true)"
+
+  [[ "$verdict_count" == "1" ]] || fail "$file must contain exactly one Verdict: PASS|FAIL line; found $verdict_count."
+  [[ "$critical_count" == "1" ]] || fail "$file must contain exactly one Unresolved CRITICAL count; found $critical_count."
+  [[ "$major_count" == "1" ]] || fail "$file must contain exactly one Unresolved MAJOR count; found $major_count."
+
+  verdict="$(printf '%s\n' "$content" | grep -E '^Verdict: (PASS|FAIL)$' | cut -d' ' -f2)"
+  critical="$(printf '%s\n' "$content" | grep -E '^Unresolved CRITICAL: [0-9]+$' | awk '{print $3}')"
+  major="$(printf '%s\n' "$content" | grep -E '^Unresolved MAJOR: [0-9]+$' | awk '{print $3}')"
+
+  if [[ "$critical" == "0" && "$major" == "0" ]]; then
+    [[ "$verdict" == "PASS" ]] || fail "$file has zero unresolved CRITICAL/MAJOR but Verdict is $verdict; expected PASS."
+  else
+    [[ "$verdict" == "FAIL" ]] || fail "$file has unresolved CRITICAL/MAJOR findings but Verdict is $verdict; expected FAIL."
+  fi
+
+  [[ "$expected_manifest_verdict" == "$verdict" ]] || fail "Gate manifest says audit verdict $expected_manifest_verdict but committed audit uniquely resolves to $verdict."
+}
+
 verify_contract_gate() {
   verify_evidence CONTRACT_FILE CONTRACT_COMMIT
   verify_evidence BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT
@@ -91,7 +122,8 @@ verify_contract_gate() {
   BRAD_VERDICT="$(require_value BRAD_VERDICT)"
   [[ "$BRAD_VERDICT" == "PASS" || "$BRAD_VERDICT" == "APPROVE_CONTRACT" ]] || fail "BRAD_VERDICT must be PASS or APPROVE_CONTRACT."
   require_value CHRIS_APPROVAL APPROVED >/dev/null
-  require_value PRE_EXECUTION_AUDIT_VERDICT PASS >/dev/null
+  PRE_EXECUTION_AUDIT_VERDICT="$(require_value PRE_EXECUTION_AUDIT_VERDICT)"
+  [[ "$PRE_EXECUTION_AUDIT_VERDICT" == "PASS" ]] || fail "PRE_EXECUTION_AUDIT_VERDICT must be PASS before execution."
 
   if [[ "$BRAD_VERDICT" == "PASS" ]]; then
     verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: PASS"
@@ -99,9 +131,7 @@ verify_contract_gate() {
     verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: APPROVE CONTRACT"
   fi
   verify_contains_at_commit APPROVAL_FILE APPROVAL_COMMIT "Decision: APPROVED"
-  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Verdict: PASS"
-  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Unresolved CRITICAL: 0"
-  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Unresolved MAJOR: 0"
+  verify_unique_audit_result_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "$PRE_EXECUTION_AUDIT_VERDICT"
 }
 
 verify_build_gate() {
@@ -143,6 +173,17 @@ verify_closure_gate() {
   verify_contains_at_commit CLOSURE_AUTH_FILE CLOSURE_AUTH_COMMIT "Decision: APPROVE AND ADVANCE"
 }
 
+verify_current_state_authorization() {
+  local stage="$1"
+  local stage_line="- Current stage: $stage"
+  local auth_line="- Authorized execution stage: $stage"
+  local command_marker="`bash tools/prysm/start-prysm-p.sh $P_ID`"
+
+  grep -Fxq -- "$stage_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md current stage does not exactly match authorized stage $stage."
+  grep -Fxq -- "$auth_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not explicitly authorize execution stage $stage."
+  grep -Fq "$command_marker" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the governed $P_ID execution launcher as the exact next action."
+}
+
 MANIFEST_P="$(require_value P_ID)"
 [[ "$MANIFEST_P" == "$P_ID" ]] || fail "Gate manifest is for $MANIFEST_P, not requested $P_ID."
 AUTHORIZED_STAGE="$(require_value AUTHORIZED_STAGE)"
@@ -154,6 +195,8 @@ case "$AUTHORIZED_STAGE" in
   CLOSURE) verify_closure_gate ;;
   *) fail "Unsupported AUTHORIZED_STAGE '$AUTHORIZED_STAGE'. The governance must explicitly define the stage before execution." ;;
 esac
+
+verify_current_state_authorization "$AUTHORIZED_STAGE"
 
 APP_BRANCH="$(require_value APPLICATION_BRANCH)"
 APP_SHA="$(require_value APPLICATION_SHA)"
