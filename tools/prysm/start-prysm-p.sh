@@ -24,7 +24,6 @@ command -v codex >/dev/null 2>&1 || fail "Codex CLI is not installed or not on P
 
 [[ -d "$GOV_ROOT/.git" ]] || fail "Governance repository not found at $GOV_ROOT."
 [[ -d "$APP_ROOT/.git" ]] || fail "Application repository not found at $APP_ROOT. Expected sibling folder: vantage-platform."
-
 [[ -z "$(git -C "$GOV_ROOT" status --porcelain)" ]] || fail "Governance repository has uncommitted changes. No uncommitted artifact may satisfy a P# gate."
 [[ "$(git -C "$GOV_ROOT" branch --show-current)" == "main" ]] || fail "Governance repository must be on main."
 
@@ -36,7 +35,6 @@ git -C "$GOV_ROOT" pull --ff-only origin main
 
 [[ -f "$CURRENT_STATE" ]] || fail "CURRENT_STATE.md is missing."
 [[ -f "$GATE_FILE" ]] || fail "${P_ID}_EXECUTION_GATE.env is missing. The P# has not passed the commit/audit launch gate."
-
 grep -Fq "Active P#: $P_ID" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
 
 getv() {
@@ -61,17 +59,14 @@ verify_evidence() {
   local file_key="$1"
   local commit_key="$2"
   local file commit current_blob recorded_blob
-
   file="$(require_value "$file_key")"
   commit="$(require_value "$commit_key")"
-
   [[ "$file" != /* && "$file" != *".."* ]] || fail "$file_key contains an unsafe path."
   [[ "$commit" =~ ^[0-9a-f]{7,40}$ ]] || fail "$commit_key is not a Git commit SHA."
   git -C "$GOV_ROOT" cat-file -e "$commit^{commit}" 2>/dev/null || fail "$commit_key does not resolve to a commit."
   git -C "$GOV_ROOT" merge-base --is-ancestor "$commit" origin/main || fail "$commit_key is not committed on authoritative origin/main."
   git -C "$GOV_ROOT" cat-file -e "$commit:$file" 2>/dev/null || fail "$file was not present at recorded commit $commit."
   git -C "$GOV_ROOT" cat-file -e "origin/main:$file" 2>/dev/null || fail "$file is missing from current authoritative origin/main."
-
   recorded_blob="$(git -C "$GOV_ROOT" rev-parse "$commit:$file")"
   current_blob="$(git -C "$GOV_ROOT" rev-parse "origin/main:$file")"
   [[ "$recorded_blob" == "$current_blob" ]] || fail "$file changed after its recorded gate commit. The gate is stale and must be regenerated."
@@ -90,18 +85,23 @@ verify_contains_at_commit() {
 verify_contract_gate() {
   verify_evidence CONTRACT_FILE CONTRACT_COMMIT
   verify_evidence BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT
-  verify_evidence BETTY_AUDIT_FILE BETTY_AUDIT_COMMIT
   verify_evidence APPROVAL_FILE APPROVAL_COMMIT
+  verify_evidence PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT
 
-  require_value BRAD_VERDICT APPROVE_CONTRACT >/dev/null
-  require_value BETTY_VERDICT PASS >/dev/null
+  BRAD_VERDICT="$(require_value BRAD_VERDICT)"
+  [[ "$BRAD_VERDICT" == "PASS" || "$BRAD_VERDICT" == "APPROVE_CONTRACT" ]] || fail "BRAD_VERDICT must be PASS or APPROVE_CONTRACT."
   require_value CHRIS_APPROVAL APPROVED >/dev/null
+  require_value PRE_EXECUTION_AUDIT_VERDICT PASS >/dev/null
 
-  verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: APPROVE CONTRACT"
-  verify_contains_at_commit BETTY_AUDIT_FILE BETTY_AUDIT_COMMIT "Verdict: PASS"
-  verify_contains_at_commit BETTY_AUDIT_FILE BETTY_AUDIT_COMMIT "Unresolved CRITICAL: 0"
-  verify_contains_at_commit BETTY_AUDIT_FILE BETTY_AUDIT_COMMIT "Unresolved MAJOR: 0"
+  if [[ "$BRAD_VERDICT" == "PASS" ]]; then
+    verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: PASS"
+  else
+    verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: APPROVE CONTRACT"
+  fi
   verify_contains_at_commit APPROVAL_FILE APPROVAL_COMMIT "Decision: APPROVED"
+  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Verdict: PASS"
+  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Unresolved CRITICAL: 0"
+  verify_contains_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "Unresolved MAJOR: 0"
 }
 
 verify_build_gate() {
@@ -148,21 +148,11 @@ MANIFEST_P="$(require_value P_ID)"
 AUTHORIZED_STAGE="$(require_value AUTHORIZED_STAGE)"
 
 case "$AUTHORIZED_STAGE" in
-  DIAGNOSTIC_TRUTH)
-    verify_contract_gate
-    ;;
-  BOUNDED_BUILD)
-    verify_build_gate
-    ;;
-  OUTCOME_REVIEW)
-    verify_outcome_review_gate
-    ;;
-  CLOSURE)
-    verify_closure_gate
-    ;;
-  *)
-    fail "Unsupported AUTHORIZED_STAGE '$AUTHORIZED_STAGE'. The governance must explicitly define the stage before execution."
-    ;;
+  DIAGNOSTIC_TRUTH) verify_contract_gate ;;
+  BOUNDED_BUILD) verify_build_gate ;;
+  OUTCOME_REVIEW) verify_outcome_review_gate ;;
+  CLOSURE) verify_closure_gate ;;
+  *) fail "Unsupported AUTHORIZED_STAGE '$AUTHORIZED_STAGE'. The governance must explicitly define the stage before execution." ;;
 esac
 
 APP_BRANCH="$(require_value APPLICATION_BRANCH)"
@@ -195,11 +185,11 @@ Read first:
 2. prysm-project-context/PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md
 3. prysm-project-context/PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md
 4. prysm-project-context/${P_ID}_EXECUTION_GATE.env
-5. every contract, review, audit, approval, proof, and authorization file named by that gate manifest for the authorized stage.
+5. every contract, review, independent pre-execution audit, approval, proof, and authorization file named by that gate manifest for the authorized stage.
 
-Independently verify that the required reviews/audits actually address their mandated questions, their recorded verdicts match their contents, zero unresolved CRITICAL/MAJOR findings remain where required, CURRENT_STATE.md agrees with the manifest, and $AUTHORIZED_STAGE is the exact next authorized stage.
+Independently verify that the required evidence actually addresses its mandated questions, recorded verdicts match contents, zero unresolved CRITICAL/MAJOR findings remain where required, CURRENT_STATE.md agrees with the manifest, and $AUTHORIZED_STAGE is the exact next authorized stage.
 
-If any process prerequisite is missing, weak, contradictory, stale, or not actually audited, return:
+If any prerequisite is missing, weak, contradictory, stale, or not actually audited, return:
 PRYSM PROCESS GATE FAIL
 and explain only the blocking governance defect. Then STOP. Do not diagnose, code, test the application, or advance.
 
@@ -209,7 +199,7 @@ then perform ONLY the authorized stage: $AUTHORIZED_STAGE.
 
 Hard boundaries remain active: no unauthorized paid/live provider or model calls, no merge/deploy/production change, no destructive reset/clean/discard, no force push, no P# advancement, and no stage advancement beyond the exact authorization in the manifest.
 
-For DIAGNOSTIC_TRUTH specifically: read-only diagnosis only; no production-code edits.
+For DIAGNOSTIC_TRUTH specifically: read-only diagnosis only; no production-code edits. Produce the material P# lineage map and branch/scenario inventory required by the Outcome Contract where applicable.
 For BOUNDED_BUILD: change only the committed bounded repair authorization.
 For OUTCOME_REVIEW: prepare/review the exact frozen client-visible outcome evidence only within the committed proof plan.
 For CLOSURE: evaluate committed closure evidence only; do not begin the next P#.
