@@ -25,8 +25,8 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - Repair authorization commit: `94dce9af240871faffcdb4846a1e5b22c52122b9`
 - `P1_EXECUTION_GATE.env`: `AUTHORIZED_STAGE=BOUNDED_BUILD`
 - Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
-- Current-session launcher: `tools/prysm/start-prysm-p-current-session.sh`
-- Current-session launcher commit: `7e27961c130637b6145b3883bc2bfc6d7fdcf2f0`
+- Windows PowerShell launcher: `tools/prysm/start-prysm-p.ps1`
+- PowerShell launcher commit: `13988cf3ebab7d163420235f685061119ad10462`
 
 ## Current stage
 
@@ -59,16 +59,21 @@ This does not block the authorized `BOUNDED_BUILD`. Paid/live model execution re
 
 ## Exact next action
 
-The active environment is already a Codex session. Do not launch Codex inside Codex again.
+The official Windows launch path is now PowerShell from the `prysm-project-context` repository root:
 
-First synchronize governance, then run the committed current-session wrapper:
-
-```bash
-git -C prysm-project-context pull --ff-only origin main
-bash prysm-project-context/tools/prysm/start-prysm-p-current-session.sh P1
+```powershell
+.\tools\prysm\start-prysm-p.ps1 P1
 ```
 
-The wrapper delegates to the unchanged governed machine gate command `bash tools/prysm/start-prysm-p.sh P1`, but intercepts only its final Codex-spawn handoff. After the machine gate passes, the existing Codex session must continue directly with the emitted governed handoff prompt rather than starting a nested Codex process.
+The PowerShell wrapper deterministically discovers the installed Codex CLI from PowerShell, passes its exact npm shim directory into Git for Windows Bash, then invokes the unchanged governed machine gate internally.
+
+Internal governed machine-gate command retained for gate verification:
+
+```bash
+bash tools/prysm/start-prysm-p.sh P1
+```
+
+Do not manually patch PATH and do not launch this from an existing Codex prompt. Run the PowerShell wrapper directly at the VS Code `PS ...>` terminal prompt.
 
 The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
 
