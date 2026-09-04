@@ -75,7 +75,11 @@ git -C "$GOV_ROOT" pull --ff-only origin main
 
 [[ -f "$CURRENT_STATE" ]] || fail "CURRENT_STATE.md is missing."
 [[ -f "$GATE_FILE" ]] || fail "${P_ID}_EXECUTION_GATE.env is missing. The P# has not passed the commit/audit launch gate."
-grep -Fq "Active P#: $P_ID" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
+# CURRENT_STATE may carry the governed P# as plain text or as a backticked
+# descriptive label such as: - Active P#: `P1 — Cross-Report Contradiction Integrity`
+# Require an anchored Active P# line and an exact P-ID token boundary so P1
+# cannot accidentally match P10.
+grep -Eq "^(- )?Active P#: \`?${P_ID}(\`|[[:space:]])" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
 
 getv() {
   local key="$1"
