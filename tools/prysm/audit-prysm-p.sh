@@ -37,7 +37,7 @@ AUDIT_BASE_GOV_SHA="$(git -C "$GOV_ROOT" rev-parse HEAD)"
 [[ -f "$CURRENT_STATE" ]] || fail "CURRENT_STATE.md is missing."
 grep -Fq "Active P#: $P_ID" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
 grep -Fxq -- '- Current stage: INDEPENDENT PRE-EXECUTION AUDIT' "$CURRENT_STATE" || fail "CURRENT_STATE.md does not authorize INDEPENDENT PRE-EXECUTION AUDIT as the current stage."
-grep -Fq '`bash tools/prysm/audit-prysm-p.sh P1`' "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the independent P1 audit as the exact next action."
+grep -Fq "`bash tools/prysm/audit-prysm-p.sh $P_ID`" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the independent $P_ID audit as the exact next action."
 
 [[ -f "$PRE_AUDIT_GATE" ]] || fail "${P_ID}_PRE_EXECUTION_AUDIT_GATE.env is missing. Exact evidence binding has not been committed."
 
@@ -85,6 +85,33 @@ verify_line() {
   file="$(require_gate_value "$file_key")"
   commit="$(require_gate_value "$commit_key")"
   git -C "$GOV_ROOT" show "$commit:$file" | grep -Fxq "$line" || fail "$file lacks required committed line: $line"
+}
+
+parse_unique_audit_result_file() {
+  local file="$1"
+  local verdict_count critical_count major_count verdict critical major
+
+  verdict_count="$(grep -Ec '^Verdict: (PASS|FAIL)$' "$file" || true)"
+  critical_count="$(grep -Ec '^Unresolved CRITICAL: [0-9]+$' "$file" || true)"
+  major_count="$(grep -Ec '^Unresolved MAJOR: [0-9]+$' "$file" || true)"
+
+  [[ "$verdict_count" == "1" ]] || fail "Audit artifact must contain exactly one Verdict: PASS|FAIL line; found $verdict_count."
+  [[ "$critical_count" == "1" ]] || fail "Audit artifact must contain exactly one Unresolved CRITICAL count; found $critical_count."
+  [[ "$major_count" == "1" ]] || fail "Audit artifact must contain exactly one Unresolved MAJOR count; found $major_count."
+
+  verdict="$(grep -E '^Verdict: (PASS|FAIL)$' "$file" | cut -d' ' -f2)"
+  critical="$(grep -E '^Unresolved CRITICAL: [0-9]+$' "$file" | awk '{print $3}')"
+  major="$(grep -E '^Unresolved MAJOR: [0-9]+$' "$file" | awk '{print $3}')"
+
+  if [[ "$critical" == "0" && "$major" == "0" ]]; then
+    [[ "$verdict" == "PASS" ]] || fail "Audit artifact has zero unresolved CRITICAL/MAJOR but Verdict is $verdict; expected PASS."
+  else
+    [[ "$verdict" == "FAIL" ]] || fail "Audit artifact has unresolved CRITICAL/MAJOR findings but Verdict is $verdict; expected FAIL."
+  fi
+
+  AUDIT_RESULT_VERDICT="$verdict"
+  AUDIT_RESULT_CRITICAL="$critical"
+  AUDIT_RESULT_MAJOR="$major"
 }
 
 MANIFEST_P="$(require_gate_value P_ID)"
@@ -160,7 +187,7 @@ Governance HEAD being audited: $AUDIT_BASE_GOV_SHA
 Frozen application SHA: $APP_SHA
 Pre-audit evidence manifest: ${P_ID}_PRE_EXECUTION_AUDIT_GATE.env
 
-The launcher has machine-verified exact evidence files, exact commits/blobs, required content, and sequencing. Independently verify those claims rather than trusting the launcher.
+The launcher has machine-verified exact evidence files, exact commits/blobs, required content, sequencing, and unique prior result lines. Independently verify those claims rather than trusting the launcher.
 
 Read first:
 1. prysm-project-context/CURRENT_STATE.md
@@ -175,14 +202,15 @@ Read first:
 10. all other committed P1 evidence materially relevant to these gates.
 
 AUDIT PURPOSE
-Determine whether the two blocking findings from the prior audit are actually closed and whether the corrected package is safe to become the authority for later read-only DIAGNOSTIC_TRUTH.
+Determine whether the blocking findings from the prior audit are actually closed and whether the corrected package is safe to become the authority for later read-only DIAGNOSTIC_TRUTH.
 
 Required attacks:
 - exact evidence binding, commit/blob freshness, ancestry, and sequencing;
+- unique, internally consistent audit verdict/count validation at publication and later execution;
 - whether approval evidence proves the specific historical P1 attestation it claims without fabricating a new Betty review;
 - whether Brad's committed PASS is bound to the dispositions and reviewed governance base;
-- whether CURRENT_STATE.md and the Outcome Contract now agree that Brad preservation review is complete and a fresh independent audit is the sole next stage;
-- whether the audit launcher fails closed unless that stage is explicitly authorized;
+- whether CURRENT_STATE.md and the Outcome Contract agree that Brad preservation review is complete and a fresh independent audit is the sole current stage;
+- whether both the audit launcher and later execution launcher fail closed unless durable state explicitly authorizes the exact stage before Codex starts;
 - whether changes after Brad's reviewed governance HEAD materially alter the P1 outcome/proof package. Gate/status/launcher/manifest corrections are non-material only if they do not change the client/business outcome or proof obligations Brad reviewed;
 - whether M-03/M-04 remain closed and MVP-bounded;
 - any remaining process path that could produce a false PASS.
@@ -213,7 +241,7 @@ It must also contain:
 - Verdict: PASS or Verdict: FAIL;
 - exact next action.
 
-PASS is allowed only if Unresolved CRITICAL: 0 and Unresolved MAJOR: 0 and no material process gap remains that could let P1 advance without proving its original client/business outcome.
+There must be exactly one Verdict line and exactly one unresolved count line for each required severity. PASS is allowed if and only if Unresolved CRITICAL: 0 and Unresolved MAJOR: 0 and no material process gap remains that could let P1 advance without proving its original client/business outcome.
 
 Do not commit or push anything yourself. The governed launcher will validate and publish the exact audit evidence after you stop.
 
@@ -240,9 +268,7 @@ grep -Fxq "P#: $P_ID" "$AUDIT_PATH" || fail "Audit artifact does not identify ex
 grep -Fxq "Outcome Contract: $CONTRACT_REL" "$AUDIT_PATH" || fail "Audit artifact does not identify exact Outcome Contract."
 grep -Fxq "Governance HEAD audited: $AUDIT_BASE_GOV_SHA" "$AUDIT_PATH" || fail "Audit artifact does not record exact governance HEAD audited."
 grep -Fxq "Frozen application SHA: $APP_SHA" "$AUDIT_PATH" || fail "Audit artifact does not record exact frozen application SHA."
-grep -Eq '^Unresolved CRITICAL: [0-9]+$' "$AUDIT_PATH" || fail "Audit artifact lacks valid Unresolved CRITICAL count."
-grep -Eq '^Unresolved MAJOR: [0-9]+$' "$AUDIT_PATH" || fail "Audit artifact lacks valid Unresolved MAJOR count."
-grep -Eq '^Verdict: (PASS|FAIL)$' "$AUDIT_PATH" || fail "Audit artifact lacks exact PASS/FAIL verdict."
+parse_unique_audit_result_file "$AUDIT_PATH"
 
 STATUS_OUTPUT="$(git -C "$GOV_ROOT" status --porcelain)"
 [[ -n "$STATUS_OUTPUT" ]] || fail "No governance change exists after Codex audit."
@@ -266,9 +292,9 @@ git -C "$GOV_ROOT" fetch origin main
 [[ "$(git -C "$GOV_ROOT" rev-parse origin/main)" == "$AUDIT_COMMIT" ]] || fail "Push returned but origin/main does not equal audit commit $AUDIT_COMMIT."
 [[ -z "$(git -C "$GOV_ROOT" status --porcelain)" ]] || fail "Governance tree is not clean after audit evidence push."
 
-VERDICT="$(grep -E '^Verdict: (PASS|FAIL)$' "$AUDIT_PATH" | head -n 1 | cut -d' ' -f2)"
-CRITICAL="$(grep -E '^Unresolved CRITICAL: [0-9]+$' "$AUDIT_PATH" | head -n 1 | awk '{print $3}')"
-MAJOR="$(grep -E '^Unresolved MAJOR: [0-9]+$' "$AUDIT_PATH" | head -n 1 | awk '{print $3}')"
+VERDICT="$AUDIT_RESULT_VERDICT"
+CRITICAL="$AUDIT_RESULT_CRITICAL"
+MAJOR="$AUDIT_RESULT_MAJOR"
 
 echo
 echo "PRYSM AUDIT EVIDENCE PUBLISHED"
