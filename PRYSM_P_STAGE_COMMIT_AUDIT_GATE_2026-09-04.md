@@ -12,7 +12,7 @@ Every material stage transition must be backed by committed, auditable evidence 
 
 The operating rule is:
 
-`CREATE OUTCOME -> BRAD REVIEW -> BETTY PROCESS/BLIND-SPOT AUDIT -> IMPROVE -> CHRIS APPROVAL -> COMMIT -> VERIFY COMMIT + AUDITS -> RUN AUTHORIZED P# STAGE`
+`CREATE OUTCOME -> INDEPENDENT REVIEW/APPROVAL -> COMMIT -> PRE-EXECUTION AUDIT -> DISPOSITION MATERIAL FINDINGS -> INDEPENDENT PRESERVATION REVIEW -> RERUN AUDIT UNTIL ZERO MATERIAL BLOCKERS -> EXECUTION GATE -> RUN AUTHORIZED P# STAGE`
 
 This rule is additive to `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`.
 
@@ -20,7 +20,7 @@ This rule is additive to `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`.
 
 No governed P# execution may start unless the launcher proves all prerequisites for the authorized stage are durably committed on `origin/main`.
 
-Local files, chat text, terminal output, an uncommitted audit, or a claimed PASS are not sufficient.
+Local files, chat text, terminal output, an uncommitted audit, or a claimed PASS are not sufficient for a new stage transition.
 
 A required review/audit counts only when:
 
@@ -40,14 +40,32 @@ Before the first P# execution stage (`DIAGNOSTIC_TRUTH`) may run, the following 
 
 1. Chris creates the P# Outcome Contract.
 2. Brad independently reviews the contract.
-3. Any material Brad finding is dispositioned and the contract is revised.
-4. Betty performs an adversarial contract/process audit focused on false-PASS seams, narrowed acceptance criteria, hidden dependencies, and missing client-visible proof.
-5. Zero unresolved CRITICAL/MAJOR contract-stage findings remain.
-6. Chris explicitly approves the frozen contract.
-7. The approved contract, Brad review, Betty audit, Chris approval state, and `CURRENT_STATE.md` are committed to GitHub.
-8. The write is verified.
-9. A P# execution-gate manifest records the exact evidence files, exact evidence commits, authorized stage, exact application branch, and exact application SHA.
-10. Only then may the generic governed launcher enter `DIAGNOSTIC_TRUTH`.
+3. Any material review finding is dispositioned and the contract is revised.
+4. Required human/adversarial approval occurs.
+5. The contract, review, and approval evidence are committed and verified.
+6. A separate independent pre-execution process audit challenges the committed package for false-PASS seams, narrowed acceptance criteria, hidden dependencies, missing client-visible proof, provenance gaps, and contradictory governance state.
+7. Every CRITICAL/MAJOR finding is explicitly dispositioned as `ACCEPT`, `REJECT WITH EVIDENCE`, or `DEFER AS NON-MATERIAL`.
+8. Accepted findings are actually resolved in the governed package.
+9. Brad checks that the dispositions/amendments still preserve the approved P# outcome and do not create unnecessary scope expansion.
+10. The independent pre-execution audit is rerun against the new exact governance HEAD.
+11. The rerun must report `Verdict: PASS`, `Unresolved CRITICAL: 0`, and `Unresolved MAJOR: 0`.
+12. All evidence is committed and verified on authoritative `origin/main`.
+13. A P# execution-gate manifest records the exact evidence files, exact evidence commits, authorized stage, exact application branch, and exact application SHA.
+14. Only then may the generic governed launcher enter `DIAGNOSTIC_TRUTH`.
+
+## P1 historical-approval transition rule
+
+P1 entered this strengthened process after Betty/Chris approval had already occurred in chat but before standalone durable approval artifacts were required.
+
+For P1 only, Chris may memorialize that historical fact through an explicit owner attestation that:
+- states the prior approval occurred;
+- does not fabricate a new Betty review;
+- does not claim later audit-driven amendments were reviewed by Betty unless they actually were;
+- is followed by Brad preservation review and a fresh independent pre-execution audit before diagnosis.
+
+This is a one-time transition accommodation for truthful historical state. It is not a precedent for future P# approvals.
+
+For P2 and later, required approval/review evidence must be durably recorded as part of the stage in which it occurs. Chat-only approval cannot satisfy a future stage gate.
 
 ## Continuous stage auditing
 
@@ -61,7 +79,7 @@ The generic launcher must be used again for each authorized material stage. The 
 
 Examples:
 
-- before `DIAGNOSTIC_TRUTH`: approved outcome contract + Brad contract review + Betty contract/process audit;
+- before `DIAGNOSTIC_TRUTH`: approved outcome contract + Brad review/preservation review + durable approval evidence + independent pre-execution audit PASS with zero unresolved CRITICAL/MAJOR;
 - before `BOUNDED_BUILD`: committed diagnosis + Betty pre-repair audit + Chris bounded-repair authorization;
 - before final closure review: committed technical/system proof + exact-candidate freeze + product/render artifact provenance;
 - before P# -> next P#: committed Brad outcome review + Betty final audit + Chris closure + verified `CURRENT_STATE.md`.
@@ -84,16 +102,16 @@ AUTHORIZED_STAGE=DIAGNOSTIC_TRUTH
 APPLICATION_BRANCH=main
 APPLICATION_SHA=<exact 40-character application SHA>
 CONTRACT_FILE=P1_OUTCOME_CONTRACT_2026-09-04.md
-CONTRACT_COMMIT=<governance commit containing approved contract>
-BRAD_REVIEW_FILE=P1_BRAD_OUTCOME_CONTRACT_REVIEW_2026-09-04.md
-BRAD_REVIEW_COMMIT=<governance commit containing review>
-BRAD_VERDICT=APPROVE_CONTRACT
-BETTY_AUDIT_FILE=P1_BETTY_OUTCOME_CONTRACT_AUDIT_2026-09-04.md
-BETTY_AUDIT_COMMIT=<governance commit containing audit>
-BETTY_VERDICT=PASS
-APPROVAL_FILE=P1_CHRIS_OUTCOME_APPROVAL_2026-09-04.md
-APPROVAL_COMMIT=<governance commit containing Chris approval>
+CONTRACT_COMMIT=<governance commit containing current contract>
+BRAD_REVIEW_FILE=P1_BRAD_DISPOSITION_REVIEW_2026-09-04_HHMMSS.md
+BRAD_REVIEW_COMMIT=<governance commit containing current Brad review>
+BRAD_VERDICT=PASS
+APPROVAL_FILE=P1_APPROVAL_ATTESTATION_2026-09-04.md
+APPROVAL_COMMIT=<governance commit containing valid approval evidence>
 CHRIS_APPROVAL=APPROVED
+PRE_EXECUTION_AUDIT_FILE=P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_HHMMSS.md
+PRE_EXECUTION_AUDIT_COMMIT=<governance commit containing fresh independent audit>
+PRE_EXECUTION_AUDIT_VERDICT=PASS
 ```
 
 Later stages add the stage-specific evidence fields defined by `tools/prysm/P_EXECUTION_GATE_TEMPLATE.env`. The launcher and Codex must fail closed if the manifest does not prove the prerequisites for the requested stage.
@@ -105,6 +123,7 @@ At startup Codex must not merely trust the gate manifest. It must read the commi
 - the required reviews actually address their mandated questions;
 - the recorded verdict matches the evidence content;
 - no unresolved CRITICAL/MAJOR issue is hidden by the manifest;
+- accepted findings were actually resolved rather than relabeled;
 - `CURRENT_STATE.md` and the manifest do not contradict each other;
 - the stage being launched is the exact next authorized stage.
 
