@@ -40,12 +40,26 @@ CONTRACT_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_OUTCOME_CON
 [[ -n "$CONTRACT_FILE" ]] || fail "No ${P_ID} Outcome Contract is committed in the governance repository."
 CONTRACT_REL="$(basename "$CONTRACT_FILE")"
 git -C "$GOV_ROOT" cat-file -e "origin/main:$CONTRACT_REL" 2>/dev/null || fail "$CONTRACT_REL is not committed on authoritative origin/main."
+! grep -Eq '^Status: DRAFT' "$CONTRACT_FILE" || fail "$CONTRACT_REL is still marked DRAFT."
 
-BRAD_REVIEW_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_BRAD_OUTCOME_CONTRACT_REVIEW*.md" | sort | tail -n 1)"
-[[ -n "$BRAD_REVIEW_FILE" ]] || fail "No committed Brad Outcome Contract review was found for $P_ID."
+BRAD_REVIEW_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f \( -name "${P_ID}_BRAD_OUTCOME_CONTRACT_REVIEW*.md" -o -name "${P_ID}_BRAD_DISPOSITION_REVIEW*.md" \) | sort | tail -n 1)"
+[[ -n "$BRAD_REVIEW_FILE" ]] || fail "No committed Brad approval/preservation review was found for $P_ID."
 BRAD_REVIEW_REL="$(basename "$BRAD_REVIEW_FILE")"
 git -C "$GOV_ROOT" cat-file -e "origin/main:$BRAD_REVIEW_REL" 2>/dev/null || fail "$BRAD_REVIEW_REL is not committed on authoritative origin/main."
-grep -Eq '^Verdict: (APPROVE CONTRACT|APPROVE_CONTRACT)$' "$BRAD_REVIEW_FILE" || fail "Latest Brad review does not record APPROVE CONTRACT."
+grep -Eq '^Verdict: (APPROVE CONTRACT|APPROVE_CONTRACT|PASS)$' "$BRAD_REVIEW_FILE" || fail "Latest Brad review does not record an approving verdict."
+
+APPROVAL_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_APPROVAL_ATTESTATION_*.md" | sort | tail -n 1)"
+[[ -n "$APPROVAL_FILE" ]] || fail "No durable ${P_ID} approval attestation was found. The audit launcher will not rely on chat-only approval."
+APPROVAL_REL="$(basename "$APPROVAL_FILE")"
+git -C "$GOV_ROOT" cat-file -e "origin/main:$APPROVAL_REL" 2>/dev/null || fail "$APPROVAL_REL is not committed on authoritative origin/main."
+grep -Fxq 'Decision: APPROVED' "$APPROVAL_FILE" || fail "$APPROVAL_REL does not contain Decision: APPROVED."
+
+DISPOSITION_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_PRE_EXECUTION_AUDIT_DISPOSITIONS_*.md" | sort | tail -n 1 || true)"
+DISPOSITION_REL=""
+if [[ -n "$DISPOSITION_FILE" ]]; then
+  DISPOSITION_REL="$(basename "$DISPOSITION_FILE")"
+  git -C "$GOV_ROOT" cat-file -e "origin/main:$DISPOSITION_REL" 2>/dev/null || fail "$DISPOSITION_REL is not committed on authoritative origin/main."
+fi
 
 APP_SHA="$(grep -Eo '[0-9a-f]{40}' "$CONTRACT_FILE" | head -n 1 || true)"
 [[ "$APP_SHA" =~ ^[0-9a-f]{40}$ ]] || fail "Could not recover the exact application SHA from the Outcome Contract."
@@ -61,7 +75,7 @@ AUDIT_PATH="$GOV_ROOT/$AUDIT_FILE"
 PROMPT=$(cat <<EOF
 You are the independent pre-execution Auditor for PRYSM $P_ID.
 
-This is NOT the Betty approval step. Betty/Brad contract evaluation is already complete. Your task is a separate audit of the approved $P_ID package and the governance process before any diagnosis or application execution may begin.
+Your task is a separate audit of the currently committed $P_ID governance package before any diagnosis or application execution may begin.
 
 Authoritative governance repository: prysm-project-context
 Application repository: vantage-platform
@@ -69,28 +83,41 @@ Active P#: $P_ID
 Governance HEAD being audited: $AUDIT_BASE_GOV_SHA
 Frozen application SHA from the Outcome Contract: $APP_SHA
 
+The launcher has machine-verified that committed approval evidence exists. Do not trust that fact blindly; independently inspect the evidence content and sequencing.
+
 Read first:
 1. prysm-project-context/CURRENT_STATE.md
 2. prysm-project-context/PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md
 3. prysm-project-context/PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md
 4. prysm-project-context/$CONTRACT_REL
 5. prysm-project-context/$BRAD_REVIEW_REL
-6. all other committed $P_ID Outcome Contract review/approval evidence that is materially relevant.
+6. prysm-project-context/$APPROVAL_REL
+EOF
+)
+
+if [[ -n "$DISPOSITION_REL" ]]; then
+  PROMPT+=$'\n7. prysm-project-context/'"$DISPOSITION_REL"$'\n'
+fi
+
+PROMPT+=$(cat <<EOF
+
+Also inspect all other committed $P_ID review/audit/approval evidence that is materially relevant.
 
 AUDIT PURPOSE
-Independently determine whether the approved $P_ID package is safe and complete enough to be frozen as the authority for the later governed $P_ID execution cycle.
+Independently determine whether the current $P_ID package is safe and complete enough to become the authority for the later governed $P_ID execution cycle.
 
 Required audit attacks:
 - original goal drift or narrowing;
 - acceptance criteria that can PASS while the client/business outcome remains unmet;
 - missing client-visible/product proof requirements;
-- contradictions between Outcome Contract, CURRENT_STATE, review evidence, and governing protocol;
-- missing or stale approval evidence;
+- contradictions between Outcome Contract, CURRENT_STATE, review evidence, approval evidence, dispositions, and governing protocol;
+- missing, stale, or misrepresented approval evidence;
 - hidden dependencies;
 - wrong application baseline or provenance assumptions;
 - producer/persistence/consumer/render seams that the later diagnosis/proof plan must explicitly cover;
-- any way the process could claim the required review/audit happened when durable evidence does not support that claim;
-- any way a later technical PASS could still create a false product PASS.
+- any way the process could claim a required review/audit/approval happened when durable evidence does not support that claim;
+- any way a later technical PASS could still create a false product PASS;
+- whether accepted audit findings were actually closed rather than merely relabeled.
 
 Do NOT diagnose application code or root cause.
 Do NOT edit application code.
@@ -129,6 +156,7 @@ echo
 echo "PRYSM $P_ID pre-execution audit ready."
 echo "Outcome Contract: $CONTRACT_REL"
 echo "Brad review: $BRAD_REVIEW_REL"
+echo "Approval evidence: $APPROVAL_REL"
 echo "Governance HEAD audited: $AUDIT_BASE_GOV_SHA"
 echo "Frozen application SHA: $APP_SHA"
 echo "Audit artifact target: $AUDIT_FILE"
