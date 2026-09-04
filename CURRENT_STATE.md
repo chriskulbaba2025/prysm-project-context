@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Reach a client-ready PRYSM MVP as quickly as possible without creating foreseeable rework or allowing technical/process false PASS. P1 remains the only active P#.
+Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework or technical/process false PASS. P1 remains the only active P#.
 
 Verified checkpoint:
 - Application production/main baseline: `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
@@ -20,7 +20,8 @@ Verified checkpoint:
   - `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_134432.md`: FAIL, 0 CRITICAL / 2 MAJOR.
   - `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_140031.md`, commit `6df31875570ddac4d00808c27178491bf660778c`: PASS, 0 CRITICAL / 0 MAJOR.
 - The final PASS audit confirms the governance-only launcher corrections did not alter the P1 client/business outcome or proof obligations Brad reviewed.
-- `P1_EXECUTION_GATE.env` is now committed and authorizes read-only `DIAGNOSTIC_TRUTH` only.
+- `P1_EXECUTION_GATE.env` is committed and authorizes read-only `DIAGNOSTIC_TRUTH` only.
+- In-progress handoff: `HANDOFF_PRYSM_P1_DIAGNOSTIC_TRUTH_IN_PROGRESS_2026-09-04.md`.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -45,10 +46,14 @@ Completed:
 - Hard execution-launch binding to exact durable authorized stage before Codex starts.
 - Final independent pre-execution audit PASS with 0 CRITICAL / 0 MAJOR.
 - P1 execution gate created for read-only `DIAGNOSTIC_TRUTH`.
+- Windows shell compatibility hardened with LF enforcement for governed `.sh` launchers and Git-for-Windows Bash invocation where plain `bash` resolves to WSL.
 
 In progress:
-- Read-only P1 diagnosis of the actual application/report path.
-- Required diagnostic outputs are limited to the material P1 scope in the Outcome Contract: conclusion/consumer/render inventory; producer-to-renderer lineage map; branch-to-scenario matrix; bypass/fallback/cache/replay path identification; and later artifact-provenance requirements.
+- Read-only P1 diagnosis of the actual application/report path through the governed launcher.
+- Chris's first launch attempt correctly failed closed because the local application repo was on `repair/prysm-van-schema-mixed-status` instead of `main`.
+- After local branch correction, the launcher reached Codex command authorization for the governed authoritative GitHub fetch. This is operator progress only, not diagnostic completion evidence.
+- No completed diagnostic artifact is yet committed to this governance repository.
+- Required diagnostic outputs remain limited to material P1 scope: conclusion/consumer/render inventory; producer-to-renderer lineage map; branch-to-scenario matrix; bypass/fallback/cache/replay path identification; later artifact-provenance requirements; and determination whether the remaining gap is code, render/proof, both, or already satisfied.
 
 Blocked:
 - No production-code edit is authorized during `DIAGNOSTIC_TRUTH`.
@@ -65,19 +70,22 @@ Important constraints:
 - After three failed repair attempts against the same application root cause, stop and reopen diagnosis.
 
 Exact next action:
-From the local `prysm-project-context` repository, synchronize authoritative governance and run the governed P1 execution launcher:
+Allow the currently authorized governed P1 `DIAGNOSTIC_TRUTH` run to complete.
+
+When Codex finishes:
+1. capture the exact diagnostic result;
+2. publish/commit the diagnostic artifact to this governance repository;
+3. verify the diagnosis classification and required P1 inventories/maps;
+4. if no application repair is required, move toward provenance-bound product/render proof under the next governed stage;
+5. if repair is required, do not begin `BOUNDED_BUILD` until Betty pre-repair review is PASS with zero unresolved CRITICAL/MAJOR findings and Chris explicitly authorizes the bounded repair.
+
+For any relaunch from Chris's Windows PowerShell environment, use:
+
+`cd C:\Users\kulba\Desktop\prysm-project-context`
 
 `git pull --ff-only`
 
-then:
-
-`bash tools/prysm/start-prysm-p.sh P1`
-
-For Chris's Windows PowerShell environment, invoke the same launcher through Git for Windows Bash if plain `bash` resolves to WSL:
-
 `& "C:\Program Files\Git\bin\bash.exe" tools/prysm/start-prysm-p.sh P1`
-
-The launcher must perform its machine and semantic process-gate checks first. If they PASS, Codex may perform only read-only `DIAGNOSTIC_TRUTH` and must not edit application production code or advance to a later stage.
 
 Last verified:
 2026-09-04
