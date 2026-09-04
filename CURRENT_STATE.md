@@ -18,6 +18,7 @@ Verified checkpoint:
 - Generic independent pre-execution audit launcher is `tools/prysm/audit-prysm-p.sh`.
 - Generic governed P# execution launcher is `tools/prysm/start-prysm-p.sh`.
 - Hard commit/audit-before-execution rule is `PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md`.
+- Automatic remote preservation of audit evidence is governed by `DECISION_PRYSM_AUDIT_EVIDENCE_AUTOPUBLISH_2026-09-04.md`.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -35,14 +36,18 @@ Completed:
 - Hard rule established that no later P# execution stage may rely on chat text, local files, or claimed PASS alone.
 - Generic audited P# execution launcher created.
 - Generic independent pre-execution audit launcher created.
+- Audit launcher now validates, commits, pushes, and verifies exactly one generated audit evidence file automatically after Codex exits.
+- PASS and FAIL audits are both preserved remotely; the audit evidence commit never authorizes the next stage by itself.
+- Audit launcher fails closed if Codex changes any non-audit file or if authoritative `origin/main` moves while the audit is running.
+- Audit launcher is portable to the default Bash available on Brad's Mac.
 
 In progress:
 - Independent Codex P1 pre-execution process audit of the approved contract package.
 - Audit must challenge original-goal preservation, false-PASS seams, client-visible proof requirements, hidden dependencies, baseline/provenance assumptions, producer/persistence/consumer/render seams, and contradictory governance state.
-- Codex may write only `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04.md` during this stage and must not commit it.
+- Codex may create only the timestamped `P1_PRE_EXECUTION_PROCESS_AUDIT_*.md` artifact. The launcher then validates and publishes that exact evidence file to governance `main` automatically.
 
 Blocked:
-- No P1 read-only diagnosis until the independent pre-execution audit is reviewed, any material finding is resolved, the final contract-stage package is committed and verified, and `P1_EXECUTION_GATE.env` explicitly authorizes `DIAGNOSTIC_TRUTH`.
+- No P1 read-only diagnosis until the remotely published independent pre-execution audit is reviewed, any material finding is resolved, the final contract-stage package is committed and verified, and `P1_EXECUTION_GATE.env` explicitly authorizes `DIAGNOSTIC_TRUTH`.
 - No P1 application-code change until read-only diagnosis is verified, Betty pre-repair blind-spot review has zero unresolved CRITICAL/MAJOR findings, and Chris explicitly authorizes the bounded repair.
 - P2-P10 remain blocked until each preceding P# is CLOSED under the outcome-gated process.
 
@@ -52,6 +57,8 @@ Important constraints:
 - Technical PASS is necessary but not sufficient for product/outcome PASS.
 - Brad evaluation, Betty challenge, independent process audit, and Chris approval are separate controls where required.
 - No uncommitted artifact may satisfy an execution-stage gate.
+- Audit evidence publication is automatic only for the single validated governance audit artifact; it never modifies or pushes the application repository.
+- A PASS audit commit is evidence only and cannot advance the P# without the next explicit governed gate.
 - GitHub durable state must be written and verified before advancement.
 - Existing stored reports are not proof of current renderer behavior unless provenance establishes that exact candidate.
 - Evidence integrity remains controlling: unknown/unavailable/partial evidence must not become unsupported absence/failure/certainty.
@@ -67,7 +74,7 @@ then:
 
 `bash tools/prysm/audit-prysm-p.sh P1`
 
-Codex must perform only the independent P1 pre-execution process audit, write the audit artifact, and STOP. Do not diagnose or edit application code.
+Codex must perform only the independent P1 pre-execution process audit. When Codex exits, the launcher validates the single audit artifact, commits it, pushes it to authoritative governance `main`, verifies the push, prints the audit filename/commit/verdict, and STOPS. Do not diagnose or edit application code.
 
 Last verified:
 2026-09-04
