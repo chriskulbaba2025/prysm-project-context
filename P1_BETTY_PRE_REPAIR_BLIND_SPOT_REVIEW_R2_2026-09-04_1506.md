@@ -59,11 +59,9 @@ No new CRITICAL or MAJOR pre-repair finding was identified within this bounded r
 
 ## Verdict
 
-Verdict: **PASS**
-
-Unresolved CRITICAL: **0**
-
-Unresolved MAJOR: **0**
+Verdict: PASS
+Unresolved CRITICAL: 0
+Unresolved MAJOR: 0
 
 ## Gate consequence
 
