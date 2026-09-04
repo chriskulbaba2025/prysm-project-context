@@ -27,7 +27,7 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
 - Canonical cross-platform governed launcher: `tools/prysm/start-prysm-p.sh`
 - Windows PowerShell entry wrapper: `tools/prysm/start-prysm-p.ps1`
-- PowerShell wrapper commit: `ac373c4d4627f11d1b6b753057c5557981715338`
+- PowerShell wrapper commit: `4dc912ddc5195f0b0e5610562afc0914105e6125`
 
 ## Launcher architecture — cross-platform invariant
 
@@ -47,7 +47,7 @@ Windows / Chris:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
 ```
 
-The PowerShell wrapper resolves the Windows Codex/npm path and then delegates to the canonical Bash launcher.
+The PowerShell wrapper resolves the exact installed Codex directory from PowerShell, prepends it to the inherited PATH, and invokes the canonical Bash launcher directly. It does not use an embedded `bash -c` command string.
 
 macOS / Brad:
 
