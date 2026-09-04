@@ -4,123 +4,67 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework, evidence-integrity failure, or technical/process false PASS. P1 remains the only active P#.
+Complete independent P1 outcome review against the frozen client-visible proof, then proceed through Betty final audit and Chris closure only if Brad PASSes.
 
-## Verified checkpoint
-
-- Application repository: `chriskulbaba2025/vantage-platform`
+Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`
-- Frozen application branch/SHA: `main` / `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
-- Active P#: P1 — Cross-Report Contradiction Integrity
-- P1 Outcome Contract: `P1_OUTCOME_CONTRACT_2026-09-04.md`
-- Read-only P1 diagnosis: COMPLETE
-- Diagnostic classification: `VERIFIED_DESIGN_GAP`
-- Betty Round 1: FAIL / 0 unresolved CRITICAL / 1 unresolved MAJOR
-- `P1-BETTY-M01`: ACCEPTED by Chris
-- Amended boundary disposition: `P1_BETTY_PRE_REPAIR_DISPOSITION_2026-09-04_1502.md`
-- Betty Round 2: `P1_BETTY_PRE_REPAIR_BLIND_SPOT_REVIEW_R2_2026-09-04_1506.md`
-- Betty Round 2 commit: `de41cab2a56848d38d579bb9ef365e5c4efdd39f`
-- Betty Round 2 verdict: PASS / 0 unresolved CRITICAL / 0 unresolved MAJOR
-- Chris bounded repair authorization: `P1_BOUNDED_REPAIR_AUTHORIZATION_2026-09-04_1508.md`
-- Repair authorization commit: `94dce9af240871faffcdb4846a1e5b22c52122b9`
-- `P1_EXECUTION_GATE.env`: `AUTHORIZED_STAGE=BOUNDED_BUILD`
-- Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
-- Canonical cross-platform governed launcher: `tools/prysm/start-prysm-p.sh`
-- Windows PowerShell entry wrapper: `tools/prysm/start-prysm-p.ps1`
-- PowerShell wrapper commit: `4dc912ddc5195f0b0e5610562afc0914105e6125`
+- Application repository: `chriskulbaba2025/vantage-platform`
+- Active P#: `P1 — Cross-Report Contradiction Integrity`
+- Authorized stage: `OUTCOME_REVIEW`
+- Frozen application candidate branch: `p1/bounded-build-cross-report-integrity`
+- Frozen application candidate SHA: `de509c30c808115f22fda3688a18dfaa85e9db50`
+- Candidate branch is published on GitHub.
+- P1 bounded build: COMPLETE.
+- Deterministic verification: 77/77 PASS.
+- Viewer v2 rendered freeze matrix: 48/48 PASS.
+- Governance proof/freeze package: `0645bf82a8cf261a4b2767d2e546a4f9be24bc2b`.
+- `P1_EXECUTION_GATE.env` is now bound to the frozen candidate branch/SHA for `OUTCOME_REVIEW`.
+- Brad is the next reviewer.
 
-## Launcher architecture — cross-platform invariant
+Current environment / branch / version:
+- Candidate application: `p1/bounded-build-cross-report-integrity` @ `de509c30c808115f22fda3688a18dfaa85e9db50`.
+- Governance: `main`.
+- Viewer v2.2.0 remains the governed report contract.
 
-PRYSM has one governed launcher and must not fork governance by operating system.
+Completed:
+- P1 Outcome Contract approved.
+- Diagnostic truth completed as `VERIFIED_DESIGN_GAP`.
+- Betty pre-repair blind-spot review closed PASS / 0 CRITICAL / 0 MAJOR after accepted M01 boundary amendment.
+- Chris bounded repair authorization committed.
+- Bounded repair completed: independent CTA vs conversion-path semantics, point-of-reading explanation, governed trust/mobile/indexability consumption, and Narrative v2 semantic-authority handoff.
+- Render changes were reviewed and re-frozen only where authorized.
+- Application candidate and governance proof package were committed and pushed.
 
-Canonical machine/process gate for Windows, macOS, and Linux:
+In progress:
+- Brad independent P1 Outcome Review.
+
+Blocked:
+- No current technical blocker.
+- P1 cannot close or advance until Brad review, Betty final adversarial audit, and explicit Chris closure are completed.
+
+Important constraints:
+- No application `main` merge.
+- No deployment or production configuration change.
+- No fresh live/paid audit or provider/model call.
+- No destructive reset/clean/discard or force push.
+- No P2 work before P1 closure.
+- Brad reviews only; he does not code or repair during OUTCOME_REVIEW.
+- `PRYSM_MODEL_BEARING_RELEASE_GATE.md` remains applicable to later release closure because Narrative v2 semantics were touched.
+
+Terminal launcher contract:
+- There is one canonical governed launcher: `tools/prysm/start-prysm-p.sh`.
+- Chris / Windows: use a normal VS Code **PowerShell terminal**, not an existing Codex prompt. From `prysm-project-context`, run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1`. The PowerShell wrapper only resolves Windows Codex/PATH mechanics and delegates to the canonical Bash gate.
+- Brad / macOS: use the normal VS Code integrated Terminal. From `prysm-project-context`, run `bash tools/prysm/start-prysm-p.sh P1` directly. No PowerShell or Windows path logic applies on Mac.
+- Do not manually patch PATH, do not invoke the launcher from inside an already-running Codex prompt, and do not create alternate OS-specific governance logic.
+
+Exact next action:
+Brad, on his Mac in the normal VS Code terminal, must synchronize both repositories to authoritative GitHub state, check out the frozen application candidate `p1/bounded-build-cross-report-integrity` at `de509c30c808115f22fda3688a18dfaa85e9db50`, then from the governance repository run exactly:
 
 ```bash
 bash tools/prysm/start-prysm-p.sh P1
 ```
 
-Operating-system entry wrappers may solve shell/path mechanics only. They must delegate to the same canonical Bash launcher and may not duplicate, weaken, replace, or independently reinterpret the governance gate.
-
-Windows / Chris:
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
-```
-
-The PowerShell wrapper resolves the exact installed Codex directory from PowerShell, prepends it to the inherited PATH, and invokes the canonical Bash launcher directly. It does not use an embedded `bash -c` command string.
-
-macOS / Brad:
-
-```bash
-bash tools/prysm/start-prysm-p.sh P1
-```
-
-Brad's Mac uses the canonical Bash launcher directly, assuming `git`, `bash`, and `codex` are installed and available on PATH. No Windows-specific path or PowerShell dependency may be introduced into the canonical Bash gate.
-
-## Current stage
-
-- Current stage: OUTCOME_REVIEW
-- Authorized execution stage: OUTCOME_REVIEW
-- Diagnostic status: COMPLETE
-- Betty pre-repair gate: PASS / 0 / 0
-- Chris repair authorization: APPROVED
-- BOUNDED_BUILD: COMPLETE / deterministic proof PASS
-- Application repair branch: `p1/bounded-build-cross-report-integrity`
-- Application repair candidate: `de509c30c808115f22fda3688a18dfaa85e9db50`
-
-## Authorized bounded repair
-
-The Builder is authorized to implement only these five causally linked P1 obligations:
-
-1. make CTA Clarity and Conversion Path Clarity independently meaningful while preserving evidence integrity;
-2. add point-of-reading client-visible explanation where materially different related conclusions can appear;
-3. route material mobile-usability and indexability deterministic report consumption through the governed cross-report interpretation projection rather than independent raw score/band interpretation;
-4. remove the identified legacy trust bypass so the material deterministic consumer uses the governed cross-report interpretation projection;
-5. route the material client-visible Narrative v2 conclusion path through the same governed cross-report interpretation authority and prove coherence between deterministic and Narrative layers in the same rendered artifact for material P1 scenarios.
-
-The fifth obligation is limited to the P1 semantic-authority handoff. It does not authorize general Writer/Judge redesign, scoring-policy changes, provider acquisition, unrelated Narrative work, paid model reruns, P2-P10, or broad architecture work.
-
-## Model-bearing dependency
-
-Because the bounded repair may touch WriterInput/reference semantics, Writer prompt/instructions, Writer validation, or client-facing Narrative semantics, `PRYSM_MODEL_BEARING_RELEASE_GATE.md` applies to later release closure.
-
-This does not block the authorized `BOUNDED_BUILD`. Paid/live model execution remains separately authorization-gated and is not authorized by the build gate.
-
-## Exact next action — Chris / Windows
-
-From the `prysm-project-context` repository root in a normal VS Code PowerShell terminal:
-
-```powershell
-git pull --ff-only origin main
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
-```
-
-Do not manually patch PATH and do not invoke this from inside an existing Codex prompt. The wrapper exists only to bridge Windows PowerShell/Codex path mechanics into the canonical Bash gate.
-
-## Equivalent launch — Brad / macOS
-
-From the `prysm-project-context` repository root in the VS Code terminal:
-
-```bash
-git pull --ff-only origin main
-bash tools/prysm/start-prysm-p.sh P1
-```
-
-Both routes must reach the same P1 manifest, evidence checks, exact application SHA verification, semantic process-gate handoff, and authorized `BOUNDED_BUILD` scope.
-
-The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
-
-Brad is the next P1 reviewer step. Technical/system proof and exact client-visible rendered proof are frozen for the candidate above.
-
-## Hard boundaries
-
-- No fresh live/paid production audit or paid provider/model calls.
-- No application-main merge, deploy, production configuration change, destructive reset/clean/discard, or force push.
-- No P2 work before P1 closes.
-- Do not redo diagnosis unless new material evidence contradicts the committed diagnostic truth.
-- Any materially broader implementation boundary must stop and reopen authorization rather than silently expand scope.
-- Model-bearing release closure must satisfy `PRYSM_MODEL_BEARING_RELEASE_GATE.md` when applicable.
-- Technical PASS is necessary but not sufficient; final P1 closure still requires provenance-bound exact client-visible rendered proof and independent Brad review.
+Brad then performs only the independent `OUTCOME_REVIEW` defined by `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`, records PASS or exact material findings, commits the review evidence as permitted by the governed process, and stops. He must not merge, deploy, repair code, call providers/models, or start P2.
 
 Last verified:
 2026-09-04
