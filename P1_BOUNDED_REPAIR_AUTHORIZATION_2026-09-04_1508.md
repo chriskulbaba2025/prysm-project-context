@@ -12,7 +12,7 @@ Chris accepted `P1-BETTY-M01` and explicitly directed that it be fixed so P1 can
 
 After Betty Round 2 returned `Verdict: PASS`, `Unresolved CRITICAL: 0`, `Unresolved MAJOR: 0`, that owner instruction is bound here as explicit authorization for the exact bounded repair below.
 
-Authorization: **APPROVED**
+Decision: APPROVED
 
 ## Exact authorized repair boundary
 
@@ -66,8 +66,7 @@ Because this authorization can touch model-bearing WriterInput/prompt/validation
 
 ## Build gate
 
-Chris repair authorization: **APPROVED**
-
-Betty pre-repair gate: **PASS / 0 / 0**
+Chris repair authorization: APPROVED
+Betty pre-repair gate: PASS / 0 / 0
 
 `BOUNDED_BUILD` may be authorized in `P1_EXECUTION_GATE.env` after this file is committed and referenced there.
