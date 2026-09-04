@@ -19,16 +19,17 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - `P1-BETTY-M01`: ACCEPTED by Chris
 - Amended boundary disposition: `P1_BETTY_PRE_REPAIR_DISPOSITION_2026-09-04_1502.md`
 - Betty Round 2: `P1_BETTY_PRE_REPAIR_BLIND_SPOT_REVIEW_R2_2026-09-04_1506.md`
-- Betty Round 2 commit: `bc7ea3c56e6ad35b0039dfb81c3ffc28b5ff3be7`
+- Betty Round 2 commit: `de41cab2a56848d38d579bb9ef365e5c4efdd39f`
 - Betty Round 2 verdict: PASS / 0 unresolved CRITICAL / 0 unresolved MAJOR
 - Chris bounded repair authorization: `P1_BOUNDED_REPAIR_AUTHORIZATION_2026-09-04_1508.md`
-- Repair authorization commit: `0fb13f361d771ea91b2a4ad7fe36ced4c486ee94`
+- Repair authorization commit: `94dce9af240871faffcdb4846a1e5b22c52122b9`
 - `P1_EXECUTION_GATE.env`: `AUTHORIZED_STAGE=BOUNDED_BUILD`
-- Bounded-build gate commit: `ec8d5144afe319f8cacf122b81030b8ac3f05485`
+- Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
 
 ## Current stage
 
 - Current stage: BOUNDED_BUILD
+- Authorized execution stage: BOUNDED_BUILD
 - Diagnostic status: COMPLETE
 - Betty pre-repair gate: PASS / 0 / 0
 - Chris repair authorization: APPROVED
@@ -56,9 +57,13 @@ This does not block the authorized `BOUNDED_BUILD`. Paid/live model execution re
 
 ## Exact next action
 
-Run the governed P1 launcher for `BOUNDED_BUILD` against the exact committed governance gate and frozen application baseline `main` / `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`.
+From the `prysm-project-context` repository root, run exactly:
 
-The launcher/Builder must first verify the process gate, exact application SHA, clean/safe local state, and create/use the bounded repair branch before application edits.
+```bash
+bash tools/prysm/start-prysm-p.sh P1
+```
+
+The governed launcher must verify the committed process gate, exact frozen application baseline `main` / `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`, and clean/safe local state before Codex begins the authorized stage.
 
 The Builder must implement the smallest coherent five-obligation repair, stop on any materially broader boundary, and then produce narrow positive/negative proof before broader system verification.
 
