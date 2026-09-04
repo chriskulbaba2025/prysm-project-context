@@ -150,9 +150,12 @@ grep -Eq '^Unresolved CRITICAL: [0-9]+$' "$AUDIT_PATH" || fail "Audit artifact l
 grep -Eq '^Unresolved MAJOR: [0-9]+$' "$AUDIT_PATH" || fail "Audit artifact lacks a valid Unresolved MAJOR count."
 grep -Eq '^Verdict: (PASS|FAIL)$' "$AUDIT_PATH" || fail "Audit artifact lacks an exact PASS/FAIL verdict."
 
-mapfile -t CHANGED_PATHS < <(git -C "$GOV_ROOT" status --porcelain | sed -E 's/^.. //' | sed -E 's/^"(.*)"$/\1/')
-[[ "${#CHANGED_PATHS[@]}" -eq 1 ]] || fail "Codex changed ${#CHANGED_PATHS[@]} files; exactly one audit artifact is allowed. Nothing was committed."
-[[ "${CHANGED_PATHS[0]}" == "$AUDIT_FILE" ]] || fail "Codex changed '${CHANGED_PATHS[0]}' instead of only '$AUDIT_FILE'. Nothing was committed."
+STATUS_OUTPUT="$(git -C "$GOV_ROOT" status --porcelain)"
+[[ -n "$STATUS_OUTPUT" ]] || fail "No governance change exists after Codex audit."
+CHANGED_COUNT="$(printf '%s\n' "$STATUS_OUTPUT" | sed '/^$/d' | wc -l | tr -d ' ')"
+[[ "$CHANGED_COUNT" == "1" ]] || fail "Codex changed $CHANGED_COUNT files; exactly one audit artifact is allowed. Nothing was committed."
+CHANGED_PATH="$(printf '%s\n' "$STATUS_OUTPUT" | head -n 1 | cut -c4-)"
+[[ "$CHANGED_PATH" == "$AUDIT_FILE" ]] || fail "Codex changed '$CHANGED_PATH' instead of only '$AUDIT_FILE'. Nothing was committed."
 
 echo "Rechecking authoritative GitHub state before evidence commit..."
 git -C "$GOV_ROOT" fetch origin main
