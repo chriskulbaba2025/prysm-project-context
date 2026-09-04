@@ -10,7 +10,8 @@ Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Active P#: `P1 — Cross-Report Contradiction Integrity`
-- Authorized stage: `OUTCOME_REVIEW`
+- Current stage: OUTCOME_REVIEW
+- Authorized execution stage: OUTCOME_REVIEW
 - Frozen application candidate branch: `p1/bounded-build-cross-report-integrity`
 - Frozen application candidate SHA: `de509c30c808115f22fda3688a18dfaa85e9db50`
 - Candidate branch is published on GitHub.
@@ -18,7 +19,7 @@ Verified checkpoint:
 - Deterministic verification: 77/77 PASS.
 - Viewer v2 rendered freeze matrix: 48/48 PASS.
 - Governance proof/freeze package: `0645bf82a8cf261a4b2767d2e546a4f9be24bc2b`.
-- `P1_EXECUTION_GATE.env` is now bound to the frozen candidate branch/SHA for `OUTCOME_REVIEW`.
+- `P1_EXECUTION_GATE.env` is bound to the frozen candidate branch/SHA and committed proof artifacts for `OUTCOME_REVIEW`.
 - Brad is the next reviewer.
 
 Current environment / branch / version:
@@ -34,6 +35,8 @@ Completed:
 - Bounded repair completed: independent CTA vs conversion-path semantics, point-of-reading explanation, governed trust/mobile/indexability consumption, and Narrative v2 semantic-authority handoff.
 - Render changes were reviewed and re-frozen only where authorized.
 - Application candidate and governance proof package were committed and pushed.
+- Canonical launcher active-P parsing now recognizes the governed backticked descriptive P# format with an exact P-ID token boundary.
+- OUTCOME_REVIEW proof file names and exact proof commits are bound in `P1_EXECUTION_GATE.env`.
 
 In progress:
 - Brad independent P1 Outcome Review.
@@ -58,7 +61,7 @@ Terminal launcher contract:
 - Do not manually patch PATH, do not invoke the launcher from inside an already-running Codex prompt, and do not create alternate OS-specific governance logic.
 
 Exact next action:
-Brad, on his Mac in the normal VS Code terminal, must synchronize both repositories to authoritative GitHub state, check out the frozen application candidate `p1/bounded-build-cross-report-integrity` at `de509c30c808115f22fda3688a18dfaa85e9db50`, then from the governance repository run exactly:
+Brad, on his Mac in the normal VS Code terminal, must pull authoritative governance `main`, keep the clean frozen application candidate `p1/bounded-build-cross-report-integrity` at `de509c30c808115f22fda3688a18dfaa85e9db50`, then from the governance repository run exactly:
 
 ```bash
 bash tools/prysm/start-prysm-p.sh P1
