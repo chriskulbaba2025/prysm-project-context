@@ -37,7 +37,7 @@ AUDIT_BASE_GOV_SHA="$(git -C "$GOV_ROOT" rev-parse HEAD)"
 [[ -f "$CURRENT_STATE" ]] || fail "CURRENT_STATE.md is missing."
 grep -Fq "Active P#: $P_ID" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
 grep -Fxq -- '- Current stage: INDEPENDENT PRE-EXECUTION AUDIT' "$CURRENT_STATE" || fail "CURRENT_STATE.md does not authorize INDEPENDENT PRE-EXECUTION AUDIT as the current stage."
-grep -Fq "`bash tools/prysm/audit-prysm-p.sh $P_ID`" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the independent $P_ID audit as the exact next action."
+grep -Fq "bash tools/prysm/audit-prysm-p.sh $P_ID" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the independent $P_ID audit as the exact next action."
 
 [[ -f "$PRE_AUDIT_GATE" ]] || fail "${P_ID}_PRE_EXECUTION_AUDIT_GATE.env is missing. Exact evidence binding has not been committed."
 
