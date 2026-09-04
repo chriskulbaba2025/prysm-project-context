@@ -46,7 +46,7 @@ Before the first P# execution stage (`DIAGNOSTIC_TRUTH`) may run, the following 
 6. Chris explicitly approves the frozen contract.
 7. The approved contract, Brad review, Betty audit, Chris approval state, and `CURRENT_STATE.md` are committed to GitHub.
 8. The write is verified.
-9. A P# execution-gate manifest records the exact evidence files, exact evidence commits, authorized stage, and application baseline.
+9. A P# execution-gate manifest records the exact evidence files, exact evidence commits, authorized stage, exact application branch, and exact application SHA.
 10. Only then may the generic governed launcher enter `DIAGNOSTIC_TRUTH`.
 
 ## Continuous stage auditing
@@ -76,12 +76,13 @@ For example:
 
 `P1_EXECUTION_GATE.env`
 
-Minimum fields:
+Minimum fields before `DIAGNOSTIC_TRUTH`:
 
 ```text
 P_ID=P1
 AUTHORIZED_STAGE=DIAGNOSTIC_TRUTH
-APPLICATION_BASELINE=<exact application SHA>
+APPLICATION_BRANCH=main
+APPLICATION_SHA=<exact 40-character application SHA>
 CONTRACT_FILE=P1_OUTCOME_CONTRACT_2026-09-04.md
 CONTRACT_COMMIT=<governance commit containing approved contract>
 BRAD_REVIEW_FILE=P1_BRAD_OUTCOME_CONTRACT_REVIEW_2026-09-04.md
@@ -90,11 +91,12 @@ BRAD_VERDICT=APPROVE_CONTRACT
 BETTY_AUDIT_FILE=P1_BETTY_OUTCOME_CONTRACT_AUDIT_2026-09-04.md
 BETTY_AUDIT_COMMIT=<governance commit containing audit>
 BETTY_VERDICT=PASS
+APPROVAL_FILE=P1_CHRIS_OUTCOME_APPROVAL_2026-09-04.md
+APPROVAL_COMMIT=<governance commit containing Chris approval>
 CHRIS_APPROVAL=APPROVED
-APPROVAL_COMMIT=<governance commit containing Chris approval/current state>
 ```
 
-Later stages may add stage-specific evidence fields. The launcher and Codex must fail closed if the manifest does not prove the prerequisites for the requested stage.
+Later stages add the stage-specific evidence fields defined by `tools/prysm/P_EXECUTION_GATE_TEMPLATE.env`. The launcher and Codex must fail closed if the manifest does not prove the prerequisites for the requested stage.
 
 ## Audit-of-the-process requirement
 
