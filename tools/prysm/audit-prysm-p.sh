@@ -42,7 +42,12 @@ CONTRACT_REL="$(basename "$CONTRACT_FILE")"
 git -C "$GOV_ROOT" cat-file -e "origin/main:$CONTRACT_REL" 2>/dev/null || fail "$CONTRACT_REL is not committed on authoritative origin/main."
 ! grep -Eq '^Status: DRAFT' "$CONTRACT_FILE" || fail "$CONTRACT_REL is still marked DRAFT."
 
-BRAD_REVIEW_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f \( -name "${P_ID}_BRAD_OUTCOME_CONTRACT_REVIEW*.md" -o -name "${P_ID}_BRAD_DISPOSITION_REVIEW*.md" \) | sort | tail -n 1)"
+BRAD_DISPOSITION_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_BRAD_DISPOSITION_REVIEW*.md" | sort | tail -n 1 || true)"
+if [[ -n "$BRAD_DISPOSITION_FILE" ]]; then
+  BRAD_REVIEW_FILE="$BRAD_DISPOSITION_FILE"
+else
+  BRAD_REVIEW_FILE="$(find "$GOV_ROOT" -maxdepth 1 -type f -name "${P_ID}_BRAD_OUTCOME_CONTRACT_REVIEW*.md" | sort | tail -n 1)"
+fi
 [[ -n "$BRAD_REVIEW_FILE" ]] || fail "No committed Brad approval/preservation review was found for $P_ID."
 BRAD_REVIEW_REL="$(basename "$BRAD_REVIEW_FILE")"
 git -C "$GOV_ROOT" cat-file -e "origin/main:$BRAD_REVIEW_REL" 2>/dev/null || fail "$BRAD_REVIEW_REL is not committed on authoritative origin/main."
