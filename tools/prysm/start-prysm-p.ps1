@@ -1,7 +1,7 @@
 param(
   [Parameter(Mandatory = $true, Position = 0)]
   [ValidatePattern('^P([1-9]|10)([A-Z][A-Z0-9-]*)?$')]
-  [string]$PId
+  [string]$WorkstreamId
 )
 
 $ErrorActionPreference = 'Stop'
@@ -58,12 +58,12 @@ exec bash tools/prysm/start-prysm-p.sh "$1"
 '@
 
 Write-Host "PRYSM PowerShell launcher"
-Write-Host "P#: $PId"
+Write-Host "P#: $WorkstreamId"
 Write-Host "Governance: $govRoot"
 Write-Host "Codex bin: $codexDir"
 Write-Host
 
-& $bash -c $bashCommandText -- $PId
+& $bash -c $bashCommandText -- $WorkstreamId
 $exitCode = $LASTEXITCODE
 
 if ($exitCode -ne 0) {
