@@ -22,22 +22,25 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - Diagnostic artifact: `P1_DIAGNOSTIC_TRUTH_2026-09-04.md`
 - Diagnostic commit: `061fb47656f56c0c4e1c0ec57784d75b2d2256af`
 - Diagnostic classification: `VERIFIED_DESIGN_GAP`
-- Current handoff: `HANDOFF_PRYSM_P1_VERIFIED_DESIGN_GAP_PRE_REPAIR_REVIEW_2026-09-04.md`
-- Handoff commit: `efc13a7684f3fdac5bd10b0420d8202e84ca4bce`
+- Pre-repair Betty review: `P1_BETTY_PRE_REPAIR_BLIND_SPOT_REVIEW_2026-09-04_1458.md`
+- Betty review commit: `e97ab4afbafc11e6bc01490a8e25186d36acfad9`
+- Betty verdict: FAIL / 0 unresolved CRITICAL / 1 unresolved MAJOR
+- Unresolved finding: `P1-BETTY-M01` — Narrative v2 is a material client-visible conclusion path not yet governed by the same cross-report interpretation authority as the deterministic report.
 
 ## Current stage
 
-- Current stage: DIAGNOSTIC_TRUTH
+- Current stage: PRE_REPAIR_BLIND_SPOT_REVIEW
 - Diagnostic status: COMPLETE
+- Betty pre-repair review status: COMPLETE / FAIL
 - Authorized execution stage in existing gate: DIAGNOSTIC_TRUTH only
-- BOUNDED_BUILD: NOT YET AUTHORIZED
-- New repair branch: NOT YET AUTHORIZED/CREATED
+- BOUNDED_BUILD: NOT AUTHORIZED
+- New repair branch: NOT AUTHORIZED/CREATED
 
 The existing DIAGNOSTIC_TRUTH gate must not be treated as build authorization.
 
 ## P1 diagnostic truth
 
-The shared cross-report interpretation projection exists, is persisted, and some renderer paths fail closed when it is absent. The current product still has four material P1 design gaps:
+The shared cross-report interpretation projection exists, is persisted, and some renderer paths fail closed when it is absent. The current product still has four material diagnosed P1 design gaps:
 
 1. CTA Clarity and Conversion Path Clarity are generated from the same path-status calculation, so they are not separately meaningful constructs.
 2. The report does not provide immediate point-of-reading explanation of what related constructs measure or why legitimate divergence exists.
@@ -57,14 +60,16 @@ The full lineage, branch/scenario matrix, and provenance requirements are frozen
 
 ## Candidate bounded repair boundary — NOT YET AUTHORIZED
 
-The candidate repair is limited to the four diagnosed gaps:
+The currently committed four-gap candidate repair remains:
 
 1. make CTA Clarity and Conversion Path Clarity independently meaningful while preserving evidence integrity;
 2. add point-of-reading client-visible explanation where materially different related conclusions can appear;
 3. route material mobile-usability and indexability report consumption through the governed interpretation projection rather than independent raw score/band interpretation;
 4. remove the identified legacy trust bypass so the material consumer uses the governed interpretation projection.
 
-Do not broaden this into scoring-policy changes, provider acquisition, Writer/Judge redesign, unrelated report presentation, P2-P10, or exhaustive unrelated whole-app redesign.
+Betty identified one unresolved material false-PASS seam before this boundary can be authorized: the production Narrative v2 layer is injected into the same client-visible report, while its Writer input does not receive the governed cross-report interpretation projection and instead receives raw canonical score/band and deterministic-analysis inputs. The deterministic repair could therefore PASS while Narrative v2 prose still presents a materially different P1 conclusion.
+
+Do not broaden P1 generally. Any accepted amendment must be limited to making the client-visible Narrative v2 conclusion path governed by the same cross-report interpretation authority and proving coherence in the final rendered artifact. Do not expand into general Writer/Judge redesign, provider acquisition, scoring-policy changes, paid model reruns, unrelated presentation work, P2-P10, or exhaustive whole-app redesign.
 
 ## Completed
 
@@ -81,36 +86,32 @@ Do not broaden this into scoring-policy changes, provider acquisition, Writer/Ju
 - governed read-only diagnosis at exact frozen application SHA
 - diagnosis classified `VERIFIED_DESIGN_GAP`
 - four material P1 gaps and candidate repair boundary frozen durably
+- one bounded Betty pre-repair blind-spot review completed
+- Betty finding `P1-BETTY-M01` durably recorded
+
+## Blocked
+
+`BOUNDED_BUILD` is blocked by unresolved MAJOR finding `P1-BETTY-M01`.
 
 ## Exact next action
 
-Run **one bounded Betty pre-repair blind-spot review** against:
+Chris must disposition `P1-BETTY-M01`.
 
-1. `CURRENT_STATE.md`
-2. `P1_OUTCOME_CONTRACT_2026-09-04.md`
-3. `P1_DIAGNOSTIC_TRUTH_2026-09-04.md`
-4. `HANDOFF_PRYSM_P1_VERIFIED_DESIGN_GAP_PRE_REPAIR_REVIEW_2026-09-04.md`
+If ACCEPTED, amend the bounded repair/proof boundary only enough to make the client-visible Narrative v2 conclusion path governed by the same cross-report interpretation authority as the deterministic report, commit that disposition/amendment, then rerun Betty against this finding and the amended boundary.
 
-Betty must determine whether:
-
-- `VERIFIED_DESIGN_GAP` is supported;
-- the four-gap repair boundary is sufficient and MVP-bounded;
-- any material consumer/renderer/lineage branch is missing;
-- the repair could create evidence-integrity or client-facing false-PASS risk.
-
-Required result before build authorization:
+Required Betty result before build authorization remains:
 
 - `Verdict: PASS`
 - `Unresolved CRITICAL: 0`
 - `Unresolved MAJOR: 0`
 
-If Betty PASSes, Chris explicitly authorizes the bounded repair. Only then update/create the execution gate for `BOUNDED_BUILD` and allow application edits.
+Only after Betty PASS and Chris explicit bounded-repair authorization may the execution gate advance to `BOUNDED_BUILD` and application edits begin.
 
 Brad is not the next step. Brad returns later for independent review of the frozen client-visible outcome/proof.
 
 ## Operating principle
 
-Governance expansion is complete for this checkpoint. Do not redesign or extend the governance system unless a concrete material false-PASS, evidence-integrity, or foreseeable rework risk requires it.
+Do not expand governance unless a concrete material false-PASS, evidence-integrity, or foreseeable rework risk requires it. `P1-BETTY-M01` is such a concrete client-visible false-PASS risk; any response must remain narrowly bounded to that seam.
 
 The goal is the working client-ready PRYSM product, not governance for its own sake.
 
