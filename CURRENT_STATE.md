@@ -27,7 +27,7 @@ Reach a client-ready PRYSM MVP as quickly as possible without foreseeable rework
 - Bounded-build gate commit: `2052d00f79388f029d5c555797c9ca79f9e32709`
 - Canonical cross-platform governed launcher: `tools/prysm/start-prysm-p.sh`
 - Windows PowerShell entry wrapper: `tools/prysm/start-prysm-p.ps1`
-- PowerShell wrapper commit: `13988cf3ebab7d163420235f685061119ad10462`
+- PowerShell wrapper commit: `ac373c4d4627f11d1b6b753057c5557981715338`
 
 ## Launcher architecture — cross-platform invariant
 
