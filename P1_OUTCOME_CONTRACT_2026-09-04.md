@@ -1,7 +1,7 @@
 # P1 Outcome Contract — Cross-Report Contradiction Integrity
 
 Date: 2026-09-04
-Status: AMENDED — CHRIS APPROVED; BRAD PRESERVATION REVIEW REQUIRED
+Status: AMENDED — CHRIS APPROVED; BRAD PRESERVATION REVIEW COMPLETE; FRESH AUDIT REQUIRED
 Application: `chriskulbaba2025/vantage-platform`
 Governance: `chriskulbaba2025/prysm-project-context`
 Frozen application baseline: `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
@@ -123,14 +123,16 @@ P1 FAILS if any of the following is true:
 - Contract revised to close that gap.
 - Brad Round 2: APPROVE CONTRACT.
 - Chris attests that the prior Betty and Chris chat-based approval cycle completed; this history is durably memorialized in `P1_APPROVAL_ATTESTATION_2026-09-04.md` without claiming a new Betty review occurred.
-- Independent pre-execution audit: FAIL, 0 CRITICAL / 4 MAJOR.
+- Independent pre-execution audit `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_130149.md`: FAIL, 0 CRITICAL / 4 MAJOR.
 - Chris disposition: ACCEPT all four findings.
 - M-03/M-04 amendments above strengthen proof of the same approved client/business outcome and do not add a new product objective.
+- Brad preservation review `P1_BRAD_DISPOSITION_REVIEW_2026-09-04_132656.md`: PASS. Original P1 outcome preserved, all four dispositions substantively resolved, MVP scope bounded, and foreseeable rework risk materially reduced.
+- Independent pre-execution audit `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_132928.md`: FAIL, 0 CRITICAL / 2 MAJOR, limited to evidence-binding validation and stale durable stage state.
 
 ## Current gate
 
-Brad preservation review is required for the accepted dispositions and these audit-driven amendments.
+Brad preservation review is COMPLETE / PASS.
 
-If Brad confirms that the approved P1 outcome is preserved without unnecessary scope expansion, the independent pre-execution process audit must be rerun against the new exact governance HEAD.
+The sole next stage is a fresh independent pre-execution process audit against the exact corrected governance HEAD. No further Brad preservation review is required because the post-review correction is limited to machine evidence binding and reconciliation of stage/status text; it does not change the P1 outcome or proof obligations Brad reviewed.
 
-`DIAGNOSTIC_TRUTH` remains blocked until the rerun reports zero unresolved CRITICAL and zero unresolved MAJOR findings and that result is durably committed and verified.
+`DIAGNOSTIC_TRUTH` remains blocked until that fresh audit reports `Unresolved CRITICAL: 0`, `Unresolved MAJOR: 0`, and `Verdict: PASS`, and the result is durably committed and verified.
