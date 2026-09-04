@@ -18,8 +18,10 @@ Verified checkpoint:
 - M-03/M-04 product-proof amendments are in the Outcome Contract and remain bounded to material P1 paths.
 - Brad preservation review: `P1_BRAD_DISPOSITION_REVIEW_2026-09-04_132656.md`, commit `c1551290ffd06803f4b7b5a5d24968c1e2424693`, PASS.
 - Second independent pre-execution audit: `P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_132928.md`, commit `4782ac2eacf359698d29af17ffbebaf4c536bcee`, FAIL with 0 CRITICAL / 2 MAJOR.
-- The two remaining MAJOR findings are governance plumbing only: exact evidence binding/sequencing and stale durable stage state. No application/product defect was identified by that audit.
-- The Outcome Contract gate/history has now been reconciled to Brad PASS and the fresh audit as the sole next stage.
+- The two remaining MAJOR findings were governance plumbing only: exact evidence binding/sequencing and stale durable stage state. No application/product defect was identified by that audit.
+- The Outcome Contract gate/history now records Brad preservation PASS and the fresh audit as the sole next stage.
+- `tools/prysm/audit-prysm-p.sh` now requires exact committed evidence binding, validates required P1-specific content, validates commit/blob freshness and ancestry/sequencing, and fails closed unless `CURRENT_STATE.md` explicitly authorizes the independent pre-execution audit stage.
+- Exact pre-audit evidence binding is committed in `P1_PRE_EXECUTION_AUDIT_GATE.env`.
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -37,11 +39,13 @@ Completed:
 - Real-lineage proof requirement for producer -> validation -> persistence -> reopen/replay -> consumer -> interpretation/projection -> renderer.
 - Material conclusion/consumer/render inventory and branch-to-scenario proof requirement.
 - Brad preservation review PASS confirming original P1 outcome remains preserved and MVP-bounded.
-- Durable state reconciled so Brad review is complete and the fresh independent audit is the sole next action.
+- Durable state reconciliation to Brad PASS.
+- Exact pre-audit evidence manifest creation.
+- Exact evidence commit/blob validation and sequencing enforcement in the audit launcher.
+- Audit launcher stage check requiring `CURRENT_STATE.md` to authorize `INDEPENDENT PRE-EXECUTION AUDIT`.
 
 In progress:
-- Exact pre-audit evidence binding and sequencing enforcement in `tools/prysm/audit-prysm-p.sh` using a committed `${P_ID}_PRE_EXECUTION_AUDIT_GATE.env` manifest.
-- Fresh independent P1 pre-execution audit after that correction is committed.
+- Fresh independent P1 pre-execution audit against the exact corrected governance HEAD.
 
 Blocked:
 - Do not create `P1_EXECUTION_GATE.env` and do not authorize/run `DIAGNOSTIC_TRUTH` until the fresh independent audit reports `Unresolved CRITICAL: 0`, `Unresolved MAJOR: 0`, `Verdict: PASS` and is durably committed/verified.
@@ -68,9 +72,9 @@ then:
 
 `bash tools/prysm/audit-prysm-p.sh P1`
 
-The audit launcher must fail closed unless the exact committed P1 contract, dispositions, approval attestation, Brad PASS review, prior audit evidence, and required sequencing are bound by the committed pre-audit manifest and `CURRENT_STATE.md` explicitly authorizes the independent pre-execution audit stage.
+The audit must evaluate only the corrected pre-execution governance package and publish exactly one audit artifact. No application diagnosis or application edit is authorized during this run.
 
-If the fresh audit returns PASS with zero unresolved CRITICAL/MAJOR, the next action is to create the P1 execution gate for read-only `DIAGNOSTIC_TRUTH` and begin actual product diagnosis. No additional Brad preservation review is required for the governance-only correction now being made.
+If the fresh audit returns PASS with zero unresolved CRITICAL/MAJOR, the next action is to create the P1 execution gate for read-only `DIAGNOSTIC_TRUTH` and begin actual product diagnosis. No additional Brad preservation review is required for this governance-only correction.
 
 Last verified:
 2026-09-04
