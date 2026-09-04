@@ -1,7 +1,7 @@
 # P1 Outcome Contract — Cross-Report Contradiction Integrity
 
 Date: 2026-09-04
-Status: DRAFT — BRAD RE-REVIEW / CHRIS APPROVAL REQUIRED
+Status: AMENDED — CHRIS APPROVED; BRAD PRESERVATION REVIEW REQUIRED
 Application: `chriskulbaba2025/vantage-platform`
 Governance: `chriskulbaba2025/prysm-project-context`
 Frozen application baseline: `6ea608a2625e2a14e28dbc7a5a04e5752b8eeeec`
@@ -35,6 +35,8 @@ When P1 is complete, a client can read every material P1-related conclusion acro
 5. Offer Clarity, CTA Clarity, and Conversion Path Clarity must remain separately meaningful constructs, but whenever their conclusions materially differ, the report must make that distinction understandable where those conclusions are presented.
 6. Brad must be able to review the exact client-visible artifact without detailed Builder rationale and conclude that apparently conflicting statements are either genuinely reconciled or visibly explained as distinct measures.
 7. Evidence integrity remains controlling. P1 cannot achieve coherence by suppressing valid differences, changing evidence meaning, hiding uncertainty, or forcing different constructs into one artificial conclusion.
+8. The judged client-visible artifact must be provenance-bound to the mapped real application lineage for P1: producer -> validation -> canonical persistence -> read/reopen/replay -> consumer -> interpretation/projection -> renderer, for every material traversed handoff applicable to the candidate.
+9. Diagnosis must freeze a material P1 conclusion/consumer/render inventory and a branch-to-scenario proof matrix. Product proof must cover every material implemented P1 branch, including at minimum aligned conclusions, legitimate materially divergent conclusions with point-of-reading explanation, and applicable missing/malformed/uncertain or replay/legacy fail-closed behavior. A branch may be marked non-applicable only with evidence.
 
 ## Before evidence
 
@@ -46,12 +48,15 @@ When P1 is complete, a client can read every material P1-related conclusion acro
 - Current outcome rebaseline is: `Substantial engineering improvement exists -> VERIFY rendered/client outcome`.
 - Prior technical PASS is evidence of engineering improvement, not by itself evidence that the client-visible P1 outcome is complete.
 - Historical stored reports are not accepted as current rendered proof unless exact provenance establishes that they represent the candidate being judged.
+- Independent pre-execution audit commit `9d87b7b481dd94eac783eae8292d7f1921cc6f16` identified four MAJOR process/proof gaps; Chris accepted all four in `P1_PRE_EXECUTION_AUDIT_DISPOSITIONS_2026-09-04.md`.
 
 ## Known dependencies
 
-P1 requires an exact client-visible artifact with provenance tied to the application candidate being reviewed.
+P1 requires exact client-visible artifact provenance tied to the application candidate and to the actual governed object lineage used to produce the artifact.
 
-The production-visible producer -> persistence -> consumer -> renderer path must be established during the later read-only diagnostic phase.
+During read-only diagnosis, the program must map every material producer, validation, canonical persistence, read/reopen/replay, consumer, interpretation/projection, and renderer seam relevant to the P1 outcome.
+
+During system/product proof, the same governed lineage must be demonstrated across the material handoffs actually used by the judged artifact. Synthetic, stale, historical, richer-than-production, fallback, cache, or replay paths cannot substitute for the governed path unless that path is explicitly the one being proved and provenance establishes it.
 
 No P2 work is permitted while P1 remains open.
 
@@ -63,24 +68,69 @@ P1 does not authorize changes to canonical evidence, scoring policy, provider ac
 
 P1 does not authorize a fresh paid/live audit, paid provider/model execution, deployment, merge to application `main`, or destructive repository operation.
 
+The lineage and branch-coverage requirements prove the P1 outcome only. They do not authorize redesign or exhaustive testing of unrelated report behavior.
+
+## Required diagnostic proof plan
+
+Read-only diagnosis must produce:
+
+1. a material P1 conclusion/consumer/render inventory;
+2. a producer -> validation -> canonical persistence -> read/reopen/replay -> consumer -> interpretation/projection -> renderer map for the material P1 paths;
+3. a branch-to-scenario matrix covering each material implemented P1 branch;
+4. identification of any fallback/cache/historical/replay path that can bypass or alter the governed interpretation;
+5. exact provenance requirements for the later client-visible artifact.
+
+No production-code edit is permitted during this stage.
+
 ## Required product/render proof
 
-P1 closure requires an exact client-visible rendered artifact tied to a frozen application SHA.
+P1 closure requires exact client-visible rendered proof tied to a frozen application SHA and to the governed data/object lineage actually used to produce the artifact.
 
 The review must examine the affected conclusions across the report rather than proving only one isolated section.
 
 Where different P1 constructs produce different statuses, the rendered artifact must visibly communicate the distinction at the point of reading.
 
-Brad must review the frozen outcome and artifact independently before detailed Builder rationale where practical.
+Proof must record, as applicable:
+- application SHA;
+- artifact/input or canonical-record provenance;
+- material producer/validation/persistence/reload/consumer/projection/renderer identity;
+- the branch/scenario represented;
+- whether the artifact is deterministic/offline, persisted/reopened, replayed, or live.
 
-Historical reports without exact candidate provenance cannot satisfy this gate.
+The branch-to-scenario matrix must show evidence for every material implemented P1 branch. At minimum, proof must include:
+- coherent aligned conclusions;
+- legitimate materially divergent conclusions with point-of-reading explanation;
+- applicable missing/malformed/uncertain or replay/legacy behavior demonstrating fail-closed semantics.
+
+A single convenient report, one scenario, or scenario count alone cannot satisfy this gate.
+
+Brad must review the frozen outcome and provenance-bound artifact evidence independently before detailed Builder rationale where practical.
+
+Historical reports without exact candidate and lineage provenance cannot satisfy this gate.
 
 ## False-PASS test
 
-P1 FAILS if individual sections are each technically defensible but a reasonable client could still read them as materially contradictory without an immediate explanation of why the conclusions differ.
+P1 FAILS if any of the following is true:
+- individual sections are each technically defensible but a reasonable client could still read them as materially contradictory without an immediate explanation of why the conclusions differ;
+- technical proof and a visually coherent artifact come from disconnected producer/persistence/consumer/render paths;
+- a synthetic, stale, fallback, replay, or richer-than-production object is used as proof without explicit provenance showing that it is the governed path being judged;
+- a reviewed artifact simply avoids material divergence while another implemented P1 branch can still emit unexplained opposing conclusions;
+- any material P1 consumer/render branch is omitted from the proof matrix without evidence that it is non-applicable.
+
+## Approval and audit history
+
+- Brad Round 1: REVISE CONTRACT; point-of-reading false-PASS gap identified.
+- Contract revised to close that gap.
+- Brad Round 2: APPROVE CONTRACT.
+- Chris attests that the prior Betty and Chris chat-based approval cycle completed; this history is durably memorialized in `P1_APPROVAL_ATTESTATION_2026-09-04.md` without claiming a new Betty review occurred.
+- Independent pre-execution audit: FAIL, 0 CRITICAL / 4 MAJOR.
+- Chris disposition: ACCEPT all four findings.
+- M-03/M-04 amendments above strengthen proof of the same approved client/business outcome and do not add a new product objective.
 
 ## Current gate
 
-Brad re-review and Chris approval are required.
+Brad preservation review is required for the accepted dispositions and these audit-driven amendments.
 
-No P1 diagnosis, repair branch, application edit, or P2 work is authorized until the Outcome Contract is approved by Chris.
+If Brad confirms that the approved P1 outcome is preserved without unnecessary scope expansion, the independent pre-execution process audit must be rerun against the new exact governance HEAD.
+
+`DIAGNOSTIC_TRUTH` remains blocked until the rerun reports zero unresolved CRITICAL and zero unresolved MAJOR findings and that result is durably committed and verified.
