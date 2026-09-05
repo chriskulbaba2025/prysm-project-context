@@ -87,18 +87,21 @@ The operating sequence is mandatory:
   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P1`
 - Non-product Windows runtime verification uses:
   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P1 -AuditOnly`
-- `-AuditOnly` verifies the control plane, parses/runs controller self-test, runs the P1 autorun regression, runs the permanent gate-contract regression, and runs recovery/preflight, then exits before any Codex Builder invocation or application/product execution.
+- `-AuditOnly` verifies interrupted-transaction safety, the control plane, parses/runs controller self-test, runs the P1 autorun regression, runs the permanent gate-contract regression, and runs recovery/preflight, then exits before any Codex Builder invocation or application/product execution.
 - The bootstrap fast-forwards only clean, unambiguous repository state. It never pull/reset-cleans over dirty or locally-ahead recovery state.
 - On a clean initial P1 candidate, the official deterministic P1 gate must PASS before Builder execution.
 - Every fresh Codex Builder invocation is a P1-scoped transaction. The controller records pre-run application/governance branch, HEAD, status and content fingerprint; marks the transaction `RUNNING`; records exact post-run state as `CODEX_EXITED_UNRECONCILED`; validates scope/control-plane integrity; then marks `RECONCILED` only after result/accounting/routing checks succeed.
 - P1 entry anchor, transaction journal, repair accounting, controller state, logs and heartbeat live outside both repositories under `%LOCALAPPDATA%\PRYSM-P-Autorun\P1` (temp fallback).
-- A restart may accept only the recorded entry lineage, exact entry fingerprint, exact latest journaled post-state, or a transaction recorded `RUNNING` when interrupted. Same-branch state alone is not sufficient recovery evidence.
+- A restart may accept only the recorded entry lineage, exact entry fingerprint, or exact latest journaled post-state. Same-branch state alone is not sufficient recovery evidence.
+- A journal still marked `RUNNING` has no durable post-run fingerprint and must **not** be auto-adopted. Bootstrap/audit fails closed rather than assuming current local edits were produced by Codex.
 - Local P1 journal/accounting JSON is written atomically. Corrupt state fails closed; never silently reset repair accounting or adopt unknown local state.
 - Current reopened P1 has one special initial adoption path because valid Builder edits predate this controller. Adoption is allowed only on the exact governed P1 branch/base and only when every dirty application path is inside the explicitly authorized report-projection/test seam. The exact adopted fingerprint is then anchored; arbitrary later dirty trees are not re-adopted.
 - After every Codex run, the controller checks the union of every path touched by commits created during the transaction plus final uncommitted paths against the P1 bounded seam. A change cannot be hidden by later reverting it.
 - The active Builder may not modify the autorun controller, wrapper, Builder contract, schema, permanent autorun decision, or permanent memory governing the run. Working-tree and committed control-plane fingerprints are enforced.
 - **Frozen failed-candidate history is immutable.** Existing P1 bound evidence and `proof/P1/rendered/*` must not be changed in place. Reopened rendered proof goes under `proof/P1/reopen/*`; new technical/system/candidate/render proof uses new versioned P1 files and is rebound deliberately for the new candidate.
 - A normal Codex invocation ending is not a workflow stop. `CONTINUE + Builder` relaunches Builder automatically; routine `STOP + Builder` is also treated as continuation while Builder remains the next actor.
+- A Codex execution or structured-result protocol failure stops on the first occurrence with the exact post-run journal preserved; it is not retried automatically and does not consume product repair escalation.
+- The wrapper imposes a 20-run outer safety bound in addition to controller no-progress and three-repair anti-thrash rules.
 - Repeated identical Builder continuations with no repository progress trigger controller anti-thrash instead of looping indefinitely.
 - Builder may never route directly to Betty/Auditor. `next_role=Auditor` is a contract violation, not READY.
 - Root-defect identity is stable across a repair chain. Codex cannot reset escalation by renaming the root. A different root is accepted only with explicit `NEW_ROOT_CAUSE` and a materially different non-`NONE` root ID.
@@ -106,7 +109,7 @@ The operating sequence is mandatory:
 - `READY_FOR_BRAD` requires a clean/pushed repaired candidate, synchronized governance, `AUTHORIZED_STAGE=OUTCOME_REVIEW`, Brad authorized in `CURRENT_STATE.md`, green structured proof claims, and a final **official deterministic PRYSM gate PASS with `Authorized actor: BRAD`**. A Builder claim alone cannot advance the human boundary.
 - Fresh Builder invocations use `--ask-for-approval never` and `--sandbox danger-full-access`; PRYSM governance, transaction lineage, bounded scope and deterministic gates remain the safety boundary rather than repetitive command approvals.
 - The controller uses application/governance resource locks to prevent concurrent controllers; live locks block and stale locks are reclaimed only after their PID is no longer running.
-- The controller stops only at deterministic `READY_FOR_BRAD`, a genuine `BLOCKED`/protected boundary, usage limit, controller failure, no-progress anti-thrash, or the three-attempt same-root limit.
+- The controller stops only at deterministic `READY_FOR_BRAD`, a genuine `BLOCKED`/protected boundary, usage limit, controller failure, no-progress anti-thrash, 20-run safety bound, or the three-attempt same-root limit.
 - Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; final controller state is written before notification and notification failure is non-fatal.
 - Governing decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
 
