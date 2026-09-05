@@ -154,14 +154,14 @@ foreach ($needle in @(
     'official deterministic PRYSM P1 gate','Current scope of the controller',
     'This audited controller version is **P1-only**','Frozen P1 history','Audit-only runtime verification',
     'supported public entrypoint','CODEX_EXITED_UNRECONCILED',
-    '0756e4db3746be0c2279c2083ccf83b3ec5c89f5','change→revert'
+    '0756e4db3746be0c2279c2083ccf83b3ec5c89f5','change-to-revert'
 )) { Require-Contains $decisionText $needle 'Decision' }
 Require-Contains $memoryText 'Permanent P-scoped unattended Builder rule' 'Permanent memory'
 Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
 Require-Contains $memoryText 'CODEX_EXITED_UNRECONCILED' 'Permanent memory'
 Require-Contains $memoryText '0756e4db3746be0c2279c2083ccf83b3ec5c89f5' 'Permanent memory frozen-history baseline'
-Require-Contains $memoryText 'change→revert' 'Permanent memory no-crumb invariant'
+Require-Contains $memoryText 'change-to-revert' 'Permanent memory no-crumb invariant'
 
 # Structured response contract stays strict.
 $requiredFields = @(
