@@ -4,31 +4,24 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Do not reopen P1 diagnosis or product repair unless Brad finds new direct outcome evidence that requires reopening.
+Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Brad Batch 1 has produced new direct client-visible evidence that P1 is materially unmet in at least two scenarios. Do not diagnose or repair yet; complete the remaining bounded product-review inventory first so P1 can be reopened once against the full observed defect set.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Mandatory permanent operating-memory bootstrap: `PRYSM_PERMANENT_MEMORY.md`.
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- P1 product repair: COMPLETE.
-- Final frozen application branch: `p1/bounded-build-cross-report-integrity`.
-- Final frozen application SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
+- Frozen application branch: `p1/bounded-build-cross-report-integrity`.
+- Frozen application SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
 - Deterministic P1 verification: 77/77 PASS.
 - Viewer v2 rendered freeze matrix: 48/48 PASS.
 - Persisted rendered proof: 27 HTML scenarios plus SHA-256 manifest and scenario-to-obligation matrix.
-- Governance proof package is bound in `P1_EXECUTION_GATE.env`.
-- The repaired deterministic process gate has now PASSED locally and returned:
-  - `Authorized stage: OUTCOME_REVIEW`
-  - `Authorized actor: BRAD`
-  - `Next actor: BRAD`
-- Chris action at this boundary: STOP.
-- Brad is now the active actor.
+- Deterministic process gate: PASS.
+- Authorized stage: `OUTCOME_REVIEW`.
+- Authorized actor: `BRAD`.
+- Chris remains stopped while Brad completes the review.
 - Permanent single-authority decision: `DECISION_PRYSM_SINGLE_AUTHORITY_STAGE_ROUTING_2026-09-04.md`.
 - Permanent actor-bounded review decision: `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`.
-- Permanent diagnostic decision: `DECISION_PRYSM_DIAGNOSTIC_HYGIENE_2026-09-04.md`.
-- Current stage: OUTCOME_REVIEW
-- Authorized execution stage: OUTCOME_REVIEW
 
 Current stage:
 OUTCOME_REVIEW
@@ -39,58 +32,55 @@ OUTCOME_REVIEW
 Current actor:
 BRAD
 
-Current blocker:
-None. Brad must complete the bounded independent product review. No second AI process-gate audit is permitted.
+Brad Batch 1 result:
+- `competitor-present`: CLEAR.
+- `path-validated-blocker`: CONFUSING.
+- `no-conversion-mechanism`: CONFUSING.
+- Material direct outcome evidence: `no-conversion-mechanism` presents no CTA/form and no clear conversion action in Foundational Readiness / Conversion Path while Topical Map says `Take action — Adequate` and describes `Decision-stage information and a clear route to action`, without an observed point-of-reading reconciliation.
+- Material direct outcome evidence: `path-validated-blocker` presents Conversion mechanism PASS alongside an obstructed primary conversion action and Weak conversion path without an observed immediate client-facing explanation of the distinction.
+- These findings are direct client-visible evidence. They are not a process-gate failure.
+- P1 cannot be treated as OUTCOME PASS on the current evidence.
+
+Failure-branch rule:
+- Do not diagnose or repair immediately.
+- Do not begin Betty final audit.
+- Do not create the formal Brad outcome-review file yet.
+- Continue only the remaining bounded Brad review batches needed to capture the complete material P1 outcome defect set in one pass.
+- After Brad finishes the bounded review, create one new formal Brad outcome-review evidence file with the eight committed review questions and `Verdict: FAIL` if the material outcome remains unmet.
+- Bind/commit that evidence once, then route to Chris for `REOPEN SAME P#`.
+- Reopen diagnosis/build once against the complete Brad-observed defect set, not symptom-by-symptom.
 
 Permanent operating sequence:
 `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`
 
-Brad OUTCOME_REVIEW rules:
-- Judge the actual rendered product against `P1_OUTCOME_CONTRACT_2026-09-04.md`.
-- Review the product before detailed Builder rationale where practical.
-- Collect independent observations first.
-- Do not create or edit the formal Brad outcome-review evidence file yet.
-- After the bounded review is complete, create one NEW versioned outcome-review evidence file once.
-- Do not modify any manifest-bound prerequisite evidence in place.
-- No application code changes.
-- No P2.
-- No deploy.
-- No provider/model calls.
+Brad / Codex role boundary:
+- Brad remains the reviewer and decision-maker.
+- Codex/Betty may facilitate the bounded review and capture Brad's observations.
+- They must not make Brad's judgment for him, re-run the process gate, diagnose code, modify the application, or create the formal evidence file early.
 
-First bounded Brad review batch:
-Review these rendered scenarios as a client:
-- `proof/P1/rendered/competitor-present.html`
-- `proof/P1/rendered/path-validated-blocker.html`
-- `proof/P1/rendered/no-conversion-mechanism.html`
+Next bounded Brad review batch — Trust + Mobile:
+Review the relevant client-visible sections in:
+- `proof/P1/rendered/assessed.html`
+- `proof/P1/rendered/competitor-present.html` (revisit only the trust/proof presentation)
+- `proof/P1/rendered/slow-mobile.html`
+- `proof/P1/rendered/no-performance.html`
+- `proof/P1/rendered/device-profile-failed.html`
 
-Question for each scenario:
-`If two related conclusions differ here, do I immediately understand what each one measures and why both can be true?`
+Questions:
+1. Trust/proof: do related trust/proof conclusions remain coherent and understandable at the point of reading?
+2. Mobile: when mobile evidence is strong, weak, missing, or failed, does the report clearly distinguish what is known from what is not known?
+3. Does any section contradict another client-visible conclusion about the same underlying condition?
+4. Has the repair made wording repetitive, over-qualified, awkward, or less useful?
 
-Also check whether the contradiction was technically removed at the cost of making the wording repetitive, overly qualified, or less useful to a client.
+Required observation style:
+For each material issue, Brad states `CLEAR` or `CONFUSING` and what he noticed in plain English. Codex records Brad's words in-session only.
 
-Required Brad observation format for this first batch:
-
-```text
-competitor-present:
-Clear / Confusing
-What I noticed:
-
-path-validated-blocker:
-Clear / Confusing
-What I noticed:
-
-no-conversion-mechanism:
-Clear / Confusing
-What I noticed:
-```
-
-Do not create the formal evidence file until the complete Brad review is finished.
+After this Trust + Mobile batch, STOP and return Brad's observations to Chris. Do not create the formal outcome-review file yet.
 
 Not authorized:
-- new P1 production/runtime semantics;
-- scoring/evidence acquisition changes;
-- Writer/Judge or Narrative semantic changes;
-- unrelated refactors;
+- P1 product repair yet;
+- diagnosis/code changes;
+- Betty final audit;
 - provider/model calls;
 - deployment;
 - application `main` merge;
@@ -98,7 +88,7 @@ Not authorized:
 - destructive Git operations or force push/history rewrite.
 
 Exact next action:
-Brad opens and reviews the three first-batch rendered HTML scenarios above and returns only the bounded observations in the required format. Chris does nothing on P1 until Brad returns those observations.
+Brad continues the existing OUTCOME_REVIEW with the Trust + Mobile bounded batch above. Chris does not reopen or authorize repair yet.
 
 Last verified:
 2026-09-04
