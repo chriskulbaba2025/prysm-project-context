@@ -36,6 +36,13 @@ $ProtectedGovernancePaths = @(
     'tools/prysm/START-PRYSM-P-AUTORUN.ps1',
     'tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md',
     'tools/prysm/test-prysm-p-autorun-contract.ps1',
+    'tools/prysm/test-prysm-gate-contract.sh',
+    'tools/prysm/assert-p1-frozen-history.sh',
+    'tools/prysm/start-prysm-p.ps1',
+    'tools/prysm/start-prysm-p.sh',
+    'tools/prysm/start-prysm-p-current-session.sh',
+    'tools/prysm/start-prysm-p-base.sh',
+    'tools/prysm/prysm-governance-preflight.sh',
     'tools/autorun/PRYSM-AUTORUN-RESULT.schema.json',
     'DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md',
     'PRYSM_PERMANENT_MEMORY.md'
@@ -171,7 +178,23 @@ function Get-RepoFingerprint {
     $head = Get-GitHead $Repo
     $branch = Get-GitBranch $Repo
     $status = Get-GitStatus $Repo
-    $trackedDiff = (& git -C $Repo diff --binary HEAD 2>$null | Out-String)
+
+    # Windows PowerShell 5.1 converts redirected native stderr into error
+    # records. Git may emit harmless CRLF warnings on stderr while diff exits 0.
+    # Lower EAP only for this native call, then fail explicitly on a nonzero Git
+    # exit code and restore fail-fast PowerShell behavior immediately.
+    $previousErrorActionPreference = $ErrorActionPreference
+    $trackedDiff = ''
+    $diffExitCode = 1
+    try {
+        $ErrorActionPreference = 'Continue'
+        $trackedDiff = (& git -C $Repo diff --binary HEAD 2>$null | Out-String)
+        $diffExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
+    if ($diffExitCode -ne 0) { throw "Git diff failed while fingerprinting repository: $Repo" }
+
     $untracked = @()
     foreach ($path in (& git -C $Repo ls-files --others --exclude-standard)) {
         if ([string]::IsNullOrWhiteSpace($path)) { continue }
@@ -190,8 +213,17 @@ function Get-ControlPlaneFingerprint {
     param([string]$GovernanceRepo)
     $parts = @()
     foreach ($path in $ProtectedGovernancePaths) {
-        $blob = (& git -C $GovernanceRepo rev-parse "HEAD:$path" 2>$null | Out-String).Trim()
-        if ([string]::IsNullOrWhiteSpace($blob)) { throw "Protected control-plane file is missing from HEAD: $path" }
+        $previousErrorActionPreference = $ErrorActionPreference
+        $blob = ''
+        $blobExitCode = 1
+        try {
+            $ErrorActionPreference = 'Continue'
+            $blob = (& git -C $GovernanceRepo rev-parse "HEAD:$path" 2>$null | Out-String).Trim()
+            $blobExitCode = $LASTEXITCODE
+        } finally {
+            $ErrorActionPreference = $previousErrorActionPreference
+        }
+        if ($blobExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($blob)) { throw "Protected control-plane file is missing from HEAD: $path" }
         $parts += "$path=$blob"
     }
     return Get-StringSha256 ($parts -join "`n")
@@ -258,10 +290,22 @@ function Send-TerminalNotification {
 
 function Assert-CodexFeatures {
     param([string]$CodexCmdPath)
-    $rootHelp = (& $CodexCmdPath --help 2>&1 | Out-String)
-    if ($LASTEXITCODE -ne 0) { throw 'Codex --help failed.' }
-    $execHelp = (& $CodexCmdPath exec --help 2>&1 | Out-String)
-    if ($LASTEXITCODE -ne 0) { throw 'Codex exec --help failed.' }
+    $previousErrorActionPreference = $ErrorActionPreference
+    $rootHelp = ''
+    $execHelp = ''
+    $rootExitCode = 1
+    $execExitCode = 1
+    try {
+        $ErrorActionPreference = 'Continue'
+        $rootHelp = (& $CodexCmdPath --help 2>&1 | Out-String)
+        $rootExitCode = $LASTEXITCODE
+        $execHelp = (& $CodexCmdPath exec --help 2>&1 | Out-String)
+        $execExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
+    if ($rootExitCode -ne 0) { throw 'Codex --help failed.' }
+    if ($execExitCode -ne 0) { throw 'Codex exec --help failed.' }
     foreach ($required in @('--ask-for-approval','--sandbox','--add-dir','--output-schema','--output-last-message','--model','--cd')) {
         if ($rootHelp -notmatch [regex]::Escape($required) -and $execHelp -notmatch [regex]::Escape($required)) { throw "Installed Codex CLI does not advertise required option: $required" }
     }
@@ -283,8 +327,17 @@ function Assert-CurrentStateStage {
 
 function Invoke-OfficialGate {
     param([string]$Bash,[string]$ExpectedStage,[string]$ExpectedActor)
-    $gateOutput = (& $Bash $CurrentSessionLauncher $P 2>&1 | Out-String)
-    if ($LASTEXITCODE -ne 0) { throw "Official PRYSM deterministic gate failed.`n$gateOutput" }
+    $previousErrorActionPreference = $ErrorActionPreference
+    $gateOutput = ''
+    $gateExitCode = 1
+    try {
+        $ErrorActionPreference = 'Continue'
+        $gateOutput = (& $Bash $CurrentSessionLauncher $P 2>&1 | Out-String)
+        $gateExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
+    if ($gateExitCode -ne 0) { throw "Official PRYSM deterministic gate failed.`n$gateOutput" }
     if ($gateOutput -notmatch 'PRYSM PROCESS GATE PASS') { throw "Official gate did not emit PASS.`n$gateOutput" }
     if ($gateOutput -notmatch [regex]::Escape("Authorized stage: $ExpectedStage")) { throw "Official gate stage mismatch.`n$gateOutput" }
     if ($gateOutput -notmatch [regex]::Escape("Authorized actor: $ExpectedActor")) { throw "Official gate actor mismatch.`n$gateOutput" }
@@ -356,7 +409,6 @@ function Test-P1GovernanceBoundary {
         if ($path -like 'proof/P1/rendered/*') { return $false }
         $ok = $false
         if ($path -eq 'CURRENT_STATE.md' -or $path -eq 'P1_EXECUTION_GATE.env') { $ok = $true }
-        elseif ($path -like 'P1_*') { $ok = $true }
         elseif ($path -like 'proof/P1/reopen/*') { $ok = $true }
         if (-not $ok) { return $false }
     }
@@ -794,12 +846,18 @@ CONTROLLER RULES
         Write-Host "Logs: $runDir"
 
         $exitCode = 1
+        $promptInput = Get-Content -LiteralPath $promptPath -Raw
+        $previousErrorActionPreference = $ErrorActionPreference
         try {
-            Get-Content -LiteralPath $promptPath -Raw | & $CodexCmdPath @codexArgs 1> $stdoutPath 2> $stderrPath
+            # Codex legitimately writes operational output to stderr. Under
+            # Windows PowerShell 5.1, redirected native stderr becomes error
+            # records; keep it non-terminating only for the native invocation
+            # and use the real process exit code as authority.
+            $ErrorActionPreference = 'Continue'
+            $promptInput | & $CodexCmdPath @codexArgs 1> $stdoutPath 2> $stderrPath
             $exitCode = $LASTEXITCODE
-        } catch {
-            $exitCode = 1
-            ($_ | Out-String) | Set-Content -LiteralPath $stderrPath -Encoding UTF8
+        } finally {
+            $ErrorActionPreference = $previousErrorActionPreference
         }
 
         '=== STDOUT ===' | Set-Content -LiteralPath $transcriptPath -Encoding UTF8
