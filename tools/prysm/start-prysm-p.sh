@@ -3,6 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PREFLIGHT="$SCRIPT_DIR/prysm-governance-preflight.sh"
+P1_FROZEN_HISTORY_GUARD="$SCRIPT_DIR/assert-p1-frozen-history.sh"
 
 [[ -f "$PREFLIGHT" ]] || {
   echo "PRYSM PROCESS GATE FAIL: governance pre-flight helper is missing: $PREFLIGHT" >&2
@@ -13,6 +14,15 @@ PREFLIGHT="$SCRIPT_DIR/prysm-governance-preflight.sh"
 # context. This prevents local diagnostic artifacts from becoming false gate
 # blockers and prints exact real blockers when the tree is genuinely dirty.
 bash "$PREFLIGHT"
+
+P_ID="${1:-}"
+if [[ "$P_ID" == "P1" ]]; then
+  [[ -f "$P1_FROZEN_HISTORY_GUARD" ]] || {
+    echo "PRYSM PROCESS GATE FAIL: P1 frozen-history guard is missing: $P1_FROZEN_HISTORY_GUARD" >&2
+    exit 1
+  }
+  bash "$P1_FROZEN_HISTORY_GUARD"
+fi
 
 # One public Bash entrypoint, safe in both contexts.
 # If already inside Codex, the internal wrapper prevents nested Codex only when
