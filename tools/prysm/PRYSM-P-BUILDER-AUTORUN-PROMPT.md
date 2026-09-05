@@ -7,7 +7,7 @@ An external PowerShell controller invokes this prompt repeatedly. Every invocati
 
 ## Runtime authority
 
-The controller prepends the active P number, local repository paths, model level, and repair-accounting state.
+The controller prepends the active P number, local repository paths, model level, repair-accounting state, and recovery mode.
 
 For the active P# read, in this order:
 
@@ -21,7 +21,7 @@ GitHub governance is authoritative durable memory. The exact local application w
 
 Do **not** use stale historical `PRYSM_AUTORUN_STATE.json`, Production Closure roadmap state, old report-improvement tranches, or unrelated PDV state to route the active P#.
 
-When fields conflict, current reopened `CURRENT_STATE.md` and the active P# decision/evidence chain control lifecycle routing. Treat old lifecycle verdict fields in `${P}_EXECUTION_GATE.env` as historical unless `CURRENT_STATE.md` explicitly reactivates them.
+When historical lifecycle fields remain in `${P}_EXECUTION_GATE.env` after a reopen, current reopened `CURRENT_STATE.md`, `AUTHORIZED_STAGE`, the application branch/SHA anchor, and the active P# evidence chain control current Builder routing.
 
 ## Recovery first — every invocation
 
@@ -64,17 +64,21 @@ Keep advancing the exact current Builder workstream until the candidate is genui
 
 ## READY_FOR_BRAD terminal contract
 
-When and only when all required Builder-owned repair and proof are complete for the active P#:
+Brad is the next human actor. Builder must never route directly to Auditor/Betty.
 
-- repaired application candidate is coherently committed/pushed on the governed P# branch if governance requires it;
+When and only when all required Builder-owned repair and proof are complete:
+
+- repaired application candidate is coherently committed and pushed on the governed P# branch;
 - focused regression is green;
 - full P# deterministic verification is green;
 - affected rendered scenarios/proof are regenerated and verified;
 - manifest/hash/scenario mapping proof is trustworthy and green where applicable;
 - broader required regression is green;
-- application tree/candidate identity is auditable;
-- required governance proof/state is committed/pushed and verified;
-- next actor is Brad for independent OUTCOME_REVIEW;
+- application worktree is clean and exact candidate identity is auditable;
+- required new technical/system/render proof is durable;
+- `${P}_EXECUTION_GATE.env` is intentionally rebound to the repaired exact application candidate and advanced to `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
+- `CURRENT_STATE.md` is synchronized to `OUTCOME_REVIEW` with authorized actor Brad;
+- governance is committed, pushed, clean, and synchronized;
 
 return exactly:
 
@@ -82,23 +86,34 @@ return exactly:
 - `role = Builder`
 - `next_role = NONE`
 - `checkpoint = READY_FOR_BRAD`
+- `whole_app_gate = PASS`
+- `material_defects = 0`
 - `failure_class = NONE`
+- `github_state_synced = true`
+- `application_sha` = the exact pushed repaired candidate SHA
+- `governance_sha` = the exact pushed governance SHA containing the OUTCOME_REVIEW binding
 
-Do not launch Betty/Auditor. Brad is the human outcome-review boundary.
+The controller will independently reject the claim unless the **official deterministic PRYSM gate** passes for that exact state and returns:
+
+- `Authorized stage: OUTCOME_REVIEW`
+- `Authorized actor: BRAD`
+
+Do not claim READY early. Do not launch Betty/Auditor.
 
 ## True blockers only
 
 Return `BLOCKED` only for a genuine condition that cannot safely progress inside the authorized P# boundary, including:
 
-- three completed evidence-based failures against the same root after controller-owned escalation;
 - protected external action is required;
 - unresolved destructive-recovery decision;
 - governance conflict that cannot be reconciled without owner judgment;
 - required external/paid provider or model action that is not authorized.
 
+The controller, not Builder, enforces the three-attempt terminal limit.
+
 For proof-harness/setup failures that prevent the intended product assertion from being reached, use `failure_class = PROOF_SETUP_FAILURE`, keep the same root and repair index, return `CONTINUE` to Builder, and repair the harness/setup autonomously.
 
-For CLI/network/GitHub/usage/protocol failures use `EXTERNAL_OR_PROTOCOL`; these do not consume a repair level.
+For CLI/network/GitHub/protocol problems use `EXTERNAL_OR_PROTOCOL`; these do not consume a repair level. A Codex account usage-limit condition is handled by the external controller and must not be disguised as a product repair failure.
 
 ## Repair accounting
 
@@ -110,6 +125,7 @@ The controller owns the repair-attempt level. Echo the runtime `repair_attempt` 
 - external/protocol problem: `EXTERNAL_OR_PROTOCOL`;
 - no failure: `NONE`.
 
+Use a stable root-defect identity. Do not rename the same root between invocations merely because the symptom/test changed.
 Never create a fourth same-root repair attempt.
 
 ## Permanent boundaries
@@ -120,9 +136,11 @@ Unless current P# governance explicitly says otherwise:
 - no Betty Final Audit;
 - no production deployment;
 - no merge to application `main`;
-- no paid/live provider/model calls;
+- no paid/live application provider/model calls;
 - no destructive Git operations;
 - no unrelated product changes.
+
+Codex itself is the authorized Builder execution engine; the prohibition above concerns application/product provider/model calls.
 
 Preserve frozen human-review evidence unchanged.
 
