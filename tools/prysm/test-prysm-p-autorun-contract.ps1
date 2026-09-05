@@ -11,6 +11,7 @@ $Controller = Join-Path $ScriptRoot 'PRYSM-P-AUTORUN.ps1'
 $Wrapper = Join-Path $ScriptRoot 'START-PRYSM-P-AUTORUN.ps1'
 $Prompt = Join-Path $ScriptRoot 'PRYSM-P-BUILDER-AUTORUN-PROMPT.md'
 $FrozenHistoryGuard = Join-Path $ScriptRoot 'assert-p1-frozen-history.sh'
+$PublicLauncher = Join-Path $ScriptRoot 'start-prysm-p.sh'
 $CurrentSessionLauncher = Join-Path $ScriptRoot 'start-prysm-p-current-session.sh'
 $GateRegression = Join-Path $ScriptRoot 'test-prysm-gate-contract.sh'
 $Schema = Join-Path (Split-Path -Parent $ScriptRoot) 'autorun\PRYSM-AUTORUN-RESULT.schema.json'
@@ -31,7 +32,7 @@ function Require-NotContains {
     if ($Text -match [regex]::Escape($Needle)) { throw "$Label contains forbidden text: $Needle" }
 }
 
-foreach ($path in @($Controller,$Wrapper,$Prompt,$FrozenHistoryGuard,$CurrentSessionLauncher,$GateRegression,$Schema,$Decision,$Memory)) { Require-File $path }
+foreach ($path in @($Controller,$Wrapper,$Prompt,$FrozenHistoryGuard,$PublicLauncher,$CurrentSessionLauncher,$GateRegression,$Schema,$Decision,$Memory)) { Require-File $path }
 
 # Parse controller + run pure route/model/accounting tests before repository mutation.
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -SelfTest
@@ -41,6 +42,7 @@ $controllerText = Get-Content -LiteralPath $Controller -Raw
 $wrapperText = Get-Content -LiteralPath $Wrapper -Raw
 $promptText = Get-Content -LiteralPath $Prompt -Raw
 $frozenHistoryText = Get-Content -LiteralPath $FrozenHistoryGuard -Raw
+$publicLauncherText = Get-Content -LiteralPath $PublicLauncher -Raw
 $currentSessionText = Get-Content -LiteralPath $CurrentSessionLauncher -Raw
 $gateRegressionText = Get-Content -LiteralPath $GateRegression -Raw
 $decisionText = Get-Content -LiteralPath $Decision -Raw
@@ -75,15 +77,19 @@ foreach ($needle in @(
 )) { Require-Contains $controllerText $needle 'Controller integrity guard' }
 Require-Contains $controllerText 'This controller version has explicit transaction-scope enforcement only for P1.' 'Controller fail-closed scope'
 
-# Exhaustive baseline-derived frozen-history guard is part of the official gate.
+# Exhaustive baseline-derived frozen-history guard is part of every public P1 gate path.
+Require-Contains $publicLauncherText 'assert-p1-frozen-history.sh' 'Public deterministic gate'
+Require-Contains $publicLauncherText 'bash "$P1_FROZEN_HISTORY_GUARD"' 'Public deterministic gate'
 Require-Contains $currentSessionText 'assert-p1-frozen-history.sh' 'Current-session deterministic gate'
 Require-Contains $currentSessionText 'P1 frozen-history verification failed.' 'Current-session deterministic gate'
 foreach ($needle in @(
     'P1_FROZEN_BASELINE="0756e4db3746be0c2279c2083ccf83b3ec5c89f5"',
     "grep -E '^(P1_[^/]*|proof/P1/rendered/.+)$'",
     "grep -v '^P1_EXECUTION_GATE\\.env$'",
+    'historical P1 evidence has an uncommitted change',
     'historical P1 evidence was touched after freeze baseline',
     'new root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/',
+    'new uncommitted root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/',
     'PRYSM_GATE_CONTRACT_TEST'
 )) { Require-Contains $frozenHistoryText $needle 'P1 frozen-history guard' }
 foreach ($needle in @(
@@ -91,6 +97,11 @@ foreach ($needle in @(
     'change-then-revert historical breadcrumb still fails deterministically',
     'new root P1 evidence is rejected; reopened proof must be versioned under proof/P1/reopen/'
 )) { Require-Contains $gateRegressionText $needle 'Permanent gate regression' }
+
+# Builder must run the same evidence guard before any governance commit/push.
+Require-Contains $promptText 'Before every governance commit or push' 'Builder pre-commit history guard'
+Require-Contains $promptText 'bash tools/prysm/assert-p1-frozen-history.sh' 'Builder pre-commit history guard'
+Require-Contains $promptText 'A failure is a governance-integrity blocker.' 'Builder pre-commit history guard'
 
 # Repair accounting cannot reset by relabeling a root.
 Require-Contains $controllerText 'Apply-RepairAccounting' 'Controller accounting'
@@ -142,12 +153,15 @@ foreach ($needle in @(
     'Transaction journal and no-crumb rule','Deterministic READY_FOR_BRAD rule',
     'official deterministic PRYSM P1 gate','Current scope of the controller',
     'This audited controller version is **P1-only**','Frozen P1 history','Audit-only runtime verification',
-    'supported public entrypoint','CODEX_EXITED_UNRECONCILED'
+    'supported public entrypoint','CODEX_EXITED_UNRECONCILED',
+    '0756e4db3746be0c2279c2083ccf83b3ec5c89f5','change→revert'
 )) { Require-Contains $decisionText $needle 'Decision' }
 Require-Contains $memoryText 'Permanent P-scoped unattended Builder rule' 'Permanent memory'
 Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
 Require-Contains $memoryText 'CODEX_EXITED_UNRECONCILED' 'Permanent memory'
+Require-Contains $memoryText '0756e4db3746be0c2279c2083ccf83b3ec5c89f5' 'Permanent memory frozen-history baseline'
+Require-Contains $memoryText 'change→revert' 'Permanent memory no-crumb invariant'
 
 # Structured response contract stays strict.
 $requiredFields = @(
