@@ -45,10 +45,13 @@ Builder must not modify, regenerate, or bypass the P# autorun control plane duri
 - `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
 - `tools/prysm/test-prysm-p-autorun-contract.ps1`
-- `tools/prysm/assert-p1-frozen-history.sh`
-- `tools/prysm/start-prysm-p-current-session.sh`
-- `tools/prysm/start-prysm-p.sh`
 - `tools/prysm/test-prysm-gate-contract.sh`
+- `tools/prysm/assert-p1-frozen-history.sh`
+- `tools/prysm/start-prysm-p.ps1`
+- `tools/prysm/start-prysm-p.sh`
+- `tools/prysm/start-prysm-p-current-session.sh`
+- `tools/prysm/start-prysm-p-base.sh`
+- `tools/prysm/prysm-governance-preflight.sh`
 - `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json`
 - `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`
 - `PRYSM_PERMANENT_MEMORY.md`
