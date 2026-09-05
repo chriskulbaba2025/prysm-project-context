@@ -30,7 +30,7 @@ function Require-NotContains {
 
 foreach ($path in @($Controller,$Wrapper,$Prompt,$Schema,$Decision,$Memory)) { Require-File $path }
 
-# This parses the controller and runs pure routing/accounting tests before any repository mutation.
+# Parse controller + run pure route/model/accounting tests before repository mutation.
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -SelfTest
 if ($LASTEXITCODE -ne 0) { throw 'P# controller self-test failed.' }
 
@@ -41,63 +41,77 @@ $decisionText = Get-Content -LiteralPath $Decision -Raw
 $memoryText = Get-Content -LiteralPath $Memory -Raw
 $schemaObject = Get-Content -LiteralPath $Schema -Raw | ConvertFrom-Json
 
-# Continuous routing and human boundary.
+# Continuous routing and Brad boundary.
 Require-Contains $controllerText "if (`$nextRole -eq 'Builder' -and `$loopAction -in @('CONTINUE','STOP')) { return 'CONTINUE' }" 'Controller'
 Require-Contains $controllerText "if (`$nextRole -eq 'Auditor') { return 'CONTRACT_VIOLATION' }" 'Controller'
 Require-Contains $controllerText 'Assert-ReadyForBrad' 'Controller'
 Require-Contains $controllerText "Invoke-OfficialGate -Bash `$Bash -ExpectedStage 'OUTCOME_REVIEW' -ExpectedActor 'BRAD'" 'Controller'
 Require-Contains $controllerText "return 'READY_FOR_BRAD'" 'Controller pre-run handoff recovery'
 
-# Transactional lineage and restart recovery.
+# Transaction journal, exact restart lineage, and atomic fail-closed local state.
 foreach ($needle in @(
-    'transaction-journal.json','Get-RepoFingerprint','Get-TransactionChangedPaths',
-    "status='RUNNING'",'CODEX_EXITED_UNRECONCILED',"status = 'RECONCILED'",
-    'entry-anchor.json','APP_P1_INITIAL_DIRTY_ADOPTION','APP_JOURNALED_DIRTY_RECOVERY',
-    'GOV_JOURNALED_DIRTY_RECOVERY','JournalMatchesFingerprint','Sync-LoopLineage','Acquire-ResourceLock'
+    'transaction-journal.json','entry-anchor.json','Get-RepoFingerprint','Get-TransactionChangedPaths',
+    'git -C $Repo log --format= --name-only',"status='RUNNING'",'CODEX_EXITED_UNRECONCILED',
+    "status = 'RECONCILED'",'JournalMatchesFingerprint','APP_P1_INITIAL_DIRTY_ADOPTION',
+    'APP_JOURNALED_DIRTY_RECOVERY','GOV_JOURNALED_DIRTY_RECOVERY','Sync-LoopLineage','Acquire-ResourceLock',
+    'P-scoped local state is corrupt and will not be silently reset','Move-Item -LiteralPath $temp -Destination $Path -Force'
 )) { Require-Contains $controllerText $needle 'Controller transaction/recovery' }
 
-# Scope control and anti-crumb enforcement.
-Require-Contains $controllerText 'Assert-P1TransactionBoundary' 'Controller scope guard'
-Require-Contains $controllerText 'P1 application transaction escaped the authorized seam' 'Controller scope guard'
-Require-Contains $controllerText 'P1 governance transaction escaped the authorized seam' 'Controller scope guard'
-Require-Contains $controllerText 'Assert-ControlPlaneUnmodified' 'Controller control-plane guard'
-Require-Contains $controllerText 'Committed PRYSM control-plane fingerprint changed during Builder execution.' 'Controller control-plane guard'
-Require-Contains $controllerText 'No-progress anti-thrash limit reached' 'Controller anti-thrash'
+# Scope, frozen history, and immutable control plane.
+foreach ($needle in @(
+    'Assert-P1TransactionBoundary','P1 application transaction escaped the authorized seam',
+    'P1 governance transaction modified frozen/history or escaped the authorized seam',
+    '$P1FrozenGovernancePaths','proof/P1/rendered/*','proof/P1/reopen/*',
+    'Assert-ControlPlaneUnmodified','Committed PRYSM control-plane fingerprint changed during Builder execution.',
+    'controlPlaneFingerprint','No-progress anti-thrash limit reached'
+)) { Require-Contains $controllerText $needle 'Controller integrity guard' }
+
+Require-Contains $controllerText 'This controller version has explicit transaction-scope enforcement only for P1.' 'Controller fail-closed scope'
 
 # Repair accounting cannot reset by relabeling a root.
 Require-Contains $controllerText 'Apply-RepairAccounting' 'Controller accounting'
 Require-Contains $controllerText 'Root identity changed without NEW_ROOT_CAUSE.' 'Controller accounting'
 Require-Contains $controllerText 'NEW_ROOT_CAUSE requires a non-NONE root_defect_id.' 'Controller accounting'
 
-# Non-interactive execution.
+# Non-interactive Codex execution.
 Require-Contains $controllerText "'--ask-for-approval','never'" 'Controller'
 Require-Contains $controllerText "'--sandbox','danger-full-access'" 'Controller'
 Require-Contains $controllerText "'--output-schema',`$SchemaPath" 'Controller'
 Require-Contains $controllerText "'--output-last-message',`$finalPath" 'Controller'
 
-# Bootstrap does not overwrite interrupted governance state.
+# Bootstrap recovery must never pull/reset over interrupted state.
 Require-Contains $wrapperText 'Verify bootstrap/control-plane integrity' 'Wrapper'
 Require-Contains $wrapperText 'controller recovery will verify lineage' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-p-autorun-contract.ps1' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-gate-contract.sh' 'Wrapper'
 Require-Contains $wrapperText '-PreflightOnly' 'Wrapper'
 
-# Builder is explicitly bound to the journal and immutable control plane.
+# Builder receives the same frozen-history and transaction contract.
 Require-Contains $promptText 'controller journals each invocation' 'Builder prompt'
 Require-Contains $promptText '## Immutable control plane' 'Builder prompt'
+Require-Contains $promptText '## Frozen evidence / no rewritten history' 'Builder prompt'
+Require-Contains $promptText 'never overwrite or regenerate `proof/P1/rendered/*` in place' 'Builder prompt'
+Require-Contains $promptText 'proof/P1/reopen/' 'Builder prompt'
 Require-Contains $promptText 'Do not self-modify the execution system that is currently governing you.' 'Builder prompt'
 Require-Contains $promptText 'Builder must never route directly to Auditor/Betty.' 'Builder prompt'
 Require-Contains $promptText 'AUTHORIZED_STAGE=OUTCOME_REVIEW' 'Builder prompt'
 Require-Contains $promptText 'official deterministic PRYSM gate' 'Builder prompt'
 
+# Historical controller coupling is forbidden.
 foreach ($forbidden in @('repair/prysm-production-closure','PRYSM Production Closure','PRYSM_AUTORUN_STATE.json')) {
     Require-NotContains $controllerText $forbidden 'Controller'
 }
 Require-Contains $promptText 'Do **not** use stale historical `PRYSM_AUTORUN_STATE.json`' 'Builder prompt'
-Require-Contains $decisionText 'continuous' 'Decision'
+
+# Durable governance must describe transactional recovery and deterministic Brad gate.
+foreach ($needle in @('Transaction journal and no-crumb rule','Deterministic READY_FOR_BRAD rule','official deterministic PRYSM P# gate')) {
+    Require-Contains $decisionText $needle 'Decision'
+}
 Require-Contains $memoryText 'Permanent P-scoped unattended Builder rule' 'Permanent memory'
+Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
 
+# Structured response contract stays strict.
 $requiredFields = @(
     'loop_action','role','next_role','tranche','checkpoint','reason','application_branch','application_sha',
     'governance_sha','whole_app_gate','material_defects','repair_attempt','root_defect_id','failure_class','next_action','github_state_synced'
