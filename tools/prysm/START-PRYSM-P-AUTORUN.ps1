@@ -57,8 +57,12 @@ if (Test-Path -LiteralPath $JournalPath) {
     catch {
         throw "P-scoped transaction journal is corrupt and will not be silently reset: $JournalPath"
     }
-    if ([string]$journal.status -eq 'RUNNING') {
+    $journalStatus = [string]$journal.status
+    if ($journalStatus -eq 'RUNNING') {
         throw "P-scoped transaction journal is still RUNNING and has no durable post-run fingerprint. Automatic recovery is intentionally blocked rather than assuming current local edits belong to Codex. Journal: $JournalPath"
+    }
+    if ($journalStatus -eq 'CODEX_EXITED_UNRECONCILED') {
+        throw "P-scoped transaction journal contains an unreconciled Codex result. Automatic relaunch is intentionally blocked so the recorded post-run state cannot be overwritten. Journal: $JournalPath"
     }
 }
 
@@ -105,5 +109,5 @@ if ($AuditOnly) {
 }
 
 Write-Host "`n[6/6] Start continuous governed Builder loop"
-& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -MaxConsecutiveFailures 1 -MaxRuns 20
+& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -MaxConsecutiveFailures 1
 exit $LASTEXITCODE
