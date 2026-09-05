@@ -27,6 +27,20 @@ This file is an index of durable operating memory. Detailed source-of-truth rule
 - `CLOSURE` -> Chris / durable closure-state recording.
 - Never substitute an already-open agent for the role that owns the stage.
 
+## Permanent Brad + Codex review rule
+
+Brad uses VS Code on macOS and may use Codex as his guided review assistant during Brad-owned `OUTCOME_REVIEW` stages.
+
+- Brad remains the actor, reviewer, and decision-maker.
+- Codex is a facilitator only: it may guide the bounded review sequence, point Brad to exact rendered artifacts, ask the committed review questions, capture Brad's observations in-session, and later draft the formal review evidence from Brad's completed observations.
+- Codex must not become a second process gate after deterministic PASS.
+- Codex must not substitute its own judgment for Brad's. Unreviewed items remain unreviewed until Brad personally judges them.
+- Codex must not reopen diagnosis/code first, edit the application, call providers/models, start the next P#, or create the formal evidence file while Brad is still gathering observations.
+- If Brad already has Codex open, continue in that one session; never nest Codex inside Codex.
+- If Brad starts from a normal VS Code terminal, run the deterministic launcher first. After `Authorized actor: BRAD`, Brad may enter/continue Codex and give it the bounded review prompt.
+- Evidence is written once only after all Brad review batches are complete, then committed/bound once for the next transition.
+- Governing decision: `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`.
+
 ## Permanent actor-bounded evidence-once pattern
 
 The operating sequence is mandatory:
@@ -112,4 +126,4 @@ Do not declare a process repair complete without that deterministic regression s
 
 ## Non-negotiable intent
 
-The user must not be sent through repetitive stop/start launcher loops caused by our own diagnostics, shell ambiguity, duplicate AI gates, stale chat instructions, hidden dirty-tree details, wrong-actor routing, or repeated evidence edits. Future instructions must recover authoritative state first, expose the exact deterministic blocker if one exists, and give the single correct next action for the person whose turn it is.
+The user must not be sent through repetitive stop/start launcher loops caused by our own diagnostics, shell ambiguity, duplicate AI gates, stale chat instructions, hidden dirty-tree details, wrong-actor routing, repeated evidence edits, or role confusion between Brad and Codex. Future instructions must recover authoritative state first, expose the exact deterministic blocker if one exists, and give the single correct next action for the person whose turn it is.
