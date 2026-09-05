@@ -9,20 +9,20 @@ PREFLIGHT="$SCRIPT_DIR/prysm-governance-preflight.sh"
   exit 1
 }
 
-# Always run the same cleanliness/hygiene check before selecting the execution
+# Always run the same cleanliness/hygiene check before selecting execution
 # context. This prevents local diagnostic artifacts from becoming false gate
 # blockers and prints exact real blockers when the tree is genuinely dirty.
 bash "$PREFLIGHT"
 
 # One public Bash entrypoint, safe in both contexts.
-# Codex command shells expose CODEX_THREAD_ID. If the launcher is invoked from
-# an already-running Codex session, route to the current-session wrapper so we
-# run the exact same governed machine gate without nesting another Codex CLI.
+# If already inside Codex, the internal wrapper prevents nested Codex only when
+# the deterministic gate reaches a Builder-owned stage. Brad/Chris-owned stages
+# return their role handoff directly and never require Codex.
 if [[ -n "${CODEX_THREAD_ID:-}" ]]; then
   exec bash "$SCRIPT_DIR/start-prysm-p-current-session.sh" "$@"
 fi
 
-# Normal terminal / new-process path (Brad macOS, or Windows via the PS1
-# wrapper). The frozen base launcher performs the governed machine checks and
-# launches Codex only after they pass.
+# Normal terminal path (Brad macOS, or Windows via the PS1 wrapper). The base
+# launcher performs the deterministic gate once and then routes to the exact
+# authorized actor for the stage.
 exec bash "$SCRIPT_DIR/start-prysm-p-base.sh" "$@"
