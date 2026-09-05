@@ -107,11 +107,12 @@ Require-Contains $promptText 'Builder must never route directly to Auditor/Betty
 Require-Contains $promptText 'AUTHORIZED_STAGE=OUTCOME_REVIEW' 'Builder prompt'
 Require-Contains $promptText 'official deterministic PRYSM gate' 'Builder prompt'
 
-# Historical controller coupling is forbidden.
-foreach ($forbidden in @('repair/prysm-production-closure','PRYSM Production Closure','PRYSM_AUTORUN_STATE.json')) {
+# Historical Production Closure coupling is forbidden; stale global state may be named only to reject it as authority.
+foreach ($forbidden in @('repair/prysm-production-closure','PRYSM Production Closure')) {
     Require-NotContains $controllerText $forbidden 'Controller'
 }
-Require-Contains $promptText 'Do **not** use stale historical `PRYSM_AUTORUN_STATE.json`' 'Builder prompt'
+Require-Contains $controllerText 'not stale PRYSM_AUTORUN_STATE.json' 'Controller stale-state rejection'
+Require-Contains $promptText 'Do **not** use stale historical `PRYSM_AUTORUN_STATE.json`' 'Builder prompt stale-state rejection'
 
 # Durable governance must describe the exact audited controller behavior.
 foreach ($needle in @(
