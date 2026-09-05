@@ -34,7 +34,7 @@ Authorized execution stage:
 OUTCOME_REVIEW
 
 Current blocker:
-No P1 product blocker remains. The only remaining prerequisite is to synchronize the newly committed process repair locally and run the deterministic gate once. The repaired launcher must either produce one exact deterministic blocker or PASS and hand directly to Brad. No second AI process-gate audit is permitted.
+No P1 product blocker remains. The only remaining prerequisite is to synchronize the committed process repair locally and run the deterministic gate once. The repaired launcher must either produce one exact deterministic blocker or PASS and hand directly to Brad. No second AI process-gate audit is permitted.
 
 Process repair completed:
 - deterministic gate is the sole authority for Git/manifest/current-state/candidate facts;
@@ -50,8 +50,8 @@ Process repair completed:
 
 Process verification:
 - candidate base launcher Bash syntax: PASS;
-- permanent gate contract regression suite: 6 PASS / 0 FAIL;
-- tested cases: valid OUTCOME_REVIEW without Codex, real stale evidence, missing rendered-proof binding, candidate SHA mismatch, Builder single-authority prompt, non-Builder no-Codex path.
+- full public launcher/preflight/routing gate contract regression suite: 8 PASS / 0 FAIL;
+- tested cases: valid OUTCOME_REVIEW without Codex; real stale evidence; missing rendered-proof binding; candidate SHA mismatch; Builder single-authority prompt; non-Builder no-Codex path; recognized diagnostic quarantine through public preflight; unknown dirty-file block with exact path.
 
 Permanent execution rules:
 - Chris / Windows PowerShell: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1`.
