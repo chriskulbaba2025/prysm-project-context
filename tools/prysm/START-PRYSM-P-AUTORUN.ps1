@@ -20,44 +20,44 @@ if ([string]::IsNullOrWhiteSpace($AppRepo)) {
 }
 
 $Controller = Join-Path $ScriptRoot 'PRYSM-P-AUTORUN.ps1'
+$AutorunRegression = Join-Path $ScriptRoot 'test-prysm-p-autorun-contract.ps1'
 $GateRegression = Join-Path $ScriptRoot 'test-prysm-gate-contract.sh'
-$CurrentSessionGate = Join-Path $ScriptRoot 'start-prysm-p-current-session.sh'
+
+$gitBash = 'C:\Program Files\Git\bin\bash.exe'
+if (Test-Path -LiteralPath $gitBash) {
+    $Bash = $gitBash
+} else {
+    $bashCmd = Get-Command bash -ErrorAction SilentlyContinue
+    if (-not $bashCmd -or -not $bashCmd.Source) { throw 'Git Bash was not found.' }
+    $Bash = $bashCmd.Source
+}
 
 Write-Host "PRYSM $P AUTORUN BOOTSTRAP"
 Write-Host "Governance: $GovernanceRepo"
 Write-Host "Application: $AppRepo"
 
-Write-Host "`n[1/4] Controller self-test"
-& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -SelfTest
-if ($LASTEXITCODE -ne 0) { throw 'P# autorun controller self-test failed.' }
+Write-Host "`n[1/5] Synchronize authoritative governance"
+if (-not [string]::IsNullOrWhiteSpace(((& git -C $GovernanceRepo status --porcelain=v1 --untracked-files=all) -join "`n"))) {
+    throw 'Governance repository is dirty. Autorun will not pull over uncommitted governance work.'
+}
+& git -C $GovernanceRepo pull --ff-only origin main
+if ($LASTEXITCODE -ne 0) { throw 'Governance pull --ff-only failed.' }
+if (-not [string]::IsNullOrWhiteSpace(((& git -C $GovernanceRepo status --porcelain=v1 --untracked-files=all) -join "`n"))) {
+    throw 'Governance repository is not clean after synchronization.'
+}
 
-Write-Host "`n[2/4] PRYSM gate-contract regression"
-& bash $GateRegression
+Write-Host "`n[2/5] P# autorun contract regression"
+& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $AutorunRegression -P $P
+if ($LASTEXITCODE -ne 0) { throw 'P# autorun contract regression failed. Autorun did not start.' }
+
+Write-Host "`n[3/5] Permanent PRYSM gate-contract regression"
+& $Bash $GateRegression
 if ($LASTEXITCODE -ne 0) { throw 'PRYSM gate-contract regression failed. Autorun did not start.' }
 
-Write-Host "`n[3/4] Deterministic stage authority"
-$appDirty = (& git -C $AppRepo status --porcelain)
-if ([string]::IsNullOrWhiteSpace(($appDirty -join "`n"))) {
-    Write-Host 'Application tree is clean. Running the official deterministic P# gate in current-session/no-nested-Codex mode.'
-    Push-Location $GovernanceRepo
-    try {
-        & bash $CurrentSessionGate $P
-        if ($LASTEXITCODE -ne 0) { throw 'Deterministic PRYSM P# gate failed. Autorun did not start.' }
-    }
-    finally {
-        Pop-Location
-    }
-}
-else {
-    Write-Host 'Application tree is dirty. Treating this as an in-progress governed Builder continuation.'
-    Write-Host 'The deterministic gate is NOT rerun because the current authorized repair created the dirty state after gate PASS.'
-    Write-Host 'The P-scoped controller preflight will require the exact authorized P# branch/stage and preserve the dirty worktree.'
-}
-
-Write-Host "`n[4/4] P# controller preflight"
+Write-Host "`n[4/5] P# recovery/preflight verification"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -PreflightOnly
 if ($LASTEXITCODE -ne 0) { throw 'P# autorun preflight failed. Autorun did not start.' }
 
-Write-Host "`nStarting continuous governed Builder loop."
+Write-Host "`n[5/5] Start continuous governed Builder loop"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo
 exit $LASTEXITCODE
