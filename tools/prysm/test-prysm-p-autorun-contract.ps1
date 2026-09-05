@@ -25,7 +25,7 @@ function Require-Contains {
 }
 function Require-NotContains {
     param([string]$Text,[string]$Needle,[string]$Label)
-    if ($Text -match [regex]::Escape($Needle)) { throw "$Label contains forbidden historical coupling: $Needle" }
+    if ($Text -match [regex]::Escape($Needle)) { throw "$Label contains forbidden text: $Needle" }
 }
 
 foreach ($path in @($Controller,$Wrapper,$Prompt,$Schema,$Decision,$Memory)) { Require-File $path }
@@ -80,11 +80,12 @@ Require-Contains $controllerText "'--sandbox','danger-full-access'" 'Controller'
 Require-Contains $controllerText "'--output-schema',`$SchemaPath" 'Controller'
 Require-Contains $controllerText "'--output-last-message',`$finalPath" 'Controller'
 
-# Bootstrap recovery and independent audit-only mode.
+# Supported public bootstrap is fail closed on unknown/unreconciled transaction state.
 Require-Contains $wrapperText 'Verify interrupted-transaction safety' 'Wrapper fail-closed recovery'
-Require-Contains $wrapperText 'transaction journal is still RUNNING and has no durable post-run fingerprint' 'Wrapper fail-closed recovery'
-Require-Contains $wrapperText '-MaxConsecutiveFailures 1' 'Wrapper fail-closed protocol handling'
-Require-Contains $wrapperText '-MaxRuns 20' 'Wrapper time-bounded execution'
+Require-Contains $wrapperText 'transaction journal is still RUNNING and has no durable post-run fingerprint' 'Wrapper RUNNING fail-closed recovery'
+Require-Contains $wrapperText 'transaction journal contains an unreconciled Codex result' 'Wrapper unreconciled fail-closed recovery'
+Require-Contains $wrapperText '-MaxConsecutiveFailures 1' 'Wrapper first-failure stop'
+Require-NotContains $wrapperText '-MaxRuns 20' 'Wrapper artificial run cap'
 Require-Contains $wrapperText 'Verify bootstrap/control-plane integrity' 'Wrapper'
 Require-Contains $wrapperText 'controller recovery will verify lineage' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-p-autorun-contract.ps1' 'Wrapper'
@@ -116,11 +117,13 @@ Require-Contains $promptText 'Do **not** use stale historical `PRYSM_AUTORUN_STA
 foreach ($needle in @(
     'Transaction journal and no-crumb rule','Deterministic READY_FOR_BRAD rule',
     'official deterministic PRYSM P1 gate','Current scope of the controller',
-    'This audited controller version is **P1-only**','Frozen P1 history','Audit-only runtime verification'
+    'This audited controller version is **P1-only**','Frozen P1 history','Audit-only runtime verification',
+    'supported public entrypoint','CODEX_EXITED_UNRECONCILED'
 )) { Require-Contains $decisionText $needle 'Decision' }
 Require-Contains $memoryText 'Permanent P-scoped unattended Builder rule' 'Permanent memory'
 Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
+Require-Contains $memoryText 'CODEX_EXITED_UNRECONCILED' 'Permanent memory'
 
 # Structured response contract stays strict.
 $requiredFields = @(
