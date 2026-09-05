@@ -9,6 +9,7 @@ Run the canonical P1 process gate against the final refrozen proof-export candid
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`
 - Application repository: `chriskulbaba2025/vantage-platform`
+- Mandatory permanent operating-memory bootstrap: `PRYSM_PERMANENT_MEMORY.md`; `PROJECT.md` now requires it during every substantive PRYSM startup.
 - Active P#: `P1 — Cross-Report Contradiction Integrity`
 - P1 product repair: COMPLETE.
 - Parent application candidate branch: `p1/bounded-build-cross-report-integrity`
@@ -25,6 +26,7 @@ Verified checkpoint:
 - The repeated governance-dirty loop exposed a second process defect: older diagnostic instructions could write temporary `.txt` evidence inside the governed repository and thereby manufacture the cleanliness failure being diagnosed.
 - Diagnostic artifact hygiene is now governed by `DIAGNOSTIC_EVIDENCE_PROTOCOL.md` v1.2.0: temporary diagnostics must live outside Git working trees, under the OS temp diagnostics directory.
 - The public launcher now runs a permanent governance pre-flight before context routing. Narrowly recognized untracked local diagnostic leftovers are preserved outside the repo; real tracked or unknown untracked changes are printed exactly and still block.
+- Permanent decision: `DECISION_PRYSM_DIAGNOSTIC_HYGIENE_2026-09-04.md`.
 - Current stage: OUTCOME_REVIEW
 - Authorized execution stage: OUTCOME_REVIEW
 - Governing launcher-context rule: `PRYSM_LAUNCHER_CONTEXT_PROTOCOL_2026-09-04.md`.
@@ -80,7 +82,7 @@ git pull --ff-only origin main
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P1
 ```
 
-The first pull installs the permanent diagnostic-hygiene/pre-flight hardening. Thereafter the Windows PowerShell wrapper is the normal Chris entrypoint. If the P1 machine and semantic gates PASS, stop at the legitimate Brad OUTCOME_REVIEW boundary. Do not start P2.
+The first pull installs the permanent diagnostic-hygiene/pre-flight hardening and permanent-memory bootstrap. Thereafter the Windows PowerShell wrapper is the normal Chris entrypoint. If the P1 machine and semantic gates PASS, stop at the legitimate Brad OUTCOME_REVIEW boundary. Do not start P2.
 
 Last verified:
 2026-09-04
