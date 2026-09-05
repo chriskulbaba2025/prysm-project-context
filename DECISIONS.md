@@ -418,6 +418,22 @@ Do not build the final showcase report from the fresh TBK audit until its persis
 
 ---
 
+## Decision: Reopen Same P1 after Brad outcome-review FAIL
+
+Date: 2026-09-05
+Status: Active
+
+Decision:
+Chris selected `REOPEN SAME P#` for P1 after the formal Brad outcome review found the frozen candidate materially not ready to pass. P1 is reopened to Builder/Codex `DIAGNOSTIC_TRUTH` for one bounded consolidated repair tranche.
+
+Reason:
+The independent review proved linked client-visible failures that escaped prior deterministic and rendered gates.
+
+Implication:
+The frozen FAIL review stays immutable. Diagnosis must map the shared repair boundary before implementation; the resulting candidate requires new technical, rendered, and independent Brad proof.
+
+---
+
 ## Decision: Client action ranking follows business-impact domains
 
 Date: 2026-08-27

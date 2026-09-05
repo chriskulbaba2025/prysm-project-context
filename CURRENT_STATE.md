@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's P1 OUTCOME_REVIEW consolidation against the frozen rendered candidate. The full bounded artifact inventory is now complete. The current candidate is materially NOT READY TO PASS. Do not diagnose or repair yet. Consolidate the complete Brad-observed defect set, including cross-cutting client-language complexity, then create the single formal Brad outcome-review evidence file once.
+Reopen P1 into Builder-owned diagnostic truth and complete one bounded repair tranche for Brad's confirmed cross-report defects. Diagnose the shared projection and client-language causes before changing application code.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
@@ -15,9 +15,10 @@ Verified checkpoint:
 - Deterministic P1 verification: 77/77 PASS.
 - Viewer v2 rendered freeze matrix: 48/48 PASS.
 - Persisted rendered proof: 27 HTML scenarios plus SHA-256 manifest and scenario-to-obligation matrix.
-- Deterministic process gate: PASS.
-- Authorized stage: `OUTCOME_REVIEW`.
-- Authorized actor: `BRAD`.
+- Brad outcome review: `FAIL — NOT READY TO PASS`, frozen in `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` at governance commit `c3adfa0fec19a445c1f57509edaed826b08da12b`.
+- Chris decision: `REOPEN SAME P#`.
+- Authorized stage: `DIAGNOSTIC_TRUTH`.
+- Authorized actor: `BUILDER/Codex`.
 - Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
 - Governing review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
 
@@ -96,25 +97,24 @@ Completed:
 - This is now part of the consolidated repair inventory, but no language redesign is authorized until P1 is formally reopened.
 
 In progress:
-Brad OUTCOME_REVIEW consolidation only. The bounded artifact review itself is complete.
+Builder diagnostic truth for one bounded P1 repair tranche: CTA/path coherence, trust evidence wording, robots/indexability truthfulness, fail-closed downstream projection, and business-client language clarity. Determine shared causes and the narrowest repair seams before code edits.
 
 Blocked:
-- P1 OUTCOME PASS is blocked because multiple material client-visible defects are confirmed.
-- Betty Final Audit is blocked until repaired technical/render proof and a later Brad PASS.
+- P1 OUTCOME PASS remains blocked pending the reopened repair, proof, and a new independent Brad review.
+- Betty Final Audit remains blocked until a repaired candidate later receives Brad PASS.
 
 Important constraints:
-- No P1 diagnosis or repair yet.
-- No application code changes yet.
 - No formal Betty Final Audit yet.
 - No provider/model calls.
 - No deployment.
 - No application `main` merge.
 - No P2.
-- Do not create multiple evidence files or repeatedly edit evidence while consolidating.
 - Do not split Artifact #3 and #4 into separate root-defect families; they are manifestations of one fail-closed projection defect.
+- Preserve `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` unchanged as frozen evidence for failed candidate `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
+- Do not broaden this repair into page-selection/search-data redesign unless direct diagnosis proves that boundary is causal; retain current/live/commercial page selection as later work.
 
 Exact next action:
-Create the single consolidated Brad P1 OUTCOME_REVIEW result from Batch 1 + Batch 2 + all four final artifacts, including the cross-cutting client-language complexity requirement. Answer the eight committed review questions and set `Verdict: FAIL` because the original outcome remains materially unmet. Then create one new versioned formal Brad outcome-review evidence file, commit/bind it once, and route to Chris for the explicit `REOPEN SAME P#` decision. Do not diagnose or repair before that reopen decision.
+Run `bash tools/prysm/start-prysm-p.sh P1` from the Codex/agent shell once. On deterministic PASS, execute Builder diagnostic truth only: map the full report projection lineage and exact causal files/tests for the consolidated defect set, write a versioned diagnostic record, and prepare the bounded repair authorization surface without editing application code until diagnosis is complete.
 
 Last verified:
 2026-09-05
