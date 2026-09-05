@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Batch 1 and Batch 2 are complete. Final-batch Artifact #1 (`http-and-noindex.html`) is now frozen as CLEAR with no material P1 contradiction, while retaining a client-language quality reservation because supporting capability/status language remains too technical. Direct client-visible evidence already proves the current candidate is materially unmet in CTA/path and Trust wording scenarios. Do not diagnose or repair yet; complete the remaining Indexability + fail-closed product-review inventory first so P1 can be reopened once against the complete observed defect set.
+Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Batch 1 and Batch 2 are complete. Final-batch Artifacts #1 and #2 are now frozen. Artifact #1 (`http-and-noindex.html`) is CLEAR with a client-language quality reservation. Artifact #2 (`robots-retrieved.html`) is CONFUSING with a material P1 evidence-truthfulness defect because client-facing `robots.txt configuration — PASS` overstates evidence that only proved PRYSM's crawl was not refused while per-user-agent directives were not parsed. Do not diagnose or repair yet; complete the remaining Indexability + fail-closed product-review inventory first so P1 can be reopened once against the complete observed defect set.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
@@ -35,17 +35,15 @@ Completed:
 
 ### Brad Batch 1 — CTA/path coherence
 - `competitor-present`: CLEAR for the Batch-1 CTA/path question.
-- `path-validated-blocker`: CONFUSING.
-- `no-conversion-mechanism`: CONFUSING.
-- Material direct outcome evidence: `no-conversion-mechanism` presents no CTA/form and no clear conversion action in Foundational Readiness / Conversion Path while Topical Map says `Take action — Adequate` and describes `Decision-stage information and a clear route to action`, without an observed point-of-reading reconciliation.
-- Material direct outcome evidence: `path-validated-blocker` presents Conversion mechanism PASS alongside an obstructed primary conversion action and Weak conversion path without an observed immediate client-facing explanation of the distinction.
+- `path-validated-blocker`: CONFUSING — material direct outcome issue. Conversion mechanism is PASS while the primary conversion action is obstructed and Conversion Path is Weak without sufficient point-of-reading reconciliation.
+- `no-conversion-mechanism`: CONFUSING — material direct outcome issue. Foundational Readiness / Conversion Path say no CTA/form and no clear conversion action while Topical Map says `Take action — Adequate` and describes a clear route to action without point-of-reading reconciliation.
 
 ### Brad Batch 2 — Trust + Mobile
-- `assessed.html`: CONFUSING — material Trust wording issue. Pricing is explicitly absent/not observed, but `What reduces my risk?` is PASS with wording that includes `pricing context` among observed reassurance. Secondary quality observation: 62/100 mobile performance can be framed as PASS / already good while mobile usability is explicitly unassessed.
-- `competitor-present.html` trust/proof revisit: CONFUSING — same material Trust wording issue. The 72/100 Trust score may remain valid; the client-facing PASS explanation overstates which reassurance evidence was actually observed.
-- `slow-mobile.html`: CLEAR — PASS with minor wording reservation. 31/100 mobile lab performance is correctly separated from mobile usability that was not assessed; deeper mobile-usability checks remain partial/unavailable and are not converted into negative findings. Minor wording cleanup: broad `accessibility or usability barrier` language can blur accessibility vs mobile-usability concepts.
-- `no-performance.html`: CLEAR — PASS. Performance remains Not Assessed / UNAVAILABLE and PRYSM explicitly does not conclude fast or slow from missing evidence. No material contradiction.
-- `device-profile-failed.html`: CLEAR — PASS with minor wording reservations. Valid mobile evidence remains measured at 62/100; failed desktop profile remains unavailable and no desktop metric is inferred. Retain wording-quality concerns around broad `PASS` mobile framing and `62/100 — Adequate` summary language while device coverage is partial.
+- `assessed.html`: CONFUSING — material Trust wording issue. Pricing is explicitly absent/not observed, but `What reduces my risk?` is PASS with wording that includes `pricing context` among observed reassurance.
+- `competitor-present.html` trust/proof revisit: CONFUSING — same material Trust wording issue. The client-facing PASS explanation overstates which reassurance evidence was actually observed.
+- `slow-mobile.html`: CLEAR — PASS with minor wording reservation. Poor mobile lab performance is correctly separated from unassessed mobile usability; missing deeper mobile-usability evidence is not converted into a negative finding.
+- `no-performance.html`: CLEAR — PASS. Performance remains Not Assessed / UNAVAILABLE and missing evidence is not converted into either a positive or negative performance conclusion.
+- `device-profile-failed.html`: CLEAR — PASS with minor wording reservations. Valid mobile evidence remains measured while failed desktop evidence remains unavailable and no desktop metric is inferred.
 
 ### Consolidated Batch 2 defect inventory
 - Material P1 defect: Trust PASS explanation overstates observed evidence in `assessed.html` and `competitor-present.html` by including pricing context even though pricing is explicitly absent.
@@ -61,10 +59,24 @@ Completed:
 - Client usefulness: YES.
 - Human/client language: TOO TECHNICAL.
 - Conversion meaning clear: YES.
-- The core findings are client-understandable: the report says one crawled page cannot be indexed because of `noindex` and explains that pages which cannot be indexed cannot be found in search; plain HTTP is translated into possible visitor security-warning impact before contact.
+- Core client-facing findings are understandable: one crawled page is `noindex` and the report explains that such pages cannot be found in search; plain HTTP is translated into possible visitor security-warning impact before contact.
 - Evidence boundaries remain intact: page-level indexability is observed while broader `technical.indexability` remains PARTIAL; robots.txt remains UNAVAILABLE; uncollected evidence is not converted into unsupported conclusions.
-- Client-language quality reservation: Readiness Map / limitations language still exposes internal capability-state terminology such as `technical.indexability: PARTIAL`, `technical.redirects: UNAVAILABLE`, `technical.resources: UNAVAILABLE`, and `technical.headers: AVAILABLE`, plus instructions such as `Review the underlying governed findings and capability limitations shown on this page.`
-- Brad's final judgment: no material P1 contradiction or evidence-integrity failure in this artifact. Retain the machine/internal-language issue in the consolidated repair inventory as a client-language quality item.
+- Client-language quality reservation: Readiness Map / limitations language exposes internal capability-state terminology such as `technical.indexability: PARTIAL`, `technical.redirects: UNAVAILABLE`, `technical.resources: UNAVAILABLE`, `technical.headers: AVAILABLE`, and phrases such as `Review the underlying governed findings and capability limitations shown on this page.`
+- Brad's final judgment: no material P1 contradiction or evidence-integrity failure. Retain the machine/internal-language issue in the consolidated repair inventory as a client-language quality item.
+
+### Final Batch Artifact #2 — `robots-retrieved.html` — FROZEN
+- Final disposition: CONFUSING — MATERIAL P1 ISSUE.
+- Contradiction: YES.
+- Evidence truthful: NO.
+- Client usefulness: NO.
+- Human/client language: TOO TECHNICAL.
+- Conversion meaning clear: NO.
+- Decisive mismatch: client-facing `robots.txt configuration — PASS` is broader than the evidence. The artifact states that a robots.txt file was retrieved and did not refuse PRYSM's audit crawl, but also states that its per-user-agent directives were not parsed.
+- Therefore PRYSM proved only the narrower fact that robots.txt did not block PRYSM's crawl; it did not establish correct configuration for Googlebot, Bingbot, or other search-engine agents.
+- The same PASS is repeated under `What Is Already Good`, compounding the unsupported positive conclusion.
+- Internal evidence state `technical.indexability: PARTIAL` makes the mismatch clearer: the system records incomplete evidence while the presentation layer upgrades it to a broad positive PASS.
+- Client-safe meaning for later repair inventory: `We confirmed that robots.txt did not block this audit, but we did not fully test its search-engine-specific instructions.`
+- Brad confirmed the assistant review without disagreement. Combined judgment: this is not merely awkward wording; it is an unsupported positive conclusion from incomplete evidence and cannot survive P1 acceptance in its current form.
 
 ### Cross-cutting review lens now active
 - Review the report as a normal business client, not as a technical auditor.
@@ -88,8 +100,8 @@ Authoritative scenario mapping from `P1_RENDERED_SCENARIO_MATRIX_2026-09-04.md`:
 
 Indexability projection:
 - `proof/P1/rendered/http-and-noindex.html` — reviewed and frozen CLEAR with client-language reservation.
-- `proof/P1/rendered/robots-retrieved.html` — NEXT.
-- `proof/P1/rendered/crawl-blocked.html`
+- `proof/P1/rendered/robots-retrieved.html` — reviewed and frozen CONFUSING / MATERIAL P1 ISSUE.
+- `proof/P1/rendered/crawl-blocked.html` — NEXT.
 
 Negative/fail-closed:
 - `proof/P1/rendered/no-performance.html` — already reviewed in Batch 2 and PASS; carry forward unless new cross-scenario evidence requires revisiting it.
@@ -107,8 +119,8 @@ Final-batch review questions:
 8. Where relevant, is customer/trust/friction/action/conversion meaning clear without requiring the client to understand PRYSM terminology?
 
 Blocked:
-- P1 OUTCOME PASS is blocked on the current candidate because material client-visible defects are already observed in Batch 1 and Batch 2.
-- There is no blocker to completing the final bounded product-review batch.
+- P1 OUTCOME PASS is blocked on the current candidate because material client-visible defects are observed in Batch 1, Batch 2, and final-batch Artifact #2.
+- There is no blocker to completing the remaining bounded product-review artifacts.
 
 Failure-branch rule:
 - Do not diagnose or repair immediately.
@@ -134,7 +146,7 @@ Important constraints:
 - No destructive Git operations or force push/history rewrite.
 
 Exact next action:
-Brad reviews `proof/P1/rendered/robots-retrieved.html` next under both the evidence-integrity and business-client/conversion-language lenses. Record Brad's observation only, then continue the remaining bounded final-batch artifacts before consolidation. Do not diagnose, repair, create the formal Brad outcome-review evidence file, bind evidence, advance the stage, or begin Betty Final Audit.
+Brad reviews `proof/P1/rendered/crawl-blocked.html` next under both the evidence-integrity and business-client/conversion-language lenses. Record Brad's observation only, then review `provider-failed.html` before consolidation. Do not diagnose, repair, create the formal Brad outcome-review evidence file, bind evidence, advance the stage, or begin Betty Final Audit.
 
 Last verified:
 2026-09-05
