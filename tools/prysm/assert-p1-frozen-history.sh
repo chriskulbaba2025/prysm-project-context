@@ -6,6 +6,17 @@ set -euo pipefail
 # are immutable. New reopened proof belongs under proof/P1/reopen/.
 P1_FROZEN_BASELINE="0756e4db3746be0c2279c2083ccf83b3ec5c89f5"
 
+# Disposable regression fixtures cannot contain the production commit object.
+# A baseline override is accepted only under the explicit gate-contract test
+# marker; normal Chris/Brad/Codex execution cannot select a weaker baseline.
+if [[ "${PRYSM_GATE_CONTRACT_TEST:-0}" == "1" ]]; then
+  [[ -n "${PRYSM_P1_FROZEN_BASELINE:-}" ]] || {
+    echo "PRYSM P1 FROZEN HISTORY FAIL: test baseline override is missing" >&2
+    exit 1
+  }
+  P1_FROZEN_BASELINE="$PRYSM_P1_FROZEN_BASELINE"
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GOV_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
