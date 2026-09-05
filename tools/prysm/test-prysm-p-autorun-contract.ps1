@@ -76,6 +76,29 @@ foreach ($needle in @(
     'controlPlaneFingerprint','No-progress anti-thrash limit reached'
 )) { Require-Contains $controllerText $needle 'Controller integrity guard' }
 Require-Contains $controllerText 'This controller version has explicit transaction-scope enforcement only for P1.' 'Controller fail-closed scope'
+Require-NotContains $controllerText "elseif (`$path -like 'P1_*') { `$ok = `$true }" 'Controller root-P1 evidence boundary'
+foreach ($needle in @(
+    'tools/prysm/test-prysm-gate-contract.sh',
+    'tools/prysm/assert-p1-frozen-history.sh',
+    'tools/prysm/start-prysm-p.ps1',
+    'tools/prysm/start-prysm-p.sh',
+    'tools/prysm/start-prysm-p-current-session.sh',
+    'tools/prysm/start-prysm-p-base.sh',
+    'tools/prysm/prysm-governance-preflight.sh'
+)) { Require-Contains $controllerText $needle 'Controller protected control plane' }
+
+# Windows PowerShell 5.1 native stderr must not turn harmless native warnings into false failures.
+foreach ($needle in @(
+    "`$ErrorActionPreference = 'Continue'",
+    'Git diff failed while fingerprinting repository',
+    'Codex legitimately writes operational output to stderr.',
+    'use the real process exit code as authority.',
+    '$diffExitCode = $LASTEXITCODE',
+    '$rootExitCode = $LASTEXITCODE',
+    '$execExitCode = $LASTEXITCODE',
+    '$gateExitCode = $LASTEXITCODE',
+    '$exitCode = $LASTEXITCODE'
+)) { Require-Contains $controllerText $needle 'Controller Windows native stderr handling' }
 
 # Exhaustive baseline-derived frozen-history guard is part of every public P1 gate path.
 Require-Contains $publicLauncherText 'assert-p1-frozen-history.sh' 'Public deterministic gate'
@@ -97,6 +120,13 @@ foreach ($needle in @(
     'change-then-revert historical breadcrumb still fails deterministically',
     'new root P1 evidence is rejected; reopened proof must be versioned under proof/P1/reopen/'
 )) { Require-Contains $gateRegressionText $needle 'Permanent gate regression' }
+
+# Gate regression must stay Windows-portable while excluding real Codex from human-stage fixtures.
+Require-Contains $gateRegressionText 'SAFE_PATH="$GIT_BIN_DIR:/usr/bin:/bin"' 'Gate regression Windows PATH'
+Require-Contains $gateRegressionText 'PATH="$root/fakebin:$SAFE_PATH"' 'Gate regression fake Codex PATH'
+Require-NotContains $gateRegressionText 'PATH="/usr/bin:/bin"' 'Gate regression Unix-only PATH'
+Require-Contains $gateRegressionText 'core.autocrlf false' 'Gate regression LF fixture normalization'
+Require-Contains $gateRegressionText 'core.eol lf' 'Gate regression LF fixture normalization'
 
 # Builder must run the same evidence guard before any governance commit/push.
 Require-Contains $promptText 'Before every governance commit or push' 'Builder pre-commit history guard'
