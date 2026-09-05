@@ -161,7 +161,7 @@ Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
 Require-Contains $memoryText 'CODEX_EXITED_UNRECONCILED' 'Permanent memory'
 Require-Contains $memoryText '0756e4db3746be0c2279c2083ccf83b3ec5c89f5' 'Permanent memory frozen-history baseline'
-Require-Contains $memoryText 'change-to-revert' 'Permanent memory no-crumb invariant'
+Require-Contains $memoryText 'Historical P1 paths must retain exact baseline blobs.' 'Permanent memory no-crumb invariant'
 
 # Structured response contract stays strict.
 $requiredFields = @(
