@@ -10,6 +10,9 @@ $ScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $Controller = Join-Path $ScriptRoot 'PRYSM-P-AUTORUN.ps1'
 $Wrapper = Join-Path $ScriptRoot 'START-PRYSM-P-AUTORUN.ps1'
 $Prompt = Join-Path $ScriptRoot 'PRYSM-P-BUILDER-AUTORUN-PROMPT.md'
+$FrozenHistoryGuard = Join-Path $ScriptRoot 'assert-p1-frozen-history.sh'
+$CurrentSessionLauncher = Join-Path $ScriptRoot 'start-prysm-p-current-session.sh'
+$GateRegression = Join-Path $ScriptRoot 'test-prysm-gate-contract.sh'
 $Schema = Join-Path (Split-Path -Parent $ScriptRoot) 'autorun\PRYSM-AUTORUN-RESULT.schema.json'
 $GovRoot = (Resolve-Path (Join-Path $ScriptRoot '..\..')).Path
 $Decision = Join-Path $GovRoot 'DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md'
@@ -28,7 +31,7 @@ function Require-NotContains {
     if ($Text -match [regex]::Escape($Needle)) { throw "$Label contains forbidden text: $Needle" }
 }
 
-foreach ($path in @($Controller,$Wrapper,$Prompt,$Schema,$Decision,$Memory)) { Require-File $path }
+foreach ($path in @($Controller,$Wrapper,$Prompt,$FrozenHistoryGuard,$CurrentSessionLauncher,$GateRegression,$Schema,$Decision,$Memory)) { Require-File $path }
 
 # Parse controller + run pure route/model/accounting tests before repository mutation.
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -SelfTest
@@ -37,6 +40,9 @@ if ($LASTEXITCODE -ne 0) { throw 'P# controller self-test failed.' }
 $controllerText = Get-Content -LiteralPath $Controller -Raw
 $wrapperText = Get-Content -LiteralPath $Wrapper -Raw
 $promptText = Get-Content -LiteralPath $Prompt -Raw
+$frozenHistoryText = Get-Content -LiteralPath $FrozenHistoryGuard -Raw
+$currentSessionText = Get-Content -LiteralPath $CurrentSessionLauncher -Raw
+$gateRegressionText = Get-Content -LiteralPath $GateRegression -Raw
 $decisionText = Get-Content -LiteralPath $Decision -Raw
 $memoryText = Get-Content -LiteralPath $Memory -Raw
 $schemaObject = Get-Content -LiteralPath $Schema -Raw | ConvertFrom-Json
@@ -68,6 +74,23 @@ foreach ($needle in @(
     'controlPlaneFingerprint','No-progress anti-thrash limit reached'
 )) { Require-Contains $controllerText $needle 'Controller integrity guard' }
 Require-Contains $controllerText 'This controller version has explicit transaction-scope enforcement only for P1.' 'Controller fail-closed scope'
+
+# Exhaustive baseline-derived frozen-history guard is part of the official gate.
+Require-Contains $currentSessionText 'assert-p1-frozen-history.sh' 'Current-session deterministic gate'
+Require-Contains $currentSessionText 'P1 frozen-history verification failed.' 'Current-session deterministic gate'
+foreach ($needle in @(
+    'P1_FROZEN_BASELINE="0756e4db3746be0c2279c2083ccf83b3ec5c89f5"',
+    "grep -E '^(P1_[^/]*|proof/P1/rendered/.+)$'",
+    "grep -v '^P1_EXECUTION_GATE\\.env$'",
+    'historical P1 evidence was touched after freeze baseline',
+    'new root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/',
+    'PRYSM_GATE_CONTRACT_TEST'
+)) { Require-Contains $frozenHistoryText $needle 'P1 frozen-history guard' }
+foreach ($needle in @(
+    'historical P1 evidence mutation fails deterministically',
+    'change-then-revert historical breadcrumb still fails deterministically',
+    'new root P1 evidence is rejected; reopened proof must be versioned under proof/P1/reopen/'
+)) { Require-Contains $gateRegressionText $needle 'Permanent gate regression' }
 
 # Repair accounting cannot reset by relabeling a root.
 Require-Contains $controllerText 'Apply-RepairAccounting' 'Controller accounting'
