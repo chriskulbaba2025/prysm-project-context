@@ -30,6 +30,7 @@ $ProtectedBootstrapFiles = @(
     'tools/prysm/test-prysm-p-autorun-contract.ps1',
     'tools/prysm/test-prysm-gate-contract.sh',
     'tools/prysm/assert-p1-frozen-history.sh',
+    'tools/prysm/start-prysm-p.ps1',
     'tools/prysm/start-prysm-p.sh',
     'tools/prysm/start-prysm-p-current-session.sh',
     'tools/prysm/start-prysm-p-base.sh',
