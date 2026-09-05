@@ -18,10 +18,9 @@ BASE_LAUNCHER="$SCRIPT_DIR/start-prysm-p-base.sh"
 
 [[ -f "$BASE_LAUNCHER" ]] || fail "Governed base launcher is missing: $BASE_LAUNCHER"
 
-# Make dirty-tree failures self-diagnosing. The base launcher intentionally
-# refuses any dirty governance tree, but historically emitted only a generic
-# message. Print the exact entries seen by the same Git/Bash environment before
-# handing off so no separate diagnostic command can itself contaminate the repo.
+# Make direct current-session use self-diagnosing too. The public launcher
+# normally runs the shared preflight first, but this internal wrapper keeps an
+# exact dirty-tree guard in case it is invoked directly by an agent.
 DIRTY_STATUS="$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)"
 if [[ -n "$DIRTY_STATUS" ]]; then
   echo >&2
@@ -30,10 +29,11 @@ if [[ -n "$DIRTY_STATUS" ]]; then
   fail "Governance repository has uncommitted changes. Resolve only the listed entries before rerunning."
 fi
 
-# The base launcher deliberately hands off to a new Codex CLI process after
-# all machine gates pass. In an existing Codex session that would be nested
-# execution. Supply a temporary local codex shim so the exact same machine gate
-# runs unchanged while the final governed prompt is returned to this session.
+# Only Builder-owned stages need a Codex handoff. If the base launcher reaches
+# such a handoff while already inside Codex, this temporary shim returns the
+# authorized stage prompt to the existing session instead of nesting Codex.
+# Brad/Chris-owned stages never call the shim; the base launcher prints the
+# deterministic role handoff directly.
 SHIM_DIR="$(mktemp -d)"
 cleanup() {
   rm -rf "$SHIM_DIR"
@@ -48,9 +48,9 @@ PROMPT="${1:-}"
 
 echo
 echo "PRYSM CURRENT SESSION HANDOFF"
-echo "The governed machine launcher passed. Continue in THIS existing Codex session."
-echo "Do not launch another Codex process and do not rerun the launcher."
-echo "Treat the following governed handoff prompt as the active instruction:"
+echo "The governed deterministic launcher passed. Continue in THIS existing Codex session."
+echo "Do not launch another Codex process and do not rerun the process gate."
+echo "Treat the following governed stage prompt as the active instruction:"
 echo "----- PRYSM GOVERNED HANDOFF START -----"
 printf '%s\n' "$PROMPT"
 echo "----- PRYSM GOVERNED HANDOFF END -----"
