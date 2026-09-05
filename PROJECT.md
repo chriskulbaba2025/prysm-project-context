@@ -11,14 +11,15 @@ Primary application repository: `chriskulbaba2025/vantage-platform`
 Read these before substantive PRYSM work:
 
 1. `GITHUB_PROJECT_MEMORY_PROTOCOL.md`
-2. `PROJECT_CONTEXT_PROTOCOL.md`
-3. `REPAIR_BOUNDARY_PROTOCOL.md`
-4. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
-5. `WORKFLOW_INSTRUCTIONS.md`
-6. `TERMINOLOGY.md`
-7. `CURRENT_STATE.md`
-8. `CONSTRAINTS.md`
-9. `DECISIONS.md`
+2. `PRYSM_PERMANENT_MEMORY.md`
+3. `PROJECT_CONTEXT_PROTOCOL.md`
+4. `REPAIR_BOUNDARY_PROTOCOL.md`
+5. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
+6. `WORKFLOW_INSTRUCTIONS.md`
+7. `TERMINOLOGY.md`
+8. `CURRENT_STATE.md`
+9. `CONSTRAINTS.md`
+10. `DECISIONS.md`
 
 For any application-changing production-closure or post-deployment validation repair, also read:
 
@@ -35,6 +36,8 @@ Load additional specifications, skills, and reference material only when require
 ## Authority
 
 GitHub is the authoritative durable project memory. Chats are temporary working sessions. Current GitHub state overrides stale conversational summaries or duplicated Project Sources.
+
+`PRYSM_PERMANENT_MEMORY.md` is the mandatory high-value operating-memory bootstrap for recurring launcher, diagnostic-hygiene, anti-thrash, and role-handoff rules. It is an index; the detailed governing files it cites remain the source of truth.
 
 `WORKFLOW_INSTRUCTIONS.md` is the current governing manual-edit delivery protocol and supersedes older manual-code-flow wording elsewhere in the context repository when that older wording is inconsistent with it. Hard production/authorization constraints remain unaffected.
 
@@ -55,7 +58,8 @@ The exception does **not** supersede evidence-integrity semantics, no-guess/root
 At the start of a new substantive chat:
 
 - read this file;
-- read `GITHUB_PROJECT_MEMORY_PROTOCOL.md`, `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`;
+- read `GITHUB_PROJECT_MEMORY_PROTOCOL.md` and `PRYSM_PERMANENT_MEMORY.md` first;
+- read `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`;
 - read `TERMINOLOGY.md` when the task concerns footprint discovery, representative acquisition, provider crawl limits, assessed pages, or report coverage wording;
 - read the latest `CURRENT_STATE.md`;
 - read active `CONSTRAINTS.md` and `DECISIONS.md`;
