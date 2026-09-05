@@ -47,6 +47,24 @@ The role boundary is permanent:
 8. Create one new formal Brad outcome-review evidence file from Brad's completed observations.
 9. Commit/bind that new evidence once, then route to the next governed actor.
 
+## Failure branch during OUTCOME_REVIEW
+
+A Brad finding of direct client-visible failure is a successful operation of the governance process, not a process failure.
+
+When Brad finds a material outcome defect during an early review batch:
+
+1. Do **not** immediately diagnose or repair it.
+2. Do **not** start Betty final audit yet.
+3. Do **not** ask Chris to approve advancement.
+4. Continue only the remaining bounded OUTCOME_REVIEW batches needed to capture the complete material P# outcome defect set in one pass, unless continuing would create safety/cost risk or the remaining checks are demonstrably non-material.
+5. Keep observations in-session while the review is in progress; do not create the formal evidence file early.
+6. After the bounded review is complete, create one new Brad outcome-review evidence file with the committed eight-part review result and a `Verdict: FAIL` when the original outcome is materially unmet.
+7. Bind/commit that completed Brad evidence once.
+8. Route to Chris for the explicit `REOPEN SAME P#` decision rather than proceeding to Betty final audit or P# advancement.
+9. After Chris reopens the P#, begin one diagnosis/replan cycle against the **complete Brad defect set**, so the Builder does not repair one symptom only to discover another already-observable outcome failure later.
+
+This failure branch exists to preserve the user's anti-thrash requirement: collect the full product-review evidence first, then reopen once with a coherent repair boundary.
+
 ## Why this is permanent
 
 Repeated stop/start loops occurred when machine gates, AI re-audits, actor handoffs, and evidence writing were mixed together. The corrected pattern separates those concerns so the process advances without sacrificing governance.
@@ -55,4 +73,4 @@ For Brad OUTCOME_REVIEW specifically, Brad must judge the actual rendered produc
 
 ## Non-negotiable intent
 
-PRYSM governance must reduce rework, not manufacture it. A passed stage should move forward to the correct actor and bounded decision unless new direct evidence establishes a real contradiction or defect.
+PRYSM governance must reduce rework, not manufacture it. A passed stage should move forward to the correct actor and bounded decision unless new direct evidence establishes a real contradiction or defect. When such a defect is found, complete the bounded outcome inventory first and reopen once with the full observed failure set.
