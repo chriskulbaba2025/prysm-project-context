@@ -15,6 +15,7 @@ fail() {
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GOV_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 BASE_LAUNCHER="$SCRIPT_DIR/start-prysm-p-base.sh"
+P1_FROZEN_HISTORY_GUARD="$SCRIPT_DIR/assert-p1-frozen-history.sh"
 
 [[ -f "$BASE_LAUNCHER" ]] || fail "Governed base launcher is missing: $BASE_LAUNCHER"
 
@@ -27,6 +28,13 @@ if [[ -n "$DIRTY_STATUS" ]]; then
   echo "PRYSM GOVERNANCE DIRTY ENTRIES (as seen by Bash/Git):" >&2
   printf '%s\n' "$DIRTY_STATUS" >&2
   fail "Governance repository has uncommitted changes. Resolve only the listed entries before rerunning."
+fi
+
+# P1 historical evidence is immutable. Every deterministic P1 gate verifies
+# the exhaustive baseline-derived frozen set before any actor handoff can PASS.
+if [[ "$P_ID" == "P1" ]]; then
+  [[ -f "$P1_FROZEN_HISTORY_GUARD" ]] || fail "P1 frozen-history guard is missing: $P1_FROZEN_HISTORY_GUARD"
+  bash "$P1_FROZEN_HISTORY_GUARD" || fail "P1 frozen-history verification failed."
 fi
 
 # Only Builder-owned stages need a Codex handoff. If the base launcher reaches
