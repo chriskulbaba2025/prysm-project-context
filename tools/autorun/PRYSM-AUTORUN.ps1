@@ -1,8 +1,6 @@
 param(
-    [Parameter(Mandatory = $true)]
     [string]$AppRepo,
 
-    [Parameter(Mandatory = $true)]
     [string]$GovernanceRepo,
 
     [ValidateSet('Builder','Auditor')]
@@ -11,7 +9,10 @@ param(
     [int]$MaxRuns = 0,
     [int]$DelaySeconds = 3,
     [int]$MaxConsecutiveFailures = 3,
-    [switch]$PreflightOnly
+    [switch]$PreflightOnly,
+
+    [ValidateSet('READY_FOR_BRAD','BLOCKED','CONTROLLER_FAILURE')]
+    [string]$TestNotification
 )
 
 Set-StrictMode -Version Latest
@@ -22,7 +23,7 @@ $SchemaPath = Join-Path $ScriptRoot 'PRYSM-AUTORUN-RESULT.schema.json'
 $AccountingPath = Join-Path $ScriptRoot 'PRYSM-AUTORUN-ACCOUNTING.ps1'
 $BuilderPromptPath = Join-Path $ScriptRoot 'PRYSM-BUILDER-AUTORUN-PROMPT.md'
 $AuditorPromptPath = Join-Path $ScriptRoot 'PRYSM-AUDITOR-AUTORUN-PROMPT.md'
-$AutorunStatePath = Join-Path $GovernanceRepo 'PRYSM_AUTORUN_STATE.json'
+$AutorunStatePath = $null
 
 $ModelLuna = 'gpt-5.6-luna'
 $ModelTerra = 'gpt-5.6-terra'
@@ -185,6 +186,44 @@ function Send-AutorunNotification {
     } catch {
         # Notification failure must never break the governed loop.
     }
+}
+
+function Send-P1TerminalNotification {
+    param(
+        [Parameter(Mandatory = $true)][ValidateSet('READY_FOR_BRAD','BLOCKED','CONTROLLER_FAILURE')][string]$Kind,
+        [string]$ApplicationSha = 'UNBOUND',
+        [string]$GovernanceSha = 'UNBOUND',
+        [string]$Blocker = 'No blocker supplied.',
+        [string]$NextAction = 'Review the latest controller state.',
+        [string]$RunLog = 'Not available'
+    )
+
+    $title = switch ($Kind) {
+        'READY_FOR_BRAD' { 'PRYSM P1 READY FOR BRAD' }
+        'BLOCKED' { 'PRYSM P1 BLOCKED' }
+        default { 'PRYSM P1 CONTROLLER FAILURE' }
+    }
+    $level = switch ($Kind) {
+        'READY_FOR_BRAD' { 'Info' }
+        'BLOCKED' { 'Warning' }
+        default { 'Error' }
+    }
+    $message = switch ($Kind) {
+        'READY_FOR_BRAD' { "Application SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nFocused/full verification: PASS`nRendered proof: PASS`nNext actor: Brad" }
+        'BLOCKED' { "Blocker: $Blocker`nApplication SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nNext required action: $NextAction" }
+        default { "Failure: $Blocker`nLatest run log: $RunLog" }
+    }
+    Send-AutorunNotification -Title $title -Message $message -Level $level
+}
+
+if ($TestNotification) {
+    Send-P1TerminalNotification -Kind $TestNotification -ApplicationSha 'TEST-APPLICATION-SHA' -GovernanceSha 'TEST-GOVERNANCE-SHA' -Blocker 'Test notification only; no P1 work ran.' -NextAction 'Close this test popup.' -RunLog 'TEST-NO-RUN'
+    Write-Host "PRYSM P1 notification test sent: $TestNotification"
+    exit 0
+}
+
+if ([string]::IsNullOrWhiteSpace($AppRepo) -or [string]::IsNullOrWhiteSpace($GovernanceRepo)) {
+    throw 'AppRepo and GovernanceRepo are required unless -TestNotification is used.'
 }
 
 foreach ($requiredFile in @($SchemaPath,$AccountingPath,$BuilderPromptPath,$AuditorPromptPath)) {
@@ -600,6 +639,15 @@ exit /b %ERRORLEVEL%
     }
 
     if ($terminalStatus) {
-        Send-AutorunNotification -Title "PRYSM Autorun - $terminalStatus" -Message $terminalMessage -Level $terminalLevel
+        $p1State = Join-Path $GovernanceRepo 'CURRENT_STATE.md'
+        $isP1 = (Test-Path -LiteralPath $p1State) -and ((Get-Content -LiteralPath $p1State -Raw -ErrorAction SilentlyContinue) -match 'Active P#:\s*`?P1')
+        if ($isP1) {
+            $appSha = (& git -C $AppRepo rev-parse HEAD 2>$null); if (-not $appSha) { $appSha = 'UNBOUND' }
+            $govSha = (& git -C $GovernanceRepo rev-parse HEAD 2>$null); if (-not $govSha) { $govSha = 'UNBOUND' }
+            $kind = if ($terminalStatus -eq 'COMPLETE') { 'READY_FOR_BRAD' } elseif ($terminalMessage -match 'controller failed') { 'CONTROLLER_FAILURE' } else { 'BLOCKED' }
+            Send-P1TerminalNotification -Kind $kind -ApplicationSha $appSha -GovernanceSha $govSha -Blocker $terminalMessage -NextAction $terminalMessage -RunLog $TranscriptPath
+        } else {
+            Send-AutorunNotification -Title "PRYSM Autorun - $terminalStatus" -Message $terminalMessage -Level $terminalLevel
+        }
     }
 }
