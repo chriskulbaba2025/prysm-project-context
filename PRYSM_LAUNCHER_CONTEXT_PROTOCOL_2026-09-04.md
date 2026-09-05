@@ -7,7 +7,7 @@ Status: Active governing execution rule
 
 Prevent PRYSM gate failures caused by invoking a launcher from the wrong shell/session context.
 
-The PRYSM machine gate and the Codex handoff are related but not interchangeable operations. A launcher that is intended to start a new Codex process must never be invoked from inside an already-running Codex session.
+The PRYSM machine gate and the Codex handoff are related but not interchangeable operations. The public Bash launcher now self-routes when it detects an already-running Codex command context, so nested Codex discovery/spawn is avoided automatically.
 
 ## Mandatory context rule
 
@@ -29,33 +29,34 @@ Use:
 bash tools/prysm/start-prysm-p.sh P1
 ```
 
-The canonical Bash launcher may launch Codex after machine checks pass.
+The public Bash launcher delegates to the governed base launcher and may launch Codex after machine checks pass.
 
 ### Any ALREADY-RUNNING Codex session
 
-Use ONLY:
+Preferred explicit command:
 
 ```bash
 bash tools/prysm/start-prysm-p-current-session.sh P1
 ```
 
-This wrapper runs the same governed machine checks but supplies a local handoff shim so the final governed prompt is returned to the existing Codex session instead of nesting or rediscovering Codex.
+The public command `bash tools/prysm/start-prysm-p.sh P1` also detects `CODEX_THREAD_ID` and automatically routes to the current-session wrapper. The current-session wrapper runs the same governed base machine gate with a local Codex handoff shim so no nested Codex process is required.
 
 ## Prohibited combinations
 
-- Do not run `start-prysm-p.sh` directly from an active Codex session.
-- Do not launch Codex from inside Codex.
+- Do not manually launch a second Codex process from inside Codex.
 - Do not manually patch PATH to make a nested launch appear valid.
-- Do not substitute ad-hoc `bash -c`, `bash -lc`, npm-prefix, or shell-profile workarounds for the governed context-specific entrypoint.
+- Do not substitute ad-hoc `bash -c`, `bash -lc`, npm-prefix, or shell-profile workarounds for the governed entrypoints.
 
 ## Prompt-writing requirement
 
-Any ChatGPT/Codex instruction that tells an already-running Codex session to run a PRYSM gate MUST name `start-prysm-p-current-session.sh`, not the canonical new-process launcher.
+Any ChatGPT/Codex instruction that knows it is addressing an already-running Codex session should name `start-prysm-p-current-session.sh` explicitly.
 
-Any instruction to Chris from a normal Windows PowerShell prompt MUST name `start-prysm-p.ps1`.
+Any instruction to Chris from a normal Windows PowerShell prompt should name `start-prysm-p.ps1`.
 
-Any instruction to Brad from a normal macOS terminal MUST name `start-prysm-p.sh`.
+Any instruction to Brad from a normal macOS terminal should name `start-prysm-p.sh`.
+
+The public Bash launcher has a defensive self-route so an accidental direct invocation from an active Codex command context does not recreate the prior Codex-discovery failure.
 
 ## Failure interpretation
 
-A `Codex CLI ... not discoverable` error while already inside Codex is an invocation-context failure, not evidence that Codex is uninstalled. Do not reinstall Codex, edit application code, or patch PATH in response. Use the current-session launcher.
+A `Codex CLI ... not discoverable` error while already inside Codex is an invocation-context failure, not evidence that Codex is uninstalled. Do not reinstall Codex, edit application code, or patch PATH in response.
