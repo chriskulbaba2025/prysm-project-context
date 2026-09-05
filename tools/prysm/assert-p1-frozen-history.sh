@@ -45,6 +45,12 @@ for path in "${FROZEN_PATHS[@]}"; do
   [[ -n "$current_blob" ]] || fail "historical P1 evidence was deleted: $path"
   [[ "$baseline_blob" == "$current_blob" ]] || fail "historical P1 evidence changed in current tree: $path"
 
+  # Builder-time safety: an uncommitted edit is a violation too. This makes the
+  # same guard useful before governance commits, not only at final clean gates.
+  if [[ -n "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all -- "$path")" ]]; then
+    fail "historical P1 evidence has an uncommitted change: $path"
+  fi
+
   # Content equality alone is not enough: changing then reverting a historical
   # evidence file would still leave a misleading governance breadcrumb.
   if git -C "$GOV_ROOT" log --format='%H' "${P1_FROZEN_BASELINE}..HEAD" -- "$path" | grep -q .; then
@@ -63,6 +69,17 @@ for path in "${ROOT_P1_NOW[@]}"; do
     fail "new root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/: $path"
   fi
 done
+
+# Catch a newly created root P1_* path before it is committed.
+while IFS= read -r line; do
+  [[ -n "$line" ]] || continue
+  path="${line:3}"
+  if [[ "$path" == P1_* && "$path" != "P1_EXECUTION_GATE.env" ]]; then
+    if ! printf '%s\n' "${ROOT_P1_BASE[@]}" | grep -Fxq "$path"; then
+      fail "new uncommitted root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/: $path"
+    fi
+  fi
+done < <(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)
 
 echo "PRYSM P1 FROZEN HISTORY PASS"
 echo "Baseline: $P1_FROZEN_BASELINE"
