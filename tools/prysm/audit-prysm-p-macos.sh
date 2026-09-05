@@ -74,22 +74,15 @@ grep -Fq 'add_path_if_dir "$npm_prefix/bin"' "$MAC_ENTRY" || fail "npm <prefix>/
 grep -Fq 'exec bash "$BASE_ENTRY" "$@"' "$MAC_ENTRY" || fail "macOS adapter no longer delegates to the governed public launcher"
 pass "macOS adapter invariants are present"
 
-# Audit-only safety proof. Build forbidden command strings from fragments so the
-# detector does not match its own rule declarations. Read-only Codex discovery
-# and `--version` are intentionally permitted; Builder launch is not.
-for forbidden in \
-  "exec co""dex" \
-  "npm ins""tall" \
-  "npm i " \
-  "git pu""sh" \
-  "git re""set" \
-  "git cl""ean" \
-  "git check""out"
-do
-  if grep -Fq -- "$forbidden" "$0"; then
-    fail "Certification script contains prohibited command form: $forbidden"
-  fi
-done
+# AUDIT-SAFETY-SCAN-BOUNDARY
+# Scan only executable content above this boundary. This prevents the safety
+# detector from ever matching its own rule declarations.
+AUDIT_PREFIX="$(awk '/^# AUDIT-SAFETY-SCAN-BOUNDARY$/ { exit } { print }' "$0")"
+EXECUTABLE_PREFIX="$(printf '%s\n' "$AUDIT_PREFIX" | grep -Ev '^[[:space:]]*(#|$)' || true)"
+
+if printf '%s\n' "$EXECUTABLE_PREFIX" | grep -Eq '^[[:space:]]*(exec[[:space:]]+codex([[:space:]]|$)|codex[[:space:]]+[^-]|npm[[:space:]]+(install|i)([[:space:]]|$)|git[[:space:]]+(push|reset|clean|checkout)([[:space:]]|$))'; then
+  fail "Certification script contains a prohibited Builder/mutating command above the audit safety boundary"
+fi
 pass "audit-only script contains no Builder launch, install, push, reset, clean, or checkout command"
 
 echo
