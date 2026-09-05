@@ -13,6 +13,7 @@ Verified checkpoint:
 - P1 product repair: COMPLETE.
 - Parent application candidate branch: `p1/bounded-build-cross-report-integrity`
 - Parent application candidate SHA: `de509c30c808115f22fda3688a18dfaa85e9db50`
+- Final frozen application candidate SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`
 - Deterministic verification: 77/77 PASS.
 - Viewer v2 rendered freeze matrix: 48/48 PASS.
 - Brad final independent OUTCOME_REVIEW has NOT begun.
@@ -20,7 +21,7 @@ Verified checkpoint:
 - Handoff: `HANDOFF_PRYSM_P1_PROOF_BOUNDARY_REOPEN_CONTINUATION_2026-09-04.md`.
 
 Current stage:
-OUTCOME_REVIEW BLOCKED — minimum proof-boundary reopening authorized by Chris.
+Proof-boundary repair COMPLETE. Brad OUTCOME_REVIEW has not begun.
 
 Reason for block:
 The existing frozen candidate proves aggregate render hashes and deterministic outcomes but does not persist materialized HTML for each material P1 render-matrix scenario. Producing independently auditable per-scenario HTML, SHA-256 provenance, and scenario-to-obligation mapping requires a narrowly bounded test/proof-export harness change.
