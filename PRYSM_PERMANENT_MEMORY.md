@@ -98,9 +98,12 @@ The operating sequence is mandatory:
 - A journal marked `CODEX_EXITED_UNRECONCILED` has a durable post-run fingerprint but no accepted controller result and also must **not** auto-relaunch. Bootstrap/audit fails closed so the recorded transaction cannot be overwritten by another Builder turn.
 - Local P1 journal/accounting JSON is written atomically. Corrupt state fails closed; never silently reset repair accounting or adopt unknown local state.
 - Current reopened P1 has one special initial adoption path because valid Builder edits predate this controller. Adoption is allowed only on the exact governed P1 branch/base and only when every dirty application path is inside the explicitly authorized report-projection/test seam. The exact adopted fingerprint is then anchored; arbitrary later dirty trees are not re-adopted.
-- After every Codex run, the controller checks the union of every path touched by commits created during the transaction plus final uncommitted paths against the P1 bounded seam. A change cannot be hidden by later reverting it.
-- The active Builder may not modify the autorun controller, wrapper, Builder contract, schema, permanent autorun decision, or permanent memory governing the run. Working-tree and committed control-plane fingerprints are enforced.
-- **Frozen failed-candidate history is immutable.** Existing P1 bound evidence and `proof/P1/rendered/*` must not be changed in place. Reopened rendered proof goes under `proof/P1/reopen/*`; new technical/system/candidate/render proof uses new versioned P1 files and is rebound deliberately for the new candidate.
+- After every Codex run, the controller checks the union of every path touched by commits created during the transaction plus final uncommitted paths against the P1 bounded application seam. A change cannot be hidden merely by later reverting it.
+- The active Builder may not modify the autorun controller, wrapper, Builder contract, schema, permanent autorun decision/memory, frozen-history guard, current-session gate, or permanent gate regression governing the run.
+- **Exhaustive P1 historical freeze:** governance commit `0756e4db3746be0c2279c2083ccf83b3ec5c89f5` is the audited baseline. `tools/prysm/assert-p1-frozen-history.sh` derives every historical root `P1_*` and `proof/P1/rendered/*` path from that tree, excluding intentionally mutable `P1_EXECUTION_GATE.env`.
+- Historical P1 paths must retain exact baseline blobs. The deterministic gate also rejects a historical file that was changed and later restored, so a change→revert sequence cannot hide a governance breadcrumb.
+- No new root `P1_*` evidence files are allowed during reopened P1. **All new technical/system/candidate/render/evidence artifacts go under `proof/P1/reopen/`** and the execution gate is deliberately rebound to those new proof paths only when the repaired candidate is ready.
+- The permanent gate regression explicitly proves unchanged history PASS, direct mutation FAIL, change→revert FAIL, and new-root-P1-evidence FAIL.
 - A normal Codex invocation ending is not a workflow stop. `CONTINUE + Builder` relaunches Builder automatically; routine `STOP + Builder` is also treated as continuation while Builder remains the next actor.
 - A Codex execution or structured-result protocol failure stops on the first occurrence with the exact post-run journal preserved; it is not retried automatically and does not consume product repair escalation.
 - There is **no arbitrary fixed run-count stop** in the supported bootstrap. Runtime termination is governed by deterministic READY_FOR_BRAD, true blocker/protected boundary, usage limit, first protocol/controller failure, no-progress anti-thrash, or the three-attempt same-root repair limit.
@@ -108,7 +111,7 @@ The operating sequence is mandatory:
 - Builder may never route directly to Betty/Auditor. `next_role=Auditor` is a contract violation, not READY.
 - Root-defect identity is stable across a repair chain. Codex cannot reset escalation by renaming the root. A different root is accepted only with explicit `NEW_ROOT_CAUSE` and a materially different non-`NONE` root ID.
 - Before every new Codex invocation, repository lineage and current stage are rechecked. If durable governance already advanced to `OUTCOME_REVIEW`, no further Builder run starts.
-- `READY_FOR_BRAD` requires a clean/pushed repaired candidate, synchronized governance, `AUTHORIZED_STAGE=OUTCOME_REVIEW`, Brad authorized in `CURRENT_STATE.md`, green structured proof claims, and a final **official deterministic PRYSM gate PASS with `Authorized actor: BRAD`**. A Builder claim alone cannot advance the human boundary.
+- `READY_FOR_BRAD` requires a clean/pushed repaired candidate, synchronized governance, `AUTHORIZED_STAGE=OUTCOME_REVIEW`, Brad authorized in `CURRENT_STATE.md`, green structured proof claims, and a final **official deterministic PRYSM gate PASS including `PRYSM P1 FROZEN HISTORY PASS` and `Authorized actor: BRAD`**. A Builder claim alone cannot advance the human boundary.
 - Fresh Builder invocations use `--ask-for-approval never` and `--sandbox danger-full-access`; PRYSM governance, transaction lineage, bounded scope and deterministic gates remain the safety boundary rather than repetitive command approvals.
 - The controller uses application/governance resource locks to prevent concurrent controllers; live locks block and stale locks are reclaimed only after their PID is no longer running.
 - Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; final controller state is written before notification and notification failure is non-fatal.
@@ -163,6 +166,8 @@ Do not declare a process repair complete without the applicable deterministic re
 - `tools/prysm/start-prysm-p.ps1`
 - `tools/prysm/start-prysm-p.sh`
 - `tools/prysm/start-prysm-p-base.sh`
+- `tools/prysm/start-prysm-p-current-session.sh`
+- `tools/prysm/assert-p1-frozen-history.sh`
 - `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
