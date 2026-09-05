@@ -6,17 +6,6 @@ set -euo pipefail
 # are immutable. New reopened proof belongs under proof/P1/reopen/.
 P1_FROZEN_BASELINE="0756e4db3746be0c2279c2083ccf83b3ec5c89f5"
 
-# Disposable regression fixtures cannot contain the production commit object.
-# A baseline override is accepted only under the explicit gate-contract test
-# marker; normal Chris/Brad/Codex execution cannot select a weaker baseline.
-if [[ "${PRYSM_GATE_CONTRACT_TEST:-0}" == "1" ]]; then
-  [[ -n "${PRYSM_P1_FROZEN_BASELINE:-}" ]] || {
-    echo "PRYSM P1 FROZEN HISTORY FAIL: test baseline override is missing" >&2
-    exit 1
-  }
-  P1_FROZEN_BASELINE="$PRYSM_P1_FROZEN_BASELINE"
-fi
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GOV_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
@@ -24,6 +13,21 @@ fail() {
   echo "PRYSM P1 FROZEN HISTORY FAIL: $1" >&2
   exit 1
 }
+
+# Disposable gate-contract fixtures cannot contain the production commit
+# object. A baseline override is accepted only when BOTH the explicit test
+# marker is present and this script is physically inside the disposable
+# prysm-gate-contract.* fixture tree created by the regression suite. Merely
+# setting environment variables in the real governance repo cannot weaken the
+# production baseline.
+if [[ "${PRYSM_GATE_CONTRACT_TEST:-0}" == "1" ]]; then
+  case "$GOV_ROOT" in
+    */prysm-gate-contract.*/*/prysm-project-context) ;;
+    *) fail "test baseline override refused outside disposable gate-contract fixture: $GOV_ROOT" ;;
+  esac
+  [[ -n "${PRYSM_P1_FROZEN_BASELINE:-}" ]] || fail "test baseline override is missing"
+  P1_FROZEN_BASELINE="$PRYSM_P1_FROZEN_BASELINE"
+fi
 
 [[ -d "$GOV_ROOT/.git" ]] || fail "governance repository not found at $GOV_ROOT"
 git -C "$GOV_ROOT" cat-file -e "${P1_FROZEN_BASELINE}^{commit}" 2>/dev/null || fail "frozen baseline commit is unavailable: $P1_FROZEN_BASELINE"
