@@ -65,7 +65,6 @@ foreach ($needle in @(
     'Assert-ControlPlaneUnmodified','Committed PRYSM control-plane fingerprint changed during Builder execution.',
     'controlPlaneFingerprint','No-progress anti-thrash limit reached'
 )) { Require-Contains $controllerText $needle 'Controller integrity guard' }
-
 Require-Contains $controllerText 'This controller version has explicit transaction-scope enforcement only for P1.' 'Controller fail-closed scope'
 
 # Repair accounting cannot reset by relabeling a root.
@@ -79,12 +78,16 @@ Require-Contains $controllerText "'--sandbox','danger-full-access'" 'Controller'
 Require-Contains $controllerText "'--output-schema',`$SchemaPath" 'Controller'
 Require-Contains $controllerText "'--output-last-message',`$finalPath" 'Controller'
 
-# Bootstrap recovery must never pull/reset over interrupted state.
+# Bootstrap recovery and independent audit-only mode.
 Require-Contains $wrapperText 'Verify bootstrap/control-plane integrity' 'Wrapper'
 Require-Contains $wrapperText 'controller recovery will verify lineage' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-p-autorun-contract.ps1' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-gate-contract.sh' 'Wrapper'
 Require-Contains $wrapperText '-PreflightOnly' 'Wrapper'
+Require-Contains $wrapperText '[switch]$AuditOnly' 'Wrapper audit-only mode'
+Require-Contains $wrapperText 'AUDIT ONLY - NO CODEX/PRODUCT EXECUTION' 'Wrapper audit-only mode'
+Require-Contains $wrapperText 'PRYSM P# AUTORUN AUDIT PASS' 'Wrapper audit-only terminal'
+Require-Contains $wrapperText 'No Codex Builder invocation was started. No application/product execution occurred.' 'Wrapper audit-only terminal'
 
 # Builder receives the same frozen-history and transaction contract.
 Require-Contains $promptText 'controller journals each invocation' 'Builder prompt'
@@ -103,10 +106,12 @@ foreach ($forbidden in @('repair/prysm-production-closure','PRYSM Production Clo
 }
 Require-Contains $promptText 'Do **not** use stale historical `PRYSM_AUTORUN_STATE.json`' 'Builder prompt'
 
-# Durable governance must describe transactional recovery and deterministic Brad gate.
-foreach ($needle in @('Transaction journal and no-crumb rule','Deterministic READY_FOR_BRAD rule','official deterministic PRYSM P# gate')) {
-    Require-Contains $decisionText $needle 'Decision'
-}
+# Durable governance must describe the exact audited controller behavior.
+foreach ($needle in @(
+    'Transaction journal and no-crumb rule','Deterministic READY_FOR_BRAD rule',
+    'official deterministic PRYSM P1 gate','Current scope of the controller',
+    'This audited controller version is **P1-only**','Frozen P1 history','Audit-only runtime verification'
+)) { Require-Contains $decisionText $needle 'Decision' }
 Require-Contains $memoryText 'Permanent P-scoped unattended Builder rule' 'Permanent memory'
 Require-Contains $memoryText 'transaction journal' 'Permanent memory'
 Require-Contains $memoryText 'READY_FOR_BRAD' 'Permanent memory'
