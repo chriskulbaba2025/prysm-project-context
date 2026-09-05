@@ -3,12 +3,8 @@ param(
     [ValidatePattern('^P[0-9]+$')]
     [string]$P,
 
-    [Parameter(Mandatory = $ true)]
     [string]$AppRepo,
-
-    [Parameter(Mandatory = $true)]
     [string]$GovernanceRepo,
-
     [int]$MaxRuns = 0,
     [int]$DelaySeconds = 2,
     [int]$HeartbeatSeconds = 60,
@@ -24,7 +20,8 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $ScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
-$SchemaPath = Join-Path (Split-Path -Parent $ScriptRoot) 'autorun\PRYSM-AUTORUN-RESULT.schema.json'
+$ToolsRoot = Split-Path -Parent $ScriptRoot
+$SchemaPath = Join-Path $ToolsRoot 'autorun\PRYSM-AUTORUN-RESULT.schema.json'
 $BuilderPromptPath = Join-Path $ScriptRoot 'PRYSM-P-BUILDER-AUTORUN-PROMPT.md'
 
 $ModelLuna = 'gpt-5.6-luna'
@@ -33,7 +30,9 @@ $ModelSol = 'gpt-5.6-sol'
 
 function Resolve-RequiredPath {
     param([string]$Path,[string]$Label)
-    if (-not (Test-Path -LiteralPath $Path)) { throw "$Label does not exist: $Path" }
+    if ([string]::IsNullOrWhiteSpace($Path) -or -not (Test-Path -LiteralPath $Path)) {
+        throw "$Label does not exist: $Path"
+    }
     return (Resolve-Path -LiteralPath $Path).Path
 }
 
@@ -66,12 +65,6 @@ function Read-EnvFile {
     return $values
 }
 
-function Normalize-RootDefectId {
-    param([string]$Value)
-    if ([string]::IsNullOrWhiteSpace($Value)) { return 'NONE' }
-    return $Value.Trim()
-}
-
 function Get-ModelForAttempt {
     param([int]$Attempt)
     switch ($Attempt) {
@@ -82,12 +75,42 @@ function Get-ModelForAttempt {
     }
 }
 
+function Normalize-RootId {
+    param([string]$Value)
+    if ([string]::IsNullOrWhiteSpace($Value)) { return 'NONE' }
+    return $Value.Trim()
+}
+
+function Get-Route {
+    param($Result)
+    $checkpoint = [string]$Result.checkpoint
+    $loopAction = [string]$Result.loop_action
+    $nextRole = [string]$Result.next_role
+
+    if ($checkpoint -eq 'READY_FOR_BRAD') { return 'READY_FOR_BRAD' }
+    if ($loopAction -eq 'BLOCKED') { return 'BLOCKED' }
+    if ($nextRole -eq 'Auditor') { return 'READY_FOR_BRAD' }
+
+    # Core anti-stop/start rule: when the next actor is still Builder, a single
+    # Codex turn ending never stops the controller.
+    if ($nextRole -eq 'Builder' -and $loopAction -in @('CONTINUE','STOP')) { return 'CONTINUE' }
+    if ($loopAction -eq 'CONTINUE' -and $nextRole -eq 'NONE') { return 'CONTINUE' }
+
+    return 'BLOCKED'
+}
+
+function Test-UsageLimit {
+    param([string[]]$Paths)
+    foreach ($path in $Paths) {
+        if (-not (Test-Path -LiteralPath $path)) { continue }
+        $text = Get-Content -LiteralPath $path -Raw -ErrorAction SilentlyContinue
+        if ($text -match '(?i)hit your usage limit|usage limit.*try again|usage limit.*reset') { return $true }
+    }
+    return $false
+}
+
 function Send-DesktopNotification {
-    param(
-        [Parameter(Mandatory = $true)][string]$Title,
-        [Parameter(Mandatory = $true)][string]$Message,
-        [ValidateSet('Info','Warning','Error')][string]$Level = 'Info'
-    )
+    param([string]$Title,[string]$Message,[ValidateSet('Info','Warning','Error')][string]$Level)
     try {
         Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
         switch ($Level) {
@@ -109,56 +132,27 @@ function Send-DesktopNotification {
 function Send-TerminalNotification {
     param(
         [ValidateSet('READY_FOR_BRAD','BLOCKED','CONTROLLER_FAILURE')][string]$Kind,
-        [string]$ApplicationSha = 'UNBOUND',
-        [string]$GovernanceSha = 'UNBOUND',
-        [string]$Reason = '',
-        [string]$NextAction = '',
-        [string]$RunLog = ''
+        [string]$ApplicationSha='UNBOUND',
+        [string]$GovernanceSha='UNBOUND',
+        [string]$Reason='',
+        [string]$NextAction='',
+        [string]$RunLog=''
     )
-    if ($Kind -eq 'READY_FOR_BRAD') {
-        Send-DesktopNotification -Title "PRYSM $P READY FOR BRAD" -Level Info -Message "Application SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nFocused/full verification: PASS`nRendered proof: PASS`nNext actor: Brad"
-    } elseif ($Kind -eq 'BLOCKED') {
-        Send-DesktopNotification -Title "PRYSM $P BLOCKED" -Level Warning -Message "Blocker: $Reason`nApplication SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nNext action: $NextAction"
-    } else {
-        Send-DesktopNotification -Title "PRYSM $P CONTROLLER FAILURE" -Level Error -Message "Failure: $Reason`nLatest run log: $RunLog"
+    switch ($Kind) {
+        'READY_FOR_BRAD' {
+            Send-DesktopNotification -Title "PRYSM $P READY FOR BRAD" -Level Info -Message "Application SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nFocused/full verification: PASS`nRendered proof: PASS`nNext actor: Brad"
+        }
+        'BLOCKED' {
+            Send-DesktopNotification -Title "PRYSM $P BLOCKED" -Level Warning -Message "Blocker: $Reason`nApplication SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nNext action: $NextAction"
+        }
+        default {
+            Send-DesktopNotification -Title "PRYSM $P CONTROLLER FAILURE" -Level Error -Message "Failure: $Reason`nLatest run log: $RunLog"
+        }
     }
-}
-
-function Test-UsageLimit {
-    param([string[]]$Paths)
-    foreach ($path in $Paths) {
-        if (-not (Test-Path -LiteralPath $path)) { continue }
-        $text = Get-Content -LiteralPath $path -Raw -ErrorAction SilentlyContinue
-        if ($text -match '(?i)hit your usage limit|usage limit.*try again|usage limit.*reset') { return $true }
-    }
-    return $false
-}
-
-function Get-Route {
-    param($Result)
-    $checkpoint = [string]$Result.checkpoint
-    $loopAction = [string]$Result.loop_action
-    $nextRole = [string]$Result.next_role
-
-    if ($checkpoint -eq 'READY_FOR_BRAD') { return 'READY_FOR_BRAD' }
-    if ($loopAction -eq 'BLOCKED') { return 'BLOCKED' }
-
-    # Safety: this controller never launches Auditor/Betty. A Builder attempt to hand to
-    # Auditor means the Builder-owned candidate is ready for the human Brad boundary.
-    if ($nextRole -eq 'Auditor') { return 'READY_FOR_BRAD' }
-
-    # Critical anti-stop/start rule: if Builder says more Builder work remains, keep
-    # relaunching even if the individual Codex turn used STOP as its narrative action.
-    if ($nextRole -eq 'Builder' -and ($loopAction -eq 'CONTINUE' -or $loopAction -eq 'STOP')) { return 'CONTINUE' }
-
-    if ($loopAction -eq 'CONTINUE' -and $nextRole -eq 'NONE') { return 'CONTINUE' }
-    if ($loopAction -eq 'COMPLETE' -and $checkpoint -eq 'READY_FOR_BRAD') { return 'READY_FOR_BRAD' }
-
-    return 'BLOCKED'
 }
 
 if ($TestNotification) {
-    Send-TerminalNotification -Kind $TestNotification -ApplicationSha 'TEST-APP-SHA' -GovernanceSha 'TEST-GOV-SHA' -Reason 'Test notification only.' -NextAction 'Close this popup.' -RunLog 'TEST-NO-RUN'
+    Send-TerminalNotification -Kind $TestNotification -ApplicationSha 'TEST-APP-SHA' -GovernanceSha 'TEST-GOV-SHA' -Reason 'Test only.' -NextAction 'Close this popup.' -RunLog 'TEST-NO-RUN'
     Write-Host "Notification test sent: $TestNotification"
     exit 0
 }
@@ -167,17 +161,20 @@ if (-not (Test-Path -LiteralPath $SchemaPath)) { throw "Missing schema: $SchemaP
 if (-not (Test-Path -LiteralPath $BuilderPromptPath)) { throw "Missing Builder prompt: $BuilderPromptPath" }
 
 if ($SelfTest) {
-    $a = [pscustomobject]@{ checkpoint='WORK'; loop_action='CONTINUE'; next_role='Builder' }
-    $b = [pscustomobject]@{ checkpoint='WORK'; loop_action='STOP'; next_role='Builder' }
-    $c = [pscustomobject]@{ checkpoint='READY_FOR_BRAD'; loop_action='STOP'; next_role='NONE' }
-    $d = [pscustomobject]@{ checkpoint='AUDIT_REQUIRED'; loop_action='CONTINUE'; next_role='Auditor' }
-    $e = [pscustomobject]@{ checkpoint='WORK'; loop_action='BLOCKED'; next_role='NONE' }
-    if ((Get-Route $a) -ne 'CONTINUE') { throw 'SelfTest failed: CONTINUE+Builder' }
-    if ((Get-Route $b) -ne 'CONTINUE') { throw 'SelfTest failed: STOP+Builder must continue' }
-    if ((Get-Route $c) -ne 'READY_FOR_BRAD') { throw 'SelfTest failed: READY_FOR_BRAD' }
-    if ((Get-Route $d) -ne 'READY_FOR_BRAD') { throw 'SelfTest failed: Auditor handoff must stop for Brad' }
-    if ((Get-Route $e) -ne 'BLOCKED') { throw 'SelfTest failed: BLOCKED' }
-    if ((Get-ModelForAttempt 0) -ne $ModelLuna -or (Get-ModelForAttempt 1) -ne $ModelTerra -or (Get-ModelForAttempt 2) -ne $ModelSol) { throw 'SelfTest failed: model escalation' }
+    $cases = @(
+        @{ Result=[pscustomobject]@{checkpoint='WORK';loop_action='CONTINUE';next_role='Builder'}; Expected='CONTINUE' },
+        @{ Result=[pscustomobject]@{checkpoint='WORK';loop_action='STOP';next_role='Builder'}; Expected='CONTINUE' },
+        @{ Result=[pscustomobject]@{checkpoint='READY_FOR_BRAD';loop_action='STOP';next_role='NONE'}; Expected='READY_FOR_BRAD' },
+        @{ Result=[pscustomobject]@{checkpoint='AUDIT_REQUIRED';loop_action='CONTINUE';next_role='Auditor'}; Expected='READY_FOR_BRAD' },
+        @{ Result=[pscustomobject]@{checkpoint='WORK';loop_action='BLOCKED';next_role='NONE'}; Expected='BLOCKED' }
+    )
+    foreach ($case in $cases) {
+        $actual = Get-Route $case.Result
+        if ($actual -ne $case.Expected) { throw "SelfTest route failure: expected $($case.Expected), got $actual" }
+    }
+    if ((Get-ModelForAttempt 0) -ne $ModelLuna) { throw 'SelfTest Luna routing failed.' }
+    if ((Get-ModelForAttempt 1) -ne $ModelTerra) { throw 'SelfTest Terra routing failed.' }
+    if ((Get-ModelForAttempt 2) -ne $ModelSol) { throw 'SelfTest Sol routing failed.' }
     Write-Host 'PRYSM P# AUTORUN SELFTEST PASS'
     exit 0
 }
@@ -191,10 +188,12 @@ $CodexCmdPath = Resolve-CodexCmd
 $GatePath = Join-Path $GovernanceRepo ("{0}_EXECUTION_GATE.env" -f $P)
 if (-not (Test-Path -LiteralPath $GatePath)) { throw "Missing P execution gate: $GatePath" }
 $gate = Read-EnvFile $GatePath
-if (-not $gate.ContainsKey('P_ID') -or $gate['P_ID'] -ne $P) { throw "P gate identity mismatch for $P" }
-if (-not $gate.ContainsKey('AUTHORIZED_STAGE')) { throw "P gate missing AUTHORIZED_STAGE: $GatePath" }
-if ($gate['AUTHORIZED_STAGE'] -notin @('DIAGNOSTIC_TRUTH','BOUNDED_BUILD')) { throw "P $P is not Builder-owned according to AUTHORIZED_STAGE=$($gate['AUTHORIZED_STAGE'])" }
-if (-not $gate.ContainsKey('APPLICATION_BRANCH')) { throw "P gate missing APPLICATION_BRANCH" }
+if (-not $gate.ContainsKey('P_ID') -or $gate['P_ID'] -ne $P) { throw "P identity mismatch in $GatePath" }
+if (-not $gate.ContainsKey('AUTHORIZED_STAGE')) { throw 'P gate missing AUTHORIZED_STAGE.' }
+if ($gate['AUTHORIZED_STAGE'] -notin @('DIAGNOSTIC_TRUTH','BOUNDED_BUILD')) {
+    throw "$P is not Builder-owned: AUTHORIZED_STAGE=$($gate['AUTHORIZED_STAGE'])"
+}
+if (-not $gate.ContainsKey('APPLICATION_BRANCH')) { throw 'P gate missing APPLICATION_BRANCH.' }
 
 $currentBranch = (& git -C $AppRepo branch --show-current).Trim()
 if ($currentBranch -ne $gate['APPLICATION_BRANCH']) {
@@ -213,43 +212,29 @@ $repairAttempt = 0
 $rootDefectId = 'NONE'
 if (Test-Path -LiteralPath $AccountingPath) {
     try {
-        $accounting = Get-Content -LiteralPath $AccountingPath -Raw | ConvertFrom-Json
-        $repairAttempt = [int]$accounting.repairAttempt
-        $rootDefectId = Normalize-RootDefectId ([string]$accounting.rootDefectId)
-    } catch {
-        $repairAttempt = 0
-        $rootDefectId = 'NONE'
-    }
+        $a = Get-Content -LiteralPath $AccountingPath -Raw | ConvertFrom-Json
+        $repairAttempt = [int]$a.repairAttempt
+        $rootDefectId = Normalize-RootId ([string]$a.rootDefectId)
+    } catch {}
 }
 if ($repairAttempt -lt 0) { $repairAttempt = 0 }
 if ($repairAttempt -gt 3) { $repairAttempt = 3 }
 
 function Write-Accounting {
-    [ordered]@{
-        p = $P
-        repairAttempt = $repairAttempt
-        rootDefectId = $rootDefectId
-        updatedAt = (Get-Date -Format o)
-    } | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $AccountingPath -Encoding UTF8
+    [ordered]@{p=$P;repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;updatedAt=(Get-Date -Format o)} |
+        ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $AccountingPath -Encoding UTF8
 }
+
+function Get-AppSha { return ((& git -C $AppRepo rev-parse HEAD).Trim()) }
+function Get-GovSha { return ((& git -C $GovernanceRepo rev-parse HEAD).Trim()) }
 
 function Write-ControllerState {
     param([string]$Status,[int]$Run,[string]$Model,[string]$Checkpoint,[string]$Reason,[string]$LogPath)
     [ordered]@{
-        p = $P
-        status = $Status
-        updatedAt = (Get-Date -Format o)
-        controllerPid = $PID
-        run = $Run
-        model = $Model
-        checkpoint = $Checkpoint
-        reason = $Reason
-        repairAttempt = $repairAttempt
-        rootDefectId = $rootDefectId
-        latestRunLog = $LogPath
-        applicationBranch = ((& git -C $AppRepo branch --show-current).Trim())
-        applicationSha = ((& git -C $AppRepo rev-parse HEAD).Trim())
-        governanceSha = ((& git -C $GovernanceRepo rev-parse HEAD).Trim())
+        p=$P;status=$Status;updatedAt=(Get-Date -Format o);controllerPid=$PID;run=$Run;model=$Model;
+        checkpoint=$Checkpoint;reason=$Reason;repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;
+        latestRunLog=$LogPath;applicationBranch=((& git -C $AppRepo branch --show-current).Trim());
+        applicationSha=(Get-AppSha);governanceSha=(Get-GovSha)
     } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $ControllerStatePath -Encoding UTF8
 }
 
@@ -260,8 +245,6 @@ if ($PreflightOnly) {
     Write-Host "Branch:      $currentBranch"
     Write-Host "Stage:       $($gate['AUTHORIZED_STAGE'])"
     Write-Host "Codex:       $CodexCmdPath"
-    Write-Host "Prompt:      $BuilderPromptPath"
-    Write-Host "Schema:      $SchemaPath"
     Write-Host "Local state: $LocalRoot"
     Write-Host 'Approval:    never'
     Write-Host 'Sandbox:     danger-full-access'
@@ -280,12 +263,10 @@ $heartbeatJob = Start-Job -ArgumentList @($HeartbeatPath,$HeartbeatStopPath,$Con
         $state = $null
         try { $state = Get-Content -LiteralPath $StatePath -Raw | ConvertFrom-Json } catch {}
         [ordered]@{
-            p = $PId
-            alive = $true
-            timestamp = (Get-Date -Format o)
-            status = if ($state) { $state.status } else { 'UNKNOWN' }
-            run = if ($state) { $state.run } else { 0 }
-            checkpoint = if ($state) { $state.checkpoint } else { 'UNKNOWN' }
+            p=$PId;alive=$true;timestamp=(Get-Date -Format o);
+            status=if($state){$state.status}else{'UNKNOWN'};
+            run=if($state){$state.run}else{0};
+            checkpoint=if($state){$state.checkpoint}else{'UNKNOWN'}
         } | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $HeartbeatPath -Encoding UTF8
         Start-Sleep -Seconds $Seconds
     }
@@ -298,28 +279,25 @@ $latestRunLog = ''
 try {
     Write-Host "PRYSM $P CONTINUOUS AUTORUN STARTED"
     Write-Host "Branch: $currentBranch"
-    Write-Host "Logs: $LocalRoot"
-    Write-Host 'The controller will keep relaunching Builder until READY_FOR_BRAD or a true blocker.'
+    Write-Host "Logs:   $LocalRoot"
+    Write-Host 'Builder will relaunch automatically until READY_FOR_BRAD or a true blocker.'
 
     while ($true) {
-        if ($MaxRuns -gt 0 -and $runNumber -ge $MaxRuns) {
-            throw "Safety run limit reached: $MaxRuns"
-        }
+        if ($MaxRuns -gt 0 -and $runNumber -ge $MaxRuns) { throw "Safety run limit reached: $MaxRuns" }
         if ($repairAttempt -ge 3) {
             $reason = "Three same-root repair attempts exhausted for '$rootDefectId'. No fourth attempt allowed."
             Write-ControllerState -Status 'BLOCKED' -Run $runNumber -Model '' -Checkpoint 'THREE_ATTEMPTS_EXHAUSTED' -Reason $reason -LogPath $latestRunLog
-            Send-TerminalNotification -Kind BLOCKED -ApplicationSha ((& git -C $AppRepo rev-parse HEAD).Trim()) -GovernanceSha ((& git -C $GovernanceRepo rev-parse HEAD).Trim()) -Reason $reason -NextAction 'Review the durable P# state and intervene on the unchanged root defect.' -RunLog $latestRunLog
+            Send-TerminalNotification -Kind BLOCKED -ApplicationSha (Get-AppSha) -GovernanceSha (Get-GovSha) -Reason $reason -NextAction 'Review the durable P# state and intervene on the unchanged root defect.' -RunLog $latestRunLog
             break
         }
 
         $model = Get-ModelForAttempt $repairAttempt
         if (-not $model) { throw "No governed model for repair attempt $repairAttempt" }
-
         $runNumber++
         $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $runDir = Join-Path $LocalRoot ("run-{0:D4}-{1}-builder-level{2}" -f $runNumber,$stamp,($repairAttempt + 1))
         New-Item -ItemType Directory -Force -Path $runDir | Out-Null
-        $lastMessagePath = Join-Path $runDir 'final.json'
+        $finalPath = Join-Path $runDir 'final.json'
         $stdoutPath = Join-Path $runDir 'stdout.log'
         $stderrPath = Join-Path $runDir 'stderr.log'
         $transcriptPath = Join-Path $runDir 'codex-output.log'
@@ -327,7 +305,6 @@ try {
         $runnerPath = Join-Path $runDir 'invoke-codex.cmd'
         $latestRunLog = $transcriptPath
 
-        $basePrompt = Get-Content -LiteralPath $BuilderPromptPath -Raw
         $runtime = @"
 # CONTROLLER RUNTIME CONTEXT
 
@@ -347,17 +324,18 @@ CONTROLLER RULES
 - Echo repair_attempt exactly: $repairAttempt.
 - Return CONTINUE + next_role=Builder whenever more Builder work remains.
 - A normal end-of-turn is never a workflow stop.
-- When the repaired candidate is fully proven and the next actor is Brad, return checkpoint=READY_FOR_BRAD, loop_action=STOP, next_role=NONE.
-- Never launch or hand directly to Betty/Auditor; the controller converts any Auditor handoff into READY_FOR_BRAD.
-- Preserve current valid dirty application work. Do not reset/clean/overwrite it.
-- CURRENT_STATE.md plus the active P# reopened decision/evidence chain controls routing. Do not route from stale historical PRYSM_AUTORUN_STATE.json.
+- When fully proven and ready for Brad, return checkpoint=READY_FOR_BRAD, loop_action=STOP, next_role=NONE.
+- Never launch Betty/Auditor; Auditor handoff is treated as READY_FOR_BRAD.
+- Preserve the current dirty governed application worktree.
+- Route from CURRENT_STATE.md and the active P# reopened evidence chain, not stale historical PRYSM_AUTORUN_STATE.json.
 
 "@
+        $basePrompt = Get-Content -LiteralPath $BuilderPromptPath -Raw
         ($runtime + "`r`n" + $basePrompt) | Set-Content -LiteralPath $promptPath -Encoding UTF8
 
         $runner = @"
 @echo off
-call "$CodexCmdPath" --ask-for-approval never --sandbox danger-full-access --add-dir "$GovernanceRepo" exec --model "$model" -C "$AppRepo" --color never --output-schema "$SchemaPath" --output-last-message "$lastMessagePath" - < "$promptPath" > "$stdoutPath" 2> "$stderrPath"
+call "$CodexCmdPath" --ask-for-approval never --sandbox danger-full-access --add-dir "$GovernanceRepo" exec --model "$model" -C "$AppRepo" --color never --output-schema "$SchemaPath" --output-last-message "$finalPath" - < "$promptPath" > "$stdoutPath" 2> "$stderrPath"
 exit /b %ERRORLEVEL%
 "@
         $runner | Set-Content -LiteralPath $runnerPath -Encoding ASCII
@@ -380,11 +358,11 @@ exit /b %ERRORLEVEL%
         '=== STDERR ===' | Add-Content -LiteralPath $transcriptPath
         if (Test-Path -LiteralPath $stderrPath) { Get-Content -LiteralPath $stderrPath | Add-Content -LiteralPath $transcriptPath }
 
-        if ($exitCode -ne 0 -or -not (Test-Path -LiteralPath $lastMessagePath)) {
+        if ($exitCode -ne 0 -or -not (Test-Path -LiteralPath $finalPath)) {
             if (Test-UsageLimit -Paths @($stdoutPath,$stderrPath,$transcriptPath)) {
                 $reason = 'Codex usage limit reached. No repair escalation consumed.'
                 Write-ControllerState -Status 'BLOCKED' -Run $runNumber -Model $model -Checkpoint 'USAGE_LIMIT' -Reason $reason -LogPath $transcriptPath
-                Send-TerminalNotification -Kind BLOCKED -ApplicationSha ((& git -C $AppRepo rev-parse HEAD).Trim()) -GovernanceSha ((& git -C $GovernanceRepo rev-parse HEAD).Trim()) -Reason $reason -NextAction 'Resume the same P# controller after the usage allowance resets.' -RunLog $transcriptPath
+                Send-TerminalNotification -Kind BLOCKED -ApplicationSha (Get-AppSha) -GovernanceSha (Get-GovSha) -Reason $reason -NextAction 'Resume the same P# controller after the usage allowance resets.' -RunLog $transcriptPath
                 break
             }
             $consecutiveFailures++
@@ -394,19 +372,17 @@ exit /b %ERRORLEVEL%
             continue
         }
 
-        try { $result = Get-Content -LiteralPath $lastMessagePath -Raw | ConvertFrom-Json }
+        try { $result = Get-Content -LiteralPath $finalPath -Raw | ConvertFrom-Json }
         catch {
             $consecutiveFailures++
-            Write-Warning "Structured result parse failure $consecutiveFailures/$MaxConsecutiveFailures."
-            if ($consecutiveFailures -ge $MaxConsecutiveFailures) { throw "Repeated structured result parse failures. See $transcriptPath" }
+            if ($consecutiveFailures -ge $MaxConsecutiveFailures) { throw "Repeated structured-result parse failure. See $transcriptPath" }
             Start-Sleep -Seconds $DelaySeconds
             continue
         }
         $consecutiveFailures = 0
 
-        $returnedRoot = Normalize-RootDefectId ([string]$result.root_defect_id)
+        $returnedRoot = Normalize-RootId ([string]$result.root_defect_id)
         $failureClass = [string]$result.failure_class
-
         if ($failureClass -eq 'NEW_ROOT_CAUSE' -or ($returnedRoot -ne 'NONE' -and $returnedRoot -ne $rootDefectId)) {
             $rootDefectId = $returnedRoot
             $repairAttempt = 0
@@ -429,25 +405,25 @@ exit /b %ERRORLEVEL%
         }
 
         if ($route -eq 'READY_FOR_BRAD') {
-            $appSha = if ([string]::IsNullOrWhiteSpace([string]$result.application_sha)) { (& git -C $AppRepo rev-parse HEAD).Trim() } else { [string]$result.application_sha }
-            $govSha = if ([string]::IsNullOrWhiteSpace([string]$result.governance_sha)) { (& git -C $GovernanceRepo rev-parse HEAD).Trim() } else { [string]$result.governance_sha }
+            $appSha = if ([string]::IsNullOrWhiteSpace([string]$result.application_sha)) { Get-AppSha } else { [string]$result.application_sha }
+            $govSha = if ([string]::IsNullOrWhiteSpace([string]$result.governance_sha)) { Get-GovSha } else { [string]$result.governance_sha }
             Write-ControllerState -Status 'READY_FOR_BRAD' -Run $runNumber -Model $model -Checkpoint 'READY_FOR_BRAD' -Reason ([string]$result.reason) -LogPath $transcriptPath
             Send-TerminalNotification -Kind READY_FOR_BRAD -ApplicationSha $appSha -GovernanceSha $govSha -Reason ([string]$result.reason) -NextAction 'Brad OUTCOME_REVIEW' -RunLog $transcriptPath
             Write-Host "PRYSM $P READY FOR BRAD"
             break
         }
 
-        $blockReason = [string]$result.reason
-        if ([string]::IsNullOrWhiteSpace($blockReason)) { $blockReason = "Controller rejected terminal result: loop_action=$($result.loop_action), next_role=$($result.next_role), checkpoint=$($result.checkpoint)" }
-        Write-ControllerState -Status 'BLOCKED' -Run $runNumber -Model $model -Checkpoint ([string]$result.checkpoint) -Reason $blockReason -LogPath $transcriptPath
-        Send-TerminalNotification -Kind BLOCKED -ApplicationSha ((& git -C $AppRepo rev-parse HEAD).Trim()) -GovernanceSha ((& git -C $GovernanceRepo rev-parse HEAD).Trim()) -Reason $blockReason -NextAction ([string]$result.next_action) -RunLog $transcriptPath
+        $reason = [string]$result.reason
+        if ([string]::IsNullOrWhiteSpace($reason)) { $reason = "Unsafe terminal result: $($result.loop_action)/$($result.next_role)/$($result.checkpoint)" }
+        Write-ControllerState -Status 'BLOCKED' -Run $runNumber -Model $model -Checkpoint ([string]$result.checkpoint) -Reason $reason -LogPath $transcriptPath
+        Send-TerminalNotification -Kind BLOCKED -ApplicationSha (Get-AppSha) -GovernanceSha (Get-GovSha) -Reason $reason -NextAction ([string]$result.next_action) -RunLog $transcriptPath
         Write-Host "PRYSM $P BLOCKED"
         break
     }
 } catch {
     $reason = $_.Exception.Message
     try { Write-ControllerState -Status 'CONTROLLER_FAILURE' -Run $runNumber -Model '' -Checkpoint 'CONTROLLER_FAILURE' -Reason $reason -LogPath $latestRunLog } catch {}
-    Send-TerminalNotification -Kind CONTROLLER_FAILURE -ApplicationSha ((& git -C $AppRepo rev-parse HEAD 2>$null | Select-Object -First 1).Trim()) -GovernanceSha ((& git -C $GovernanceRepo rev-parse HEAD 2>$null | Select-Object -First 1).Trim()) -Reason $reason -NextAction 'Inspect the latest run log.' -RunLog $latestRunLog
+    try { Send-TerminalNotification -Kind CONTROLLER_FAILURE -ApplicationSha (Get-AppSha) -GovernanceSha (Get-GovSha) -Reason $reason -NextAction 'Inspect latest run log.' -RunLog $latestRunLog } catch {}
     throw
 } finally {
     try { New-Item -ItemType File -Force -Path $HeartbeatStopPath | Out-Null } catch {}
