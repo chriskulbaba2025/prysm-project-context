@@ -81,6 +81,10 @@ Require-Contains $controllerText "'--output-schema',`$SchemaPath" 'Controller'
 Require-Contains $controllerText "'--output-last-message',`$finalPath" 'Controller'
 
 # Bootstrap recovery and independent audit-only mode.
+Require-Contains $wrapperText 'Verify interrupted-transaction safety' 'Wrapper fail-closed recovery'
+Require-Contains $wrapperText 'transaction journal is still RUNNING and has no durable post-run fingerprint' 'Wrapper fail-closed recovery'
+Require-Contains $wrapperText '-MaxConsecutiveFailures 1' 'Wrapper fail-closed protocol handling'
+Require-Contains $wrapperText '-MaxRuns 20' 'Wrapper time-bounded execution'
 Require-Contains $wrapperText 'Verify bootstrap/control-plane integrity' 'Wrapper'
 Require-Contains $wrapperText 'controller recovery will verify lineage' 'Wrapper'
 Require-Contains $wrapperText 'test-prysm-p-autorun-contract.ps1' 'Wrapper'
