@@ -17,10 +17,10 @@ Verified checkpoint:
 - Persisted rendered proof: 27 HTML scenarios plus SHA-256 manifest and scenario-to-obligation matrix.
 - Brad outcome review: `FAIL — NOT READY TO PASS`, frozen in `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` at governance commit `c3adfa0fec19a445c1f57509edaed826b08da12b`.
 - Chris decision: `REOPEN SAME P#`.
-- Authorized stage: `DIAGNOSTIC_TRUTH`.
+- Authorized stage: `BOUNDED_BUILD`.
 - Authorized actor: `BUILDER/Codex`.
-- Current stage: DIAGNOSTIC_TRUTH
-- Authorized execution stage: DIAGNOSTIC_TRUTH
+- Current stage: BOUNDED_BUILD
+- Authorized execution stage: BOUNDED_BUILD
 - Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
 - Governing review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
 
@@ -99,7 +99,7 @@ Completed:
 - This is now part of the consolidated repair inventory, but no language redesign is authorized until P1 is formally reopened.
 
 In progress:
-Builder diagnostic truth for one bounded P1 repair tranche: CTA/path coherence, trust evidence wording, robots/indexability truthfulness, fail-closed downstream projection, and business-client language clarity. Determine shared causes and the narrowest repair seams before code edits.
+Builder bounded repair for the verified report-projection defect set. The reopened diagnostic is recorded in `P1_DIAGNOSTIC_TRUTH_REOPEN_2026-09-05.md`.
 
 Blocked:
 - P1 OUTCOME PASS remains blocked pending the reopened repair, proof, and a new independent Brad review.
@@ -116,7 +116,7 @@ Important constraints:
 - Do not broaden this repair into page-selection/search-data redesign unless direct diagnosis proves that boundary is causal; retain current/live/commercial page selection as later work.
 
 Exact next action:
-Run `bash tools/prysm/start-prysm-p.sh P1` from the Codex/agent shell once. On deterministic PASS, execute Builder diagnostic truth only: map the full report projection lineage and exact causal files/tests for the consolidated defect set, write a versioned diagnostic record, and prepare the bounded repair authorization surface without editing application code until diagnosis is complete.
+Implement only the reopened bounded repair authorization, add deterministic client-semantic regression coverage, then regenerate and verify the affected rendered P1 scenarios before a new Brad review.
 
 Last verified:
 2026-09-05
