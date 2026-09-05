@@ -1,8 +1,8 @@
 # PRYSM Diagnostic Evidence Protocol
 
-**Version:** 1.1.0  
+**Version:** 1.2.0  
 **Status:** Governing project instruction  
-**Purpose:** Prohibit guess-driven diagnosis and require evidence-backed root-cause work.
+**Purpose:** Prohibit guess-driven diagnosis, require evidence-backed root-cause work, and prevent diagnostics from contaminating governed repositories.
 
 ## Governing Rule
 
@@ -66,13 +66,38 @@ For a repaired material semantic boundary, require where practical:
 
 A repair that only makes the original symptom disappear without proving the intended boundary remains incomplete.
 
+## Diagnostic Artifact Hygiene Rule
+
+Diagnostic evidence must never create or manufacture a governance failure.
+
+1. **Never write a temporary diagnostic artifact into a Git working tree by default.** This applies to ChatGPT, Codex, Brad, Chris, PowerShell, Bash, and any other participating agent.
+2. On Windows PowerShell, write uploadable diagnostics under `$env:TEMP\PRYSM-diagnostics\` (create the directory when needed). Example:
+
+   ```powershell
+   $diagRoot = Join-Path $env:TEMP 'PRYSM-diagnostics'
+   New-Item -ItemType Directory -Force -Path $diagRoot | Out-Null
+   $diagFile = Join-Path $diagRoot 'PRYSM-LOCAL-DIAG-example.txt'
+   <diagnostic command> | Set-Content $diagFile
+   Write-Host $diagFile
+   ```
+
+3. On macOS/Linux/Bash, write uploadable diagnostics under `${TMPDIR:-/tmp}/PRYSM-diagnostics/`.
+4. This rule **supersedes any older PRYSM wording that tells an assistant to write diagnostic `.txt` output into the current working directory** when that working directory is inside a governed repository.
+5. If the expected output is only a few lines, direct terminal output is preferred over creating a file.
+6. The repository may ignore only narrowly named, explicitly disposable local-diagnostic patterns. Do not broadly ignore `.txt`, proof, audit, evidence, or governance files.
+7. The PRYSM launcher may preserve/quarantine only narrowly recognized **untracked local diagnostic leftovers** outside the repository. It must never auto-delete, auto-reset, auto-checkout, auto-clean, or silently hide tracked files or unknown untracked files.
+8. If real dirty entries remain, the launcher must print their exact paths and stop. Do not send the user through a second generic diagnostic just to learn what the gate already knows.
+9. Never use `git clean`, destructive `git reset`, checkout-overwrite, or force operations merely to satisfy a cleanliness gate.
+
+The permanent objective is: **diagnostics observe governed state; diagnostics do not mutate governed state.**
+
 ## User-Effort Rule
 
 Do not send the user through repeated browser, shell, log, or storage searches unless the relevant code path has already proven that the requested evidence should exist there and that the command can retrieve it.
 
 Prefer one high-information diagnostic over multiple speculative checks.
 
-When shell evidence is materially useful for human review, prefer a named `.txt` diagnostic artifact rather than terminal scrollback alone.
+When shell evidence is materially useful for human review, prefer a named `.txt` diagnostic artifact rather than terminal scrollback alone, but store that file outside governed repositories under the Diagnostic Artifact Hygiene Rule above.
 
 ## Completion Standard
 

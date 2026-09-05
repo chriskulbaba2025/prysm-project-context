@@ -1,0 +1,8 @@
+# Local-only diagnostic hygiene
+#
+# Governed proof/evidence files are intentionally NOT broadly ignored.
+# These narrow patterns cover disposable diagnostics that must never make a
+# governance working tree dirty merely because ChatGPT/Codex asked for evidence.
+/PRYSM-P*-governance-dirty*.txt
+/PRYSM-LOCAL-DIAG-*.txt
+/PRYSM-GATE-DEBUG-*.txt
