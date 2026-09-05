@@ -13,9 +13,22 @@ fail() {
 [[ "$P_ID" =~ ^P([1-9]|10)([A-Z][A-Z0-9-]*)?$ ]] || fail "Invalid P# '$P_ID'."
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+GOV_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 BASE_LAUNCHER="$SCRIPT_DIR/start-prysm-p-base.sh"
 
 [[ -f "$BASE_LAUNCHER" ]] || fail "Governed base launcher is missing: $BASE_LAUNCHER"
+
+# Make dirty-tree failures self-diagnosing. The base launcher intentionally
+# refuses any dirty governance tree, but historically emitted only a generic
+# message. Print the exact entries seen by the same Git/Bash environment before
+# handing off so no separate diagnostic command can itself contaminate the repo.
+DIRTY_STATUS="$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)"
+if [[ -n "$DIRTY_STATUS" ]]; then
+  echo >&2
+  echo "PRYSM GOVERNANCE DIRTY ENTRIES (as seen by Bash/Git):" >&2
+  printf '%s\n' "$DIRTY_STATUS" >&2
+  fail "Governance repository has uncommitted changes. Resolve only the listed entries before rerunning."
+fi
 
 # The base launcher deliberately hands off to a new Codex CLI process after
 # all machine gates pass. In an existing Codex session that would be nested
