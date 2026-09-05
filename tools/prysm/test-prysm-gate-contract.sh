@@ -48,8 +48,12 @@ setup_fixture() {
 
   git -C "$root/prysm-project-context" config user.email prysm-test@example.invalid
   git -C "$root/prysm-project-context" config user.name PRYSM-Test
+  git -C "$root/prysm-project-context" config core.autocrlf false
+  git -C "$root/prysm-project-context" config core.eol lf
   git -C "$root/vantage-platform" config user.email prysm-test@example.invalid
   git -C "$root/vantage-platform" config user.name PRYSM-Test
+  git -C "$root/vantage-platform" config core.autocrlf false
+  git -C "$root/vantage-platform" config core.eol lf
 
   git -C "$root/vantage-platform" checkout -b p1/bounded-build-cross-report-integrity >/dev/null 2>&1
   echo app > "$root/vantage-platform/app.txt"
