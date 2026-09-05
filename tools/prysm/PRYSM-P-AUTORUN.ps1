@@ -387,27 +387,32 @@ function Get-GovernanceRecovery {
     $local = Get-GitHead $GovernanceRepo
     $remote = ((& git -C $GovernanceRepo rev-parse origin/main).Trim())
     $fingerprint = Get-RepoFingerprint $GovernanceRepo
-    if ($local -eq $remote -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'GOV_SYNCED' }
-    if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status) -and (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $local -Descendant $remote)) {
-        & git -C $GovernanceRepo pull --ff-only origin main | Out-Null
-        if ($LASTEXITCODE -ne 0) { throw 'Governance fast-forward recovery failed.' }
-        return 'GOV_FAST_FORWARDED'
+
+    if ($null -eq $Anchor) {
+        if ($local -eq $remote -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'GOV_SYNCED' }
+        if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status) -and (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $local -Descendant $remote)) {
+            & git -C $GovernanceRepo pull --ff-only origin main | Out-Null
+            if ($LASTEXITCODE -ne 0) { throw 'Governance initial fast-forward failed.' }
+            return 'GOV_INITIAL_FAST_FORWARDED'
+        }
+        throw "Governance differs from origin/main without a P1 entry anchor. Local=$local Remote=$remote"
     }
-    if ($null -eq $Anchor) { throw "Governance differs from origin/main without a P# entry anchor. Local=$local Remote=$remote" }
+
     $anchorGov = [string]$Anchor.governanceShaAtEntry
-    if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $anchorGov -Descendant $local)) { throw 'Governance local HEAD is outside the recorded P# entry lineage.' }
-    if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $remote -Descendant $local)) { throw "Governance origin/main is not an ancestor of local recovery state. Local=$local Remote=$remote" }
+    if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $anchorGov -Descendant $local)) { throw 'Governance local HEAD is outside the recorded P1 entry lineage.' }
+    if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $remote -Descendant $local)) { throw "Governance origin/main moved outside the active local transaction lineage. Local=$local Remote=$remote" }
+    if ($fingerprint.sha256 -eq [string]$Anchor.governanceFingerprintAtEntry) { return 'GOV_ANCHORED_ENTRY_RECOVERY' }
     if (JournalMatchesFingerprint -Journal $Journal -Side 'Governance' -Fingerprint $fingerprint.sha256) {
         if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'GOV_JOURNALED_CLEAN_RECOVERY' }
         return 'GOV_JOURNALED_DIRTY_RECOVERY'
     }
     if ($null -ne $Journal -and [string]$Journal.status -eq 'RUNNING') { return 'GOV_INTERRUPTED_RUNNING_RECOVERY' }
-    throw 'Governance state does not equal the last journaled post-state and is not a live interrupted transaction.'
+    throw 'Governance state does not equal the P1 entry baseline or latest journaled post-state.'
 }
 
 function Get-ApplicationRecovery {
     param([hashtable]$Gate,[string]$AppRepo,$Anchor,$Journal)
-    if (-not $Gate.ContainsKey('APPLICATION_BRANCH') -or -not $Gate.ContainsKey('APPLICATION_SHA')) { throw 'P gate is missing application identity.' }
+    if (-not $Gate.ContainsKey('APPLICATION_BRANCH') -or -not $Gate.ContainsKey('APPLICATION_SHA')) { throw 'P1 gate is missing application identity.' }
     $branch = Get-GitBranch $AppRepo
     if ($branch -ne $Gate['APPLICATION_BRANCH']) { throw "Application branch mismatch. Current=$branch Required=$($Gate['APPLICATION_BRANCH'])" }
     & git -C $AppRepo fetch origin $branch | Out-Null
@@ -418,56 +423,42 @@ function Get-ApplicationRecovery {
     $gateSha = [string]$Gate['APPLICATION_SHA']
     if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $gateSha -Descendant $head)) { throw "Application HEAD is outside the gated lineage. HEAD=$head Gate=$gateSha" }
     if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $gateSha -Descendant $origin)) { throw "origin/$branch is outside the gated lineage. Origin=$origin Gate=$gateSha" }
-    if ($head -eq $gateSha -and $origin -eq $gateSha -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'APP_EXACT_GATE_CLEAN' }
-    if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status) -and (Test-GitAncestor -Repo $AppRepo -Ancestor $head -Descendant $origin)) {
-        & git -C $AppRepo pull --ff-only origin $branch | Out-Null
-        if ($LASTEXITCODE -ne 0) { throw 'Application fast-forward recovery failed.' }
-        return 'APP_FAST_FORWARDED_DESCENDANT'
-    }
+
     if ($null -eq $Anchor) {
+        if ($head -eq $gateSha -and $origin -eq $gateSha -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'APP_EXACT_GATE_CLEAN' }
         if ($head -eq $gateSha -and $origin -eq $gateSha -and -not [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) {
             $paths = @(Get-ChangedPaths $AppRepo)
             if (-not (Test-P1ApplicationBoundary -Paths $paths)) { throw "Initial dirty P1 worktree contains paths outside the reopened repair seam: $($paths -join ', ')" }
             return 'APP_P1_INITIAL_DIRTY_ADOPTION'
         }
-        throw 'Application continuation differs from the gate without a verified P# entry anchor.'
+        throw 'Application differs from the exact P1 gate before a verified P1 entry anchor exists.'
     }
-    if ([string]$Anchor.p -ne $P -or [string]$Anchor.applicationBranch -ne $branch -or [string]$Anchor.baseGateSha -ne $gateSha) { throw 'P# entry anchor does not match the active application gate.' }
-    if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $origin -Descendant $head)) { throw "Application local branch diverged from or fell behind origin/$branch. Local=$head Origin=$origin" }
+
+    if ([string]$Anchor.p -ne $P -or [string]$Anchor.applicationBranch -ne $branch -or [string]$Anchor.baseGateSha -ne $gateSha) { throw 'P1 entry anchor does not match the active application gate.' }
+    if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $origin -Descendant $head)) { throw "Application origin moved outside or ahead of the active local transaction lineage. Local=$head Origin=$origin" }
     if ($fingerprint.sha256 -eq [string]$Anchor.applicationFingerprintAtEntry) { return 'APP_ANCHORED_ENTRY_RECOVERY' }
     if (JournalMatchesFingerprint -Journal $Journal -Side 'Application' -Fingerprint $fingerprint.sha256) {
         if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'APP_JOURNALED_CLEAN_RECOVERY' }
         return 'APP_JOURNALED_DIRTY_RECOVERY'
     }
     if ($null -ne $Journal -and [string]$Journal.status -eq 'RUNNING') { return 'APP_INTERRUPTED_RUNNING_RECOVERY' }
-    throw 'Application state does not equal the entry baseline or the last journaled post-state.'
+    throw 'Application state does not equal the P1 entry baseline or latest journaled post-state.'
 }
 
-function Sync-LoopLineage {
+function Assert-LoopLineage {
     param([string]$AppRepo,[string]$GovernanceRepo)
     & git -C $GovernanceRepo fetch origin main | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Governance fetch failed during loop.' }
     $govLocal = Get-GitHead $GovernanceRepo
     $govRemote = ((& git -C $GovernanceRepo rev-parse origin/main).Trim())
-    $govStatus = Get-GitStatus $GovernanceRepo
-    if ($govLocal -ne $govRemote -and -not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $govRemote -Descendant $govLocal)) {
-        if ([string]::IsNullOrWhiteSpace($govStatus) -and (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $govLocal -Descendant $govRemote)) {
-            & git -C $GovernanceRepo pull --ff-only origin main | Out-Null
-            if ($LASTEXITCODE -ne 0) { throw 'Governance loop fast-forward failed.' }
-        } else { throw 'Governance origin moved outside the active local transaction lineage.' }
-    }
+    if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $govRemote -Descendant $govLocal)) { throw 'Governance origin moved outside or ahead of the active local transaction lineage.' }
+
     $branch = Get-GitBranch $AppRepo
     & git -C $AppRepo fetch origin $branch | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Application fetch failed during loop.' }
     $appLocal = Get-GitHead $AppRepo
     $appRemote = ((& git -C $AppRepo rev-parse "origin/$branch").Trim())
-    $appStatus = Get-GitStatus $AppRepo
-    if ($appLocal -ne $appRemote -and -not (Test-GitAncestor -Repo $AppRepo -Ancestor $appRemote -Descendant $appLocal)) {
-        if ([string]::IsNullOrWhiteSpace($appStatus) -and (Test-GitAncestor -Repo $AppRepo -Ancestor $appLocal -Descendant $appRemote)) {
-            & git -C $AppRepo pull --ff-only origin $branch | Out-Null
-            if ($LASTEXITCODE -ne 0) { throw 'Application loop fast-forward failed.' }
-        } else { throw 'Application origin moved outside the active local transaction lineage.' }
-    }
+    if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $appRemote -Descendant $appLocal)) { throw 'Application origin moved outside or ahead of the active local transaction lineage.' }
 }
 
 function Assert-ReadyForBrad {
@@ -485,7 +476,7 @@ function Assert-ReadyForBrad {
     if ((Get-GitHead $GovernanceRepo) -ne ((& git -C $GovernanceRepo rev-parse origin/main).Trim())) { throw 'Governance is not synchronized with origin/main at readiness.' }
     $gatePath = Join-Path $GovernanceRepo ("{0}_EXECUTION_GATE.env" -f $P)
     $gateNow = Read-EnvFile $gatePath
-    if ([string]$gateNow['AUTHORIZED_STAGE'] -ne 'OUTCOME_REVIEW') { throw 'P gate has not been advanced to OUTCOME_REVIEW.' }
+    if ([string]$gateNow['AUTHORIZED_STAGE'] -ne 'OUTCOME_REVIEW') { throw 'P1 gate has not been advanced to OUTCOME_REVIEW.' }
     Assert-CurrentStateStage -GovernanceRepo $GovernanceRepo -ExpectedStage 'OUTCOME_REVIEW' -ExpectedActorPattern 'BRAD'
     $branch = Get-GitBranch $AppRepo
     & git -C $AppRepo fetch origin $branch | Out-Null
@@ -531,13 +522,13 @@ function Test-PreRunStage {
         return 'BUILDER'
     }
     if ($stage -eq 'OUTCOME_REVIEW') {
-        if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $AppRepo))) { throw 'P# advanced to OUTCOME_REVIEW while application tree is dirty.' }
-        if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $GovernanceRepo))) { throw 'P# advanced to OUTCOME_REVIEW while governance tree is dirty.' }
+        if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $AppRepo))) { throw 'P1 advanced to OUTCOME_REVIEW while application tree is dirty.' }
+        if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $GovernanceRepo))) { throw 'P1 advanced to OUTCOME_REVIEW while governance tree is dirty.' }
         Assert-CurrentStateStage -GovernanceRepo $GovernanceRepo -ExpectedStage 'OUTCOME_REVIEW' -ExpectedActorPattern 'BRAD'
         Invoke-OfficialGate -Bash $Bash -ExpectedStage 'OUTCOME_REVIEW' -ExpectedActor 'BRAD' | Out-Null
         return 'READY_FOR_BRAD'
     }
-    throw "Unsupported or non-Builder P# stage encountered by autorun: $stage"
+    throw "Unsupported or non-Builder P1 stage encountered by autorun: $stage"
 }
 
 if ($TestNotification) {
@@ -565,7 +556,7 @@ if ($SelfTest) {
     $same = [pscustomobject]@{root_defect_id='ROOT-A';failure_class='REPAIR_PROOF_FAILED'}
     Apply-RepairAccounting -Result $same -RootDefectId ([ref]$root) -RepairAttempt ([ref]$attempt)
     if ($root -ne 'ROOT-A' -or $attempt -ne 2) { throw 'SelfTest repair escalation failed.' }
-    Write-Host 'PRYSM P# AUTORUN SELFTEST PASS'
+    Write-Host 'PRYSM P1 AUTORUN SELFTEST PASS'
     exit 0
 }
 
@@ -582,7 +573,7 @@ $Bash = Resolve-Bash
 Assert-CodexFeatures -CodexCmdPath $CodexCmdPath
 
 $LocalBase = if ($env:LOCALAPPDATA) { $env:LOCALAPPDATA } else { $env:TEMP }
-$LocalRoot = Join-Path $LocalBase ("PRYSM-P-Autorun\{0}" -f $P)
+$LocalRoot = Join-Path $LocalBase 'PRYSM-P-Autorun\P1'
 $SharedLockRoot = Join-Path $LocalBase 'PRYSM-Autorun-Locks'
 New-Item -ItemType Directory -Force -Path $LocalRoot | Out-Null
 New-Item -ItemType Directory -Force -Path $SharedLockRoot | Out-Null
@@ -595,7 +586,7 @@ $JournalPath = Join-Path $LocalRoot 'transaction-journal.json'
 $AppLockPath = Join-Path $SharedLockRoot ("app-{0}.lock" -f (Get-PathLockName $AppRepo))
 $GovernanceLockPath = Join-Path $SharedLockRoot ("governance-{0}.lock" -f (Get-PathLockName $GovernanceRepo))
 
-$lockBody = "PID=$PID`nP=$P`nStarted=$(Get-Date -Format o)`nAppRepo=$AppRepo`nGovernanceRepo=$GovernanceRepo`n"
+$lockBody = "PID=$PID`nP=P1`nStarted=$(Get-Date -Format o)`nAppRepo=$AppRepo`nGovernanceRepo=$GovernanceRepo`n"
 if (-not $PreflightOnly) {
     Acquire-ResourceLock -Path $AppLockPath -Body $lockBody
     try { Acquire-ResourceLock -Path $GovernanceLockPath -Body $lockBody }
@@ -614,21 +605,21 @@ try {
     $journal = Read-JsonFile $JournalPath
     $govRecovery = Get-GovernanceRecovery -GovernanceRepo $GovernanceRepo -Anchor $anchor -Journal $journal
 
-    $GatePath = Join-Path $GovernanceRepo ("{0}_EXECUTION_GATE.env" -f $P)
-    if (-not (Test-Path -LiteralPath $GatePath)) { throw "Missing P execution gate: $GatePath" }
+    $GatePath = Join-Path $GovernanceRepo 'P1_EXECUTION_GATE.env'
+    if (-not (Test-Path -LiteralPath $GatePath)) { throw "Missing P1 execution gate: $GatePath" }
     $gate = Read-EnvFile $GatePath
-    if (-not $gate.ContainsKey('P_ID') -or $gate['P_ID'] -ne $P) { throw "P identity mismatch in $GatePath" }
+    if (-not $gate.ContainsKey('P_ID') -or $gate['P_ID'] -ne 'P1') { throw "P1 identity mismatch in $GatePath" }
 
     if ([string]$gate['AUTHORIZED_STAGE'] -notin @('DIAGNOSTIC_TRUTH','BOUNDED_BUILD')) {
         if ([string]$gate['AUTHORIZED_STAGE'] -eq 'OUTCOME_REVIEW') {
             $stageResult = Test-PreRunStage -GovernanceRepo $GovernanceRepo -AppRepo $AppRepo -Bash $Bash
             if ($stageResult -eq 'READY_FOR_BRAD') {
                 if (-not $PreflightOnly) { Send-TerminalNotification -Kind 'READY_FOR_BRAD' -ApplicationSha (Get-GitHead $AppRepo) -GovernanceSha (Get-GitHead $GovernanceRepo) -NextAction 'Brad OUTCOME_REVIEW' }
-                Write-Host "PRYSM $P READY FOR BRAD"
+                Write-Host 'PRYSM P1 READY FOR BRAD'
                 return
             }
         }
-        throw "$P is not in a Builder-owned stage."
+        throw 'P1 is not in a Builder-owned stage.'
     }
     Assert-CurrentStateStage -GovernanceRepo $GovernanceRepo -ExpectedStage ([string]$gate['AUTHORIZED_STAGE']) -ExpectedActorPattern 'BUILDER'
 
@@ -647,7 +638,7 @@ try {
         $appFingerprint = Get-RepoFingerprint $AppRepo
         $govFingerprint = Get-RepoFingerprint $GovernanceRepo
         $anchor = [ordered]@{
-            p=$P;applicationBranch=[string]$gate['APPLICATION_BRANCH'];baseGateSha=[string]$gate['APPLICATION_SHA'];
+            p='P1';applicationBranch=[string]$gate['APPLICATION_BRANCH'];baseGateSha=[string]$gate['APPLICATION_SHA'];
             applicationShaAtEntry=$appFingerprint.head;applicationFingerprintAtEntry=$appFingerprint.sha256;
             governanceShaAtEntry=$govFingerprint.head;governanceFingerprintAtEntry=$govFingerprint.sha256;
             controlPlaneFingerprint=(Get-ControlPlaneFingerprint $GovernanceRepo);recoveryModeAtEntry=$recoveryMode;enteredAt=(Get-Date -Format o)
@@ -663,7 +654,7 @@ try {
     Assert-ControlPlaneUnmodified -GovernanceRepo $GovernanceRepo -ExpectedFingerprint $expectedControlPlane
 
     if ($PreflightOnly) {
-        Write-Host "PRYSM $P AUTORUN PREFLIGHT"
+        Write-Host 'PRYSM P1 AUTORUN PREFLIGHT'
         Write-Host "Application:   $AppRepo"
         Write-Host "Governance:    $GovernanceRepo"
         Write-Host "Branch:        $(Get-GitBranch $AppRepo)"
@@ -678,7 +669,7 @@ try {
     }
 
     $accounting = Read-JsonFile $AccountingPath
-    if ($null -ne $accounting -and [string]$accounting.p -eq $P) {
+    if ($null -ne $accounting -and [string]$accounting.p -eq 'P1') {
         $repairAttempt = [int]$accounting.repairAttempt
         $rootDefectId = Normalize-RootId ([string]$accounting.rootDefectId)
     }
@@ -686,12 +677,12 @@ try {
     if ($repairAttempt -gt 3) { $repairAttempt = 3 }
 
     function Write-Accounting {
-        Write-JsonFile -Path $AccountingPath -Value ([ordered]@{p=$P;repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;updatedAt=(Get-Date -Format o)})
+        Write-JsonFile -Path $AccountingPath -Value ([ordered]@{p='P1';repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;updatedAt=(Get-Date -Format o)})
     }
     function Write-ControllerState {
         param([string]$Status,[string]$Model,[string]$Checkpoint,[string]$Reason,[string]$LogPath)
         Write-JsonFile -Path $ControllerStatePath -Value ([ordered]@{
-            p=$P;status=$Status;updatedAt=(Get-Date -Format o);controllerPid=$PID;run=$runNumber;model=$Model;
+            p='P1';status=$Status;updatedAt=(Get-Date -Format o);controllerPid=$PID;run=$runNumber;model=$Model;
             checkpoint=$Checkpoint;reason=$Reason;repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;
             latestRunLog=$LogPath;recoveryMode=$recoveryMode;applicationBranch=(Get-GitBranch $AppRepo);
             applicationSha=(Get-GitHead $AppRepo);governanceSha=(Get-GitHead $GovernanceRepo)
@@ -703,13 +694,13 @@ try {
     Write-Accounting
     Write-ControllerState -Status 'STARTING' -Model '' -Checkpoint 'STARTING' -Reason '' -LogPath ''
 
-    $heartbeatJob = Start-Job -ArgumentList @($HeartbeatPath,$HeartbeatStopPath,$ControllerStatePath,$HeartbeatSeconds,$P) -ScriptBlock {
-        param($HeartbeatPath,$StopPath,$StatePath,$Seconds,$PId)
+    $heartbeatJob = Start-Job -ArgumentList @($HeartbeatPath,$HeartbeatStopPath,$ControllerStatePath,$HeartbeatSeconds) -ScriptBlock {
+        param($HeartbeatPath,$StopPath,$StatePath,$Seconds)
         while (-not (Test-Path -LiteralPath $StopPath)) {
             $state = $null
             try { $state = Get-Content -LiteralPath $StatePath -Raw | ConvertFrom-Json } catch {}
             [ordered]@{
-                p=$PId;alive=$true;timestamp=(Get-Date -Format o);
+                p='P1';alive=$true;timestamp=(Get-Date -Format o);
                 status=if($state){[string]$state.status}else{'UNKNOWN'};
                 run=if($state){[int]$state.run}else{0};
                 checkpoint=if($state){[string]$state.checkpoint}else{'UNKNOWN'}
@@ -722,18 +713,18 @@ try {
     $readinessRejections = 0
     $noProgressCount = 0
     $lastNoProgressSignature = ''
-    Write-Host "PRYSM $P CONTINUOUS AUTORUN STARTED"
+    Write-Host 'PRYSM P1 CONTINUOUS AUTORUN STARTED'
     Write-Host "Recovery mode: $recoveryMode"
     Write-Host "Logs: $LocalRoot"
 
     while ($true) {
         Assert-ControlPlaneUnmodified -GovernanceRepo $GovernanceRepo -ExpectedFingerprint $expectedControlPlane
-        Sync-LoopLineage -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo
+        Assert-LoopLineage -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo
         $stageNow = Test-PreRunStage -GovernanceRepo $GovernanceRepo -AppRepo $AppRepo -Bash $Bash
         if ($stageNow -eq 'READY_FOR_BRAD') {
             Write-ControllerState -Status 'READY_FOR_BRAD' -Model '' -Checkpoint 'READY_FOR_BRAD' -Reason 'Official deterministic gate authorizes Brad.' -LogPath $latestRunLog
             Send-TerminalNotification -Kind 'READY_FOR_BRAD' -ApplicationSha (Get-GitHead $AppRepo) -GovernanceSha (Get-GitHead $GovernanceRepo) -NextAction 'Brad OUTCOME_REVIEW'
-            Write-Host "PRYSM $P READY FOR BRAD"
+            Write-Host 'PRYSM P1 READY FOR BRAD'
             break
         }
         if ($MaxRuns -gt 0 -and $runNumber -ge $MaxRuns) { throw "Safety run limit reached: $MaxRuns" }
@@ -760,14 +751,14 @@ try {
         $preApp = Get-RepoFingerprint $AppRepo
         $preGov = Get-RepoFingerprint $GovernanceRepo
         $transaction = [ordered]@{
-            p=$P;run=$runNumber;status='RUNNING';startedAt=(Get-Date -Format o);model=$model;
+            p='P1';run=$runNumber;status='RUNNING';startedAt=(Get-Date -Format o);model=$model;
             repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;preApplication=$preApp;preGovernance=$preGov;runDirectory=$runDir
         }
         Write-JsonFile -Path $JournalPath -Value $transaction
 
         $runtime = @"
 # CONTROLLER RUNTIME CONTEXT
-Active P#: $P
+Active P#: P1
 Role: Builder
 Controller run: $runNumber
 Application local path: $AppRepo
@@ -785,10 +776,10 @@ CONTROLLER RULES
 - Do not route to Auditor/Betty. Brad is the next human boundary.
 - Do not edit the autorun controller, wrapper, schema, permanent memory, or autorun governance decision.
 - Never modify existing bound/frozen P1 evidence or `proof/P1/rendered/*`; create new versioned evidence and new rendered proof under `proof/P1/reopen/` and then rebind intentionally.
-- Claim READY_FOR_BRAD only after proof is green, application/governance are committed, pushed, clean, and P# governance is advanced to OUTCOME_REVIEW.
+- Claim READY_FOR_BRAD only after proof is green, application/governance are committed, pushed, clean, and P1 governance is advanced to OUTCOME_REVIEW.
 - READY_FOR_BRAD is independently rejected unless the official PRYSM gate passes for Authorized actor: BRAD.
 - Preserve and reconcile incomplete local checkpoints; never discard them.
-- Route from CURRENT_STATE.md and the active P# evidence chain, not stale PRYSM_AUTORUN_STATE.json.
+- Route from CURRENT_STATE.md and the active P1 evidence chain, not stale PRYSM_AUTORUN_STATE.json.
 "@
         $basePrompt = Get-Content -LiteralPath $BuilderPromptPath -Raw
         ($runtime + "`r`n" + $basePrompt) | Set-Content -LiteralPath $promptPath -Encoding UTF8
@@ -799,7 +790,7 @@ CONTROLLER RULES
             '--output-schema',$SchemaPath,'--output-last-message',$finalPath,'-'
         )
         Write-ControllerState -Status 'RUNNING' -Model $model -Checkpoint 'BUILDER_RUNNING' -Reason '' -LogPath $transcriptPath
-        Write-Host "`n=== $P BUILDER RUN $runNumber | $model | LEVEL $($repairAttempt + 1)/3 | ROOT $rootDefectId ==="
+        Write-Host "`n=== P1 BUILDER RUN $runNumber | $model | LEVEL $($repairAttempt + 1)/3 | ROOT $rootDefectId ==="
         Write-Host "Logs: $runDir"
 
         $exitCode = 1
@@ -831,7 +822,7 @@ CONTROLLER RULES
             if (Test-UsageLimit -Paths @($stdoutPath,$stderrPath,$transcriptPath)) {
                 $reason = 'Codex usage limit reached. No repair escalation consumed.'
                 Write-ControllerState -Status 'BLOCKED' -Model $model -Checkpoint 'USAGE_LIMIT' -Reason $reason -LogPath $transcriptPath
-                Send-TerminalNotification -Kind 'BLOCKED' -ApplicationSha (Get-GitHead $AppRepo) -GovernanceSha (Get-GitHead $GovernanceRepo) -Reason $reason -NextAction 'Resume the same P# controller after allowance reset.' -RunLog $transcriptPath
+                Send-TerminalNotification -Kind 'BLOCKED' -ApplicationSha (Get-GitHead $AppRepo) -GovernanceSha (Get-GitHead $GovernanceRepo) -Reason $reason -NextAction 'Resume the same P1 controller after allowance reset.' -RunLog $transcriptPath
                 break
             }
             $consecutiveFailures++
@@ -886,7 +877,7 @@ CONTROLLER RULES
                 Assert-ReadyForBrad -Result $result -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -Bash $Bash
                 Write-ControllerState -Status 'READY_FOR_BRAD' -Model $model -Checkpoint 'READY_FOR_BRAD' -Reason ([string]$result.reason) -LogPath $transcriptPath
                 Send-TerminalNotification -Kind 'READY_FOR_BRAD' -ApplicationSha ([string]$result.application_sha) -GovernanceSha ([string]$result.governance_sha) -NextAction 'Brad OUTCOME_REVIEW' -RunLog $transcriptPath
-                Write-Host "PRYSM $P READY FOR BRAD"
+                Write-Host 'PRYSM P1 READY FOR BRAD'
                 break
             } catch {
                 $readinessRejections++
@@ -902,7 +893,7 @@ CONTROLLER RULES
         if ([string]::IsNullOrWhiteSpace($reason)) { $reason = "Unsafe terminal result: $($result.loop_action)/$($result.next_role)/$($result.checkpoint)" }
         Write-ControllerState -Status 'BLOCKED' -Model $model -Checkpoint ([string]$result.checkpoint) -Reason $reason -LogPath $transcriptPath
         Send-TerminalNotification -Kind 'BLOCKED' -ApplicationSha (Get-GitHead $AppRepo) -GovernanceSha (Get-GitHead $GovernanceRepo) -Reason $reason -NextAction ([string]$result.next_action) -RunLog $transcriptPath
-        Write-Host "PRYSM $P BLOCKED"
+        Write-Host 'PRYSM P1 BLOCKED'
         break
     }
 }
@@ -911,7 +902,7 @@ catch {
     if (-not $PreflightOnly) {
         try {
             Write-JsonFile -Path $ControllerStatePath -Value ([ordered]@{
-                p=$P;status='CONTROLLER_FAILURE';updatedAt=(Get-Date -Format o);controllerPid=$PID;run=$runNumber;
+                p='P1';status='CONTROLLER_FAILURE';updatedAt=(Get-Date -Format o);controllerPid=$PID;run=$runNumber;
                 checkpoint='CONTROLLER_FAILURE';reason=$reason;repairAttempt=$repairAttempt;rootDefectId=$rootDefectId;
                 latestRunLog=$latestRunLog;applicationSha=(Get-GitHead $AppRepo);governanceSha=(Get-GitHead $GovernanceRepo)
             })
