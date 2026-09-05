@@ -53,8 +53,10 @@ foreach ($needle in @(
     'transaction-journal.json','entry-anchor.json','Get-RepoFingerprint','Get-TransactionChangedPaths',
     'git -C $Repo log --format= --name-only',"status='RUNNING'",'CODEX_EXITED_UNRECONCILED',
     "status = 'RECONCILED'",'JournalMatchesFingerprint','APP_P1_INITIAL_DIRTY_ADOPTION',
-    'APP_JOURNALED_DIRTY_RECOVERY','GOV_JOURNALED_DIRTY_RECOVERY','Sync-LoopLineage','Acquire-ResourceLock',
-    'P-scoped local state is corrupt and will not be silently reset','Move-Item -LiteralPath $temp -Destination $Path -Force'
+    'APP_JOURNALED_DIRTY_RECOVERY','GOV_JOURNALED_DIRTY_RECOVERY','Assert-LoopLineage','Acquire-ResourceLock',
+    'P-scoped local state is corrupt and will not be silently reset','Move-Item -LiteralPath $temp -Destination $Path -Force',
+    'Application origin moved outside or ahead of the active local transaction lineage.',
+    'Governance origin moved outside or ahead of the active local transaction lineage.'
 )) { Require-Contains $controllerText $needle 'Controller transaction/recovery' }
 
 # Scope, frozen history, and immutable control plane.
