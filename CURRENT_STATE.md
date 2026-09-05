@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Batch 1 and Batch 2 are complete. Final-batch Artifacts #1 and #2 are now frozen. Artifact #1 (`http-and-noindex.html`) is CLEAR with a client-language quality reservation. Artifact #2 (`robots-retrieved.html`) is CONFUSING with a material P1 evidence-truthfulness defect because client-facing `robots.txt configuration — PASS` overstates evidence that only proved PRYSM's crawl was not refused while per-user-agent directives were not parsed. Do not diagnose or repair yet; complete the remaining Indexability + fail-closed product-review inventory first so P1 can be reopened once against the complete observed defect set.
+Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Batch 1 and Batch 2 are complete. Final-batch Artifacts #1 through #3 are now frozen. Artifact #1 (`http-and-noindex.html`) is CLEAR with a client-language quality reservation. Artifact #2 (`robots-retrieved.html`) is CONFUSING with a material P1 evidence-truthfulness defect because client-facing `robots.txt configuration — PASS` overstates incomplete evidence. Artifact #3 (`crawl-blocked.html`) is CONFUSING with a material fail-closed/client-interpretation defect because blocked evidence is inconsistently translated into reassuring PASS/no-blocker language and performance is simultaneously presented as both not assessed and assessed. Do not diagnose or repair yet; complete `provider-failed.html`, then consolidate the full final-batch inventory before reopening P1 once.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
@@ -78,6 +78,20 @@ Completed:
 - Client-safe meaning for later repair inventory: `We confirmed that robots.txt did not block this audit, but we did not fully test its search-engine-specific instructions.`
 - Brad confirmed the assistant review without disagreement. Combined judgment: this is not merely awkward wording; it is an unsupported positive conclusion from incomplete evidence and cannot survive P1 acceptance in its current form.
 
+### Final Batch Artifact #3 — `crawl-blocked.html` — FROZEN
+- Final disposition: CONFUSING — MATERIAL P1 ISSUE.
+- Contradiction: YES.
+- Evidence truthful: NO.
+- Client usefulness: NO.
+- Human/client language: TOO TECHNICAL.
+- Conversion meaning clear: NO.
+- The report correctly says in some sections that crawl access was restricted for PRYSM only and that this does not prove real visitors or Google/Bing were blocked; crawl-dependent evidence is correctly marked unavailable in those sections.
+- Material fail-closed defect: other client-facing sections convert the blocked state into reassuring language such as `PASS — No material score-bearing finding was produced from the assessed evidence` and `No material technical blocker was established from the fully assessed coverage shown below`, despite the report also stating `No page-level technical evidence was available`.
+- A normal client can reasonably interpret this as `nothing material was wrong` when the actual state is `PRYSM could not determine whether something was wrong`.
+- Direct performance contradiction: the Readiness Map says `Performance & Experience — Not Assessed` and `performance.lab: NOT_ASSESSED`, while the same artifact presents measured mobile 62/100 and desktop 91/100 lab scores, lists them under `What Is Already Good`, and records the performance source as AVAILABLE.
+- Additional quality concern: zero-count language such as `0 broken internal link(s) observed` and `0 of 0` canonical/title/description counts appears despite unavailable crawl evidence; these values can read like measurements rather than absence of measurement.
+- Brad confirmed the assistant review without disagreement. Combined judgment: blocked/unavailable evidence is not preserved consistently across the report, and the artifact contains incompatible client-facing statements about whether performance evidence exists. This is a material fail-closed and client-interpretation failure.
+
 ### Cross-cutting review lens now active
 - Review the report as a normal business client, not as a technical auditor.
 - Technically correct evidence is not sufficient if the client must decode PRYSM's internal capability/state language.
@@ -94,19 +108,19 @@ Completed:
 - If the overall outcome remains materially unmet, write one formal Brad evidence file after review, bind once, route to Chris for `REOPEN SAME P#`, then diagnose/replan/repair once against the complete defect set.
 
 In progress:
-Final bounded P1 OUTCOME_REVIEW — Indexability + fail-closed behavior.
+Final bounded P1 OUTCOME_REVIEW — final artifact `provider-failed.html` remains.
 
 Authoritative scenario mapping from `P1_RENDERED_SCENARIO_MATRIX_2026-09-04.md`:
 
 Indexability projection:
 - `proof/P1/rendered/http-and-noindex.html` — reviewed and frozen CLEAR with client-language reservation.
 - `proof/P1/rendered/robots-retrieved.html` — reviewed and frozen CONFUSING / MATERIAL P1 ISSUE.
-- `proof/P1/rendered/crawl-blocked.html` — NEXT.
+- `proof/P1/rendered/crawl-blocked.html` — reviewed and frozen CONFUSING / MATERIAL P1 ISSUE.
 
 Negative/fail-closed:
 - `proof/P1/rendered/no-performance.html` — already reviewed in Batch 2 and PASS; carry forward unless new cross-scenario evidence requires revisiting it.
-- `proof/P1/rendered/provider-failed.html`
-- `proof/P1/rendered/crawl-blocked.html`
+- `proof/P1/rendered/crawl-blocked.html` — reviewed and frozen CONFUSING / MATERIAL P1 ISSUE.
+- `proof/P1/rendered/provider-failed.html` — NEXT AND FINAL ARTIFACT.
 
 Final-batch review questions:
 1. When indexability is directly observed, partial, or blocked, does the report clearly distinguish what is known from what is not known?
@@ -119,14 +133,14 @@ Final-batch review questions:
 8. Where relevant, is customer/trust/friction/action/conversion meaning clear without requiring the client to understand PRYSM terminology?
 
 Blocked:
-- P1 OUTCOME PASS is blocked on the current candidate because material client-visible defects are observed in Batch 1, Batch 2, and final-batch Artifact #2.
-- There is no blocker to completing the remaining bounded product-review artifacts.
+- P1 OUTCOME PASS is blocked on the current candidate because material client-visible defects are observed in Batch 1, Batch 2, and final-batch Artifacts #2 and #3.
+- There is no blocker to completing `provider-failed.html`.
 
 Failure-branch rule:
 - Do not diagnose or repair immediately.
 - Do not begin Betty Final Audit.
-- Do not create the formal Brad outcome-review file while the remaining bounded review inventory is incomplete.
-- After Brad completes the final bounded review, create one new formal Brad outcome-review evidence file with the eight committed review questions and `Verdict: FAIL` if the material outcome remains unmet.
+- Do not create the formal Brad outcome-review file while `provider-failed.html` remains unreviewed.
+- After Brad completes `provider-failed.html`, consolidate the full P1 outcome inventory, then create one new formal Brad outcome-review evidence file with the eight committed review questions and `Verdict: FAIL` if the material outcome remains unmet.
 - Bind/commit that evidence once, then route to Chris for `REOPEN SAME P#`.
 - Reopen diagnosis/build once against the complete Brad-observed defect set, not symptom-by-symptom.
 - After repair, regenerate/re-review affected rendered scenarios before Brad can PASS.
@@ -146,7 +160,7 @@ Important constraints:
 - No destructive Git operations or force push/history rewrite.
 
 Exact next action:
-Brad reviews `proof/P1/rendered/crawl-blocked.html` next under both the evidence-integrity and business-client/conversion-language lenses. Record Brad's observation only, then review `provider-failed.html` before consolidation. Do not diagnose, repair, create the formal Brad outcome-review evidence file, bind evidence, advance the stage, or begin Betty Final Audit.
+Brad reviews `proof/P1/rendered/provider-failed.html` as the final bounded P1 OUTCOME_REVIEW artifact under the evidence-integrity, fail-closed, business-client, and conversion-language lenses. Record Brad's observation only. Then STOP product review and consolidate the complete P1 observations before creating the single formal Brad outcome-review evidence file. Do not diagnose, repair, bind evidence, advance the stage, or begin Betty Final Audit yet.
 
 Last verified:
 2026-09-05
