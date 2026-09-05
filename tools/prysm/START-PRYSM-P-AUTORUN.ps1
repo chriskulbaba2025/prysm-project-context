@@ -4,7 +4,8 @@ param(
     [string]$P,
 
     [string]$AppRepo,
-    [string]$GovernanceRepo
+    [string]$GovernanceRepo,
+    [switch]$AuditOnly
 )
 
 Set-StrictMode -Version Latest
@@ -42,6 +43,7 @@ if (Test-Path -LiteralPath $gitBash) {
 Write-Host "PRYSM $P AUTORUN BOOTSTRAP"
 Write-Host "Governance: $GovernanceRepo"
 Write-Host "Application: $AppRepo"
+Write-Host "Mode: $(if ($AuditOnly) { 'AUDIT ONLY - NO CODEX/PRODUCT EXECUTION' } else { 'CONTINUOUS BUILDER' })"
 
 Write-Host "`n[1/5] Verify bootstrap/control-plane integrity"
 if ((& git -C $GovernanceRepo branch --show-current).Trim() -ne 'main') {
@@ -77,6 +79,13 @@ if ($LASTEXITCODE -ne 0) { throw 'PRYSM gate-contract regression failed. Autorun
 Write-Host "`n[4/5] P# transaction/recovery preflight"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -PreflightOnly
 if ($LASTEXITCODE -ne 0) { throw 'P# autorun preflight failed. Autorun did not start.' }
+
+if ($AuditOnly) {
+    Write-Host "`n[5/5] AUDIT-ONLY TERMINAL"
+    Write-Host 'PRYSM P# AUTORUN AUDIT PASS'
+    Write-Host 'No Codex Builder invocation was started. No application/product execution occurred.'
+    exit 0
+}
 
 Write-Host "`n[5/5] Start continuous governed Builder loop"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo
