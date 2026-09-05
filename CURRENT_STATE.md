@@ -3,140 +3,118 @@
 Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective:
-Continue reopened P1 through Builder-owned `BOUNDED_BUILD`, complete the five confirmed cross-report/client-semantic repair families inside the approved report-projection seam, and prove the repaired rendered outcome before returning a new candidate to Brad. The Windows P1 unattended-controller runtime is now certified for this state.
+Last verified:
+2026-09-05
 
-Verified checkpoint:
-- Governance repository: `chriskulbaba2025/prysm-project-context`.
-- Application repository: `chriskulbaba2025/vantage-platform`.
+## Current governed boundary
+
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Frozen failed-candidate branch: `p1/bounded-build-cross-report-integrity`.
-- Frozen failed-candidate SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
-- Deterministic P1 verification on that failed candidate: 77/77 PASS.
-- Viewer v2 rendered freeze matrix on that failed candidate: 48/48 PASS.
-- Persisted failed-candidate rendered proof: 27 HTML scenarios plus SHA-256 manifest and scenario-to-obligation matrix.
-- Brad outcome review: `FAIL — NOT READY TO PASS`, frozen in `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` at governance commit `c3adfa0fec19a445c1f57509edaed826b08da12b`.
-- Chris decision: `REOPEN SAME P#`.
-- Authorized stage: `OUTCOME_REVIEW`.
+- Current stage: `OUTCOME_REVIEW`.
 - Authorized actor: `BRAD`.
-- Current stage: OUTCOME_REVIEW
-- Authorized execution stage: OUTCOME_REVIEW
+- Chris action: `STOP` and hand P1 to Brad.
+- Application repository: `chriskulbaba2025/vantage-platform`.
+- Governance repository: `chriskulbaba2025/prysm-project-context`.
+- Application branch: `p1/bounded-build-cross-report-integrity`.
+- Exact frozen repaired application candidate: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
+- `P1_EXECUTION_GATE.env` binds that exact candidate and routes P1 to Brad.
+- Deterministic P1 role handoff: PASS; next actor BRAD.
+
+## Exact next action
+
+Brad performs the independent bounded `OUTCOME_REVIEW` against the committed Outcome Contract and frozen candidate `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`, then creates a **new** outcome-review evidence file.
+
+Read:
+
+- `HANDOFF_PRYSM_P1_BRAD_OUTCOME_REVIEW_2026-09-05.md`
+- `P1_OUTCOME_CONTRACT_2026-09-04.md`
+- `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`
+- `P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md`
+- `proof/P1/reopen/P1_REOPENED_REPAIR_PROOF_b96b3f4_2026-09-05.md`
+- `proof/P1/reopen/render-v2-f053f63/manifest.json`
+- `P1_EXECUTION_GATE.env`
+
+Brad must not edit manifest-bound prerequisite evidence in place.
+
+## P1 history that remains frozen
+
+- Failed candidate SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
+- Brad failed-candidate outcome review: `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` — preserve unchanged.
+- Chris decision: `REOPEN SAME P#`.
 - Reopened diagnostic: `P1_DIAGNOSTIC_TRUTH_REOPEN_2026-09-05.md`.
+- Diagnostic classification: `VERIFIED_DESIGN_GAP`.
 - Reopened repair authorization: `P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md`.
-- Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
-- Governing review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
-- P1 unattended Builder decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
-- Exhaustive P1 historical-freeze baseline: governance commit `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`, enforced by `tools/prysm/assert-p1-frozen-history.sh` through the official deterministic P1 gate.
-- Windows unattended-controller runtime certification: PASS, recorded in `proof/P1/reopen/P1_WINDOWS_AUTORUN_CERTIFICATION_2026-09-05.md`.
-- Certification evidence: autorun self-test PASS; autorun contract regression PASS; permanent PRYSM gate contract 11 PASS / 0 FAIL; transaction/recovery preflight PASS; audit terminal PASS; no Codex Builder invocation and no application/product execution occurred during certification.
+- Exhaustive historical-freeze baseline: `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`.
+- Frozen-history guard: `tools/prysm/assert-p1-frozen-history.sh`.
+- All new reopened P1 proof/evidence belongs under `proof/P1/reopen/`, except intentional `P1_EXECUTION_GATE.env` and `CURRENT_STATE.md` updates.
 
-Current environment / branch / version:
-- Governance branch: `main`.
-- Application candidate branch: `p1/bounded-build-cross-report-integrity`.
-- Current gated application anchor is repaired candidate SHA `f053f631ee55b70b634e59fbe35a445a2b2656df`.
-- Existing local P1 application repair work is intentionally uncommitted and must be preserved.
-- Certified Windows recovery mode at preflight: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
-- Viewer: v2.2.0.
+## Repaired P1 defect families
 
-Completed:
+The reopened bounded repair addressed the complete confirmed set:
 
-### Batch 1 — CTA/path coherence
-- `competitor-present.html`: CLEAR for the Batch-1 CTA/path question.
-- `path-validated-blocker.html`: CONFUSING — material P1 defect. Conversion mechanism PASS conflicts with an obstructed primary conversion action / Weak Conversion Path without sufficient point-of-reading reconciliation.
-- `no-conversion-mechanism.html`: CONFUSING — material P1 defect. No CTA/form / no clear conversion action conflicts with `Take action — Adequate` and a stated clear route to action without reconciliation.
+1. CTA/path coherence;
+2. trust evidence overstatement;
+3. robots/indexability overstatement;
+4. fail-closed projection for blocked/failed/unavailable evidence, including performance consistency;
+5. client-facing machine/internal-language exposure inside the authorized report-projection seam.
 
-### Batch 2 — Trust + Mobile
-- `assessed.html`: CONFUSING — material Trust defect. Pricing is explicitly absent but the Trust PASS explanation includes `pricing context` among observed reassurance.
-- `competitor-present.html` trust revisit: CONFUSING — same material Trust defect.
-- `slow-mobile.html`: CLEAR — PASS with minor wording reservation.
-- `no-performance.html`: CLEAR — PASS. Missing performance evidence remains unavailable and is not converted into positive/negative performance conclusions.
-- `device-profile-failed.html`: CLEAR — PASS with minor wording reservations. Valid mobile measurement remains distinct from failed desktop evidence.
+The repair remained bounded to report projection/renderer/foundation-readiness and directly related deterministic tests/fixtures. Evidence acquisition, providers, scoring, Writer/Judge/model behavior, page-selection/search-data policy, lifecycle/storage, deployment, and application `main` remained protected.
 
-### Final Batch Artifact #1 — `http-and-noindex.html` — FROZEN
-- Disposition: CLEAR.
-- Contradiction: NO.
-- Evidence truthful: YES.
-- Client usefulness: YES.
-- Human/client language: TOO TECHNICAL.
-- Conversion meaning clear: YES.
-- No material P1 contradiction. Retain machine/internal-language exposure as a cross-cutting quality item.
+## Windows unattended-controller certification
 
-### Final Batch Artifact #2 — `robots-retrieved.html` — FROZEN
-- Disposition: CONFUSING — MATERIAL P1 ISSUE.
-- Contradiction: YES.
-- Evidence truthful: NO.
-- Client usefulness: NO.
-- Human/client language: TOO TECHNICAL.
-- Conversion meaning clear: NO.
-- `robots.txt configuration — PASS` overstates evidence that only proved PRYSM's own crawl was not refused while per-user-agent directives were not parsed.
-- This is an unsupported positive conclusion from incomplete evidence.
+Windows P1 controller certification is PASS for Chris's Windows / VS Code PowerShell environment.
 
-### Final Batch Artifact #3 — `crawl-blocked.html` — FROZEN
-- Disposition: CONFUSING — MATERIAL P1 ISSUE.
-- Contradiction: YES.
-- Evidence truthful: NO.
-- Client usefulness: NO.
-- Human/client language: TOO TECHNICAL.
-- Conversion meaning clear: NO.
-- Blocked crawl evidence is correctly marked unavailable in some sections but weakened elsewhere into reassuring PASS/no-blocker language.
-- Direct performance contradiction: `Performance & Experience — Not Assessed` / `performance.lab: NOT_ASSESSED` conflicts with available measured 62/100 mobile and 91/100 desktop lab results shown under `What Is Already Good`.
+Evidence:
 
-### Final Batch Artifact #4 — `provider-failed.html` — FROZEN
-- Disposition: CONFUSING — MATERIAL P1 ISSUE.
-- Contradiction: YES.
-- Evidence truthful: NO.
-- Client usefulness: NO.
-- Human/client language: TOO TECHNICAL.
-- Conversion meaning clear: NO.
-- Failed provider/network evidence is correctly disclosed in some sections but later weakened into `PASS — No material score-bearing finding was produced` and `No material technical blocker was established` despite `No page-level technical evidence was available`.
-- Performance is again represented inconsistently: Readiness Map says `Performance & Experience — Not Assessed` / `performance.lab: NOT_ASSESSED` while source status says performance AVAILABLE and the report presents 62/100 mobile and 91/100 desktop results under `What Is Already Good`.
-- Artifact #3 and Artifact #4 are one defect family, not two: incomplete/blocked/failed evidence state is not preserved consistently across downstream client-facing report projection.
-
-### Consolidated material P1 defect families
-1. CTA/path coherence failure — contradictory conversion-action/path conclusions are not reconciled at the point of reading.
-2. Trust evidence overstatement — PASS explanation implies absent pricing context was observed.
-3. Indexability/robots overstatement — incomplete robots evidence becomes a broad client-facing PASS.
-4. Fail-closed projection failure — blocked/failed/unavailable evidence is weakened downstream into reassuring PASS/no-blocker language; related measured performance evidence is inconsistently represented as both assessed and not assessed.
-5. Client-facing machine-language exposure — internal capability/evidence terminology must be translated into ordinary business meaning without changing evidence semantics.
-
-### Cross-cutting client-language / complexity requirement
-- Review and repair the report as a normal business-client product, not a technical evidence dump.
-- Machine/internal terminology, raw capability-state labels, evidence architecture, and technical data must not require the client to interpret PRYSM's internal model.
-- Technically accurate language can still fail client usefulness if it is too complex, too technical, or not translated into business meaning.
-- The report should explain what the evidence means for customer behaviour, trust, friction, visibility, action, and conversion where relevant.
-- Technical data should support the conclusion, not become the conclusion.
-- **P1 is formally reopened. This client-language repair is authorized now only inside the existing P1 report-projection/renderer/direct-test seam; it is not authorization for unrelated report redesign.**
-
-### Windows P1 unattended-controller certification
 - `PRYSM P1 AUTORUN SELFTEST PASS`.
 - `PRYSM P# AUTORUN CONTRACT REGRESSION PASS`.
 - Permanent gate-contract regression: `11 PASS / 0 FAIL`.
 - Transaction/recovery preflight: PASS.
-- Recovery mode: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
+- Certified recovery mode: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
 - Audit terminal: `PRYSM P# AUTORUN AUDIT PASS`.
-- Certification mode started no Codex Builder invocation and performed no application/product execution.
+- No Codex Builder invocation and no application/product execution occurred during certification.
+- Certification record: `proof/P1/reopen/P1_WINDOWS_AUTORUN_CERTIFICATION_2026-09-05.md`.
 
-In progress:
-- Brad independent OUTCOME_REVIEW of the repaired report-projection candidate and reopened rendered proof.
-- The P1 Windows continuous-controller static/governance/runtime certification is complete. Builder execution may resume through the supported public wrapper.
+Windows certification does **not** certify Brad's macOS environment. macOS needs its own runtime adapter/certification before relying on unattended execution there.
 
-Blocked:
-- P1 OUTCOME PASS remains blocked pending the reopened repair, proof, and a new independent Brad review.
-- Betty Final Audit remains blocked until a repaired candidate later receives Brad PASS.
+## Post-success controller reconciliation defect
 
-Important constraints:
-- No formal Betty Final Audit yet.
-- No paid/live **application** provider/model calls. Codex itself is the authorized Builder execution engine and is not prohibited by this constraint.
-- No deployment.
-- No application `main` merge.
+After the Builder had completed, committed, and pushed the repaired candidate and reopened rendered proof, the unattended controller threw:
+
+`P1 application transaction escaped the authorized seam`
+
+Diagnosis established a controller allowlist/reconciliation defect rather than a product repair failure.
+
+The disputed valid categories were:
+
+- generated reopened render proof under `proof/P1/reopen/...`;
+- `services/worker/src/report/p6-unavailable-roadmap.test.js`, whose assertions directly exercise unavailable/partial evidence semantics inside the active P1 fail-closed defect family.
+
+The candidate was preserved. No destructive rollback and no unnecessary product rerun were performed. The normal deterministic P1 gate independently passed for the exact pushed candidate and routed P1 to Brad.
+
+This controller defect is a process/control-plane issue and must be repaired/recertified separately. It does not consume a P1 same-root product repair attempt.
+
+The generalized lesson is being carried into the GCU v2.5 Execution Continuity candidate, including post-success reconciliation, path-class separation, fail-closed recovery, and no blind rerun after an independently provable successful candidate.
+
+## Permanent operating sequence
+
+`DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`
+
+An agent turn ending is not a workflow boundary. Human approval is required only at genuine governed actor/material-decision boundaries.
+
+## Current constraints
+
+- No application code changes during Brad `OUTCOME_REVIEW`.
 - No P2.
-- Do not split Artifact #3 and #4 into separate root-defect families; they are manifestations of one fail-closed projection defect.
-- Preserve all historical P1 evidence frozen by governance baseline `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`; do not create new root `P1_*` evidence files. All new reopened proof/evidence belongs under `proof/P1/reopen/`, except intentional updates to `P1_EXECUTION_GATE.env` and `CURRENT_STATE.md`.
-- Preserve `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` unchanged as frozen evidence for failed candidate `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
-- Do not broaden this repair into page-selection/search-data redesign unless direct diagnosis proves that boundary is causal; retain current/live/commercial page selection as later work.
+- No Betty Final Audit until Brad PASS.
+- No deploy.
+- No application `main` merge.
+- No paid/live application provider/model calls.
+- Do not modify frozen historical P1 evidence.
+- Do not reopen Builder work unless Brad produces a new governed FAIL disposition.
 
-Exact next action:
-Brad performs the independent bounded OUTCOME_REVIEW using the reopened rendered proof, then records the review outcome.
+## Related process/GCU continuation
 
-Last verified:
-2026-09-05
+- GCU repository: `chriskulbaba2025/governed-coding-upgrade-skill`.
+- Candidate upgrade: GCU v2.5 — Execution Continuity and Cross-Platform Runtime Certification.
+- Draft PR: #12, branch `upgrade/v2.5-execution-continuity`.
+- macOS execution certification remains separate future process work; it is not a blocker for Brad's current manual `OUTCOME_REVIEW`.
