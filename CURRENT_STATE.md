@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Brad Batch 1 has produced new direct client-visible evidence that P1 is materially unmet in at least two scenarios. Do not diagnose or repair yet; complete the remaining bounded product-review inventory first so P1 can be reopened once against the full observed defect set.
+Complete Brad's independent P1 OUTCOME_REVIEW of the actual rendered product against the committed Outcome Contract. Batch 1 and Batch 2 are complete. Direct client-visible evidence already proves the current candidate is materially unmet in CTA/path and Trust wording scenarios. Do not diagnose or repair yet; complete the final bounded Indexability + fail-closed product-review inventory first so P1 can be reopened once against the complete observed defect set.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
@@ -22,73 +22,96 @@ Verified checkpoint:
 - Chris remains stopped while Brad completes the review.
 - Permanent single-authority decision: `DECISION_PRYSM_SINGLE_AUTHORITY_STAGE_ROUTING_2026-09-04.md`.
 - Permanent actor-bounded review decision: `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`.
+- Rendered-scenario review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
+- Detailed continuation handoff: `HANDOFF_PRYSM_P1_BATCH2_TRUST_MOBILE_CONTINUATION_2026-09-05.md`.
 
-Current stage:
-OUTCOME_REVIEW
+Current environment / branch / version:
+- Governance branch: `main`.
+- Application candidate branch: `p1/bounded-build-cross-report-integrity`.
+- Application candidate SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
+- Viewer: v2.2.0.
 
-Authorized execution stage:
-OUTCOME_REVIEW
+Completed:
 
-Current actor:
-BRAD
-
-Brad Batch 1 result:
-- `competitor-present`: CLEAR.
+### Brad Batch 1 — CTA/path coherence
+- `competitor-present`: CLEAR for the Batch-1 CTA/path question.
 - `path-validated-blocker`: CONFUSING.
 - `no-conversion-mechanism`: CONFUSING.
 - Material direct outcome evidence: `no-conversion-mechanism` presents no CTA/form and no clear conversion action in Foundational Readiness / Conversion Path while Topical Map says `Take action — Adequate` and describes `Decision-stage information and a clear route to action`, without an observed point-of-reading reconciliation.
 - Material direct outcome evidence: `path-validated-blocker` presents Conversion mechanism PASS alongside an obstructed primary conversion action and Weak conversion path without an observed immediate client-facing explanation of the distinction.
-- These findings are direct client-visible evidence. They are not a process-gate failure.
-- P1 cannot be treated as OUTCOME PASS on the current evidence.
+
+### Brad Batch 2 — Trust + Mobile
+- `assessed.html`: CONFUSING — material Trust wording issue. Pricing is explicitly absent/not observed, but `What reduces my risk?` is PASS with wording that includes `pricing context` among observed reassurance. Secondary quality observation: 62/100 mobile performance can be framed as PASS / already good while mobile usability is explicitly unassessed.
+- `competitor-present.html` trust/proof revisit: CONFUSING — same material Trust wording issue. The 72/100 Trust score may remain valid; the client-facing PASS explanation overstates which reassurance evidence was actually observed.
+- `slow-mobile.html`: CLEAR — PASS with minor wording reservation. 31/100 mobile lab performance is correctly separated from mobile usability that was not assessed; deeper mobile-usability checks remain partial/unavailable and are not converted into negative findings. Minor wording cleanup: broad `accessibility or usability barrier` language can blur accessibility vs mobile-usability concepts.
+- `no-performance.html`: CLEAR — PASS. Performance remains Not Assessed / UNAVAILABLE and PRYSM explicitly does not conclude fast or slow from missing evidence. No material contradiction.
+- `device-profile-failed.html`: CLEAR — PASS with minor wording reservations. Valid mobile evidence remains measured at 62/100; failed desktop profile remains unavailable and no desktop metric is inferred. Retain wording-quality concerns around broad `PASS` mobile framing and `62/100 — Adequate` summary language while device coverage is partial.
+
+### Consolidated Batch 2 defect inventory
+- Material P1 defect: Trust PASS explanation overstates observed evidence in `assessed.html` and `competitor-present.html` by including pricing context even though pricing is explicitly absent.
+- Quality item: mobile performance PASS wording may read too broadly in `assessed.html` and `device-profile-failed.html`.
+- Quality item: accessibility vs mobile-usability wording in `slow-mobile.html`.
+- Quality item: partial performance summarized as generally Adequate in `device-profile-failed.html`.
+- Quality item: repeated unavailable-performance explanation in `no-performance.html`.
+
+### Process clarification now durable
+- Rendered HTML scenarios are controlled evidence conditions, not alternate report versions to rank.
+- Brad reviews one artifact at a time using: CLEAR/CONFUSING, contradiction YES/NO, evidence truthful YES/NO, client usefulness YES/NO, and plain-English observations.
+- Distinguish material P1 defects from minor wording/quality reservations.
+- Review the complete assigned bounded inventory before any repair. Do not repair page-by-page while other assigned scenarios remain unreviewed.
+- If the overall outcome remains materially unmet, write one formal Brad evidence file after review, bind once, route to Chris for `REOPEN SAME P#`, then diagnose/replan/repair once against the complete defect set.
+
+In progress:
+Final bounded P1 OUTCOME_REVIEW — Indexability + fail-closed behavior.
+
+Authoritative scenario mapping from `P1_RENDERED_SCENARIO_MATRIX_2026-09-04.md`:
+
+Indexability projection:
+- `proof/P1/rendered/http-and-noindex.html`
+- `proof/P1/rendered/robots-retrieved.html`
+- `proof/P1/rendered/crawl-blocked.html`
+
+Negative/fail-closed:
+- `proof/P1/rendered/no-performance.html` — already reviewed in Batch 2 and PASS; carry forward unless new cross-scenario evidence requires revisiting it.
+- `proof/P1/rendered/provider-failed.html`
+- `proof/P1/rendered/crawl-blocked.html`
+
+Final-batch review questions:
+1. When indexability is directly observed, partial, or blocked, does the report clearly distinguish what is known from what is not known?
+2. Does blocked/partial indexability evidence become an unsupported complete site conclusion anywhere?
+3. Does failed/missing provider evidence remain failed/missing rather than becoming a negative site finding or unsupported positive conclusion?
+4. Are related client-visible conclusions coherent at the point of reading?
+5. Is the limitation understandable and useful to a normal client?
+
+Blocked:
+- P1 OUTCOME PASS is blocked on the current candidate because material client-visible defects are already observed in Batch 1 and Batch 2.
+- There is no blocker to completing the final bounded product-review batch.
 
 Failure-branch rule:
 - Do not diagnose or repair immediately.
-- Do not begin Betty final audit.
-- Do not create the formal Brad outcome-review file yet.
-- Continue only the remaining bounded Brad review batches needed to capture the complete material P1 outcome defect set in one pass.
-- After Brad finishes the bounded review, create one new formal Brad outcome-review evidence file with the eight committed review questions and `Verdict: FAIL` if the material outcome remains unmet.
+- Do not begin Betty Final Audit.
+- Do not create the formal Brad outcome-review file while the remaining bounded review inventory is incomplete.
+- After Brad completes the final bounded review, create one new formal Brad outcome-review evidence file with the eight committed review questions and `Verdict: FAIL` if the material outcome remains unmet.
 - Bind/commit that evidence once, then route to Chris for `REOPEN SAME P#`.
 - Reopen diagnosis/build once against the complete Brad-observed defect set, not symptom-by-symptom.
+- After repair, regenerate/re-review affected rendered scenarios before Brad can PASS.
+- Formal Betty Final Audit belongs only after repaired technical/render proof and Brad PASS.
 
-Permanent operating sequence:
-`DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`
-
-Brad / Codex role boundary:
-- Brad remains the reviewer and decision-maker.
-- Codex/Betty may facilitate the bounded review and capture Brad's observations.
-- They must not make Brad's judgment for him, re-run the process gate, diagnose code, modify the application, or create the formal evidence file early.
-
-Next bounded Brad review batch — Trust + Mobile:
-Review the relevant client-visible sections in:
-- `proof/P1/rendered/assessed.html`
-- `proof/P1/rendered/competitor-present.html` (revisit only the trust/proof presentation)
-- `proof/P1/rendered/slow-mobile.html`
-- `proof/P1/rendered/no-performance.html`
-- `proof/P1/rendered/device-profile-failed.html`
-
-Questions:
-1. Trust/proof: do related trust/proof conclusions remain coherent and understandable at the point of reading?
-2. Mobile: when mobile evidence is strong, weak, missing, or failed, does the report clearly distinguish what is known from what is not known?
-3. Does any section contradict another client-visible conclusion about the same underlying condition?
-4. Has the repair made wording repetitive, over-qualified, awkward, or less useful?
-
-Required observation style:
-For each material issue, Brad states `CLEAR` or `CONFUSING` and what he noticed in plain English. Codex records Brad's words in-session only.
-
-After this Trust + Mobile batch, STOP and return Brad's observations to Chris. Do not create the formal outcome-review file yet.
-
-Not authorized:
-- P1 product repair yet;
-- diagnosis/code changes;
-- Betty final audit;
-- provider/model calls;
-- deployment;
-- application `main` merge;
-- P2;
-- destructive Git operations or force push/history rewrite.
+Important constraints:
+- Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
+- Brad remains the reviewer and decision-maker during OUTCOME_REVIEW.
+- Codex/Betty may facilitate and capture Brad's observations but may not substitute their judgment, rerun the process gate, diagnose code, modify the application, call providers/models, start P2, or create formal evidence early.
+- No P1 product repair yet.
+- No diagnosis/code changes yet.
+- No formal Betty Final Audit yet.
+- No provider/model calls.
+- No deployment.
+- No application `main` merge.
+- No P2.
+- No destructive Git operations or force push/history rewrite.
 
 Exact next action:
-Brad continues the existing OUTCOME_REVIEW with the Trust + Mobile bounded batch above. Chris does not reopen or authorize repair yet.
+Brad completes the final **Indexability + fail-closed** bounded P1 OUTCOME_REVIEW. Review `http-and-noindex.html`, `robots-retrieved.html`, `crawl-blocked.html`, and `provider-failed.html` one artifact at a time, carrying forward the already-completed `no-performance.html` PASS unless new cross-scenario evidence requires revisiting it. Record Brad's observations only, then STOP and return the complete final-batch observations to Chris. Do not create the formal Brad outcome-review evidence file until that bounded product-review inventory is complete.
 
 Last verified:
-2026-09-04
+2026-09-05
