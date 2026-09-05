@@ -17,10 +17,10 @@ Verified checkpoint:
 - Persisted failed-candidate rendered proof: 27 HTML scenarios plus SHA-256 manifest and scenario-to-obligation matrix.
 - Brad outcome review: `FAIL — NOT READY TO PASS`, frozen in `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` at governance commit `c3adfa0fec19a445c1f57509edaed826b08da12b`.
 - Chris decision: `REOPEN SAME P#`.
-- Authorized stage: `BOUNDED_BUILD`.
-- Authorized actor: `BUILDER/Codex`.
-- Current stage: BOUNDED_BUILD
-- Authorized execution stage: BOUNDED_BUILD
+- Authorized stage: `OUTCOME_REVIEW`.
+- Authorized actor: `BRAD`.
+- Current stage: OUTCOME_REVIEW
+- Authorized execution stage: OUTCOME_REVIEW
 - Reopened diagnostic: `P1_DIAGNOSTIC_TRUTH_REOPEN_2026-09-05.md`.
 - Reopened repair authorization: `P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md`.
 - Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
@@ -33,7 +33,7 @@ Verified checkpoint:
 Current environment / branch / version:
 - Governance branch: `main`.
 - Application candidate branch: `p1/bounded-build-cross-report-integrity`.
-- Current gated application anchor remains failed-candidate SHA `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2` until the repaired candidate is proven and rebound.
+- Current gated application anchor is repaired candidate SHA `f053f631ee55b70b634e59fbe35a445a2b2656df`.
 - Existing local P1 application repair work is intentionally uncommitted and must be preserved.
 - Certified Windows recovery mode at preflight: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
 - Viewer: v2.2.0.
@@ -117,7 +117,7 @@ Completed:
 - Certification mode started no Codex Builder invocation and performed no application/product execution.
 
 In progress:
-- Builder bounded repair for the verified report-projection defect set. Existing application edits remain intentionally uncommitted and must not be discarded.
+- Brad independent OUTCOME_REVIEW of the repaired report-projection candidate and reopened rendered proof.
 - The P1 Windows continuous-controller static/governance/runtime certification is complete. Builder execution may resume through the supported public wrapper.
 
 Blocked:
@@ -136,11 +136,7 @@ Important constraints:
 - Do not broaden this repair into page-selection/search-data redesign unless direct diagnosis proves that boundary is causal; retain current/live/commercial page selection as later work.
 
 Exact next action:
-Launch the supported P1 unattended Builder controller on Chris's Windows VS Code PowerShell environment **without** `-AuditOnly`:
-
-`powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P1`
-
-The controller must preserve the certified dirty P1 repair state, journal each fresh Codex Builder transaction, enforce the bounded P1 seam and frozen-history rules, continue autonomously while Builder remains the actor, and stop only at a true blocker/protected boundary, usage limit/controller failure, three-attempt same-root limit, or deterministic `READY_FOR_BRAD` handoff.
+Brad performs the independent bounded OUTCOME_REVIEW using the reopened rendered proof, then records the review outcome.
 
 Last verified:
 2026-09-05
