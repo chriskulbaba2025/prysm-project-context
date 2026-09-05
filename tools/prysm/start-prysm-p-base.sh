@@ -26,14 +26,12 @@ ensure_codex_cli() {
   local appdata_unix=""
   local npm_prefix=""
 
-  # Standard npm global shim location for Git-for-Windows / VS Code setups.
   candidate="$HOME/AppData/Roaming/npm"
   if [[ -d "$candidate" ]]; then
     export PATH="$PATH:$candidate"
     command -v codex >/dev/null 2>&1 && return 0
   fi
 
-  # Resolve APPDATA when Git Bash receives it in Windows path form.
   if [[ -n "${APPDATA:-}" ]]; then
     if command -v cygpath >/dev/null 2>&1; then
       appdata_unix="$(cygpath -u "$APPDATA" 2>/dev/null || true)"
@@ -47,7 +45,6 @@ ensure_codex_cli() {
     fi
   fi
 
-  # Fall back to npm's configured global prefix when npm is already visible.
   if command -v npm >/dev/null 2>&1; then
     npm_prefix="$(npm config get prefix 2>/dev/null || true)"
     if [[ -n "$npm_prefix" && "$npm_prefix" != "undefined" && -d "$npm_prefix" ]]; then
@@ -60,7 +57,6 @@ ensure_codex_cli() {
 }
 
 command -v git >/dev/null 2>&1 || fail "git is not installed or not on PATH."
-ensure_codex_cli || fail "Codex CLI is installed but not discoverable by this shell, or is not installed. Expected Windows npm shim under ~/AppData/Roaming/npm or the configured npm global prefix."
 
 [[ -d "$GOV_ROOT/.git" ]] || fail "Governance repository not found at $GOV_ROOT."
 [[ -d "$APP_ROOT/.git" ]] || fail "Application repository not found at $APP_ROOT. Expected sibling folder: vantage-platform."
@@ -75,10 +71,6 @@ git -C "$GOV_ROOT" pull --ff-only origin main
 
 [[ -f "$CURRENT_STATE" ]] || fail "CURRENT_STATE.md is missing."
 [[ -f "$GATE_FILE" ]] || fail "${P_ID}_EXECUTION_GATE.env is missing. The P# has not passed the commit/audit launch gate."
-# CURRENT_STATE may carry the governed P# as plain text or as a backticked
-# descriptive label such as: - Active P#: `P1 — Cross-Report Contradiction Integrity`
-# Require an anchored Active P# line and an exact P-ID token boundary so P1
-# cannot accidentally match P10.
 grep -Eq "^(- )?Active P#: \`?${P_ID}(\`|[[:space:]])" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not identify $P_ID as the active P#."
 
 getv() {
@@ -113,7 +105,7 @@ verify_evidence() {
   git -C "$GOV_ROOT" cat-file -e "origin/main:$file" 2>/dev/null || fail "$file is missing from current authoritative origin/main."
   recorded_blob="$(git -C "$GOV_ROOT" rev-parse "$commit:$file")"
   current_blob="$(git -C "$GOV_ROOT" rev-parse "origin/main:$file")"
-  [[ "$recorded_blob" == "$current_blob" ]] || fail "$file changed after its recorded gate commit. The gate is stale and must be regenerated."
+  [[ "$recorded_blob" == "$current_blob" ]] || fail "$file changed after its recorded gate commit. The bound evidence is stale and must be intentionally versioned/rebound."
 }
 
 verify_contains_at_commit() {
@@ -163,19 +155,20 @@ verify_contract_gate() {
   verify_evidence APPROVAL_FILE APPROVAL_COMMIT
   verify_evidence PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT
 
-  BRAD_VERDICT="$(require_value BRAD_VERDICT)"
-  [[ "$BRAD_VERDICT" == "PASS" || "$BRAD_VERDICT" == "APPROVE_CONTRACT" ]] || fail "BRAD_VERDICT must be PASS or APPROVE_CONTRACT."
+  local brad_verdict pre_execution_audit_verdict
+  brad_verdict="$(require_value BRAD_VERDICT)"
+  [[ "$brad_verdict" == "PASS" || "$brad_verdict" == "APPROVE_CONTRACT" ]] || fail "BRAD_VERDICT must be PASS or APPROVE_CONTRACT."
   require_value CHRIS_APPROVAL APPROVED >/dev/null
-  PRE_EXECUTION_AUDIT_VERDICT="$(require_value PRE_EXECUTION_AUDIT_VERDICT)"
-  [[ "$PRE_EXECUTION_AUDIT_VERDICT" == "PASS" ]] || fail "PRE_EXECUTION_AUDIT_VERDICT must be PASS before execution."
+  pre_execution_audit_verdict="$(require_value PRE_EXECUTION_AUDIT_VERDICT)"
+  [[ "$pre_execution_audit_verdict" == "PASS" ]] || fail "PRE_EXECUTION_AUDIT_VERDICT must be PASS before execution."
 
-  if [[ "$BRAD_VERDICT" == "PASS" ]]; then
+  if [[ "$brad_verdict" == "PASS" ]]; then
     verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: PASS"
   else
     verify_contains_at_commit BRAD_REVIEW_FILE BRAD_REVIEW_COMMIT "Verdict: APPROVE CONTRACT"
   fi
   verify_contains_at_commit APPROVAL_FILE APPROVAL_COMMIT "Decision: APPROVED"
-  verify_unique_audit_result_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "$PRE_EXECUTION_AUDIT_VERDICT"
+  verify_unique_audit_result_at_commit PRE_EXECUTION_AUDIT_FILE PRE_EXECUTION_AUDIT_COMMIT "$pre_execution_audit_verdict"
 }
 
 verify_build_gate() {
@@ -200,6 +193,8 @@ verify_outcome_review_gate() {
   verify_evidence SYSTEM_PROOF_FILE SYSTEM_PROOF_COMMIT
   verify_evidence CANDIDATE_FREEZE_FILE CANDIDATE_FREEZE_COMMIT
   verify_evidence PRODUCT_PROOF_FILE PRODUCT_PROOF_COMMIT
+  verify_evidence SCENARIO_MATRIX_FILE SCENARIO_MATRIX_COMMIT
+  verify_evidence RENDER_MANIFEST_FILE RENDER_MANIFEST_COMMIT
 }
 
 verify_closure_gate() {
@@ -221,11 +216,9 @@ verify_current_state_authorization() {
   local stage="$1"
   local stage_line="- Current stage: $stage"
   local auth_line="- Authorized execution stage: $stage"
-  local command_marker="bash tools/prysm/start-prysm-p.sh $P_ID"
 
   grep -Fxq -- "$stage_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md current stage does not exactly match authorized stage $stage."
   grep -Fxq -- "$auth_line" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not explicitly authorize execution stage $stage."
-  grep -Fq "$command_marker" "$CURRENT_STATE" || fail "CURRENT_STATE.md does not name the governed $P_ID execution launcher as the exact next action."
 }
 
 MANIFEST_P="$(require_value P_ID)"
@@ -245,6 +238,12 @@ verify_current_state_authorization "$AUTHORIZED_STAGE"
 APP_BRANCH="$(require_value APPLICATION_BRANCH)"
 APP_SHA="$(require_value APPLICATION_SHA)"
 [[ "$APP_SHA" =~ ^[0-9a-f]{40}$ ]] || fail "APPLICATION_SHA must be an exact 40-character SHA."
+
+if [[ "$AUTHORIZED_STAGE" == "OUTCOME_REVIEW" || "$AUTHORIZED_STAGE" == "CLOSURE" ]]; then
+  CANDIDATE_APPLICATION_SHA="$(require_value CANDIDATE_APPLICATION_SHA)"
+  [[ "$CANDIDATE_APPLICATION_SHA" == "$APP_SHA" ]] || fail "CANDIDATE_APPLICATION_SHA does not equal APPLICATION_SHA."
+fi
+
 [[ -z "$(git -C "$APP_ROOT" status --porcelain)" ]] || fail "Application repository has uncommitted changes. Preserve/reconcile them before governed execution."
 [[ "$(git -C "$APP_ROOT" branch --show-current)" == "$APP_BRANCH" ]] || fail "Application repository must be on '$APP_BRANCH' for this gate."
 
@@ -255,51 +254,90 @@ git -C "$APP_ROOT" pull --ff-only origin "$APP_BRANCH"
 [[ "$(git -C "$APP_ROOT" rev-parse HEAD)" == "$APP_SHA" ]] || fail "Local application HEAD does not equal the gate's exact APPLICATION_SHA."
 [[ -z "$(git -C "$APP_ROOT" status --porcelain)" ]] || fail "Application tree is not clean after synchronization."
 
-PROMPT=$(cat <<EOF
+stage_actor() {
+  case "$1" in
+    DIAGNOSTIC_TRUTH|BOUNDED_BUILD) printf '%s' "BUILDER" ;;
+    OUTCOME_REVIEW) printf '%s' "BRAD" ;;
+    CLOSURE) printf '%s' "CHRIS" ;;
+    *) return 1 ;;
+  esac
+}
+
+AUTHORIZED_ACTOR="$(stage_actor "$AUTHORIZED_STAGE")"
+
+echo
+echo "PRYSM PROCESS GATE PASS"
+echo "P#: $P_ID"
+echo "Authorized stage: $AUTHORIZED_STAGE"
+echo "Authorized actor: $AUTHORIZED_ACTOR"
+echo "Application: $APP_BRANCH @ $APP_SHA"
+echo "Deterministic governance and candidate checks passed."
+echo
+
+launch_builder_stage() {
+  ensure_codex_cli || fail "Codex CLI is required for Builder stage $AUTHORIZED_STAGE but is not discoverable. Non-Builder stages do not require Codex."
+
+  local prompt
+  prompt=$(cat <<EOF_PROMPT
 You are operating inside the governed PRYSM Chris / Brad / Betty process.
+
+DETERMINISTIC PROCESS GATE: PASS.
+Do NOT perform a second process-gate audit. Do not re-interpret Git freshness, evidence commit bindings, current-state synchronization, or application SHA unless a new command proves state changed after launch. The launcher already verified those facts deterministically.
 
 Active workstream: $P_ID
 Authorized stage: $AUTHORIZED_STAGE
+Authorized actor: BUILDER
 Exact application branch: $APP_BRANCH
 Exact application SHA: $APP_SHA
 
-GitHub/local checked-out Git repositories are authoritative.
+Read the current governing files and perform ONLY the authorized stage.
 
-Before doing ANY substantive work, perform a PROCESS GATE AUDIT.
+For DIAGNOSTIC_TRUTH: read-only diagnosis only; no production-code edits. Produce the material P# lineage map and branch/scenario inventory required by the Outcome Contract.
+For BOUNDED_BUILD: change only the committed bounded repair authorization and required proof surfaces. Stop on a genuinely new material boundary.
 
-Read first:
-1. prysm-project-context/CURRENT_STATE.md
-2. prysm-project-context/PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md
-3. prysm-project-context/PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md
-4. prysm-project-context/${P_ID}_EXECUTION_GATE.env
-5. every contract, review, independent pre-execution audit, approval, proof, and authorization file named by that gate manifest for the authorized stage.
+If authoritative evidence encountered during the authorized stage materially contradicts the committed stage inputs, report `PRYSM STAGE EVIDENCE CONFLICT` with the exact evidence. Do not invent a stale-manifest/process-gate failure without deterministic Git evidence.
 
-Independently verify that the required evidence actually addresses its mandated questions, recorded verdicts match contents, zero unresolved CRITICAL/MAJOR findings remain where required, CURRENT_STATE.md agrees with the manifest, and $AUTHORIZED_STAGE is the exact next authorized stage.
-
-If any prerequisite is missing, weak, contradictory, stale, or not actually audited, return:
-PRYSM PROCESS GATE FAIL
-and explain only the blocking governance defect. Then STOP. Do not diagnose, code, test the application, or advance.
-
-If and only if the process gate passes, return:
-PRYSM PROCESS GATE PASS
-then perform ONLY the authorized stage: $AUTHORIZED_STAGE.
-
-Hard boundaries remain active: no unauthorized paid/live provider or model calls, no merge/deploy/production change, no destructive reset/clean/discard, no force push, no P# advancement, and no stage advancement beyond the exact authorization in the manifest.
-
-For DIAGNOSTIC_TRUTH specifically: read-only diagnosis only; no production-code edits. Produce the material P# lineage map and branch/scenario inventory required by the Outcome Contract where applicable.
-For BOUNDED_BUILD: change only the committed bounded repair authorization.
-For OUTCOME_REVIEW: prepare/review the exact frozen client-visible outcome evidence only within the committed proof plan.
-For CLOSURE: evaluate committed closure evidence only; do not begin the next P#.
-EOF
+Hard boundaries remain active: no unauthorized paid/live provider or model calls, no merge/deploy/production change, no destructive reset/clean/discard, no force push, no P# advancement, and no stage advancement beyond $AUTHORIZED_STAGE.
+EOF_PROMPT
 )
 
-echo
-echo "PRYSM PROCESS GATE PASS (machine checks)"
-echo "P#: $P_ID"
-echo "Authorized stage: $AUTHORIZED_STAGE"
-echo "Application: $APP_BRANCH @ $APP_SHA"
-echo "Launching Codex for semantic process-gate audit and authorized stage..."
-echo
+  cd "$WORKSPACE_ROOT"
+  exec codex "$prompt"
+}
 
-cd "$WORKSPACE_ROOT"
-exec codex "$PROMPT"
+case "$AUTHORIZED_STAGE" in
+  DIAGNOSTIC_TRUTH|BOUNDED_BUILD)
+    launch_builder_stage
+    ;;
+  OUTCOME_REVIEW)
+    cat <<EOF_HANDOFF
+PRYSM ROLE HANDOFF
+Next actor: BRAD
+Chris action: STOP after this PASS and hand P1 to Brad.
+
+Brad reviews the frozen candidate independently against the committed Outcome Contract.
+Outcome contract: $(getv CONTRACT_FILE)
+Technical proof: $(getv TECHNICAL_PROOF_FILE)
+System proof: $(getv SYSTEM_PROOF_FILE)
+Candidate freeze: $(getv CANDIDATE_FREEZE_FILE)
+Product proof: $(getv PRODUCT_PROOF_FILE)
+Scenario matrix: $(getv SCENARIO_MATRIX_FILE)
+Rendered manifest: $(getv RENDER_MANIFEST_FILE)
+Application: $APP_BRANCH @ $APP_SHA
+
+Brad review questions are the committed OUTCOME_REVIEW questions in PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md.
+Brad must create a NEW outcome-review evidence file. Do not edit any manifest-bound prerequisite evidence in place.
+No application code changes, no P2, no deploy, no model/provider calls.
+EOF_HANDOFF
+    exit 0
+    ;;
+  CLOSURE)
+    cat <<EOF_CLOSURE
+PRYSM ROLE HANDOFF
+Next actor: CHRIS
+All committed closure prerequisites and the exact application candidate passed the deterministic gate.
+Record/verify durable closure state only. Do not begin the next P# until the closure state commit is verified.
+EOF_CLOSURE
+    exit 0
+    ;;
+esac
