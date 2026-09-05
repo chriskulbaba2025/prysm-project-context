@@ -31,6 +31,10 @@ $ProtectedBootstrapFiles = @(
     'tools/autorun/PRYSM-AUTORUN-RESULT.schema.json'
 )
 
+$LocalBase = if ($env:LOCALAPPDATA) { $env:LOCALAPPDATA } else { $env:TEMP }
+$LocalRoot = Join-Path $LocalBase ("PRYSM-P-Autorun\{0}" -f $P)
+$JournalPath = Join-Path $LocalRoot 'transaction-journal.json'
+
 $gitBash = 'C:\Program Files\Git\bin\bash.exe'
 if (Test-Path -LiteralPath $gitBash) {
     $Bash = $gitBash
@@ -45,7 +49,20 @@ Write-Host "Governance: $GovernanceRepo"
 Write-Host "Application: $AppRepo"
 Write-Host "Mode: $(if ($AuditOnly) { 'AUDIT ONLY - NO CODEX/PRODUCT EXECUTION' } else { 'CONTINUOUS BUILDER' })"
 
-Write-Host "`n[1/5] Verify bootstrap/control-plane integrity"
+Write-Host "`n[1/6] Verify interrupted-transaction safety"
+if (Test-Path -LiteralPath $JournalPath) {
+    try {
+        $journal = Get-Content -LiteralPath $JournalPath -Raw | ConvertFrom-Json
+    }
+    catch {
+        throw "P-scoped transaction journal is corrupt and will not be silently reset: $JournalPath"
+    }
+    if ([string]$journal.status -eq 'RUNNING') {
+        throw "P-scoped transaction journal is still RUNNING and has no durable post-run fingerprint. Automatic recovery is intentionally blocked rather than assuming current local edits belong to Codex. Journal: $JournalPath"
+    }
+}
+
+Write-Host "`n[2/6] Verify bootstrap/control-plane integrity"
 if ((& git -C $GovernanceRepo branch --show-current).Trim() -ne 'main') {
     throw 'Governance repository must remain on main.'
 }
@@ -68,25 +85,25 @@ if ([string]::IsNullOrWhiteSpace($status)) {
     Write-Host 'Governance contains local in-progress state. Bootstrap will not pull/reset it; controller recovery will verify lineage.'
 }
 
-Write-Host "`n[2/5] P# autorun contract regression"
+Write-Host "`n[3/6] P# autorun contract regression"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $AutorunRegression -P $P
 if ($LASTEXITCODE -ne 0) { throw 'P# autorun contract regression failed. Autorun did not start.' }
 
-Write-Host "`n[3/5] Permanent PRYSM gate-contract regression"
+Write-Host "`n[4/6] Permanent PRYSM gate-contract regression"
 & $Bash $GateRegression
 if ($LASTEXITCODE -ne 0) { throw 'PRYSM gate-contract regression failed. Autorun did not start.' }
 
-Write-Host "`n[4/5] P# transaction/recovery preflight"
+Write-Host "`n[5/6] P# transaction/recovery preflight"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -PreflightOnly
 if ($LASTEXITCODE -ne 0) { throw 'P# autorun preflight failed. Autorun did not start.' }
 
 if ($AuditOnly) {
-    Write-Host "`n[5/5] AUDIT-ONLY TERMINAL"
+    Write-Host "`n[6/6] AUDIT-ONLY TERMINAL"
     Write-Host 'PRYSM P# AUTORUN AUDIT PASS'
     Write-Host 'No Codex Builder invocation was started. No application/product execution occurred.'
     exit 0
 }
 
-Write-Host "`n[5/5] Start continuous governed Builder loop"
-& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo
+Write-Host "`n[6/6] Start continuous governed Builder loop"
+& powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Controller -P $P -AppRepo $AppRepo -GovernanceRepo $GovernanceRepo -MaxConsecutiveFailures 1 -MaxRuns 20
 exit $LASTEXITCODE
