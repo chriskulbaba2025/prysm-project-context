@@ -17,6 +17,7 @@ Builder-owned P# execution uses the isolated P-scoped system:
 - `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
 - `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/test-prysm-p-autorun-contract.ps1`
+- `tools/prysm/assert-p1-frozen-history.sh`
 
 The **supported public entrypoint for Chris is `tools/prysm/START-PRYSM-P-AUTORUN.ps1` only**. `PRYSM-P-AUTORUN.ps1` is the lower-level controller engine and must not be invoked directly in normal operation because the public bootstrap performs the fail-closed interrupted-transaction checks before the engine starts.
 
@@ -56,7 +57,7 @@ A journal still marked `RUNNING` has no durable post-run fingerprint. Automatic 
 
 A journal marked `CODEX_EXITED_UNRECONCILED` has a durable post-run fingerprint but no accepted controller result. The public bootstrap also blocks automatic relaunch from this state so another Builder turn cannot overwrite the recorded transaction before it is deliberately reconciled.
 
-Both are fail-closed recovery boundaries, not product repair failures. Arbitrary local drift is never adopted merely because it is on the same branch.
+Both are fail-closed recovery boundaries, not product repair failures. Arbitrary local drift is not adopted merely because it is on the same branch.
 
 The bootstrap never resets/cleans local work. It fast-forwards only clean state when the ancestor relationship is unambiguous. Dirty/ahead state is handed to transaction recovery and must prove lineage.
 
@@ -90,17 +91,26 @@ There is no arbitrary fixed run-count limit in the supported bootstrap. The loop
 
 ## Scope and control-plane integrity
 
-The active Builder may not modify the controller, wrapper, Builder contract, result schema, permanent autorun decision, or permanent memory governing the run. The controller verifies both working-tree integrity and a committed control-plane fingerprint.
+The active Builder may not modify the controller, wrapper, Builder contract, result schema, permanent autorun decision, permanent memory, frozen-history guard, or deterministic gate regression governing the run.
 
-For reopened P1, every Codex transaction is checked across both committed and uncommitted touched paths. The check uses the union of every path touched by commits created during that transaction plus the final dirty paths; an out-of-scope change cannot be hidden by changing and later reverting the file.
+For reopened P1, every Codex transaction is checked across both committed and uncommitted touched paths. The check uses the union of every path touched by commits created during that transaction plus the final dirty paths; an out-of-scope change cannot be hidden merely by changing and later reverting the file.
 
-Application changes are restricted to the approved report projection / renderer / directly related deterministic test seam encoded in the controller. Governance changes are restricted to P1 current-state/gate/new-versioned-evidence paths.
+Application changes are restricted to the approved report projection / renderer / directly related deterministic test seam encoded in the controller. Governance writes required by the repaired candidate are restricted to `CURRENT_STATE.md`, `P1_EXECUTION_GATE.env`, and new reopened proof beneath `proof/P1/reopen/`.
 
 ## Frozen P1 history
 
-The failed candidate, Brad FAIL review, prior technical/system/candidate/render proof, reopen diagnostic and repair authorization remain historical evidence and must not be edited in place.
+Governance commit `0756e4db3746be0c2279c2083ccf83b3ec5c89f5` is the audited P1 historical-freeze baseline.
 
-Existing `proof/P1/rendered/*` is frozen. Reopened rendered proof must be created under `proof/P1/reopen/*` and bound deliberately as new proof. New technical/system/candidate/render evidence must use new versioned P1 filenames. The controller rejects transactions that touch the frozen historical set before accepting the Builder result.
+`tools/prysm/assert-p1-frozen-history.sh` derives the frozen set from that baseline instead of relying on a hand-maintained filename list. It freezes:
+
+- every root `P1_*` path that existed at the baseline, except intentionally mutable `P1_EXECUTION_GATE.env`;
+- every `proof/P1/rendered/*` path that existed at the baseline.
+
+For every deterministic P1 gate, the guard requires the historical path to still exist with the exact baseline blob. It also checks commit history after the baseline and fails if a historical path was changed and later restored. This prevents a change→revert sequence from hiding a governance breadcrumb.
+
+No new root `P1_*` evidence file may be created during the reopened repair. All new technical/system/candidate/render/evidence artifacts must be versioned under `proof/P1/reopen/`. The repaired `P1_EXECUTION_GATE.env` may then intentionally bind those new proof paths for `OUTCOME_REVIEW`.
+
+The permanent gate regression proves: unchanged historical state passes; direct historical mutation fails; change→revert still fails; and new root P1 evidence fails.
 
 ## Repair accounting
 
@@ -121,9 +131,9 @@ A Builder claim alone can never make the controller READY.
 - clean application and governance worktrees;
 - exact application candidate pushed and synchronized;
 - exact returned application/governance SHAs matching local authoritative state;
-- `P1_EXECUTION_GATE.env` intentionally advanced/rebound to `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
+- `P1_EXECUTION_GATE.env` intentionally advanced/rebound to `AUTHORIZED_STAGE=OUTCOME_REVIEW` and new `proof/P1/reopen/` evidence;
 - `CURRENT_STATE.md` authorizing `OUTCOME_REVIEW` and Brad;
-- the **official deterministic PRYSM P1 gate independently passing** for that exact state and printing `Authorized actor: BRAD`.
+- the **official deterministic PRYSM P1 gate independently passing** for that exact state, including `PRYSM P1 FROZEN HISTORY PASS`, and printing `Authorized actor: BRAD`.
 
 The controller re-checks the stage before every fresh Codex invocation. If a prior invocation already advanced durable state to `OUTCOME_REVIEW`, no further Builder run begins; the official Brad gate must pass instead.
 
@@ -161,7 +171,7 @@ Terminal state is written before notification. Notification failure is non-fatal
 
 `START-PRYSM-P-AUTORUN.ps1 -P P1 -AuditOnly` is the non-product runtime verification path.
 
-Audit-only mode performs interrupted-transaction safety checks, control-plane checks, parses/runs the controller self-test, runs the P1 autorun contract regression, runs the permanent PRYSM gate-contract regression, and runs transaction/recovery preflight. It then exits before any Codex Builder invocation. It may fetch/fast-forward clean governance where safe, but it performs no application/product execution.
+Audit-only mode performs interrupted-transaction safety checks, control-plane checks, parses/runs the controller self-test, runs the P1 autorun contract regression, runs the permanent PRYSM gate-contract regression—including frozen-history mutation/revert proofs—and runs transaction/recovery preflight. It then exits before any Codex Builder invocation. It may fetch/fast-forward clean governance where safe, but it performs no application/product execution.
 
 A stale `RUNNING` or `CODEX_EXITED_UNRECONCILED` journal causes audit-only mode to fail closed. That is intentional: runtime certification must not certify or overwrite an incompletely reconciled transaction.
 
@@ -175,7 +185,7 @@ Before the continuous loop begins, the bootstrap must pass:
 - `bash tools/prysm/test-prysm-gate-contract.sh`
 - controller `-PreflightOnly`
 
-The first regression parses the PowerShell controller, runs its pure self-test, and verifies journal, routing, frozen-history, scope, accounting, immutable-control-plane and Brad-boundary contracts.
+The first regression parses the PowerShell controller, runs its pure self-test, and verifies journal, routing, exhaustive frozen-history guard, scope, accounting, immutable-control-plane and Brad-boundary contracts.
 
 ## Non-negotiable operating rule
 
