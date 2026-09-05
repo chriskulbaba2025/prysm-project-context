@@ -47,6 +47,7 @@ Builder must not modify, regenerate, or bypass the P# autorun control plane duri
 - `tools/prysm/test-prysm-p-autorun-contract.ps1`
 - `tools/prysm/assert-p1-frozen-history.sh`
 - `tools/prysm/start-prysm-p-current-session.sh`
+- `tools/prysm/start-prysm-p.sh`
 - `tools/prysm/test-prysm-gate-contract.sh`
 - `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json`
 - `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`
@@ -67,7 +68,13 @@ For reopened P1:
 - create **all** new reopened technical/system/candidate/render/evidence artifacts under `proof/P1/reopen/` using clear versioned names;
 - only after new proof is complete may `P1_EXECUTION_GATE.env` be intentionally rebound to the new `proof/P1/reopen/` evidence/candidate for `OUTCOME_REVIEW`.
 
-The official deterministic P1 gate runs `tools/prysm/assert-p1-frozen-history.sh`. It derives the exhaustive frozen set from governance baseline `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`, checks current blob identity, and rejects historical files that were changed and later restored. Do not bypass or weaken this gate.
+The official deterministic P1 gate runs `tools/prysm/assert-p1-frozen-history.sh`. It derives the exhaustive frozen set from governance baseline `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`, checks committed and uncommitted historical state, and rejects historical files that were changed and later restored. Do not bypass or weaken this gate.
+
+**Before every governance commit or push, and again before returning a structured result, run:**
+
+`bash tools/prysm/assert-p1-frozen-history.sh`
+
+A failure is a governance-integrity blocker. Do not commit, push, rename, restore, or otherwise work around the failing historical path.
 
 ## Continuous Builder rule
 
