@@ -85,7 +85,7 @@ Require-Contains $currentSessionText 'P1 frozen-history verification failed.' 'C
 foreach ($needle in @(
     'P1_FROZEN_BASELINE="0756e4db3746be0c2279c2083ccf83b3ec5c89f5"',
     "grep -E '^(P1_[^/]*|proof/P1/rendered/.+)$'",
-    "grep -v '^P1_EXECUTION_GATE\\.env$'",
+    "grep -v '^P1_EXECUTION_GATE\.env$'",
     'historical P1 evidence has an uncommitted change',
     'historical P1 evidence was touched after freeze baseline',
     'new root P1 evidence is not allowed; place reopened proof under proof/P1/reopen/',
