@@ -106,11 +106,11 @@ Governance commit `0756e4db3746be0c2279c2083ccf83b3ec5c89f5` is the audited P1 h
 - every root `P1_*` path that existed at the baseline, except intentionally mutable `P1_EXECUTION_GATE.env`;
 - every `proof/P1/rendered/*` path that existed at the baseline.
 
-For every deterministic P1 gate, the guard requires the historical path to still exist with the exact baseline blob. It also checks commit history after the baseline and fails if a historical path was changed and later restored. This prevents a change→revert sequence from hiding a governance breadcrumb.
+For every deterministic P1 gate, the guard requires the historical path to still exist with the exact baseline blob. It also checks commit history after the baseline and fails if a historical path was changed and later restored. This prevents a change-to-revert sequence from hiding a governance breadcrumb.
 
 No new root `P1_*` evidence file may be created during the reopened repair. All new technical/system/candidate/render/evidence artifacts must be versioned under `proof/P1/reopen/`. The repaired `P1_EXECUTION_GATE.env` may then intentionally bind those new proof paths for `OUTCOME_REVIEW`.
 
-The permanent gate regression proves: unchanged historical state passes; direct historical mutation fails; change→revert still fails; and new root P1 evidence fails.
+The permanent gate regression proves: unchanged historical state passes; direct historical mutation fails; change-to-revert still fails; and new root P1 evidence fails.
 
 ## Repair accounting
 
