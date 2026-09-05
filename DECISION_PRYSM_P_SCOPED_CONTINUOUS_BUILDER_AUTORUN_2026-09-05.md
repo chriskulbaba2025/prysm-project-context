@@ -48,7 +48,9 @@ Every Codex Builder invocation is a journaled transaction outside both repositor
 5. reconcile structured result, repair accounting and routing;
 6. mark the transaction `RECONCILED` only after those checks succeed.
 
-A restart may continue only from the recorded P1 entry lineage, the exact entry fingerprint, the exact latest journaled post-state, or a transaction recorded `RUNNING` when interrupted. Arbitrary local drift is not adopted merely because it is on the same branch.
+A restart may continue only from the recorded P1 entry lineage, the exact entry fingerprint, or the exact latest journaled post-state. Arbitrary local drift is not adopted merely because it is on the same branch.
+
+A journal still marked `RUNNING` has no durable post-run fingerprint. Automatic recovery from that state is intentionally blocked rather than assuming that current local edits were produced by Codex. This is a fail-closed human-recovery boundary, not a product repair failure.
 
 The bootstrap never resets/cleans local work. It fast-forwards only clean state when the ancestor relationship is unambiguous. Dirty/ahead state is handed to transaction recovery and must prove lineage.
 
@@ -74,9 +76,10 @@ A normal Codex end-of-turn is never a Builder workflow stop.
 - `next_role=Auditor` -> contract violation; Brad owns `OUTCOME_REVIEW`.
 - true `BLOCKED` -> durable state + notification + stop.
 - usage limit -> stop without consuming repair escalation.
-- repeated controller/protocol failure -> controller-failure notification.
+- a Codex execution/structured-result protocol failure stops fail closed on the first occurrence; the exact post-run journal is preserved instead of being overwritten by automatic retries.
 - third evidence-based failure against the same stable root -> block; no fourth attempt.
 - repeated identical no-repository-progress continuations -> anti-thrash controller failure instead of an infinite loop.
+- the wrapper also imposes a 20-run outer safety bound so prompt wording changes cannot create an unbounded loop.
 
 ## Scope and control-plane integrity
 
@@ -151,7 +154,9 @@ Terminal state is written before notification. Notification failure is non-fatal
 
 `START-PRYSM-P-AUTORUN.ps1 -P P1 -AuditOnly` is the non-product runtime verification path.
 
-Audit-only mode performs control-plane checks, parses/runs the controller self-test, runs the P1 autorun contract regression, runs the permanent PRYSM gate-contract regression, and runs transaction/recovery preflight. It then exits before any Codex Builder invocation. It may fetch/fast-forward clean governance where safe, but it performs no application/product execution.
+Audit-only mode performs interrupted-transaction safety checks, control-plane checks, parses/runs the controller self-test, runs the P1 autorun contract regression, runs the permanent PRYSM gate-contract regression, and runs transaction/recovery preflight. It then exits before any Codex Builder invocation. It may fetch/fast-forward clean governance where safe, but it performs no application/product execution.
+
+A stale `RUNNING` journal causes audit-only mode to fail closed. That is intentional: the runtime cannot certify an interrupted transaction whose post-state was never durably fingerprinted.
 
 This mode exists so the Windows runtime can verify the PowerShell/controller assumptions independently before the product loop is permitted to start.
 
