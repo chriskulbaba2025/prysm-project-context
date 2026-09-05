@@ -6,6 +6,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE_LAUNCHER="$SCRIPT_DIR/start-prysm-p-base.sh"
+PUBLIC_LAUNCHER="$SCRIPT_DIR/start-prysm-p.sh"
+CURRENT_SESSION_LAUNCHER="$SCRIPT_DIR/start-prysm-p-current-session.sh"
+PREFLIGHT="$SCRIPT_DIR/prysm-governance-preflight.sh"
 TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/prysm-gate-contract.XXXXXX")"
 trap 'rm -rf "$TEST_ROOT"' EXIT
 
@@ -40,7 +43,10 @@ setup_fixture() {
 
   mkdir -p "$root/prysm-project-context/tools/prysm" "$root/prysm-project-context/proof/P1/rendered"
   cp "$BASE_LAUNCHER" "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh"
-  chmod +x "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh"
+  cp "$PUBLIC_LAUNCHER" "$root/prysm-project-context/tools/prysm/start-prysm-p.sh"
+  cp "$CURRENT_SESSION_LAUNCHER" "$root/prysm-project-context/tools/prysm/start-prysm-p-current-session.sh"
+  cp "$PREFLIGHT" "$root/prysm-project-context/tools/prysm/prysm-governance-preflight.sh"
+  chmod +x "$root/prysm-project-context/tools/prysm/"*.sh
 
   cat > "$root/prysm-project-context/CURRENT_STATE.md" <<STATE
 # Current State
@@ -118,7 +124,7 @@ GATE
 }
 
 root="$(setup_fixture valid-outcome OUTCOME_REVIEW)"
-if PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1 \
+if PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
   && grep -q 'Authorized actor: BRAD' "$root/out" \
   && grep -q 'Next actor: BRAD' "$root/out"; then
   ok 'OUTCOME_REVIEW passes without Codex and routes only to Brad'
@@ -131,7 +137,7 @@ echo changed >> "$root/prysm-project-context/contract.md"
 git -C "$root/prysm-project-context" add contract.md
 git -C "$root/prysm-project-context" commit -m mutate >/dev/null
 git -C "$root/prysm-project-context" push origin main >/dev/null 2>&1
-if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1 \
+if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
   && grep -q 'bound evidence is stale' "$root/out"; then
   ok 'real bound-evidence mutation fails deterministically'
 else
@@ -143,7 +149,7 @@ sed -i.bak '/SCENARIO_MATRIX_FILE=/d;/SCENARIO_MATRIX_COMMIT=/d' "$root/prysm-pr
 git -C "$root/prysm-project-context" add P1_EXECUTION_GATE.env
 git -C "$root/prysm-project-context" commit -m missing-matrix >/dev/null
 git -C "$root/prysm-project-context" push origin main >/dev/null 2>&1
-if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1 \
+if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
   && grep -q 'SCENARIO_MATRIX_FILE is missing or empty' "$root/out"; then
   ok 'missing rendered-proof binding fails deterministically'
 else
@@ -155,7 +161,7 @@ perl -0pi -e 's/^CANDIDATE_APPLICATION_SHA=.*/CANDIDATE_APPLICATION_SHA=00000000
 git -C "$root/prysm-project-context" add P1_EXECUTION_GATE.env
 git -C "$root/prysm-project-context" commit -m bad-candidate >/dev/null
 git -C "$root/prysm-project-context" push origin main >/dev/null 2>&1
-if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1 \
+if ! bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
   && grep -q 'CANDIDATE_APPLICATION_SHA does not equal APPLICATION_SHA' "$root/out"; then
   ok 'candidate identity mismatch fails deterministically'
 else
@@ -169,7 +175,7 @@ cat > "$root/fakebin/codex" <<'CODEX'
 printf '%s\n' "$1"
 CODEX
 chmod +x "$root/fakebin/codex"
-if PATH="$root/fakebin:/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1 \
+if CODEX_THREAD_ID=test PATH="$root/fakebin:/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
   && grep -q 'DETERMINISTIC PROCESS GATE: PASS' "$root/out" \
   && ! grep -q 'perform a PROCESS GATE AUDIT' "$root/out" \
   && grep -q 'Authorized actor: BUILDER' "$root/out"; then
@@ -179,10 +185,31 @@ else
 fi
 
 root="$(setup_fixture no-codex-outcome OUTCOME_REVIEW)"
-if PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p-base.sh" P1 >"$root/out" 2>&1; then
+if PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1; then
   ok 'non-Builder stages do not require Codex CLI'
 else
   cat "$root/out"; bad 'stage-scoped Codex requirement'
+fi
+
+root="$(setup_fixture diagnostic-quarantine OUTCOME_REVIEW)"
+echo local > "$root/prysm-project-context/PRYSM-LOCAL-DIAG-test.txt"
+if PRYSM_DIAGNOSTIC_DIR="$root/diag" PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
+  && grep -q 'preserved local diagnostic outside governance repo' "$root/out" \
+  && grep -q 'Next actor: BRAD' "$root/out" \
+  && [[ ! -e "$root/prysm-project-context/PRYSM-LOCAL-DIAG-test.txt" ]]; then
+  ok 'public preflight quarantines recognized local diagnostics and continues'
+else
+  cat "$root/out"; bad 'diagnostic quarantine path'
+fi
+
+root="$(setup_fixture unknown-dirty OUTCOME_REVIEW)"
+echo unknown > "$root/prysm-project-context/UNKNOWN.tmp"
+if ! PATH="/usr/bin:/bin" bash "$root/prysm-project-context/tools/prysm/start-prysm-p.sh" P1 >"$root/out" 2>&1 \
+  && grep -q 'UNKNOWN.tmp' "$root/out" \
+  && grep -q 'PRYSM PRE-FLIGHT FAIL' "$root/out"; then
+  ok 'public preflight blocks unknown dirty files and prints exact path'
+else
+  cat "$root/out"; bad 'unknown dirty-file protection'
 fi
 
 echo "PRYSM GATE CONTRACT: $pass PASS / $fail_count FAIL"
