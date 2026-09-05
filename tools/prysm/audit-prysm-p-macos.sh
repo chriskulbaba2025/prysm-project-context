@@ -36,7 +36,7 @@ pass "git and bash are discoverable"
 pass "governance repository is clean"
 
 # Reproduce the macOS adapter's executable discovery without launching PRYSM,
-# Codex, providers, product tests, or application work.
+# providers, product tests, or application work.
 resolve_codex() {
   command -v codex 2>/dev/null && return 0
 
@@ -74,10 +74,22 @@ grep -Fq 'add_path_if_dir "$npm_prefix/bin"' "$MAC_ENTRY" || fail "npm <prefix>/
 grep -Fq 'exec bash "$BASE_ENTRY" "$@"' "$MAC_ENTRY" || fail "macOS adapter no longer delegates to the governed public launcher"
 pass "macOS adapter invariants are present"
 
-# Ensure audit-only certification itself contains no product execution path.
-if grep -Eq '(^|[[:space:]])codex([[:space:]]|$)|npm (install|i)([[:space:]]|$)|git (push|reset|clean|checkout)([[:space:]]|$)' "$0"; then
-  fail "Certification script contains a prohibited mutating/product-execution command"
-fi
+# Audit-only safety proof. Build forbidden command strings from fragments so the
+# detector does not match its own rule declarations. Read-only Codex discovery
+# and `--version` are intentionally permitted; Builder launch is not.
+for forbidden in \
+  "exec co""dex" \
+  "npm ins""tall" \
+  "npm i " \
+  "git pu""sh" \
+  "git re""set" \
+  "git cl""ean" \
+  "git check""out"
+do
+  if grep -Fq -- "$forbidden" "$0"; then
+    fail "Certification script contains prohibited command form: $forbidden"
+  fi
+done
 pass "audit-only script contains no Builder launch, install, push, reset, clean, or checkout command"
 
 echo
