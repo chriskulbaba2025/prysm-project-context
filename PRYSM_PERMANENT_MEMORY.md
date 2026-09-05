@@ -27,6 +27,21 @@ This file is an index of durable operating memory. Detailed source-of-truth rule
 - `CLOSURE` -> Chris / durable closure-state recording.
 - Never substitute an already-open agent for the role that owns the stage.
 
+## Permanent actor-bounded evidence-once pattern
+
+The operating sequence is mandatory:
+
+`DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`
+
+- After deterministic PASS, the named actor moves directly into the bounded task. Do not re-open prior diagnosis or technical proof without new direct evidence.
+- During human/product review, gather independent observations before creating the formal evidence artifact.
+- Create one new versioned evidence file only after the bounded review is complete.
+- Do not repeatedly edit a formal review artifact while observations are still being collected.
+- Do not modify manifest-bound prerequisite evidence in place.
+- Bind the completed new evidence once, then route to the next actor required by the lifecycle.
+- This rule is intended to preserve governance while preventing stop/start loops and manufactured rework.
+- Governing decision: `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`.
+
 ## Permanent bound-evidence rule
 
 - A file referenced by `P#_EXECUTION_GATE.env` is frozen for that stage.
@@ -84,6 +99,7 @@ Do not declare a process repair complete without that deterministic regression s
 - `DECISIONS.md`
 - `DECISION_PRYSM_DIAGNOSTIC_HYGIENE_2026-09-04.md`
 - `DECISION_PRYSM_SINGLE_AUTHORITY_STAGE_ROUTING_2026-09-04.md`
+- `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `WORKFLOW_INSTRUCTIONS.md`
 - `PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md`
@@ -96,4 +112,4 @@ Do not declare a process repair complete without that deterministic regression s
 
 ## Non-negotiable intent
 
-The user must not be sent through repetitive stop/start launcher loops caused by our own diagnostics, shell ambiguity, duplicate AI gates, stale chat instructions, hidden dirty-tree details, or wrong-actor routing. Future instructions must recover authoritative state first, expose the exact deterministic blocker if one exists, and give the single correct next action for the person whose turn it is.
+The user must not be sent through repetitive stop/start launcher loops caused by our own diagnostics, shell ambiguity, duplicate AI gates, stale chat instructions, hidden dirty-tree details, wrong-actor routing, or repeated evidence edits. Future instructions must recover authoritative state first, expose the exact deterministic blocker if one exists, and give the single correct next action for the person whose turn it is.
