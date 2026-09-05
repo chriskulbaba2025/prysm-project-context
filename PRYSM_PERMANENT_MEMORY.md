@@ -78,6 +78,22 @@ The operating sequence is mandatory:
 - Never manually patch PATH to work around a governed launcher.
 - Never nest Codex inside Codex.
 
+## Permanent P-scoped unattended Builder rule
+
+- Builder-owned `DIAGNOSTIC_TRUTH` / `BOUNDED_BUILD` work must not be run as a sequence of manual interactive Codex continuation prompts when the P-scoped controller is available.
+- The durable controller is `tools/prysm/PRYSM-P-AUTORUN.ps1`; its one-command Windows wrapper is `tools/prysm/START-PRYSM-P-AUTORUN.ps1`.
+- Chris starts/resumes an unattended Builder-owned P# with:
+  `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P#`
+- On a clean initial P# candidate, the wrapper runs the official deterministic gate in current-session/no-nested-Codex mode before starting the continuous controller.
+- On an already-entered Builder stage whose application tree is dirty because of authorized in-progress repair work, do **not** rerun the clean-tree deterministic gate. Preserve the dirty governed work and recover the current authorized stage from `CURRENT_STATE.md` plus the active P# evidence chain.
+- A normal Codex invocation ending is not a workflow stop. `CONTINUE + Builder` relaunches Builder automatically; `STOP + Builder` is also treated as continuation while Builder remains the next actor.
+- The controller stops only at `READY_FOR_BRAD`, a genuine `BLOCKED`/protected boundary, usage limit, controller failure, or the three-attempt same-root limit.
+- The controller never auto-launches Betty/Auditor. Any Builder handoff toward Auditor is converted to `READY_FOR_BRAD` because Brad owns `OUTCOME_REVIEW`.
+- Fresh Builder invocations use `--ask-for-approval never` and `--sandbox danger-full-access`; PRYSM governance remains the safety boundary rather than repetitive command approvals.
+- P# controller accounting is local and P-scoped; stale historical `PRYSM_AUTORUN_STATE.json`, Production Closure state, old report-improvement tranches, or unrelated PDV state must not route the active P#.
+- Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; routine iterations/heartbeat remain silent.
+- Governing decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
+
 ## Permanent diagnostic hygiene rule
 
 - Diagnostics must observe governed state; they must not contaminate governed state.
@@ -114,6 +130,7 @@ Do not declare a process repair complete without that deterministic regression s
 - `DECISION_PRYSM_DIAGNOSTIC_HYGIENE_2026-09-04.md`
 - `DECISION_PRYSM_SINGLE_AUTHORITY_STAGE_ROUTING_2026-09-04.md`
 - `DECISION_PRYSM_ACTOR_BOUNDED_REVIEW_EVIDENCE_ONCE_2026-09-04.md`
+- `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `WORKFLOW_INSTRUCTIONS.md`
 - `PRYSM_P_STAGE_COMMIT_AUDIT_GATE_2026-09-04.md`
@@ -122,6 +139,9 @@ Do not declare a process repair complete without that deterministic regression s
 - `tools/prysm/start-prysm-p.ps1`
 - `tools/prysm/start-prysm-p.sh`
 - `tools/prysm/start-prysm-p-base.sh`
+- `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
+- `tools/prysm/PRYSM-P-AUTORUN.ps1`
+- `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
 - `tools/prysm/test-prysm-gate-contract.sh`
 
 ## Non-negotiable intent
