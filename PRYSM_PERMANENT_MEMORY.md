@@ -66,7 +66,7 @@ The operating sequence is mandatory:
 
 ## Permanent launcher rule
 
-- **Chris / Windows / VS Code PowerShell:** always use:
+- **Chris / Windows / VS Code PowerShell, normal deterministic stage entry:**
   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\start-prysm-p.ps1 P#`
 - **Brad / macOS / VS Code terminal:** use:
   `bash tools/prysm/start-prysm-p.sh P#`
@@ -81,17 +81,20 @@ The operating sequence is mandatory:
 ## Permanent P-scoped unattended Builder rule
 
 - Builder-owned `DIAGNOSTIC_TRUTH` / `BOUNDED_BUILD` work must not be run as a sequence of manual interactive Codex continuation prompts when the P-scoped controller is available.
-- The durable controller is `tools/prysm/PRYSM-P-AUTORUN.ps1`; its one-command Windows wrapper is `tools/prysm/START-PRYSM-P-AUTORUN.ps1`.
+- The durable controller is `tools/prysm/PRYSM-P-AUTORUN.ps1`; its one-command Windows wrapper is `tools/prysm/START-PRYSM-P-AUTORUN.ps1`; its contract regression is `tools/prysm/test-prysm-p-autorun-contract.ps1`.
 - Chris starts/resumes an unattended Builder-owned P# with:
   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P#`
-- On a clean initial P# candidate, the wrapper runs the official deterministic gate in current-session/no-nested-Codex mode before starting the continuous controller.
-- On an already-entered Builder stage whose application tree is dirty because of authorized in-progress repair work, do **not** rerun the clean-tree deterministic gate. Preserve the dirty governed work and recover the current authorized stage from `CURRENT_STATE.md` plus the active P# evidence chain.
-- A normal Codex invocation ending is not a workflow stop. `CONTINUE + Builder` relaunches Builder automatically; `STOP + Builder` is also treated as continuation while Builder remains the next actor.
-- The controller stops only at `READY_FOR_BRAD`, a genuine `BLOCKED`/protected boundary, usage limit, controller failure, or the three-attempt same-root limit.
-- The controller never auto-launches Betty/Auditor. Any Builder handoff toward Auditor is converted to `READY_FOR_BRAD` because Brad owns `OUTCOME_REVIEW`.
+- The bootstrap synchronizes clean governance, runs the P# autorun contract regression, runs the permanent gate-contract regression, verifies recovery/preflight, then starts the continuous loop.
+- On a clean initial P# candidate, the controller requires the official deterministic P# gate to PASS before Builder execution.
+- On an already-entered Builder stage whose application tree is dirty because of authorized in-progress repair work, do **not** rerun the clean-tree gate. Dirty continuation is allowed only when `CURRENT_STATE.md` and the P# gate authorize the same Builder stage, the current branch equals the gate branch, and both local HEAD and `origin/<branch>` still equal the exact gate `APPLICATION_SHA`. Any mismatch blocks without switching/resetting/cleaning the worktree.
+- A normal Codex invocation ending is not a workflow stop. `CONTINUE + Builder` relaunches Builder automatically; routine `STOP + Builder` is also treated as continuation while Builder remains the next actor.
+- The controller stops only at deterministic `READY_FOR_BRAD`, a genuine `BLOCKED`/protected boundary, usage limit, controller failure, or the three-attempt same-root limit.
+- Builder may never route directly to Betty/Auditor. `next_role=Auditor` is a contract violation, not READY.
+- `READY_FOR_BRAD` requires a clean/pushed repaired candidate, synchronized governance, `AUTHORIZED_STAGE=OUTCOME_REVIEW`, Brad authorized in `CURRENT_STATE.md`, green structured proof claims, and a final **official deterministic PRYSM gate PASS with `Authorized actor: BRAD`**. A Builder claim alone cannot advance the human boundary.
 - Fresh Builder invocations use `--ask-for-approval never` and `--sandbox danger-full-access`; PRYSM governance remains the safety boundary rather than repetitive command approvals.
-- P# controller accounting is local and P-scoped; stale historical `PRYSM_AUTORUN_STATE.json`, Production Closure state, old report-improvement tranches, or unrelated PDV state must not route the active P#.
-- Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; routine iterations/heartbeat remain silent.
+- P# controller accounting/logs/heartbeat live outside both repositories and are P-scoped; stale historical `PRYSM_AUTORUN_STATE.json`, Production Closure state, old report-improvement tranches, or unrelated PDV state must not route the active P#.
+- The controller uses application/governance resource locks to prevent concurrent controllers; live locks block and stale locks are reclaimed only after their PID is no longer running.
+- Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; final controller state is written before notification and notification failure is non-fatal.
 - Governing decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
 
 ## Permanent diagnostic hygiene rule
@@ -118,7 +121,11 @@ Any change to PRYSM launchers, gate binding, stage routing, or Codex handoff mus
 
 `bash tools/prysm/test-prysm-gate-contract.sh`
 
-Do not declare a process repair complete without that deterministic regression suite.
+Any change to P-scoped unattended Builder routing must also pass:
+
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\test-prysm-p-autorun-contract.ps1 -P P#`
+
+Do not declare a process repair complete without the applicable deterministic regression suites.
 
 ## Required governing sources
 
@@ -142,6 +149,7 @@ Do not declare a process repair complete without that deterministic regression s
 - `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
+- `tools/prysm/test-prysm-p-autorun-contract.ps1`
 - `tools/prysm/test-prysm-gate-contract.sh`
 
 ## Non-negotiable intent
