@@ -45,6 +45,9 @@ Builder must not modify, regenerate, or bypass the P# autorun control plane duri
 - `tools/prysm/START-PRYSM-P-AUTORUN.ps1`
 - `tools/prysm/PRYSM-P-BUILDER-AUTORUN-PROMPT.md`
 - `tools/prysm/test-prysm-p-autorun-contract.ps1`
+- `tools/prysm/assert-p1-frozen-history.sh`
+- `tools/prysm/start-prysm-p-current-session.sh`
+- `tools/prysm/test-prysm-gate-contract.sh`
 - `tools/autorun/PRYSM-AUTORUN-RESULT.schema.json`
 - `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`
 - `PRYSM_PERMANENT_MEMORY.md`
@@ -53,17 +56,18 @@ If product work appears to require changing the controller itself, return `BLOCK
 
 ## Frozen evidence / no rewritten history
 
-The failed P1 candidate and Brad FAIL review remain historical evidence. They must stay reproducible and unchanged.
+The failed P1 candidate and the complete governance/evidence history that existed at the audited freeze baseline remain historical evidence. They must stay reproducible and unchanged.
 
 For reopened P1:
 
-- never edit any existing bound P1 evidence file from the failed candidate/reopen authorization chain;
+- never edit, delete, regenerate, or replace any historical root `P1_*` file that existed at the frozen baseline;
+- `P1_EXECUTION_GATE.env` is the only intentionally mutable root `P1_*` file;
+- never create a new root `P1_*` evidence file during this repair;
 - never overwrite or regenerate `proof/P1/rendered/*` in place;
-- create new reopened rendered proof only under `proof/P1/reopen/`;
-- create new versioned P1 technical/system/candidate/render proof files rather than changing old dated evidence;
-- only after new proof is complete may `P1_EXECUTION_GATE.env` be intentionally rebound to the new evidence/candidate for `OUTCOME_REVIEW`.
+- create **all** new reopened technical/system/candidate/render/evidence artifacts under `proof/P1/reopen/` using clear versioned names;
+- only after new proof is complete may `P1_EXECUTION_GATE.env` be intentionally rebound to the new `proof/P1/reopen/` evidence/candidate for `OUTCOME_REVIEW`.
 
-The controller independently rejects a transaction that modifies frozen P1 history, even if the final file content appears to have been restored later.
+The official deterministic P1 gate runs `tools/prysm/assert-p1-frozen-history.sh`. It derives the exhaustive frozen set from governance baseline `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`, checks current blob identity, and rejects historical files that were changed and later restored. Do not bypass or weaken this gate.
 
 ## Continuous Builder rule
 
@@ -100,12 +104,12 @@ When and only when all required Builder-owned repair and proof are complete:
 - repaired application candidate is coherently committed and pushed on the governed P# branch;
 - focused regression is green;
 - full P# deterministic verification is green;
-- affected rendered scenarios/proof are regenerated and verified in the new reopened proof namespace;
+- affected rendered scenarios/proof are regenerated and verified under `proof/P1/reopen/`;
 - manifest/hash/scenario mapping proof is trustworthy and green where applicable;
 - broader required regression is green;
 - application worktree is clean and exact candidate identity is auditable;
-- required new technical/system/render proof is durable and versioned;
-- `${P}_EXECUTION_GATE.env` is intentionally rebound to the repaired exact application candidate and advanced to `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
+- required new technical/system/render proof is durable and versioned under `proof/P1/reopen/`;
+- `${P}_EXECUTION_GATE.env` is intentionally rebound to the repaired exact application candidate and new reopened proof, and advanced to `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
 - `CURRENT_STATE.md` is synchronized to `OUTCOME_REVIEW` with authorized actor Brad;
 - governance is committed, pushed, clean, and synchronized;
 
@@ -124,6 +128,7 @@ return exactly:
 
 The controller independently rejects the claim unless the **official deterministic PRYSM gate** passes for that exact state and returns:
 
+- `PRYSM P1 FROZEN HISTORY PASS`
 - `Authorized stage: OUTCOME_REVIEW`
 - `Authorized actor: BRAD`
 
@@ -136,7 +141,7 @@ Return `BLOCKED` only for a genuine condition that cannot safely progress inside
 - protected external action is required;
 - unresolved destructive-recovery decision;
 - governance conflict that cannot be reconciled without owner judgment;
-- required external/paid provider or model action that is not authorized;
+- required external/paid application provider or model action that is not authorized;
 - an apparent need to modify the active autorun control plane.
 
 The controller, not Builder, enforces the three-attempt terminal limit.
