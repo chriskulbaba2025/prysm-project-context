@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Continue reopened P1 through Builder-owned `BOUNDED_BUILD`, complete the five confirmed cross-report/client-semantic repair families inside the approved report-projection seam, and prove the repaired rendered outcome before returning a new candidate to Brad. The P1 continuous-controller process itself is being certified before product execution resumes.
+Continue reopened P1 through Builder-owned `BOUNDED_BUILD`, complete the five confirmed cross-report/client-semantic repair families inside the approved report-projection seam, and prove the repaired rendered outcome before returning a new candidate to Brad. The Windows P1 unattended-controller runtime is now certified for this state.
 
 Verified checkpoint:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
@@ -27,12 +27,15 @@ Verified checkpoint:
 - Governing review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
 - P1 unattended Builder decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
 - Exhaustive P1 historical-freeze baseline: governance commit `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`, enforced by `tools/prysm/assert-p1-frozen-history.sh` through the official deterministic P1 gate.
+- Windows unattended-controller runtime certification: PASS, recorded in `proof/P1/reopen/P1_WINDOWS_AUTORUN_CERTIFICATION_2026-09-05.md`.
+- Certification evidence: autorun self-test PASS; autorun contract regression PASS; permanent PRYSM gate contract 11 PASS / 0 FAIL; transaction/recovery preflight PASS; audit terminal PASS; no Codex Builder invocation and no application/product execution occurred during certification.
 
 Current environment / branch / version:
 - Governance branch: `main`.
 - Application candidate branch: `p1/bounded-build-cross-report-integrity`.
 - Current gated application anchor remains failed-candidate SHA `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2` until the repaired candidate is proven and rebound.
 - Existing local P1 application repair work is intentionally uncommitted and must be preserved.
+- Certified Windows recovery mode at preflight: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
 - Viewer: v2.2.0.
 
 Completed:
@@ -104,14 +107,22 @@ Completed:
 - Technical data should support the conclusion, not become the conclusion.
 - **P1 is formally reopened. This client-language repair is authorized now only inside the existing P1 report-projection/renderer/direct-test seam; it is not authorization for unrelated report redesign.**
 
+### Windows P1 unattended-controller certification
+- `PRYSM P1 AUTORUN SELFTEST PASS`.
+- `PRYSM P# AUTORUN CONTRACT REGRESSION PASS`.
+- Permanent gate-contract regression: `11 PASS / 0 FAIL`.
+- Transaction/recovery preflight: PASS.
+- Recovery mode: `GOV_SYNCED/APP_P1_INITIAL_DIRTY_ADOPTION`.
+- Audit terminal: `PRYSM P# AUTORUN AUDIT PASS`.
+- Certification mode started no Codex Builder invocation and performed no application/product execution.
+
 In progress:
 - Builder bounded repair for the verified report-projection defect set. Existing application edits remain intentionally uncommitted and must not be discarded.
-- P1 continuous-controller hardening/audit is complete at the static/governance level; the remaining process-certification boundary is the non-product Windows `-AuditOnly` runtime check before unattended Builder execution resumes.
+- The P1 Windows continuous-controller static/governance/runtime certification is complete. Builder execution may resume through the supported public wrapper.
 
 Blocked:
 - P1 OUTCOME PASS remains blocked pending the reopened repair, proof, and a new independent Brad review.
 - Betty Final Audit remains blocked until a repaired candidate later receives Brad PASS.
-- Unattended Builder execution is intentionally paused until the P1 `-AuditOnly` runtime certification passes on Chris's Windows/VS Code environment.
 
 Important constraints:
 - No formal Betty Final Audit yet.
@@ -125,7 +136,11 @@ Important constraints:
 - Do not broaden this repair into page-selection/search-data redesign unless direct diagnosis proves that boundary is causal; retain current/live/commercial page selection as later work.
 
 Exact next action:
-Run the supported P1 controller in non-product `-AuditOnly` mode on Chris's Windows VS Code PowerShell environment. It must pass the PowerShell/controller self-test, P1 autorun contract regression, permanent deterministic gate regression including frozen-history mutation/revert proofs, and recovery preflight without starting Codex or changing application behavior. Only after that PASS may the same supported wrapper be launched without `-AuditOnly` to resume autonomous P1 Builder execution.
+Launch the supported P1 unattended Builder controller on Chris's Windows VS Code PowerShell environment **without** `-AuditOnly`:
+
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\prysm\START-PRYSM-P-AUTORUN.ps1 -P P1`
+
+The controller must preserve the certified dirty P1 repair state, journal each fresh Codex Builder transaction, enforce the bounded P1 seam and frozen-history rules, continue autonomously while Builder remains the actor, and stop only at a true blocker/protected boundary, usage limit/controller failure, three-attempt same-root limit, or deterministic `READY_FOR_BRAD` handoff.
 
 Last verified:
 2026-09-05
