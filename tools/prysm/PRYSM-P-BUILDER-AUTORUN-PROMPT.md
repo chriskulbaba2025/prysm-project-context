@@ -51,6 +51,20 @@ Builder must not modify, regenerate, or bypass the P# autorun control plane duri
 
 If product work appears to require changing the controller itself, return `BLOCKED` with the exact process defect. Do not self-modify the execution system that is currently governing you.
 
+## Frozen evidence / no rewritten history
+
+The failed P1 candidate and Brad FAIL review remain historical evidence. They must stay reproducible and unchanged.
+
+For reopened P1:
+
+- never edit any existing bound P1 evidence file from the failed candidate/reopen authorization chain;
+- never overwrite or regenerate `proof/P1/rendered/*` in place;
+- create new reopened rendered proof only under `proof/P1/reopen/`;
+- create new versioned P1 technical/system/candidate/render proof files rather than changing old dated evidence;
+- only after new proof is complete may `P1_EXECUTION_GATE.env` be intentionally rebound to the new evidence/candidate for `OUTCOME_REVIEW`.
+
+The controller independently rejects a transaction that modifies frozen P1 history, even if the final file content appears to have been restored later.
+
 ## Continuous Builder rule
 
 The owner has authorized continuous execution through Builder-owned `DIAGNOSTIC_TRUTH` and `BOUNDED_BUILD` work for the active P#.
@@ -86,11 +100,11 @@ When and only when all required Builder-owned repair and proof are complete:
 - repaired application candidate is coherently committed and pushed on the governed P# branch;
 - focused regression is green;
 - full P# deterministic verification is green;
-- affected rendered scenarios/proof are regenerated and verified;
+- affected rendered scenarios/proof are regenerated and verified in the new reopened proof namespace;
 - manifest/hash/scenario mapping proof is trustworthy and green where applicable;
 - broader required regression is green;
 - application worktree is clean and exact candidate identity is auditable;
-- required new technical/system/render proof is durable;
+- required new technical/system/render proof is durable and versioned;
 - `${P}_EXECUTION_GATE.env` is intentionally rebound to the repaired exact application candidate and advanced to `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
 - `CURRENT_STATE.md` is synchronized to `OUTCOME_REVIEW` with authorized actor Brad;
 - governance is committed, pushed, clean, and synchronized;
