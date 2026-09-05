@@ -41,6 +41,22 @@ $ProtectedGovernancePaths = @(
     'PRYSM_PERMANENT_MEMORY.md'
 )
 
+$P1FrozenGovernancePaths = @(
+    'P1_OUTCOME_CONTRACT_2026-09-04.md',
+    'P1_BRAD_DISPOSITION_REVIEW_2026-09-04_132656.md',
+    'P1_APPROVAL_ATTESTATION_2026-09-04.md',
+    'P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_140031.md',
+    'P1_DIAGNOSTIC_TRUTH_REOPEN_2026-09-05.md',
+    'P1_BETTY_PRE_REPAIR_BLIND_SPOT_REVIEW_R2_2026-09-04_1506.md',
+    'P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md',
+    'P1_BRAD_OUTCOME_REVIEW_2026-09-05.md',
+    'P1_TECHNICAL_PROOF_2026-09-04.md',
+    'P1_SYSTEM_PROOF_2026-09-04.md',
+    'P1_CANDIDATE_FREEZE_2026-09-04.md',
+    'P1_RENDERED_PRODUCT_PROOF_2026-09-04.md',
+    'P1_RENDERED_SCENARIO_MATRIX_2026-09-04.md'
+)
+
 function Resolve-RequiredPath {
     param([string]$Path,[string]$Label)
     if ([string]::IsNullOrWhiteSpace($Path) -or -not (Test-Path -LiteralPath $Path)) { throw "$Label does not exist: $Path" }
@@ -142,7 +158,7 @@ function Get-TransactionChangedPaths {
     param([string]$Repo,[string]$PreHead,[string]$PostHead)
     $paths = @()
     if (-not [string]::IsNullOrWhiteSpace($PreHead) -and -not [string]::IsNullOrWhiteSpace($PostHead) -and $PreHead -ne $PostHead) {
-        foreach ($path in (& git -C $Repo diff --name-only $PreHead $PostHead)) {
+        foreach ($path in (& git -C $Repo log --format= --name-only "$PreHead..$PostHead")) {
             if (-not [string]::IsNullOrWhiteSpace($path)) { $paths += $path.Replace('\','/') }
         }
     }
@@ -167,13 +183,7 @@ function Get-RepoFingerprint {
         $untracked += "$path=$hash"
     }
     $payload = "branch=$branch`nhead=$head`nstatus=$status`ntracked=$trackedDiff`nuntracked=$($untracked -join "`n")"
-    return [pscustomobject]@{
-        branch = $branch
-        head = $head
-        status = $status
-        changedPaths = @(Get-ChangedPaths $Repo)
-        sha256 = Get-StringSha256 $payload
-    }
+    return [pscustomobject]@{branch=$branch;head=$head;status=$status;changedPaths=@(Get-ChangedPaths $Repo);sha256=(Get-StringSha256 $payload)}
 }
 
 function Get-ControlPlaneFingerprint {
@@ -233,8 +243,7 @@ function Send-DesktopNotification {
 function Send-TerminalNotification {
     param(
         [ValidateSet('READY_FOR_BRAD','BLOCKED','CONTROLLER_FAILURE')][string]$Kind,
-        [string]$ApplicationSha='UNBOUND',[string]$GovernanceSha='UNBOUND',
-        [string]$Reason='',[string]$NextAction='',[string]$RunLog=''
+        [string]$ApplicationSha='UNBOUND',[string]$GovernanceSha='UNBOUND',[string]$Reason='',[string]$NextAction='',[string]$RunLog=''
     )
     if ($Kind -eq 'READY_FOR_BRAD') {
         Send-DesktopNotification -Title "PRYSM $P READY FOR BRAD" -Level 'Info' -Message "Application SHA: $ApplicationSha`nGovernance SHA: $GovernanceSha`nDeterministic Brad handoff gate: PASS`nNext actor: Brad"
@@ -269,9 +278,7 @@ function Assert-CurrentStateStage {
     if ($text -match '(?m)^- Current stage:\s+([A-Z_]+)\s*$') {
         if ($Matches[1] -ne $ExpectedStage) { throw "CURRENT_STATE current stage is $($Matches[1]), expected $ExpectedStage." }
     } else { throw 'CURRENT_STATE.md does not contain an exact Current stage line.' }
-    if (-not [string]::IsNullOrWhiteSpace($ExpectedActorPattern) -and $text -notmatch "(?m)^- Authorized actor:\s+.*$ExpectedActorPattern.*$") {
-        throw "CURRENT_STATE.md does not authorize expected actor pattern $ExpectedActorPattern."
-    }
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedActorPattern) -and $text -notmatch "(?m)^- Authorized actor:\s+.*$ExpectedActorPattern.*$") { throw "CURRENT_STATE.md does not authorize expected actor pattern $ExpectedActorPattern." }
 }
 
 function Invoke-OfficialGate {
@@ -313,12 +320,19 @@ function Assert-ControlPlaneUnmodified {
 function Read-JsonFile {
     param([string]$Path)
     if (-not (Test-Path -LiteralPath $Path)) { return $null }
-    try { return (Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json) } catch { return $null }
+    try { return (Get-Content -LiteralPath $Path -Raw | ConvertFrom-Json) }
+    catch { throw "P-scoped local state is corrupt and will not be silently reset: $Path" }
 }
 
 function Write-JsonFile {
     param([string]$Path,$Value)
-    $Value | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $Path -Encoding UTF8
+    $temp = "$Path.tmp.$PID"
+    try {
+        $Value | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $temp -Encoding UTF8
+        Move-Item -LiteralPath $temp -Destination $Path -Force
+    } finally {
+        Remove-Item -LiteralPath $temp -Force -ErrorAction SilentlyContinue
+    }
 }
 
 function Test-P1ApplicationBoundary {
@@ -338,10 +352,12 @@ function Test-P1ApplicationBoundary {
 function Test-P1GovernanceBoundary {
     param([string[]]$Paths)
     foreach ($path in $Paths) {
+        if ($P1FrozenGovernancePaths -contains $path) { return $false }
+        if ($path -like 'proof/P1/rendered/*') { return $false }
         $ok = $false
         if ($path -eq 'CURRENT_STATE.md' -or $path -eq 'P1_EXECUTION_GATE.env') { $ok = $true }
         elseif ($path -like 'P1_*') { $ok = $true }
-        elseif ($path -like 'proof/P1/*') { $ok = $true }
+        elseif ($path -like 'proof/P1/reopen/*') { $ok = $true }
         if (-not $ok) { return $false }
     }
     return $true
@@ -349,19 +365,16 @@ function Test-P1GovernanceBoundary {
 
 function Assert-P1TransactionBoundary {
     param([string]$AppRepo,[string]$GovernanceRepo,$PreApp,$PostApp,$PreGov,$PostGov)
-    if ($P -ne 'P1') { return }
     $appPaths = @(Get-TransactionChangedPaths -Repo $AppRepo -PreHead ([string]$PreApp.head) -PostHead ([string]$PostApp.head))
     if (-not (Test-P1ApplicationBoundary -Paths $appPaths)) { throw "P1 application transaction escaped the authorized seam: $($appPaths -join ', ')" }
     $govPaths = @(Get-TransactionChangedPaths -Repo $GovernanceRepo -PreHead ([string]$PreGov.head) -PostHead ([string]$PostGov.head))
-    if (-not (Test-P1GovernanceBoundary -Paths $govPaths)) { throw "P1 governance transaction escaped the authorized seam: $($govPaths -join ', ')" }
+    if (-not (Test-P1GovernanceBoundary -Paths $govPaths)) { throw "P1 governance transaction modified frozen/history or escaped the authorized seam: $($govPaths -join ', ')" }
 }
 
 function JournalMatchesFingerprint {
     param($Journal,[string]$Side,[string]$Fingerprint)
     if ($null -eq $Journal) { return $false }
-    $node = $null
-    if ($Side -eq 'Application') { $node = $Journal.postApplication }
-    if ($Side -eq 'Governance') { $node = $Journal.postGovernance }
+    $node = if ($Side -eq 'Application') { $Journal.postApplication } else { $Journal.postGovernance }
     if ($null -eq $node) { return $false }
     return ([string]$node.sha256 -eq $Fingerprint)
 }
@@ -374,7 +387,6 @@ function Get-GovernanceRecovery {
     $local = Get-GitHead $GovernanceRepo
     $remote = ((& git -C $GovernanceRepo rev-parse origin/main).Trim())
     $fingerprint = Get-RepoFingerprint $GovernanceRepo
-
     if ($local -eq $remote -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'GOV_SYNCED' }
     if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status) -and (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $local -Descendant $remote)) {
         & git -C $GovernanceRepo pull --ff-only origin main | Out-Null
@@ -385,7 +397,6 @@ function Get-GovernanceRecovery {
     $anchorGov = [string]$Anchor.governanceShaAtEntry
     if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $anchorGov -Descendant $local)) { throw 'Governance local HEAD is outside the recorded P# entry lineage.' }
     if (-not (Test-GitAncestor -Repo $GovernanceRepo -Ancestor $remote -Descendant $local)) { throw "Governance origin/main is not an ancestor of local recovery state. Local=$local Remote=$remote" }
-
     if (JournalMatchesFingerprint -Journal $Journal -Side 'Governance' -Fingerprint $fingerprint.sha256) {
         if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'GOV_JOURNALED_CLEAN_RECOVERY' }
         return 'GOV_JOURNALED_DIRTY_RECOVERY'
@@ -405,29 +416,24 @@ function Get-ApplicationRecovery {
     $origin = ((& git -C $AppRepo rev-parse "origin/$branch").Trim())
     $fingerprint = Get-RepoFingerprint $AppRepo
     $gateSha = [string]$Gate['APPLICATION_SHA']
-
     if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $gateSha -Descendant $head)) { throw "Application HEAD is outside the gated lineage. HEAD=$head Gate=$gateSha" }
     if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $gateSha -Descendant $origin)) { throw "origin/$branch is outside the gated lineage. Origin=$origin Gate=$gateSha" }
-
     if ($head -eq $gateSha -and $origin -eq $gateSha -and [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'APP_EXACT_GATE_CLEAN' }
     if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status) -and (Test-GitAncestor -Repo $AppRepo -Ancestor $head -Descendant $origin)) {
         & git -C $AppRepo pull --ff-only origin $branch | Out-Null
         if ($LASTEXITCODE -ne 0) { throw 'Application fast-forward recovery failed.' }
         return 'APP_FAST_FORWARDED_DESCENDANT'
     }
-
     if ($null -eq $Anchor) {
-        if ($P -eq 'P1' -and $head -eq $gateSha -and $origin -eq $gateSha -and -not [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) {
+        if ($head -eq $gateSha -and $origin -eq $gateSha -and -not [string]::IsNullOrWhiteSpace([string]$fingerprint.status)) {
             $paths = @(Get-ChangedPaths $AppRepo)
             if (-not (Test-P1ApplicationBoundary -Paths $paths)) { throw "Initial dirty P1 worktree contains paths outside the reopened repair seam: $($paths -join ', ')" }
             return 'APP_P1_INITIAL_DIRTY_ADOPTION'
         }
         throw 'Application continuation differs from the gate without a verified P# entry anchor.'
     }
-
     if ([string]$Anchor.p -ne $P -or [string]$Anchor.applicationBranch -ne $branch -or [string]$Anchor.baseGateSha -ne $gateSha) { throw 'P# entry anchor does not match the active application gate.' }
     if (-not (Test-GitAncestor -Repo $AppRepo -Ancestor $origin -Descendant $head)) { throw "Application local branch diverged from or fell behind origin/$branch. Local=$head Origin=$origin" }
-
     if ($fingerprint.sha256 -eq [string]$Anchor.applicationFingerprintAtEntry) { return 'APP_ANCHORED_ENTRY_RECOVERY' }
     if (JournalMatchesFingerprint -Journal $Journal -Side 'Application' -Fingerprint $fingerprint.sha256) {
         if ([string]::IsNullOrWhiteSpace([string]$fingerprint.status)) { return 'APP_JOURNALED_CLEAN_RECOVERY' }
@@ -450,7 +456,6 @@ function Sync-LoopLineage {
             if ($LASTEXITCODE -ne 0) { throw 'Governance loop fast-forward failed.' }
         } else { throw 'Governance origin moved outside the active local transaction lineage.' }
     }
-
     $branch = Get-GitBranch $AppRepo
     & git -C $AppRepo fetch origin $branch | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Application fetch failed during loop.' }
@@ -475,7 +480,6 @@ function Assert-ReadyForBrad {
     if (-not [bool]$Result.github_state_synced) { throw 'READY claim requires github_state_synced=true.' }
     if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $AppRepo))) { throw 'Application tree is not clean at READY_FOR_BRAD.' }
     if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $GovernanceRepo))) { throw 'Governance tree is not clean at READY_FOR_BRAD.' }
-
     & git -C $GovernanceRepo fetch origin main | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Governance fetch failed at readiness check.' }
     if ((Get-GitHead $GovernanceRepo) -ne ((& git -C $GovernanceRepo rev-parse origin/main).Trim())) { throw 'Governance is not synchronized with origin/main at readiness.' }
@@ -483,7 +487,6 @@ function Assert-ReadyForBrad {
     $gateNow = Read-EnvFile $gatePath
     if ([string]$gateNow['AUTHORIZED_STAGE'] -ne 'OUTCOME_REVIEW') { throw 'P gate has not been advanced to OUTCOME_REVIEW.' }
     Assert-CurrentStateStage -GovernanceRepo $GovernanceRepo -ExpectedStage 'OUTCOME_REVIEW' -ExpectedActorPattern 'BRAD'
-
     $branch = Get-GitBranch $AppRepo
     & git -C $AppRepo fetch origin $branch | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Application fetch failed at readiness check.' }
@@ -500,7 +503,6 @@ function Apply-RepairAccounting {
     $returnedRoot = Normalize-RootId ([string]$Result.root_defect_id)
     $failureClass = [string]$Result.failure_class
     $currentRoot = [string]$RootDefectId.Value
-
     if ($failureClass -eq 'NEW_ROOT_CAUSE') {
         if ($returnedRoot -eq 'NONE') { throw 'NEW_ROOT_CAUSE requires a non-NONE root_defect_id.' }
         if ($currentRoot -ne 'NONE' -and $returnedRoot -eq $currentRoot) { throw 'NEW_ROOT_CAUSE must identify a materially new root_defect_id.' }
@@ -567,6 +569,10 @@ if ($SelfTest) {
     exit 0
 }
 
+if ($P -ne 'P1') {
+    throw "This controller version has explicit transaction-scope enforcement only for P1. Define and regress a P-scoped allowlist/frozen-evidence contract before using it for $P."
+}
+
 $AppRepo = Resolve-RequiredPath $AppRepo 'Application repository'
 $GovernanceRepo = Resolve-RequiredPath $GovernanceRepo 'Governance repository'
 Assert-GitRepo -Path $AppRepo -Label 'Application repository'
@@ -628,6 +634,13 @@ try {
 
     $appRecovery = Get-ApplicationRecovery -Gate $gate -AppRepo $AppRepo -Anchor $anchor -Journal $journal
     $recoveryMode = "$govRecovery/$appRecovery"
+
+    if ($null -ne $anchor) {
+        $cumulativeApp = @(Get-TransactionChangedPaths -Repo $AppRepo -PreHead ([string]$anchor.applicationShaAtEntry) -PostHead (Get-GitHead $AppRepo))
+        if (-not (Test-P1ApplicationBoundary -Paths $cumulativeApp)) { throw "Recovered application lineage contains out-of-scope paths: $($cumulativeApp -join ', ')" }
+        $cumulativeGov = @(Get-TransactionChangedPaths -Repo $GovernanceRepo -PreHead ([string]$anchor.governanceShaAtEntry) -PostHead (Get-GitHead $GovernanceRepo))
+        if (-not (Test-P1GovernanceBoundary -Paths $cumulativeGov)) { throw "Recovered governance lineage modified frozen/history or out-of-scope paths: $($cumulativeGov -join ', ')" }
+    }
 
     if ($null -eq $anchor -and -not $PreflightOnly) {
         if ($appRecovery -eq 'APP_EXACT_GATE_CLEAN') { Invoke-OfficialGate -Bash $Bash -ExpectedStage ([string]$gate['AUTHORIZED_STAGE']) -ExpectedActor 'BUILDER' | Out-Null }
@@ -771,6 +784,7 @@ CONTROLLER RULES
 - A normal end-of-turn is never a workflow stop.
 - Do not route to Auditor/Betty. Brad is the next human boundary.
 - Do not edit the autorun controller, wrapper, schema, permanent memory, or autorun governance decision.
+- Never modify existing bound/frozen P1 evidence or `proof/P1/rendered/*`; create new versioned evidence and new rendered proof under `proof/P1/reopen/` and then rebind intentionally.
 - Claim READY_FOR_BRAD only after proof is green, application/governance are committed, pushed, clean, and P# governance is advanced to OUTCOME_REVIEW.
 - READY_FOR_BRAD is independently rejected unless the official PRYSM gate passes for Authorized actor: BRAD.
 - Preserve and reconcile incomplete local checkpoints; never discard them.
