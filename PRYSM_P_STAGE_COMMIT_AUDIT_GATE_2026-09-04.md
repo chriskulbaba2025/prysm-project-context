@@ -6,52 +6,117 @@ Applies to: P1-P10 and every material P# micro-tranche
 
 ## Purpose
 
-Prevent PRYSM from executing a P# stage merely because someone says the preceding review happened.
+Prevent PRYSM from advancing on claimed, stale, uncommitted, contradictory, or weak evidence while also preventing duplicate gate logic from creating false blockers and stop/start loops.
 
-Every material stage transition must be backed by committed, auditable evidence in the authoritative governance repository before the next governed execution command may run.
+The governing sequence is:
 
-The operating rule is:
-
-`CREATE OUTCOME -> INDEPENDENT REVIEW/APPROVAL -> COMMIT -> PRE-EXECUTION AUDIT -> DISPOSITION MATERIAL FINDINGS -> INDEPENDENT PRESERVATION REVIEW -> RERUN AUDIT UNTIL ZERO MATERIAL BLOCKERS -> EXECUTION GATE -> RUN AUTHORIZED P# STAGE`
+`CREATE OUTCOME -> REQUIRED INDEPENDENT REVIEW/AUDIT -> COMMIT -> RESOLVE MATERIAL FINDINGS -> COMMIT -> BIND EXACT EVIDENCE -> DETERMINISTIC EXECUTION GATE -> ONE AUTHORIZED ACTOR/STAGE -> NEXT REQUIRED REVIEW`
 
 This rule is additive to `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`.
 
+## Single-authority gate rule
+
+**The deterministic launcher is the sole authority for machine-verifiable gate facts.**
+
+Machine-verifiable facts include:
+- repository cleanliness;
+- governance branch and synchronization with `origin/main`;
+- active P# and authorized stage;
+- manifest field presence;
+- evidence commit existence and ancestry;
+- evidence-file existence at the recorded commit;
+- current evidence blob equality to the recorded bound blob;
+- required literal verdict/approval/count lines;
+- exact application branch and SHA;
+- exact candidate SHA binding;
+- required rendered-proof manifest/scenario bindings.
+
+After the deterministic launcher reports `PRYSM PROCESS GATE PASS`, no ChatGPT/Codex/Brad/Betty prompt may run a second open-ended process-gate audit that re-decides those same Git/manifest facts.
+
+If an agent later obtains **new direct evidence** that state changed after launch, it may report `PRYSM STAGE EVIDENCE CONFLICT` with that exact evidence. It may not invent or infer a stale-manifest failure contrary to the deterministic gate.
+
 ## Hard rule
 
-No governed P# execution may start unless the launcher proves all prerequisites for the authorized stage are durably committed on `origin/main`.
+No governed P# stage may start unless the launcher proves all prerequisites for the authorized stage are durably committed on `origin/main` and the exact application candidate is synchronized.
 
-Local files, chat text, terminal output, an uncommitted audit, or a claimed PASS are not sufficient for a new stage transition.
+Local files, chat text, terminal output, uncommitted evidence, or a claimed PASS are insufficient.
 
-A required review/audit counts only when:
+Failure of a deterministic check is fail-closed and must identify the exact failing condition before any stage work begins.
 
-1. its evidence file exists in the governance repository;
-2. the evidence file records its required verdict;
-3. the commit containing that evidence is recorded in the P# execution gate manifest;
-4. that commit is an ancestor of current `origin/main`;
-5. the file exists at that recorded commit;
-6. `CURRENT_STATE.md` agrees on the active P# and authorized stage;
-7. the local governance tree is clean and exactly synchronized with `origin/main` before execution.
+## Bound-evidence immutability rule
 
-Failure of any check is fail-closed: the launcher must stop before Codex execution.
+Once a `FILE` / `COMMIT` pair is recorded in `P#_EXECUTION_GATE.env`, that evidence file is an immutable stage prerequisite.
+
+Do not append later history, status, commentary, or process notes to that bound file merely because the program progressed. Put later state in `CURRENT_STATE.md` or a new versioned evidence file.
+
+If the evidence itself materially needs correction:
+1. create a new versioned evidence file or explicitly reopen the evidence stage;
+2. perform any review/audit required by that semantic change;
+3. commit and verify it;
+4. rebind the manifest once to the new evidence;
+5. do not silently mutate the old bound evidence in place.
+
+This preserves the value of exact commit binding without creating routine self-inflicted staleness.
 
 ## Contract-to-execution launch gate
 
-Before the first P# execution stage (`DIAGNOSTIC_TRUTH`) may run, the following sequence is mandatory:
+Before `DIAGNOSTIC_TRUTH`, require committed and bound:
+1. Outcome Contract;
+2. Brad review/preservation review as applicable;
+3. Chris approval evidence;
+4. independent pre-execution audit with exactly one `Verdict: PASS`, `Unresolved CRITICAL: 0`, and `Unresolved MAJOR: 0`;
+5. exact application branch/SHA;
+6. `CURRENT_STATE.md` authorizing `DIAGNOSTIC_TRUTH`.
 
-1. Chris creates the P# Outcome Contract.
-2. Brad independently reviews the contract.
-3. Any material review finding is dispositioned and the contract is revised.
-4. Required human/adversarial approval occurs.
-5. The contract, review, and approval evidence are committed and verified.
-6. A separate independent pre-execution process audit challenges the committed package for false-PASS seams, narrowed acceptance criteria, hidden dependencies, missing client-visible proof, provenance gaps, and contradictory governance state.
-7. Every CRITICAL/MAJOR finding is explicitly dispositioned as `ACCEPT`, `REJECT WITH EVIDENCE`, or `DEFER AS NON-MATERIAL`.
-8. Accepted findings are actually resolved in the governed package.
-9. Brad checks that the dispositions/amendments still preserve the approved P# outcome and do not create unnecessary scope expansion.
-10. The independent pre-execution audit is rerun against the new exact governance HEAD.
-11. The rerun must report `Verdict: PASS`, `Unresolved CRITICAL: 0`, and `Unresolved MAJOR: 0`.
-12. All evidence is committed and verified on authoritative `origin/main`.
-13. A P# execution-gate manifest records the exact evidence files, exact evidence commits, authorized stage, exact application branch, and exact application SHA.
-14. Only then may the generic governed launcher enter `DIAGNOSTIC_TRUTH`.
+The semantic quality challenge occurs **before manifest binding** through the independent committed review/audit artifacts. It is not re-run by a second AI gate at launcher startup.
+
+## Before BOUNDED_BUILD
+
+In addition to the contract gate, require committed and bound:
+- Diagnostic Truth classified `VERIFIED_ROOT_CAUSE` or `VERIFIED_DESIGN_GAP`;
+- Betty pre-repair audit PASS with zero unresolved CRITICAL/MAJOR;
+- Chris bounded-repair authorization.
+
+The Builder then performs only the authorized repair. The launcher does not ask the Builder to re-audit the process gate.
+
+## Before OUTCOME_REVIEW
+
+In addition to the build gate, require committed and bound:
+- technical proof;
+- system proof;
+- exact candidate freeze;
+- rendered/product proof;
+- scenario-to-obligation matrix;
+- rendered proof manifest;
+- candidate application SHA exactly equal to the gate `APPLICATION_SHA`.
+
+`OUTCOME_REVIEW` is owned by **Brad**. When this deterministic gate passes, Chris stops and hands the frozen candidate to Brad. The launcher must not route `OUTCOME_REVIEW` to Builder/Codex as a substitute for Brad.
+
+## Before CLOSURE
+
+In addition to the outcome-review gate, require committed and bound:
+- Brad outcome review PASS;
+- Betty final audit PASS with zero unresolved CRITICAL/MAJOR;
+- Chris closure authorization `APPROVE AND ADVANCE`.
+
+Closure then performs durable state recording only. It must not begin the next P# until the closure state commit is verified.
+
+## Stage actor routing
+
+The stage owner is deterministic:
+
+- `DIAGNOSTIC_TRUTH` -> `BUILDER`
+- `BOUNDED_BUILD` -> `BUILDER`
+- `OUTCOME_REVIEW` -> `BRAD`
+- `CLOSURE` -> `CHRIS` / durable state closure
+
+The launcher must print the authorized actor. A stage may not be silently performed by a different role merely because that agent is already open.
+
+## Codex requirement scope
+
+Codex CLI is required only for Builder-owned stages that actually launch the Builder.
+
+A Chris-to-Brad handoff, Brad review gate, or closure handoff must not fail because Codex is absent from PATH. The Windows PowerShell wrapper therefore may discover Codex opportunistically but must not pre-require it before the stage is known.
 
 ## P1 historical-approval transition rule
 
@@ -63,84 +128,58 @@ For P1 only, Chris may memorialize that historical fact through an explicit owne
 - does not claim later audit-driven amendments were reviewed by Betty unless they actually were;
 - is followed by Brad preservation review and a fresh independent pre-execution audit before diagnosis.
 
-This is a one-time transition accommodation for truthful historical state. It is not a precedent for future P# approvals.
-
-For P2 and later, required approval/review evidence must be durably recorded as part of the stage in which it occurs. Chat-only approval cannot satisfy a future stage gate.
+This is a one-time transition accommodation. P2 and later require durable review/approval evidence in the stage where it occurs.
 
 ## Continuous stage auditing
 
-This is not a one-time launch check.
+This is not a one-time gate. Before every material stage, bind the evidence produced by the previous completed stage and run the deterministic launcher again.
 
-Before every later material P# stage, the same pattern repeats:
+The pattern is:
 
-`PREVIOUS STAGE EVIDENCE -> REQUIRED INDEPENDENT REVIEW/AUDIT -> CHRIS AUTHORIZATION WHEN REQUIRED -> COMMIT -> VERIFY -> UPDATE EXECUTION GATE -> RUN NEXT STAGE`
+`PREVIOUS STAGE EVIDENCE -> REQUIRED HUMAN/INDEPENDENT REVIEW -> COMMIT -> BIND -> DETERMINISTIC GATE -> ONE AUTHORIZED STAGE`
 
-The generic launcher must be used again for each authorized material stage. The execution-gate manifest is updated only after the previous stage has been audibly closed and committed.
-
-Examples:
-
-- before `DIAGNOSTIC_TRUTH`: approved outcome contract + Brad review/preservation review + durable approval evidence + independent pre-execution audit PASS with zero unresolved CRITICAL/MAJOR;
-- before `BOUNDED_BUILD`: committed diagnosis + Betty pre-repair audit + Chris bounded-repair authorization;
-- before final closure review: committed technical/system proof + exact-candidate freeze + product/render artifact provenance;
-- before P# -> next P#: committed Brad outcome review + Betty final audit + Chris closure + verified `CURRENT_STATE.md`.
+Do **not** add another free-form startup audit between deterministic PASS and the authorized stage.
 
 ## Required machine-readable execution gate
 
-Each active P# must have one gate file:
+Each active P# has one root file:
 
 `P#_EXECUTION_GATE.env`
 
-For example:
+The template is `tools/prysm/P_EXECUTION_GATE_TEMPLATE.env`.
 
-`P1_EXECUTION_GATE.env`
+Every stage-specific required field in the template is mandatory when that stage is authorized. The launcher fails closed on missing or placeholder values.
 
-Minimum fields before `DIAGNOSTIC_TRUTH`:
+## Current-state rule
 
-```text
-P_ID=P1
-AUTHORIZED_STAGE=DIAGNOSTIC_TRUTH
-APPLICATION_BRANCH=main
-APPLICATION_SHA=<exact 40-character application SHA>
-CONTRACT_FILE=P1_OUTCOME_CONTRACT_2026-09-04.md
-CONTRACT_COMMIT=<governance commit containing current contract>
-BRAD_REVIEW_FILE=P1_BRAD_DISPOSITION_REVIEW_2026-09-04_HHMMSS.md
-BRAD_REVIEW_COMMIT=<governance commit containing current Brad review>
-BRAD_VERDICT=PASS
-APPROVAL_FILE=P1_APPROVAL_ATTESTATION_2026-09-04.md
-APPROVAL_COMMIT=<governance commit containing valid approval evidence>
-CHRIS_APPROVAL=APPROVED
-PRE_EXECUTION_AUDIT_FILE=P1_PRE_EXECUTION_PROCESS_AUDIT_2026-09-04_HHMMSS.md
-PRE_EXECUTION_AUDIT_COMMIT=<governance commit containing fresh independent audit>
-PRE_EXECUTION_AUDIT_VERDICT=PASS
-```
+`CURRENT_STATE.md` must identify:
+- the active P#;
+- exact current stage;
+- exact authorized execution stage;
+- exact next actor/action.
 
-Later stages add the stage-specific evidence fields defined by `tools/prysm/P_EXECUTION_GATE_TEMPLATE.env`. The launcher and Codex must fail closed if the manifest does not prove the prerequisites for the requested stage.
+The launcher verifies P# and stage identity. It does not require platform-specific command text to appear as a hidden proxy for stage authorization.
 
-## Audit-of-the-process requirement
+## Regression-test rule
 
-At startup Codex must not merely trust the gate manifest. It must read the committed prerequisite evidence and independently confirm that:
+Any change to the launcher, gate binding rules, stage routing, or Codex handoff must pass:
 
-- the required reviews actually address their mandated questions;
-- the recorded verdict matches the evidence content;
-- no unresolved CRITICAL/MAJOR issue is hidden by the manifest;
-- accepted findings were actually resolved rather than relabeled;
-- `CURRENT_STATE.md` and the manifest do not contradict each other;
-- the stage being launched is the exact next authorized stage.
+`bash tools/prysm/test-prysm-gate-contract.sh`
 
-If that process audit fails, Codex must STOP and report `PRYSM PROCESS GATE FAIL` without diagnosis, coding, or advancement.
+The permanent regression suite must prove at minimum:
+- valid OUTCOME_REVIEW can pass without Codex;
+- real bound-evidence mutation fails;
+- required rendered-proof bindings are enforced;
+- candidate identity mismatch fails;
+- Builder receives a stage-only prompt after deterministic PASS;
+- non-Builder stages do not pre-require Codex.
 
-## Commit-first rule
-
-No uncommitted artifact may satisfy a P# stage gate.
-
-If work is complete but not committed and verified, the stage remains incomplete.
-
-If an evidence file changes after its recorded gate commit, the gate is stale and must be regenerated from newly committed evidence.
+A launcher/process change is not complete until this test is green.
 
 ## Advancement rule
 
-The only permitted stage transition is:
+The only permitted transition is:
 
-`REQUIRED EVIDENCE COMPLETE + REQUIRED AUDIT COMPLETE + REQUIRED HUMAN APPROVAL COMPLETE + GITHUB COMMIT VERIFIED + PROCESS GATE VERIFIED`
+`REQUIRED EVIDENCE COMPLETE + REQUIRED REVIEW COMPLETE + REQUIRED HUMAN APPROVAL COMPLETE + GITHUB COMMIT VERIFIED + DETERMINISTIC PROCESS GATE PASS + CORRECT ACTOR`
 
-No terminal command, Codex result, technical PASS, or verbal approval can bypass this rule.
+No verbal approval, AI re-audit, technical PASS, or terminal text may bypass or contradict a deterministic gate result without new direct evidence.
