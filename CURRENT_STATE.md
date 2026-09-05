@@ -19,6 +19,8 @@ Verified checkpoint:
 - Chris decision: `REOPEN SAME P#`.
 - Authorized stage: `DIAGNOSTIC_TRUTH`.
 - Authorized actor: `BUILDER/Codex`.
+- Current stage: DIAGNOSTIC_TRUTH
+- Authorized execution stage: DIAGNOSTIC_TRUTH
 - Permanent operating sequence: `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> COLLECT OBSERVATIONS -> WRITE EVIDENCE ONCE -> BIND ONCE -> NEXT ACTOR`.
 - Governing review discipline: `DECISION_PRYSM_RENDERED_OUTCOME_REVIEW_DISCIPLINE_2026-09-05.md`.
 
