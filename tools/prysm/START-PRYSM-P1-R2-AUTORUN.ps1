@@ -23,7 +23,7 @@ $FrozenGuard = Join-Path $ScriptRoot 'assert-p1-frozen-history.sh'
 $GateRegression = Join-Path $ScriptRoot 'test-prysm-gate-contract.sh'
 $BuilderPromptPath = Join-Path $ScriptRoot 'PRYSM-P-BUILDER-AUTORUN-PROMPT.md'
 $SchemaPath = Join-Path (Split-Path -Parent $ScriptRoot) 'autorun\PRYSM-AUTORUN-RESULT.schema.json'
-$AuthorizationPath = Join-Path $GovernanceRepo 'proof\P1\reopen\P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md'
+$AuthorizationPath = Join-Path $GovernanceRepo 'proof\P1\reopen\P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md'
 $AccountingBaselinePath = Join-Path $GovernanceRepo 'proof\P1\reopen\P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md'
 
 $AllowedSourcePaths = @(
@@ -82,6 +82,24 @@ function Resolve-Codex {
     Fail 'Codex CLI Windows command shim (codex.cmd) was not found on PATH.'
 }
 
+# Windows PowerShell 5.1 converts redirected native stderr into ErrorRecord
+# objects. With ErrorActionPreference=Stop, benign native stderr (for example
+# git fetch's normal "From ..." progress line) can terminate the script before
+# LASTEXITCODE is checked. Quiet native checks must therefore lower EAP only
+# for the native invocation and use the real process exit code as authority.
+function Invoke-NativeExitCode([scriptblock]$Command,[switch]$Quiet) {
+    $old = $ErrorActionPreference
+    $exitCode = 1
+    try {
+        $ErrorActionPreference = 'Continue'
+        if ($Quiet) { & $Command *> $null } else { & $Command }
+        $exitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $old
+    }
+    return $exitCode
+}
+
 function Read-Gate {
     $values = @{}
     foreach ($line in Get-Content -LiteralPath $GatePath) {
@@ -135,8 +153,8 @@ function Get-BaselineMap([string]$Repo,[string]$Prefix) {
 
 function Assert-BaselineUnchanged([string]$Repo,[hashtable]$Baseline,[string]$Label) {
     foreach ($path in $Baseline.Keys) {
-        & git -C $Repo cat-file -e "HEAD:$path" 2>$null
-        if ($LASTEXITCODE -ne 0) { Fail "$Label pre-existing proof was deleted: $path" }
+        $nativeExit = Invoke-NativeExitCode -Command { & git -C $Repo cat-file -e "HEAD:$path" } -Quiet
+        if ($nativeExit -ne 0) { Fail "$Label pre-existing proof was deleted: $path" }
         $blob = (& git -C $Repo rev-parse "HEAD:$path").Trim()
         if ($blob -ne [string]$Baseline[$path]) { Fail "$Label pre-existing proof was modified: $path" }
         & git -C $Repo diff --quiet HEAD -- $path
@@ -147,8 +165,8 @@ function Assert-BaselineUnchanged([string]$Repo,[hashtable]$Baseline,[string]$La
 function Get-ControlPlaneMap {
     $map = @{}
     foreach ($path in $ProtectedControlPlane) {
-        & git -C $GovernanceRepo cat-file -e "HEAD:$path" 2>$null
-        if ($LASTEXITCODE -ne 0) { Fail "Protected control-plane file is missing: $path" }
+        $nativeExit = Invoke-NativeExitCode -Command { & git -C $GovernanceRepo cat-file -e "HEAD:$path" } -Quiet
+        if ($nativeExit -ne 0) { Fail "Protected control-plane file is missing: $path" }
         $map[$path] = (& git -C $GovernanceRepo rev-parse "HEAD:$path").Trim()
     }
     return $map
@@ -189,10 +207,10 @@ function Assert-CleanSynced {
     if ((Get-GitBranch $GovernanceRepo) -ne 'main') { Fail 'Governance repository must remain on main.' }
     if (-not [string]::IsNullOrWhiteSpace((Get-GitStatus $GovernanceRepo))) { Fail 'Governance worktree is not clean at a durable checkpoint.' }
 
-    & git -C $AppRepo fetch origin $branch *> $null
-    if ($LASTEXITCODE -ne 0) { Fail 'Application fetch failed.' }
-    & git -C $GovernanceRepo fetch origin main *> $null
-    if ($LASTEXITCODE -ne 0) { Fail 'Governance fetch failed.' }
+    $appFetchExit = Invoke-NativeExitCode -Command { & git -C $AppRepo fetch origin $branch } -Quiet
+    if ($appFetchExit -ne 0) { Fail 'Application fetch failed.' }
+    $govFetchExit = Invoke-NativeExitCode -Command { & git -C $GovernanceRepo fetch origin main } -Quiet
+    if ($govFetchExit -ne 0) { Fail 'Governance fetch failed.' }
 
     $appRemote = (& git -C $AppRepo rev-parse "origin/$branch").Trim()
     $govRemote = (& git -C $GovernanceRepo rev-parse origin/main).Trim()
@@ -242,17 +260,18 @@ Assert-CleanSynced
 $gate = Read-Gate
 if ([string]$gate['AUTHORIZED_STAGE'] -ne 'BOUNDED_BUILD') { Fail "Expected BOUNDED_BUILD, found $($gate['AUTHORIZED_STAGE'])." }
 if ([string]$gate['DIAGNOSTIC_FILE'] -ne 'proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md') { Fail 'Gate is not bound to the R2 diagnostic.' }
-if ([string]$gate['REPAIR_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md') { Fail 'Gate is not bound to the R2 repair authorization.' }
+if ([string]$gate['REPAIR_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md') { Fail 'Gate is not bound to the original R2 repair authorization.' }
+if ([string]$gate['R2_EXECUTION_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md') { Fail 'Gate is not bound to the R2 V2 execution authorization.' }
 
 $authorization = Get-Content -LiteralPath $AuthorizationPath -Raw
-if ($authorization -notmatch [regex]::Escape($RootDefectId)) { Fail 'R2 authorization does not bind the expected stable root.' }
-if ($authorization -notmatch 'Decision: APPROVED') { Fail 'R2 authorization is not APPROVED.' }
+if ($authorization -notmatch [regex]::Escape($RootDefectId)) { Fail 'R2 V2 authorization does not bind the expected stable root.' }
+if ($authorization -notmatch 'Decision: APPROVED') { Fail 'R2 V2 authorization is not APPROVED.' }
 
-& $Bash $FrozenGuard
-if ($LASTEXITCODE -ne 0) { Fail 'Frozen-history guard failed.' }
+$frozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard }
+if ($frozenExit -ne 0) { Fail 'Frozen-history guard failed.' }
 
-& $Bash $GateRegression
-if ($LASTEXITCODE -ne 0) { Fail 'Permanent PRYSM gate regression failed.' }
+$regressionExit = Invoke-NativeExitCode -Command { & $Bash $GateRegression }
+if ($regressionExit -ne 0) { Fail 'Permanent PRYSM gate regression failed.' }
 
 $gateOutput = Invoke-OfficialGate 'BOUNDED_BUILD' 'BUILDER'
 
@@ -413,8 +432,8 @@ $(Get-Content -LiteralPath $BuilderPromptPath -Raw)
         Assert-ControlPlane $controlBaseline
         Assert-AppBoundary $preAppHead $postAppHead $appProofBaseline
         Assert-GovBoundary $preGovHead $postGovHead $govProofBaseline
-        & $Bash $FrozenGuard *> $null
-        if ($LASTEXITCODE -ne 0) { Fail 'Frozen-history verification failed after Builder execution.' }
+        $postFrozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet
+        if ($postFrozenExit -ne 0) { Fail 'Frozen-history verification failed after Builder execution.' }
 
         if ($exitCode -ne 0 -or -not (Test-Path -LiteralPath $finalPath)) {
             $allOutput = ((Get-Content $stdoutPath -Raw -ErrorAction SilentlyContinue) + "`n" + (Get-Content $stderrPath -Raw -ErrorAction SilentlyContinue))
