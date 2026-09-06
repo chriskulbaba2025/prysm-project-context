@@ -51,7 +51,6 @@ function Forbid([string]$Needle,[string]$Label='Runner') {
     if ($haystack -match [regex]::Escape($Needle)) { throw "$Label contains forbidden R2 contract text: $Needle" }
 }
 
-# Existing standard R2 runner contract.
 Require '$RootDefectId = ''P1-CROSS-REPORT-PROJECTION-RECONCILIATION'''
 Require '$InitialRepairAttempt = 1'
 Require '$ModelTerra = ''gpt-5.6-terra'''
@@ -87,7 +86,6 @@ Forbid '& git -C $AppRepo fetch origin $branch *> $null'
 Forbid '& git -C $GovernanceRepo fetch origin main *> $null'
 Forbid '& $Bash $FrozenGuard *> $null'
 
-# Public entrypoint and notification/recovery routing.
 Require '[switch]$TestNotification' 'Entry'
 Require 'function Send-DesktopNotification' 'Entry'
 Require 'System.Windows.Forms.MessageBox' 'Entry'
@@ -104,7 +102,6 @@ Require 'PRYSM P1 R2 WINDOWS PLACEMENT RECOVERY AUDIT PASS' 'Entry'
 Require 'No boundary expansion occurred.' 'Entry'
 Require 'PRYSM P1 R2 STOPPED' 'Entry'
 
-# Existing original dirty-continuation recovery contract.
 Require '$RepairAttempt = 1' 'Recovery'
 Require '$Model = ''gpt-5.6-terra''' 'Recovery'
 Require '$ExpectedApplicationSha = ''8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c''' 'Recovery'
@@ -118,8 +115,6 @@ Forbid 'git reset --hard' 'Recovery'
 Forbid 'git clean' 'Recovery'
 Forbid 'checkout --force' 'Recovery'
 
-# Exact Run 2 tracked-proof relocation contract. This section intentionally
-# checks semantic operations rather than stale formatting/path-construction text.
 Require '$RepairAttempt = 1' 'Placement'
 Require '$OriginalApplicationSha = ''8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c''' 'Placement'
 Require '$Run2ApplicationSha = ''8d2b38e4d8abd959d412b72028e9934dba8ae185''' 'Placement'
@@ -130,6 +125,8 @@ Require "'services/worker/src/report/render-report-v2-conversion.test.js'" 'Plac
 Require "'services/worker/src/report/render-report-v2.js'" 'Placement'
 Require "'services/worker/src/report/report-detail-sections.js'" 'Placement'
 Require "'services/worker/src/report/v2-pillars.js'" 'Placement'
+Require 'function Convert-RepoPathToLocal' 'Placement'
+Require 'New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false' 'Placement'
 Require 'Application Run 2 checkpoint mismatch.' 'Placement'
 Require 'Run 2 contains an unexpected changed path:' 'Placement'
 Require 'Misplaced Run 2 proof is not tracked in the pushed Run 2 commit.' 'Placement'
@@ -154,7 +151,6 @@ Forbid 'checkout --force' 'Placement'
 Forbid 'push --force' 'Placement'
 Forbid 'QUARANTINED_AND_REMOVED' 'Placement'
 
-# Recovery evidence bindings.
 Require 'Decision: APPROVED' 'RecoveryEvidence'
 Require 'CONTROL-PLANE RECOVERY ONLY' 'RecoveryEvidence'
 Require 'process/harness recovery failure does not consume R2 product repair attempt `1`' 'RecoveryEvidence'
@@ -173,7 +169,6 @@ Require 'must not' 'PlacementEvidence'
 Require 'force-push or rewrite application history' 'PlacementEvidence'
 Require '`CLEAN SYNCHRONIZED R2 BUILDER CHECKPOINT`' 'PlacementEvidence'
 
-# Runtime continues to consume the exact V2 execution authorization.
 Require "`$AuthorizationPath = Join-Path `$GovernanceRepo 'proof\P1\reopen\P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md'"
 Require "if ([string]`$gate['R2_EXECUTION_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md')"
 
