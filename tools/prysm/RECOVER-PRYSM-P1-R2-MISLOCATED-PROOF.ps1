@@ -44,7 +44,8 @@ function Get-StatusEntries([string]$Repo) {
         if ([string]::IsNullOrWhiteSpace($line)) { continue }
         $path = $line.Substring(3)
         if ($path -match ' -> ') { $path = ($path -split ' -> ')[-1] }
-        $entries += [pscustomobject]@{ Code=$line.Substring(0,2); Path=$path.Replace('\','/') }
+        $normalized = $path -replace '\\','/'
+        $entries += [pscustomobject]@{ Code=$line.Substring(0,2); Path=$normalized }
     }
     return @($entries)
 }
@@ -126,7 +127,8 @@ foreach ($entry in $badEntries) {
 $trackedBad = @(& git -C $AppRepo ls-files -- $BadProofRoot)
 if ($trackedBad.Count -ne 0) { Fail "Tracked files exist under mislocated proof root: $($trackedBad -join ', ')" }
 
-$badFull = Join-Path $AppRepo ($BadProofRoot.Replace('/','\'))
+$badFull = $AppRepo
+foreach ($segment in ($BadProofRoot -split '/')) { $badFull = Join-Path $badFull $segment }
 if (-not (Test-Path -LiteralPath $badFull -PathType Container)) { Fail "Mislocated proof directory missing: $badFull" }
 
 $files = @(Get-ChildItem -LiteralPath $badFull -Recurse -File)
@@ -134,7 +136,8 @@ if ($files.Count -eq 0) { Fail 'Mislocated proof directory contains no files.' }
 
 $manifest = @()
 foreach ($file in $files) {
-    $relative = $file.FullName.Substring($badFull.Length).TrimStart('\','/').Replace('\','/')
+    $relative = $file.FullName.Substring($badFull.Length).TrimStart([char[]]@('\','/'))
+    $relative = $relative -replace '\\','/'
     $manifest += [ordered]@{ path=$relative; sha256=(Get-FileHash -Algorithm SHA256 -LiteralPath $file.FullName).Hash.ToLowerInvariant(); length=$file.Length }
 }
 
@@ -150,7 +153,8 @@ if ($AuditOnly) {
 }
 
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-$quarantineRoot = Join-Path $StateRoot "quarantine\run2-mislocated-proof-$stamp"
+$quarantineBase = Join-Path $StateRoot 'quarantine'
+$quarantineRoot = Join-Path $quarantineBase "run2-mislocated-proof-$stamp"
 $quarantineFiles = Join-Path $quarantineRoot 'files'
 New-Item -ItemType Directory -Force -Path $quarantineFiles | Out-Null
 Copy-Item -LiteralPath $badFull -Destination $quarantineFiles -Recurse -Force
