@@ -479,7 +479,7 @@ $(Get-Content -LiteralPath $BuilderPromptPath -Raw)
             Fail "Unsupported failure class: $failureClass"
         }
 
-        $isContinue = ([string]$result.loop_action -eq 'CONTINUE') -or (([string]$result.loop_action -eq 'STOP') -and ([string]$result.next_role -eq 'Builder')
+        $isContinue = ([string]$result.loop_action -eq 'CONTINUE') -or (([string]$result.loop_action -eq 'STOP') -and ([string]$result.next_role -eq 'Builder'))
         if (-not $isContinue) { Fail "Unsupported non-terminal route: loop_action=$($result.loop_action) next_role=$($result.next_role)" }
         if ([string]$result.next_role -eq 'Auditor') { Fail 'Builder attempted to route directly to Auditor/Betty.' }
 
