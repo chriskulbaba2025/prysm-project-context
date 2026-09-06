@@ -14,13 +14,14 @@ Last verified:
 - Authorized actor: `BUILDER/Codex`.
 - Chris decision: `APPROVED` — continuous R2 bounded repair envelope, recorded in `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` at governance commit `94f63144a34eb4d513193b54251a9778832c36fc`.
 - Binding R2 diagnosis: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at governance commit `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d`.
+- R2 repair-accounting baseline: `proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md` at governance commit `72012327be10218f7b347696f8d2c9f79fc9b5d0`.
 - Diagnostic classification: `VERIFIED_DESIGN_GAP`.
 - Stable root-defect identity: `P1-CROSS-REPORT-PROJECTION-RECONCILIATION`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
 - Exact frozen failed application candidate entering R2 repair: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
-- `P1_EXECUTION_GATE.env` now routes P1 to `BOUNDED_BUILD` and binds the R2 diagnosis + authorization.
+- `P1_EXECUTION_GATE.env` routes P1 to `BOUNDED_BUILD` and binds the R2 diagnosis + authorization.
 
 ## Exact current repair scope
 
@@ -57,7 +58,7 @@ Brad's macOS environment must pull authoritative governance `main`, run the audi
 3. `bash tools/prysm/audit-prysm-p-macos.sh`
 4. only if the audit returns `PRYSM MACOS CONTINUOUS BUILDER AUTORUN CERTIFICATION PASS`, run `bash tools/prysm/PRYSM-P-AUTORUN-MAC.sh P1`.
 
-The controller is designed to continue Builder-owned work rather than stop at convenient model-turn boundaries. It may autonomously perform the authorized R2 implementation, focused proof, broader required P1 verification, rendered proof generation, exact-candidate commit/push, and governance rebinding to Brad `OUTCOME_REVIEW`.
+The controller may autonomously perform the authorized R2 implementation, focused proof, broader required P1 verification, rendered proof generation, exact-candidate commit/push, and governance rebinding to Brad `OUTCOME_REVIEW`.
 
 The successful terminal state is `READY_FOR_BRAD`, not P1 closure.
 
@@ -75,7 +76,11 @@ The successful terminal state is `READY_FOR_BRAD`, not P1 closure.
 - frozen-history verification after every Builder invocation;
 - clean/pushed GitHub synchronization before continuation and terminal handoff;
 - no-progress anti-thrash stop;
-- same-root escalation Luna -> Terra -> Sol only on evidence-based `REPAIR_PROOF_FAILED`;
+- repair model mapping `0=Luna`, `1=Terra`, `2=Sol`;
+- R2 starts at repair index `1` because the Brad-rejected repaired candidate already consumed one same-root repair attempt;
+- repair root + attempt are persisted outside both repositories and reloaded on controller restart;
+- a missing local R2 repair-state file initializes to index `1`, never index `0`;
+- same-root `REPAIR_PROOF_FAILED` at index `1` may escalate once to index `2` / Sol;
 - no fourth same-root repair attempt;
 - `NEW_ROOT_CAUSE` stops for owner review instead of silently expanding scope;
 - independent official deterministic gate verification before `READY_FOR_BRAD` notification;
@@ -123,8 +128,9 @@ Chris's R2 authorization permits continuity only because the binding diagnosis n
 - Prior reopened candidate SHA reviewed by Brad: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
 - Reopened-candidate Brad FAIL: `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md` at governance commit `d73c57be0a15291855fc771326d6b181ff281c54` — preserve unchanged.
 - Second owner decision: `REOPEN SAME P#`, recorded in `DECISION_P1_REOPEN_SAME_P_R2_2026-09-05.md`.
-- R2 diagnostic: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d` — now a bound prerequisite and must not be edited in place.
-- R2 bounded repair authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` at `94f63144a34eb4d513193b54251a9778832c36fc` — now a bound prerequisite and must not be edited in place.
+- R2 diagnostic: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d` — bound prerequisite; do not edit in place.
+- R2 bounded repair authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` at `94f63144a34eb4d513193b54251a9778832c36fc` — bound prerequisite; do not edit in place.
+- R2 repair-accounting baseline: `proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md` at `72012327be10218f7b347696f8d2c9f79fc9b5d0` — durable anti-reset evidence.
 - Exhaustive historical-freeze baseline: `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`.
 - Frozen-history guard: `tools/prysm/assert-p1-frozen-history.sh`.
 - `proof/P1/rendered/*` remains historical/frozen; all new R2 proof belongs under `proof/P1/reopen/`.
@@ -151,7 +157,7 @@ No destructive reset/clean/discard or force push is permitted.
 
 Chris's Windows P1 continuous controller remains certified for the Windows / VS Code PowerShell environment under its existing audit path. The Windows controller engine was not modified by this macOS R2 controller upgrade.
 
-The shared authoritative P1 governance stage has changed to `BOUNDED_BUILD`; Chris must still use the supported Windows bootstrap/audit path before any later Windows execution so the deterministic gate and current state are revalidated for the then-current exact candidate.
+The shared authoritative P1 governance stage is now `BOUNDED_BUILD`; Chris must still use the supported Windows bootstrap/audit path before any later Windows execution so the deterministic gate and current state are revalidated for the then-current exact candidate.
 
 ## macOS certification history
 
@@ -164,7 +170,7 @@ Brad's macOS host previously passed the notification-enabled thin-wrapper certif
 
 A later macOS Bash 3.2 incompatibility in `assert-p1-frozen-history.sh` (`mapfile`) was discovered fail-closed before Builder execution and repaired. Mac certification now executes the real frozen-history guard and the full official deterministic gate with Builder shimmed out, so runtime incompatibilities are tested before product work starts.
 
-Because the continuous controller has now changed from diagnostic-only to R2 Builder-to-Brad execution, Brad must run the current audit again after pulling the final authoritative `main` before starting it.
+Because the continuous controller has changed from diagnostic-only to R2 Builder-to-Brad execution and now includes durable repair accounting, Brad must run the current audit again after pulling authoritative `main` before starting it.
 
 ## Permanent operating sequence
 
