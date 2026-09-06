@@ -15,14 +15,17 @@ Begin governed implementation of the approved P1 systemic repair that eliminates
 - Final Brad disposition on failed candidate: `P1 OUTCOME: FAIL` / `NOT READY TO PASS P1`.
 - Governed repair design: `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`.
 - Design approval decision: `DECISION_PRYSM_P1_REPAIR_DESIGN_APPROVED_2026-09-06.md`.
+- Active P1 constraint exception: `CONSTRAINT_PRYSM_P1_REPAIR_IMPLEMENTATION_2026-09-06.md`.
+- Continuation handoff: `HANDOFF_PRYSM_P1_REPAIR_IMPLEMENTATION_START_2026-09-06.md`.
 - Design approval commit: `5479ed455ece9f603d1a8d0e4dd26de521820df5`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Application branch under review: `p1/bounded-build-cross-report-integrity`.
-- Failed exact candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
+- Historical failed exact candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
 - Rendered-code provenance SHA: `275f3cabb6796f9d0c2e5a30df61e71c4e084b96`.
 - All 16 numbered page reviews: COMPLETE.
 - All 7 targeted scenario checks: COMPLETE.
 - Scenario result on failed candidate: `4 PASS / 3 MATERIAL FAIL`.
+- Exact local application branch/HEAD/worktree state after design approval: NOT YET VERIFIED.
 
 ## Approved architecture
 
@@ -33,6 +36,12 @@ Begin governed implementation of the approved P1 systemic repair that eliminates
 - Add deterministic integrity gating for stronger-than-evidence conclusions and broken recommendation output.
 - Preserve raw provenance underneath the client report.
 - Keep n8n outside the core P1 truth path for this repair; it may be used later for orchestration/alerts/replay/review routing.
+
+## Constraint reconciliation
+
+The dated P1 constraint exception `CONSTRAINT_PRYSM_P1_REPAIR_IMPLEMENTATION_2026-09-06.md` supersedes older generic presentation-only / no-Writer-Judge / no-architecture-expansion constraints only where required by the approved P1 systemic repair.
+
+All other production, evidence-integrity, no-guess, manual-edit, Whole-App, model-bearing, authorization, and dirty-worktree preservation rules remain active.
 
 ## Final confirmed P1 material roots
 
@@ -99,6 +108,15 @@ Expected branch:
 Historical failed candidate SHA:
 
 `a9523ac3de98de76335a05304b60bec246242b65`
+
+Run in the VS Code PowerShell terminal:
+
+```powershell
+cd C:\Users\kulba\Desktop\vantage-platform
+git branch --show-current
+git rev-parse HEAD
+git status --short
+```
 
 Preserve any existing local changes. Do not reset or clean.
 
