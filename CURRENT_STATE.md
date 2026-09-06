@@ -45,16 +45,29 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Commit: `6f36cb15d10c652bf9f15648c4f1c9a4ec514139`.
 - Verdict: `MATERIAL FAIL`.
 - Material manifestation: Conversion Path is labeled `65/100 — Adequate` and included under `Where the foundation is strong` while Page 3 says the primary path is `Weak`.
-- Root accounting: this is another manifestation of existing `CTA_PATH_COHERENCE`, not a new distinct material root.
+- Root accounting: another manifestation of existing `CTA_PATH_COHERENCE`, not a new distinct root.
 
-## Distinct material-root accounting after Page 4
+### Page 5 — Topical Map & Qualified Content Opportunities
+- Record: `P1_BRAD_PAGE_05_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `075fd93b05f7ba3be56b7f708d123bd54723973e`.
+- Verdict: `MATERIAL FAIL`.
+- Material finding 1: `Signs You May Need Undefined` is exposed directly to the client. Track as `CONTENT_RECOMMENDATION_INTEGRITY`; this is a material new-root/boundary candidate pending final governance classification and does not authorize repair during `OUTCOME_REVIEW`.
+- Material finding 2: Page 2 says `No buyer-question content detected`, while Page 5 marks five buyer needs `Adequate` and only `Compare options` as `Thin`. Track as new cross-report root `BUYER_QUESTION_COVERAGE_COHERENCE`.
+- Page 5 also contains non-blocking `LANGUAGE` and `POLISH` findings; visual quality remains `NOT ASSESSED` without an exact rendered screenshot.
 
-1. `CTA_PATH_COHERENCE` — manifested on Pages 1 and 4; corroborated by Page 3.
+## Material-root accounting after Page 5
+
+Confirmed distinct cross-report/P1 coherence roots:
+
+1. `CTA_PATH_COHERENCE` — Pages 1 and 4; corroborated by Page 3.
 2. `PRIORITY_HIERARCHY_COHERENCE` — Page 2.
+3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5.
 
-Distinct P1 material roots currently recorded: `2`.
+Material new-root/boundary candidate pending final governance classification:
 
-Pages 1–4 also contain non-blocking `LANGUAGE`, `VISUAL`, and `POLISH` findings for later report improvement. Visual quality is left `NOT ASSESSED` whenever no exact rendered page screenshot was available.
+4. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
+
+Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
 ## Builder verification already complete
 
@@ -69,7 +82,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-5. Topical Map & Qualified Content Opportunities
 6. Competitor Benchmarking
 7. Trust & E-E-A-T Readiness
 8. CMS & Platform Constraints
@@ -88,6 +100,7 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 - Final P1 disposition/closure is blocked until all 16 page reviews, targeted scenario checks, and `FULL REPORT` synthesis are complete.
 - Current material findings do not authorize diagnosis or repair during `OUTCOME_REVIEW`.
+- Material new-root/boundary candidates must be classified during governed disposition before any repair authorization.
 - These page findings are not yet the final Brad P1 disposition.
 
 ## Important constraints
@@ -110,13 +123,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 5 — Topical Map & Qualified Content Opportunities only** using the exact frozen candidate:
+Review **Page 6 — Competitor Benchmarking only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#content-ideas`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#competitor-benchmark`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 5 findings and the required Page 5 summary, then stop and wait for `NEXT`.
+Return Page 6 findings and the required Page 6 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
