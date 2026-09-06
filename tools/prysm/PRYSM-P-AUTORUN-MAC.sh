@@ -6,6 +6,7 @@ MAX_RUNS="${PRYSM_MAC_MAX_RUNS:-12}"
 MAX_SECONDS="${PRYSM_MAC_MAX_SECONDS:-2700}"
 HEARTBEAT_SECONDS="${PRYSM_MAC_HEARTBEAT_SECONDS:-60}"
 ROOT_DEFECT_ID="P1-CROSS-REPORT-PROJECTION-RECONCILIATION"
+R2_INITIAL_REPAIR_ATTEMPT=1
 
 MODEL_LUNA="gpt-5.6-luna"
 MODEL_TERRA="gpt-5.6-terra"
@@ -228,6 +229,7 @@ usage_limit_seen() {
 STATE_ROOT="$HOME/Library/Application Support/PRYSM-P-Autorun/$P_ID"
 LOCK_DIR="$STATE_ROOT/controller.lock"
 HEARTBEAT_FILE="$STATE_ROOT/heartbeat.txt"
+REPAIR_STATE_FILE="$STATE_ROOT/repair-state.env"
 mkdir -p "$STATE_ROOT"
 
 if ! mkdir "$LOCK_DIR" 2>/dev/null; then
@@ -252,9 +254,38 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
+save_repair_state() {
+  local attempt="$1"
+  local temp="$REPAIR_STATE_FILE.tmp.$$"
+  {
+    printf 'ROOT_DEFECT_ID=%s\n' "$ROOT_DEFECT_ID"
+    printf 'REPAIR_ATTEMPT=%s\n' "$attempt"
+  } > "$temp"
+  mv "$temp" "$REPAIR_STATE_FILE"
+}
+
+load_repair_state() {
+  local stored_root stored_attempt
+  if [[ ! -f "$REPAIR_STATE_FILE" ]]; then
+    repair_attempt="$R2_INITIAL_REPAIR_ATTEMPT"
+    save_repair_state "$repair_attempt"
+    return
+  fi
+  stored_root="$(awk -F= '$1 == "ROOT_DEFECT_ID" { print $2; exit }' "$REPAIR_STATE_FILE")"
+  stored_attempt="$(awk -F= '$1 == "REPAIR_ATTEMPT" { print $2; exit }' "$REPAIR_STATE_FILE")"
+  [[ "$stored_root" == "$ROOT_DEFECT_ID" ]] || fail "Durable repair state is bound to a different root. Stored=$stored_root Authorized=$ROOT_DEFECT_ID"
+  [[ "$stored_attempt" =~ ^[0-2]$ ]] || fail "Durable repair state has invalid attempt index: $stored_attempt"
+  if (( stored_attempt < R2_INITIAL_REPAIR_ATTEMPT )); then
+    fail "Durable repair state would reset below the R2 minimum attempt index. Stored=$stored_attempt Minimum=$R2_INITIAL_REPAIR_ATTEMPT"
+  fi
+  repair_attempt="$stored_attempt"
+}
+
+load_repair_state
+
 (
   while true; do
-    printf '%s pid=%s p=%s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$$" "$P_ID" > "$HEARTBEAT_FILE"
+    printf '%s pid=%s p=%s repair_attempt=%s root=%s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$$" "$P_ID" "$repair_attempt" "$ROOT_DEFECT_ID" > "$HEARTBEAT_FILE"
     sleep "$HEARTBEAT_SECONDS"
   done
 ) &
@@ -263,7 +294,6 @@ heartbeat_pid=$!
 START_EPOCH="$(date +%s)"
 run=0
 no_progress=0
-repair_attempt=0
 
 while true; do
   now="$(date +%s)"
@@ -477,6 +507,7 @@ NODE
       block "Third same-root repair attempt failed for $ROOT_DEFECT_ID. Diagnostic reset/owner review is required; no fourth attempt is permitted."
     fi
     repair_attempt=$((repair_attempt + 1))
+    save_repair_state "$repair_attempt"
   elif [[ "$failure_class" == "PROOF_SETUP_FAILURE" ]]; then
     :
   elif [[ "$failure_class" == "EXTERNAL_OR_PROTOCOL" ]]; then
