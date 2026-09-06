@@ -38,6 +38,37 @@ fi
 
 export PATH
 
+notify_macos() {
+  local title="$1"
+  local message="$2"
+  if command -v osascript >/dev/null 2>&1; then
+    osascript - "$title" "$message" <<'APPLESCRIPT' >/dev/null 2>&1 || true
+on run argv
+  set notificationTitle to item 1 of argv
+  set notificationMessage to item 2 of argv
+  display notification notificationMessage with title notificationTitle sound name "Glass"
+end run
+APPLESCRIPT
+  else
+    printf '\a' >&2
+  fi
+}
+
+P_ID="${1:-PRYSM}"
+
 # Do not require Codex for Brad/Chris-owned stages. The shared deterministic
 # launcher will require it only when a Builder-owned stage is actually reached.
-exec bash "$BASE_ENTRY" "$@"
+# Keep control after the child exits so macOS can report completion without
+# changing the governed launcher's exit status.
+set +e
+bash "$BASE_ENTRY" "$@"
+status=$?
+set -e
+
+if [[ "$status" -eq 0 ]]; then
+  notify_macos "PRYSM $P_ID COMPLETE" "Governed PRYSM execution finished successfully."
+else
+  notify_macos "PRYSM $P_ID NEEDS ATTENTION" "Governed PRYSM execution exited with code $status. Check the VS Code terminal."
+fi
+
+exit "$status"
