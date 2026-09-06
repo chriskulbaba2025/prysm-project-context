@@ -29,7 +29,8 @@ pass "all macOS/Bash control-plane scripts parse"
 
 command -v git >/dev/null 2>&1 || fail "git is not installed or not on PATH"
 command -v bash >/dev/null 2>&1 || fail "bash is not installed or not on PATH"
-pass "git and bash are discoverable"
+command -v osascript >/dev/null 2>&1 || fail "osascript is not available for macOS completion notifications"
+pass "git, bash, and macOS notification runtime are discoverable"
 
 [[ -d "$GOV_ROOT/.git" ]] || fail "Governance repository not found at $GOV_ROOT"
 [[ -z "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)" ]] || fail "Governance repository must be clean for certification"
@@ -71,8 +72,12 @@ printf 'PASS: Codex CLI responds: %s\n' "$CODEX_VERSION"
 # adapter and delegate to the same governed public launcher used elsewhere.
 grep -Fq '[[ "$(uname -s)" == "Darwin" ]]' "$MAC_ENTRY" || fail "macOS identity guard is missing"
 grep -Fq 'add_path_if_dir "$npm_prefix/bin"' "$MAC_ENTRY" || fail "npm <prefix>/bin discovery rule is missing"
-grep -Fq 'exec bash "$BASE_ENTRY" "$@"' "$MAC_ENTRY" || fail "macOS adapter no longer delegates to the governed public launcher"
-pass "macOS adapter invariants are present"
+grep -Fq 'bash "$BASE_ENTRY" "$@"' "$MAC_ENTRY" || fail "macOS adapter no longer delegates to the governed public launcher"
+grep -Fq 'status=$?' "$MAC_ENTRY" || fail "macOS adapter does not preserve the governed launcher exit status"
+grep -Fq 'notify_macos "PRYSM $P_ID COMPLETE"' "$MAC_ENTRY" || fail "macOS success notification is missing"
+grep -Fq 'notify_macos "PRYSM $P_ID NEEDS ATTENTION"' "$MAC_ENTRY" || fail "macOS attention notification is missing"
+grep -Fq 'exit "$status"' "$MAC_ENTRY" || fail "macOS adapter does not return the governed launcher exit status"
+pass "macOS adapter and completion-notification invariants are present"
 
 # AUDIT-SAFETY-SCAN-BOUNDARY
 # Scan only executable content above this boundary. This prevents the safety
@@ -90,5 +95,6 @@ echo "PRYSM MACOS AUTORUN CERTIFICATION PASS"
 echo "Environment: $(sw_vers -productName 2>/dev/null || printf 'macOS') $(sw_vers -productVersion 2>/dev/null || true)"
 echo "Architecture: $(uname -m)"
 echo "Codex: $CODEX_VERSION"
+echo "Notification runtime: osascript"
 echo "Certification mode: AUDIT ONLY"
 echo "No Builder invocation or application/product execution occurred."
