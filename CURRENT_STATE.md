@@ -4,25 +4,35 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Obtain Chris approval for the completed governed P1 systemic repair design, then begin implementation only after approval.
+Begin governed implementation of the approved P1 systemic repair that eliminates the seven confirmed evidence-to-client interpretation/classification/projection roots.
 
 ## Verified checkpoint
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
 - Prior stage: `OUTCOME_REVIEW` — COMPLETE.
-- Current stage: `P1 REPAIR DESIGN — AWAITING CHRIS APPROVAL`.
-- Final Brad disposition: `P1 OUTCOME: FAIL` / `NOT READY TO PASS P1`.
-- Final Brad record: `P1_BRAD_FINAL_OUTCOME_DISPOSITION_2026-09-06.md`.
-- Active repair-scope decision: `DECISION_PRYSM_P1_OUTCOME_REPAIR_SCOPE_2026-09-06.md`.
+- Repair design: COMPLETE and APPROVED by Chris.
+- Current stage: `P1 REPAIR IMPLEMENTATION — PRE-EDIT VERIFICATION`.
+- Final Brad disposition on failed candidate: `P1 OUTCOME: FAIL` / `NOT READY TO PASS P1`.
 - Governed repair design: `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`.
-- Repair-design commit: `865ade5371c863f2553f2069b0014a6c5c3cb2e5`.
+- Design approval decision: `DECISION_PRYSM_P1_REPAIR_DESIGN_APPROVED_2026-09-06.md`.
+- Design approval commit: `5479ed455ece9f603d1a8d0e4dd26de521820df5`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Application branch under review: `p1/bounded-build-cross-report-integrity`.
 - Failed exact candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
 - Rendered-code provenance SHA: `275f3cabb6796f9d0c2e5a30df61e71c4e084b96`.
 - All 16 numbered page reviews: COMPLETE.
 - All 7 targeted scenario checks: COMPLETE.
-- Scenario result: `4 PASS / 3 MATERIAL FAIL`.
+- Scenario result on failed candidate: `4 PASS / 3 MATERIAL FAIL`.
+
+## Approved architecture
+
+**Deterministic Client Truth Contract + existing governed Writer/Judge.**
+
+- Expand the existing cross-report interpretation projection into the authoritative client-truth contract.
+- All client-facing consumers must use that same deterministic truth.
+- Add deterministic integrity gating for stronger-than-evidence conclusions and broken recommendation output.
+- Preserve raw provenance underneath the client report.
+- Keep n8n outside the core P1 truth path for this repair; it may be used later for orchestration/alerts/replay/review routing.
 
 ## Final confirmed P1 material roots
 
@@ -36,33 +46,12 @@ Obtain Chris approval for the completed governed P1 systemic repair design, then
 
 Unresolved boundary candidates: `0`.
 
-## Verified design conclusion
+## Expected implementation boundary
 
-Broad evidence acquisition is not the dominant failure.
-
-Dominant defect class:
-
-`evidence -> classification -> interpretation -> summary/projection -> client-facing language`
-
-The failed candidate already contains a deterministic `cross-report-interpretation` projection, but it is too narrow and major consumers still independently infer client meaning from raw scores/findings/evidence.
-
-## Recommended repair architecture
-
-**Deterministic Client Truth Contract + existing governed Writer/Judge.**
-
-- Expand/replace the current cross-report interpretation projection rather than create a competing truth system.
-- All client-facing consumers must consume the same deterministic client truth.
-- Add a deterministic integrity gate that blocks stronger-than-evidence states and broken recommendation output.
-- Preserve raw provenance underneath the client report.
-- Keep n8n outside the core P1 truth path for now; it may be used later for orchestration/alerts/replay once the Client Truth Contract is stable.
-
-Architecture score recorded in the design: `9.5 / 10`.
-
-## Expected application boundary after approval
-
-Strongly expected files/systems are documented in `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`, including:
+Documented in `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md` and includes, subject to exact current-source verification:
 
 - `src/report-model/cross-report-interpretation.js`
+- likely new `src/report-model/client-truth-gate.js`
 - `src/scoring/vantage-score.js`
 - `src/scoring/score-components.js`
 - `src/scoring/report-model.js`
@@ -72,20 +61,15 @@ Strongly expected files/systems are documented in `P1_GOVERNED_REPAIR_DESIGN_202
 - `src/narrative-v2/writer-input.js`
 - `src/narrative-v2/writer-prompt.js`
 - `src/narrative-v2/live-binding.js`
-- `src/narrative-v2/judge-contract.js` if the new hard-gate class requires contract validation
-- likely new `src/report-model/client-truth-gate.js`
+- `src/narrative-v2/judge-contract.js` only if required by the new hard-gate class
 
-Exact current source must still be verified before implementation.
+## Required verification after implementation
 
-## Verification design
-
-Required after implementation:
-
-- direct Client Truth unit tests;
+- direct Client Truth contract tests;
 - one regression per seven confirmed roots;
 - all 7 existing scenarios -> required `7 / 7 PASS`;
-- cross-consumer parity tests for renderer / WriterInput / Narrative / action hierarchy;
-- no `undefined` / `null` / unresolved recommendation placeholders in client output;
+- cross-consumer parity tests;
+- recommendation-integrity tests;
 - focused report suites;
 - full worker suite;
 - Whole-App branch-matrix/tranche gate;
@@ -94,34 +78,31 @@ Required after implementation:
 - Brad repaired-outcome review plus actual rendered visual review;
 - Betty only after Brad PASS.
 
-## Blocked until approval
+## Still blocked / not authorized
 
-- no application code edits;
-- no Builder run;
-- no P2;
-- no Betty Final Audit;
+- no paid/live providers or models;
 - no merge to application `main`;
 - no deployment;
-- no paid/live providers or models.
-
-## Important constraints
-
-- GitHub is authoritative.
-- Design before coding.
-- Solve the repeat failure class, not isolated sentences.
-- Preserve canonical evidence truth and provenance.
-- Do not reopen evidence acquisition or scoring without direct evidence and dependency-impact proof.
-- Existing user work must not be destructively reset or discarded.
+- no P2;
+- no Betty before Brad PASS;
+- no destructive reset/cleanup of user work;
+- do not reopen evidence acquisition or scoring without direct proof and dependency-impact analysis.
 
 ## Exact next action
 
-Chris approves or rejects the architecture in `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`.
+Verify the exact **local** `vantage-platform` branch, HEAD, and working-tree state before the first edit.
 
-Recommended approval:
+Expected branch:
 
-`APPROVE — deterministic Client Truth Contract + existing Writer/Judge, with n8n outside the core truth path for now.`
+`p1/bounded-build-cross-report-integrity`
 
-If approved, the next governed action is to verify the exact current application branch/worktree and begin implementation in the documented order.
+Historical failed candidate SHA:
+
+`a9523ac3de98de76335a05304b60bec246242b65`
+
+Preserve any existing local changes. Do not reset or clean.
+
+After local state is verified, reconcile the exact current source against the approved expected file/test boundary and begin implementation with the Client Truth Contract producer first.
 
 Last verified:
 2026-09-06
