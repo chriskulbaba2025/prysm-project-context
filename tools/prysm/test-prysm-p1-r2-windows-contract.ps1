@@ -58,7 +58,9 @@ Require "'--output-schema',`$SchemaPath"
 Require "'--output-last-message',`$finalPath"
 
 # Windows PowerShell 5.1 native stderr safety: benign native stderr must not
-# become a terminating ErrorRecord before LASTEXITCODE is examined.
+# become a terminating ErrorRecord before LASTEXITCODE is examined. Every
+# assignment from Invoke-NativeExitCode must use -Quiet so command stdout cannot
+# contaminate the assigned numeric exit code.
 Require 'function Invoke-NativeExitCode'
 Require '$ErrorActionPreference = ''Continue'''
 Require 'if ($Quiet) { & $Command *> $null } else { & $Command }'
@@ -66,9 +68,11 @@ Require 'Invoke-NativeExitCode -Command { & git -C $AppRepo fetch origin $branch
 Require 'Invoke-NativeExitCode -Command { & git -C $GovernanceRepo fetch origin main } -Quiet'
 Require 'Invoke-NativeExitCode -Command { & git -C $Repo cat-file -e "HEAD:$path" } -Quiet'
 Require 'Invoke-NativeExitCode -Command { & git -C $GovernanceRepo cat-file -e "HEAD:$path" } -Quiet'
-Require 'Invoke-NativeExitCode -Command { & $Bash $FrozenGuard }'
-Require 'Invoke-NativeExitCode -Command { & $Bash $GateRegression }'
-Require 'Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet'
+Require '$frozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet'
+Require '$regressionExit = Invoke-NativeExitCode -Command { & $Bash $GateRegression } -Quiet'
+Require '$postFrozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet'
+Forbid '$frozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard }`n'
+Forbid '$regressionExit = Invoke-NativeExitCode -Command { & $Bash $GateRegression }`n'
 Forbid '& git -C $AppRepo fetch origin $branch *> $null'
 Forbid '& git -C $GovernanceRepo fetch origin main *> $null'
 Forbid '& $Bash $FrozenGuard *> $null'
