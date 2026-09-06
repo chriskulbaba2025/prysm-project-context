@@ -51,6 +51,14 @@ function Get-GitHead([string]$Repo) { return ((& git -C $Repo rev-parse HEAD).Tr
 function Get-GitBranch([string]$Repo) { return ((& git -C $Repo branch --show-current).Trim()) }
 function Get-GitStatus([string]$Repo) { return ((& git -C $Repo status --porcelain=v1 --untracked-files=all) -join "`n") }
 
+function Convert-RepoPathToLocal([string]$Repo,[string]$RepoPath) {
+    $full = $Repo
+    foreach ($segment in ($RepoPath -split '/')) {
+        $full = Join-Path $full $segment
+    }
+    return $full
+}
+
 function Write-JsonAtomic([string]$Path,$Value) {
     $temp = "$Path.tmp.$PID"
     try {
@@ -114,8 +122,8 @@ function Assert-Run2LineageAndScope {
     $trackedGood = @(& git -C $AppRepo ls-tree -r --name-only $Run2ApplicationSha -- $GoodProofRoot)
     if ($trackedGood.Count -ne 0) { Fail 'Governed root target already exists in Run 2; automatic relocation is not allowed.' }
 
-    $badFull = Join-Path $AppRepo ($BadProofRoot -replace '/','\')
-    $goodFull = Join-Path $AppRepo ($GoodProofRoot -replace '/','\')
+    $badFull = Convert-RepoPathToLocal $AppRepo $BadProofRoot
+    $goodFull = Convert-RepoPathToLocal $AppRepo $GoodProofRoot
     if (-not (Test-Path -LiteralPath $badFull -PathType Container)) { Fail "Tracked misplaced proof directory is missing locally: $badFull" }
     if (Test-Path -LiteralPath $goodFull) { Fail "Governed proof target already exists locally: $goodFull" }
 }
@@ -182,7 +190,7 @@ function Update-GovernanceGate([string]$NewApplicationSha) {
     $updated = [regex]::Replace($updated,'(?m)^CANDIDATE_APPLICATION_SHA=.*$',"CANDIDATE_APPLICATION_SHA=$NewApplicationSha")
     if ($updated -eq $raw) { Fail 'Gate SHA binding did not change.' }
 
-    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    $utf8NoBom = New-Object -TypeName System.Text.UTF8Encoding -ArgumentList $false
     [System.IO.File]::WriteAllText($GatePath,$updated,$utf8NoBom)
 
     $govStatus = @(& git -C $GovernanceRepo status --porcelain=v1 --untracked-files=all)
@@ -212,7 +220,8 @@ if ($AuditOnly) {
     exit 0
 }
 
-$goodParent = Split-Path -Parent (Join-Path $AppRepo ($GoodProofRoot -replace '/','\'))
+$goodFull = Convert-RepoPathToLocal $AppRepo $GoodProofRoot
+$goodParent = Split-Path -Parent $goodFull
 if (-not (Test-Path -LiteralPath $goodParent -PathType Container)) { Fail "Governed proof parent is missing: $goodParent" }
 
 $moveExit = Invoke-NativeExitCode -Command { & git -C $AppRepo mv -- $BadProofRoot $GoodProofRoot } -Quiet
