@@ -4,79 +4,26 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete Brad's final `FULL REPORT` synthesis and final P1 outcome disposition for the exact frozen repaired candidate. All 16 numbered report pages and all 7 targeted scenario checks are complete.
+Design the next governed P1 repair package from Brad's completed final outcome disposition. The repair must eliminate the repeat evidence-to-client interpretation/classification/projection failure class across the whole report, not patch isolated wording.
 
 ## Verified checkpoint
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Stage: `OUTCOME_REVIEW`.
-- Authorized actor: `BRAD`.
-- P1 R2 Builder phase: COMPLETE.
-- Required Windows terminal reached: `PRYSM P1 READY FOR BRAD`.
-- Exact repaired candidate under review: `a9523ac3de98de76335a05304b60bec246242b65`.
-- Application branch: `p1/bounded-build-cross-report-integrity`.
+- Prior stage: `OUTCOME_REVIEW` — COMPLETE.
+- Current stage: `P1 REPAIR DESIGN`.
+- Final Brad disposition: `P1 OUTCOME: FAIL` / `NOT READY TO PASS P1`.
+- Final Brad record: `P1_BRAD_FINAL_OUTCOME_DISPOSITION_2026-09-06.md`.
+- Active repair-scope decision: `DECISION_PRYSM_P1_OUTCOME_REPAIR_SCOPE_2026-09-06.md`.
+- Application repository: `chriskulbaba2025/vantage-platform`.
+- Application branch under review: `p1/bounded-build-cross-report-integrity`.
+- Failed exact candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
 - Rendered-code provenance SHA: `275f3cabb6796f9d0c2e5a30df61e71c4e084b96`.
-- Primary assessed report: `proof/P1/reopen/render-v2-r2-275f3ca/assessed.html`.
-- `P1_EXECUTION_GATE.env`: `AUTHORIZED_STAGE=OUTCOME_REVIEW` and `APPLICATION_SHA=a9523ac3de98de76335a05304b60bec246242b65`.
 - All 16 numbered page reviews: COMPLETE.
 - All 7 targeted scenario checks: COMPLETE.
+- Scenario result: `4 PASS / 3 MATERIAL FAIL`.
+- Builder verification for the failed candidate remains historically complete: focused R2 `80/0`, full worker `987/0`, Whole-App PASS, render generation `52/0`.
 
-## Numbered page review outcome
-
-1. Executive Scorecard — `MATERIAL FAIL` — `CTA_PATH_COHERENCE`.
-2. Priority Fixes — `MATERIAL FAIL` — `PRIORITY_HIERARCHY_COHERENCE`.
-3. Conversion Path Architecture — `NEEDS IMPROVEMENT` — corroborates `CTA_PATH_COHERENCE`.
-4. Conversion Readiness Map — `MATERIAL FAIL` — existing `CTA_PATH_COHERENCE` manifestation.
-5. Topical Map & Qualified Content Opportunities — `MATERIAL FAIL` — `BUYER_QUESTION_COVERAGE_COHERENCE`; boundary candidate `CONTENT_RECOMMENDATION_INTEGRITY`.
-6. Competitor Benchmarking — `NEEDS IMPROVEMENT`.
-7. Trust & E-E-A-T Readiness — `MATERIAL FAIL` — `TRUST_ATTRIBUTION_COHERENCE`.
-8. CMS & Platform Constraints — `MATERIAL FAIL` — boundary candidate `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION`.
-9. Technical SEO Hygiene — `MATERIAL FAIL` — boundary candidate `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION`.
-10. Heading & Semantic Structure — `NEEDS IMPROVEMENT`.
-11. Schema & Entity Clarity — `NEEDS IMPROVEMENT`.
-12. Performance — `MATERIAL FAIL` — `PERFORMANCE_QUALIFICATION_COHERENCE`.
-13. Accessibility & Mobile Usability Readiness — `NEEDS IMPROVEMENT`.
-14. Internal-Link Opportunities — `NEEDS IMPROVEMENT`.
-15. Evidence Appendix — `MATERIAL FAIL` — corroborates `BUYER_QUESTION_COVERAGE_COHERENCE`.
-16. Deferred & Unavailable Analysis — `MATERIAL FAIL` — `EVIDENCE_SCOPE_STATUS_COHERENCE`.
-
-Page 16 record:
-`P1_BRAD_PAGE_16_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`
-
-Page 16 record commit:
-`76949cf7c6dd711e08f9a789e76aa1ed928e6ed7`
-
-## Targeted scenario batch outcome
-
-Record:
-`P1_BRAD_TARGETED_SCENARIO_BATCH_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`
-
-Record commit:
-`80b8185b04c1df1ce73a8a6e303cd398e1c8b8f9`
-
-Batch verdict: `FAIL`
-
-PASS — 4 / 7:
-
-1. `path-validated-blocker.html` — mechanism presence remains separate from path quality.
-2. `unassessed.html` — unavailable evidence stays unavailable and insufficient coverage suppresses the overall score.
-3. `no-conversion-mechanism.html` — assessed absence is correctly distinguished from unavailable evidence.
-4. `no-performance.html` — no performance evidence produces no fast/slow conclusion.
-
-MATERIAL FAIL — 3 / 7:
-
-1. `competitor-present.html` — `Proof already available but underused` makes an unsupported placement/use conclusion. Corroborates `TRUST_ATTRIBUTION_COHERENCE`.
-2. `crawl-blocked.html` — unavailable page-level evidence is undermined by `PASS / no prioritized action required / no material blocker established` reassurance. Corroborates `EVIDENCE_SCOPE_STATUS_COHERENCE`.
-3. `provider-failed.html` — provider failure remains explicitly unavailable in one place but is undermined by `PASS / no prioritized action required` reassurance elsewhere. Corroborates `EVIDENCE_SCOPE_STATUS_COHERENCE`.
-
-Scenario batch adds:
-
-- new confirmed roots: `0`;
-- new boundary candidates: `0`.
-
-## Material-root accounting after all page and scenario reviews
-
-Confirmed distinct P1 coherence roots:
+## Final confirmed P1 material roots
 
 1. `CTA_PATH_COHERENCE`
 2. `PRIORITY_HIERARCHY_COHERENCE`
@@ -84,76 +31,112 @@ Confirmed distinct P1 coherence roots:
 4. `TRUST_ATTRIBUTION_COHERENCE`
 5. `PERFORMANCE_QUALIFICATION_COHERENCE`
 6. `EVIDENCE_SCOPE_STATUS_COHERENCE`
+7. `CONTENT_RECOMMENDATION_INTEGRITY`
 
-Material new-root/boundary candidates pending final governance classification:
+Unresolved boundary candidates: `0`.
 
-7. `CONTENT_RECOMMENDATION_INTEGRITY` — unresolved `Undefined` output.
-8. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — inferred migration risk presented as observed evidence.
-9. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — qualified technical issues presented as search-performance blockers.
+Former boundary candidates:
 
-Do not diagnose or repair these during `OUTCOME_REVIEW`.
+- `CONTENT_RECOMMENDATION_INTEGRITY` -> promoted to confirmed root #7.
+- `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` -> absorbed as a manifestation of `EVIDENCE_SCOPE_STATUS_COHERENCE`.
+- `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` -> absorbed as a manifestation of `EVIDENCE_SCOPE_STATUS_COHERENCE`.
 
-## Evidence-gathering assessment
+## Final evidence-gathering conclusion
 
-After all 16 pages and all 7 scenarios, broad evidence acquisition does not appear to be the dominant failure.
+Broad evidence acquisition does **not** appear to be the dominant failure.
 
-The evidence/capability layer repeatedly demonstrates correct fail-closed behavior, including:
+PRYSM repeatedly demonstrates correct underlying boundaries including:
 
-- AVAILABLE/PARTIAL/UNAVAILABLE separation;
 - assessed absence vs unavailable evidence;
-- CTA/form presence vs path quality;
+- CTA/form presence vs conversion-path quality;
 - lab performance vs real-user field performance;
 - no performance evidence -> no fast/slow conclusion;
-- crawl/provider failure -> explicit evidence limitation;
-- insufficient evidence -> overall score withheld.
+- crawl/provider failure -> explicit audit limitation;
+- insufficient coverage -> overall score withheld.
 
-The dominant material failure pattern remains evidence-to-conclusion interpretation, status classification, qualification, and client-facing projection.
+Dominant defect class:
 
-## Builder verification already complete
+`evidence -> classification -> interpretation -> summary/projection -> client-facing language`
 
-Do not rerun as part of Brad review:
+The repair target is therefore systemic interpretation/report integrity first. Do not reopen acquisition or scoring without direct evidence proving a separate defect.
 
-- Focused R2 report suites: `80 pass / 0 fail`.
-- Full worker regression: `987 pass / 0 fail`.
-- Whole-App tranche gate: PASS.
-- Render generation verification: `52 pass / 0 fail`.
-- Exact render manifest/provenance bound to candidate.
-- Builder candidate clean/pushed at Brad handoff.
+## Repair-design authorization
+
+The next repair is outcome-first and is not artificially limited to page styling or the current report-only boundary.
+
+The design may consider, where justified:
+
+- central deterministic client-fact/qualification logic;
+- report projection/summary logic;
+- recommendation integrity;
+- Writer input/prompt/output contracts;
+- Judge/cross-report contradiction checks;
+- client vs technical evidence presentation;
+- n8n orchestration;
+- deterministic validation/replay.
+
+External n8n is permitted if it materially improves the solution. n8n must not become the evidence source of truth or bypass deterministic governance.
+
+No implementation boundary is chosen yet.
+
+## Completed
+
+- 16-page Brad outcome review.
+- 7-scenario Brad proof batch.
+- Independent audit/collation of page and scenario findings.
+- Final Brad `P1 OUTCOME: FAIL` synthesis.
+- Final seven-root accounting.
+- Repair-design scope decision allowing the architecture to cross the old presentation-only boundary where justified.
 
 ## Blocked
 
-- Diagnosis/repair is blocked until Brad's `FULL REPORT` synthesis and final P1 disposition are recorded.
-- Do not rerun Builder or R2 recovery/controller.
-- Do not start P2.
-- Do not run Betty Final Audit.
-- Do not merge application `main`.
-- Do not deploy.
-- Do not call paid/live application providers/models.
-- Do not change evidence acquisition/adapters, scoring policy, Writer/Judge behaviour, lifecycle/storage/auth, or unrelated product behaviour during `OUTCOME_REVIEW`.
+Until the repair design is approved:
+
+- do not edit application code;
+- do not run Builder;
+- do not start P2;
+- do not run Betty Final Audit;
+- do not merge application `main`;
+- do not deploy;
+- do not call paid/live providers or models;
+- do not rerun the failed candidate as if it were passable.
+
+## Important constraints
+
+- GitHub is authoritative.
+- Diagnose/design before coding.
+- Solve the repeat defect class, not isolated sentences.
+- Preserve canonical evidence truth and provenance.
+- Missing/partial/unavailable evidence must fail closed everywhere.
+- Do not reopen evidence acquisition or scoring without direct proof and dependency-impact analysis.
+- Preserve whole-app/model-bearing/release gates for any eventual implementation.
+- Existing user work must not be destructively reset or discarded.
 
 ## Exact next action
 
-Brad must now produce the protocol-required `FULL REPORT` synthesis across:
+Start a new chat from GitHub authority and read:
 
-- all 16 numbered page reviews;
-- the 7 targeted scenario checks;
-- confirmed material roots and boundary candidates;
-- repeated language/client-translation issues;
-- conversion/business meaning;
-- cross-report consistency;
-- ranked P1 blockers vs future report improvements.
+1. `PROJECT.md`
+2. `GITHUB_PROJECT_MEMORY_PROTOCOL.md`
+3. `PRYSM_PERMANENT_MEMORY.md`
+4. `REPAIR_BOUNDARY_PROTOCOL.md`
+5. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
+6. `WORKFLOW_INSTRUCTIONS.md`
+7. `CURRENT_STATE.md`
+8. `CONSTRAINTS.md`
+9. `DECISIONS.md`
+10. `P1_BRAD_FINAL_OUTCOME_DISPOSITION_2026-09-06.md`
+11. `DECISION_PRYSM_P1_OUTCOME_REPAIR_SCOPE_2026-09-06.md`
+12. `HANDOFF_PRYSM_P1_OUTCOME_REPAIR_DESIGN_CONTINUATION_2026-09-06.md`
 
-Brad must end with one final:
+Then produce a **governed P1 repair design before any code** that:
 
-`P1 OUTCOME: PASS`
-
-or
-
-`P1 OUTCOME: FAIL`
-
-with a short rationale and material defect list if FAIL.
-
-Do not diagnose or repair before this final Brad disposition is returned and recorded.
+- maps all seven confirmed roots to the responsible interpretation/projection boundaries;
+- compares a central deterministic qualification layer, revised Writer/Judge path, external n8n orchestration, and hybrid options;
+- selects the architecture most likely to eliminate recurrence across the whole report;
+- defines dependency impact, exact expected source-file/system boundaries, regression tests, scenario proofs, and acceptance gates;
+- keeps raw provenance available while making the normal client report human/business-first;
+- requires Chris approval of the repair design before implementation begins.
 
 Last verified:
 2026-09-06
