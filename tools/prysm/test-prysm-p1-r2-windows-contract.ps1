@@ -35,10 +35,10 @@ function Forbid([string]$Needle,[string]$Label='Runner') {
     if ($haystack -match [regex]::Escape($Needle)) { throw "$Label contains forbidden R2 contract text: $Needle" }
 }
 
-Require "$RootDefectId = 'P1-CROSS-REPORT-PROJECTION-RECONCILIATION'"
+Require '$RootDefectId = ''P1-CROSS-REPORT-PROJECTION-RECONCILIATION'''
 Require '$InitialRepairAttempt = 1'
-Require "$ModelTerra = 'gpt-5.6-terra'"
-Require "$ModelSol = 'gpt-5.6-sol'"
+Require '$ModelTerra = ''gpt-5.6-terra'''
+Require '$ModelSol = ''gpt-5.6-sol'''
 Require "'services/worker/src/report/v2-pillars.js'"
 Require "'services/worker/src/report/render-report-v2-sections.test.js'"
 Require "if (`$path -like 'proof/P1/reopen/*') { continue }"
