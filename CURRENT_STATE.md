@@ -55,7 +55,16 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Material finding 2: Page 2 says `No buyer-question content detected`, while Page 5 marks five buyer needs `Adequate` and only `Compare options` as `Thin`. Track as new cross-report root `BUYER_QUESTION_COVERAGE_COHERENCE`.
 - Page 5 also contains non-blocking `LANGUAGE` and `POLISH` findings; visual quality remains `NOT ASSESSED` without an exact rendered screenshot.
 
-## Material-root accounting after Page 5
+### Page 6 — Competitor Benchmarking
+- Record: `P1_BRAD_PAGE_06_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `327c1f9796cb1813c02b9c55d2c7407acfca414c`.
+- Verdict: `NEEDS IMPROVEMENT`.
+- Page 6 material findings: `0`.
+- Evidence-integrity result: PASS at material level. The page makes no unsupported competitive-positioning claim, does not invent competitor evidence, and does not turn missing/non-applicable competitor evidence into a negative finding.
+- New material roots/boundary candidates added by Page 6: `0`.
+- Remaining issues are `LANGUAGE` / `POLISH`; visual quality remains `NOT ASSESSED` without an exact rendered screenshot.
+
+## Material-root accounting after Page 6
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -66,6 +75,8 @@ Confirmed distinct cross-report/P1 coherence roots:
 Material new-root/boundary candidate pending final governance classification:
 
 4. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
+
+Page 6 adds no material root or boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -82,7 +93,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-6. Competitor Benchmarking
 7. Trust & E-E-A-T Readiness
 8. CMS & Platform Constraints
 9. Technical SEO Hygiene
@@ -123,13 +133,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 6 — Competitor Benchmarking only** using the exact frozen candidate:
+Review **Page 7 — Trust & E-E-A-T Readiness only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#competitor-benchmark`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#trust-eeat`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 6 findings and the required Page 6 summary, then stop and wait for `NEXT`.
+Return Page 7 findings and the required Page 7 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
