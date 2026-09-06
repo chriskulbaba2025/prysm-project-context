@@ -14,10 +14,12 @@ $GatePath = Join-Path $GovRoot 'P1_EXECUTION_GATE.env'
 $Contract = Join-Path $ScriptRoot 'test-prysm-p1-r2-windows-contract.ps1'
 $Runner = Join-Path $ScriptRoot 'START-PRYSM-P1-R2-AUTORUN.ps1'
 $Recovery = Join-Path $ScriptRoot 'RESUME-PRYSM-P1-R2-DIRTY.ps1'
+$PlacementRecovery = Join-Path $ScriptRoot 'RECOVER-PRYSM-P1-R2-MISLOCATED-PROOF.ps1'
 $LocalBase = if ($env:LOCALAPPDATA) { $env:LOCALAPPDATA } else { $env:TEMP }
 $JournalPath = Join-Path $LocalBase 'PRYSM-P-Autorun\P1-R2\transaction-journal.json'
+$MislocatedProofPath = Join-Path $AppRepo 'services\worker\proof\P1\reopen\render-v2-r2-20260906'
 
-foreach ($path in @($GatePath,$Contract,$Runner,$Recovery)) {
+foreach ($path in @($GatePath,$Contract,$Runner,$Recovery,$PlacementRecovery)) {
     if (-not (Test-Path -LiteralPath $path)) { throw "Missing governed R2 entrypoint dependency: $path" }
 }
 
@@ -110,9 +112,11 @@ Require-GateValue $gate 'P_ID' 'P1'
 Require-GateValue $gate 'AUTHORIZED_STAGE' 'BOUNDED_BUILD'
 Require-GateValue $gate 'R2_EXECUTION_AUTH_FILE' 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md'
 Require-GateValue $gate 'R2_DIRTY_RECOVERY_FILE' 'proof/P1/reopen/P1_R2_RUN1_DIRTY_CHECKPOINT_RECOVERY_2026-09-06.md'
+Require-GateValue $gate 'R2_MISLOCATED_PROOF_RECOVERY_FILE' 'proof/P1/reopen/P1_R2_RUN2_MISLOCATED_PROOF_RECOVERY_2026-09-06.md'
 Require-GateValue $gate 'R2_WINDOWS_ENTRY' 'tools/prysm/START-PRYSM-P1-R2.ps1'
 Require-GateValue $gate 'R2_WINDOWS_RUNNER' 'tools/prysm/START-PRYSM-P1-R2-AUTORUN.ps1'
 Require-GateValue $gate 'R2_WINDOWS_RECOVERY' 'tools/prysm/RESUME-PRYSM-P1-R2-DIRTY.ps1'
+Require-GateValue $gate 'R2_WINDOWS_PLACEMENT_RECOVERY' 'tools/prysm/RECOVER-PRYSM-P1-R2-MISLOCATED-PROOF.ps1'
 Require-GateValue $gate 'R2_WINDOWS_CONTRACT' 'tools/prysm/test-prysm-p1-r2-windows-contract.ps1'
 Require-GateValue $gate 'R2_LOCAL_STATE_NAMESPACE' 'PRYSM-P-Autorun/P1-R2'
 Require-GateValue $gate 'R2_INITIAL_REPAIR_ATTEMPT' '1'
@@ -120,9 +124,11 @@ Require-GateValue $gate 'R2_STABLE_ROOT' 'P1-CROSS-REPORT-PROJECTION-RECONCILIAT
 
 Verify-BoundFile $gate 'R2_EXECUTION_AUTH_FILE' 'R2_EXECUTION_AUTH_COMMIT'
 Verify-BoundFile $gate 'R2_DIRTY_RECOVERY_FILE' 'R2_DIRTY_RECOVERY_COMMIT'
+Verify-BoundFile $gate 'R2_MISLOCATED_PROOF_RECOVERY_FILE' 'R2_MISLOCATED_PROOF_RECOVERY_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_ENTRY' 'R2_WINDOWS_ENTRY_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_RUNNER' 'R2_WINDOWS_RUNNER_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_RECOVERY' 'R2_WINDOWS_RECOVERY_COMMIT'
+Verify-BoundFile $gate 'R2_WINDOWS_PLACEMENT_RECOVERY' 'R2_WINDOWS_PLACEMENT_RECOVERY_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_CONTRACT' 'R2_WINDOWS_CONTRACT_COMMIT'
 
 if ($TestNotification) {
@@ -132,9 +138,10 @@ if ($TestNotification) {
 }
 
 $recoveryNeeded = Test-DirtyRecoveryNeeded
+$placementRecoveryNeeded = Test-Path -LiteralPath $MislocatedProofPath
 
 Write-Host 'PRYSM P1 R2 WINDOWS BOOTSTRAP'
-Write-Host "Mode: $(if ($AuditOnly) { 'AUDIT ONLY' } elseif ($recoveryNeeded) { 'DIRTY CHECKPOINT RECOVERY -> CONTINUOUS BUILDER TO BRAD' } else { 'CONTINUOUS BUILDER TO BRAD' })"
+Write-Host "Mode: $(if ($AuditOnly) { 'AUDIT ONLY' } elseif ($placementRecoveryNeeded) { 'MISLOCATED PROOF RECOVERY -> DIRTY RECOVERY -> CONTINUOUS BUILDER' } elseif ($recoveryNeeded) { 'DIRTY CHECKPOINT RECOVERY -> CONTINUOUS BUILDER TO BRAD' } else { 'CONTINUOUS BUILDER TO BRAD' })"
 Write-Host 'Gate binding: PASS'
 
 Write-Host "`n[1/2] R2 Windows controller contract"
@@ -142,6 +149,34 @@ Write-Host "`n[1/2] R2 Windows controller contract"
 if ($LASTEXITCODE -ne 0) {
     Send-DesktopNotification -Title 'PRYSM P1 R2 CONTROLLER FAILURE' -Level 'Error' -Message 'Windows R2 controller contract failed. Builder did not start. See the terminal for the exact error.'
     throw 'R2 Windows controller contract failed. Builder did not start.'
+}
+
+if ($placementRecoveryNeeded) {
+    Write-Host "`n[2/2] R2 mislocated generated-proof recovery"
+    $old = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        if ($AuditOnly) {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PlacementRecovery -AuditOnly
+        } else {
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PlacementRecovery
+        }
+        $placementExitCode = $LASTEXITCODE
+    } finally { $ErrorActionPreference = $old }
+
+    if ($placementExitCode -ne 0) {
+        Send-DesktopNotification -Title 'PRYSM P1 R2 PLACEMENT RECOVERY STOPPED' -Level 'Error' -Message "Mislocated generated-proof recovery stopped with exit code $placementExitCode. No boundary expansion occurred. See the terminal."
+        exit $placementExitCode
+    }
+
+    if ($AuditOnly) {
+        Write-Host 'PRYSM P1 R2 WINDOWS PLACEMENT RECOVERY AUDIT PASS'
+        Write-Host 'No Codex Builder invocation occurred.'
+        exit 0
+    }
+
+    $placementRecoveryNeeded = $false
+    $recoveryNeeded = Test-DirtyRecoveryNeeded
 }
 
 if ($recoveryNeeded) {
