@@ -95,6 +95,22 @@ done
 printf '%s\n%s\n' "$ROOT_HELP" "$EXEC_HELP" | grep -Fq 'danger-full-access' || fail "Installed Codex CLI does not advertise danger-full-access"
 pass "Codex CLI advertises required unattended-execution features"
 
+# Execute the full official deterministic gate using the current-session shim.
+# Builder is NOT launched: the shim captures the authorized prompt and returns
+# it to this certification process. This validates the real macOS Bash/Git
+# runtime, frozen history, evidence bindings, application SHA, and stage routing.
+set +e
+GATE_OUTPUT="$(bash "$CURRENT_SESSION" P1 2>&1)"
+gate_status=$?
+set -e
+[[ "$gate_status" -eq 0 ]] || fail "Official P1 deterministic gate failed on target macOS host: $GATE_OUTPUT"
+printf '%s\n' "$GATE_OUTPUT"
+printf '%s\n' "$GATE_OUTPUT" | grep -Fq 'PRYSM PROCESS GATE PASS' || fail "Official P1 gate did not emit PASS"
+printf '%s\n' "$GATE_OUTPUT" | grep -Fq 'Authorized stage: DIAGNOSTIC_TRUTH' || fail "Official P1 gate did not authorize DIAGNOSTIC_TRUTH"
+printf '%s\n' "$GATE_OUTPUT" | grep -Fq 'Authorized actor: BUILDER' || fail "Official P1 gate did not authorize Builder"
+printf '%s\n' "$GATE_OUTPUT" | grep -Fq 'PRYSM CURRENT SESSION HANDOFF' || fail "Current-session shim did not intercept Builder launch"
+pass "official deterministic P1 gate executes successfully on target macOS without Builder invocation"
+
 # Thin macOS launcher invariants.
 grep -Fq '[[ "$(uname -s)" == "Darwin" ]]' "$MAC_ENTRY" || fail "macOS identity guard is missing"
 grep -Fq 'add_path_if_dir "$npm_prefix/bin"' "$MAC_ENTRY" || fail "npm <prefix>/bin discovery rule is missing"
@@ -149,6 +165,7 @@ echo "Bash: $BASH_VERSION"
 echo "Codex: $CODEX_VERSION"
 echo "Notification runtime: osascript"
 echo "Frozen-history runtime: PASS"
+echo "Official deterministic P1 gate runtime: PASS (Builder shimmed)"
 echo "Certified sustained stage: DIAGNOSTIC_TRUTH"
 echo "Default safety window: 1200 seconds"
 echo "Default max fresh Codex runs: 6"
