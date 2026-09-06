@@ -36,11 +36,11 @@ function Verify-BoundFile([hashtable]$Gate,[string]$FileKey,[string]$CommitKey) 
     if ([string]::IsNullOrWhiteSpace($file) -or [string]::IsNullOrWhiteSpace($commit)) { throw "Missing R2 binding: $FileKey / $CommitKey" }
     & git -C $GovRoot cat-file -e "$commit^{commit}" 2>$null
     if ($LASTEXITCODE -ne 0) { throw "$CommitKey does not resolve to a governance commit: $commit" }
-    & git -C $GovRoot cat-file -e "$commit:$file" 2>$null
+    & git -C $GovRoot cat-file -e "${commit}:$file" 2>$null
     if ($LASTEXITCODE -ne 0) { throw "$file was not present at bound commit $commit" }
     & git -C $GovRoot cat-file -e "HEAD:$file" 2>$null
     if ($LASTEXITCODE -ne 0) { throw "$file is missing from current governance HEAD" }
-    $boundBlob = (& git -C $GovRoot rev-parse "$commit:$file").Trim()
+    $boundBlob = (& git -C $GovRoot rev-parse "${commit}:$file").Trim()
     $headBlob = (& git -C $GovRoot rev-parse "HEAD:$file").Trim()
     if ($boundBlob -ne $headBlob) { throw "$file changed after its bound R2 commit. Pull the current authoritative state; do not run." }
 }
