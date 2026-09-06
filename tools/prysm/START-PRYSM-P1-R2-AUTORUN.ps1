@@ -267,10 +267,10 @@ $authorization = Get-Content -LiteralPath $AuthorizationPath -Raw
 if ($authorization -notmatch [regex]::Escape($RootDefectId)) { Fail 'R2 V2 authorization does not bind the expected stable root.' }
 if ($authorization -notmatch 'Decision: APPROVED') { Fail 'R2 V2 authorization is not APPROVED.' }
 
-$frozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard }
+$frozenExit = Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet
 if ($frozenExit -ne 0) { Fail 'Frozen-history guard failed.' }
 
-$regressionExit = Invoke-NativeExitCode -Command { & $Bash $GateRegression }
+$regressionExit = Invoke-NativeExitCode -Command { & $Bash $GateRegression } -Quiet
 if ($regressionExit -ne 0) { Fail 'Permanent PRYSM gate regression failed.' }
 
 $gateOutput = Invoke-OfficialGate 'BOUNDED_BUILD' 'BUILDER'
