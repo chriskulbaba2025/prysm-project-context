@@ -68,7 +68,6 @@ Require "'--sandbox','danger-full-access'"
 Require "'--output-schema',`$SchemaPath"
 Require "'--output-last-message',`$finalPath"
 
-# Windows PowerShell 5.1 native stderr safety.
 Require 'function Invoke-NativeExitCode'
 Require '$ErrorActionPreference = ''Continue'''
 Require 'if ($Quiet) { & $Command *> $null } else { & $Command }'
@@ -85,7 +84,6 @@ Forbid '& git -C $AppRepo fetch origin $branch *> $null'
 Forbid '& git -C $GovernanceRepo fetch origin main *> $null'
 Forbid '& $Bash $FrozenGuard *> $null'
 
-# Public entrypoint terminal notification and recovery routing.
 Require '[switch]$TestNotification' 'Entry'
 Require 'function Send-DesktopNotification' 'Entry'
 Require 'System.Windows.Forms.MessageBox' 'Entry'
@@ -93,10 +91,10 @@ Require "if (`$TestNotification)" 'Entry'
 Require 'PRYSM P1 R2 WINDOWS NOTIFICATION TEST PASS' 'Entry'
 Require 'function Test-DirtyRecoveryNeeded' 'Entry'
 Require "[string]`$journal.status -eq 'CODEX_EXITED_UNRECONCILED'" 'Entry'
-Require "R2 journal is still RUNNING and cannot be auto-recovered" 'Entry'
+Require 'R2 journal is still RUNNING and cannot be auto-recovered' 'Entry'
 Require "`$Recovery = Join-Path `$ScriptRoot 'RESUME-PRYSM-P1-R2-DIRTY.ps1'" 'Entry'
-Require "R2_DIRTY_RECOVERY_FILE" 'Entry'
-Require "R2_WINDOWS_RECOVERY" 'Entry'
+Require 'R2_DIRTY_RECOVERY_FILE' 'Entry'
+Require 'R2_WINDOWS_RECOVERY' 'Entry'
 Require 'DIRTY CHECKPOINT RECOVERY -> CONTINUOUS BUILDER TO BRAD' 'Entry'
 Require 'Attributed dirty-checkpoint recovery stopped' 'Entry'
 Require "if (`$runtimeExitCode -ne 0)" 'Entry'
@@ -105,12 +103,11 @@ Require 'No automatic rerun will occur.' 'Entry'
 Require '$ErrorActionPreference = ''Continue''' 'Entry'
 Require '$runtimeExitCode = $LASTEXITCODE' 'Entry'
 
-# Exact Run 1 dirty-checkpoint recovery contract.
 Require '$RepairAttempt = 1' 'Recovery'
-Require "$Model = 'gpt-5.6-terra'" 'Recovery'
-Require "$ExpectedApplicationSha = '8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c'" 'Recovery'
-Require "$JournalGovernanceSha = '6a65330b0346dd572a59eae06402128533d7bcd2'" 'Recovery'
-Require "$ExpectedInitialDiffSha256 = '6d1db38a328364c6388abe7af63929a2fb2d75340f1ca102daaf9cb055f7ad4f'" 'Recovery'
+Require '$Model = ''gpt-5.6-terra''' 'Recovery'
+Require '$ExpectedApplicationSha = ''8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c''' 'Recovery'
+Require '$JournalGovernanceSha = ''6a65330b0346dd572a59eae06402128533d7bcd2''' 'Recovery'
+Require '$ExpectedInitialDiffSha256 = ''6d1db38a328364c6388abe7af63929a2fb2d75340f1ca102daaf9cb055f7ad4f''' 'Recovery'
 Require "'services/worker/src/report/foundation-readiness.js'" 'Recovery'
 Require "'services/worker/src/report/render-report-v2-conversion.test.js'" 'Recovery'
 Require "'services/worker/src/report/render-report-v2.js'" 'Recovery'
@@ -140,7 +137,6 @@ Forbid 'git clean' 'Recovery'
 Forbid 'checkout --force' 'Recovery'
 Forbid 'reset below repair index' 'Recovery'
 
-# Recovery evidence must bind the uploaded diagnostic state exactly.
 Require 'Decision: APPROVED' 'RecoveryEvidence'
 Require 'CONTROL-PLANE RECOVERY ONLY' 'RecoveryEvidence'
 Require 'Codex exit code: `0`' 'RecoveryEvidence'
@@ -150,7 +146,6 @@ Require '`6d1db38a328364c6388abe7af63929a2fb2d75340f1ca102daaf9cb055f7ad4f`' 'Re
 Require 'No staged files and no untracked files were present' 'RecoveryEvidence'
 Require 'process/harness recovery failure does not consume R2 product repair attempt `1`' 'RecoveryEvidence'
 
-# Runtime must consume the exact V2 execution authorization that the gate binds.
 Require "`$AuthorizationPath = Join-Path `$GovernanceRepo 'proof\P1\reopen\P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md'"
 Require "if ([string]`$gate['R2_EXECUTION_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md')"
 
