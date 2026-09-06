@@ -42,10 +42,11 @@ WORKSPACE_ROOT="$(cd "$GOV_ROOT/.." && pwd)"
 APP_ROOT="$WORKSPACE_ROOT/vantage-platform"
 GATE_ENTRY="$SCRIPT_DIR/start-prysm-p-current-session.sh"
 BUILDER_PROMPT="$SCRIPT_DIR/PRYSM-P-BUILDER-AUTORUN-PROMPT.md"
+FROZEN_GUARD="$SCRIPT_DIR/assert-p1-frozen-history.sh"
 SCHEMA="$GOV_ROOT/tools/autorun/PRYSM-AUTORUN-RESULT.schema.json"
 GATE_FILE="$GOV_ROOT/${P_ID}_EXECUTION_GATE.env"
 
-for required in "$GATE_ENTRY" "$BUILDER_PROMPT" "$SCHEMA" "$GATE_FILE"; do
+for required in "$GATE_ENTRY" "$BUILDER_PROMPT" "$FROZEN_GUARD" "$SCHEMA" "$GATE_FILE"; do
   [[ -f "$required" ]] || fail "Missing required governed file: $required"
 done
 [[ -d "$APP_ROOT/.git" ]] || fail "Application repository not found at expected sibling path: $APP_ROOT"
@@ -117,6 +118,47 @@ repo_fingerprint() {
   printf '%s|%s' "$(git -C "$repo" rev-parse HEAD)" "$(git -C "$repo" status --porcelain=v1 --untracked-files=all | shasum -a 256 | awk '{print $1}')"
 }
 
+changed_paths_between() {
+  local repo="$1"
+  local pre_head="$2"
+  local post_head="$3"
+  {
+    if [[ "$pre_head" != "$post_head" ]]; then
+      git -C "$repo" diff --name-only "$pre_head..$post_head"
+    fi
+    while IFS= read -r line; do
+      [[ -n "$line" ]] || continue
+      path="${line:3}"
+      if [[ "$path" == *" -> "* ]]; then
+        path="${path##* -> }"
+      fi
+      printf '%s\n' "$path"
+    done < <(git -C "$repo" status --porcelain=v1 --untracked-files=all)
+  } | sed '/^$/d' | sort -u
+}
+
+assert_diagnostic_governance_boundary() {
+  local pre_head="$1"
+  local post_head="$2"
+  local path
+  while IFS= read -r path; do
+    [[ -n "$path" ]] || continue
+    case "$path" in
+      proof/P1/reopen/*) ;;
+      *) fail "DIAGNOSTIC_TRUTH governance transaction escaped the authorized new-evidence path: $path" ;;
+    esac
+  done < <(changed_paths_between "$GOV_ROOT" "$pre_head" "$post_head")
+}
+
+assert_governance_synced() {
+  [[ -z "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)" ]] || fail "Governance worktree is not clean at the diagnostic handoff. Preserve it; do not discard it."
+  git -C "$GOV_ROOT" fetch origin main >/dev/null || fail "Governance fetch failed at diagnostic handoff."
+  local local_head remote_head
+  local_head="$(git -C "$GOV_ROOT" rev-parse HEAD)"
+  remote_head="$(git -C "$GOV_ROOT" rev-parse origin/main)"
+  [[ "$local_head" == "$remote_head" ]] || fail "Diagnostic governance evidence is not synchronized to authoritative origin/main. Local=$local_head Remote=$remote_head"
+}
+
 read_gate_stage() {
   awk -F= '$1 == "AUTHORIZED_STAGE" { print $2; exit }' "$GATE_FILE"
 }
@@ -167,6 +209,7 @@ while true; do
 
   pre_app="$(repo_fingerprint "$APP_ROOT")"
   pre_gov="$(repo_fingerprint "$GOV_ROOT")"
+  pre_gov_head="$(git -C "$GOV_ROOT" rev-parse HEAD)"
 
   cat > "$PROMPT_FILE" <<EOF_PROMPT
 # PRYSM macOS sustained execution context
@@ -185,8 +228,9 @@ EXECUTION CONTINUITY REQUIREMENT
 - Robots/indexability is not a decisive P1 blocker unless new diagnostic evidence proves otherwise.
 - Read-only application diagnosis only. DO NOT edit application code during DIAGNOSTIC_TRUTH.
 - Do not cross into BOUNDED_BUILD or perform a repair. Repair requires a later governed authorization.
-- Complete the lineage/root-cause/scenario/seam analysis and create only the new versioned diagnostic governance evidence allowed by current authoritative governance.
-- Preserve all frozen evidence and historical files.
+- Complete the lineage/root-cause/scenario/seam analysis and create only new versioned diagnostic governance evidence under proof/P1/reopen/.
+- Do not modify CURRENT_STATE.md, P1_EXECUTION_GATE.env, control-plane files, or frozen historical evidence during this diagnostic run.
+- Before any governance commit/push and before returning, run the P1 frozen-history guard required by the Builder contract.
 - If diagnosis is complete and the only remaining step is Chris repair authorization, return BLOCKED with a checkpoint/reason/next_action that clearly says repair authorization is required. That is the expected human boundary, not a failure.
 - Otherwise, if more authorized diagnostic work remains, return CONTINUE to Builder.
 - Never route to Betty/Auditor from this stage.
@@ -221,8 +265,11 @@ EOF_PROMPT
 
   post_app="$(repo_fingerprint "$APP_ROOT")"
   post_gov="$(repo_fingerprint "$GOV_ROOT")"
+  post_gov_head="$(git -C "$GOV_ROOT" rev-parse HEAD)"
 
   [[ "$pre_app" == "$post_app" ]] || fail "DIAGNOSTIC_TRUTH modified the application repository. The run was stopped fail-closed. See $RUN_DIR"
+  assert_diagnostic_governance_boundary "$pre_gov_head" "$post_gov_head"
+  bash "$FROZEN_GUARD" >/dev/null || fail "P1 frozen-history verification failed after diagnostic execution."
   [[ "$codex_status" -eq 0 ]] || fail "Codex exited with code $codex_status. See $RUN_DIR"
   [[ -s "$FINAL_FILE" ]] || fail "Codex did not produce the required structured result. See $RUN_DIR"
 
@@ -241,6 +288,7 @@ NODE
 
   if [[ "$loop_action" == "BLOCKED" ]]; then
     if [[ "$checkpoint" == *"AUTH"* || "$reason" == *"authoriz"* || "$next_action" == *"authoriz"* ]]; then
+      assert_governance_synced
       notify_macos "PRYSM $P_ID READY FOR CHRIS" "Diagnostic work reached the repair-authorization boundary. Review: $reason"
       echo "PRYSM $P_ID DIAGNOSTIC COMPLETE — READY FOR CHRIS"
       exit 0
@@ -263,9 +311,7 @@ NODE
     if (( no_progress >= 3 )); then
       fail "No-progress anti-thrash limit reached after three Builder continuations with no repository progress."
     fi
-    if [[ -n "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)" ]]; then
-      fail "Builder left governance work uncommitted. Preserve it and review the latest log; autorun will not overwrite or discard it."
-    fi
+    assert_governance_synced
     sleep 2
     continue
   fi
