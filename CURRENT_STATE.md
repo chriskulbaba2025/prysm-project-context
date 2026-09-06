@@ -9,9 +9,10 @@ Last verified:
 ## Current governed boundary
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Current stage: BOUNDED_BUILD
-- Authorized execution stage: BOUNDED_BUILD
-- Authorized actor: `BUILDER/Codex`.
+- Current stage: OUTCOME_REVIEW
+- Authorized execution stage: OUTCOME_REVIEW
+- Authorized actor: `BRAD`.
+- Builder R2 disposition: complete; Brad now owns the independent outcome review of repaired candidate `a9523ac3de98de76335a05304b60bec246242b65`.
 - Chris decision: `APPROVED` — continuous R2 bounded repair through exact-candidate preparation for Brad `OUTCOME_REVIEW`.
 - Binding diagnosis: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d`.
 - Original R2 authorization remains frozen at `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` / `94f63144a34eb4d513193b54251a9778832c36fc`.
@@ -23,6 +24,8 @@ Last verified:
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
 - Exact failed candidate entering R2 repair: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
+- Exact repaired candidate for Brad: `a9523ac3de98de76335a05304b60bec246242b65`.
+- Bound R2 candidate proof: `proof/P1/reopen/P1_R2_REPAIRED_CANDIDATE_PROOF_a9523ac_2026-09-06.md` at `ebc0370def417b0452d7c45e7293b77ab45b9a57`; rendered-manifest binding: `proof/P1/reopen/P1_R2_RENDER_MANIFEST_a9523ac_2026-09-06.md` at `dfbabe1a329a178b884fea0673265dfe46dab825`.
 - `P1_EXECUTION_GATE.env` routes P1 to `BOUNDED_BUILD` and binds the R2 diagnostic, owner authorization, Windows R2 execution addendum, stable root, and repair-accounting baseline.
 
 ## Exact current repair scope
