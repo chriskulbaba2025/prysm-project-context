@@ -4,16 +4,18 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Design the next governed P1 repair package from Brad's completed final outcome disposition. The repair must eliminate the repeat evidence-to-client interpretation/classification/projection failure class across the whole report, not patch isolated wording.
+Obtain Chris approval for the completed governed P1 systemic repair design, then begin implementation only after approval.
 
 ## Verified checkpoint
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
 - Prior stage: `OUTCOME_REVIEW` — COMPLETE.
-- Current stage: `P1 REPAIR DESIGN`.
+- Current stage: `P1 REPAIR DESIGN — AWAITING CHRIS APPROVAL`.
 - Final Brad disposition: `P1 OUTCOME: FAIL` / `NOT READY TO PASS P1`.
 - Final Brad record: `P1_BRAD_FINAL_OUTCOME_DISPOSITION_2026-09-06.md`.
 - Active repair-scope decision: `DECISION_PRYSM_P1_OUTCOME_REPAIR_SCOPE_2026-09-06.md`.
+- Governed repair design: `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`.
+- Repair-design commit: `865ade5371c863f2553f2069b0014a6c5c3cb2e5`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Application branch under review: `p1/bounded-build-cross-report-integrity`.
 - Failed exact candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
@@ -21,7 +23,6 @@ Design the next governed P1 repair package from Brad's completed final outcome d
 - All 16 numbered page reviews: COMPLETE.
 - All 7 targeted scenario checks: COMPLETE.
 - Scenario result: `4 PASS / 3 MATERIAL FAIL`.
-- Builder verification for the failed candidate remains historically complete: focused R2 `80/0`, full worker `987/0`, Whole-App PASS, render generation `52/0`.
 
 ## Final confirmed P1 material roots
 
@@ -35,108 +36,92 @@ Design the next governed P1 repair package from Brad's completed final outcome d
 
 Unresolved boundary candidates: `0`.
 
-Former boundary candidates:
+## Verified design conclusion
 
-- `CONTENT_RECOMMENDATION_INTEGRITY` -> promoted to confirmed root #7.
-- `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` -> absorbed as a manifestation of `EVIDENCE_SCOPE_STATUS_COHERENCE`.
-- `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` -> absorbed as a manifestation of `EVIDENCE_SCOPE_STATUS_COHERENCE`.
-
-## Final evidence-gathering conclusion
-
-Broad evidence acquisition does **not** appear to be the dominant failure.
-
-PRYSM repeatedly demonstrates correct underlying boundaries including:
-
-- assessed absence vs unavailable evidence;
-- CTA/form presence vs conversion-path quality;
-- lab performance vs real-user field performance;
-- no performance evidence -> no fast/slow conclusion;
-- crawl/provider failure -> explicit audit limitation;
-- insufficient coverage -> overall score withheld.
+Broad evidence acquisition is not the dominant failure.
 
 Dominant defect class:
 
 `evidence -> classification -> interpretation -> summary/projection -> client-facing language`
 
-The repair target is therefore systemic interpretation/report integrity first. Do not reopen acquisition or scoring without direct evidence proving a separate defect.
+The failed candidate already contains a deterministic `cross-report-interpretation` projection, but it is too narrow and major consumers still independently infer client meaning from raw scores/findings/evidence.
 
-## Repair-design authorization
+## Recommended repair architecture
 
-The next repair is outcome-first and is not artificially limited to page styling or the current report-only boundary.
+**Deterministic Client Truth Contract + existing governed Writer/Judge.**
 
-The design may consider, where justified:
+- Expand/replace the current cross-report interpretation projection rather than create a competing truth system.
+- All client-facing consumers must consume the same deterministic client truth.
+- Add a deterministic integrity gate that blocks stronger-than-evidence states and broken recommendation output.
+- Preserve raw provenance underneath the client report.
+- Keep n8n outside the core P1 truth path for now; it may be used later for orchestration/alerts/replay once the Client Truth Contract is stable.
 
-- central deterministic client-fact/qualification logic;
-- report projection/summary logic;
-- recommendation integrity;
-- Writer input/prompt/output contracts;
-- Judge/cross-report contradiction checks;
-- client vs technical evidence presentation;
-- n8n orchestration;
-- deterministic validation/replay.
+Architecture score recorded in the design: `9.5 / 10`.
 
-External n8n is permitted if it materially improves the solution. n8n must not become the evidence source of truth or bypass deterministic governance.
+## Expected application boundary after approval
 
-No implementation boundary is chosen yet.
+Strongly expected files/systems are documented in `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`, including:
 
-## Completed
+- `src/report-model/cross-report-interpretation.js`
+- `src/scoring/vantage-score.js`
+- `src/scoring/score-components.js`
+- `src/scoring/report-model.js`
+- `src/report/action-priority.js`
+- `src/report/render-report-v2.js`
+- `src/report/report-detail-sections.js`
+- `src/narrative-v2/writer-input.js`
+- `src/narrative-v2/writer-prompt.js`
+- `src/narrative-v2/live-binding.js`
+- `src/narrative-v2/judge-contract.js` if the new hard-gate class requires contract validation
+- likely new `src/report-model/client-truth-gate.js`
 
-- 16-page Brad outcome review.
-- 7-scenario Brad proof batch.
-- Independent audit/collation of page and scenario findings.
-- Final Brad `P1 OUTCOME: FAIL` synthesis.
-- Final seven-root accounting.
-- Repair-design scope decision allowing the architecture to cross the old presentation-only boundary where justified.
+Exact current source must still be verified before implementation.
 
-## Blocked
+## Verification design
 
-Until the repair design is approved:
+Required after implementation:
 
-- do not edit application code;
-- do not run Builder;
-- do not start P2;
-- do not run Betty Final Audit;
-- do not merge application `main`;
-- do not deploy;
-- do not call paid/live providers or models;
-- do not rerun the failed candidate as if it were passable.
+- direct Client Truth unit tests;
+- one regression per seven confirmed roots;
+- all 7 existing scenarios -> required `7 / 7 PASS`;
+- cross-consumer parity tests for renderer / WriterInput / Narrative / action hierarchy;
+- no `undefined` / `null` / unresolved recommendation placeholders in client output;
+- focused report suites;
+- full worker suite;
+- Whole-App branch-matrix/tranche gate;
+- model-bearing gate if Writer/Judge changes;
+- exact repaired render candidate;
+- Brad repaired-outcome review plus actual rendered visual review;
+- Betty only after Brad PASS.
+
+## Blocked until approval
+
+- no application code edits;
+- no Builder run;
+- no P2;
+- no Betty Final Audit;
+- no merge to application `main`;
+- no deployment;
+- no paid/live providers or models.
 
 ## Important constraints
 
 - GitHub is authoritative.
-- Diagnose/design before coding.
-- Solve the repeat defect class, not isolated sentences.
+- Design before coding.
+- Solve the repeat failure class, not isolated sentences.
 - Preserve canonical evidence truth and provenance.
-- Missing/partial/unavailable evidence must fail closed everywhere.
-- Do not reopen evidence acquisition or scoring without direct proof and dependency-impact analysis.
-- Preserve whole-app/model-bearing/release gates for any eventual implementation.
+- Do not reopen evidence acquisition or scoring without direct evidence and dependency-impact proof.
 - Existing user work must not be destructively reset or discarded.
 
 ## Exact next action
 
-Start a new chat from GitHub authority and read:
+Chris approves or rejects the architecture in `P1_GOVERNED_REPAIR_DESIGN_2026-09-06.md`.
 
-1. `PROJECT.md`
-2. `GITHUB_PROJECT_MEMORY_PROTOCOL.md`
-3. `PRYSM_PERMANENT_MEMORY.md`
-4. `REPAIR_BOUNDARY_PROTOCOL.md`
-5. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
-6. `WORKFLOW_INSTRUCTIONS.md`
-7. `CURRENT_STATE.md`
-8. `CONSTRAINTS.md`
-9. `DECISIONS.md`
-10. `P1_BRAD_FINAL_OUTCOME_DISPOSITION_2026-09-06.md`
-11. `DECISION_PRYSM_P1_OUTCOME_REPAIR_SCOPE_2026-09-06.md`
-12. `HANDOFF_PRYSM_P1_OUTCOME_REPAIR_DESIGN_CONTINUATION_2026-09-06.md`
+Recommended approval:
 
-Then produce a **governed P1 repair design before any code** that:
+`APPROVE — deterministic Client Truth Contract + existing Writer/Judge, with n8n outside the core truth path for now.`
 
-- maps all seven confirmed roots to the responsible interpretation/projection boundaries;
-- compares a central deterministic qualification layer, revised Writer/Judge path, external n8n orchestration, and hybrid options;
-- selects the architecture most likely to eliminate recurrence across the whole report;
-- defines dependency impact, exact expected source-file/system boundaries, regression tests, scenario proofs, and acceptance gates;
-- keeps raw provenance available while making the normal client report human/business-first;
-- requires Chris approval of the repair design before implementation begins.
+If approved, the next governed action is to verify the exact current application branch/worktree and begin implementation in the documented order.
 
 Last verified:
 2026-09-06
