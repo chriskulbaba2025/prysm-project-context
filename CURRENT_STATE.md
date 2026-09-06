@@ -114,7 +114,18 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - The lab-vs-real-user distinction is otherwise materially improved and should be preserved.
 - New material boundary candidates added by Page 12: `0`.
 
-## Material-root accounting after Page 12
+### Page 13 — Accessibility & Mobile Usability Readiness
+- Record: `P1_BRAD_PAGE_13_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `ac99f33fc64d74b11ade7ea850a599a3e62fd014`.
+- Verdict: `NEEDS IMPROVEMENT`.
+- Material findings: `0`.
+- Lighthouse accessibility evidence remains diagnostic rather than compliance evidence; the report does not certify AODA/WCAG compliance.
+- Mobile viewport, responsive layout, font legibility, and tap-target sizing remain unavailable instead of being inferred from performance or other signals.
+- Missing evidence is explicitly not treated as a complete negative site finding, consistent with Page 12's boundary that mobile usability itself was not assessed.
+- `Material barriers` for the missing-alt observation is stronger than necessary because the importance of the affected image is not established, but this remains a language/polish issue rather than a P1 material defect.
+- New roots/boundary candidates: `0`.
+
+## Material-root accounting after Page 13
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -130,7 +141,7 @@ Material new-root/boundary candidates pending final governance classification:
 7. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 8. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
 
-Pages 10 and 11 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
+Pages 10, 11, and 13 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -147,7 +158,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-13. Accessibility & Mobile Usability Readiness
 14. Internal-Link Opportunities
 15. Evidence Appendix
 16. Deferred & Unavailable Analysis
@@ -181,13 +191,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 13 — Accessibility & Mobile Usability Readiness only** using the exact frozen candidate:
+Review **Page 14 — Internal-Link Opportunities only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#accessibility-mobile`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#internal-links`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 13 findings and the required Page 13 summary, then stop and wait for `NEXT`.
+Return Page 14 findings and the required Page 14 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
