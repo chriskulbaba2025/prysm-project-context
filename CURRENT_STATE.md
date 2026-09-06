@@ -103,7 +103,18 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Location/entity relationship uncertainty remains partial, and external knowledge-graph inclusion / actual AI-search retrieval are explicitly not assessed.
 - New roots/boundary candidates: `0`.
 
-## Material-root accounting after Page 11
+### Page 12 — Performance
+- Record: `P1_BRAD_PAGE_12_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `c08fe27e06fe5f7eecf1a0bf8206e977582e5ed6`.
+- Verdict: `MATERIAL FAIL`.
+- Material defect family: Page 12 labels mobile lab performance `62/100 — PASS` even though the page says measurable performance headroom remains and real-user field performance is unavailable.
+- Earlier Page 1/Page 4 performance summaries present `Performance & Experience — 77/100` under `What Is Already Working` / `Where the foundation is strong`, creating a broader positive story than the detailed evidence supports without stronger qualification.
+- New confirmed P1 coherence root: `PERFORMANCE_QUALIFICATION_COHERENCE`.
+- Brad's two material rows are manifestations of this one root, not two separate roots.
+- The lab-vs-real-user distinction is otherwise materially improved and should be preserved.
+- New material boundary candidates added by Page 12: `0`.
+
+## Material-root accounting after Page 12
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -111,14 +122,15 @@ Confirmed distinct cross-report/P1 coherence roots:
 2. `PRIORITY_HIERARCHY_COHERENCE` — Page 2.
 3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5.
 4. `TRUST_ATTRIBUTION_COHERENCE` — Page 7.
+5. `PERFORMANCE_QUALIFICATION_COHERENCE` — Page 12 detailed mobile PASS plus Pages 1/4 broader positive performance framing.
 
 Material new-root/boundary candidates pending final governance classification:
 
-5. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
-6. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
-7. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
+6. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
+7. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
+8. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
 
-Pages 10 and 11 add no material root or boundary candidate.
+Pages 10 and 11 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -135,7 +147,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-12. Performance
 13. Accessibility & Mobile Usability Readiness
 14. Internal-Link Opportunities
 15. Evidence Appendix
@@ -170,13 +181,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 12 — Performance only** using the exact frozen candidate:
+Review **Page 13 — Accessibility & Mobile Usability Readiness only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#performance`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#accessibility-mobile`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 12 findings and the required Page 12 summary, then stop and wait for `NEXT`.
+Return Page 13 findings and the required Page 13 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
