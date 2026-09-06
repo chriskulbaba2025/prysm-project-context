@@ -23,135 +23,102 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 
 ### Page 1 — Executive Scorecard
 - Record: `P1_BRAD_PAGE_01_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `49b53bd28ade138beac185d7751f50755d86d3b0`.
 - Verdict: `MATERIAL FAIL`.
-- Material root: `CTA_PATH_COHERENCE`.
+- Root: `CTA_PATH_COHERENCE`.
 
 ### Page 2 — Priority Fixes
 - Record: `P1_BRAD_PAGE_02_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `d72d6f884e71b7fb7e4347e6a8e50a84ca10d712`.
 - Verdict: `MATERIAL FAIL`.
-- Material root: `PRIORITY_HIERARCHY_COHERENCE`.
+- Root: `PRIORITY_HIERARCHY_COHERENCE`.
 
 ### Page 3 — Conversion Path Architecture
 - Record: `P1_BRAD_PAGE_03_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `dd8375e514a8012c1c783e23f535da4bdec16308`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- New standalone material roots: `0`.
-- Corroborates `CTA_PATH_COHERENCE`.
+- Corroborates `CTA_PATH_COHERENCE`; no new root.
 
 ### Page 4 — Conversion Readiness Map
 - Record: `P1_BRAD_PAGE_04_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `6f36cb15d10c652bf9f15648c4f1c9a4ec514139`.
 - Verdict: `MATERIAL FAIL`.
-- Material manifestation belongs to existing `CTA_PATH_COHERENCE`; no new distinct root.
+- Existing root manifestation: `CTA_PATH_COHERENCE`.
 
 ### Page 5 — Topical Map & Qualified Content Opportunities
 - Record: `P1_BRAD_PAGE_05_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `075fd93b05f7ba3be56b7f708d123bd54723973e`.
 - Verdict: `MATERIAL FAIL`.
 - New confirmed root: `BUYER_QUESTION_COVERAGE_COHERENCE`.
-- Material new-root/boundary candidate: `CONTENT_RECOMMENDATION_INTEGRITY` for exposed `Signs You May Need Undefined`.
+- Boundary candidate: `CONTENT_RECOMMENDATION_INTEGRITY` for exposed `Undefined`.
 
 ### Page 6 — Competitor Benchmarking
 - Record: `P1_BRAD_PAGE_06_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `327c1f9796cb1813c02b9c55d2c7407acfca414c`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Material findings: `0`.
-- Evidence-integrity result: PASS at material level; no unsupported competitive-positioning claim.
-- New roots/boundary candidates: `0`.
+- Material findings: `0`; no new root/boundary candidate.
 
 ### Page 7 — Trust & E-E-A-T Readiness
 - Record: `P1_BRAD_PAGE_07_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `8a8c409a183a1bcd5105af78d7e49a4914f31462`.
 - Verdict: `MATERIAL FAIL`.
-- New confirmed P1 root: `TRUST_ATTRIBUTION_COHERENCE` for unsupported `underused` trust-proof conclusion.
-- Earlier broad trust attribution is otherwise substantially repaired.
+- New confirmed root: `TRUST_ATTRIBUTION_COHERENCE`.
 
 ### Page 8 — CMS & Platform Constraints
 - Record: `P1_BRAD_PAGE_08_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `762c5ec7badc994708c19f35e37c3a4a8271b7d4`.
 - Verdict: `MATERIAL FAIL`.
-- Material defect family: inferred `Migration risk — Low to Medium` is presented under `Observed from the crawl` even though implementation controls needed to establish that risk are unverified.
-- New confirmed cross-report P1 roots added: `0`.
-- New material new-root/boundary candidate: `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION`.
+- Boundary candidate: `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION`.
 
 ### Page 9 — Technical SEO Hygiene
 - Record: `P1_BRAD_PAGE_09_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `4feade0f5eed2f8dbc2006a62a18e85403b46ef5`.
 - Verdict: `MATERIAL FAIL`.
-- Material defect family: qualified meta-description and security-header observations are presented under `Is anything blocking search performance?` without evidence establishing them as blockers.
-- New confirmed cross-report P1 roots added: `0`.
-- New material new-root/boundary candidate: `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION`.
+- Boundary candidate: `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION`.
 
 ### Page 10 — Heading & Semantic Structure
 - Record: `P1_BRAD_PAGE_10_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `f2dbbf46994464922b956d95784d466096383638`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Material findings: `0`.
-- The page is appropriately scoped to one evaluated page and explicitly states that raw H1/H2/H3 counts do not determine page quality.
-- Positive language remains a language/polish issue rather than a material P1 defect.
-- New roots/boundary candidates: `0`.
+- Material findings: `0`; no new root/boundary candidate.
 
 ### Page 11 — Schema & Entity Clarity
 - Record: `P1_BRAD_PAGE_11_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `996155293523a70f3df6aad48e8cb8e10dd2d47e`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Material findings: `0`.
-- Organization schema is treated as observed evidence only; domain identity is explicitly not treated as proof of structured business identity.
-- Missing schema types remain conditional candidates rather than automatic findings.
-- Location/entity relationship uncertainty remains partial, and external knowledge-graph inclusion / actual AI-search retrieval are explicitly not assessed.
-- New roots/boundary candidates: `0`.
+- Material findings: `0`; no new root/boundary candidate.
 
 ### Page 12 — Performance
 - Record: `P1_BRAD_PAGE_12_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `c08fe27e06fe5f7eecf1a0bf8206e977582e5ed6`.
 - Verdict: `MATERIAL FAIL`.
-- Material defect family: Page 12 labels mobile lab performance `62/100 — PASS` even though the page says measurable performance headroom remains and real-user field performance is unavailable.
-- Earlier Page 1/Page 4 performance summaries present `Performance & Experience — 77/100` under `What Is Already Working` / `Where the foundation is strong`, creating a broader positive story than the detailed evidence supports without stronger qualification.
-- New confirmed P1 coherence root: `PERFORMANCE_QUALIFICATION_COHERENCE`.
-- Brad's two material rows are manifestations of this one root, not two separate roots.
-- The lab-vs-real-user distinction is otherwise materially improved and should be preserved.
-- New material boundary candidates added by Page 12: `0`.
+- New confirmed root: `PERFORMANCE_QUALIFICATION_COHERENCE`.
+- Lab-vs-real-user distinction is otherwise materially improved and must be preserved.
 
 ### Page 13 — Accessibility & Mobile Usability Readiness
 - Record: `P1_BRAD_PAGE_13_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `ac99f33fc64d74b11ade7ea850a599a3e62fd014`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Material findings: `0`.
-- Lighthouse accessibility evidence remains diagnostic rather than compliance evidence; the report does not certify AODA/WCAG compliance.
-- Mobile viewport, responsive layout, font legibility, and tap-target sizing remain unavailable instead of being inferred from performance or other signals.
-- Missing evidence is explicitly not treated as a complete negative site finding, consistent with Page 12's boundary that mobile usability itself was not assessed.
-- `Material barriers` for the missing-alt observation is stronger than necessary because the importance of the affected image is not established, but this remains a language/polish issue rather than a P1 material defect.
-- New roots/boundary candidates: `0`.
+- Material findings: `0`; no new root/boundary candidate.
 
 ### Page 14 — Internal-Link Opportunities
 - Record: `P1_BRAD_PAGE_14_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
-- Commit: `2baabd9582acc392274383d69f1070cbea7b2737`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Material findings: `0`.
-- The page reports `8 total internal links, 0 broken` as observed crawl evidence while explicitly stating that internal-link opportunities were not assessed/computed.
-- It does not turn working-link evidence into proof of strategic internal-link quality, does not invent source/destination opportunities, and does not treat unavailable opportunity analysis as a negative finding.
-- The `8 links / 0 broken / 0 pages evaluated / 0 recommendation(s)` summary is confusing and machine-like but remains a language/usefulness problem rather than a material contradiction.
-- New roots/boundary candidates: `0`.
+- Material findings: `0`; no new root/boundary candidate.
 
-## Material-root accounting after Page 14
+### Page 15 — Evidence Appendix
+- Record: `P1_BRAD_PAGE_15_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `63c786ea2016ec05c20ca9886510dd69ce4db532`.
+- Verdict: `MATERIAL FAIL`.
+- Confirmed material defect: `VAN-CONTENT-002 — No buyer-question content detected` is traced only to `trust.faq=false`, which is narrower than the client-facing conclusion.
+- This is provenance corroboration of existing root `BUYER_QUESTION_COVERAGE_COHERENCE`, not a new root.
+- Brad's indexability MATERIAL call was downgraded: `technical.indexability` is correctly `PARTIAL`, while the positive conclusion is explicitly scoped to crawled pages. Treat broad `PASS` labeling as language/polish, not a new material root.
+- Brad's broad `performance: AVAILABLE` MATERIAL call was not counted as a new defect family because the appendix immediately distinguishes `performance.lab: AVAILABLE` from `performance.field: UNAVAILABLE`; it corroborates existing `PERFORMANCE_QUALIFICATION_COHERENCE` at evidence level.
+- Page 15 adds `0` new confirmed roots and `0` new boundary candidates.
+- Evidence-gathering assessment: capability-level AVAILABLE/PARTIAL/UNAVAILABLE handling is generally sound; current material defects are primarily evidence-to-conclusion interpretation/classification/presentation issues rather than a broad collection failure.
 
-Confirmed distinct cross-report/P1 coherence roots:
+## Material-root accounting after Page 15
+
+Confirmed distinct cross-report/P1 coherence roots remain:
 
 1. `CTA_PATH_COHERENCE` — Pages 1 and 4; corroborated by Page 3.
 2. `PRIORITY_HIERARCHY_COHERENCE` — Page 2.
-3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5.
+3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5; provenance corroborated by Page 15.
 4. `TRUST_ATTRIBUTION_COHERENCE` — Page 7.
-5. `PERFORMANCE_QUALIFICATION_COHERENCE` — Page 12 detailed mobile PASS plus Pages 1/4 broader positive performance framing.
+5. `PERFORMANCE_QUALIFICATION_COHERENCE` — Page 12 plus Pages 1/4; evidence-state distinction corroborated by Page 15.
 
 Material new-root/boundary candidates pending final governance classification:
 
 6. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
 7. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 8. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
-
-Pages 10, 11, 13, and 14 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -168,17 +135,26 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-15. Evidence Appendix
 16. Deferred & Unavailable Analysis
 
 After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`, then wait for `FULL REPORT` before whole-report synthesis and final Brad `P1 OUTCOME: PASS / FAIL`.
 
+Targeted scenarios after Page 16:
+
+- `path-validated-blocker.html`
+- `competitor-present.html`
+- `unassessed.html`
+- `no-conversion-mechanism.html`
+- `no-performance.html`
+- `crawl-blocked.html`
+- `provider-failed.html`
+
 ## Blocked
 
-- Final P1 disposition/closure is blocked until all 16 page reviews, targeted scenario checks, and `FULL REPORT` synthesis are complete.
+- Final P1 disposition/closure is blocked until Page 16, all targeted scenario checks, and `FULL REPORT` synthesis are complete.
 - Current material findings do not authorize diagnosis or repair during `OUTCOME_REVIEW`.
-- Material new-root/boundary candidates must be classified during governed disposition before any repair authorization.
-- These page findings are not yet the final Brad P1 disposition.
+- Material new-root/boundary candidates must be classified during governed disposition before repair authorization.
+- These findings are not yet the final Brad P1 disposition.
 
 ## Important constraints
 
@@ -193,20 +169,20 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 - Do not call paid/live application providers/models.
 - Do not change evidence acquisition/adapters, scoring policy, Writer/Judge behaviour, lifecycle/storage/auth, or unrelated product behaviour.
 - Review one numbered report page at a time and stop for `NEXT`.
-- Do not treat observations about a future page as adjudicated until that page is formally reviewed.
-- For visual/layout judgment, use the actual rendered page/screenshot; do not infer rendered visual quality from source HTML/CSS alone.
+- Do not treat future-stage observations as adjudicated until formally reviewed.
+- For visual/layout judgment, use actual rendered evidence; do not infer visual quality from HTML/CSS alone.
 - Keep `MATERIAL`, `LANGUAGE`, `VISUAL`, and `POLISH` separate.
 - Do not fail P1 solely for cosmetic preference unless presentation materially obscures or changes meaning.
 
 ## Exact next action
 
-Review **Page 15 — Evidence Appendix only** using the exact frozen candidate:
+Review **Page 16 — Deferred & Unavailable Analysis only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#evidence-appendix`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#deferred`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 15 findings and the required Page 15 summary, then stop and wait for `NEXT`.
+Return Page 16 findings and the required Page 16 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
