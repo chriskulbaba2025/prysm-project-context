@@ -25,58 +25,63 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Record: `P1_BRAD_PAGE_01_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `49b53bd28ade138beac185d7751f50755d86d3b0`.
 - Verdict: `MATERIAL FAIL`.
-- Material root: `CTA_PATH_COHERENCE` — Conversion Path is presented under `What Is Already Working` while the assessed path is weak.
+- Material root: `CTA_PATH_COHERENCE`.
 
 ### Page 2 — Priority Fixes
 - Record: `P1_BRAD_PAGE_02_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `d72d6f884e71b7fb7e4347e6a8e50a84ca10d712`.
 - Verdict: `MATERIAL FAIL`.
-- Material root: `PRIORITY_HIERARCHY_COHERENCE` — Priority 1 is presented as high-conversion/high impact and also medium impact, while Priority 3 is called high impact; the action plan separately places Priority 1 under `DO NOW` as `HIGH_CONVERSION`.
+- Material root: `PRIORITY_HIERARCHY_COHERENCE`.
 
 ### Page 3 — Conversion Path Architecture
 - Record: `P1_BRAD_PAGE_03_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `dd8375e514a8012c1c783e23f535da4bdec16308`.
 - Verdict: `NEEDS IMPROVEMENT`.
 - New standalone material roots: `0`.
-- Page 3 corroborates `CTA_PATH_COHERENCE`: the primary `Book a call` route is `Weak` and no assessed route is fully Clear.
+- Corroborates `CTA_PATH_COHERENCE`.
 
 ### Page 4 — Conversion Readiness Map
 - Record: `P1_BRAD_PAGE_04_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `6f36cb15d10c652bf9f15648c4f1c9a4ec514139`.
 - Verdict: `MATERIAL FAIL`.
-- Material manifestation: Conversion Path is labeled `65/100 — Adequate` and included under `Where the foundation is strong` while Page 3 says the primary path is `Weak`.
-- Root accounting: another manifestation of existing `CTA_PATH_COHERENCE`, not a new distinct root.
+- Material manifestation belongs to existing `CTA_PATH_COHERENCE`; no new distinct root.
 
 ### Page 5 — Topical Map & Qualified Content Opportunities
 - Record: `P1_BRAD_PAGE_05_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `075fd93b05f7ba3be56b7f708d123bd54723973e`.
 - Verdict: `MATERIAL FAIL`.
-- Material finding 1: `Signs You May Need Undefined` is exposed directly to the client. Track as `CONTENT_RECOMMENDATION_INTEGRITY`; this is a material new-root/boundary candidate pending final governance classification and does not authorize repair during `OUTCOME_REVIEW`.
-- Material finding 2: Page 2 says `No buyer-question content detected`, while Page 5 marks five buyer needs `Adequate` and only `Compare options` as `Thin`. Track as new cross-report root `BUYER_QUESTION_COVERAGE_COHERENCE`.
-- Page 5 also contains non-blocking `LANGUAGE` and `POLISH` findings; visual quality remains `NOT ASSESSED` without an exact rendered screenshot.
+- New confirmed root: `BUYER_QUESTION_COVERAGE_COHERENCE`.
+- Material new-root/boundary candidate: `CONTENT_RECOMMENDATION_INTEGRITY` for exposed `Signs You May Need Undefined`.
 
 ### Page 6 — Competitor Benchmarking
 - Record: `P1_BRAD_PAGE_06_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `327c1f9796cb1813c02b9c55d2c7407acfca414c`.
 - Verdict: `NEEDS IMPROVEMENT`.
-- Page 6 material findings: `0`.
-- Evidence-integrity result: PASS at material level. The page makes no unsupported competitive-positioning claim, does not invent competitor evidence, and does not turn missing/non-applicable competitor evidence into a negative finding.
-- New material roots/boundary candidates added by Page 6: `0`.
-- Remaining issues are `LANGUAGE` / `POLISH`; visual quality remains `NOT ASSESSED` without an exact rendered screenshot.
+- Material findings: `0`.
+- Evidence-integrity result: PASS at material level; no unsupported competitive-positioning claim.
+- New roots/boundary candidates: `0`.
 
-## Material-root accounting after Page 6
+### Page 7 — Trust & E-E-A-T Readiness
+- Record: `P1_BRAD_PAGE_07_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `8a8c409a183a1bcd5105af78d7e49a4914f31462`.
+- Verdict: `MATERIAL FAIL`.
+- Material finding: `Proof already available but underused` asserts insufficient use/placement of observed trust assets while the immediate limitation says page-level placement was not established.
+- New confirmed P1 root: `TRUST_ATTRIBUTION_COHERENCE`.
+- Earlier broad trust attribution is otherwise substantially repaired: credentials, testimonials, policies, and contact are attributed as observed; case studies/outcomes and pricing are separately identified as not observed rather than being implied present.
+- New boundary candidates added by Page 7: `0`.
+
+## Material-root accounting after Page 7
 
 Confirmed distinct cross-report/P1 coherence roots:
 
 1. `CTA_PATH_COHERENCE` — Pages 1 and 4; corroborated by Page 3.
 2. `PRIORITY_HIERARCHY_COHERENCE` — Page 2.
 3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5.
+4. `TRUST_ATTRIBUTION_COHERENCE` — Page 7 unsupported `underused` conclusion.
 
 Material new-root/boundary candidate pending final governance classification:
 
-4. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
-
-Page 6 adds no material root or boundary candidate.
+5. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -93,7 +98,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-7. Trust & E-E-A-T Readiness
 8. CMS & Platform Constraints
 9. Technical SEO Hygiene
 10. Heading & Semantic Structure
@@ -133,13 +137,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 7 — Trust & E-E-A-T Readiness only** using the exact frozen candidate:
+Review **Page 8 — CMS & Platform Constraints only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#trust-eeat`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#cms-constraints`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 7 findings and the required Page 7 summary, then stop and wait for `NEXT`.
+Return Page 8 findings and the required Page 8 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
