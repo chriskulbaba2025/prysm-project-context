@@ -9,7 +9,8 @@ Last verified:
 ## Current governed boundary
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Current stage: `DIAGNOSTIC_TRUTH`.
+- Current stage: DIAGNOSTIC_TRUTH
+- Authorized execution stage: DIAGNOSTIC_TRUTH
 - Authorized actor: `BUILDER/Codex`.
 - Chris decision: `REOPEN SAME P#`, accepted at governance commit `d73c57be0a15291855fc771326d6b181ff281c54` for reviewed application candidate `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -28,6 +29,14 @@ Builder/Codex performs read-only `DIAGNOSTIC_TRUTH` against the complete remaini
 3. fail-closed projection/performance-state reconciliation.
 
 Robots/indexability is not a decisive P1 blocker unless new diagnostic evidence establishes one. Diagnosis must complete and be durably governed before any repair is authorized or performed.
+
+On Brad's macOS environment, the published sustained diagnostic path is:
+
+1. pull authoritative governance `main`;
+2. run `bash tools/prysm/audit-prysm-p-macos.sh`;
+3. only if that audit returns `PRYSM MACOS SUSTAINED AUTORUN CERTIFICATION PASS`, run `bash tools/prysm/PRYSM-P-AUTORUN-MAC.sh P1`.
+
+The sustained macOS controller is intentionally bounded to `DIAGNOSTIC_TRUTH`. It may continue same-actor diagnostic work across fresh Codex invocations, but it must stop at repair authorization and cannot cross into `BOUNDED_BUILD`.
 
 Read:
 
@@ -81,7 +90,35 @@ Evidence:
 - No Codex Builder invocation and no application/product execution occurred during certification.
 - Certification record: `proof/P1/reopen/P1_WINDOWS_AUTORUN_CERTIFICATION_2026-09-05.md`.
 
-Windows certification does **not** certify Brad's macOS environment. macOS needs its own runtime adapter/certification before relying on unattended execution there.
+The Windows wrapper/controller remains unchanged by the macOS adapter and sustained diagnostic work.
+
+## macOS unattended-controller status
+
+Brad's macOS host passed the notification-enabled thin-wrapper certification on exact process head `55b808391ee67d095a9851af9c89adbc179da740`:
+
+- macOS 14.6.1;
+- x86_64;
+- Codex CLI `0.153.0` at `/usr/local/bin/codex`;
+- `osascript` notification runtime available;
+- audit-only certification exit code `0`.
+
+The certified thin macOS adapter was promoted to authoritative `main` through merge commit `e913270f58ffc83b0facd45f033ff5d67a0e719f`.
+
+A Mac-only sustained `DIAGNOSTIC_TRUTH` controller is now published at `tools/prysm/PRYSM-P-AUTORUN-MAC.sh`. It adds:
+
+- non-interactive Codex execution;
+- same-actor continuation rather than 30–60 second convenience stops;
+- default 20-minute safety window;
+- maximum 6 fresh Codex invocations;
+- 60-second heartbeat state;
+- no-progress anti-thrash stop;
+- fail-closed read-only application protection;
+- governance-path restriction to new `proof/P1/reopen/*` diagnostic evidence;
+- frozen-history verification;
+- authoritative GitHub synchronization check at continuation/handoff;
+- native macOS READY FOR CHRIS / NEEDS ATTENTION notifications.
+
+This sustained controller must pass `audit-prysm-p-macos.sh` on Brad's actual host after pulling the current authoritative `main` before first execution. The audit is audit-only and must not invoke Builder or application/product work.
 
 ## Post-success controller reconciliation defect
 
@@ -124,4 +161,5 @@ An agent turn ending is not a workflow boundary. Human approval is required only
 - GCU repository: `chriskulbaba2025/governed-coding-upgrade-skill`.
 - Candidate upgrade: GCU v2.5 — Execution Continuity and Cross-Platform Runtime Certification.
 - Draft PR: #12, branch `upgrade/v2.5-execution-continuity`.
-- macOS execution certification remains separate future process work; it is not a blocker for the current manual `DIAGNOSTIC_TRUTH` stage.
+- Brad's thin macOS runtime adapter is certified and merged to PRYSM governance `main`.
+- The new sustained macOS `DIAGNOSTIC_TRUTH` controller is published on PRYSM governance `main` and awaits target-host audit certification before its first Builder execution.
