@@ -25,6 +25,7 @@ FROZEN_GUARD="$SCRIPT_DIR/assert-p1-frozen-history.sh"
 BUILDER_PROMPT="$SCRIPT_DIR/PRYSM-P-BUILDER-AUTORUN-PROMPT.md"
 SCHEMA="$GOV_ROOT/tools/autorun/PRYSM-AUTORUN-RESULT.schema.json"
 AUTH_FILE="$GOV_ROOT/proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md"
+ACCOUNTING_FILE="$GOV_ROOT/proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md"
 
 for f in "$MAC_ENTRY" "$MAC_AUTORUN" "$PUBLIC_ENTRY" "$BASE_ENTRY" "$CURRENT_SESSION" "$PREFLIGHT" "$FROZEN_GUARD"; do
   [[ -f "$f" ]] || fail "Required control-plane file missing: $f"
@@ -33,10 +34,9 @@ done
 [[ -f "$BUILDER_PROMPT" ]] || fail "Autonomous Builder prompt is missing: $BUILDER_PROMPT"
 [[ -f "$SCHEMA" ]] || fail "Autorun result schema is missing: $SCHEMA"
 [[ -f "$AUTH_FILE" ]] || fail "R2 bounded repair authorization is missing: $AUTH_FILE"
+[[ -f "$ACCOUNTING_FILE" ]] || fail "R2 repair accounting baseline is missing: $ACCOUNTING_FILE"
 pass "all macOS/Bash control-plane scripts parse"
 
-# The certified runtime is Brad's system Bash 3.2. Reject known Bash-4-only
-# constructs in the active shell control plane before any Builder execution.
 for compat in "$MAC_ENTRY" "$MAC_AUTORUN" "$PUBLIC_ENTRY" "$BASE_ENTRY" "$CURRENT_SESSION" "$PREFLIGHT" "$FROZEN_GUARD"; do
   if grep -Eq '(^|[[:space:]])(mapfile|readarray)([[:space:]]|$)|(^|[[:space:]])(declare|typeset)[[:space:]]+-A([[:space:]]|$)' "$compat"; then
     fail "Bash 3.2-incompatible construct found in active control-plane file: $compat"
@@ -54,8 +54,6 @@ pass "git, bash, node, and macOS notification runtime are discoverable"
 [[ -z "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)" ]] || fail "Governance repository must be clean for certification"
 pass "governance repository is clean"
 
-# Execute the exact frozen-history guard on the target host rather than only
-# parsing it. This is the regression that catches system-Bash compatibility.
 set +e
 FROZEN_OUTPUT="$(bash "$FROZEN_GUARD" 2>&1)"
 frozen_status=$?
@@ -67,7 +65,6 @@ pass "P1 frozen-history guard executes successfully on target macOS Bash"
 
 resolve_codex() {
   command -v codex 2>/dev/null && return 0
-
   local candidate npm_prefix
   for candidate in "/opt/homebrew/bin" "/usr/local/bin" "$HOME/.local/bin" "$HOME/.npm-global/bin"; do
     if [[ -x "$candidate/codex" ]]; then
@@ -75,7 +72,6 @@ resolve_codex() {
       return 0
     fi
   done
-
   if command -v npm >/dev/null 2>&1; then
     npm_prefix="$(npm config get prefix 2>/dev/null || true)"
     if [[ -n "$npm_prefix" && "$npm_prefix" != "undefined" && -x "$npm_prefix/bin/codex" ]]; then
@@ -83,7 +79,6 @@ resolve_codex() {
       return 0
     fi
   fi
-
   return 1
 }
 
@@ -105,8 +100,6 @@ done
 printf '%s\n%s\n' "$ROOT_HELP" "$EXEC_HELP" | grep -Fq 'danger-full-access' || fail "Installed Codex CLI does not advertise danger-full-access"
 pass "Codex CLI advertises required unattended-execution features"
 
-# Execute the full official gate with Builder shimmed out. Current authoritative
-# P1 must be BOUNDED_BUILD / BUILDER before this controller can be certified.
 set +e
 GATE_OUTPUT="$(bash "$CURRENT_SESSION" P1 2>&1)"
 gate_status=$?
@@ -132,6 +125,11 @@ grep -Fq '[[ "$P_ID" == "P1" ]]' "$MAC_AUTORUN" || fail "macOS controller is not
 grep -Fq 'MAX_RUNS="${PRYSM_MAC_MAX_RUNS:-12}"' "$MAC_AUTORUN" || fail "macOS controller default run bound is not 12"
 grep -Fq 'MAX_SECONDS="${PRYSM_MAC_MAX_SECONDS:-2700}"' "$MAC_AUTORUN" || fail "macOS controller default time bound is not 2700 seconds"
 grep -Fq 'ROOT_DEFECT_ID="P1-CROSS-REPORT-PROJECTION-RECONCILIATION"' "$MAC_AUTORUN" || fail "macOS controller is not bound to the R2 stable root"
+grep -Fq 'R2_INITIAL_REPAIR_ATTEMPT=1' "$MAC_AUTORUN" || fail "macOS controller does not start R2 at repair index 1"
+grep -Fq 'REPAIR_STATE_FILE="$STATE_ROOT/repair-state.env"' "$MAC_AUTORUN" || fail "macOS controller lacks durable repair-state storage"
+grep -Fq 'save_repair_state' "$MAC_AUTORUN" || fail "macOS controller lacks durable repair-state persistence"
+grep -Fq 'load_repair_state' "$MAC_AUTORUN" || fail "macOS controller lacks durable repair-state recovery"
+grep -Fq 'reset below the R2 minimum attempt index' "$MAC_AUTORUN" || fail "macOS controller lacks repair-index anti-reset protection"
 grep -Fq 'MODEL_LUNA="gpt-5.6-luna"' "$MAC_AUTORUN" || fail "Luna repair level is missing"
 grep -Fq 'MODEL_TERRA="gpt-5.6-terra"' "$MAC_AUTORUN" || fail "Terra repair level is missing"
 grep -Fq 'MODEL_SOL="gpt-5.6-sol"' "$MAC_AUTORUN" || fail "Sol repair level is missing"
@@ -152,15 +150,16 @@ grep -Fq -- '--output-schema "$SCHEMA"' "$MAC_AUTORUN" || fail "macOS controller
 grep -Fq -- '--output-last-message "$FINAL_FILE"' "$MAC_AUTORUN" || fail "macOS controller does not persist the structured terminal result"
 pass "macOS continuous P1 Builder-to-Brad invariants are present"
 
-# Authorization must retain the exact anti-drift commitments.
+# Authorization and repair-accounting evidence must preserve the anti-drift contract.
 grep -Fxq 'Decision: APPROVED' "$AUTH_FILE" || fail "R2 repair authorization is not APPROVED"
 grep -Fq 'P1-CROSS-REPORT-PROJECTION-RECONCILIATION' "$AUTH_FILE" || fail "R2 repair authorization does not bind the stable root"
 grep -Fq 'Any required application path outside this list is a scope-boundary event.' "$AUTH_FILE" || fail "R2 repair authorization lacks explicit path-boundary stop"
 grep -Fq 'The successful terminal state for this autonomous envelope is `READY_FOR_BRAD`, not P1 closure.' "$AUTH_FILE" || fail "R2 repair authorization does not preserve Brad as terminal human boundary"
-pass "R2 repair authorization anti-drift commitments are present"
+grep -Fq 'R2 begins at repair index `1`.' "$ACCOUNTING_FILE" || fail "R2 accounting baseline does not start at index 1"
+grep -Fq 'No fourth same-root attempt is permitted.' "$ACCOUNTING_FILE" || fail "R2 accounting baseline lacks the no-fourth-attempt rule"
+grep -Fq 'may not initialize below this R2 baseline' "$ACCOUNTING_FILE" || fail "R2 accounting baseline lacks restart anti-reset rule"
+pass "R2 authorization and durable repair-accounting anti-drift commitments are present"
 
-# The controller itself must not contain destructive Git operations, force push,
-# self-install behavior, direct deployment, or application-main merge commands.
 if grep -Eq 'git[[:space:]]+(reset|clean|checkout)|git[[:space:]]+push[[:space:]].*--force|npm[[:space:]]+(install|i)([[:space:]]|$)' "$MAC_AUTORUN"; then
   fail "macOS continuous controller contains a prohibited destructive/install command"
 fi
@@ -186,10 +185,12 @@ echo "Frozen-history runtime: PASS"
 echo "Official deterministic P1 gate runtime: PASS (Builder shimmed)"
 echo "Current certified stage: BOUNDED_BUILD"
 echo "Stable root: P1-CROSS-REPORT-PROJECTION-RECONCILIATION"
+echo "R2 starting repair index: 1"
 echo "Default safety window: 2700 seconds"
 echo "Default max fresh Codex runs: 12"
 echo "Heartbeat interval: 60 seconds"
-echo "Repair escalation: Luna -> Terra -> Sol; no fourth same-root attempt"
+echo "Repair escalation: Terra -> Sol from R2 baseline; no fourth same-root attempt"
+echo "Durable repair accounting: ENABLED"
 echo "Terminal human boundary: BRAD OUTCOME_REVIEW"
 echo "Certification mode: AUDIT ONLY"
 echo "No Builder invocation or application/product execution occurred."
