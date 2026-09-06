@@ -80,12 +80,20 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Record: `P1_BRAD_PAGE_09_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
 - Commit: `4feade0f5eed2f8dbc2006a62a18e85403b46ef5`.
 - Verdict: `MATERIAL FAIL`.
-- Material defect family: missing meta descriptions and security-header observations are placed under `Is anything blocking search performance?` even though the page itself qualifies meta descriptions as search-result messaging rather than direct ranking and does not establish security headers as search-performance blockers.
-- Brad's two material rows are manifestations of one page-level framing/evidence-classification defect.
+- Material defect family: qualified meta-description and security-header observations are presented under `Is anything blocking search performance?` without evidence establishing them as blockers.
 - New confirmed cross-report P1 roots added: `0`.
 - New material new-root/boundary candidate: `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION`.
 
-## Material-root accounting after Page 9
+### Page 10 — Heading & Semantic Structure
+- Record: `P1_BRAD_PAGE_10_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `f2dbbf46994464922b956d95784d466096383638`.
+- Verdict: `NEEDS IMPROVEMENT`.
+- Material findings: `0`.
+- The page is appropriately scoped to one evaluated page and explicitly states that raw H1/H2/H3 counts do not determine page quality.
+- Positive language such as `PASS`, `clear primary semantic signal`, and `What is already structured well` is somewhat stronger than one observed H1 alone proves, but remains a language/polish issue rather than a material P1 defect.
+- New roots/boundary candidates: `0`.
+
+## Material-root accounting after Page 10
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -99,6 +107,8 @@ Material new-root/boundary candidates pending final governance classification:
 5. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
 6. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 7. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
+
+Page 10 adds no material root or boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -115,7 +125,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-10. Heading & Semantic Structure
 11. Schema & Entity Clarity
 12. Performance
 13. Accessibility & Mobile Usability Readiness
@@ -152,13 +161,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 10 — Heading & Semantic Structure only** using the exact frozen candidate:
+Review **Page 11 — Schema & Entity Clarity only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#headings`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#schema`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 10 findings and the required Page 10 summary, then stop and wait for `NEXT`.
+Return Page 11 findings and the required Page 11 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
