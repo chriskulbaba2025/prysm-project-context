@@ -6,241 +6,276 @@ PRYSM — governed website conversion-readiness report and website decision syst
 Last verified:
 2026-09-06
 
-## Current governed boundary
+## Current governed state
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Current stage: OUTCOME_REVIEW
-- Authorized execution stage: OUTCOME_REVIEW
+- Stage: `OUTCOME_REVIEW`.
 - Authorized actor: `BRAD`.
-- Builder R2 disposition: complete; Brad now owns the independent outcome review of repaired candidate `a9523ac3de98de76335a05304b60bec246242b65`.
-- Chris decision: `APPROVED` — continuous R2 bounded repair through exact-candidate preparation for Brad `OUTCOME_REVIEW`.
-- Binding diagnosis: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d`.
-- Original R2 authorization remains frozen at `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` / `94f63144a34eb4d513193b54251a9778832c36fc`.
-- Active R2 execution-boundary clarification: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md` at `a0ab1d3f124f6b03e5f3fb54c6b823822e2c78ba`.
-- R2 repair-accounting baseline: `proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md` at `72012327be10218f7b347696f8d2c9f79fc9b5d0`.
-- Diagnostic classification: `VERIFIED_DESIGN_GAP`.
-- Stable root-defect identity: `P1-CROSS-REPORT-PROJECTION-RECONCILIATION`.
+- Builder status: COMPLETE for R2.
+- Required Builder terminal was reached on Chris/Windows: `PRYSM P1 READY FOR BRAD`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Governance repository: `chriskulbaba2025/prysm-project-context`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
-- Exact failed candidate entering R2 repair: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
-- Exact repaired candidate for Brad: `a9523ac3de98de76335a05304b60bec246242b65`.
-- Bound R2 candidate proof: `proof/P1/reopen/P1_R2_REPAIRED_CANDIDATE_PROOF_a9523ac_2026-09-06.md` at `ebc0370def417b0452d7c45e7293b77ab45b9a57`; rendered-manifest binding: `proof/P1/reopen/P1_R2_RENDER_MANIFEST_a9523ac_2026-09-06.md` at `dfbabe1a329a178b884fea0673265dfe46dab825`.
-- `P1_EXECUTION_GATE.env` routes P1 to `BOUNDED_BUILD` and binds the R2 diagnostic, owner authorization, Windows R2 execution addendum, stable root, and repair-accounting baseline.
+- Exact repaired candidate under Brad review: `a9523ac3de98de76335a05304b60bec246242b65`.
+- Governance repository: `chriskulbaba2025/prysm-project-context`.
+- `P1_EXECUTION_GATE.env` correctly binds `AUTHORIZED_STAGE=OUTCOME_REVIEW` and `APPLICATION_SHA=a9523ac3de98de76335a05304b60bec246242b65`.
 
-## Exact current repair scope
+Do not rerun Builder, the R2 recovery path, or the Windows R2 controller as the current next action.
 
-R2 is restricted to the three remaining material client-visible families:
+## Exact next action
 
-1. CTA / path coherence — distinguish mechanism/invitation presence from usable conversion-path completion at the point of reading.
-2. Trust evidence attribution — positive trust language must name only reassurance signals actually observed and must not imply pricing when pricing evidence is absent.
-3. Fail-closed performance/readiness reconciliation — reconcile numeric lab performance, unavailable/incomplete field evidence, and client-facing readiness without turning incomplete evidence into a broad PASS/no-blocker conclusion.
+Brad performs the independent P1 human outcome review of the frozen candidate.
 
-Robots/indexability is not an authorized R2 repair family. A materially new robots/indexability defect, new root cause, new source/test seam, or protected dependency is a stop condition rather than permission to broaden work.
+Read and follow:
 
-## Authorized application SOURCE/TEST paths
+`P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`
 
-Only these source/test files may be edited during R2 `BOUNDED_BUILD`:
+Protocol commit:
 
-- `services/worker/src/report-model/cross-report-interpretation.js`
-- `services/worker/src/report-model/cross-report-interpretation.test.js`
-- `services/worker/src/report/foundation-readiness.js`
-- `services/worker/src/report/report-detail-sections.js`
-- `services/worker/src/report/v2-pillars.js`
-- `services/worker/src/report/render-report-v2.js`
-- `services/worker/src/report/render-report-v2-conversion.test.js`
-- `services/worker/src/report/render-report-v2.test.js`
-- `services/worker/src/report/render-report-v2-sections.test.js`
+`29c327b0971ff7e1ff6c184ea53144e6009cf334`
 
-Any required source/test path outside this list is a genuine scope-boundary event. Builder must stop rather than drift.
+New-chat continuation handoff:
 
-## Authorized generated-proof surfaces
+`HANDOFF_PRYSM_P1_BRAD_OUTCOME_REVIEW_CONTINUATION_2026-09-06.md`
 
-The application repository historically stores rendered candidate proof under `proof/P1/reopen/`.
+Handoff commit:
 
-During this R2 run:
+`92bcab45834f37ec458eed91dc31061e95c79667`
 
-- Builder may add **new versioned application proof** beneath application `proof/P1/reopen/*`.
-- Every application `proof/P1/reopen/*` path that exists when the R2 Windows controller starts is immutable for that controller run.
-- Builder may add **new versioned governance evidence** beneath governance `proof/P1/reopen/*`.
-- Every governance `proof/P1/reopen/*` path that exists when the R2 Windows controller starts is immutable for that controller run.
-- Governance may intentionally update only `CURRENT_STATE.md` and `P1_EXECUTION_GATE.env` outside new proof.
-- Historical `proof/P1/rendered/*` and frozen root P1 evidence remain immutable.
+Brad should review one real report page at a time, summarize it, and stop for `NEXT`. After all 16 report pages, run the targeted P1 scenario checks, then request `FULL REPORT` for the whole-report synthesis and final Brad PASS/FAIL disposition.
 
-This source-versus-generated-proof distinction corrects the prior controller false failure that treated legitimate generated application proof as an unauthorized source edit.
+## Exact candidate proof
 
-## Exact next action — Chris / Windows
+Builder-owned candidate proof:
 
-Chris owns the current Builder execution. Brad waits until `READY_FOR_BRAD`.
+`proof/P1/reopen/P1_R2_REPAIRED_CANDIDATE_PROOF_a9523ac_2026-09-06.md`
 
-From `C:\Users\kulba\Desktop\prysm-project-context`:
+Proof commit:
 
-1. pull authoritative governance `main`;
-2. run the Windows R2 audit-only path once;
-3. only on PASS start the continuous R2 Builder run.
+`ebc0370def417b0452d7c45e7293b77ab45b9a57`
 
-Commands:
+Rendered manifest binding:
 
-`git switch main`
+`proof/P1/reopen/P1_R2_RENDER_MANIFEST_a9523ac_2026-09-06.md`
 
-`git pull --ff-only origin main`
+Manifest commit:
 
-`.\tools\prysm\START-PRYSM-P1-R2.ps1 -AuditOnly`
+`dfbabe1a329a178b884fea0673265dfe46dab825`
 
-Required audit terminal:
+Rendered-code provenance SHA:
 
-`PRYSM P1 R2 WINDOWS AUTORUN AUDIT PASS`
+`275f3cabb6796f9d0c2e5a30df61e71c4e084b96`
 
-Then run:
+Primary rendered proof directory in the application candidate:
 
-`.\tools\prysm\START-PRYSM-P1-R2.ps1`
+`proof/P1/reopen/render-v2-r2-275f3ca/`
 
-The successful terminal state is:
+Primary assessed report:
 
-`PRYSM P1 READY FOR BRAD`
+`proof/P1/reopen/render-v2-r2-275f3ca/assessed.html`
 
-Brad then performs the independent human `OUTCOME_REVIEW` against the exact frozen candidate and rendered proof.
+Exact GitHub source URL:
 
-## Windows R2 execution controls
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html`
 
-Public Windows R2 entrypoint:
+## Builder verification already complete
 
-`tools/prysm/START-PRYSM-P1-R2.ps1`
+Do not redo these as Brad's first action.
 
-Continuous runner:
+- Focused R2 report suites: `80 pass / 0 fail`.
+- Full worker regression: `987 pass / 0 fail`.
+- Whole-App tranche gate: PASS.
+- Render generation verification: `52 pass / 0 fail`.
+- Render manifest/provenance is bound to the candidate.
+- Application candidate is clean/pushed at the Brad handoff.
+- Governance advanced to `OUTCOME_REVIEW` with Brad as actor.
 
-`tools/prysm/START-PRYSM-P1-R2-AUTORUN.ps1`
+## P1 R2 outcome scope Brad is reviewing
 
-Contract regression:
+The repaired candidate addresses only these three material client-visible P1 families:
 
-`tools/prysm/test-prysm-p1-r2-windows-contract.ps1`
+1. **CTA / conversion-path coherence** — a CTA/form/mechanism must not be presented as proof that the full governed conversion path is usable or effective.
+2. **Trust evidence attribution** — positive trust language must name only reassurance signals actually observed and must not imply pricing, guarantees, policies, or other evidence that was not observed.
+3. **Fail-closed performance/readiness reconciliation** — usable numeric lab evidence may be shown, but unavailable/incomplete real-user field evidence must remain plainly qualified and must not become a broad client-facing PASS/no-blocker conclusion.
 
-The gate binds the exact committed versions of the R2 execution authorization, public entrypoint, runner, and contract regression.
+Robots/indexability is not an authorized R2 repair family unless new material evidence establishes a new governed issue.
 
-The Windows R2 controller enforces:
+## Brad page-by-page review structure
 
-- no arbitrary fixed time limit;
-- no arbitrary fixed Codex-run-count limit;
-- 60-second heartbeat state;
-- exact stable root `P1-CROSS-REPORT-PROJECTION-RECONCILIATION`;
-- exact nine-file source/test allowlist;
-- new-only application generated proof under `proof/P1/reopen/*`;
-- new-only governance proof under `proof/P1/reopen/*`;
-- immutable pre-existing reopened proof on both repositories;
-- frozen-history verification after every Builder invocation;
-- clean/pushed application and governance checkpoints before continuation;
-- no-progress anti-thrash stop;
-- R2 starts at repair index `1` / Terra because the Brad-rejected repaired candidate already consumed one same-root attempt;
-- same-root `REPAIR_PROOF_FAILED` may escalate once to repair index `2` / Sol;
-- no fourth same-root attempt;
-- `NEW_ROOT_CAUSE` stops for owner review rather than expanding scope;
-- Codex usage-limit stop without consuming repair escalation;
-- independent official deterministic P1 gate verification before `READY_FOR_BRAD`;
-- no direct routing to Betty/Auditor.
+The frozen `assessed.html` viewer contains 16 actual client report pages:
 
-## Windows stale-journal recovery disposition
+1. Executive Scorecard
+2. Priority Fixes
+3. Conversion Path Architecture
+4. Conversion Readiness Map
+5. Topical Map & Qualified Content Opportunities
+6. Competitor Benchmarking
+7. Trust & E-E-A-T Readiness
+8. CMS & Platform Constraints
+9. Technical SEO Hygiene
+10. Heading & Semantic Structure
+11. Schema & Entity Clarity
+12. Performance
+13. Accessibility & Mobile Usability Readiness
+14. Internal-Link Opportunities
+15. Evidence Appendix
+16. Deferred & Unavailable Analysis
 
-The pre-R2 local Windows P1 state under:
+The Brad protocol contains the exact candidate URL/page fragment for every page.
 
-`%LOCALAPPDATA%\PRYSM-P-Autorun\P1`
+For language/content review, use the exact candidate HTML source.
 
-contains a September 5 `CODEX_EXITED_UNRECONCILED` journal from the prior repaired candidate. Diagnostic review established that:
+For visual/layout review, Brad should inspect the actual rendered page in a browser. When the LLM is asked to judge visual presentation, pair the exact candidate/page identity with a screenshot of that rendered page. Do not claim rendered visual quality from HTML/CSS source alone.
 
-- the journal post-application SHA is `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`;
-- that exact application SHA is already pushed and clean;
-- the old governance post-state was later superseded by current authoritative `main`;
-- the recorded controller failure was the known old allowlist/proof-classification defect, not an unresolved product transaction.
+## Brad review goals
 
-Do not delete this old state as a prerequisite for R2. Preserve it as historical recovery evidence.
+Review the report as a normal business owner would experience it, not as a developer.
 
-Current Windows R2 execution uses the isolated local namespace:
+Audit:
 
-`%LOCALAPPDATA%\PRYSM-P-Autorun\P1-R2`
+- ordinary human language;
+- easy non-technical understanding;
+- clear explanation of why findings matter;
+- direct conversion/customer/trust/business meaning where relevant;
+- no unnecessary machine/internal/governance language;
+- no unexplained data dumps;
+- evidence-supported conclusions;
+- no overstatement or false certainty;
+- clear recommended action where appropriate;
+- useful visual/information hierarchy;
+- repetition;
+- cross-page consistency;
+- what should remain unchanged.
 
-Therefore stale `repairAttempt=0`, `rootDefectId=NONE`, the old entry anchor, and the old unreconciled journal cannot contaminate the current R2 run.
+## Severity and P1 boundary
 
-## Required proof before Brad
+Brad/LLM findings use:
 
-Builder must not advance to `OUTCOME_REVIEW` until all required Builder-owned obligations are complete and durable:
+- `MATERIAL` — misleading, contradictory, materially confusing, or wrong business conclusion; may block P1.
+- `LANGUAGE` — supportable concept but too technical, machine-like, vague, or difficult.
+- `VISUAL` — hierarchy/layout/readability issue; normally future report improvement unless meaning is materially obscured.
+- `POLISH` — worthwhile but non-blocking improvement.
 
-- focused positive and negative/fail-closed deterministic tests for the three R2 families;
-- focused report suites used by the R2 diagnosis plus causally required in-scope tests;
-- full required P1 deterministic verification and broader required regression/Whole-App verification;
-- new versioned rendered scenarios in application `proof/P1/reopen/*`;
-- exact manifest/hash/provenance and scenario-to-obligation mapping;
-- clean pushed exact application candidate;
-- new versioned governance proof under governance `proof/P1/reopen/*`;
-- `P1_EXECUTION_GATE.env` rebound to the exact repaired application SHA and new proof with `AUTHORIZED_STAGE=OUTCOME_REVIEW`;
-- `CURRENT_STATE.md` synchronized to `OUTCOME_REVIEW` with Brad as next actor;
-- official deterministic P1 gate PASS for that exact state with `Authorized actor: BRAD`.
+Do not fail P1 solely because of fonts, spacing, card styling, aesthetic preference, or cosmetic polish unless presentation materially obscures or changes meaning.
 
-## R2 diagnostic facts frozen as input
+Broader report-language improvement remains important but is not automatically a P1 blocker. Capture it separately for the next report-improvement workstream.
 
-The R2 diagnosis established:
+## Targeted scenario checks after the 16 pages
 
-- CTA invitation/mechanism and conversion-path completion are separately correct inputs but not fully reconciled at the point of reading;
-- Trust positive wording can group policies/pricing/guarantees even when the exact observed signal does not include pricing;
-- numeric performance/lab output can coexist with unavailable field/readiness evidence without one universal client-facing reconciliation;
-- the defect remains in interpretation/projection and presentation composition rather than evidence acquisition, scoring policy, providers, storage, deployment, or Writer/Judge behavior;
-- no material unresolved diagnostic question remains before bounded repair.
+After the primary report pages, Brad checks the exact candidate scenario artifacts defined in the Brad protocol, including:
 
-The R2 diagnostic was read-only: `77` focused tests passed, `0` failed, and application code remained unchanged.
+- `path-validated-blocker.html` — CTA/path reconciliation;
+- `competitor-present.html` — trust attribution and lab-vs-field performance qualification;
+- `unassessed.html`;
+- `no-conversion-mechanism.html`;
+- `no-performance.html`;
+- `crawl-blocked.html`;
+- `provider-failed.html`.
 
-## Pre-repair blind-spot continuity
+These are scenario variants, not additional report pages.
 
-The deterministic `BOUNDED_BUILD` gate continues to require the existing committed Betty pre-repair PASS. No new Betty pre-repair review is being claimed after the R2 diagnostic.
+## Brad final disposition
 
-Chris's R2 authorization permits continuity only because the binding diagnosis narrows work to the remaining portion of the already governed P1 report-projection repair surface. If implementation evidence expands the root, dependency set, or product boundary, this continuity ends and the controller must stop.
+After page review + scenario review + `FULL REPORT` synthesis, Brad returns one human outcome disposition:
 
-## P1 history that remains frozen
+### PASS
 
-- Original failed candidate SHA: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`.
-- First Brad failed-candidate outcome review: `P1_BRAD_OUTCOME_REVIEW_2026-09-05.md` — preserve unchanged.
-- Prior reopened diagnosis: `P1_DIAGNOSTIC_TRUTH_REOPEN_2026-09-05.md` — preserve unchanged.
-- Prior reopened repair authorization: `P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md` — preserve unchanged.
-- Prior reopened candidate SHA reviewed by Brad: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
-- Reopened-candidate Brad FAIL: `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md` at `d73c57be0a15291855fc771326d6b181ff281c54` — preserve unchanged.
-- Second owner decision: `REOPEN SAME P#`, recorded in `DECISION_P1_REOPEN_SAME_P_R2_2026-09-05.md`.
-- R2 diagnostic: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d` — preserve unchanged.
-- Original R2 repair authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` at `94f63144a34eb4d513193b54251a9778832c36fc` — preserve unchanged.
-- R2 execution-boundary V2 authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md` at `a0ab1d3f124f6b03e5f3fb54c6b823822e2c78ba` — preserve unchanged after controller entry.
-- R2 repair-accounting baseline: `proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md` at `72012327be10218f7b347696f8d2c9f79fc9b5d0` — durable anti-reset evidence.
-- Exhaustive historical-freeze baseline: `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`.
-- Frozen-history guard: `tools/prysm/assert-p1-frozen-history.sh`.
+The repaired P1 outcome is materially coherent and acceptable to a normal client.
+
+Non-blocking language, visual, and polish items remain available for the next report-improvement workstream.
+
+### FAIL
+
+One or more material P1 outcome defects remain.
+
+Every material defect must identify:
+
+1. exact page/section/scenario;
+2. what the client sees;
+3. why it is materially wrong, contradictory, or confusing;
+4. what client outcome should replace it.
+
+Brad does not diagnose code or prescribe implementation during `OUTCOME_REVIEW`.
+
+## What happens after Brad
+
+Bring Brad's complete page summaries, scenario findings, full-report synthesis, and final PASS/FAIL disposition back to the Chris/PRYSM governance chat.
+
+If Brad PASS:
+
+- do not automatically merge or deploy;
+- preserve the non-blocking report-improvement list;
+- follow the governed P1 disposition/closure path before any P2 or release action.
+
+If Brad FAIL:
+
+- do not start coding immediately;
+- classify the material finding against the current P1 root/outcome contract;
+- determine whether it is same-root P1 continuation or a materially new root/boundary;
+- obtain the required governed authorization before repair.
+
+## Report-language direction preserved for later improvement
+
+The client report should continue moving toward:
+
+- removing machine/internal language;
+- explaining data in relatable human terms;
+- connecting findings to conversion, customer behaviour, trust, or business impact;
+- removing information that does not help the client make a decision;
+- making priorities and actions obvious.
+
+Brad should capture these issues now, but only material contradiction/misleading-outcome issues should reopen P1. The remainder belongs in the report-improvement backlog.
+
+## Frozen P1 R2 history
+
+Preserve the following as historical evidence; do not rewrite them during Brad review:
+
+- original failed candidate: `85bbeda3cb4bb2fefb47b5e551f9edc0432feea2`;
+- prior reopened candidate reviewed by Brad: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`;
+- prior reopened Brad FAIL: `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md` at `d73c57be0a15291855fc771326d6b181ff281c54`;
+- R2 diagnostic: `proof/P1/reopen/P1_DIAGNOSTIC_TRUTH_R2_2026-09-06.md` at `9d73146e4a8a79797a19e13bd7d5d8a5c2b44e8d`;
+- R2 repair authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_2026-09-06.md` at `94f63144a34eb4d513193b54251a9778832c36fc`;
+- R2 execution-boundary V2 authorization: `proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md` at `a0ab1d3f124f6b03e5f3fb54c6b823822e2c78ba`;
+- R2 repair-accounting baseline: `proof/P1/reopen/P1_R2_REPAIR_ACCOUNTING_BASELINE_2026-09-06.md` at `72012327be10218f7b347696f8d2c9f79fc9b5d0`;
+- exhaustive historical-freeze baseline: `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`.
+
+## Harness/process disposition
+
+The Windows R2 harness ultimately reached the correct terminal state, but multiple control-plane/recovery defects created substantial avoidable overhead before success.
+
+Those failures are process/harness failures, not product repair failures, and did not consume the P1 R2 repair index.
+
+Future harness changes must prefer:
+
+- exact state diagnosis before controller edits;
+- fewer recovery layers;
+- target-shell/platform runtime certification before confident handoff;
+- preservation/reconciliation of attributable same-transaction work rather than blind cleanup;
+- guaranteed operator notification on terminal stop;
+- no product repair escalation for harness-only failures.
+
+The shared GCU candidate has already absorbed execution-continuity, notification, and attributable-dirty-continuation lessons. Do not reopen GCU/harness work as part of Brad's current P1 outcome review.
 
 ## Protected boundaries
 
 No current authorization exists for:
 
-- evidence acquisition/adapters;
-- scoring policy/weights or scoring-service redesign;
-- Writer/Judge/model behavior;
-- page-selection/search-data redesign;
-- lifecycle, storage, auth, or deployment behavior;
-- paid/live application provider/model calls;
-- application `main` merge;
-- deploy/production changes;
 - P2;
 - Betty Final Audit;
-- P1 closure.
-
-No destructive reset/clean/discard or force push is permitted.
-
-## macOS controller status
-
-Brad's macOS continuous controller remains available and separately certified for his environment, including the Bash 3.2 compatibility repair, heartbeat, bounded same-root escalation, and Brad notification.
-
-It is **not the exact current execution path**. Chris/Windows owns the present R2 Builder run. Brad's role resumes at `OUTCOME_REVIEW` after the Windows controller reaches `READY_FOR_BRAD`.
+- P1 closure without Brad disposition/governance;
+- application `main` merge;
+- deployment/production changes;
+- paid/live application provider/model calls;
+- evidence acquisition/adapters;
+- scoring policy/weights redesign;
+- Writer/Judge/model behaviour changes;
+- page-selection/search-data redesign;
+- lifecycle/storage/auth redesign;
+- destructive reset/clean/discard or force push.
 
 ## Permanent operating sequence
 
 `DETERMINISTIC GATE -> CORRECT ACTOR -> BOUNDED TASK -> CONTINUOUS SAME-ACTOR EXECUTION -> DURABLE PROOF -> EXACT CANDIDATE -> HUMAN OUTCOME REVIEW`
 
-An agent turn ending is not a workflow boundary. Human intervention is reserved for genuine owner/scope decisions, protected actions, new material roots/boundaries, anti-thrash limits, or the Brad product-quality gate.
+Current position in that sequence:
 
-## Related process/GCU continuation
-
-- GCU repository: `chriskulbaba2025/governed-coding-upgrade-skill`.
-- Candidate upgrade: GCU v2.5 — Execution Continuity and Cross-Platform Runtime Certification.
-- Draft PR: #12, branch `upgrade/v2.5-execution-continuity`.
-- Current PRYSM R2 work is a P1-specific implementation of those continuity principles; it does not by itself certify every future P# or every platform.
+`EXACT CANDIDATE -> HUMAN OUTCOME REVIEW (BRAD)`
