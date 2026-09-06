@@ -67,10 +67,19 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Verdict: `MATERIAL FAIL`.
 - Material finding: `Proof already available but underused` asserts insufficient use/placement of observed trust assets while the immediate limitation says page-level placement was not established.
 - New confirmed P1 root: `TRUST_ATTRIBUTION_COHERENCE`.
-- Earlier broad trust attribution is otherwise substantially repaired: credentials, testimonials, policies, and contact are attributed as observed; case studies/outcomes and pricing are separately identified as not observed rather than being implied present.
-- New boundary candidates added by Page 7: `0`.
+- Earlier broad trust attribution is otherwise substantially repaired.
 
-## Material-root accounting after Page 7
+### Page 8 — CMS & Platform Constraints
+- Record: `P1_BRAD_PAGE_08_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `762c5ec7badc994708c19f35e37c3a4a8271b7d4`.
+- Verdict: `MATERIAL FAIL`.
+- Material defect family: `Migration risk — Low to Medium` is placed under `Observed from the crawl` even though implementation controls needed to establish that risk are explicitly unverified.
+- Brad's second material manifestation — the page can imply an actual platform constraint has been established — belongs to the same defect family.
+- New confirmed cross-report P1 roots added by Page 8: `0`.
+- New material new-root/boundary candidate: `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION`.
+- The generic implementation-checklist disclaimer remains evidence-safe and should be preserved.
+
+## Material-root accounting after Page 8
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -79,9 +88,10 @@ Confirmed distinct cross-report/P1 coherence roots:
 3. `BUYER_QUESTION_COVERAGE_COHERENCE` — Pages 2 and 5.
 4. `TRUST_ATTRIBUTION_COHERENCE` — Page 7 unsupported `underused` conclusion.
 
-Material new-root/boundary candidate pending final governance classification:
+Material new-root/boundary candidates pending final governance classification:
 
 5. `CONTENT_RECOMMENDATION_INTEGRITY` — Page 5 unresolved `Undefined` output.
+6. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -98,7 +108,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-8. CMS & Platform Constraints
 9. Technical SEO Hygiene
 10. Heading & Semantic Structure
 11. Schema & Entity Clarity
@@ -137,13 +146,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 8 — CMS & Platform Constraints only** using the exact frozen candidate:
+Review **Page 9 — Technical SEO Hygiene only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#cms-constraints`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#technical-seo`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 8 findings and the required Page 8 summary, then stop and wait for `NEXT`.
+Return Page 9 findings and the required Page 9 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
