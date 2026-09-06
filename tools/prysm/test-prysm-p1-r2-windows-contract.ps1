@@ -56,6 +56,27 @@ Require "'--ask-for-approval','never'"
 Require "'--sandbox','danger-full-access'"
 Require "'--output-schema',`$SchemaPath"
 Require "'--output-last-message',`$finalPath"
+
+# Windows PowerShell 5.1 native stderr safety: benign native stderr must not
+# become a terminating ErrorRecord before LASTEXITCODE is examined.
+Require 'function Invoke-NativeExitCode'
+Require '$ErrorActionPreference = ''Continue'''
+Require 'if ($Quiet) { & $Command *> $null } else { & $Command }'
+Require 'Invoke-NativeExitCode -Command { & git -C $AppRepo fetch origin $branch } -Quiet'
+Require 'Invoke-NativeExitCode -Command { & git -C $GovernanceRepo fetch origin main } -Quiet'
+Require 'Invoke-NativeExitCode -Command { & git -C $Repo cat-file -e "HEAD:$path" } -Quiet'
+Require 'Invoke-NativeExitCode -Command { & git -C $GovernanceRepo cat-file -e "HEAD:$path" } -Quiet'
+Require 'Invoke-NativeExitCode -Command { & $Bash $FrozenGuard }'
+Require 'Invoke-NativeExitCode -Command { & $Bash $GateRegression }'
+Require 'Invoke-NativeExitCode -Command { & $Bash $FrozenGuard } -Quiet'
+Forbid '& git -C $AppRepo fetch origin $branch *> $null'
+Forbid '& git -C $GovernanceRepo fetch origin main *> $null'
+Forbid '& $Bash $FrozenGuard *> $null'
+
+# Runtime must consume the exact V2 execution authorization that the gate binds.
+Require "`$AuthorizationPath = Join-Path `$GovernanceRepo 'proof\P1\reopen\P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md'"
+Require "if ([string]`$gate['R2_EXECUTION_AUTH_FILE'] -ne 'proof/P1/reopen/P1_BOUNDED_REPAIR_AUTHORIZATION_R2_V2_2026-09-06.md')"
+
 Forbid 'MaxSeconds'
 Forbid '2700'
 Forbid 'PRYSM-P-Autorun\P1\transaction-journal.json'
