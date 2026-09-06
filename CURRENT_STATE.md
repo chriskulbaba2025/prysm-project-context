@@ -90,10 +90,20 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - Verdict: `NEEDS IMPROVEMENT`.
 - Material findings: `0`.
 - The page is appropriately scoped to one evaluated page and explicitly states that raw H1/H2/H3 counts do not determine page quality.
-- Positive language such as `PASS`, `clear primary semantic signal`, and `What is already structured well` is somewhat stronger than one observed H1 alone proves, but remains a language/polish issue rather than a material P1 defect.
+- Positive language remains a language/polish issue rather than a material P1 defect.
 - New roots/boundary candidates: `0`.
 
-## Material-root accounting after Page 10
+### Page 11 — Schema & Entity Clarity
+- Record: `P1_BRAD_PAGE_11_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `996155293523a70f3df6aad48e8cb8e10dd2d47e`.
+- Verdict: `NEEDS IMPROVEMENT`.
+- Material findings: `0`.
+- Organization schema is treated as observed evidence only; domain identity is explicitly not treated as proof of structured business identity.
+- Missing schema types remain conditional candidates rather than automatic findings.
+- Location/entity relationship uncertainty remains partial, and external knowledge-graph inclusion / actual AI-search retrieval are explicitly not assessed.
+- New roots/boundary candidates: `0`.
+
+## Material-root accounting after Page 11
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -108,7 +118,7 @@ Material new-root/boundary candidates pending final governance classification:
 6. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 7. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
 
-Page 10 adds no material root or boundary candidate.
+Pages 10 and 11 add no material root or boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -125,7 +135,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-11. Schema & Entity Clarity
 12. Performance
 13. Accessibility & Mobile Usability Readiness
 14. Internal-Link Opportunities
@@ -161,13 +170,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 11 — Schema & Entity Clarity only** using the exact frozen candidate:
+Review **Page 12 — Performance only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#schema`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#performance`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 11 findings and the required Page 11 summary, then stop and wait for `NEXT`.
+Return Page 12 findings and the required Page 12 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
