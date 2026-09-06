@@ -1,5 +1,6 @@
 param(
-    [switch]$AuditOnly
+    [switch]$AuditOnly,
+    [switch]$TestNotification
 )
 
 Set-StrictMode -Version Latest
@@ -13,6 +14,40 @@ $Runner = Join-Path $ScriptRoot 'START-PRYSM-P1-R2-AUTORUN.ps1'
 
 foreach ($path in @($GatePath,$Contract,$Runner)) {
     if (-not (Test-Path -LiteralPath $path)) { throw "Missing governed R2 entrypoint dependency: $path" }
+}
+
+function Send-DesktopNotification {
+    param(
+        [string]$Title,
+        [string]$Message,
+        [ValidateSet('Info','Warning','Error')][string]$Level = 'Info'
+    )
+    try {
+        Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
+        switch ($Level) {
+            'Error' { [System.Media.SystemSounds]::Hand.Play() }
+            'Warning' { [System.Media.SystemSounds]::Exclamation.Play() }
+            default { [System.Media.SystemSounds]::Asterisk.Play() }
+        }
+        $icon = switch ($Level) {
+            'Error' { [System.Windows.Forms.MessageBoxIcon]::Error }
+            'Warning' { [System.Windows.Forms.MessageBoxIcon]::Warning }
+            default { [System.Windows.Forms.MessageBoxIcon]::Information }
+        }
+        [System.Windows.Forms.MessageBox]::Show(
+            $Message,
+            $Title,
+            [System.Windows.Forms.MessageBoxButtons]::OK,
+            $icon
+        ) | Out-Null
+        return
+    } catch {}
+
+    try {
+        & msg.exe $env:USERNAME "$Title`n$Message" 2>$null | Out-Null
+    } catch {}
+
+    try { [console]::Beep(880,300) } catch {}
 }
 
 function Read-Gate {
@@ -34,12 +69,24 @@ function Verify-BoundFile([hashtable]$Gate,[string]$FileKey,[string]$CommitKey) 
     $file = [string]$Gate[$FileKey]
     $commit = [string]$Gate[$CommitKey]
     if ([string]::IsNullOrWhiteSpace($file) -or [string]::IsNullOrWhiteSpace($commit)) { throw "Missing R2 binding: $FileKey / $CommitKey" }
-    & git -C $GovRoot cat-file -e "$commit^{commit}" 2>$null
-    if ($LASTEXITCODE -ne 0) { throw "$CommitKey does not resolve to a governance commit: $commit" }
-    & git -C $GovRoot cat-file -e "${commit}:$file" 2>$null
-    if ($LASTEXITCODE -ne 0) { throw "$file was not present at bound commit $commit" }
-    & git -C $GovRoot cat-file -e "HEAD:$file" 2>$null
-    if ($LASTEXITCODE -ne 0) { throw "$file is missing from current governance HEAD" }
+
+    $old = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        & git -C $GovRoot cat-file -e "$commit^{commit}" 2>$null
+        $commitExit = $LASTEXITCODE
+        & git -C $GovRoot cat-file -e "${commit}:$file" 2>$null
+        $boundExit = $LASTEXITCODE
+        & git -C $GovRoot cat-file -e "HEAD:$file" 2>$null
+        $headExit = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $old
+    }
+
+    if ($commitExit -ne 0) { throw "$CommitKey does not resolve to a governance commit: $commit" }
+    if ($boundExit -ne 0) { throw "$file was not present at bound commit $commit" }
+    if ($headExit -ne 0) { throw "$file is missing from current governance HEAD" }
+
     $boundBlob = (& git -C $GovRoot rev-parse "${commit}:$file").Trim()
     $headBlob = (& git -C $GovRoot rev-parse "HEAD:$file").Trim()
     if ($boundBlob -ne $headBlob) { throw "$file changed after its bound R2 commit. Pull the current authoritative state; do not run." }
@@ -61,18 +108,39 @@ Verify-BoundFile $gate 'R2_WINDOWS_ENTRY' 'R2_WINDOWS_ENTRY_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_RUNNER' 'R2_WINDOWS_RUNNER_COMMIT'
 Verify-BoundFile $gate 'R2_WINDOWS_CONTRACT' 'R2_WINDOWS_CONTRACT_COMMIT'
 
+if ($TestNotification) {
+    Send-DesktopNotification -Title 'PRYSM P1 R2 NOTIFICATION TEST' -Level 'Info' -Message 'Notification path PASS. No Codex Builder invocation occurred.'
+    Write-Host 'PRYSM P1 R2 WINDOWS NOTIFICATION TEST PASS'
+    exit 0
+}
+
 Write-Host 'PRYSM P1 R2 WINDOWS BOOTSTRAP'
 Write-Host "Mode: $(if ($AuditOnly) { 'AUDIT ONLY' } else { 'CONTINUOUS BUILDER TO BRAD' })"
 Write-Host 'Gate binding: PASS'
 
 Write-Host "`n[1/2] R2 Windows controller contract"
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Contract
-if ($LASTEXITCODE -ne 0) { throw 'R2 Windows controller contract failed. Builder did not start.' }
+if ($LASTEXITCODE -ne 0) {
+    Send-DesktopNotification -Title 'PRYSM P1 R2 CONTROLLER FAILURE' -Level 'Error' -Message 'Windows R2 controller contract failed. Builder did not start. See the terminal for the exact error.'
+    throw 'R2 Windows controller contract failed. Builder did not start.'
+}
 
 Write-Host "`n[2/2] R2 runtime"
-if ($AuditOnly) {
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Runner -AuditOnly
-} else {
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Runner
+$old = $ErrorActionPreference
+try {
+    $ErrorActionPreference = 'Continue'
+    if ($AuditOnly) {
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Runner -AuditOnly
+    } else {
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Runner
+    }
+    $runtimeExitCode = $LASTEXITCODE
+} finally {
+    $ErrorActionPreference = $old
 }
-exit $LASTEXITCODE
+
+if ($runtimeExitCode -ne 0) {
+    Send-DesktopNotification -Title 'PRYSM P1 R2 STOPPED' -Level 'Error' -Message "The R2 controller stopped with exit code $runtimeExitCode. No automatic rerun will occur. Preserve the current state and see the terminal for the exact failure."
+}
+
+exit $runtimeExitCode
