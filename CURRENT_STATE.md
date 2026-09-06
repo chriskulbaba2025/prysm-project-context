@@ -125,7 +125,17 @@ Complete Brad's independent P1 client-outcome review of the exact repaired candi
 - `Material barriers` for the missing-alt observation is stronger than necessary because the importance of the affected image is not established, but this remains a language/polish issue rather than a P1 material defect.
 - New roots/boundary candidates: `0`.
 
-## Material-root accounting after Page 13
+### Page 14 — Internal-Link Opportunities
+- Record: `P1_BRAD_PAGE_14_CONSOLIDATED_OUTCOME_REVIEW_2026-09-06.md`.
+- Commit: `2baabd9582acc392274383d69f1070cbea7b2737`.
+- Verdict: `NEEDS IMPROVEMENT`.
+- Material findings: `0`.
+- The page reports `8 total internal links, 0 broken` as observed crawl evidence while explicitly stating that internal-link opportunities were not assessed/computed.
+- It does not turn working-link evidence into proof of strategic internal-link quality, does not invent source/destination opportunities, and does not treat unavailable opportunity analysis as a negative finding.
+- The `8 links / 0 broken / 0 pages evaluated / 0 recommendation(s)` summary is confusing and machine-like but remains a language/usefulness problem rather than a material contradiction.
+- New roots/boundary candidates: `0`.
+
+## Material-root accounting after Page 14
 
 Confirmed distinct cross-report/P1 coherence roots:
 
@@ -141,7 +151,7 @@ Material new-root/boundary candidates pending final governance classification:
 7. `PLATFORM_CONSTRAINT_EVIDENCE_CLASSIFICATION` — Page 8 inferred migration risk presented as observed evidence.
 8. `TECHNICAL_SEARCH_BLOCKER_CLASSIFICATION` — Page 9 qualified technical issues presented as search-performance blockers.
 
-Pages 10, 11, and 13 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
+Pages 10, 11, 13, and 14 add no material root or boundary candidate. Page 12 adds one confirmed P1 root and no boundary candidate.
 
 Do not diagnose or repair these during `OUTCOME_REVIEW`.
 
@@ -158,7 +168,6 @@ Do not rerun as part of Brad review:
 
 ## Review sequence remaining
 
-14. Internal-Link Opportunities
 15. Evidence Appendix
 16. Deferred & Unavailable Analysis
 
@@ -191,13 +200,13 @@ After Page 16, run the targeted scenario checks defined by `P1_BRAD_PAGE_BY_PAGE
 
 ## Exact next action
 
-Review **Page 14 — Internal-Link Opportunities only** using the exact frozen candidate:
+Review **Page 15 — Evidence Appendix only** using the exact frozen candidate:
 
-`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#internal-links`
+`https://github.com/chriskulbaba2025/vantage-platform/blob/a9523ac3de98de76335a05304b60bec246242b65/proof/P1/reopen/render-v2-r2-275f3ca/assessed.html#evidence-appendix`
 
 Follow `P1_BRAD_PAGE_BY_PAGE_OUTCOME_REVIEW_PROTOCOL_2026-09-06.md`.
 
-Return Page 14 findings and the required Page 14 summary, then stop and wait for `NEXT`.
+Return Page 15 findings and the required Page 15 summary, then stop and wait for `NEXT`.
 
 Last verified:
 2026-09-06
