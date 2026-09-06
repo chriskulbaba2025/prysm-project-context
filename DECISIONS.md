@@ -434,6 +434,22 @@ The frozen FAIL review stays immutable. Diagnosis must map the shared repair bou
 
 ---
 
+## Decision: Reopen Same P1 after reopened-candidate outcome-review FAIL
+
+Date: 2026-09-05
+Status: Active
+
+Decision:
+Chris accepted Brad's reopened P1 OUTCOME_REVIEW FAIL at governance commit `d73c57be0a15291855fc771326d6b181ff281c54` for application candidate `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c` and selected `REOPEN SAME P#`. P1 returns to Builder/Codex `DIAGNOSTIC_TRUTH`.
+
+Reason:
+Material client-visible defects remain in CTA/path coherence, trust evidence overstatement, and fail-closed projection/performance-state reconciliation. Robots/indexability is not a decisive P1 blocker unless new evidence establishes one.
+
+Implication:
+The failed review, candidate, and frozen evidence remain immutable. Read-only diagnosis is the sole authorized application activity; repair requires a later governed authorization. P2, Betty Final Audit, deployment, application-main merge, and paid/live provider or model calls remain prohibited.
+
+---
+
 ## Decision: Client action ranking follows business-impact domains
 
 Date: 2026-08-27

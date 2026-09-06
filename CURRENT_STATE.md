@@ -9,31 +9,35 @@ Last verified:
 ## Current governed boundary
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
-- Current stage: `OUTCOME_REVIEW`.
-- Authorized actor: `BRAD`.
-- Chris action: `STOP` and hand P1 to Brad.
+- Current stage: `DIAGNOSTIC_TRUTH`.
+- Authorized actor: `BUILDER/Codex`.
+- Chris decision: `REOPEN SAME P#`, accepted at governance commit `d73c57be0a15291855fc771326d6b181ff281c54` for reviewed application candidate `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Governance repository: `chriskulbaba2025/prysm-project-context`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
-- Exact frozen repaired application candidate: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
-- `P1_EXECUTION_GATE.env` binds that exact candidate and routes P1 to Brad.
-- Deterministic P1 role handoff: PASS; next actor BRAD.
+- Exact frozen failed application candidate: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
+- `P1_EXECUTION_GATE.env` binds that exact failed candidate and routes P1 to Builder/Codex `DIAGNOSTIC_TRUTH`.
+- No application repair is authorized by this transition.
 
 ## Exact next action
 
-Brad performs the independent bounded `OUTCOME_REVIEW` against the committed Outcome Contract and frozen candidate `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`, then creates a **new** outcome-review evidence file.
+Builder/Codex performs read-only `DIAGNOSTIC_TRUTH` against the complete remaining material P1 set recorded in `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md`:
+
+1. CTA/path coherence;
+2. trust evidence overstatement;
+3. fail-closed projection/performance-state reconciliation.
+
+Robots/indexability is not a decisive P1 blocker unless new diagnostic evidence establishes one. Diagnosis must complete and be durably governed before any repair is authorized or performed.
 
 Read:
 
-- `HANDOFF_PRYSM_P1_BRAD_OUTCOME_REVIEW_2026-09-05.md`
+- `DECISION_P1_REOPEN_SAME_P_R2_2026-09-05.md`
+- `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md`
 - `P1_OUTCOME_CONTRACT_2026-09-04.md`
 - `PRYSM_OUTCOME_GATED_P_REVIEW_PROTOCOL_2026-09-04.md`
-- `P1_BOUNDED_REPAIR_AUTHORIZATION_REOPEN_2026-09-05.md`
-- `proof/P1/reopen/P1_REOPENED_REPAIR_PROOF_b96b3f4_2026-09-05.md`
-- `proof/P1/reopen/render-v2-f053f63/manifest.json`
 - `P1_EXECUTION_GATE.env`
 
-Brad must not edit manifest-bound prerequisite evidence in place.
+Builder/Codex must not edit application code or frozen prerequisite evidence during `DIAGNOSTIC_TRUTH`.
 
 ## P1 history that remains frozen
 
@@ -46,8 +50,11 @@ Brad must not edit manifest-bound prerequisite evidence in place.
 - Exhaustive historical-freeze baseline: `0756e4db3746be0c2279c2083ccf83b3ec5c89f5`.
 - Frozen-history guard: `tools/prysm/assert-p1-frozen-history.sh`.
 - All new reopened P1 proof/evidence belongs under `proof/P1/reopen/`, except intentional `P1_EXECUTION_GATE.env` and `CURRENT_STATE.md` updates.
+- Reopened candidate SHA: `8fa9ea9db76e2db5e8fa11ebc6a0a7fd56eb6e1c`.
+- Reopened-candidate Brad FAIL: `P1_BRAD_OUTCOME_REVIEW_REOPEN_2026-09-05.md` at governance commit `d73c57be0a15291855fc771326d6b181ff281c54` — preserve unchanged.
+- Chris second decision: `REOPEN SAME P#`, recorded in `DECISION_P1_REOPEN_SAME_P_R2_2026-09-05.md`.
 
-## Repaired P1 defect families
+## Prior reopened repair scope — historical
 
 The reopened bounded repair addressed the complete confirmed set:
 
@@ -103,18 +110,18 @@ An agent turn ending is not a workflow boundary. Human approval is required only
 
 ## Current constraints
 
-- No application code changes during Brad `OUTCOME_REVIEW`.
+- Read-only diagnosis only during `DIAGNOSTIC_TRUTH`; no application code changes until a later governed repair authorization.
 - No P2.
-- No Betty Final Audit until Brad PASS.
+- No Betty Final Audit until a later repaired candidate receives Brad PASS.
 - No deploy.
 - No application `main` merge.
 - No paid/live application provider/model calls.
 - Do not modify frozen historical P1 evidence.
-- Do not reopen Builder work unless Brad produces a new governed FAIL disposition.
+- Do not treat robots/indexability as a decisive P1 blocker unless new evidence establishes one.
 
 ## Related process/GCU continuation
 
 - GCU repository: `chriskulbaba2025/governed-coding-upgrade-skill`.
 - Candidate upgrade: GCU v2.5 — Execution Continuity and Cross-Platform Runtime Certification.
 - Draft PR: #12, branch `upgrade/v2.5-execution-continuity`.
-- macOS execution certification remains separate future process work; it is not a blocker for Brad's current manual `OUTCOME_REVIEW`.
+- macOS execution certification remains separate future process work; it is not a blocker for the current manual `DIAGNOSTIC_TRUTH` stage.
