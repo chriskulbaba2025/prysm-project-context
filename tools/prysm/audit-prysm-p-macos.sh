@@ -21,10 +21,11 @@ PUBLIC_ENTRY="$SCRIPT_DIR/start-prysm-p.sh"
 BASE_ENTRY="$SCRIPT_DIR/start-prysm-p-base.sh"
 CURRENT_SESSION="$SCRIPT_DIR/start-prysm-p-current-session.sh"
 PREFLIGHT="$SCRIPT_DIR/prysm-governance-preflight.sh"
+FROZEN_GUARD="$SCRIPT_DIR/assert-p1-frozen-history.sh"
 BUILDER_PROMPT="$SCRIPT_DIR/PRYSM-P-BUILDER-AUTORUN-PROMPT.md"
 SCHEMA="$GOV_ROOT/tools/autorun/PRYSM-AUTORUN-RESULT.schema.json"
 
-for f in "$MAC_ENTRY" "$MAC_AUTORUN" "$PUBLIC_ENTRY" "$BASE_ENTRY" "$CURRENT_SESSION" "$PREFLIGHT"; do
+for f in "$MAC_ENTRY" "$MAC_AUTORUN" "$PUBLIC_ENTRY" "$BASE_ENTRY" "$CURRENT_SESSION" "$PREFLIGHT" "$FROZEN_GUARD"; do
   [[ -f "$f" ]] || fail "Required control-plane file missing: $f"
   bash -n "$f" || fail "Bash syntax check failed: $f"
 done
@@ -41,6 +42,18 @@ pass "git, bash, node, and macOS notification runtime are discoverable"
 [[ -d "$GOV_ROOT/.git" ]] || fail "Governance repository not found at $GOV_ROOT"
 [[ -z "$(git -C "$GOV_ROOT" status --porcelain=v1 --untracked-files=all)" ]] || fail "Governance repository must be clean for certification"
 pass "governance repository is clean"
+
+# Execute the exact production frozen-history guard on the target host. Syntax
+# checks alone are insufficient because macOS system Bash 3.2 lacks newer Bash
+# built-ins such as mapfile. Certification must prove the guard actually runs.
+set +e
+FROZEN_OUTPUT="$(bash "$FROZEN_GUARD" 2>&1)"
+frozen_status=$?
+set -e
+[[ "$frozen_status" -eq 0 ]] || fail "P1 frozen-history runtime check failed on target macOS host: $FROZEN_OUTPUT"
+printf '%s\n' "$FROZEN_OUTPUT"
+printf '%s\n' "$FROZEN_OUTPUT" | grep -Fq 'PRYSM P1 FROZEN HISTORY PASS' || fail "P1 frozen-history guard did not emit PASS"
+pass "P1 frozen-history guard executes successfully on target macOS Bash"
 
 resolve_codex() {
   command -v codex 2>/dev/null && return 0
@@ -132,8 +145,10 @@ echo
 echo "PRYSM MACOS SUSTAINED AUTORUN CERTIFICATION PASS"
 echo "Environment: $(sw_vers -productName 2>/dev/null || printf 'macOS') $(sw_vers -productVersion 2>/dev/null || true)"
 echo "Architecture: $(uname -m)"
+echo "Bash: $BASH_VERSION"
 echo "Codex: $CODEX_VERSION"
 echo "Notification runtime: osascript"
+echo "Frozen-history runtime: PASS"
 echo "Certified sustained stage: DIAGNOSTIC_TRUTH"
 echo "Default safety window: 1200 seconds"
 echo "Default max fresh Codex runs: 6"
