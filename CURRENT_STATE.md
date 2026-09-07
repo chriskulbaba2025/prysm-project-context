@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Authorize and execute the bounded `S02 — Priority Fixes` BUILD after exact local source-boundary verification. The S02 contract is approved/frozen and the REPAIR_PLAN is complete. No application edit has started yet.
+Execute the bounded `S02 — Priority Fixes` BUILD using the exact verified 2-source / 4-test seam. The S02 contract is approved/frozen, source boundary is PASS, REPAIR_PLAN is complete, and Chris explicitly authorized BUILD. Stop after focused BUILD proof; do not advance to broad deterministic audit without a new boundary.
 
 ## Verified checkpoint
 
@@ -18,16 +18,17 @@ Authorize and execute the bounded `S02 — Priority Fixes` BUILD after exact loc
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: `REPAIR_PLAN COMPLETE — BUILD AWAITING EXPLICIT AUTHORIZATION`.
+- Active S02 stage: **BUILD — AUTHORIZED**.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 baseline artifact: `proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md`.
 - S02 contract: **APPROVED — FROZEN FOR BUILD**.
 - S02 contract artifact: `proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`.
 - S02 source-boundary proof: **PASS — VERIFIED**.
 - S02 source-boundary artifact: `proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md`.
-- S02 repair plan: **PASS — COMPLETE**.
+- S02 repair plan: **PASS — COMPLETE — BUILD AUTHORIZED**.
 - S02 repair-plan artifact: `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`.
-- No S02 application edit has been made yet.
+- Build authorized by Chris on 2026-09-07.
+- No S02 application edit had been made at the moment of authorization.
 
 ## Locked review artifact
 
@@ -95,11 +96,11 @@ Each supported priority communicates:
 
 Rule IDs, internal classes, raw confidence/effort mechanics, long URL inventories, foundation matrices, and detailed implementation/technical verification belong in `Supporting Detail`.
 
-## Verified exact BUILD boundary
+## Authorized exact BUILD boundary
 
 Exact local source-boundary diagnostic returned **PASS** against the intentional dirty candidate.
 
-Only these two source files may be edited when BUILD is explicitly authorized:
+Only these two source files may be edited:
 
 1. `services/worker/src/report/render-report-v2.js`
 2. `services/worker/src/report/render-narrative-v2.js`
@@ -136,14 +137,13 @@ Explicitly prohibited from S02 BUILD:
 
 ## Tests-first sequence
 
-After explicit BUILD authorization:
-
 1. change/extend only the four authorized focused tests;
 2. run them against current behavior and preserve expected pre-change FAIL proof;
 3. edit only the two authorized source files;
 4. rerun focused tests to PASS;
 5. verify exact file scope and `git diff --check`;
-6. stop before broad deterministic audit and return focused proof.
+6. write focused BUILD proof outside both repositories;
+7. stop before broad deterministic audit and return proof for review.
 
 ## Approved client navigation
 
@@ -186,9 +186,11 @@ S02 does not reopen this IA contract.
 
 ## Exact next action
 
-Chris explicitly authorizes the bounded S02 BUILD using exactly the two-source/four-test boundary recorded in `S02_SOURCE_BOUNDARY_PROOF.md` and `S02_REPAIR_PLAN.md`.
+Execute the authorized tests-first S02 BUILD against the exact current local dirty candidate using only the authorized 2-source / 4-test seam.
 
-Until that explicit authorization, do not edit application code.
+Write focused BUILD proof outside both repositories and stop after focused PASS + exact scope + `git diff --check`.
+
+Do not advance to `DETERMINISTIC_AUDIT` until that proof is reviewed and a new boundary is explicitly authorized.
 
 Last verified:
 2026-09-07
