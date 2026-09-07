@@ -4,15 +4,15 @@ Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
 Current viewer version: `2.3.0`
-Current active section: `S03 — Conversion Journey`
+Current active section: `S05 — Content Opportunities`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
 | S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. Closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`. |
 | S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. Locked artifact `PRYSM-S02-TBK-HUMAN-REVIEW-2.html`, SHA-256 `23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800`. Closure: `proof/report-sections/S02-priority-fixes/S02_CLOSURE.md`. |
-| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | **ACTIVE — BASELINE_AUDIT** | **72** | Current page is technically oriented and visually redundant. Formal baseline/contract in progress. |
+| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. Locked artifact `PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html`, SHA-256 `A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB`. Closure: `proof/report-sections/S03-conversion-journey/S03_CLOSURE.md`. Locked narrative pattern: **Primary pages interpret. Deeper pages explain.** |
 | S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | **ACTIVE — BASELINE_AUDIT** | — | Audit current TBK client page before any application edit. Focus: commercial usefulness, prioritization, buyer-question story, conversion linkage, evidence boundaries, and client-facing UX. |
 | S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename/retain in client navigation. |
 | S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | NOT_STARTED | — | Rename/retain in client navigation. |
 | S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
