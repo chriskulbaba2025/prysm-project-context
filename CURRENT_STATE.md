@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Resolve the `S02 — Priority Fixes` verify-only regression blocker after the authorized bounded BUILD reached focused PASS. Do not advance to deterministic audit or rerender the real TBK report until the five verify-only failures are diagnosed and an exact boundary is approved.
+Resolve the final `S02 — Priority Fixes` BUILD blocker through a two-file verify-only test repair. The bounded S02 implementation is focused PASS, and read-only diagnosis has proven all five verify-only failures are stale assertions rather than genuine application regressions. No application source edit is authorized in the next boundary.
 
 ## Verified checkpoint
 
@@ -18,16 +18,17 @@ Resolve the `S02 — Priority Fixes` verify-only regression blocker after the au
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: **BUILD BLOCKED — VERIFY-ONLY DIAGNOSIS REQUIRED**.
+- Active S02 stage: **BUILD BLOCKED — TEST-ONLY REPAIR AWAITING EXPLICIT AUTHORIZATION**.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 contract: **APPROVED — FROZEN**.
 - S02 source-boundary proof: **PASS — VERIFIED**.
 - S02 repair plan: **PASS — COMPLETE**.
 - S02 bounded build implementation: **FOCUSED PASS — 83/83**.
-- S02 verify-only regression gate: **BLOCKED — 13/18 PASS, 5 FAIL**.
+- S02 verify-only regression gate before diagnosis: **13/18 PASS, 5 FAIL**.
+- S02 verify-only diagnosis: **PASS — 5/5 STALE_ASSERTION, 0 genuine regressions**.
 - `git diff --check`: **PASS**.
-- S02 attributable file scope remained exactly the authorized 2 source + 4 test files.
-- No prohibited file, provider/model, canonical, production, push, merge, deploy, reset, clean, restore, stash, or commit boundary was touched.
+- S02 attributable source/build scope remained exactly the authorized 2 source + 4 focused test files.
+- No prohibited source file, provider/model, canonical, production, push, merge, deploy, reset, clean, restore, stash, or commit boundary was touched.
 
 ## S02 proof artifacts
 
@@ -36,6 +37,7 @@ Resolve the `S02 — Priority Fixes` verify-only regression blocker after the au
 - Source boundary: `proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md`
 - Repair plan: `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`
 - Bounded build proof: `proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md`
+- Verify-only diagnosis: `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
 
 ## Locked review artifact
 
@@ -55,7 +57,7 @@ Do not rerender this report yet.
 
 ## Implemented bounded S02 behavior
 
-Within the authorized seam only:
+Within the authorized source seam only:
 
 - `Priority Fixes` now owns one authoritative ranked client sequence;
 - `foundations` and deterministic `action-plan` are assigned to `Supporting Detail`;
@@ -67,16 +69,35 @@ Within the authorized seam only:
 - approved six peer client destinations plus one subordinate Supporting Detail destination remain unchanged;
 - Writer/Judge content and evidence lineage remain unchanged.
 
-## Current blocker
+Focused authorized BUILD proof is `83/83 PASS`.
 
-The focused authorized suite passes `83/83`, but the required verify-only gate fails `5` assertions across:
+## Verify-only diagnosis result
 
-- `services/worker/src/report/render-report-v2-sections.test.js`
-- `services/worker/src/report/karen-style-regression.test.js`
+Read-only diagnosis classified every verify-only failure as a stale assertion:
 
-These files were explicitly verify-only under the current BUILD boundary and were not edited.
+1. `KAREN-REG-02` — stale old `E. What should be fixed first?` Priority Fixes marker.
+2. `V2R-06` — stale old Section E heading expectation.
+3. `V2R-08` — stale old Section E area marker.
+4. `IL-03` — stale document-wide prohibition on the word `unknown`; S02 now correctly uses bounded uncertainty elsewhere in the report.
+5. `IL-04` — same overly broad document-wide `unknown` assertion; no internal-link regression was proven.
 
-The current build therefore remains **BLOCKED**, not failed as an implementation seam. A read-only diagnosis must determine which failures are stale contract expectations versus genuine regressions before any boundary expansion.
+No genuine S02 regression was established.
+
+## Smallest next repair boundary
+
+A follow-up repair may be **test-only**, exactly these two files:
+
+1. `services/worker/src/report/render-report-v2-sections.test.js`
+2. `services/worker/src/report/karen-style-regression.test.js`
+
+Allowed intent only:
+
+- replace obsolete `E. What should be fixed first?` expectations with the frozen S02 Priority Fixes marker;
+- narrow IL-03 / IL-04 from whole-document `unknown` rejection to the internal-link surface or direct source/target/count-only assertions;
+- preserve substantive internal-link coverage;
+- rerun only the verify-only gate.
+
+No application source edit is authorized by this boundary.
 
 ## Application environment
 
@@ -98,21 +119,20 @@ The current build therefore remains **BLOCKED**, not failed as an implementation
 - no production mutation;
 - no application push, merge, commit, or deployment;
 - no unrelated scoring/evidence/lifecycle/Client Truth/Writer/Judge change;
-- do not reopen S01.
+- do not reopen S01;
+- do not edit S02 source files during the next test-only boundary;
+- do not run deterministic audit or rerender the real TBK report yet.
 
 ## Exact next action
 
-Run a **read-only verify-only failure diagnosis** for the five failing assertions in:
+Chris explicitly authorizes the bounded **two-file test-only repair** in:
 
 - `services/worker/src/report/render-report-v2-sections.test.js`
 - `services/worker/src/report/karen-style-regression.test.js`
 
-For each failure, prove whether it is:
+After authorization, update only the five stale assertions identified in `S02_VERIFY_ONLY_DIAGNOSIS.md`, rerun only the verify-only gate, verify no source file changed, run `git diff --check`, and return proof.
 
-1. a stale assertion directly superseded by the frozen S02 contract; or
-2. a genuine regression caused by the S02 BUILD.
-
-Do not edit either verify-only file during diagnosis. Return an exact proposed repair boundary before any further application edit.
+Do not advance to `DETERMINISTIC_AUDIT` or real TBK rerender until the repaired verify-only gate passes and is reviewed.
 
 Last verified:
 2026-09-07
