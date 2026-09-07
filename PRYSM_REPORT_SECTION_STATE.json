@@ -10,13 +10,13 @@
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S02",
   "activeSection": "Priority Fixes",
-  "stage": "CONTRACT",
+  "stage": "REPAIR_PLAN",
   "status": "ACTIVE",
-  "contractStatus": "DRAFT_FOR_CHRIS_APPROVAL",
+  "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "baselineStatus": "COMPLETE_FAIL",
-  "sourceBoundaryStatus": "NOT_OPENED_FOR_S02",
-  "repairPlanStatus": "NOT_STARTED",
-  "buildStatus": "NOT_STARTED",
+  "sourceBoundaryStatus": "READ_ONLY_LOCAL_DIAGNOSTIC_REQUIRED",
+  "repairPlanStatus": "IN_PROGRESS",
+  "buildStatus": "NOT_AUTHORIZED",
   "deterministicAuditStatus": "NOT_STARTED",
   "realReportRenderStatus": "NOT_STARTED",
   "humanReviewStatus": "NOT_STARTED",
@@ -25,8 +25,15 @@
   "hardGateFailures": 2,
   "baselineArtifact": "proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md",
   "contractArtifact": "proof/report-sections/S02-priority-fixes/S02_CONTRACT.md",
+  "repairPlanArtifact": "proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md",
   "s02RootCause": "S02 exposes audit machinery and client action guidance as equal-weight content instead of translating governed evidence into one authoritative ranked client action sequence.",
   "s02RepairDirection": "One authoritative ranked client action sequence: What needs attention -> Why it matters -> What to change -> Where it applies -> How to confirm it improved -> material uncertainty when required. Move rule IDs, classes, raw confidence/effort mechanics, long URL inventories, foundation matrices, and implementation detail to Supporting Detail.",
+  "sourceOwnershipObservedFromCommittedCode": [
+    "src/report/render-report-v2.js",
+    "src/report/report-detail-sections.js",
+    "src/report/render-narrative-v2.js"
+  ],
+  "sourceOwnershipConstraint": "Committed GitHub source predates the exact intentional dirty Viewer 2.3.0/S01 candidate and cannot by itself authorize BUILD. Exact local source-boundary proof is required.",
   "lockedPreviousSection": {
     "sectionId": "S01",
     "section": "Executive Scorecard",
@@ -66,19 +73,20 @@
   },
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
-    "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
-    "workerPath": "C:\\Users\\kulba\\Desktop\\vantage-platform\\services\\worker",
+    "localPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform",
+    "workerPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform\\services\\worker",
     "branch": "p1/bounded-build-cross-report-integrity",
     "historicalCommittedHead": "a9523ac3de98de76335a05304b60bec246242b65",
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
   "s02BaselineSource": {
-    "artifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S01-TBK-CURRENT-REVIEW.html",
+    "artifact": "C:\\Users\\kulbaba\\Downloads\\PRYSM-S01-TBK-CURRENT-REVIEW.html",
     "sha256": "857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8",
     "pageId": "priority-fixes",
-    "sectionIds": ["blockers", "foundations", "action-plan"]
+    "sectionIdsAtBaseline": ["blockers", "foundations", "action-plan"],
+    "narrativeAssignmentsObserved": ["narrative-root-cause", "narrative-conversion", "narrative-action-plan"]
   },
-  "nextAllowedAction": "Review and approve/freeze proof/report-sections/S02-priority-fixes/S02_CONTRACT.md. No application edit is authorized. Do not move to REPAIR_PLAN or BUILD until Chris explicitly approves the S02 contract boundary. Preserve the exact intentional dirty P1/S01 worktree and all no-reset/no-clean/no-discard/no-provider/no-production/no-push/no-merge/no-deploy constraints.",
+  "nextAllowedAction": "Run a read-only S02 source-boundary diagnostic against C:\\Users\\kulbaba\\Desktop\\vantage-platform\\services\\worker. Capture exact branch/HEAD/status, current Viewer 2.3.0 S02/Supporting Detail composition, deterministic and narrative render ownership, affected tests/assertions, and current local diffs for already-dirty candidate files. Write C:\\Users\\kulbaba\\Downloads\\PRYSM-S02-SOURCE-BOUNDARY.txt and return it for review. Do not edit application code. Preserve all no-reset/no-clean/no-discard/no-provider/no-production/no-push/no-merge/no-deploy constraints.",
   "lastUpdated": "2026-09-07"
 }
