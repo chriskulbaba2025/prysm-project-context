@@ -1,6 +1,6 @@
 # PRYSM Report Section Improvement Protocol (RSIP)
 
-Version: 1.1.0
+Version: 1.2.0
 Status: ACTIVE
 Date: 2026-09-07
 
@@ -18,7 +18,7 @@ Report-wide navigation is additionally governed by:
 
 `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 
-The primary client report contains exactly 8 decision-oriented destinations. Technical/evidence pages remain governed supporting detail and do not compete in the primary menu.
+The primary client report contains exactly 6 peer decision-oriented destinations plus one visibly subordinate `Supporting Detail` destination. Technical/evidence pages remain governed supporting detail and do not compete in the primary menu.
 
 ## Single-active-section rule
 
@@ -27,8 +27,6 @@ Only one report section may be `ACTIVE` at a time.
 A section moves through this lifecycle:
 
 `BASELINE_AUDIT -> CONTRACT -> REPAIR_PLAN -> BUILD -> DETERMINISTIC_AUDIT -> REAL_REPORT_RENDER -> HUMAN_REVIEW -> PASS_LOCKED`
-
-For S01, Chris supplied and approved the contract before the baseline was formally captured. The actual TBK baseline is now complete and S01 is in `REPAIR_PLAN`.
 
 ## Required artifacts per section
 
@@ -110,11 +108,12 @@ Prove:
 - required whole-app/closure gates pass when the change boundary requires them.
 
 For any report-wide navigation change, also prove:
-- exactly 8 primary destinations;
+- exactly 6 peer client destinations;
 - exact approved order;
 - exact approved client-facing labels;
+- exactly one subordinate `Supporting Detail` destination;
 - zero supporting-detail pages exposed as peer primary items;
-- all supporting-detail pages remain reachable;
+- all supporting-detail content remains reachable;
 - viewer switching and print/save behaviour remain functional.
 
 A test suite must prove the intended pre-change defect where practical; tests that simply accept the new output are insufficient.
@@ -131,7 +130,7 @@ Review the actual rendered section for client comprehension, usefulness, scanabi
 
 The reviewer must not substitute code/test inspection for client outcome review.
 
-For primary client navigation, human review must confirm that the 8-menu structure is immediately understandable and supporting technical/evidence material is clearly subordinate.
+For primary client navigation, human review must confirm that the 6-peer-menu structure is immediately understandable and that one subordinate Supporting Detail destination clearly contains deeper technical/evidence material.
 
 ### 8. PASS_LOCKED
 
@@ -171,20 +170,20 @@ Any one of these is an automatic FAIL regardless of numeric score:
 - material machine/technical language that prevents the intended non-technical client understanding;
 - priority/rank/business reason materially disagrees with the governed action hierarchy;
 - the section fails to answer its required client question;
-- a supporting-detail page appears as an equal-weight primary navigation item after the information-architecture migration;
-- the primary menu count/order/labels disagree with the approved 8-item navigation contract.
+- a supporting-detail page appears as an equal-weight peer primary navigation item;
+- the peer client menu count/order/labels or subordinate Supporting Detail structure disagree with the approved information-architecture contract.
 
 ## Execution order
 
 ### Primary client lane — first
 
-`S01 -> S02 -> S03 -> S05 -> S06 -> S07 -> S12 -> S13`
+`S01 -> S02 -> S03 -> S05 -> S06 -> S07`
 
-These are the only primary client destinations and must be completed before the supporting-detail lane.
+These are the peer client destinations and must be completed before the supporting-detail lane.
 
 ### Supporting-detail lane — second
 
-`S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
+`S12 -> S13 -> S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
 
 These sections remain governed and measurable even though they are subordinate in client navigation.
 
