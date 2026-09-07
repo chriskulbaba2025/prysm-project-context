@@ -4,7 +4,9 @@ Section: S01 — Executive Scorecard
 Status: APPROVED
 Approved by: Chris
 Date: 2026-09-07
+Contract revision: 1.1 — adds approved report-wide information-architecture dependency
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
+Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 
 ## Client question
 
@@ -123,6 +125,27 @@ The Executive Scorecard must tell the client where deeper evidence can be found 
 
 The pointer should direct the client to the relevant later report sections rather than exposing PRYSM mechanics on S01.
 
+Supporting technical/evidence material must follow the approved report-wide information architecture: it belongs behind the subordinate **Supporting Evidence / Technical Detail** surface, not in the primary client navigation.
+
+## Report-wide navigation dependency
+
+S01 is primary client destination **01 of 08**.
+
+The primary client navigation visible from S01 must ultimately contain exactly:
+
+1. Executive Scorecard
+2. Priority Fixes
+3. Conversion Journey
+4. Content Opportunities
+5. Competitor Comparison
+6. Trust & Credibility
+7. Website Speed & Performance
+8. Mobile & Accessibility
+
+S04, S08, S09, S10, S11, S14, S15, and S16 must not appear as equal-weight primary navigation items. They must remain reachable through subordinate Supporting Evidence / Technical Detail navigation.
+
+Because S01 is the first active RSIP section and its renderer owns the viewer shell, the S01 repair may include the bounded navigation migration when exact local source/test verification proves that seam. If included, the navigation migration becomes part of S01 deterministic and human acceptance rather than a separate unmeasured cosmetic edit.
+
 ## Universal RSIP scorecard
 
 | Dimension | Weight |
@@ -155,7 +178,12 @@ The S01 deterministic proof must establish at minimum:
 12. prohibited executive terminology/mechanics are absent from S01 client-facing output;
 13. supported business-language translations replace technical executive wording;
 14. no undefined/null/empty required client slots render;
-15. existing relevant cross-report/evidence-integrity regressions remain green.
+15. existing relevant cross-report/evidence-integrity regressions remain green;
+16. primary navigation contains exactly 8 destinations;
+17. primary navigation order and client-facing labels match the approved report-wide IA contract;
+18. no supporting-detail page appears as a peer primary destination;
+19. all supporting-detail pages remain reachable through the subordinate supporting-detail surface;
+20. viewer switching and print/save behaviour remain functional after navigation migration.
 
 ## Human acceptance test
 
@@ -167,4 +195,6 @@ Using the actual rendered TBK S01 page, a non-technical reviewer should be able 
 4. Is anything materially uncertain?
 5. Where should I go for supporting evidence?
 
-Required human result: **5/5 readily identifiable**, no material machine-language leakage, and no misleading certainty.
+The reviewer must also be able to identify the 8 primary report destinations without technical/evidence pages competing for equal attention.
+
+Required human result: **5/5 readily identifiable**, correct 8-item primary navigation, no material machine-language leakage, and no misleading certainty.
