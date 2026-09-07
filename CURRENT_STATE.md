@@ -6,6 +6,9 @@ PRYSM — governed website conversion-readiness report and website decision syst
 Current objective:
 Complete the final `S02 — Priority Fixes` human-review repair. The real TBK render passed and the substantive content is materially improved, but the rendered page remains visually too flat and two pieces of primary client wording are still too internal/technical. Chris explicitly authorized fixing the agreed UX/UI and wording issues on 2026-09-07.
 
+Continuation handoff:
+`HANDOFF_PRYSM_S02_HUMAN_REVIEW_REPAIR_CONTINUATION_2026-09-07.md`
+
 ## Verified checkpoint
 
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
@@ -42,6 +45,7 @@ Complete the final `S02 — Priority Fixes` human-review repair. The real TBK re
 - `proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md`
 - `proof/report-sections/S02-priority-fixes/S02_REAL_REPORT_RENDER_PROOF.md`
 - `proof/report-sections/S02-priority-fixes/S02_HUMAN_REVIEW.md`
+- continuation: `HANDOFF_PRYSM_S02_HUMAN_REVIEW_REPAIR_CONTINUATION_2026-09-07.md`
 
 ## Human-review findings
 
@@ -96,7 +100,7 @@ Preserve the intentional dirty P1/S01/S02 worktree. No reset, clean, restore, ch
 
 ## Exact next action
 
-Execute the bounded S02 human-review presentation repair in the exact current dirty candidate. Run focused S02 tests, verify scope, rerender the same TBK audit offline from unchanged canonical inputs, and return a new HTML plus proof for final human review.
+Start from `HANDOFF_PRYSM_S02_HUMAN_REVIEW_REPAIR_CONTINUATION_2026-09-07.md`, then execute the bounded S02 human-review presentation repair in the exact current dirty candidate. Run focused S02 tests, verify scope, rerender the same TBK audit offline from unchanged canonical inputs, and return a new HTML plus proof for final human review.
 
 Do not PASS_LOCK S02 or activate S03 until the new rendered page scores >=95 with zero hard-gate failures.
 
