@@ -8,76 +8,11 @@
   "primaryNavigationTargetCount": 6,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07"],
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
-  "activeSectionId": "S03",
-  "activeSection": "Conversion Journey",
-  "stage": "HUMAN_REVIEW",
-  "status": "ACTIVE_EXECUTIVE_NARRATIVE_BRIDGE_AUTHORIZED",
-  "baselineStatus": "COMPLETE_FAIL",
-  "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
-  "buildStatus": "PASS",
-  "wordingRepairStatus": "PASS",
-  "croDepthStoryRepairStatus": "PASS",
-  "croVisualPolishStatus": "PASS",
-  "latestRegressionGate": "92_PASS_0_FAIL",
-  "latestArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-CRO-FINAL-REVIEW.html",
-  "latestArtifactSha256": "1B350CEDE0ED198A3EDA849845C8D93D8C810584CDE626403013B28C480EB8B6",
+  "activeSectionId": "S05",
+  "activeSection": "Content Opportunities",
+  "stage": "BASELINE_AUDIT",
+  "status": "ACTIVE_BASELINE_AUDIT",
   "passThreshold": 95,
-  "hardGateFailures": 0,
-  "humanReviewStatus": "FINAL_BRIDGE_REPAIR_REQUIRED",
-  "humanReviewFinding": {
-    "id": "HR-CRO-02",
-    "type": "EXECUTIVE_NARRATIVE",
-    "summary": "S03 should interpret how content, trust and performance support the conversion journey, then direct the client to the deeper report page, without duplicating those pages or creating new findings."
-  },
-  "narrativeRule": "Primary pages interpret. Deeper pages explain.",
-  "authorizedExecutiveBridge": {
-    "heading": "What supports this journey?",
-    "placementAfter": "Where visitors may lose momentum",
-    "placementBefore": "What this means for conversion",
-    "cards": [
-      {
-        "topic": "content",
-        "title": "Content that answers buyer questions",
-        "interpretation": "Some visitors may reach the next step while still having unanswered questions. Buyer-question content was not found on the pages we could assess.",
-        "linkLabel": "See Content Opportunities →",
-        "target": "#content-ideas",
-        "boundary": "Preserve PARTIAL assessed-page scope; do not imply whole-site absence."
-      },
-      {
-        "topic": "trust",
-        "title": "Trust that reduces hesitation",
-        "interpretation": "The assessed site has useful trust signals. The next question is whether that proof appears where buyers need reassurance before acting.",
-        "linkLabel": "See Trust & Credibility →",
-        "target": "#trust-eeat",
-        "boundary": "Executive interpretation only; do not claim proof is absent or misplaced unless page-level evidence proves it."
-      },
-      {
-        "topic": "performance",
-        "title": "Performance that keeps momentum",
-        "interpretation": "The route is clear, but slow mobile loading may create friction before visitors fully engage with the next step.",
-        "linkLabel": "See Priority Fixes →",
-        "target": "#priority-fixes",
-        "boundary": "Preserve lab-only evidence; do not claim measured abandonment or conversion loss."
-      }
-    ],
-    "desktopEqualCards": true,
-    "mobileStack": true,
-    "textLinkCtas": true,
-    "noTable": true,
-    "noAdditionalLargeVisual": true,
-    "noDecorativeImage": true,
-    "printSafe": true
-  },
-  "authorizedSourceFiles": [
-    "services/worker/src/report/render-report-v2.js"
-  ],
-  "authorizedDirectTestFiles": [
-    "services/worker/src/report/render-report-v2.test.js",
-    "services/worker/src/report/render-report-v2-sections.test.js",
-    "services/worker/src/report/karen-style-regression.test.js",
-    "services/worker/src/report/render-narrative-v2.test.js",
-    "services/worker/src/report/render-report-v2-conversion.test.js"
-  ],
   "lockedPreviousSections": [
     {
       "sectionId": "S01",
@@ -95,8 +30,51 @@
       "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-TBK-HUMAN-REVIEW-2.html",
       "reviewArtifactSha256": "23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800",
       "closureArtifact": "proof/report-sections/S02-priority-fixes/S02_CLOSURE.md"
+    },
+    {
+      "sectionId": "S03",
+      "section": "Conversion Journey",
+      "status": "PASS_LOCKED",
+      "score": 97,
+      "hardGateFailures": 0,
+      "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html",
+      "reviewArtifactSha256": "A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB",
+      "closureArtifact": "proof/report-sections/S03-conversion-journey/S03_CLOSURE.md",
+      "verification": {
+        "focused": "15_PASS_0_FAIL",
+        "completeRegression": "92_PASS_0_FAIL",
+        "gitDiffCheck": "PASS",
+        "dirtyPathCount": 26,
+        "canonicalImmutability": "PASS",
+        "offlineReplay": "1_PASS_0_FAIL",
+        "providerModelCalls": 0,
+        "productionMutations": 0,
+        "pushMergeDeployCommit": 0
+      },
+      "lockedNarrativeRule": "Primary pages interpret. Deeper pages explain."
     }
   ],
+  "activeBaselineObjective": {
+    "sectionId": "S05",
+    "clientFacingLabel": "Content Opportunities",
+    "questions": [
+      "What buyer questions/content needs are already covered?",
+      "Which content gaps are commercially meaningful?",
+      "What content should be created or improved first?",
+      "How does each opportunity support conversion or buyer decision-making?",
+      "Where should each recommended content asset connect in the journey?",
+      "What is evidence-backed versus inference/opportunity-level?",
+      "What remains unknown because content-body evidence is PARTIAL?"
+    ],
+    "challenge": [
+      "technical or system language",
+      "generic content-idea lists",
+      "duplicated opportunities",
+      "mechanically generated titles",
+      "weak prioritization",
+      "tables that do not help a client decide what to create next"
+    ]
+  },
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
     "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -106,6 +84,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Execute only the authorized S03 executive narrative bridge in render-report-v2.js. Each bridge card must interpret governed evidence in conversion-journey context, explain why it matters to momentum or decision support, and link to the deeper client-facing page. Do not create new findings, a new priority order, or duplicate detailed content. Update only directly stale authorized S03 presentation tests and CR-43 presentation golden hashes if required. Then run focused and complete S03 regressions, git diff --check, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and offline TBK rerender. Return PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html plus PRYSM-S03-EXECUTIVE-BRIDGE-PROOF.txt. Do not PASS_LOCK S03 yet.",
+  "nextAllowedAction": "Perform S05 baseline human-review audit only against the current TBK Content Opportunities page. Return baseline score, hard-gate count, root cause, CRO/content-strategy blind spots, UX/UI defects, evidence-integrity defects/limitations, minimum approved client outcome, and bounded S05 contract proposal. Do not edit application code until the baseline and contract are approved.",
   "lastUpdated": "2026-09-07"
 }
