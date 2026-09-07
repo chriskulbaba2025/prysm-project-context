@@ -3,13 +3,14 @@
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
-Viewer version: `2.2.0`
+Current viewer version: `2.2.0`
+Target viewer version for approved S01/IA build: `2.3.0`
 Current active section: `S01 — Executive Scorecard`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — REPAIR_PLAN | 63 | Baseline direct-render audit complete: FAIL, 2 hard gates. S01 repair now also carries the approved primary/supporting navigation migration if exact local seam confirms viewer ownership. |
-| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. |
+| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — BUILD | 63 | Baseline FAIL with 2 hard gates. Contract + source boundary + repair plan complete. Bounded tests-first BUILD authorized. |
+| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. Carry-forward observation: detailed VAN-PERF-001 implementation wording should be reviewed here, not broadened into S01. |
 | S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename in client navigation. |
 | S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING | NOT_STARTED | — | Remove from main menu; retain as supporting detail unless later governed decision removes it entirely. |
 | S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename in client navigation. |
