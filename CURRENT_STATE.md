@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Execute `S02 — Priority Fixes` `DETERMINISTIC_AUDIT` against the exact current dirty candidate. BUILD is complete and both focused and verify-only gates are PASS. Chris explicitly authorized deterministic audit on 2026-09-07. Do not rerender the real TBK report yet.
+Advance `S02 — Priority Fixes` from completed deterministic audit to the governed `REAL_REPORT_RENDER` boundary. The S02 deterministic audit is PASS. Await explicit authorization before regenerating the actual TBK review report from already-governed persisted/canonical artifacts. Do not perform HUMAN_REVIEW yet.
 
 ## Verified checkpoint
 
@@ -18,18 +18,29 @@ Execute `S02 — Priority Fixes` `DETERMINISTIC_AUDIT` against the exact current
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: **DETERMINISTIC_AUDIT — AUTHORIZED**.
+- Active S02 stage: **DETERMINISTIC_AUDIT PASS — REAL_REPORT_RENDER AWAITING EXPLICIT AUTHORIZATION**.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 contract: **APPROVED — FROZEN**.
 - S02 source-boundary proof: **PASS — VERIFIED**.
 - S02 repair plan: **PASS — COMPLETE**.
 - S02 BUILD: **COMPLETE — PASS**.
-- S02 bounded implementation focused suite: **83 PASS / 0 FAIL**.
-- Verify-only diagnosis: **PASS — 5/5 STALE_ASSERTION, 0 genuine regressions**.
-- Test-only repair gate: **18 PASS / 0 FAIL**, duration `262.4974 ms`, exit code `0`.
-- `git diff --check`: **PASS — exit 0** at final BUILD checkpoint.
-- Deterministic audit explicitly authorized by Chris on 2026-09-07.
-- No prohibited source file, provider/model, canonical, production, push, merge, deploy, reset, clean, restore, stash, discard, or commit boundary has been authorized.
+- S02 combined report/viewer/narrative regression gate: **101 PASS / 0 FAIL**, duration `563.3816 ms`.
+- S02 deterministic audit: **PASS**.
+- `npm run verify:prysm-closure`: **PASS — exit 0**.
+- `PRYSM CLOSURE MACHINE GATE`: **PASS**.
+- `PRYSM WHOLE-APP TRANCHE GATE`: **PASS**.
+- whole-app acceptance: **87 PASS / 0 FAIL**.
+- worker regression families: **994/994 PASS**.
+- application production-path tests: **82/82 PASS**.
+- Narrative v2 tests: **114/114 PASS**.
+- schema/contract tests: **14/14 PASS**.
+- artifact tests: **106/106 PASS**.
+- lifecycle tests: **57/57 PASS**.
+- replay remained Viewer `2.3.0` and offline/controlled.
+- final normalized dirty scope: **26 pre / 26 post — exact match**.
+- `git diff --check`: **PASS — exit 0**.
+- No application/test file changed during deterministic audit.
+- No canonical mutation, provider/model calls, production mutation, push, merge, commit, deploy, reset, clean, restore, stash, discard, or TBK rerender occurred during deterministic audit.
 
 ## S02 proof artifacts
 
@@ -40,11 +51,11 @@ Execute `S02 — Priority Fixes` `DETERMINISTIC_AUDIT` against the exact current
 - Bounded build proof: `proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md`
 - Verify-only diagnosis: `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
 - Test-only repair proof: `proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md`
-- Deterministic proof: not yet created; create only after evidence exists.
+- Deterministic proof: `proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md`
 
-## Locked review artifact
+## Locked review artifact before S02 rerender
 
-Actual current TBK report:
+Current locked TBK review artifact:
 
 `C:\Users\kulba\Downloads\PRYSM-S01-TBK-CURRENT-REVIEW.html`
 
@@ -56,7 +67,7 @@ Audit ID:
 
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
 
-Do not rerender this report during deterministic audit.
+This is the pre-S02-render review object. Do not overwrite or mutate governed persisted/canonical inputs.
 
 ## Implemented bounded S02 behavior
 
@@ -72,24 +83,11 @@ Within the authorized presentation seam:
 - approved six peer client destinations plus one subordinate Supporting Detail destination remain unchanged;
 - Writer/Judge content and evidence lineage remain unchanged.
 
-## Deterministic audit requirements
+## Deterministic audit decision
 
-Per RSIP v1.2.0, prove:
+`S02_DETERMINISTIC_AUDIT_PASS`
 
-- required S02 content exists;
-- prohibited S02 content is absent;
-- evidence uncertainty is preserved;
-- governed rank/order is preserved;
-- Client Truth is not upgraded or reinterpreted;
-- relevant regressions pass;
-- required whole-app/closure gates pass for this presentation change;
-- exactly 6 peer client destinations remain in the approved order and labels;
-- exactly one subordinate `Supporting Detail` destination remains;
-- no supporting-detail page is exposed as a peer primary item;
-- all Supporting Detail content remains reachable;
-- viewer switching and print/save behavior remain functional.
-
-No application edit is authorized during deterministic audit. If a stale test or genuine regression appears, stop and return proof for a new boundary decision.
+All deterministic requirements required by RSIP v1.2.0 passed, including S02 content/prohibition checks, uncertainty/rank preservation, Client Truth integrity, six-peer navigation, Supporting Detail reachability, viewer switching/print behavior, broad closure, whole-app gate, and exact dirty-scope preservation.
 
 ## Application environment
 
@@ -103,7 +101,6 @@ No application edit is authorized during deterministic audit. If a stale test or
 ## Important constraints
 
 - preserve the exact intentional dirty P1/S01/S02 worktree;
-- no application edits during this deterministic-audit boundary;
 - no reset, clean, checkout overwrite, restore, destructive revert, stash, discard, or unrelated overwrite;
 - no canonical artifact mutation;
 - no evidence recollection;
@@ -113,13 +110,15 @@ No application edit is authorized during deterministic audit. If a stale test or
 - no application push, merge, commit, or deployment;
 - no unrelated scoring/evidence/lifecycle/Client Truth/Writer/Judge change;
 - do not reopen S01;
-- do not rerender the real TBK report during deterministic audit.
+- HUMAN_REVIEW is not authorized until a new actual TBK artifact has been rendered and returned for review.
 
 ## Exact next action
 
-Run the authorized S02 deterministic audit against the exact current dirty candidate. First run the complete S02 report/viewer/narrative regression set, then `npm run verify:prysm-closure`, then `git diff --check` and normalized dirty-scope verification. Write the audit proof outside both repositories and stop.
+Chris explicitly authorizes `REAL_REPORT_RENDER` for S02.
 
-If every deterministic gate passes, return `S02_DETERMINISTIC_AUDIT_PASS` for review. Do not enter `REAL_REPORT_RENDER` until the deterministic proof is reviewed and that next boundary is explicitly authorized.
+After authorization, regenerate the actual TBK report **offline from the already-governed persisted/canonical artifacts**, using the exact current dirty application candidate, with **zero live provider/model calls and no new production audit**. Preserve and hash the prior locked artifact, produce a new S02 review HTML in Downloads, verify Viewer `2.3.0`, audit ID, six-peer navigation, S01 locked content/order, S02 priority content/order/uncertainty, Supporting Detail reachability, canonical immutability and dirty-scope preservation, then return render proof and the new HTML for HUMAN_REVIEW.
+
+Until that authorization, do not rerender TBK, perform HUMAN_REVIEW, PASS_LOCK S02, or activate S03.
 
 Last verified:
 2026-09-07
