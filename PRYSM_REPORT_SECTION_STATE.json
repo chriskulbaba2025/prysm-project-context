@@ -10,14 +10,14 @@
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S02",
   "activeSection": "Priority Fixes",
-  "stage": "REPAIR_PLAN",
+  "stage": "BUILD",
   "status": "ACTIVE",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED_PASS",
   "repairPlanStatus": "COMPLETE",
-  "buildStatus": "AWAITING_EXPLICIT_AUTHORIZATION",
-  "deterministicAuditStatus": "NOT_STARTED",
+  "buildStatus": "AUTHORIZED_NOT_STARTED",
+  "deterministicAuditStatus": "NOT_AUTHORIZED",
   "realReportRenderStatus": "NOT_STARTED",
   "humanReviewStatus": "NOT_STARTED",
   "score": 67,
@@ -27,6 +27,8 @@
   "contractArtifact": "proof/report-sections/S02-priority-fixes/S02_CONTRACT.md",
   "sourceBoundaryArtifact": "proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md",
   "repairPlanArtifact": "proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md",
+  "buildAuthorizedBy": "Chris",
+  "buildAuthorizationDate": "2026-09-07",
   "s02RootCause": "S02 exposes audit machinery and client action guidance as equal-weight content instead of translating governed evidence into one authoritative ranked client action sequence.",
   "s02RepairDirection": "One authoritative ranked client action sequence: What needs attention -> Why it matters -> What to change -> Where it applies -> How to confirm it improved -> material uncertainty when required. Move rule IDs, classes, raw confidence/effort mechanics, long URL inventories, foundation matrices, deterministic duplicate action plan, and duplicate narrative structures to Supporting Detail.",
   "verifiedBuildBoundary": {
@@ -88,6 +90,6 @@
     "sectionIdsAtBaseline": ["blockers", "foundations", "action-plan"],
     "narrativeAssignmentsObserved": ["narrative-root-cause", "narrative-conversion", "narrative-action-plan"]
   },
-  "nextAllowedAction": "Chris explicitly authorizes the bounded S02 BUILD using exactly the two source files and four test files recorded in S02_SOURCE_BOUNDARY_PROOF.md and S02_REPAIR_PLAN.md. Until that explicit authorization, do not edit application code. Preserve all no-reset/no-clean/no-discard/no-provider/no-production/no-push/no-merge/no-deploy constraints.",
+  "nextAllowedAction": "Execute the authorized tests-first S02 BUILD using only the two source files and four test files recorded in S02_SOURCE_BOUNDARY_PROOF.md and S02_REPAIR_PLAN.md. Preserve expected pre-change focused FAIL proof, implement the bounded presentation/page-assignment repair, rerun focused tests to PASS, verify exact file scope plus git diff --check, write focused proof outside both repositories, and stop. Do not advance to DETERMINISTIC_AUDIT, provider/model calls, production mutation, push, merge, or deploy.",
   "lastUpdated": "2026-09-07"
 }
