@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete `S02 — Priority Fixes` REPAIR_PLAN by verifying the exact current local source/test seam against the intentional dirty P1/S01 worktree. The S02 contract is approved and frozen. No application edit is authorized until the read-only source-boundary proof is complete and the bounded BUILD file set is explicitly approved.
+Authorize and execute the bounded `S02 — Priority Fixes` BUILD after exact local source-boundary verification. The S02 contract is approved/frozen and the REPAIR_PLAN is complete. No application edit has started yet.
 
 ## Verified checkpoint
 
@@ -18,13 +18,16 @@ Complete `S02 — Priority Fixes` REPAIR_PLAN by verifying the exact current loc
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: `REPAIR_PLAN`.
+- Active S02 stage: `REPAIR_PLAN COMPLETE — BUILD AWAITING EXPLICIT AUTHORIZATION`.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 baseline artifact: `proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md`.
 - S02 contract: **APPROVED — FROZEN FOR BUILD**.
 - S02 contract artifact: `proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`.
-- S02 repair plan opened: `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`.
-- S02 BUILD remains unauthorized pending exact local source-boundary proof.
+- S02 source-boundary proof: **PASS — VERIFIED**.
+- S02 source-boundary artifact: `proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md`.
+- S02 repair plan: **PASS — COMPLETE**.
+- S02 repair-plan artifact: `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`.
+- No S02 application edit has been made yet.
 
 ## Locked review artifact
 
@@ -44,13 +47,13 @@ This artifact was regenerated offline from unchanged persisted/canonical TBK inp
 
 ## S02 baseline result
 
-The actual rendered Priority Fixes page currently presents multiple competing client-decision structures:
+The actual rendered Priority Fixes page currently repeats the same governed action story through multiple client-facing structures:
 
 1. ranked Priority Findings;
 2. `First Things First — Foundational Readiness`;
-3. Client Action Plan / Do Now / Do Next;
-4. Narrative Root Cause / Business consequences / Conversion interpretation;
-5. another Narrative Action Plan.
+3. deterministic Client Action Plan / Do Now / Do Next;
+4. Narrative Root Cause / Conversion interpretation;
+5. Narrative Action Plan.
 
 The governed ranked order itself remains consistent with locked S01:
 
@@ -62,7 +65,7 @@ The governed ranked order itself remains consistent with locked S01:
 
 Evidence integrity remains strong: PARTIAL/UNAVAILABLE states are preserved and unassessed scope is not upgraded into confirmed defects.
 
-### S02 baseline score
+### Baseline score
 
 - Client decision clarity: `16/25`
 - Actionability: `15/20`
@@ -72,12 +75,12 @@ Evidence integrity remains strong: PARTIAL/UNAVAILABLE states are preserved and 
 - Cross-report consistency: `6/10`
 - Total: **67/100**
 
-### S02 hard-gate failures
+### Hard-gate failures
 
 1. material machine/technical language obstructs intended non-technical client understanding;
 2. `First Things First — Foundational Readiness` creates a competing priority hierarchy against the governed ranked action order.
 
-## Frozen S02 contract outcome
+## Frozen S02 client outcome
 
 S02 must become **one authoritative ranked client action sequence**.
 
@@ -92,19 +95,55 @@ Each supported priority communicates:
 
 Rule IDs, internal classes, raw confidence/effort mechanics, long URL inventories, foundation matrices, and detailed implementation/technical verification belong in `Supporting Detail`.
 
-The primary S02 presentation must not depend on the current dense seven-column tables or duplicate the same ranked action story through several client-facing frameworks.
+## Verified exact BUILD boundary
 
-## Known source ownership from committed-code inspection
+Exact local source-boundary diagnostic returned **PASS** against the intentional dirty candidate.
 
-Read-only GitHub inspection confirms likely ownership but does not replace exact dirty-local proof:
+Only these two source files may be edited when BUILD is explicitly authorized:
 
-- `src/report/render-report-v2.js` owns the deterministic Priority Findings renderer and viewer page composition;
-- `src/report/report-detail-sections.js` owns Foundational Readiness and deterministic Client Action Plan;
-- `src/report/render-narrative-v2.js` assigns narrative root cause, conversion, and narrative action plan to `priority-fixes`;
-- `src/report/action-priority.js` owns governed priority ordering and is not an intended presentation-edit seam;
-- `src/scoring/score-components.js` owns detailed finding wording and is not an intended S02 presentation-edit seam unless a later proof explicitly reopens it.
+1. `services/worker/src/report/render-report-v2.js`
+2. `services/worker/src/report/render-narrative-v2.js`
 
-Because current committed GitHub source predates the exact Viewer 2.3.0/S01 dirty candidate, these observations are diagnostic only. The exact local seam must be inspected before BUILD authorization.
+Only these four focused test files may be edited:
+
+1. `services/worker/src/report/render-report-v2.test.js`
+2. `services/worker/src/report/render-report-v2-section-viewer.test.js`
+3. `services/worker/src/report/render-report-v2-conversion.test.js`
+4. `services/worker/src/report/render-narrative-v2.test.js`
+
+Verify-only unless a direct stale assertion proves otherwise:
+
+- `services/worker/src/report/render-report-v2-sections.test.js`
+- `services/worker/src/report/karen-style-regression.test.js`
+
+Explicitly prohibited from S02 BUILD:
+
+- `src/report/action-priority.js`;
+- `src/scoring/score-components.js`;
+- `src/scoring/report-model.js`;
+- `src/scoring/vantage-score.js`;
+- `src/report/report-detail-sections.js` unless new proof first reopens the plan;
+- evidence/Client Truth/Writer/Judge/lifecycle/storage/provider/production/canonical boundaries.
+
+## Required BUILD behavior
+
+- preserve existing `plan.actions` governed order;
+- render one scan-friendly S02 ranked sequence;
+- remove client-facing rule IDs/classes/raw confidence/raw effort/raw URL inventory and unnecessary implementation jargon;
+- move full Foundation Readiness and deterministic Action Plan from S02 to existing Supporting Detail by viewer assignment only;
+- move Narrative Root Cause, Narrative Conversion, and Narrative Action Plan from S02 to Supporting Detail by renderer page assignment only;
+- preserve Writer/Judge content, evidence lineage, Client Truth, scoring, evidence state, and six-peer navigation.
+
+## Tests-first sequence
+
+After explicit BUILD authorization:
+
+1. change/extend only the four authorized focused tests;
+2. run them against current behavior and preserve expected pre-change FAIL proof;
+3. edit only the two authorized source files;
+4. rerun focused tests to PASS;
+5. verify exact file scope and `git diff --check`;
+6. stop before broad deterministic audit and return focused proof.
 
 ## Approved client navigation
 
@@ -121,13 +160,13 @@ One visibly subordinate destination remains:
 
 `Supporting Detail`
 
-No S02 work is authorized to reopen or alter this navigation contract.
+S02 does not reopen this IA contract.
 
 ## Application environment
 
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Local application path: `C:\Users\kulbaba\Desktop\vantage-platform`.
-- Worker path: `C:\Users\kulbaba\Desktop\vantage-platform\services\worker`.
+- Local application path: `C:\Users\kulba\Desktop\vantage-platform`.
+- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
 - Historical committed HEAD: `a9523ac3de98de76335a05304b60bec246242b65`.
 - HEAD alone does NOT identify the governed candidate because the intentional dirty P1/S01 worktree remains part of the candidate.
@@ -135,7 +174,7 @@ No S02 work is authorized to reopen or alter this navigation contract.
 ## Important constraints
 
 - preserve the exact intentional dirty P1/S01 worktree;
-- no reset, clean, checkout overwrite, destructive revert, discard, or unrelated overwrite;
+- no reset, clean, checkout overwrite, restore, destructive revert, stash, discard, or unrelated overwrite;
 - no canonical artifact mutation;
 - no evidence recollection;
 - no provider/model calls unless separately authorized;
@@ -143,20 +182,13 @@ No S02 work is authorized to reopen or alter this navigation contract.
 - no production mutation;
 - no application push, merge, or deployment;
 - no unrelated scoring/evidence/lifecycle change;
-- do not reopen S01 without satisfying the RSIP reopen rule;
-- no S02 application edit until exact source-boundary proof + completed bounded REPAIR_PLAN + explicit application-edit authorization.
+- do not reopen S01 without satisfying the RSIP reopen rule.
 
 ## Exact next action
 
-Run a **read-only S02 source-boundary diagnostic** against the exact current local worker worktree.
+Chris explicitly authorizes the bounded S02 BUILD using exactly the two-source/four-test boundary recorded in `S02_SOURCE_BOUNDARY_PROOF.md` and `S02_REPAIR_PLAN.md`.
 
-The diagnostic must capture repository/branch/HEAD/status, current Viewer 2.3.0 page composition, S02 deterministic and narrative render ownership, all affected S02 tests/assertions, current local diffs for any already-dirty target files, and the smallest exact source/test file set needed for the frozen S02 contract.
-
-Write the diagnostic outside both repositories as:
-
-`C:\Users\kulba\Downloads\PRYSM-S02-SOURCE-BOUNDARY.txt`
-
-Return that proof for review. Do not edit application code during this diagnostic.
+Until that explicit authorization, do not edit application code.
 
 Last verified:
 2026-09-07
