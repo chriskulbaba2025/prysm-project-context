@@ -3,20 +3,20 @@
   "viewerVersion": "2.3.0",
   "targetViewerVersion": "2.3.0",
   "informationArchitectureContract": "PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md",
-  "informationArchitectureStatus": "FOCUSED_BUILD_PASS_BROAD_AUDIT_BLOCKED_STALE_TEST",
+  "informationArchitectureStatus": "FOCUSED_BUILD_PASS_BROAD_AUDIT_BLOCKED_SECOND_STALE_TEST",
   "primaryNavigationTargetCount": 8,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07", "S12", "S13"],
   "supportingExecutionOrder": ["S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S01",
   "activeSection": "Executive Scorecard",
   "stage": "DETERMINISTIC_AUDIT",
-  "status": "ACTIVE_BLOCKED_STALE_TEST",
+  "status": "ACTIVE_BLOCKED_SECOND_STALE_TEST",
   "contractStatus": "APPROVED_V1_1",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED",
   "repairPlanStatus": "COMPLETE_BUILD_AUTHORIZED",
   "buildStatus": "FOCUSED_PASS_100_OF_100",
-  "deterministicAuditStatus": "BLOCKED_ONE_STALE_APPLICATION_TEST",
+  "deterministicAuditStatus": "BLOCKED_ONE_STALE_REPLAY_VIEWER_TEST",
   "realReportRenderStatus": "PENDING",
   "humanReviewStatus": "PENDING",
   "score": 63,
@@ -25,6 +25,7 @@
   "baselineRenderSha256": "a3532fe9847f8779580c8dac91e77fbf44421b96b7172bf79bd3adf7c904661f",
   "focusedBuildProof": "proof/report-sections/S01-executive-scorecard/S01_DETERMINISTIC_PROOF.md",
   "broadAuditAddendum": "proof/report-sections/S01-executive-scorecard/S01_BROAD_AUDIT_TEST_MIGRATION_ADDENDUM.md",
+  "closureRerunAddendum": "proof/report-sections/S01-executive-scorecard/S01_CLOSURE_RERUN_TEST_MIGRATION_ADDENDUM.md",
   "focusedBuildTestResult": {
     "tests": 100,
     "pass": 100,
@@ -33,15 +34,21 @@
     "exitCode": 0,
     "gitDiffCheckExitCode": 0
   },
-  "broadAuditResult": {
+  "latestClosureRerun": {
+    "targetedNarrativeProductionPath": "10_PASS_0_FAIL",
     "worker": "993_PASS_0_FAIL",
-    "wholeApp": "87_PASS_0_FAIL",
-    "cr43": "52_PASS_0_FAIL",
-    "verifyPrysmClosure": "FAIL_81_PASS_1_FAIL_OF_82_APPLICATION_TESTS",
+    "applicationProductionPath": "82_PASS_0_FAIL",
+    "narrativeV2": "114_PASS_0_FAIL",
+    "schemaContracts": "14_PASS_0_FAIL",
+    "artifacts": "106_PASS_0_FAIL",
+    "lifecycle": "57_PASS_0_FAIL",
+    "fullSystemAcceptance": "87_PASS_0_FAIL",
+    "verifyPrysmClosure": "FAIL_IN_EXACT_ASSEMBLED_WHOLE_APP",
+    "replayCliCompatibility": "3_PASS_1_FAIL_OF_4",
     "gitDiffCheckExitCode": 0,
-    "blockerFile": "src/application/narrative-v2-production-path.test.js",
-    "blockerTest": "NV2-PROD-02",
-    "blockerReason": "stale assertion expects A. Conversion Readiness after approved S01 hierarchy migration"
+    "blockerFile": "scripts/replay-report-cli.test.js",
+    "blockerTest": "T4-REPLAY-CLI-03",
+    "blockerReason": "stale assertion expects viewer 2.2.0 while approved S01 viewer is 2.3.0"
   },
   "authorizedBuildFiles": [
     "src/report/render-report-v2.js",
@@ -52,7 +59,10 @@
     "src/report/karen-style-regression.test.js",
     "src/report/render-narrative-v2.test.js"
   ],
-  "additionalAuthorizedTestOnlyFile": "src/application/narrative-v2-production-path.test.js",
-  "nextAllowedAction": "Change only src/application/narrative-v2-production-path.test.js to migrate the stale S01 heading assertion to the approved client-first S01 contract without weakening unrelated assertions. Then run that exact test file, npm run verify:prysm-closure, git diff --check, and scope verification. No production-code edits and no provider/model calls, production mutation, push, merge, deploy, reset, clean, or discard. Stop and return one closure-rerun proof before regenerating the TBK report.",
+  "additionalAuthorizedTestOnlyFiles": [
+    "src/application/narrative-v2-production-path.test.js",
+    "scripts/replay-report-cli.test.js"
+  ],
+  "nextAllowedAction": "Change only scripts/replay-report-cli.test.js to migrate stale current-viewer assertion(s) from 2.2.0 to the approved 2.3.0 while preserving historical-compatibility and fail-closed assertions. Then run node --test scripts/replay-report-cli.test.js, npm run verify:prysm-closure, git diff --check, and scope verification. Keep an append-only Downloads proof updated after each gate. No production-code edits and no provider/model calls, production mutation, push, merge, deploy, reset, clean, or discard. Stop and return one closure-rerun proof before regenerating the TBK report.",
   "lastUpdated": "2026-09-07"
 }
