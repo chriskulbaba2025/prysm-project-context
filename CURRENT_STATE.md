@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Begin `S05 — Content Opportunities` baseline audit after locking the accepted `S03 — Conversion Journey` client page.
+Complete `S05 — Content Opportunities` build-boundary diagnosis after the baseline human-review audit and bounded client contract were reviewed and approved.
 
 ## Verified checkpoint
 
@@ -19,40 +19,84 @@ Begin `S05 — Content Opportunities` baseline audit after locking the accepted 
 - `S03 — Conversion Journey`: **PASS_LOCKED**, score `97/100`, hard-gate failures `0`.
 - S03 final accepted artifact: `C:\Users\kulba\Downloads\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html`.
 - S03 final accepted artifact SHA-256: `A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB`.
-- S03 final deterministic verification: focused `15/15 PASS`; complete S03 regression `92/92 PASS`; `git diff --check` PASS; normalized dirty scope preserved at 26 paths; canonical inputs unchanged; S01/S02 locked artifacts unchanged; offline replay `1/1 PASS`; no provider/model calls, new production audit, production mutation, push, merge, deploy, or commit.
 - S03 closure proof: `proof/report-sections/S03-conversion-journey/S03_CLOSURE.md`.
 - Only active RSIP section: `S05 — Content Opportunities`.
-- Current S05 stage: **BASELINE_AUDIT**.
+- S05 baseline human-review audit: **COMPLETE**.
+- S05 baseline score: **58/100**.
+- S05 hard-gate failures: **0**.
+- S05 baseline proof: `proof/report-sections/S05-content-opportunities/S05_BASELINE_AUDIT.md`.
+- S05 bounded client contract: **APPROVED FOR BUILD-BOUNDARY DIAGNOSIS**.
+- Current S05 stage: **BUILD_BOUNDARY_DIAGNOSIS**.
 
-## S03 locked narrative pattern
+## Locked report-wide narrative pattern
 
-The accepted S03 page establishes a report-wide client pattern:
+The accepted S03 page establishes the client-facing rule:
 
 **Primary pages interpret. Deeper pages explain.**
 
-The locked S03 page:
-- tells a bounded conversion story rather than exposing path-validation mechanics;
-- shows the assessed route as a strength;
-- interprets mobile loading and buyer-question support as the main friction around that route;
-- links those interpretations to deeper client-facing report pages;
-- preserves explicit evidence boundaries for completed conversions, behavior, and unassessed pages.
+Do not reopen S01, S02, or S03 without new evidence or an explicit user-directed reopen under RSIP.
 
-Do not reopen S03 without new evidence or an explicit user-directed reopen under RSIP.
+## S05 baseline conclusion
 
-## S05 baseline objective
+Root cause:
 
-Audit the current TBK `Content Opportunities` client page as a client decision page before any new application edit.
+The current Content Opportunities page is structured as a topical/content export rather than a prioritized client decision page. It presents buyer-need rows, generated opportunities, covered topics, and leading search intents, but it does not make the first commercially meaningful content action obvious.
 
-The baseline must determine whether a client can quickly understand:
-1. what buyer questions/content needs are already covered;
-2. which content gaps are commercially meaningful;
-3. what content should be created or improved first;
-4. how each content opportunity supports conversion or buyer decision-making;
-5. where each recommended content asset should connect in the journey;
-6. what is evidence-backed versus inferred/opportunity-level;
-7. what remains unknown because content-body evidence is PARTIAL.
+Main defects:
+- no obvious first content action;
+- dense interpretation-heavy tables;
+- weak distinction between current strength, evidence-backed gap, and qualified opportunity;
+- generic journey-connection language;
+- supporting SEO/search-intent detail competes with the primary client story;
+- buyer-stage grouping exists but does not explain decision sequence;
+- PARTIAL content-body evidence requires explicit scope qualification.
 
-Challenge technical/system language, generic content-idea lists, duplicated opportunities, mechanically generated titles, weak prioritization, and tables that do not help a client decide what to create next.
+## Approved bounded S05 contract
+
+Primary hierarchy:
+- Kicker: `Content Opportunities`
+- H2: `What content would help buyers move forward?`
+- one concise bounded verdict explaining that the site has a usable content foundation, the main opportunity is stronger buyer decision support, and content-body evidence remains PARTIAL.
+
+Primary client story:
+1. `What is already helping buyers`
+2. `Where decision support is thin`
+3. `What to create or improve first`
+
+Primary qualified opportunities should render as concise client-facing cards rather than a dense five-column table.
+
+Each opportunity card must include:
+- buyer question / need;
+- buyer stage;
+- why it matters;
+- recommended asset;
+- journey connection;
+- intended decision-support role;
+- evidence qualification.
+
+Contract rules:
+- preserve governed opportunity order; do not recompute ranking;
+- make the first opportunity visually obvious without creating a new scoring system;
+- distinguish current strength, evidence-backed gap, and qualified opportunity;
+- journey connection must be specific where governed, otherwise explicitly bounded;
+- keep search-intent and raw topical/technical detail subordinate and move it to Supporting Detail where possible;
+- preserve PARTIAL content-body scope and unassessed-page uncertainty;
+- search demand or competitor presence alone must not create a recommendation;
+- do not claim traffic, rankings, revenue, conversion uplift, or search volume without evidence;
+- follow the locked narrative rule: **Primary pages interpret. Deeper pages explain.**
+
+## Likely ownership to diagnose
+
+Inspect only; no edit authorization yet:
+- `services/worker/src/report/render-report-v2.js`
+- `services/worker/src/report/render-report-v2-sections.test.js`
+- `services/worker/src/report/render-report-v2.test.js`
+- `services/worker/src/report/render-narrative-v2.js`
+- `services/worker/src/report/render-narrative-v2.test.js`
+
+The baseline identified `render-report-v2.js` as the primary presentation owner. The narrative seam must be inspected before determining whether it needs editing or only verification.
+
+If any additional source/test file appears necessary, identify the exact file and reason before any build authorization.
 
 ## Important preservation rules
 
@@ -62,19 +106,17 @@ Preserve the intentional dirty P1/S01/S02/S03 worktree. No reset, clean, restore
 
 ## Exact next action
 
-Perform the **S05 baseline human-review audit only** against the current TBK `Content Opportunities` page from the latest governed offline report artifact.
+Perform **S05 build-boundary diagnosis only**.
 
-Return:
-- S05 baseline score out of 100;
-- hard-gate count;
-- concise root cause;
-- CRO/content-strategy blind spots;
-- UX/UI defects;
-- evidence-integrity defects or limitations;
-- the minimum approved client outcome for S05;
-- a bounded S05 contract proposal.
+Inspect the five likely ownership files listed above and return:
+1. exact rendering function(s) owning S05;
+2. exact tests that will become stale;
+3. whether `render-narrative-v2.js` requires editing or inspection only;
+4. any additional source/test file required;
+5. exact bounded build scope;
+6. proposed verification command set.
 
-Do not edit application code until the S05 baseline and contract are reviewed and approved.
+Do not edit application code, tests, or report artifacts. Do not rerender. Stop after diagnosis and return the exact bounded build scope for approval.
 
 Last verified:
 2026-09-07
