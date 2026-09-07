@@ -11,22 +11,62 @@
   "activeSectionId": "S03",
   "activeSection": "Conversion Journey",
   "stage": "HUMAN_REVIEW",
-  "status": "ACTIVE_UX_REPAIR_AUTHORIZED",
+  "status": "ACTIVE_EXECUTIVE_NARRATIVE_BRIDGE_AUTHORIZED",
   "baselineStatus": "COMPLETE_FAIL",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "buildStatus": "PASS",
   "wordingRepairStatus": "PASS",
+  "croDepthStoryRepairStatus": "PASS",
+  "croVisualPolishStatus": "PASS",
   "latestRegressionGate": "92_PASS_0_FAIL",
-  "latestArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-HUMAN-REVIEW-2.html",
-  "latestArtifactSha256": "2D6B4459BCF43BB68EFC037B89BADBEEEE2B90819016B79253A2D57C1311DD5C",
-  "score": 89,
+  "latestArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-CRO-FINAL-REVIEW.html",
+  "latestArtifactSha256": "1B350CEDE0ED198A3EDA849845C8D93D8C810584CDE626403013B28C480EB8B6",
   "passThreshold": 95,
   "hardGateFailures": 0,
-  "humanReviewStatus": "REPAIR_REQUIRED",
+  "humanReviewStatus": "FINAL_BRIDGE_REPAIR_REQUIRED",
   "humanReviewFinding": {
-    "id": "HR-UX-01",
-    "type": "UX_UI",
-    "summary": "The three-step journey visual is visually stunted, wastes horizontal space, and does not meet the client-facing UX standard despite corrected plain-language labels."
+    "id": "HR-CRO-02",
+    "type": "EXECUTIVE_NARRATIVE",
+    "summary": "S03 should interpret how content, trust and performance support the conversion journey, then direct the client to the deeper report page, without duplicating those pages or creating new findings."
+  },
+  "narrativeRule": "Primary pages interpret. Deeper pages explain.",
+  "authorizedExecutiveBridge": {
+    "heading": "What supports this journey?",
+    "placementAfter": "Where visitors may lose momentum",
+    "placementBefore": "What this means for conversion",
+    "cards": [
+      {
+        "topic": "content",
+        "title": "Content that answers buyer questions",
+        "interpretation": "Some visitors may reach the next step while still having unanswered questions. Buyer-question content was not found on the pages we could assess.",
+        "linkLabel": "See Content Opportunities →",
+        "target": "#content-ideas",
+        "boundary": "Preserve PARTIAL assessed-page scope; do not imply whole-site absence."
+      },
+      {
+        "topic": "trust",
+        "title": "Trust that reduces hesitation",
+        "interpretation": "The assessed site has useful trust signals. The next question is whether that proof appears where buyers need reassurance before acting.",
+        "linkLabel": "See Trust & Credibility →",
+        "target": "#trust-eeat",
+        "boundary": "Executive interpretation only; do not claim proof is absent or misplaced unless page-level evidence proves it."
+      },
+      {
+        "topic": "performance",
+        "title": "Performance that keeps momentum",
+        "interpretation": "The route is clear, but slow mobile loading may create friction before visitors fully engage with the next step.",
+        "linkLabel": "See Priority Fixes →",
+        "target": "#priority-fixes",
+        "boundary": "Preserve lab-only evidence; do not claim measured abandonment or conversion loss."
+      }
+    ],
+    "desktopEqualCards": true,
+    "mobileStack": true,
+    "textLinkCtas": true,
+    "noTable": true,
+    "noAdditionalLargeVisual": true,
+    "noDecorativeImage": true,
+    "printSafe": true
   },
   "authorizedSourceFiles": [
     "services/worker/src/report/render-report-v2.js"
@@ -38,18 +78,6 @@
     "services/worker/src/report/render-narrative-v2.test.js",
     "services/worker/src/report/render-report-v2-conversion.test.js"
   ],
-  "authorizedUxRepair": {
-    "useFullContentWidth": true,
-    "threeStepJourneyStepper": true,
-    "strongNumberedMarkers": true,
-    "shortSupportingLinePerStep": true,
-    "strongerOutcomeState": true,
-    "removeExcessEmptyCanvas": true,
-    "responsiveStacking": true,
-    "printSafe": true,
-    "brandConsistent": true,
-    "generatedImageRequired": false
-  },
   "lockedPreviousSections": [
     {
       "sectionId": "S01",
@@ -71,13 +99,13 @@
   ],
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
-    "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
-    "workerPath": "C:\\Users\\kulba\\Desktop\\vantage-platform\\services\\worker",
+    "localPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform",
+    "workerPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform\\services\\worker",
     "branch": "p1/bounded-build-cross-report-integrity",
     "historicalCommittedHead": "a9523ac3de98de76335a05304b60bec246242b65",
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Execute only the authorized S03 visual UX repair in render-report-v2.js: full-width three-step journey stepper with strong numbered markers, concise supporting copy, stronger final outcome state, no excessive empty SVG canvas, responsive stacking, print safety, and PRYSM brand consistency. Update only directly stale authorized S03 presentation tests and CR-43 presentation golden hashes if required. Then rerun focused and complete S03 regressions, scope/integrity checks, and offline TBK rerender. Return PRYSM-S03-TBK-HUMAN-REVIEW-3.html plus PRYSM-S03-HUMAN-REVIEW-UX-REPAIR-PROOF.txt. Do not PASS_LOCK S03 yet.",
+  "nextAllowedAction": "Execute only the authorized S03 executive narrative bridge in render-report-v2.js. Each bridge card must interpret governed evidence in conversion-journey context, explain why it matters to momentum or decision support, and link to the deeper client-facing page. Do not create new findings, a new priority order, or duplicate detailed content. Update only directly stale authorized S03 presentation tests and CR-43 presentation golden hashes if required. Then run focused and complete S03 regressions, git diff --check, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and offline TBK rerender. Return PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html plus PRYSM-S03-EXECUTIVE-BRIDGE-PROOF.txt. Do not PASS_LOCK S03 yet.",
   "lastUpdated": "2026-09-07"
 }
