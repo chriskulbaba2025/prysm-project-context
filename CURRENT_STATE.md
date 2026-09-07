@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Execute the bounded `S03 — Conversion Journey` presentation repair and return the repaired TBK page for human review.
+Complete the final `S03 — Conversion Journey` human-review UX/UI repair. The bounded build and wording repair passed deterministic verification, but Chris rejected the journey visual as visually stunted and not acceptable for client-facing UX.
 
 ## Verified checkpoint
 
@@ -16,50 +16,58 @@ Execute the bounded `S03 — Conversion Journey` presentation repair and return 
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - `S02 — Priority Fixes`: **PASS_LOCKED**, score `97/100`, hard-gate failures `0`.
-- S02 locked artifact: `C:\Users\kulba\Downloads\PRYSM-S02-TBK-HUMAN-REVIEW-2.html`.
-- S02 locked SHA-256: `23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800`.
-- S02 closure proof: `proof/report-sections/S02-priority-fixes/S02_CLOSURE.md`.
 - Only active RSIP section: `S03 — Conversion Journey`.
 - S03 baseline: **72/100 — FAIL**, hard-gate failures `0`.
-- S03 baseline proof: `proof/report-sections/S03-conversion-journey/S03_BASELINE_AUDIT.md`.
 - S03 contract: **APPROVED — FROZEN FOR BUILD**.
-- S03 contract proof: `proof/report-sections/S03-conversion-journey/S03_CONTRACT.md`.
-- S03 repair plan: **APPROVED — BUILD AUTHORIZED**.
-- S03 repair plan proof: `proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md`.
-- Active S03 stage: **BUILD**.
+- S03 bounded build: **PASS**.
+- S03 wording repair: **PASS**.
+- Latest complete S03 regression: **92/92 PASS**.
+- Canonical inputs remained byte-identical.
+- Latest S03 artifact: `C:\Users\kulba\Downloads\PRYSM-S03-TBK-HUMAN-REVIEW-2.html`.
+- Latest S03 artifact SHA-256: `2D6B4459BCF43BB68EFC037B89BADBEEEE2B90819016B79253A2D57C1311DD5C`.
+- Current S03 stage: **HUMAN_REVIEW — UX/UI REPAIR REQUIRED / PRESENTATION REPAIR AUTHORIZED**.
 
-## S03 root cause
+## Human-review defect
 
-The page is structured like a technical verification page rather than a client decision page.
+### HR-UX-01 — journey visual is visually stunted and not client-grade
 
-## Approved S03 client outcome
+The current horizontal SVG uses three small boxes with excessive empty canvas and weak visual hierarchy. Even with plain-language labels, it reads like a technical diagram rather than a polished client journey.
 
-- kicker: `Conversion Journey`;
-- H2: `Can visitors move easily from interest to action?`;
-- dominant bounded verdict: `The assessed path to action is clear.`;
-- one larger, simpler client-language journey visual;
-- one concise `What is working` block;
-- one limitation note only when materially required;
-- remove the redundant primary status table and separate empty-result sections;
-- preserve technical path evidence in Supporting Detail.
+Required repair:
+- use the full available content width;
+- replace the small-box diagram with a visually substantial three-step journey/stepper;
+- each step should have a strong numbered marker, concise title, and short supporting line;
+- connectors should visually link the steps without dominating them;
+- the three steps must read as one coherent progression;
+- make the outcome state visually stronger than the earlier steps;
+- remove excessive empty SVG space;
+- preserve responsive one-column stacking on small screens;
+- preserve print/PDF integrity;
+- remain consistent with the PRYSM brand palette and typography;
+- no decorative illustration, stock art, or generated image is required.
 
-## Proven source boundary
+Preferred client-language step model:
+1. `Pages reviewed` — `We checked the pages used to move visitors toward action.`
+2. `Visible next step` — `Visitors had a clear action available on the pages assessed.`
+3. `Clear path toward action` — `No material obstacle was established in the assessed path.`
 
-Authorized S03 source file:
+The existing bounded verdict remains:
+`The assessed path to action is clear.`
 
+The existing limitation remains:
+`This conclusion applies only to the assessed path; it does not measure completed conversions or unassessed pages.`
+
+## Authorized repair boundary
+
+Source:
 - `services/worker/src/report/render-report-v2.js`
 
-Current local inspection proved this file owns S03 primary markup, wording, journey SVG, and embedded presentation CSS. No additional source file is required.
-
-## Authorized stale-test boundary
-
-The source inspection proved the S03 presentation repair will directly stale existing presentation assertions. Chris authorizes updating only the directly stale S03 expectations in:
-
+Directly stale tests may be updated only within the already authorized S03 test boundary:
 - `services/worker/src/report/render-report-v2.test.js`
 - `services/worker/src/report/render-report-v2-sections.test.js`
 - `services/worker/src/report/karen-style-regression.test.js`
 - `services/worker/src/report/render-narrative-v2.test.js`
-- `services/worker/src/report/render-report-v2-conversion.test.js` — CR-43 full-render presentation golden hashes only when attributable solely to the authorized S03 presentation repair
+- `services/worker/src/report/render-report-v2-conversion.test.js` — CR-43 presentation golden hashes only when attributable solely to this visual repair
 
 If any other source or test file is required, STOP and return the exact file/assertion before editing it.
 
@@ -71,16 +79,13 @@ Preserve the intentional dirty P1/S01/S02/S03 worktree. No reset, clean, restore
 
 ## Exact next action
 
-Execute the approved bounded S03 BUILD from `proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md`.
-
-Edit only `services/worker/src/report/render-report-v2.js` plus only the directly stale expectations in the five authorized test files above. Then run focused S03 tests, the complete S03 regression set, `git diff --check`, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and rerender the same TBK audit offline from unchanged canonical inputs.
+Execute only the S03 visual UX repair above in `render-report-v2.js`, update only directly stale authorized presentation tests, rerun focused and complete S03 regressions, `git diff --check`, normalized scope verification, S01/S02 lock checks, canonical immutability checks, and rerender the same TBK audit offline.
 
 Return:
+- `C:\Users\kulba\Downloads\PRYSM-S03-TBK-HUMAN-REVIEW-3.html`
+- `C:\Users\kulba\Downloads\PRYSM-S03-HUMAN-REVIEW-UX-REPAIR-PROOF.txt`
 
-- `C:\Users\kulba\Downloads\PRYSM-S03-TBK-CURRENT-REVIEW.html`
-- `C:\Users\kulba\Downloads\PRYSM-S03-BOUNDED-BUILD-PROOF.txt`
-
-Do not PASS_LOCK S03 until deterministic verification and final human review pass at >=95/100 with zero hard gates.
+Do not PASS_LOCK S03 until Chris accepts the visual presentation and final human review passes at >=95/100 with zero hard gates.
 
 Last verified:
 2026-09-07
