@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Repair `S03 — Conversion Journey` as the next primary client-facing report page under RSIP.
+Execute the bounded `S03 — Conversion Journey` presentation repair and return the repaired TBK page for human review.
 
 ## Verified checkpoint
 
@@ -24,7 +24,9 @@ Repair `S03 — Conversion Journey` as the next primary client-facing report pag
 - S03 baseline proof: `proof/report-sections/S03-conversion-journey/S03_BASELINE_AUDIT.md`.
 - S03 contract: **APPROVED — FROZEN FOR BUILD**.
 - S03 contract proof: `proof/report-sections/S03-conversion-journey/S03_CONTRACT.md`.
-- Active S03 stage: **REPAIR_PLAN / SOURCE-BOUNDARY INSPECTION**.
+- S03 repair plan: **APPROVED — BUILD AUTHORIZED**.
+- S03 repair plan proof: `proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md`.
+- Active S03 stage: **BUILD**.
 
 ## S03 root cause
 
@@ -41,6 +43,26 @@ The page is structured like a technical verification page rather than a client d
 - remove the redundant primary status table and separate empty-result sections;
 - preserve technical path evidence in Supporting Detail.
 
+## Proven source boundary
+
+Authorized S03 source file:
+
+- `services/worker/src/report/render-report-v2.js`
+
+Current local inspection proved this file owns S03 primary markup, wording, journey SVG, and embedded presentation CSS. No additional source file is required.
+
+## Authorized stale-test boundary
+
+The source inspection proved the S03 presentation repair will directly stale existing presentation assertions. Chris authorizes updating only the directly stale S03 expectations in:
+
+- `services/worker/src/report/render-report-v2.test.js`
+- `services/worker/src/report/render-report-v2-sections.test.js`
+- `services/worker/src/report/karen-style-regression.test.js`
+- `services/worker/src/report/render-narrative-v2.test.js`
+- `services/worker/src/report/render-report-v2-conversion.test.js` — CR-43 full-render presentation golden hashes only when attributable solely to the authorized S03 presentation repair
+
+If any other source or test file is required, STOP and return the exact file/assertion before editing it.
+
 ## Important preservation rules
 
 Do not change governed evidence, scoring, Client Truth, action priority/order, Writer/Judge objects, S01/S02 locked content/order, viewer navigation count/order/labels, Supporting Detail assignments, canonical artifacts, or production state.
@@ -49,7 +71,16 @@ Preserve the intentional dirty P1/S01/S02/S03 worktree. No reset, clean, restore
 
 ## Exact next action
 
-Inspect exact current local source/test ownership for the S03 primary page, produce a bounded S03 repair plan, and edit only after the source/test boundary is proven. The repair must implement the frozen S03 contract without reopening S01 or S02.
+Execute the approved bounded S03 BUILD from `proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md`.
+
+Edit only `services/worker/src/report/render-report-v2.js` plus only the directly stale expectations in the five authorized test files above. Then run focused S03 tests, the complete S03 regression set, `git diff --check`, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and rerender the same TBK audit offline from unchanged canonical inputs.
+
+Return:
+
+- `C:\Users\kulba\Downloads\PRYSM-S03-TBK-CURRENT-REVIEW.html`
+- `C:\Users\kulba\Downloads\PRYSM-S03-BOUNDED-BUILD-PROOF.txt`
+
+Do not PASS_LOCK S03 until deterministic verification and final human review pass at >=95/100 with zero hard gates.
 
 Last verified:
 2026-09-07
