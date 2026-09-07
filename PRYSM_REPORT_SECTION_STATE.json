@@ -16,9 +16,12 @@
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED_PASS",
   "repairPlanStatus": "COMPLETE",
-  "buildStatus": "FOCUSED_PASS_VERIFY_ONLY_BLOCKED",
+  "buildStatus": "FOCUSED_PASS_TEST_ONLY_REPAIR_AWAITING_AUTHORIZATION",
   "focusedBuildGate": "83_PASS_0_FAIL",
-  "verifyOnlyGate": "13_PASS_5_FAIL",
+  "verifyOnlyGateBeforeDiagnosis": "13_PASS_5_FAIL",
+  "verifyOnlyDiagnosisStatus": "PASS_ALL_STALE_ASSERTIONS",
+  "verifyOnlyStaleAssertionCount": 5,
+  "verifyOnlyGenuineRegressionCount": 0,
   "gitDiffCheck": "PASS_EXIT_0",
   "deterministicAuditStatus": "BLOCKED_NOT_AUTHORIZED",
   "realReportRenderStatus": "BLOCKED_NOT_STARTED",
@@ -31,6 +34,7 @@
   "sourceBoundaryArtifact": "proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md",
   "repairPlanArtifact": "proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md",
   "boundedBuildArtifact": "proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md",
+  "verifyOnlyDiagnosisArtifact": "proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md",
   "buildAuthorizedBy": "Chris",
   "buildAuthorizationDate": "2026-09-07",
   "s02RootCause": "S02 exposes audit machinery and client action guidance as equal-weight content instead of translating governed evidence into one authoritative ranked client action sequence.",
@@ -46,10 +50,6 @@
       "services/worker/src/report/render-report-v2-conversion.test.js",
       "services/worker/src/report/render-narrative-v2.test.js"
     ],
-    "verifyOnly": [
-      "services/worker/src/report/render-report-v2-sections.test.js",
-      "services/worker/src/report/karen-style-regression.test.js"
-    ],
     "presentationOnly": true,
     "actionPriorityUnchanged": true,
     "scoringUnchanged": true,
@@ -57,12 +57,33 @@
     "clientTruthUnchanged": true,
     "writerJudgeContractsUnchanged": true
   },
-  "verifyOnlyFailureDiagnosisRequired": true,
-  "verifyOnlyFailureCount": 5,
-  "verifyOnlyFailureFiles": [
-    "services/worker/src/report/render-report-v2-sections.test.js",
-    "services/worker/src/report/karen-style-regression.test.js"
-  ],
+  "verifyOnlyDiagnosis": {
+    "failures": [
+      "KAREN-REG-02",
+      "IL-03",
+      "IL-04",
+      "V2R-06",
+      "V2R-08"
+    ],
+    "classification": "ALL_STALE_ASSERTION",
+    "genuineRegression": false,
+    "reason": "Three assertions require the superseded Section E heading; two apply a whole-document unknown prohibition that now rejects required bounded S02 uncertainty outside the internal-link surface."
+  },
+  "nextRepairBoundary": {
+    "type": "TEST_ONLY",
+    "authorizationRequired": true,
+    "files": [
+      "services/worker/src/report/render-report-v2-sections.test.js",
+      "services/worker/src/report/karen-style-regression.test.js"
+    ],
+    "sourceEditsAuthorized": false,
+    "allowedIntent": [
+      "Replace obsolete E. What should be fixed first? expectations with the frozen S02 Priority Fixes marker",
+      "Scope IL-03 and IL-04 unknown assertions to the internal-link surface or direct internal-link markers",
+      "Preserve substantive internal-link coverage",
+      "Rerun only the verify-only gate"
+    ]
+  },
   "prohibitedBuildFiles": [
     "services/worker/src/report/action-priority.js",
     "services/worker/src/scoring/score-components.js",
@@ -92,6 +113,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Run a read-only diagnosis of the five verify-only failures in render-report-v2-sections.test.js and karen-style-regression.test.js. Classify each as a stale assertion superseded by the frozen S02 contract or a genuine S02 regression. Do not edit either verify-only file until an exact repair boundary is returned and explicitly authorized. Do not run deterministic audit or rerender the real TBK report.",
+  "nextAllowedAction": "Chris explicitly authorizes the bounded two-file test-only repair in render-report-v2-sections.test.js and karen-style-regression.test.js. After authorization, change only the five stale assertions identified in S02_VERIFY_ONLY_DIAGNOSIS.md, rerun only the verify-only gate, verify no source file changed, run git diff --check, and return proof. Do not advance to DETERMINISTIC_AUDIT or rerender the real TBK report until that gate passes and is reviewed.",
   "lastUpdated": "2026-09-07"
 }
