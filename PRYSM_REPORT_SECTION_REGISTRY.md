@@ -4,13 +4,13 @@ Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
 Current viewer version: `2.3.0`
-Current active section: `S02 — Priority Fixes`
+Current active section: `S03 — Conversion Journey`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. Locked real TBK artifact: `C:\Users\kulba\Downloads\PRYSM-S01-TBK-CURRENT-REVIEW.html`, SHA-256 `857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8`. Closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`. |
-| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **ACTIVE — HUMAN_REVIEW REPAIR REQUIRED / PRESENTATION REPAIR AUTHORIZED** | **94** | Real-report render PASS. Current HTML `PRYSM-S02-TBK-CURRENT-REVIEW.html`, SHA-256 `0FFDE2FF86ED58003723842E092C87505C50CCA8189AFA3848C97D055C28A6CD`. Human review: content materially improved; zero hard gates, but page is visually too flat and two client-facing phrases remain too internal/technical. Chris authorized a bounded UX/UI + wording repair. Proof: `proof/report-sections/S02-priority-fixes/S02_HUMAN_REVIEW.md`. |
-| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. Closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`. |
+| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. Locked artifact `PRYSM-S02-TBK-HUMAN-REVIEW-2.html`, SHA-256 `23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800`. Closure: `proof/report-sections/S02-priority-fixes/S02_CLOSURE.md`. |
+| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | **ACTIVE — BASELINE_AUDIT** | **72** | Current page is technically oriented and visually redundant. Formal baseline/contract in progress. |
 | S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 | S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename/retain in client navigation. |
 | S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename/retain in client navigation. |
@@ -19,8 +19,8 @@ Current active section: `S02 — Priority Fixes`
 | S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 | S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 | S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S12 | Performance | Website Speed & Performance | SUPPORTING DETAIL | NOT_STARTED | — | Moved from peer navigation to Supporting Detail under IA contract v1.1.0; evidence retained. |
-| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | SUPPORTING DETAIL | NOT_STARTED | — | Moved from peer navigation to Supporting Detail under IA contract v1.1.0; evidence retained. |
+| S12 | Performance | Website Speed & Performance | SUPPORTING DETAIL | NOT_STARTED | — | Retained behind Supporting Detail under IA contract v1.1.0. |
+| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | SUPPORTING DETAIL | NOT_STARTED | — | Retained behind Supporting Detail under IA contract v1.1.0. |
 | S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 | S15 | Evidence Appendix | Supporting Evidence | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 | S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
