@@ -10,12 +10,29 @@
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S03",
   "activeSection": "Conversion Journey",
-  "stage": "BASELINE_AUDIT",
-  "status": "ACTIVE",
-  "baselineStatus": "IN_PROGRESS",
+  "stage": "BUILD",
+  "status": "ACTIVE_BUILD_AUTHORIZED",
+  "baselineStatus": "COMPLETE_FAIL",
+  "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
+  "repairPlanStatus": "APPROVED_BUILD_AUTHORIZED",
+  "baselineScore": 72,
   "score": 72,
   "passThreshold": 95,
   "hardGateFailures": 0,
+  "baselineArtifact": "proof/report-sections/S03-conversion-journey/S03_BASELINE_AUDIT.md",
+  "contractArtifact": "proof/report-sections/S03-conversion-journey/S03_CONTRACT.md",
+  "repairPlanArtifact": "proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md",
+  "authorizedSourceFiles": [
+    "services/worker/src/report/render-report-v2.js"
+  ],
+  "authorizedDirectTestFiles": [
+    "services/worker/src/report/render-report-v2.test.js",
+    "services/worker/src/report/render-report-v2-sections.test.js",
+    "services/worker/src/report/karen-style-regression.test.js",
+    "services/worker/src/report/render-narrative-v2.test.js",
+    "services/worker/src/report/render-report-v2-conversion.test.js"
+  ],
+  "testBoundaryPurpose": "Update only directly stale S03 presentation assertions and CR-43 presentation golden hashes attributable solely to the authorized S03 presentation repair.",
   "lockedPreviousSections": [
     {
       "sectionId": "S01",
@@ -44,6 +61,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Complete the formal S03 BASELINE_AUDIT and CONTRACT from the actual TBK Conversion Journey page. Preserve evidence integrity and locked S01/S02. Do not edit application code until the S03 contract and bounded repair plan are approved.",
+  "nextAllowedAction": "Execute the approved bounded S03 BUILD from proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md. Edit only services/worker/src/report/render-report-v2.js and only the directly stale expectations in the five authorized test files. Then run focused tests, complete S03 regression, git diff --check, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and rerender the same TBK audit offline. Return the new S03 HTML plus bounded-build proof for HUMAN_REVIEW. Do not PASS_LOCK S03 yet.",
   "lastUpdated": "2026-09-07"
 }
