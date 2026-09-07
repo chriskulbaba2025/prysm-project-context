@@ -33,14 +33,14 @@ Verified checkpoint:
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Local application path: `C:\Users\kulba\Desktop\vantage-platform`.
-- Worker path: `C:\Users\kulbaba\Desktop\vantage-platform\services\worker`.
+- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
 - Historical committed base / failed candidate: `a9523ac3de98de76335a05304b60bec246242b65`.
 - The repaired P1 candidate is still an intentional dirty local worktree; no application commit occurred during closure, so the historical SHA alone does not identify the repaired candidate.
-- Closure log root: `C:\Users\kulbaba\AppData\Local\PRYSM-P1-Closure-Autorun\20260906-230004`.
+- Closure log root: `C:\Users\kulba\AppData\Local\PRYSM-P1-Closure-Autorun\20260906-230004`.
 - Live TBK audit ID: `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`.
-- Read-only production audit export: `C:\Users\kulbaba\Downloads\PRYSM-LIVE-AUDIT-8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`.
-- Intended current local rendered report: `C:\Users\kulbaba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html`.
+- Read-only production audit export: `C:\Users\kulba\Downloads\PRYSM-LIVE-AUDIT-8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`.
+- Intended current local rendered report: `C:\Users\kulba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html`.
 
 Completed:
 - The seven confirmed P1 roots were repaired locally: `CTA_PATH_COHERENCE`, `PRIORITY_HIERARCHY_COHERENCE`, `BUYER_QUESTION_COVERAGE_COHERENCE`, `TRUST_ATTRIBUTION_COHERENCE`, `PERFORMANCE_QUALIFICATION_COHERENCE`, `EVIDENCE_SCOPE_STATUS_COHERENCE`, and `CONTENT_RECOMMENDATION_INTEGRITY`.
@@ -65,7 +65,7 @@ In progress:
 Blocked:
 - No known deterministic P1 product-code blocker remains from the prior closure.
 - S01 repair planning/build is intentionally blocked until the current S01 baseline is directly captured and scored.
-- As of this state update, successful existence/opening of `C:\Users\kulbaba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html` has not yet been directly verified in authoritative state.
+- As of this state update, successful existence/opening of `C:\Users\kulba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html` has not yet been directly verified in authoritative state.
 - `P1_EXECUTION_GATE.env` remains historical for the earlier R2/outcome-review checkpoint and does not identify the uncommitted repaired candidate.
 
 Important constraints:
@@ -84,7 +84,7 @@ Important constraints:
 - A PASS_LOCKED section may reopen only under the evidence-based RSIP reopen rule.
 
 Exact next action:
-Complete the `S01 — Executive Scorecard` baseline audit from the actual current local TBK render. First verify/generate `C:\Users\kulbaba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html` from the already-downloaded canonical audit artifacts using the current dirty P1 code if it does not already exist; then inspect only the actual Executive Scorecard and populate `proof/report-sections/S01-executive-scorecard/S01_BASELINE_AUDIT.md` with direct observations, hard-gate failures, and the starting RSIP score. Do not edit application code during this stage.
+Complete the `S01 — Executive Scorecard` baseline audit from the actual current local TBK render. First verify/generate `C:\Users\kulba\Downloads\PRYSM-P1-REPAIRED-TBK-REPORT.html` from the already-downloaded canonical audit artifacts using the current dirty P1 code if it does not already exist; then inspect only the actual Executive Scorecard and populate `proof/report-sections/S01-executive-scorecard/S01_BASELINE_AUDIT.md` with direct observations, hard-gate failures, and the starting RSIP score. Do not edit application code during this stage.
 
 Last verified:
 2026-09-07
