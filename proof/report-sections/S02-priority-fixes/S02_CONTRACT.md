@@ -2,7 +2,8 @@
 
 Section: `S02 — Priority Fixes`
 RSIP stage: `CONTRACT`
-Status: **DRAFT FOR CHRIS APPROVAL**
+Status: **APPROVED — FROZEN FOR BUILD**
+Approved by: Chris
 Date: 2026-09-07
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md` v1.2.0
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md` v1.1.0
@@ -300,15 +301,20 @@ Required human outcome:
 - no dense table or duplicated sections preventing quick comprehension;
 - supporting evidence remains reachable.
 
+## Approval and freeze
+
+Chris explicitly approved this S02 contract on 2026-09-07 with `go`.
+
+The contract is now frozen for BUILD. Any material contract change after this point requires explicit Chris approval and versioned evidence under RSIP.
+
 ## Contract boundary
 
-This contract does **not** authorize application edits.
+Contract approval does **not** itself authorize application edits.
 
 No BUILD work may begin until:
 
-1. Chris approves this contract;
-2. the contract is frozen for BUILD;
-3. a bounded `S02_REPAIR_PLAN.md` maps every accepted defect to exact current local source/test seams;
-4. the next application-edit boundary is explicitly authorized.
+1. a bounded `S02_REPAIR_PLAN.md` maps every accepted defect to the exact current local source/test seam;
+2. the intentional dirty P1/S01 worktree has been inspected and preserved;
+3. the next application-edit boundary is explicitly authorized.
 
 All existing no-reset/no-clean/no-discard/no-provider/no-production/no-push/no-merge/no-deploy constraints remain in force.
