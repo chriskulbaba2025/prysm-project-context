@@ -11,7 +11,7 @@
   "activeSectionId": "S02",
   "activeSection": "Priority Fixes",
   "stage": "REAL_REPORT_RENDER",
-  "status": "ACTIVE_AWAITING_EXPLICIT_AUTHORIZATION",
+  "status": "ACTIVE",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED_PASS",
@@ -40,8 +40,10 @@
   "normalizedScopePostCount": 26,
   "normalizedScopeEqual": true,
   "gitDiffCheck": "PASS_EXIT_0",
-  "realReportRenderStatus": "AWAITING_EXPLICIT_AUTHORIZATION",
-  "humanReviewStatus": "NOT_STARTED",
+  "realReportRenderStatus": "AUTHORIZED_NOT_STARTED",
+  "realReportRenderAuthorizedBy": "Chris",
+  "realReportRenderAuthorizationDate": "2026-09-07",
+  "humanReviewStatus": "BLOCKED_NOT_STARTED",
   "score": 67,
   "passThreshold": 95,
   "hardGateFailures": 2,
@@ -53,6 +55,7 @@
   "verifyOnlyDiagnosisArtifact": "proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md",
   "testOnlyRepairArtifact": "proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md",
   "deterministicProofArtifact": "proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md",
+  "realReportRenderProofArtifact": null,
   "deterministicAuditAuthorizedBy": "Chris",
   "deterministicAuditAuthorizationDate": "2026-09-07",
   "s02RootCause": "S02 exposed audit machinery and client action guidance as equal-weight content instead of translating governed evidence into one authoritative ranked client action sequence.",
@@ -100,6 +103,24 @@
     "productionMutation": false,
     "tbkRerenderDuringAudit": false
   },
+  "authorizedRealReportRender": {
+    "offlineOnly": true,
+    "useExistingGovernedPersistedCanonicalArtifacts": true,
+    "useExistingProvenReplayRenderPath": true,
+    "preservePriorLockedArtifact": true,
+    "priorLockedArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S01-TBK-CURRENT-REVIEW.html",
+    "priorLockedArtifactSha256": "857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8",
+    "targetAuditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
+    "expectedViewerVersion": "2.3.0",
+    "newReviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-TBK-CURRENT-REVIEW.html",
+    "renderProofOutput": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-REAL-REPORT-RENDER-PROOF.txt",
+    "liveProviderModelCallsAuthorized": false,
+    "newProductionAuditAuthorized": false,
+    "productionMutationAuthorized": false,
+    "applicationEditsAuthorized": false,
+    "canonicalMutationAuthorized": false,
+    "humanReviewAuthorized": false
+  },
   "lockedPreviousSection": {
     "sectionId": "S01",
     "section": "Executive Scorecard",
@@ -122,6 +143,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Chris explicitly authorizes S02 REAL_REPORT_RENDER. After authorization, regenerate the actual TBK report offline from already-governed persisted/canonical artifacts using the exact current dirty candidate, with zero live provider/model calls and no new production audit. Preserve/hash the prior locked artifact, output a new S02 review HTML and render proof in Downloads, verify Viewer 2.3.0, audit ID, six-peer navigation, S01 locked content/order, S02 content/order/uncertainty, Supporting Detail reachability, canonical immutability and dirty-scope preservation, then stop before HUMAN_REVIEW.",
+  "nextAllowedAction": "Execute the authorized S02 REAL_REPORT_RENDER offline from already-governed TBK persisted/canonical artifacts using the exact current dirty candidate and existing proven replay/render path. Preserve/hash the prior S01 HTML, produce PRYSM-S02-TBK-CURRENT-REVIEW.html plus PRYSM-S02-REAL-REPORT-RENDER-PROOF.txt in Downloads, verify Viewer 2.3.0, audit ID, six-peer navigation, S01 locked top-three order, S02 one-sequence content/order/uncertainty, Supporting Detail reachability, canonical immutability, git diff --check and exact dirty-scope preservation, then stop before HUMAN_REVIEW.",
   "lastUpdated": "2026-09-07"
 }
