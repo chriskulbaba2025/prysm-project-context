@@ -7,7 +7,7 @@ Current active section: `S01 — Executive Scorecard`
 
 | ID | Report section | Status | Score | Notes |
 |---|---|---|---:|---|
-| S01 | Executive Scorecard | ACTIVE — BASELINE_AUDIT | — | Contract approved by Chris on 2026-09-07; baseline not yet formally captured. |
+| S01 | Executive Scorecard | ACTIVE — REPAIR_PLAN | 63 | Baseline direct-render audit complete: FAIL, 2 hard-gate failures. Exact local source/test boundary verification is next; no code edits yet. |
 | S02 | Priority Fixes | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. |
 | S03 | Conversion Path Architecture | NOT_STARTED | — |  |
 | S04 | Conversion Readiness Map | NOT_STARTED | — |  |
