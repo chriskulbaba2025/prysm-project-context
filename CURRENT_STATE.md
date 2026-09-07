@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Advance `S02 — Priority Fixes` from completed deterministic audit to the governed `REAL_REPORT_RENDER` boundary. The S02 deterministic audit is PASS. Await explicit authorization before regenerating the actual TBK review report from already-governed persisted/canonical artifacts. Do not perform HUMAN_REVIEW yet.
+Execute the authorized `S02 — Priority Fixes` `REAL_REPORT_RENDER` against the exact current dirty candidate. The S02 deterministic audit is PASS. Chris explicitly authorized the offline real-report render on 2026-09-07. Regenerate the actual TBK review report only from already-governed persisted/canonical artifacts, with zero live provider/model calls and no new production audit. Stop before HUMAN_REVIEW.
 
 ## Verified checkpoint
 
@@ -18,7 +18,7 @@ Advance `S02 — Priority Fixes` from completed deterministic audit to the gover
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: **DETERMINISTIC_AUDIT PASS — REAL_REPORT_RENDER AWAITING EXPLICIT AUTHORIZATION**.
+- Active S02 stage: **REAL_REPORT_RENDER — AUTHORIZED**.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 contract: **APPROVED — FROZEN**.
 - S02 source-boundary proof: **PASS — VERIFIED**.
@@ -40,7 +40,8 @@ Advance `S02 — Priority Fixes` from completed deterministic audit to the gover
 - final normalized dirty scope: **26 pre / 26 post — exact match**.
 - `git diff --check`: **PASS — exit 0**.
 - No application/test file changed during deterministic audit.
-- No canonical mutation, provider/model calls, production mutation, push, merge, commit, deploy, reset, clean, restore, stash, discard, or TBK rerender occurred during deterministic audit.
+- `REAL_REPORT_RENDER` explicitly authorized by Chris on 2026-09-07.
+- HUMAN_REVIEW is not yet authorized.
 
 ## S02 proof artifacts
 
@@ -52,10 +53,11 @@ Advance `S02 — Priority Fixes` from completed deterministic audit to the gover
 - Verify-only diagnosis: `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
 - Test-only repair proof: `proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md`
 - Deterministic proof: `proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md`
+- Real-report render proof: not yet created; create only after render evidence exists.
 
-## Locked review artifact before S02 rerender
+## Locked pre-S02 review artifact
 
-Current locked TBK review artifact:
+Preserve the prior locked review artifact unchanged:
 
 `C:\Users\kulba\Downloads\PRYSM-S01-TBK-CURRENT-REVIEW.html`
 
@@ -67,7 +69,7 @@ Audit ID:
 
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
 
-This is the pre-S02-render review object. Do not overwrite or mutate governed persisted/canonical inputs.
+The S02 render must not overwrite this artifact or mutate its already-governed persisted/canonical inputs.
 
 ## Implemented bounded S02 behavior
 
@@ -89,6 +91,28 @@ Within the authorized presentation seam:
 
 All deterministic requirements required by RSIP v1.2.0 passed, including S02 content/prohibition checks, uncertainty/rank preservation, Client Truth integrity, six-peer navigation, Supporting Detail reachability, viewer switching/print behavior, broad closure, whole-app gate, and exact dirty-scope preservation.
 
+## Authorized REAL_REPORT_RENDER requirements
+
+Regenerate the actual TBK report offline from the already-governed persisted/canonical artifacts using the exact current dirty application candidate.
+
+Required proof:
+
+- preserve and re-hash the prior locked S01 HTML before render;
+- use the already-proven offline replay/render path in the current repository; do not invent or add a new render path;
+- no evidence recollection, provider/model call, production audit, or production mutation;
+- produce a new S02 review HTML in `C:\Users\kulba\Downloads` without overwriting the S01 artifact;
+- verify audit ID `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` and Viewer `2.3.0`;
+- verify exactly six peer client destinations plus one subordinate `Supporting Detail`;
+- verify S01 locked top-three content/order remains unchanged in the new render;
+- verify S02 contains the new one-sequence Priority Fixes presentation, governed action order and bounded uncertainty;
+- verify Foundation Readiness, deterministic Action Plan and narrative detail remain reachable in Supporting Detail;
+- verify no canonical artifact changed;
+- verify normalized dirty-scope preservation and `git diff --check` PASS;
+- record new HTML SHA-256 and render proof;
+- stop before HUMAN_REVIEW.
+
+If the already-proven offline render inputs/path cannot be established exactly, or any render verification fails, return BLOCKED without editing application code or canonical data.
+
 ## Application environment
 
 - Application repository: `chriskulbaba2025/vantage-platform`.
@@ -101,24 +125,23 @@ All deterministic requirements required by RSIP v1.2.0 passed, including S02 con
 ## Important constraints
 
 - preserve the exact intentional dirty P1/S01/S02 worktree;
+- no application or test edits during this render boundary;
 - no reset, clean, checkout overwrite, restore, destructive revert, stash, discard, or unrelated overwrite;
 - no canonical artifact mutation;
 - no evidence recollection;
-- no provider/model calls unless separately authorized;
+- zero live provider/model calls;
 - no new production audit;
 - no production mutation;
 - no application push, merge, commit, or deployment;
 - no unrelated scoring/evidence/lifecycle/Client Truth/Writer/Judge change;
 - do not reopen S01;
-- HUMAN_REVIEW is not authorized until a new actual TBK artifact has been rendered and returned for review.
+- do not perform HUMAN_REVIEW or PASS_LOCK S02 in this stage.
 
 ## Exact next action
 
-Chris explicitly authorizes `REAL_REPORT_RENDER` for S02.
+Execute the authorized S02 `REAL_REPORT_RENDER` offline from the already-governed TBK persisted/canonical artifacts using the exact current dirty candidate. Produce a new S02 review HTML plus render proof in Downloads, verify artifact identity/content/navigation/immutability/scope, and stop.
 
-After authorization, regenerate the actual TBK report **offline from the already-governed persisted/canonical artifacts**, using the exact current dirty application candidate, with **zero live provider/model calls and no new production audit**. Preserve and hash the prior locked artifact, produce a new S02 review HTML in Downloads, verify Viewer `2.3.0`, audit ID, six-peer navigation, S01 locked content/order, S02 priority content/order/uncertainty, Supporting Detail reachability, canonical immutability and dirty-scope preservation, then return render proof and the new HTML for HUMAN_REVIEW.
-
-Until that authorization, do not rerender TBK, perform HUMAN_REVIEW, PASS_LOCK S02, or activate S03.
+Do not enter `HUMAN_REVIEW` until the new rendered artifact and proof are reviewed here.
 
 Last verified:
 2026-09-07
