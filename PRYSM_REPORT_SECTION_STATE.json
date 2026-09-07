@@ -11,22 +11,23 @@
   "activeSectionId": "S02",
   "activeSection": "Priority Fixes",
   "stage": "BUILD",
-  "status": "ACTIVE",
+  "status": "ACTIVE_BUILD_COMPLETE",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED_PASS",
   "repairPlanStatus": "COMPLETE",
-  "buildStatus": "FOCUSED_PASS_TEST_ONLY_REPAIR_AUTHORIZED",
+  "buildStatus": "COMPLETE_PASS",
   "focusedBuildGate": "83_PASS_0_FAIL",
   "verifyOnlyGateBeforeDiagnosis": "13_PASS_5_FAIL",
   "verifyOnlyDiagnosisStatus": "PASS_ALL_STALE_ASSERTIONS",
   "verifyOnlyStaleAssertionCount": 5,
   "verifyOnlyGenuineRegressionCount": 0,
-  "testOnlyRepairAuthorized": true,
+  "testOnlyRepairStatus": "PASS_18_PASS_0_FAIL",
+  "testOnlyRepairDurationMs": 262.4974,
   "testOnlyRepairAuthorizedBy": "Chris",
   "testOnlyRepairAuthorizationDate": "2026-09-07",
-  "gitDiffCheck": "PASS_EXIT_0_AT_PRIOR_BUILD_CHECKPOINT",
-  "deterministicAuditStatus": "BLOCKED_NOT_AUTHORIZED",
+  "gitDiffCheck": "PASS_EXIT_0",
+  "deterministicAuditStatus": "AWAITING_EXPLICIT_AUTHORIZATION",
   "realReportRenderStatus": "BLOCKED_NOT_STARTED",
   "humanReviewStatus": "NOT_STARTED",
   "score": 67,
@@ -38,6 +39,7 @@
   "repairPlanArtifact": "proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md",
   "boundedBuildArtifact": "proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md",
   "verifyOnlyDiagnosisArtifact": "proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md",
+  "testOnlyRepairArtifact": "proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md",
   "buildAuthorizedBy": "Chris",
   "buildAuthorizationDate": "2026-09-07",
   "s02RootCause": "S02 exposes audit machinery and client action guidance as equal-weight content instead of translating governed evidence into one authoritative ranked client action sequence.",
@@ -47,54 +49,24 @@
       "services/worker/src/report/render-report-v2.js",
       "services/worker/src/report/render-narrative-v2.js"
     ],
-    "testFiles": [
+    "focusedTestFiles": [
       "services/worker/src/report/render-report-v2.test.js",
       "services/worker/src/report/render-report-v2-section-viewer.test.js",
       "services/worker/src/report/render-report-v2-conversion.test.js",
       "services/worker/src/report/render-narrative-v2.test.js"
+    ],
+    "finalTestOnlyFiles": [
+      "services/worker/src/report/render-report-v2-sections.test.js",
+      "services/worker/src/report/karen-style-regression.test.js"
     ],
     "presentationOnly": true,
     "actionPriorityUnchanged": true,
     "scoringUnchanged": true,
     "evidenceUnchanged": true,
     "clientTruthUnchanged": true,
-    "writerJudgeContractsUnchanged": true
+    "writerJudgeContractsUnchanged": true,
+    "finalTestOnlyRepairChangedSourceFiles": false
   },
-  "verifyOnlyDiagnosis": {
-    "failures": [
-      "KAREN-REG-02",
-      "IL-03",
-      "IL-04",
-      "V2R-06",
-      "V2R-08"
-    ],
-    "classification": "ALL_STALE_ASSERTION",
-    "genuineRegression": false,
-    "reason": "Three assertions require the superseded Section E heading; two apply a whole-document unknown prohibition that now rejects required bounded S02 uncertainty outside the internal-link surface."
-  },
-  "authorizedTestOnlyRepairBoundary": {
-    "type": "TEST_ONLY",
-    "files": [
-      "services/worker/src/report/render-report-v2-sections.test.js",
-      "services/worker/src/report/karen-style-regression.test.js"
-    ],
-    "sourceEditsAuthorized": false,
-    "allowedIntent": [
-      "Replace obsolete E. What should be fixed first? expectations with the frozen S02 Priority Fixes marker",
-      "Scope IL-03 and IL-04 unknown assertions to the internal-link surface or direct internal-link markers",
-      "Preserve substantive internal-link coverage",
-      "Rerun only the verify-only gate",
-      "Verify no application source file changed",
-      "Run git diff --check and return proof"
-    ]
-  },
-  "prohibitedBuildFiles": [
-    "services/worker/src/report/action-priority.js",
-    "services/worker/src/scoring/score-components.js",
-    "services/worker/src/scoring/report-model.js",
-    "services/worker/src/scoring/vantage-score.js",
-    "services/worker/src/report/report-detail-sections.js"
-  ],
   "lockedPreviousSection": {
     "sectionId": "S01",
     "section": "Executive Scorecard",
@@ -117,6 +89,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Execute the explicitly authorized two-file test-only repair in render-report-v2-sections.test.js and karen-style-regression.test.js. Change only the five stale assertions identified in S02_VERIFY_ONLY_DIAGNOSIS.md, rerun only the verify-only gate, verify no application source file changed, run git diff --check, write proof outside both repositories, and stop. Do not advance to DETERMINISTIC_AUDIT or rerender the real TBK report until the repaired verify-only gate passes and is reviewed.",
+  "nextAllowedAction": "Chris explicitly authorizes entry into S02 DETERMINISTIC_AUDIT. Until then, do not run broad deterministic closure or real TBK rerender, and do not perform provider/model calls, production mutation, push, merge, commit, or deploy.",
   "lastUpdated": "2026-09-07"
 }
