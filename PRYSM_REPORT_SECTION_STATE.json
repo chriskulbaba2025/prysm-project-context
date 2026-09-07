@@ -8,91 +8,33 @@
   "primaryNavigationTargetCount": 6,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07"],
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
-  "activeSectionId": "S02",
-  "activeSection": "Priority Fixes",
-  "stage": "HUMAN_REVIEW",
-  "status": "ACTIVE_REPAIR_AUTHORIZED",
-  "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
-  "baselineStatus": "COMPLETE_FAIL",
-  "buildStatus": "COMPLETE_PASS_BEFORE_HUMAN_REVIEW_REPAIR",
-  "combinedS02RegressionGate": "101_PASS_0_FAIL",
-  "deterministicAuditStatus": "PASS_COMPLETE",
-  "deterministicAuditDecision": "S02_DETERMINISTIC_AUDIT_PASS",
-  "closureMachineGate": "PASS",
-  "wholeAppTrancheGate": "PASS",
-  "wholeAppAcceptance": "87_PASS_0_FAIL",
-  "realReportRenderStatus": "PASS_COMPLETE",
-  "realReportRenderDecision": "S02_REAL_REPORT_RENDER_PASS",
-  "realReportArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-TBK-CURRENT-REVIEW.html",
-  "realReportArtifactSha256": "0FFDE2FF86ED58003723842E092C87505C50CCA8189AFA3848C97D055C28A6CD",
-  "humanReviewStatus": "REPAIR_REQUIRED",
-  "humanReviewScore": 94,
-  "score": 94,
+  "activeSectionId": "S03",
+  "activeSection": "Conversion Journey",
+  "stage": "BASELINE_AUDIT",
+  "status": "ACTIVE",
+  "baselineStatus": "IN_PROGRESS",
+  "score": 72,
   "passThreshold": 95,
   "hardGateFailures": 0,
-  "humanReviewArtifact": "proof/report-sections/S02-priority-fixes/S02_HUMAN_REVIEW.md",
-  "realReportRenderProofArtifact": "proof/report-sections/S02-priority-fixes/S02_REAL_REPORT_RENDER_PROOF.md",
-  "continuationHandoffArtifact": "HANDOFF_PRYSM_S02_HUMAN_REVIEW_REPAIR_CONTINUATION_2026-09-07.md",
-  "humanReviewFindings": [
+  "lockedPreviousSections": [
     {
-      "id": "HR-01",
-      "type": "UX_UI",
-      "summary": "Five useful priorities still render as one visually flat continuous text block."
+      "sectionId": "S01",
+      "section": "Executive Scorecard",
+      "status": "PASS_LOCKED",
+      "score": 98,
+      "hardGateFailures": 0
     },
     {
-      "id": "HR-02",
-      "type": "PLAIN_LANGUAGE",
-      "summary": "Primary intro still exposes internal governed-priority wording and duplicates the title hierarchy."
-    },
-    {
-      "id": "HR-03",
-      "type": "PLAIN_LANGUAGE",
-      "summary": "Priority 5 uses assessed-response terminology that is too technical for the primary client surface."
+      "sectionId": "S02",
+      "section": "Priority Fixes",
+      "status": "PASS_LOCKED",
+      "score": 97,
+      "hardGateFailures": 0,
+      "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-TBK-HUMAN-REVIEW-2.html",
+      "reviewArtifactSha256": "23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800",
+      "closureArtifact": "proof/report-sections/S02-priority-fixes/S02_CLOSURE.md"
     }
   ],
-  "authorizedHumanReviewRepair": {
-    "authorizedBy": "Chris",
-    "authorizationDate": "2026-09-07",
-    "presentationOnly": true,
-    "expectedSourceFiles": [
-      "services/worker/src/report/render-report-v2.js"
-    ],
-    "preferredTestFiles": [
-      "services/worker/src/report/render-report-v2.test.js"
-    ],
-    "stopIfAdditionalSourceRequired": true,
-    "stopIfAdditionalTestBoundaryRequired": true,
-    "allowedIntent": [
-      "Render each S02 priority as a visually separate action card while preserving one authoritative sequence",
-      "Add strong rank markers and Start here emphasis to rank 1 without changing governed order",
-      "Use compact two-column question/value layout on desktop and one column on small screens",
-      "Render material uncertainty as a full-width subdued callout inside relevant cards",
-      "Simplify S02 kicker/title/intro hierarchy and remove governed-priority wording",
-      "Translate Priority 5 assessed-response wording into client-friendly bounded wording",
-      "Preserve existing PRYSM brand palette, typography, responsive behavior and print/PDF integrity"
-    ],
-    "sourceEditsOutsideExpectedBoundaryAuthorized": false,
-    "scoringEvidenceClientTruthEditsAuthorized": false,
-    "actionPriorityEditsAuthorized": false,
-    "writerJudgeEditsAuthorized": false,
-    "navigationEditsAuthorized": false,
-    "supportingDetailAssignmentEditsAuthorized": false,
-    "canonicalMutationAuthorized": false,
-    "providerModelCallsAuthorized": false,
-    "productionMutationAuthorized": false,
-    "pushMergeDeployAuthorized": false
-  },
-  "lockedPreviousSection": {
-    "sectionId": "S01",
-    "section": "Executive Scorecard",
-    "status": "PASS_LOCKED",
-    "score": 98,
-    "hardGateFailures": 0,
-    "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S01-TBK-CURRENT-REVIEW.html",
-    "reviewArtifactSha256": "857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8",
-    "auditId": "8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3",
-    "viewerVersion": "2.3.0"
-  },
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
     "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
@@ -102,6 +44,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Read HANDOFF_PRYSM_S02_HUMAN_REVIEW_REPAIR_CONTINUATION_2026-09-07.md and execute the authorized bounded S02 human-review presentation repair. First inspect exact current local ownership; edit render-report-v2.js only if it owns all required markup/CSS/copy, and edit render-report-v2.test.js only for direct proof. If another source or test file is required, stop and return the exact boundary before editing it. Then run focused S02 tests, git diff --check and scope verification, rerender the same TBK audit offline from unchanged canonical inputs, and return new HTML plus proof for final human review. Do not PASS_LOCK S02 or activate S03 yet.",
+  "nextAllowedAction": "Complete the formal S03 BASELINE_AUDIT and CONTRACT from the actual TBK Conversion Journey page. Preserve evidence integrity and locked S01/S02. Do not edit application code until the S03 contract and bounded repair plan are approved.",
   "lastUpdated": "2026-09-07"
 }
