@@ -1,287 +1,256 @@
 # S01 Repair Plan — Executive Scorecard
 
 Section: S01 — Executive Scorecard
-Status: IN PROGRESS — SOURCE BOUNDARY VERIFICATION REQUIRED
+Status: COMPLETE — BOUNDED BUILD AUTHORIZED
 Date opened: 2026-09-07
+Date completed: 2026-09-07
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Contract: `S01_CONTRACT.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Baseline: `S01_BASELINE_AUDIT.md`
+Source-boundary proof: `S01_SOURCE_BOUNDARY_PROOF.md`
 Baseline result: `63/100 — FAIL — 2 hard-gate failures`
 
 ## Repair objective
 
 Rebuild S01 as a client decision page while preserving the already-correct P1 evidence uncertainty and governed priority order, and migrate the viewer shell to the approved 8-item primary client navigation with supporting technical/evidence detail demoted to a subordinate navigation surface.
 
-This is a presentation/decision-layer repair. It does not authorize new scoring, evidence collection, lifecycle changes, provider/model calls, production mutation, merge, or deployment.
+This is a presentation/decision-layer repair. It does not authorize new scoring, evidence collection, lifecycle changes, provider/model calls, production mutation, merge, push, or deployment.
 
 ## Dominant root cause
 
-The Executive Scorecard still exposes multiple internal assessment constructs as peer client outcomes and composes the viewer page from both the `executive` and separate `strengths` sections. Priority meaning is also split across two separate lists instead of presenting one ranked client action object with Problem -> Why it matters -> Action.
+The Executive Scorecard exposes internal assessment constructs as peer client outcomes, splits each priority across duplicate problem/action lists, and composes the viewer page from both `executive` and a separate technical `strengths` section. At the report-shell level, all 16 conceptual pages are rendered as peer primary navigation even though half are supporting technical/evidence detail.
 
-At the report-shell level, the 16-page navigation also mixes client decisions with audit mechanics, causing technical/evidence pages to compete with conversion-oriented destinations.
+## Verified source ownership
 
-## Baseline defect -> required repair -> proof map
+Read-only local diagnostic `PRYSM-S01-SOURCE-BOUNDARY.txt` established the exact current intentional dirty P1 seam. Full proof is recorded in `S01_SOURCE_BOUNDARY_PROOF.md`.
 
-### D1 — Wrong executive hierarchy
+Key verified facts:
 
-Observed problem:
-- Executive verdict -> three peer score blocks -> root-cause list -> action list -> positives -> partial-weight note -> navigation -> separate strengths section.
+- `src/report/render-report-v2.js` owns `executiveScorecard(...)`, `REPORT_V2_VIEWER_PAGES`, sidebar generation, viewer config, hash/page activation, and current-page print behavior.
+- Executive top-three ordering comes from `buildActionPlan(...).actions.slice(0, 3)`.
+- Problem / Why / Action source fields are `finding.title` / `finding.businessImpact` / `finding.recommendation`.
+- `VAN-PERF-001` `render-blocking` wording originates in the governed finding recommendation in `score-components.js`; S01 must translate it at executive presentation level rather than mutate the underlying scoring/finding contract.
+- the separate `strengthsSection(...)` is produced in `report-detail-sections.js`, imported/rendered by `render-report-v2.js`, and mapped to S01 through `sectionIds: ["executive", "strengths"]`.
+- the lowest-risk viewer migration is to preserve 16 addressable conceptual destinations while classifying them into 8 PRIMARY and 8 SUPPORTING destinations and rendering only the PRIMARY set as peer client navigation.
 
-Required repair:
-- Render the approved six-part hierarchy exactly:
-  1. How ready is your website to convert visitors?
-  2. What should you improve first?
-  3. What is already working well?
-  4. What could we not determine?
-  5. How confident is this assessment?
-  6. Where to find supporting detail
+## Approved exact application BUILD boundary
 
-Proof:
-- deterministic heading/order assertions;
-- actual TBK render review.
+Application code allowed:
 
-### D2 — Conversion Readiness / Evidence Confidence / Evidence Coverage are peer scores
+1. `src/report/render-report-v2.js`
 
-Observed problem:
-- `74/100`, `95/100`, and `93%` use the same three-column score treatment.
+Application tests allowed as required to encode/verify the approved migration:
 
-Required repair:
-- Conversion Readiness remains the sole primary score.
-- Evidence confidence becomes short subordinate supporting information late in the page.
-- Evidence coverage becomes the approved limitation statement, not a peer score.
+2. `src/report/render-report-v2-section-viewer.test.js`
+3. `src/report/render-report-v2-conversion.test.js`
+4. `src/report/render-report-v2.test.js`
+5. `src/report/render-report-v2-sections.test.js`
+6. `src/report/karen-style-regression.test.js`
+7. `src/report/render-narrative-v2.test.js`
 
-Proof:
-- one primary score assertion;
-- prohibited peer-metric/internal-mechanics assertions;
-- visual review.
+No other application file is authorized in this build. In particular, do not edit `score-components.js`, `action-priority.js`, `report-detail-sections.js`, evidence/scoring contracts, lifecycle/storage, Writer/Judge, or unrelated dirty P1 files unless a new deterministic failure proves an additional seam is required and this plan is reopened first.
 
-### D3 — Three priorities are split across duplicate lists
+## Required implementation
 
-Observed problem:
-- `What is really holding the site back?` supplies problem/reason.
-- `What should you do first?` supplies problem/action.
+### R1 — Rebuild S01 hierarchy
 
-Required repair:
-- render up to three ranked priority cards/rows from the governed action hierarchy;
-- each contains Problem, Why it matters, Action together;
-- preserve governed rank order;
-- render fewer than three if fewer than three supported actions exist.
+Render this exact conceptual order:
 
-Proof:
-- exact max-three assertion;
-- required three fields per rendered priority;
-- order parity against governed action hierarchy;
-- no second executive priority list.
+1. **How ready is your website to convert visitors?**
+2. **What should you improve first?**
+3. **What is already working well?**
+4. **What could we not determine?**
+5. **How confident is this assessment?**
+6. **Where to find supporting detail**
 
-### D4 — Technical/machine language on executive page
+### R2 — One primary score
 
-Observed problem includes:
-- largest contentful paint / LCP;
-- render-blocking;
-- partial assessment;
-- meta descriptions;
-- evidence capabilities;
-- modules assessed;
-- intended dimension weight;
-- browser conversion validation;
-- certificate-validation detail;
-- json_ld;
-- supporting capability.
+- Conversion Readiness is the sole visually primary score.
+- Evidence Confidence becomes secondary supporting copy late in the page.
+- Evidence Coverage becomes a plain-language limitation statement rather than a peer metric.
+- remove client-facing Known/Unknown factor counts, capability counts, module counts, intended-weight percentages, and equivalent mechanics from S01.
 
-Required repair:
-- deterministic client-facing translation for S01 only;
-- preserve technical evidence in later report sections;
-- examples required by contract:
-  - LCP finding -> `Main content takes too long to appear on mobile.`
-  - meta-description finding -> `Search-result descriptions.`
-- FAQ wording must remain bounded and must not become whole-site absence.
+### R3 — One ranked top-three priority structure
 
-Proof:
-- prohibited-term assertions scoped to S01;
-- required business-language assertions;
-- uncertainty counterexamples.
+Render up to three actions from the existing deterministic `buildActionPlan` order.
 
-### D5 — Duplicate positive sections
+Each priority must contain together:
 
-Observed problem:
-- `What Is Already Working` inside `executive` plus separate `What Is Already Good` section on the same viewer page.
+- Problem;
+- Why it matters;
+- Action.
 
-Required repair:
-- one section only: `What is already working well?`
-- consolidate supported positive findings into concise client language;
-- remove S01 exposure of the separate `strengths` section or otherwise prevent duplicate positive rendering on the Executive Scorecard;
-- do not delete supporting evidence needed elsewhere unless the exact current source boundary proves it is safe.
+Do not create a second priority list. Do not manufacture filler priorities.
 
-Proof:
-- exactly one positive-section assertion on S01;
-- old `What Is Already Good` heading absent from S01;
-- supported positives retained without audit mechanics.
+### R4 — Executive plain-language translation
 
-### D6 — Limitation wording exposes weighting mechanics
+Translate technical finding/action wording deterministically for S01 while preserving evidence scope.
 
-Observed problem:
-- `PARTIAL: 93% of intended dimension weight was assessed.`
+Current required translations include:
 
-Required repair:
-- replace with the approved client statement when applicable:
+- `VAN-PERF-001`
+  - Problem: **Main content takes too long to appear on mobile.**
+  - Why: plain-language equivalent of mobile friction.
+  - Action: bounded summary such as **Reduce the time it takes for the main mobile content to appear, then retest the page.**
+  - Do not expose `LCP`, `largest contentful paint`, or `render-blocking` on S01.
+- `VAN-TECH-001`
+  - use **Search-result descriptions** instead of `meta descriptions`.
+- `VAN-CONTENT-002`
+  - preserve that FAQ content was not found only within available/assessed scope; do not convert to whole-site absence.
 
-  **Assessment coverage: Nearly complete.**
-  A small part of the assessment could not be completed. Affected findings are marked as uncertain rather than treated as website problems.
+Generic executive fallback copy must also pass the prohibited-language contract.
 
-- preserve Client Truth uncertainty; do not imply complete assessment.
+### R5 — Consolidate positives
 
-Proof:
-- required statement assertion for the current TBK scenario;
-- partial/unavailable counterexample tests;
-- prohibited weighting-mechanics assertion.
+- exactly one executive positive section: **What is already working well?**
+- retain only supported positives in concise business language.
+- S01 must no longer render the separate `What Is Already Good` section.
+- remove S01 mapping/render ownership of `strengths`; leave `report-detail-sections.js` itself untouched in this build.
 
-### D7 — Supporting-detail pointer is directionally correct but outside approved hierarchy
+### R6 — Plain coverage statement
 
-Observed problem:
-- current `Where to go next` pointer is useful but not contract-labelled.
+For the current TBK scenario, render:
 
-Required repair:
-- retain useful direction to Priority Fixes and deeper evidence under `Where to find supporting detail`;
-- technical/evidence destinations must route through the subordinate Supporting Evidence / Technical Detail surface where appropriate.
+**Assessment coverage: Nearly complete.**
 
-Proof:
-- required heading and destination/pointer assertion;
-- supporting-detail navigation resolution test.
+A small part of the assessment could not be completed. Affected findings are marked as uncertain rather than treated as website problems.
 
-### D8 — Preserve current evidence-integrity strengths
+For materially different governed coverage states, use a truthful plain-language state rather than forcing `Nearly complete`.
 
-Observed good behaviour:
-- FAQ not-detected statement remains bounded to available partial assessment.
-- search-description absence remains bounded to assessed pages.
-- unassessed pages remain unknown.
+### R7 — Supporting detail pointer
 
-Required repair:
-- executive simplification must not strengthen these claims.
-- if the client-facing translation shortens wording, uncertainty must remain explicit wherever it materially changes meaning.
+Under **Where to find supporting detail**, point clients to:
 
-Proof:
-- PARTIAL / NOT_ASSESSED / not-detected adversarial cases;
-- no unsupported whole-site absence;
-- Client Truth parity tests.
+- Priority Fixes for ranked action/evidence detail;
+- Supporting Evidence / Technical Detail for deeper evidence, technical diagnostics, and limitations.
 
-### D9 — LCP implementation action requires evidence trace
+### R8 — Preserve evidence uncertainty
 
-Observed concern:
-- S01 says `remove render-blocking work`, while the executive page itself does not establish that specific root cause.
+Executive shortening may not strengthen:
 
-Required repair:
-- during exact local source verification, trace the action to its governed evidence/action object.
-- if that root cause is not directly supported, replace it with a bounded client action that follows the governed action hierarchy without inventing implementation diagnosis.
+- PARTIAL;
+- NOT_ASSESSED;
+- unavailable;
+- failed;
+- blocked;
+- not-detected;
+- assessed-page-only findings.
 
-Proof:
-- evidence/action lineage identified before build;
-- client action remains supported by governed evidence.
+No whole-site absence claim may be created from partial/not-detected evidence.
 
-### D10 — 16-page primary navigation mixes client decisions with audit mechanics
+### R9 — Client-first viewer information architecture
 
-Observed problem:
-- current viewer primary navigation exposes all 16 conceptual pages as peers.
-- technical/evidence pages compete directly with conversion-oriented client pages.
+Retain the 16 conceptual destinations as addressable viewer pages but classify them into two navigation tiers.
 
-Required repair:
-- primary navigation must contain exactly 8 destinations in this order:
-  1. Executive Scorecard
-  2. Priority Fixes
-  3. Conversion Journey
-  4. Content Opportunities
-  5. Competitor Comparison
-  6. Trust & Credibility
-  7. Website Speed & Performance
-  8. Mobile & Accessibility
-- keep stable source S## IDs for governance; do not renumber historical IDs.
-- remove S04/S08/S09/S10/S11/S14/S15/S16 from equal-weight primary navigation.
-- retain those sections behind a subordinate Supporting Evidence / Technical Detail navigation surface.
-- moving navigation placement must not delete governed evidence or alter scoring/Client Truth.
+PRIMARY — exactly 8 peer client links in this order:
 
-Proof:
-- primary count = 8;
-- exact label/order tests;
-- zero supporting-detail peers in primary nav;
-- all 8 supporting-detail destinations remain reachable;
-- viewer page switching and print/save regression PASS.
+1. Executive Scorecard
+2. Priority Fixes
+3. Conversion Journey
+4. Content Opportunities
+5. Competitor Comparison
+6. Trust & Credibility
+7. Website Speed & Performance
+8. Mobile & Accessibility
 
-## Expected source/test seam — not yet authorized as exact
+SUPPORTING — subordinate under **Supporting Evidence / Technical Detail**:
 
-Remote/current committed repository evidence indicates the likely seam includes:
+- Conversion Readiness Detail
+- CMS & Platform Detail
+- Technical SEO Detail
+- Heading & Structure Detail
+- Schema & Entity Detail
+- Internal-Link Detail
+- Supporting Evidence
+- Assessment Limitations
 
-- `services/worker/src/report/render-report-v2.js`
-  - executive renderer;
-  - viewer-page composition currently maps Executive Scorecard to `executive` + `strengths`;
-  - `REPORT_V2_VIEWER_PAGES` currently defines all 16 peer viewer pages and therefore likely owns the navigation migration.
-- `services/worker/src/report/report-detail-sections.js`
-  - separate `strengthsSection` producer, if consolidation requires changing its use/ownership.
-- `services/worker/src/report/render-report-v2-conversion.test.js`
-- `services/worker/src/report/karen-style-regression.test.js`
-- exact viewer/navigation tests that assert page count/order/current labels or all 16 peer pages.
+Stable viewer `pageId` values should remain unchanged where possible so existing hash routing and traceability remain intact.
 
-The repaired P1 candidate is an intentional dirty local worktree. Therefore this list is only an expected seam. **No BUILD is authorized until the exact current local versions, current git status, relevant functions, viewer mapping, and test assertions are captured without modifying the worktree.**
+All supporting pages must remain reachable, switchable, and printable.
 
-## Required pre-build source-boundary proof
+### R10 — Viewer presentation version
 
-From the exact local application worktree, capture read-only evidence for:
+This is a material viewer information-architecture change with no evidence/scoring/report-data contract change.
 
-1. `git status --short`;
-2. current branch and HEAD;
-3. full current `REPORT_V2_VIEWER_PAGES` mapping for all pages;
-4. current viewer/sidebar navigation generation logic and print/page-switch logic;
-5. full current `executiveScorecard(...)` function boundary;
-6. current `strengthsSection(...)` boundary;
-7. current tests asserting viewer page count/order/labels, `What Is Already Good`, Evidence Confidence/Coverage, executive priority structure, and viewer-page composition;
-8. exact source of each of the three executive priority problem/reason/action fields;
-9. exact evidence lineage for the LCP action wording;
-10. any code that assumes 16 primary peer pages and would break when support pages become subordinate.
+Increment viewer presentation version only:
 
-Diagnostics must remain outside governed repositories.
+`2.2.0 -> 2.3.0`
 
-## Planned deterministic acceptance suite
+Do not change the report design/data contract solely for this migration.
 
-Before implementation, create/modify tests so the current baseline fails for the intended reasons and the repaired page/viewer must prove at minimum:
+## Tests-first proof requirement
 
-- exact six-part S01 conceptual order;
-- one primary score only;
+Before changing implementation behavior:
+
+1. update/extend the authorized focused tests to encode the new S01 + navigation contract;
+2. run the focused tests against the old implementation;
+3. preserve output proving the intended contract assertions fail for the old implementation;
+4. only then edit `render-report-v2.js`;
+5. rerun the focused tests to PASS.
+
+Expected migration assertions include:
+
+- exact six-part S01 order;
+- one primary score;
 - confidence/coverage subordinate;
 - max three priorities;
-- Problem + Why + Action together for every priority;
-- governed priority order preserved;
+- Problem + Why + Action together;
+- governed action order preserved;
 - no duplicate priority list;
 - exactly one positive section;
-- no `What Is Already Good` on S01;
-- required assessment-coverage statement;
-- supporting-detail pointer present;
+- no S01 `What Is Already Good`;
+- plain coverage statement;
+- supporting-detail pointer;
 - prohibited S01 technical/internal terms absent;
-- business-language equivalents present where applicable;
-- PARTIAL/NOT_ASSESSED/not-detected states never become confirmed site-wide defects;
-- no unsupported action/root-cause upgrade;
-- primary navigation count exactly 8;
-- primary navigation exact approved labels/order;
-- supporting-detail pages absent from primary peer list;
-- all supporting-detail destinations reachable;
-- viewer page switching/print behaviour intact;
-- existing P1 cross-report integrity remains green.
+- business-language equivalents present;
+- uncertainty fail-closed cases preserved;
+- conceptual viewer page count remains 16 unless a new proof requires otherwise;
+- primary peer navigation count = 8;
+- supporting navigation count = 8;
+- exact approved labels/order;
+- no supporting page exposed as a primary peer;
+- all supporting destinations addressable;
+- hash navigation/back-forward fallback remains deterministic;
+- current-page print/save remains present/functioning;
+- legacy v1 16-page approval contracts remain untouched.
 
-## Post-build gates
+## Focused BUILD proof gate
 
-1. focused S01 + navigation deterministic suite — PASS;
-2. relevant renderer/viewer regressions — PASS;
-3. focused P1 regressions — PASS;
-4. CR-43 if governed output hashes are affected — PASS with governed hash procedure;
-5. complete worker suite — PASS;
-6. `npm run verify:prysm-closure` — PASS;
-7. Whole-App acceptance — PASS where required by current governance;
-8. `git diff --check` — PASS;
-9. regenerate real TBK HTML from already-downloaded canonical artifacts — no live provider/model calls;
-10. S01 human 10–20 second scan review — PASS;
-11. human navigation review confirms the 8 client destinations are immediately understandable and technical/evidence detail is subordinate;
-12. final RSIP score >=95/100 and hard-gate failures = 0.
+After implementation, run at minimum the authorized affected test files and capture exact pass/fail totals in one TXT outside both repositories.
 
-## Current decision
+The build does not advance to broad deterministic audit until:
 
-`REPAIR_PLAN` is open but not complete.
+- focused S01/viewer tests = PASS;
+- no unexpected file outside the authorized seam changed;
+- `git diff --check` = PASS for the current worktree;
+- no provider/model call or production mutation occurred.
 
-Exact next action: capture the exact current local S01 + viewer/navigation source/test boundary read-only. Do not edit application code yet.
+## Post-build deterministic audit
+
+After focused BUILD PASS, RSIP advances to `DETERMINISTIC_AUDIT`, where broad gates are run:
+
+1. focused S01 + navigation suite;
+2. relevant renderer/viewer regressions;
+3. focused P1 regressions;
+4. CR-43 with governed hash procedure if deterministic output hashes changed;
+5. complete worker suite;
+6. `npm run verify:prysm-closure`;
+7. Whole-App acceptance where required;
+8. `git diff --check`;
+9. exact real TBK offline render;
+10. S01 human 10–20 second scan review;
+11. human navigation review;
+12. RSIP score >=95/100 with zero hard failures.
+
+## Deferred observation for S02
+
+The diagnostic shows `VAN-PERF-001` detailed recommendation includes `remove render-blocking work` even though the direct finding evidence shown is slow mobile LCP. S01 will summarize this at a bounded executive level. The underlying detailed recommendation should be re-examined when `S02 — Priority Fixes` becomes ACTIVE; do not broaden the present S01 build to repair S02 early.
+
+## Repair-plan decision
+
+`PASS — COMPLETE`.
+
+The exact local source/test boundary is verified and the bounded S01 BUILD is authorized.
+
+Exact next action: execute the tests-first bounded S01 build using only the authorized files above, preserve an expected pre-implementation failing focused proof, then implement the renderer/viewer repair and return a focused PASS proof for review.
