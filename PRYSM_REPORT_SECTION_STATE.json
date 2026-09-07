@@ -10,18 +10,24 @@
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S03",
   "activeSection": "Conversion Journey",
-  "stage": "BUILD",
-  "status": "ACTIVE_BUILD_AUTHORIZED",
+  "stage": "HUMAN_REVIEW",
+  "status": "ACTIVE_UX_REPAIR_AUTHORIZED",
   "baselineStatus": "COMPLETE_FAIL",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
-  "repairPlanStatus": "APPROVED_BUILD_AUTHORIZED",
-  "baselineScore": 72,
-  "score": 72,
+  "buildStatus": "PASS",
+  "wordingRepairStatus": "PASS",
+  "latestRegressionGate": "92_PASS_0_FAIL",
+  "latestArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-HUMAN-REVIEW-2.html",
+  "latestArtifactSha256": "2D6B4459BCF43BB68EFC037B89BADBEEEE2B90819016B79253A2D57C1311DD5C",
+  "score": 89,
   "passThreshold": 95,
   "hardGateFailures": 0,
-  "baselineArtifact": "proof/report-sections/S03-conversion-journey/S03_BASELINE_AUDIT.md",
-  "contractArtifact": "proof/report-sections/S03-conversion-journey/S03_CONTRACT.md",
-  "repairPlanArtifact": "proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md",
+  "humanReviewStatus": "REPAIR_REQUIRED",
+  "humanReviewFinding": {
+    "id": "HR-UX-01",
+    "type": "UX_UI",
+    "summary": "The three-step journey visual is visually stunted, wastes horizontal space, and does not meet the client-facing UX standard despite corrected plain-language labels."
+  },
   "authorizedSourceFiles": [
     "services/worker/src/report/render-report-v2.js"
   ],
@@ -32,7 +38,18 @@
     "services/worker/src/report/render-narrative-v2.test.js",
     "services/worker/src/report/render-report-v2-conversion.test.js"
   ],
-  "testBoundaryPurpose": "Update only directly stale S03 presentation assertions and CR-43 presentation golden hashes attributable solely to the authorized S03 presentation repair.",
+  "authorizedUxRepair": {
+    "useFullContentWidth": true,
+    "threeStepJourneyStepper": true,
+    "strongNumberedMarkers": true,
+    "shortSupportingLinePerStep": true,
+    "strongerOutcomeState": true,
+    "removeExcessEmptyCanvas": true,
+    "responsiveStacking": true,
+    "printSafe": true,
+    "brandConsistent": true,
+    "generatedImageRequired": false
+  },
   "lockedPreviousSections": [
     {
       "sectionId": "S01",
@@ -61,6 +78,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Execute the approved bounded S03 BUILD from proof/report-sections/S03-conversion-journey/S03_REPAIR_PLAN.md. Edit only services/worker/src/report/render-report-v2.js and only the directly stale expectations in the five authorized test files. Then run focused tests, complete S03 regression, git diff --check, normalized scope verification, locked S01/S02 checks, canonical immutability checks, and rerender the same TBK audit offline. Return the new S03 HTML plus bounded-build proof for HUMAN_REVIEW. Do not PASS_LOCK S03 yet.",
+  "nextAllowedAction": "Execute only the authorized S03 visual UX repair in render-report-v2.js: full-width three-step journey stepper with strong numbered markers, concise supporting copy, stronger final outcome state, no excessive empty SVG canvas, responsive stacking, print safety, and PRYSM brand consistency. Update only directly stale authorized S03 presentation tests and CR-43 presentation golden hashes if required. Then rerun focused and complete S03 regressions, scope/integrity checks, and offline TBK rerender. Return PRYSM-S03-TBK-HUMAN-REVIEW-3.html plus PRYSM-S03-HUMAN-REVIEW-UX-REPAIR-PROOF.txt. Do not PASS_LOCK S03 yet.",
   "lastUpdated": "2026-09-07"
 }
