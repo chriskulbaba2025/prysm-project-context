@@ -102,7 +102,7 @@
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
     "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
-    "workerPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform\\services\\worker",
+    "workerPath": "C:\\Users\\kulba\\Desktop\\vantage-platform\\services\\worker",
     "branch": "p1/bounded-build-cross-report-integrity",
     "historicalCommittedHead": "a9523ac3de98de76335a05304b60bec246242b65",
     "headAloneIdentifiesCandidate": false,
