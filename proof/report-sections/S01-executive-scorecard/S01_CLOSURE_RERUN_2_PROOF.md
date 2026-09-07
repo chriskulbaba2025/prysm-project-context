@@ -5,7 +5,7 @@ Stage: `DETERMINISTIC_AUDIT`
 Result: **PASS**
 Date: 2026-09-07
 Source proof: uploaded `PRYSM-S01-CLOSURE-RERUN-2-PROOF.txt`
-Protocol: `PRYSM_REPORT_SECTION_IMROVEMENT_PROTOCOL.md`
+Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 
 ## Authorized repair
 
