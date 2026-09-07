@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Execute the authorized `S02 — Priority Fixes` `REAL_REPORT_RENDER` against the exact current dirty candidate. The S02 deterministic audit is PASS. Chris explicitly authorized the offline real-report render on 2026-09-07. Regenerate the actual TBK review report only from already-governed persisted/canonical artifacts, with zero live provider/model calls and no new production audit. Stop before HUMAN_REVIEW.
+Complete the final `S02 — Priority Fixes` human-review repair. The real TBK render passed and the substantive content is materially improved, but the rendered page remains visually too flat and two pieces of primary client wording are still too internal/technical. Chris explicitly authorized fixing the agreed UX/UI and wording issues on 2026-09-07.
 
 ## Verified checkpoint
 
@@ -13,135 +13,92 @@ Execute the authorized `S02 — Priority Fixes` `REAL_REPORT_RENDER` against the
 - P1 systemic repair architecture remains IMPLEMENTED LOCALLY.
 - P1 local deterministic closure remains PASS.
 - Intentional dirty application worktree must be preserved.
-- RSIP version: `1.2.0` — `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`.
-- Report-wide IA contract version: `1.1.0` — `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`.
+- RSIP version: `1.2.0`.
+- Report-wide IA contract version: `1.1.0`.
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: **REAL_REPORT_RENDER — AUTHORIZED**.
-- S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
-- S02 contract: **APPROVED — FROZEN**.
-- S02 source-boundary proof: **PASS — VERIFIED**.
-- S02 repair plan: **PASS — COMPLETE**.
-- S02 BUILD: **COMPLETE — PASS**.
-- S02 combined report/viewer/narrative regression gate: **101 PASS / 0 FAIL**, duration `563.3816 ms`.
-- S02 deterministic audit: **PASS**.
-- `npm run verify:prysm-closure`: **PASS — exit 0**.
-- `PRYSM CLOSURE MACHINE GATE`: **PASS**.
-- `PRYSM WHOLE-APP TRANCHE GATE`: **PASS**.
-- whole-app acceptance: **87 PASS / 0 FAIL**.
-- worker regression families: **994/994 PASS**.
-- application production-path tests: **82/82 PASS**.
-- Narrative v2 tests: **114/114 PASS**.
-- schema/contract tests: **14/14 PASS**.
-- artifact tests: **106/106 PASS**.
-- lifecycle tests: **57/57 PASS**.
-- replay remained Viewer `2.3.0` and offline/controlled.
-- final normalized dirty scope: **26 pre / 26 post — exact match**.
-- `git diff --check`: **PASS — exit 0**.
-- No application/test file changed during deterministic audit.
-- `REAL_REPORT_RENDER` explicitly authorized by Chris on 2026-09-07.
-- HUMAN_REVIEW is not yet authorized.
+- Active S02 stage: **HUMAN_REVIEW — REPAIR REQUIRED / BOUNDED PRESENTATION REPAIR AUTHORIZED**.
+- S02 baseline: **67/100 FAIL**, 2 hard gates.
+- S02 BUILD: **PASS**.
+- Combined S02 regression: **101/101 PASS**.
+- Deterministic audit: **PASS**.
+- `npm run verify:prysm-closure`: **PASS**.
+- Whole-app acceptance: **87/87 PASS**.
+- Real-report render: **PASS**.
+- Current S02 rendered artifact: `C:\Users\kulba\Downloads\PRYSM-S02-TBK-CURRENT-REVIEW.html`.
+- Current S02 rendered SHA-256: `0FFDE2FF86ED58003723842E092C87505C50CCA8189AFA3848C97D055C28A6CD`.
+- Current human-review score: **94/100 — REPAIR REQUIRED**, hard gates `0`.
 
 ## S02 proof artifacts
 
-- Baseline: `proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md`
-- Contract: `proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`
-- Source boundary: `proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md`
-- Repair plan: `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`
-- Bounded build proof: `proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md`
-- Verify-only diagnosis: `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
-- Test-only repair proof: `proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md`
-- Deterministic proof: `proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md`
-- Real-report render proof: not yet created; create only after render evidence exists.
+- `proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md`
+- `proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`
+- `proof/report-sections/S02-priority-fixes/S02_SOURCE_BOUNDARY_PROOF.md`
+- `proof/report-sections/S02-priority-fixes/S02_REPAIR_PLAN.md`
+- `proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md`
+- `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
+- `proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md`
+- `proof/report-sections/S02-priority-fixes/S02_DETERMINISTIC_PROOF.md`
+- `proof/report-sections/S02-priority-fixes/S02_REAL_REPORT_RENDER_PROOF.md`
+- `proof/report-sections/S02-priority-fixes/S02_HUMAN_REVIEW.md`
 
-## Locked pre-S02 review artifact
+## Human-review findings
 
-Preserve the prior locked review artifact unchanged:
+### HR-01 — page is visually too flat
 
-`C:\Users\kulba\Downloads\PRYSM-S01-TBK-CURRENT-REVIEW.html`
+The five priorities are useful but read as one long text block. Repair with five visually separate action cards, strong rank markers, `Start here` emphasis on rank 1, compact field grids, clear label/value hierarchy, full-width uncertainty callouts, responsive one-column fallback, and print-safe card boundaries. Keep one authoritative sequence only.
 
-SHA-256:
+### HR-02 — introductory wording still exposes internal language
 
-`857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8`
+Replace:
 
-Audit ID:
+`These actions follow the governed priority order. Start at the top, then use Supporting Detail for the underlying evidence and implementation checks.`
 
-`8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
+With:
 
-The S02 render must not overwrite this artifact or mutate its already-governed persisted/canonical inputs.
+`Start with #1 and work down the list. Supporting Detail contains the deeper evidence and technical checks.`
 
-## Implemented bounded S02 behavior
+Simplify the heading hierarchy to:
+- kicker: `Priority Fixes`
+- H2: `What should you fix first?`
+- one short intro line
 
-Within the authorized presentation seam:
+### HR-03 — Priority 5 remains too technical
 
-- `Priority Fixes` owns one authoritative ranked client sequence;
-- `foundations` and deterministic `action-plan` are assigned to `Supporting Detail`;
-- Narrative Root Cause, Narrative Conversion, and Narrative Action Plan are assigned to `Supporting Detail`;
-- governed `plan.actions` ordering is unchanged;
-- primary S02 no longer depends on the old seven-column mechanics table;
-- primary client wording removes rule IDs, action classes, raw confidence/effort/rank mechanics and raw URL inventories;
-- evidence uncertainty remains bounded;
-- approved six peer client destinations plus one subordinate Supporting Detail destination remain unchanged;
-- Writer/Judge content and evidence lineage remain unchanged.
+Replace primary S02 wording with:
 
-## Deterministic audit decision
+- title/attention: `Some basic browser protections were not detected in the website response we tested.`
+- why: `These protections help reduce avoidable security risk in the browser.`
+- change: `Ask your developer or hosting provider to add the missing browser protections.`
+- where: `Website response tested`
+- verify: `Run the security check again and confirm the protections are present.`
 
-`S02_DETERMINISTIC_AUDIT_PASS`
+Supporting Detail may retain exact response-header terminology.
 
-All deterministic requirements required by RSIP v1.2.0 passed, including S02 content/prohibition checks, uncertainty/rank preservation, Client Truth integrity, six-peer navigation, Supporting Detail reachability, viewer switching/print behavior, broad closure, whole-app gate, and exact dirty-scope preservation.
+## Authorized repair boundary
 
-## Authorized REAL_REPORT_RENDER requirements
+Expected source boundary:
 
-Regenerate the actual TBK report offline from the already-governed persisted/canonical artifacts using the exact current dirty application candidate.
+- `services/worker/src/report/render-report-v2.js`
 
-Required proof:
+Preferred smallest test boundary:
 
-- preserve and re-hash the prior locked S01 HTML before render;
-- use the already-proven offline replay/render path in the current repository; do not invent or add a new render path;
-- no evidence recollection, provider/model call, production audit, or production mutation;
-- produce a new S02 review HTML in `C:\Users\kulba\Downloads` without overwriting the S01 artifact;
-- verify audit ID `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3` and Viewer `2.3.0`;
-- verify exactly six peer client destinations plus one subordinate `Supporting Detail`;
-- verify S01 locked top-three content/order remains unchanged in the new render;
-- verify S02 contains the new one-sequence Priority Fixes presentation, governed action order and bounded uncertainty;
-- verify Foundation Readiness, deterministic Action Plan and narrative detail remain reachable in Supporting Detail;
-- verify no canonical artifact changed;
-- verify normalized dirty-scope preservation and `git diff --check` PASS;
-- record new HTML SHA-256 and render proof;
-- stop before HUMAN_REVIEW.
+- `services/worker/src/report/render-report-v2.test.js`
 
-If the already-proven offline render inputs/path cannot be established exactly, or any render verification fails, return BLOCKED without editing application code or canonical data.
+This is presentation-only. If current local source proves another source file is required, STOP and return that exact file before editing it. If another test contains a directly stale S02 presentation assertion, STOP and return the exact assertion/file before expanding the test boundary.
 
-## Application environment
+## Important preservation rules
 
-- Application repository: `chriskulbaba2025/vantage-platform`.
-- Local application path: `C:\Users\kulba\Desktop\vantage-platform`.
-- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
-- Application branch: `p1/bounded-build-cross-report-integrity`.
-- Historical committed HEAD: `a9523ac3de98de76335a05304b60bec246242b65`.
-- HEAD alone does NOT identify the governed candidate because the intentional dirty P1/S01/S02 worktree remains part of the candidate.
+Do not change governed action order, scoring, evidence, Client Truth, `action-priority.js`, Writer/Judge objects or evidence lineage, S01 locked content/order, viewer navigation count/order/labels, Supporting Detail assignments, canonical artifacts, or production state.
 
-## Important constraints
-
-- preserve the exact intentional dirty P1/S01/S02 worktree;
-- no application or test edits during this render boundary;
-- no reset, clean, checkout overwrite, restore, destructive revert, stash, discard, or unrelated overwrite;
-- no canonical artifact mutation;
-- no evidence recollection;
-- zero live provider/model calls;
-- no new production audit;
-- no production mutation;
-- no application push, merge, commit, or deployment;
-- no unrelated scoring/evidence/lifecycle/Client Truth/Writer/Judge change;
-- do not reopen S01;
-- do not perform HUMAN_REVIEW or PASS_LOCK S02 in this stage.
+Preserve the intentional dirty P1/S01/S02 worktree. No reset, clean, restore, checkout-overwrite, destructive revert, stash, discard, push, merge, deploy, provider/model call, production audit, or production mutation.
 
 ## Exact next action
 
-Execute the authorized S02 `REAL_REPORT_RENDER` offline from the already-governed TBK persisted/canonical artifacts using the exact current dirty candidate. Produce a new S02 review HTML plus render proof in Downloads, verify artifact identity/content/navigation/immutability/scope, and stop.
+Execute the bounded S02 human-review presentation repair in the exact current dirty candidate. Run focused S02 tests, verify scope, rerender the same TBK audit offline from unchanged canonical inputs, and return a new HTML plus proof for final human review.
 
-Do not enter `HUMAN_REVIEW` until the new rendered artifact and proof are reviewed here.
+Do not PASS_LOCK S02 or activate S03 until the new rendered page scores >=95 with zero hard-gate failures.
 
 Last verified:
 2026-09-07
