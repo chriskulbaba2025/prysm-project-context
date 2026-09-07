@@ -4,36 +4,36 @@ Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
 Current viewer version: `2.3.0`
-Current active section: `S01 — Executive Scorecard`
+Current active section: `S02 — Priority Fixes`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — REAL_REPORT_RENDER REPAIR AUTHORIZED | 63 | Deterministic audit remains PASS. `contentIdeas` replay repair is verified (replay CLI 7/7, closure PASS, Full-System 87/87, diff/scope PASS). Real TBK replay then exposed a second historical compatibility boundary: persisted 2026-09-01 ScoreSet lacks `crossReportInterpretation`, which current hydration began requiring on 2026-09-02. Diagnosis proved the historical ScoreSet was valid when produced and current Client Truth v2 can be deterministically derived from persisted canonical inputs while preserving scores, root cause, decision hierarchy, finding count and IDs. Authorized seam remains only `scripts/replay-report.js` + `scripts/replay-report-cli.test.js`: derive/attach only the missing projection in memory with invariant checks; do not replace the whole model or canonical artifacts. After gates pass, rerender real TBK and stop before HUMAN_REVIEW. |
-| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. Carry-forward observation: detailed VAN-PERF-001 implementation wording should be reviewed here, not broadened into S01. |
-| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename in client navigation. |
-| S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING | NOT_STARTED | — | Remove from main menu; retain as supporting detail unless later governed decision removes it entirely. |
-| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename in client navigation. |
-| S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename in client navigation. |
-| S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | NOT_STARTED | — | Rename in client navigation. |
-| S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S12 | Performance | Website Speed & Performance | PRIMARY 07 | NOT_STARTED | — | Rename in client navigation. |
-| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | PRIMARY 08 | NOT_STARTED | — | Rename in client navigation. |
-| S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S15 | Evidence Appendix | Supporting Evidence | SUPPORTING | NOT_STARTED | — | Subordinate evidence destination. |
-| S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING | NOT_STARTED | — | Subordinate limitations destination. |
+| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. Locked real TBK artifact: `C:\Users\kulba\Downloads\PRYSM-S01-TBK-CURRENT-REVIEW.html`, SHA-256 `857CC9CAFF4127EE3A721BB72E3122FA0953FA946C362AE1E0111DD867E72BE8`. Final presentation repair, focused tests, deterministic closure, offline replay, HTML verification, and canonical immutability all PASS. Closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`. |
+| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **ACTIVE — BASELINE_AUDIT** | — | Exact next workstream. Review the actual current TBK Priority Fixes page from the locked S01 artifact before any code change. Carry-forward observation: detailed VAN-PERF-001 implementation wording belongs here, not on S01. |
+| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | NOT_STARTED | — | Rename/retain in client navigation. |
+| S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S12 | Performance | Website Speed & Performance | SUPPORTING DETAIL | NOT_STARTED | — | Moved from peer navigation to Supporting Detail under IA contract v1.1.0; evidence retained. |
+| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | SUPPORTING DETAIL | NOT_STARTED | — | Moved from peer navigation to Supporting Detail under IA contract v1.1.0; evidence retained. |
+| S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S15 | Evidence Appendix | Supporting Evidence | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
 
 ## RSIP execution order
 
 Primary client lane first:
 
-`S01 -> S02 -> S03 -> S05 -> S06 -> S07 -> S12 -> S13`
+`S01 -> S02 -> S03 -> S05 -> S06 -> S07`
 
 Supporting-detail lane second:
 
-`S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
+`S12 -> S13 -> S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
 
 ## Registry rules
 
@@ -43,5 +43,6 @@ Supporting-detail lane second:
 - The primary client lane is completed before the supporting-detail lane unless Chris explicitly approves a versioned change.
 - A locked section may reopen only under the RSIP evidence-based reopen rule.
 - Stable S## IDs are governance identifiers and are not renumbered when client navigation changes.
-- Primary client navigation must expose exactly the 8 PRIMARY rows, in PRIMARY order, using the approved client-facing labels.
-- SUPPORTING rows must remain reachable but may not appear as equal-weight primary navigation items.
+- Peer client navigation must expose exactly the 6 PRIMARY rows, in PRIMARY order, using the approved client-facing labels.
+- One visibly subordinate `Supporting Detail` destination contains all SUPPORTING DETAIL rows.
+- Supporting detail must remain reachable and evidence-preserving.
