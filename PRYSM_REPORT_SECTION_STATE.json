@@ -10,9 +10,45 @@
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S05",
   "activeSection": "Content Opportunities",
-  "stage": "BASELINE_AUDIT",
-  "status": "ACTIVE_BASELINE_AUDIT",
+  "stage": "BUILD_BOUNDARY_DIAGNOSIS",
+  "status": "ACTIVE_CONTRACT_APPROVED_BOUNDARY_DIAGNOSIS",
   "passThreshold": 95,
+  "baseline": {
+    "status": "COMPLETE",
+    "score": 58,
+    "hardGateFailures": 0,
+    "rootCause": "The Content Opportunities page is structured as a topical/content export rather than as a prioritized client decision page.",
+    "proof": "proof/report-sections/S05-content-opportunities/S05_BASELINE_AUDIT.md"
+  },
+  "contract": {
+    "status": "APPROVED_FOR_BUILD_BOUNDARY_DIAGNOSIS",
+    "kicker": "Content Opportunities",
+    "h2": "What content would help buyers move forward?",
+    "primaryBlocks": [
+      "What is already helping buyers",
+      "Where decision support is thin",
+      "What to create or improve first"
+    ],
+    "opportunityCardFields": [
+      "buyer question / need",
+      "buyer stage",
+      "why it matters",
+      "recommended asset",
+      "journey connection",
+      "intended decision-support role",
+      "evidence qualification"
+    ],
+    "rules": [
+      "Preserve governed opportunity order; do not recompute ranking.",
+      "Make the first opportunity visually obvious without creating a new scoring system.",
+      "Distinguish current strength, evidence-backed gap, and qualified opportunity.",
+      "Keep search-intent and raw topical/technical detail subordinate and move it to Supporting Detail where possible.",
+      "Preserve PARTIAL content-body scope and unassessed-page uncertainty.",
+      "Search demand or competitor presence alone must not create a recommendation.",
+      "Do not claim traffic, rankings, revenue, conversion uplift, or search volume without evidence.",
+      "Primary pages interpret. Deeper pages explain."
+    ]
+  },
   "lockedPreviousSections": [
     {
       "sectionId": "S01",
@@ -37,53 +73,28 @@
       "status": "PASS_LOCKED",
       "score": 97,
       "hardGateFailures": 0,
-      "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html",
+      "reviewArtifact": "C:\\Users\\kulbaba\\Downloads\\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html",
       "reviewArtifactSha256": "A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB",
       "closureArtifact": "proof/report-sections/S03-conversion-journey/S03_CLOSURE.md",
-      "verification": {
-        "focused": "15_PASS_0_FAIL",
-        "completeRegression": "92_PASS_0_FAIL",
-        "gitDiffCheck": "PASS",
-        "dirtyPathCount": 26,
-        "canonicalImmutability": "PASS",
-        "offlineReplay": "1_PASS_0_FAIL",
-        "providerModelCalls": 0,
-        "productionMutations": 0,
-        "pushMergeDeployCommit": 0
-      },
       "lockedNarrativeRule": "Primary pages interpret. Deeper pages explain."
     }
   ],
-  "activeBaselineObjective": {
-    "sectionId": "S05",
-    "clientFacingLabel": "Content Opportunities",
-    "questions": [
-      "What buyer questions/content needs are already covered?",
-      "Which content gaps are commercially meaningful?",
-      "What content should be created or improved first?",
-      "How does each opportunity support conversion or buyer decision-making?",
-      "Where should each recommended content asset connect in the journey?",
-      "What is evidence-backed versus inference/opportunity-level?",
-      "What remains unknown because content-body evidence is PARTIAL?"
-    ],
-    "challenge": [
-      "technical or system language",
-      "generic content-idea lists",
-      "duplicated opportunities",
-      "mechanically generated titles",
-      "weak prioritization",
-      "tables that do not help a client decide what to create next"
-    ]
-  },
+  "likelyOwnershipToDiagnose": [
+    "services/worker/src/report/render-report-v2.js",
+    "services/worker/src/report/render-report-v2-sections.test.js",
+    "services/worker/src/report/render-report-v2.test.js",
+    "services/worker/src/report/render-narrative-v2.js",
+    "services/worker/src/report/render-narrative-v2.test.js"
+  ],
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
-    "localPath": "C:\\Users\\kulba\\Desktop\\vantage-platform",
-    "workerPath": "C:\\Users\\kulba\\Desktop\\vantage-platform\\services\\worker",
+    "localPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform",
+    "workerPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform\\services\\worker",
     "branch": "p1/bounded-build-cross-report-integrity",
     "historicalCommittedHead": "a9523ac3de98de76335a05304b60bec246242b65",
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Perform S05 baseline human-review audit only against the current TBK Content Opportunities page. Return baseline score, hard-gate count, root cause, CRO/content-strategy blind spots, UX/UI defects, evidence-integrity defects/limitations, minimum approved client outcome, and bounded S05 contract proposal. Do not edit application code until the baseline and contract are approved.",
+  "nextAllowedAction": "Perform S05 build-boundary diagnosis only. Inspect the five likely ownership files and return exact rendering ownership, exact stale tests, whether render-narrative-v2.js requires editing or inspection only, any additional source/test file required, exact bounded build scope, and proposed verification commands. Do not edit application code, tests, or report artifacts; do not rerender.",
   "lastUpdated": "2026-09-07"
 }
