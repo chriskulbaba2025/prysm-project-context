@@ -3,21 +3,21 @@
   "viewerVersion": "2.3.0",
   "targetViewerVersion": "2.3.0",
   "informationArchitectureContract": "PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md",
-  "informationArchitectureStatus": "DETERMINISTIC_AUDIT_PASS_REAL_RENDER_BLOCKED_SCORESET_COMPATIBILITY",
+  "informationArchitectureStatus": "DETERMINISTIC_AUDIT_PASS_REAL_RENDER_BLOCKED_BOUNDED_REPLAY_REPAIR_AUTHORIZED",
   "primaryNavigationTargetCount": 8,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07", "S12", "S13"],
   "supportingExecutionOrder": ["S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S01",
   "activeSection": "Executive Scorecard",
   "stage": "REAL_REPORT_RENDER",
-  "status": "ACTIVE_BLOCKED_SCORESET_COMPATIBILITY_DIAGNOSIS",
+  "status": "ACTIVE_BOUNDED_REPLAY_COMPATIBILITY_REPAIR_AUTHORIZED",
   "contractStatus": "APPROVED_V1_1",
   "baselineStatus": "COMPLETE_FAIL",
-  "sourceBoundaryStatus": "VERIFIED_FOR_S01_BUILD_DIAGNOSIS_REQUIRED_FOR_REAL_RENDER_COMPATIBILITY",
-  "repairPlanStatus": "COMPLETE_BUILD_AUTHORIZED",
+  "sourceBoundaryStatus": "VERIFIED_S01_BUILD_AND_SCORESET_COMPATIBILITY_REPAIR",
+  "repairPlanStatus": "BOUNDED_REPLAY_COMPATIBILITY_REPAIR_AUTHORIZED",
   "buildStatus": "FOCUSED_PASS_100_OF_100",
   "deterministicAuditStatus": "PASS",
-  "realReportRenderStatus": "BLOCKED_SCORESET_COMPATIBILITY",
+  "realReportRenderStatus": "BLOCKED_PENDING_AUTHORIZED_REPLAY_COMPATIBILITY_REPAIR",
   "humanReviewStatus": "PENDING",
   "score": 63,
   "passThreshold": 95,
@@ -28,6 +28,7 @@
   "closureRerunAddendum": "proof/report-sections/S01-executive-scorecard/S01_CLOSURE_RERUN_TEST_MIGRATION_ADDENDUM.md",
   "closureRerun2Proof": "proof/report-sections/S01-executive-scorecard/S01_CLOSURE_RERUN_2_PROOF.md",
   "realReportRenderProof": "proof/report-sections/S01-executive-scorecard/S01_REAL_REPORT_RENDER_PROOF.md",
+  "scoreSetCompatibilityDiagnosis": "proof/report-sections/S01-executive-scorecard/S01_SCORESET_COMPATIBILITY_DIAGNOSIS.md",
   "focusedBuildTestResult": {
     "tests": 100,
     "pass": 100,
@@ -72,6 +73,18 @@
     "scopeChangedByRenderAttempt": false,
     "liveProviderCalls": 0
   },
+  "scoreSetCompatibilityDiagnosisResult": {
+    "status": "COMPLETE",
+    "canonicalValidUnderProductionEraContract": true,
+    "currentSchemaIntroducedAfterPersistedScoreSet": true,
+    "deterministicReconstructionAvailable": true,
+    "reconstructedRows": 13,
+    "legacySemanticMismatches": 0,
+    "providerCallsRequired": false,
+    "existingCurrentReplayMigration": false,
+    "lowestRiskRepair": "IN_MEMORY_REPLAY_CONTENTIDEAS_REDERIVATION_BEFORE_CURRENT_SCORESET_VALIDATION",
+    "diagnosisScopeVerification": "PASS_ZERO_NEW_REPOSITORY_MODIFICATIONS"
+  },
   "authorizedBuildFiles": [
     "src/report/render-report-v2.js",
     "src/report/render-report-v2-section-viewer.test.js",
@@ -85,6 +98,10 @@
     "src/application/narrative-v2-production-path.test.js",
     "scripts/replay-report-cli.test.js"
   ],
-  "nextAllowedAction": "READ-ONLY DIAGNOSIS ONLY. Compare the persisted TBK canonical/scores.json contentIdeas shape to the exact current ScoreSet schema, current contentIdeas/ScoreSet producer, replay validation/hydration path, and any existing governed compatibility or deterministic re-derivation seam from already-persisted canonical evidence. Establish the exact originating mismatch and lowest-risk supported repair boundary. Do not edit application code, tests, schemas, canonical artifacts, or generated evidence; do not rerender yet. No provider/model calls, new audit, production mutation, push, merge, deploy, reset, clean, checkout-overwrite, or discard. Return one append-only Downloads diagnostic proof and stop for repair-boundary review.",
+  "authorizedReplayCompatibilityRepairFiles": [
+    "scripts/replay-report.js",
+    "scripts/replay-report-cli.test.js"
+  ],
+  "nextAllowedAction": "Implement only the authorized replay-boundary in-memory contentIdeas normalization/re-derivation in scripts/replay-report.js, reusing the existing deterministic contentIdeas producer with persisted audit-request.json and decision-evidence.json. Leave already-current enriched ScoreSets unchanged; fail closed for unsupported/malformed shapes; never mutate canonical scores.json; keep --legacy-compat semantics unchanged. Add only bounded regression coverage in scripts/replay-report-cli.test.js. Then run targeted replay CLI tests, npm run verify:prysm-closure, git diff --check, and normalized scope verification. If every gate passes, immediately rerender the real TBK report from unchanged canonical artifacts, verify Viewer 2.3.0 / Executive Scorecard / exactly 8 primary destinations / subordinate supporting destinations / no old A. Conversion Readiness heading / no duplicate What Is Already Good section, compute HTML SHA-256 and canonical input hashes, and stop before HUMAN_REVIEW. No schema, producer, renderer, scoring, canonical artifact, provider/model, production, push, merge, deploy, reset, clean, checkout-overwrite, or discard changes are authorized.",
   "lastUpdated": "2026-09-07"
 }
