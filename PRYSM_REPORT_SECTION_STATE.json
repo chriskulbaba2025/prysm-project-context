@@ -11,18 +11,21 @@
   "activeSectionId": "S02",
   "activeSection": "Priority Fixes",
   "stage": "BUILD",
-  "status": "ACTIVE_BLOCKED",
+  "status": "ACTIVE",
   "contractStatus": "APPROVED_FROZEN_FOR_BUILD",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED_PASS",
   "repairPlanStatus": "COMPLETE",
-  "buildStatus": "FOCUSED_PASS_TEST_ONLY_REPAIR_AWAITING_AUTHORIZATION",
+  "buildStatus": "FOCUSED_PASS_TEST_ONLY_REPAIR_AUTHORIZED",
   "focusedBuildGate": "83_PASS_0_FAIL",
   "verifyOnlyGateBeforeDiagnosis": "13_PASS_5_FAIL",
   "verifyOnlyDiagnosisStatus": "PASS_ALL_STALE_ASSERTIONS",
   "verifyOnlyStaleAssertionCount": 5,
   "verifyOnlyGenuineRegressionCount": 0,
-  "gitDiffCheck": "PASS_EXIT_0",
+  "testOnlyRepairAuthorized": true,
+  "testOnlyRepairAuthorizedBy": "Chris",
+  "testOnlyRepairAuthorizationDate": "2026-09-07",
+  "gitDiffCheck": "PASS_EXIT_0_AT_PRIOR_BUILD_CHECKPOINT",
   "deterministicAuditStatus": "BLOCKED_NOT_AUTHORIZED",
   "realReportRenderStatus": "BLOCKED_NOT_STARTED",
   "humanReviewStatus": "NOT_STARTED",
@@ -69,9 +72,8 @@
     "genuineRegression": false,
     "reason": "Three assertions require the superseded Section E heading; two apply a whole-document unknown prohibition that now rejects required bounded S02 uncertainty outside the internal-link surface."
   },
-  "nextRepairBoundary": {
+  "authorizedTestOnlyRepairBoundary": {
     "type": "TEST_ONLY",
-    "authorizationRequired": true,
     "files": [
       "services/worker/src/report/render-report-v2-sections.test.js",
       "services/worker/src/report/karen-style-regression.test.js"
@@ -81,7 +83,9 @@
       "Replace obsolete E. What should be fixed first? expectations with the frozen S02 Priority Fixes marker",
       "Scope IL-03 and IL-04 unknown assertions to the internal-link surface or direct internal-link markers",
       "Preserve substantive internal-link coverage",
-      "Rerun only the verify-only gate"
+      "Rerun only the verify-only gate",
+      "Verify no application source file changed",
+      "Run git diff --check and return proof"
     ]
   },
   "prohibitedBuildFiles": [
@@ -113,6 +117,6 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Chris explicitly authorizes the bounded two-file test-only repair in render-report-v2-sections.test.js and karen-style-regression.test.js. After authorization, change only the five stale assertions identified in S02_VERIFY_ONLY_DIAGNOSIS.md, rerun only the verify-only gate, verify no source file changed, run git diff --check, and return proof. Do not advance to DETERMINISTIC_AUDIT or rerender the real TBK report until that gate passes and is reviewed.",
+  "nextAllowedAction": "Execute the explicitly authorized two-file test-only repair in render-report-v2-sections.test.js and karen-style-regression.test.js. Change only the five stale assertions identified in S02_VERIFY_ONLY_DIAGNOSIS.md, rerun only the verify-only gate, verify no application source file changed, run git diff --check, write proof outside both repositories, and stop. Do not advance to DETERMINISTIC_AUDIT or rerender the real TBK report until the repaired verify-only gate passes and is reviewed.",
   "lastUpdated": "2026-09-07"
 }
