@@ -8,7 +8,7 @@ Current active section: `S01 — Executive Scorecard`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — REAL_REPORT_RENDER | 63 | Focused BUILD 100/100 PASS. Broad deterministic closure PASS: worker 993/993, application 82/82, Narrative 114/114, lifecycle 57/57, Full-System 87/87, replay CLI 4/4, Whole-App P-B01..P-B16 PASS, closure exit 0, diff/scope PASS. Actual TBK offline render is next. |
+| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — REAL_REPORT_RENDER BLOCKED | 63 | Deterministic audit PASS: worker 993/993, application 82/82, Narrative 114/114, lifecycle 57/57, Full-System 87/87, replay CLI 4/4, Whole-App P-B01..P-B16 PASS, closure exit 0, diff/scope PASS. Real TBK replay then failed closed because persisted `canonical/scores.json` `/contentIdeas/tofu/0` lacks current required fields `stage`, `topic`, `whyItMatters`, `currentEvidence`, `gap`. No HTML produced and no repo change. Read-only compatibility diagnosis is exact next action. |
 | S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. Carry-forward observation: detailed VAN-PERF-001 implementation wording should be reviewed here, not broadened into S01. |
 | S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename in client navigation. |
 | S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING | NOT_STARTED | — | Remove from main menu; retain as supporting detail unless later governed decision removes it entirely. |
