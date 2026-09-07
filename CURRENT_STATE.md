@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Execute the bounded `S01 — Executive Scorecard` BUILD under RSIP, including the approved 8-item client-first primary navigation / supporting-detail migration, while preserving the locally closed P1 Client Truth/evidence-integrity repair and intentional dirty application worktree.
+Complete the broad deterministic audit for `S01 — Executive Scorecard` under RSIP after the focused bounded BUILD passed, while preserving the locally closed P1 Client Truth/evidence-integrity repair and intentional dirty application worktree.
 
 Verified checkpoint:
 - Active P#: `P1 — Cross-Report Contradiction Integrity`.
@@ -18,27 +18,28 @@ Verified checkpoint:
 - Section registry: `PRYSM_REPORT_SECTION_REGISTRY.md`.
 - Machine state: `PRYSM_REPORT_SECTION_STATE.json`.
 - Active section: `S01 — Executive Scorecard`.
-- Active RSIP stage: `BUILD`.
+- Active RSIP stage: `DETERMINISTIC_AUDIT`.
 - S01 contract revision 1.1: APPROVED.
 - S01 direct-render baseline: COMPLETE at `63/100 — FAIL — 2 hard gates`.
 - Baseline TBK HTML SHA-256: `a3532fe9847f8779580c8dac91e77fbf44421b96b7172bf79bd3adf7c904661f`.
 - S01 source-boundary proof: COMPLETE at `proof/report-sections/S01-executive-scorecard/S01_SOURCE_BOUNDARY_PROOF.md`.
 - S01 repair plan: COMPLETE — BOUNDED BUILD AUTHORIZED at `proof/report-sections/S01-executive-scorecard/S01_REPAIR_PLAN.md`.
+- S01 deterministic proof artifact opened at `proof/report-sections/S01-executive-scorecard/S01_DETERMINISTIC_PROOF.md`.
 
-Exact local candidate identity at source-boundary capture:
-- Application branch: `p1/bounded-build-cross-report-integrity`.
-- Local HEAD: `a9523ac3de98de76335a05304b60bec246242b65`.
-- HEAD alone does NOT identify the repaired candidate because the P1 repair remains an intentional dirty local worktree.
-- The read-only source diagnostic confirmed the current dirty boundary and must not be reset/cleaned/discarded.
+Focused S01 BUILD proof — VERIFIED PASS:
+- branch: `p1/bounded-build-cross-report-integrity`
+- HEAD: `a9523ac3de98de76335a05304b60bec246242b65`
+- HEAD alone does NOT identify the repaired candidate because the repair remains an intentional dirty worktree.
+- focused authorized tests: `100/100 PASS`, `0 FAIL`, `0 SKIP`.
+- focused test exit code: `0`.
+- `git diff --check` exit code: `0`.
+- LF/CRLF working-copy warnings were emitted but did not fail the gate.
+- viewer presentation version: `2.3.0`.
+- report-data/scoring contract version: unchanged.
+- no unexpected application paths newly modified by the S01 build.
+- no provider/model calls, production mutation, push, merge, or deployment.
 
-Verified S01 / viewer ownership:
-- `src/report/render-report-v2.js` owns `executiveScorecard(...)`, `REPORT_V2_VIEWER_PAGES`, primary sidebar rendering, serialized viewer config, hash/page switching, and current-page print behavior.
-- Executive top-three actions come from existing `buildActionPlan(...).actions.slice(0, 3)`.
-- Priority source fields are `finding.title` / `finding.businessImpact` / `finding.recommendation`; ordering remains owned by `buildActionPlan`.
-- Current separate S01 strengths duplication comes from `strengthsSection(...)` being rendered and mapped into Executive Scorecard via `sectionIds: ["executive", "strengths"]`.
-- `VAN-PERF-001` detailed `render-blocking` recommendation originates in `score-components.js`. S01 must translate it to bounded executive language; do not modify the underlying scoring/finding contract during this build.
-
-Approved report-wide navigation target:
+Approved report-wide navigation target implemented in focused BUILD:
 
 PRIMARY — exactly 8 peer client destinations:
 1. Executive Scorecard
@@ -60,66 +61,39 @@ SUPPORTING — subordinate behind **Supporting Evidence / Technical Detail**:
 - Supporting Evidence
 - Assessment Limitations
 
-Implementation principle:
-- retain all 16 conceptual destinations as addressable viewer pages so supporting detail remains reachable/printable;
-- classify pages into 8 PRIMARY + 8 SUPPORTING;
-- render only the 8 PRIMARY pages as equal-weight client navigation;
-- retain stable pageIds where possible;
-- viewer presentation version target: `2.3.0` (from `2.2.0`); do not change evidence/scoring/report-data contract solely for this migration.
+Focused BUILD proof established:
+- 16 conceptual destinations remain addressable;
+- 8 PRIMARY + 8 SUPPORTING tiers;
+- 8 peer primary links + 8 subordinate reachable links;
+- deterministic hash navigation and invalid-hash fallback;
+- current-page print/PDF isolation;
+- left navigation retained;
+- all governed section content remains in one artifact;
+- byte-identical deterministic rendering;
+- consolidated executive positives require assessed evidence;
+- focused conversion/evidence-integrity regressions pass.
 
-Authorized S01 BUILD file boundary:
-
-Application code:
-- `src/report/render-report-v2.js`
-
-Tests allowed for this exact migration:
-- `src/report/render-report-v2-section-viewer.test.js`
-- `src/report/render-report-v2-conversion.test.js`
-- `src/report/render-report-v2.test.js`
-- `src/report/render-report-v2-sections.test.js`
-- `src/report/karen-style-regression.test.js`
-- `src/report/render-narrative-v2.test.js`
-
-No other application file is authorized unless a new deterministic failure proves the seam is incomplete and the repair plan is reopened first.
-
-Required BUILD outcome:
-- S01 exact six-part client hierarchy;
-- Conversion Readiness sole primary score;
-- Evidence Confidence secondary;
-- Evidence Coverage rendered as plain assessment-coverage limitation rather than peer metric;
-- up to three priorities, each with Problem / Why it matters / Action together;
-- priority order unchanged from governed action plan;
-- plain executive language (`Main content takes too long to appear on mobile`, `Search-result descriptions`, no LCP/render-blocking/meta-description mechanics on S01);
-- FAQ/search-description uncertainty remains bounded to assessed/available scope;
-- exactly one `What is already working well?` section;
-- no S01 `What Is Already Good` section;
-- supporting-detail pointer present;
-- exactly 8 primary nav items with approved order/labels;
-- exactly 8 supporting destinations subordinate but reachable;
-- viewer hash/back-forward/invalid-hash fallback/print behavior retained.
-
-Tests-first proof requirement:
-1. encode the approved S01 + viewer contract in the authorized tests before implementation change;
-2. run focused tests against old implementation and preserve expected failures proving the old output violates the new contract;
-3. then change only the authorized renderer seam;
-4. rerun focused tests to PASS;
-5. verify no unexpected application paths changed and `git diff --check` passes;
-6. stop and return focused proof before broad deterministic audit.
+Verified S01 / viewer ownership:
+- `src/report/render-report-v2.js` owns `executiveScorecard(...)`, `REPORT_V2_VIEWER_PAGES`, primary/sidebar rendering, serialized viewer config, hash/page switching, and current-page print behavior.
+- Executive top-three actions come from existing `buildActionPlan(...).actions.slice(0, 3)`.
+- Priority source fields remain `finding.title` / `finding.businessImpact` / `finding.recommendation`; ordering remains owned by `buildActionPlan`.
+- `VAN-PERF-001` detailed `render-blocking` recommendation originates in `score-components.js`; S01 only translates it to bounded executive language. The underlying finding/scoring contract remains unchanged.
 
 Deferred S02 observation:
-- `VAN-PERF-001` detailed recommendation contains `remove render-blocking work` while direct finding evidence shown is slow mobile LCP. S01 will use a bounded executive summary. Re-examine the detailed implementation wording when `S02 — Priority Fixes` becomes ACTIVE; do not broaden S01 early.
+- `VAN-PERF-001` detailed recommendation contains `remove render-blocking work` while direct finding evidence shown is slow mobile LCP. Re-examine that detailed implementation wording when `S02 — Priority Fixes` becomes ACTIVE; do not broaden S01.
 
 Current environment:
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Local application path: `C:\Users\kulba\Desktop\vantage-platform`.
 - Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Application branch: `p1/bounded-build-cross-report-integrity`.
 - Live TBK audit ID: `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`.
 - Read-only production audit export: `C:\Users\kulba\Downloads\PRYSM-LIVE-AUDIT-8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`.
 - Reviewed baseline report artifact: `PRYSM-P1-REPAIRED-TBK-REPORT.html`.
 
 Blocked:
 - S02 remains blocked until S01 is `PASS_LOCKED`.
-- Broad deterministic audit is blocked until focused S01 BUILD proof passes.
+- Real TBK regeneration and HUMAN_REVIEW are blocked until the broad deterministic audit passes.
 - No known P1 product-code blocker remains from the prior closure.
 
 Important constraints:
@@ -130,11 +104,11 @@ Important constraints:
 - No application push, merge, or deployment.
 - No P2.
 - No Betty Final Audit before the required human review/Brad boundary passes.
-- Do not claim repaired candidate is identified by `a9523ac...`.
+- Do not claim repaired candidate is identified by `a9523ac...` alone.
 - Exactly one RSIP section remains ACTIVE.
 
 Exact next action:
-Execute the tests-first bounded S01 BUILD using only the authorized file boundary. Capture the expected pre-implementation focused FAIL, then implement the S01 + 8-primary/8-supporting viewer repair in `render-report-v2.js`, rerun the focused authorized tests to PASS, run `git diff --check`, prove no unexpected files changed, and return the focused proof. Do not run broad closure yet.
+Run the broad deterministic S01 audit on the exact current intentional dirty worktree. It must include the complete worker suite, `npm run verify:prysm-closure`, required Whole-App/P1 closure gates, CR-43/hash procedure if required by the current governed output change, `git diff --check`, and scope verification that no unexpected application files were newly modified by S01. No provider/model calls, production mutation, push, merge, deploy, reset, clean, or discard. Capture one uploadable TXT proof and stop before regenerating the TBK report.
 
 Last verified:
 2026-09-07
