@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Begin `S02 — Priority Fixes` under RSIP with a clean BASELINE_AUDIT of the actual current TBK Priority Fixes page. Do not edit application code until the S02 baseline and contract/repair plan establish the bounded seam.
+Complete `S02 — Priority Fixes` CONTRACT review after the actual TBK baseline established that the page exposes audit machinery and client actions as equal-weight content. No application edit is authorized until the S02 contract is approved/frozen and a bounded REPAIR_PLAN establishes the exact local source/test seam.
 
 ## Verified checkpoint
 
@@ -16,15 +16,15 @@ Begin `S02 — Priority Fixes` under RSIP with a clean BASELINE_AUDIT of the act
 - RSIP version: `1.2.0` — `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`.
 - Report-wide IA contract version: `1.1.0` — `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`.
 - Viewer presentation version: `2.3.0`.
-- `S01 — Executive Scorecard`: **PASS_LOCKED**.
-- S01 human-review score: **98/100**.
-- S01 hard-gate failures: **0**.
-- S01 human review: `proof/report-sections/S01-executive-scorecard/S01_HUMAN_REVIEW.md`.
-- S01 closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`.
+- `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: `BASELINE_AUDIT`.
+- Active S02 stage: `CONTRACT`.
+- S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
+- S02 baseline artifact: `proof/report-sections/S02-priority-fixes/S02_BASELINE_AUDIT.md`.
+- S02 contract draft: `proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`.
+- S02 application source boundary remains unopened; no application edit has been authorized or made for S02.
 
-## Locked S01 review artifact
+## Locked review artifact
 
 Actual current TBK report:
 
@@ -40,36 +40,63 @@ Audit ID:
 
 This artifact was regenerated offline from unchanged persisted/canonical TBK inputs. No live provider/model calls or new production audit were used.
 
-## S01 final verification
+## S02 baseline result
 
-- final focused report/viewer/narrative tests: `100 PASS / 0 FAIL`;
-- `npm run verify:prysm-closure`: PASS, exit `0`;
-- lifecycle: `57/57 PASS`;
-- Full-System Acceptance: `87/87 PASS`;
-- replay CLI within closure: `10/10 PASS`;
-- Whole-App tranche: PASS;
-- closure machine gate: PASS;
-- `git diff --check`: PASS, exit `0`;
-- normalized scope: PASS; exact intentional 25-path dirty worktree;
-- real TBK offline replay: `1/1 PASS`;
-- actual final HTML verification: PASS;
-- canonical immutability: PASS;
-- no unexpected new application path;
-- no live provider/model calls.
+The actual rendered Priority Fixes page currently presents multiple competing client-decision structures:
 
-Final canonical hashes remained byte-identical:
+1. ranked Priority Findings;
+2. `First Things First — Foundational Readiness`;
+3. Client Action Plan / Do Now / Do Next;
+4. Root Cause / Business consequences;
+5. another Action plan.
 
-- `audit-request.json` — `5C68536472CDB51FC62A93391E1CD26148CA98A5AD7F8258FE22B5028FA11DAC`
-- `decision-evidence.json` — `1EB55D73E6AB5F8FA575E879EF818052459CA3E7CA3CD52D25D9221B12AA40E7`
-- `capability-evidence.json` — `A6DDAA99F1F05991A390295E96FEE071291B0682127E69D6FA07D8F1FB7C5D60`
-- `scores.json` — `CE8C22594F2B065A92A1D1E3C9AACF05C9003936812657F4503F8F9A30675BCE`
-- `findings.json` — `DD913D1B4EC435CFBA742FAB028A02B54E603F71EEA873E336127159D6754074`
+The governed ranked order itself is broadly correct and remains consistent with locked S01:
+
+1. mobile main-content loading performance;
+2. buyer-question content, bounded to assessed scope;
+3. search-result descriptions on assessed pages;
+4. heading structure;
+5. assessed security headers.
+
+The page fails because the same action story is repeated through dense tables and internal mechanics such as rule IDs, action classes, confidence wording, raw effort codes, long URL inventories, LCP/render-blocking terminology, and detailed implementation/verification language.
+
+Evidence integrity remains strong: PARTIAL/UNAVAILABLE states are preserved and unassessed scope is not upgraded into confirmed defects.
+
+### S02 baseline score
+
+- Client decision clarity: `16/25`
+- Actionability: `15/20`
+- Plain-language readability: `7/15`
+- Evidence integrity: `20/20`
+- Information hierarchy / scanability: `3/10`
+- Cross-report consistency: `6/10`
+- Total: **67/100**
+
+### S02 hard-gate failures
+
+1. material machine/technical language obstructs intended non-technical client understanding;
+2. `First Things First — Foundational Readiness` creates a competing priority hierarchy against the governed ranked action order.
+
+## S02 contract direction
+
+The contract draft requires **one authoritative ranked client action sequence**.
+
+Each supported priority must communicate:
+
+1. What needs attention
+2. Why it matters
+3. What to change
+4. Where it applies
+5. How to confirm it improved
+6. Material uncertainty, only when required
+
+Rule IDs, internal classes, raw confidence/effort mechanics, long URL inventories, foundation matrices, and detailed implementation/technical verification belong in `Supporting Detail`.
+
+Foundational Readiness must not create a second independent priority list. If a foundation materially changes governed action order, it must appear in the same ranked sequence; otherwise it remains supporting detail.
 
 ## Approved client navigation
 
-Chris explicitly approved the shorter client navigation during S01 human review.
-
-Peer client destinations are now exactly:
+Peer client destinations remain exactly:
 
 1. Executive Scorecard
 2. Priority Fixes
@@ -82,20 +109,18 @@ One visibly subordinate destination remains:
 
 `Supporting Detail`
 
-Supporting Detail retains Website Speed & Performance, Mobile & Accessibility, Conversion Readiness Detail, CMS/Platform, Technical SEO, Heading/Structure, Schema/Entity, Internal-Link Detail, Supporting Evidence, and Assessment Limitations.
-
-This is an information-architecture/presentation decision only; no underlying evidence or score was removed.
+No S02 work is authorized to reopen or alter this navigation contract.
 
 ## Application environment
 
 - Application repository: `chriskulbaba2025/vantage-platform`.
-- Local application path: `C:\Users\kulba\Desktop\vantage-platform`.
-- Worker path: `C:\Users\kulba\Desktop\vantage-platform\services\worker`.
+- Local application path: `C:\Users\kulbaba\Desktop\vantage-platform`.
+- Worker path: `C:\Users\kulbaba\Desktop\vantage-platform\services\worker`.
 - Application branch: `p1/bounded-build-cross-report-integrity`.
 - Historical committed HEAD: `a9523ac3de98de76335a05304b60bec246242b65`.
 - HEAD alone does NOT identify the governed candidate because the intentional dirty P1/S01 worktree remains part of the candidate.
 
-## Preservation constraints
+## Important constraints
 
 - preserve the exact intentional dirty P1/S01 worktree;
 - no reset, clean, checkout overwrite, destructive revert, discard, or unrelated overwrite;
@@ -106,41 +131,16 @@ This is an information-architecture/presentation decision only; no underlying ev
 - no production mutation;
 - no application push, merge, or deployment;
 - no unrelated scoring/evidence/lifecycle change;
-- do not reopen S01 without satisfying the RSIP reopen rule.
-
-## S02 baseline source
-
-Use the locked actual TBK artifact above and review the `Priority Fixes` viewer destination, which currently contains the governed sections:
-
-- `blockers`
-- `foundations`
-- `action-plan`
-
-Carry-forward observation from S01:
-Detailed implementation language for `VAN-PERF-001` belongs in S02 and should be reviewed here for client usefulness, rather than pushed back onto the Executive Scorecard.
+- do not reopen S01 without satisfying the RSIP reopen rule;
+- no S02 application edit until contract approval/freeze + bounded REPAIR_PLAN + explicit application-edit authorization.
 
 ## Exact next action
 
-Perform `S02 — Priority Fixes / BASELINE_AUDIT` only.
+Review and approve/freeze:
 
-Using the actual locked TBK report artifact, record:
+`proof/report-sections/S02-priority-fixes/S02_CONTRACT.md`
 
-- current headings and information order;
-- the ranked findings and whether the priority order is understandable;
-- what each row tells the client to change;
-- whether technical implementation wording is too detailed or too vague;
-- duplication between Priority Findings, Foundational Readiness, and Client Action Plan;
-- evidence limitations and uncertainty language;
-- any client-facing system/mechanical terminology;
-- any contradictions with S01 or Client Truth;
-- scanability and usefulness;
-- universal RSIP score out of 100;
-- hard-gate failures, if any.
-
-No application edit is authorized during S02 BASELINE_AUDIT.
-
-Next handoff:
-`HANDOFF_PRYSM_S02_PRIORITY_FIXES_BASELINE_START_2026-09-07.md`
+Do not move to REPAIR_PLAN or BUILD until Chris explicitly approves this S02 contract boundary.
 
 Last verified:
 2026-09-07
