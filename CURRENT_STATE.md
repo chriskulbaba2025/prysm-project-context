@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete the final `S03 — Conversion Journey` human-review UX/UI repair. The bounded build and wording repair passed deterministic verification, but Chris rejected the journey visual as visually stunted and not acceptable for client-facing UX.
+Complete the final `S03 — Conversion Journey` executive narrative bridge repair, then return the same TBK page for final human review.
 
 ## Verified checkpoint
 
@@ -21,41 +21,108 @@ Complete the final `S03 — Conversion Journey` human-review UX/UI repair. The b
 - S03 contract: **APPROVED — FROZEN FOR BUILD**.
 - S03 bounded build: **PASS**.
 - S03 wording repair: **PASS**.
+- S03 CRO depth/story repair: **PASS**.
+- S03 final CRO story + visual polish: **PASS**.
 - Latest complete S03 regression: **92/92 PASS**.
 - Canonical inputs remained byte-identical.
-- Latest S03 artifact: `C:\Users\kulba\Downloads\PRYSM-S03-TBK-HUMAN-REVIEW-2.html`.
-- Latest S03 artifact SHA-256: `2D6B4459BCF43BB68EFC037B89BADBEEEE2B90819016B79253A2D57C1311DD5C`.
-- Current S03 stage: **HUMAN_REVIEW — UX/UI REPAIR REQUIRED / PRESENTATION REPAIR AUTHORIZED**.
+- Latest S03 artifact: `C:\Users\kulba\Downloads\PRYSM-S03-TBK-CRO-FINAL-REVIEW.html`.
+- Latest S03 artifact SHA-256: `1B350CEDE0ED198A3EDA849845C8D93D8C810584CDE626403013B28C480EB8B6`.
+- Current S03 stage: **HUMAN_REVIEW — EXECUTIVE NARRATIVE BRIDGE REPAIR AUTHORIZED**.
 
-## Human-review defect
+## Current human-review conclusion
 
-### HR-UX-01 — journey visual is visually stunted and not client-grade
+The current S03 CRO page is materially stronger and now tells a conversion story, but Chris wants one additional executive-level bridge so the page interprets how content, trust, and performance support the journey and then directs the client to the deeper report page.
 
-The current horizontal SVG uses three small boxes with excessive empty canvas and weak visual hierarchy. Even with plain-language labels, it reads like a technical diagram rather than a polished client journey.
+This is not a request to duplicate other report pages. The governing pattern is:
 
-Required repair:
-- use the full available content width;
-- replace the small-box diagram with a visually substantial three-step journey/stepper;
-- each step should have a strong numbered marker, concise title, and short supporting line;
-- connectors should visually link the steps without dominating them;
-- the three steps must read as one coherent progression;
-- make the outcome state visually stronger than the earlier steps;
-- remove excessive empty SVG space;
-- preserve responsive one-column stacking on small screens;
-- preserve print/PDF integrity;
-- remain consistent with the PRYSM brand palette and typography;
-- no decorative illustration, stock art, or generated image is required.
+**Primary pages interpret. Deeper pages explain.**
 
-Preferred client-language step model:
-1. `Pages reviewed` — `We checked the pages used to move visitors toward action.`
-2. `Visible next step` — `Visitors had a clear action available on the pages assessed.`
-3. `Clear path toward action` — `No material obstacle was established in the assessed path.`
+S03 must first tell the client what another report area means to the conversion journey, then provide a link to the deeper page.
 
-The existing bounded verdict remains:
-`The assessed path to action is clear.`
+## Authorized executive narrative bridge
 
-The existing limitation remains:
-`This conclusion applies only to the assessed path; it does not measure completed conversions or unassessed pages.`
+Add one concise section after `Where visitors may lose momentum` and before `What this means for conversion`.
+
+Heading:
+`What supports this journey?`
+
+Render three compact executive interpretation cards.
+
+### Card 1 — Content
+
+Title:
+`Content that answers buyer questions`
+
+Interpretation:
+`Some visitors may reach the next step while still having unanswered questions. Buyer-question content was not found on the pages we could assess.`
+
+Link label:
+`See Content Opportunities →`
+
+Target viewer page:
+`#content-ideas`
+
+Evidence boundary:
+- preserve PARTIAL scope;
+- do not imply whole-site absence.
+
+### Card 2 — Trust
+
+Title:
+`Trust that reduces hesitation`
+
+Interpretation:
+`The assessed site has useful trust signals. The next question is whether that proof appears where buyers need reassurance before acting.`
+
+Link label:
+`See Trust & Credibility →`
+
+Target viewer page:
+`#trust-eeat`
+
+Evidence boundary:
+- do not claim proof is absent or misplaced unless page-level evidence proves it;
+- this is an executive interpretation and navigation bridge, not a new finding.
+
+### Card 3 — Performance
+
+Title:
+`Performance that keeps momentum`
+
+Interpretation:
+`The route is clear, but slow mobile loading may create friction before visitors fully engage with the next step.`
+
+Link label:
+`See Priority Fixes →`
+
+Target viewer page:
+`#priority-fixes`
+
+Evidence boundary:
+- preserve lab-only performance limitation;
+- do not claim measured abandonment or conversion loss.
+
+## Narrative rule
+
+The bridge cards must not merely say `go read another page`.
+
+Each card must:
+1. interpret the governed evidence in the context of the conversion journey;
+2. explain why that area matters to visitor momentum or decision support;
+3. link to the deeper client-facing page for detail.
+
+Do not create a new priority order or duplicate the detailed findings/actions from S02, S05, or S07.
+
+## UX requirements
+
+- three equal executive cards on desktop;
+- stack cleanly on mobile;
+- use small supporting copy and a clear text-link CTA;
+- remain consistent with the existing PRYSM brand and S03 card hierarchy;
+- no table;
+- no second large visual;
+- no decorative image;
+- preserve print/PDF integrity.
 
 ## Authorized repair boundary
 
@@ -67,7 +134,7 @@ Directly stale tests may be updated only within the already authorized S03 test 
 - `services/worker/src/report/render-report-v2-sections.test.js`
 - `services/worker/src/report/karen-style-regression.test.js`
 - `services/worker/src/report/render-narrative-v2.test.js`
-- `services/worker/src/report/render-report-v2-conversion.test.js` — CR-43 presentation golden hashes only when attributable solely to this visual repair
+- `services/worker/src/report/render-report-v2-conversion.test.js` — CR-43 presentation golden hashes only when attributable solely to this presentation repair
 
 If any other source or test file is required, STOP and return the exact file/assertion before editing it.
 
@@ -79,13 +146,13 @@ Preserve the intentional dirty P1/S01/S02/S03 worktree. No reset, clean, restore
 
 ## Exact next action
 
-Execute only the S03 visual UX repair above in `render-report-v2.js`, update only directly stale authorized presentation tests, rerun focused and complete S03 regressions, `git diff --check`, normalized scope verification, S01/S02 lock checks, canonical immutability checks, and rerender the same TBK audit offline.
+Execute only the S03 executive narrative bridge repair above in `render-report-v2.js`, update only directly stale authorized presentation tests, rerun focused and complete S03 regressions, `git diff --check`, normalized scope verification, S01/S02 lock checks, canonical immutability checks, and rerender the same TBK audit offline.
 
 Return:
-- `C:\Users\kulba\Downloads\PRYSM-S03-TBK-HUMAN-REVIEW-3.html`
-- `C:\Users\kulba\Downloads\PRYSM-S03-HUMAN-REVIEW-UX-REPAIR-PROOF.txt`
+- `C:\Users\kulba\Downloads\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html`
+- `C:\Users\kulba\Downloads\PRYSM-S03-EXECUTIVE-BRIDGE-PROOF.txt`
 
-Do not PASS_LOCK S03 until Chris accepts the visual presentation and final human review passes at >=95/100 with zero hard gates.
+Do not PASS_LOCK S03 until Chris accepts this final narrative bridge and final human review passes at >=95/100 with zero hard gates.
 
 Last verified:
 2026-09-07
