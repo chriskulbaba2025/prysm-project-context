@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete `S02 — Priority Fixes` verification after the bounded BUILD passed. The S02 implementation, focused suite, and repaired verify-only gate are PASS. Await explicit authorization before entering `DETERMINISTIC_AUDIT`. Do not rerender the real TBK report yet.
+Execute `S02 — Priority Fixes` `DETERMINISTIC_AUDIT` against the exact current dirty candidate. BUILD is complete and both focused and verify-only gates are PASS. Chris explicitly authorized deterministic audit on 2026-09-07. Do not rerender the real TBK report yet.
 
 ## Verified checkpoint
 
@@ -18,17 +18,18 @@ Complete `S02 — Priority Fixes` verification after the bounded BUILD passed. T
 - Viewer presentation version: `2.3.0`.
 - `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
 - Only active RSIP section: `S02 — Priority Fixes`.
-- Active S02 stage: **BUILD COMPLETE — DETERMINISTIC_AUDIT AWAITING EXPLICIT AUTHORIZATION**.
+- Active S02 stage: **DETERMINISTIC_AUDIT — AUTHORIZED**.
 - S02 baseline: **FAIL — 67/100 — 2 hard-gate failures**.
 - S02 contract: **APPROVED — FROZEN**.
 - S02 source-boundary proof: **PASS — VERIFIED**.
 - S02 repair plan: **PASS — COMPLETE**.
+- S02 BUILD: **COMPLETE — PASS**.
 - S02 bounded implementation focused suite: **83 PASS / 0 FAIL**.
 - Verify-only diagnosis: **PASS — 5/5 STALE_ASSERTION, 0 genuine regressions**.
 - Test-only repair gate: **18 PASS / 0 FAIL**, duration `262.4974 ms`, exit code `0`.
-- `git diff --check`: **PASS — exit 0**.
-- No application source file changed during the final test-only repair.
-- No prohibited source file, provider/model, canonical, production, push, merge, deploy, reset, clean, restore, stash, discard, or commit boundary was touched.
+- `git diff --check`: **PASS — exit 0** at final BUILD checkpoint.
+- Deterministic audit explicitly authorized by Chris on 2026-09-07.
+- No prohibited source file, provider/model, canonical, production, push, merge, deploy, reset, clean, restore, stash, discard, or commit boundary has been authorized.
 
 ## S02 proof artifacts
 
@@ -39,6 +40,7 @@ Complete `S02 — Priority Fixes` verification after the bounded BUILD passed. T
 - Bounded build proof: `proof/report-sections/S02-priority-fixes/S02_BOUNDED_BUILD_PROOF.md`
 - Verify-only diagnosis: `proof/report-sections/S02-priority-fixes/S02_VERIFY_ONLY_DIAGNOSIS.md`
 - Test-only repair proof: `proof/report-sections/S02-priority-fixes/S02_TEST_ONLY_REPAIR_PROOF.md`
+- Deterministic proof: not yet created; create only after evidence exists.
 
 ## Locked review artifact
 
@@ -54,13 +56,13 @@ Audit ID:
 
 `8d22e6b9-9246-4fb2-9f65-4cfc97a5b9e3`
 
-Do not rerender this report yet.
+Do not rerender this report during deterministic audit.
 
 ## Implemented bounded S02 behavior
 
 Within the authorized presentation seam:
 
-- `Priority Fixes` now owns one authoritative ranked client sequence;
+- `Priority Fixes` owns one authoritative ranked client sequence;
 - `foundations` and deterministic `action-plan` are assigned to `Supporting Detail`;
 - Narrative Root Cause, Narrative Conversion, and Narrative Action Plan are assigned to `Supporting Detail`;
 - governed `plan.actions` ordering is unchanged;
@@ -70,22 +72,24 @@ Within the authorized presentation seam:
 - approved six peer client destinations plus one subordinate Supporting Detail destination remain unchanged;
 - Writer/Judge content and evidence lineage remain unchanged.
 
-## Final BUILD verification
+## Deterministic audit requirements
 
-Focused authorized suite:
+Per RSIP v1.2.0, prove:
 
-`83 PASS / 0 FAIL`
+- required S02 content exists;
+- prohibited S02 content is absent;
+- evidence uncertainty is preserved;
+- governed rank/order is preserved;
+- Client Truth is not upgraded or reinterpreted;
+- relevant regressions pass;
+- required whole-app/closure gates pass for this presentation change;
+- exactly 6 peer client destinations remain in the approved order and labels;
+- exactly one subordinate `Supporting Detail` destination remains;
+- no supporting-detail page is exposed as a peer primary item;
+- all Supporting Detail content remains reachable;
+- viewer switching and print/save behavior remain functional.
 
-Final repaired verify-only gate:
-
-`18 PASS / 0 FAIL`
-
-The five verify-only failures were confirmed stale expectations, not application regressions. The repair was limited to:
-
-1. `services/worker/src/report/render-report-v2-sections.test.js`
-2. `services/worker/src/report/karen-style-regression.test.js`
-
-No source file changed in that repair.
+No application edit is authorized during deterministic audit. If a stale test or genuine regression appears, stop and return proof for a new boundary decision.
 
 ## Application environment
 
@@ -99,6 +103,7 @@ No source file changed in that repair.
 ## Important constraints
 
 - preserve the exact intentional dirty P1/S01/S02 worktree;
+- no application edits during this deterministic-audit boundary;
 - no reset, clean, checkout overwrite, restore, destructive revert, stash, discard, or unrelated overwrite;
 - no canonical artifact mutation;
 - no evidence recollection;
@@ -108,13 +113,13 @@ No source file changed in that repair.
 - no application push, merge, commit, or deployment;
 - no unrelated scoring/evidence/lifecycle/Client Truth/Writer/Judge change;
 - do not reopen S01;
-- do not rerender the real TBK report until the applicable RSIP boundary is authorized.
+- do not rerender the real TBK report during deterministic audit.
 
 ## Exact next action
 
-Chris explicitly authorizes entry into `DETERMINISTIC_AUDIT` for S02.
+Run the authorized S02 deterministic audit against the exact current dirty candidate. First run the complete S02 report/viewer/narrative regression set, then `npm run verify:prysm-closure`, then `git diff --check` and normalized dirty-scope verification. Write the audit proof outside both repositories and stop.
 
-Until that authorization, do not run broad deterministic closure, real TBK rerender, provider/model calls, production mutation, push, merge, commit, or deploy.
+If every deterministic gate passes, return `S02_DETERMINISTIC_AUDIT_PASS` for review. Do not enter `REAL_REPORT_RENDER` until the deterministic proof is reviewed and that next boundary is explicitly authorized.
 
 Last verified:
 2026-09-07
