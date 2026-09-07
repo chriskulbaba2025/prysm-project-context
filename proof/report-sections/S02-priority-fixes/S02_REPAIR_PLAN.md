@@ -1,9 +1,11 @@
 # S02 Repair Plan — Priority Fixes
 
 Section: `S02 — Priority Fixes`
-Status: **COMPLETE — BOUNDED BUILD READY / AWAITING EXPLICIT BUILD AUTHORIZATION**
+Status: **COMPLETE — BOUNDED BUILD AUTHORIZED**
 Date opened: 2026-09-07
 Date completed: 2026-09-07
+Build authorized by: Chris
+Build authorization date: 2026-09-07
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md` v1.2.0
 Contract: `S02_CONTRACT.md` — APPROVED / FROZEN
 Baseline: `S02_BASELINE_AUDIT.md` — 67/100 FAIL, 2 hard-gate failures
@@ -19,7 +21,7 @@ This is a presentation/decision-layer repair. No scoring, evidence acquisition, 
 
 ## Dominant root cause
 
-The current Priority Fixes viewer page exposes audit machinery and client action guidance as peer content. The same governed priorities are repeated through:
+The current Priority Fixes viewer page exposes both audit machinery and client action guidance as peer content. The same governed priorities are repeated through:
 
 1. Priority Findings;
 2. `First Things First — Foundational Readiness`;
@@ -74,9 +76,11 @@ Owns governed deterministic ordering through `buildActionPlan(model, checklist)`
 
 Owns governed finding production and detailed recommendation wording. It is already dirty from P1 work and is outside the S02 presentation seam.
 
-## Exact authorized BUILD source boundary — pending explicit Chris authorization
+## Authorized BUILD source boundary
 
-Only these two source files may be edited once BUILD is explicitly authorized:
+Chris explicitly authorized BUILD on 2026-09-07.
+
+Only these two source files may be edited:
 
 1. `services/worker/src/report/render-report-v2.js`
    - preserve all existing P1/S01 dirty changes;
@@ -90,7 +94,7 @@ Only these two source files may be edited once BUILD is explicitly authorized:
    - change only viewer-page assignment for Narrative Root Cause, Narrative Conversion, and Narrative Action Plan from `priority-fixes` to `supporting-detail`;
    - preserve Writer/Judge objects, validation, evidence lineage, statement classes, and prose.
 
-## Exact authorized BUILD test boundary — pending explicit Chris authorization
+## Authorized BUILD test boundary
 
 Only these four test files may be edited for focused S02 contract migration/proof:
 
@@ -175,7 +179,7 @@ Exactly six peer client destinations plus one subordinate `Supporting Detail` de
 
 ## Tests-first BUILD requirement
 
-When BUILD is explicitly authorized:
+BUILD must execute in this order:
 
 1. update/extend only the four authorized S02 tests to encode the frozen contract;
 2. run against the current implementation and preserve expected pre-change FAIL proof;
@@ -228,10 +232,8 @@ The bounded S02 build proves the presentation repair only. It does not claim pro
 
 ## Repair-plan decision
 
-**PASS — COMPLETE.**
+**PASS — COMPLETE — BUILD AUTHORIZED.**
 
 The exact local source/test seam is verified. The smallest safe BUILD boundary is exactly two source files and four test files.
 
-**BUILD has not started and is not yet authorized.**
-
-Exact next action: Chris explicitly authorizes the bounded S02 BUILD. After that authorization, execute the tests-first BUILD sequence above and stop after focused PASS proof.
+Exact next action: execute the tests-first bounded S02 BUILD, preserve expected pre-change FAIL proof, implement only the authorized presentation/page-assignment repair, rerun focused tests to PASS, verify exact scope plus `git diff --check`, then stop and return the focused BUILD proof. Do not advance to broad deterministic audit until that proof is reviewed.
