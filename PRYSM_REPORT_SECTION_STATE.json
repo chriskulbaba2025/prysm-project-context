@@ -3,21 +3,21 @@
   "viewerVersion": "2.3.0",
   "targetViewerVersion": "2.3.0",
   "informationArchitectureContract": "PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md",
-  "informationArchitectureStatus": "FOCUSED_BUILD_PASS_BROAD_AUDIT_BLOCKED_SECOND_STALE_TEST",
+  "informationArchitectureStatus": "DETERMINISTIC_AUDIT_PASS_REAL_RENDER_PENDING",
   "primaryNavigationTargetCount": 8,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07", "S12", "S13"],
   "supportingExecutionOrder": ["S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
   "activeSectionId": "S01",
   "activeSection": "Executive Scorecard",
-  "stage": "DETERMINISTIC_AUDIT",
-  "status": "ACTIVE_BLOCKED_SECOND_STALE_TEST",
+  "stage": "REAL_REPORT_RENDER",
+  "status": "ACTIVE",
   "contractStatus": "APPROVED_V1_1",
   "baselineStatus": "COMPLETE_FAIL",
   "sourceBoundaryStatus": "VERIFIED",
   "repairPlanStatus": "COMPLETE_BUILD_AUTHORIZED",
   "buildStatus": "FOCUSED_PASS_100_OF_100",
-  "deterministicAuditStatus": "BLOCKED_ONE_STALE_REPLAY_VIEWER_TEST",
-  "realReportRenderStatus": "PENDING",
+  "deterministicAuditStatus": "PASS",
+  "realReportRenderStatus": "IN_PROGRESS",
   "humanReviewStatus": "PENDING",
   "score": 63,
   "passThreshold": 95,
@@ -26,6 +26,7 @@
   "focusedBuildProof": "proof/report-sections/S01-executive-scorecard/S01_DETERMINISTIC_PROOF.md",
   "broadAuditAddendum": "proof/report-sections/S01-executive-scorecard/S01_BROAD_AUDIT_TEST_MIGRATION_ADDENDUM.md",
   "closureRerunAddendum": "proof/report-sections/S01-executive-scorecard/S01_CLOSURE_RERUN_TEST_MIGRATION_ADDENDUM.md",
+  "closureRerun2Proof": "proof/report-sections/S01-executive-scorecard/S01_CLOSURE_RERUN_2_PROOF.md",
   "focusedBuildTestResult": {
     "tests": 100,
     "pass": 100,
@@ -34,8 +35,8 @@
     "exitCode": 0,
     "gitDiffCheckExitCode": 0
   },
-  "latestClosureRerun": {
-    "targetedNarrativeProductionPath": "10_PASS_0_FAIL",
+  "finalDeterministicAudit": {
+    "targetedReplayCli": "4_PASS_0_FAIL",
     "worker": "993_PASS_0_FAIL",
     "applicationProductionPath": "82_PASS_0_FAIL",
     "narrativeV2": "114_PASS_0_FAIL",
@@ -43,12 +44,13 @@
     "artifacts": "106_PASS_0_FAIL",
     "lifecycle": "57_PASS_0_FAIL",
     "fullSystemAcceptance": "87_PASS_0_FAIL",
-    "verifyPrysmClosure": "FAIL_IN_EXACT_ASSEMBLED_WHOLE_APP",
-    "replayCliCompatibility": "3_PASS_1_FAIL_OF_4",
+    "replayCliCompatibility": "4_PASS_0_FAIL",
+    "wholeAppTranche": "PASS_P_B01_THROUGH_P_B16",
+    "verifyPrysmClosure": "PASS_EXIT_0",
     "gitDiffCheckExitCode": 0,
-    "blockerFile": "scripts/replay-report-cli.test.js",
-    "blockerTest": "T4-REPLAY-CLI-03",
-    "blockerReason": "stale assertion expects viewer 2.2.0 while approved S01 viewer is 2.3.0"
+    "scopeVerification": "PASS",
+    "unexpectedNewPaths": 0,
+    "liveProviderCalls": 0
   },
   "authorizedBuildFiles": [
     "src/report/render-report-v2.js",
@@ -63,6 +65,6 @@
     "src/application/narrative-v2-production-path.test.js",
     "scripts/replay-report-cli.test.js"
   ],
-  "nextAllowedAction": "Change only scripts/replay-report-cli.test.js to migrate stale current-viewer assertion(s) from 2.2.0 to the approved 2.3.0 while preserving historical-compatibility and fail-closed assertions. Then run node --test scripts/replay-report-cli.test.js, npm run verify:prysm-closure, git diff --check, and scope verification. Keep an append-only Downloads proof updated after each gate. No production-code edits and no provider/model calls, production mutation, push, merge, deploy, reset, clean, or discard. Stop and return one closure-rerun proof before regenerating the TBK report.",
+  "nextAllowedAction": "Regenerate the actual TBK review report offline from the already-governed persisted/canonical artifacts using the current intentional dirty candidate and existing governed renderer/replay path. No application edits. No live provider/model calls, production mutation, new production audit, push, merge, deploy, reset, clean, checkout-overwrite, or discard. Verify the exact artifact identity/hash and write an append-only Downloads proof. If required canonical inputs are missing or incompatible, fail closed and record the exact missing boundary rather than recollecting or inventing evidence. Stop after producing the review HTML and render proof for HUMAN_REVIEW.",
   "lastUpdated": "2026-09-07"
 }
