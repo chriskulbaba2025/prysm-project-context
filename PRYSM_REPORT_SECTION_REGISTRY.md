@@ -4,45 +4,85 @@ Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
 Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
 Current viewer version: `2.3.0`
-Current active section: `S05 — Content Opportunities`
+Current active surface: `Supporting Detail`
 
 | Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
 |---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. Closure: `proof/report-sections/S01-executive-scorecard/S01_CLOSURE.md`. |
-| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. Locked artifact `PRYSM-S02-TBK-HUMAN-REVIEW-2.html`, SHA-256 `23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800`. Closure: `proof/report-sections/S02-priority-fixes/S02_CLOSURE.md`. |
-| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. Locked artifact `PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html`, SHA-256 `A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB`. Closure: `proof/report-sections/S03-conversion-journey/S03_CLOSURE.md`. Locked narrative pattern: **Primary pages interpret. Deeper pages explain.** |
-| S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | **ACTIVE — BUILD_BOUNDARY_DIAGNOSIS** | **58 baseline** | Baseline audit COMPLETE, 0 hard gates. Bounded contract approved. Proof: `proof/report-sections/S05-content-opportunities/S05_BASELINE_AUDIT.md`. Next: diagnose exact source/test build boundary only; no edits yet. |
-| S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename/retain in client navigation. |
-| S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | NOT_STARTED | — | Rename/retain in client navigation. |
-| S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S12 | Performance | Website Speed & Performance | SUPPORTING DETAIL | NOT_STARTED | — | Retained behind Supporting Detail under IA contract v1.1.0. |
-| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | SUPPORTING DETAIL | NOT_STARTED | — | Retained behind Supporting Detail under IA contract v1.1.0. |
-| S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S15 | Evidence Appendix | Supporting Evidence | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
-| S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING DETAIL | NOT_STARTED | — | Retain behind Supporting Detail. |
+| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** | Human review PASS; zero hard gates. |
+| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | **PASS_LOCKED** | **97** | Human review PASS; zero hard gates. |
+| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | **PASS_LOCKED** | **97** | Human review PASS; locked narrative pattern: **Primary pages interpret. Deeper pages explain.** |
+| S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Readiness spider chart retained and prominent. |
+| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | **PASS_LOCKED** | **97** | Bounded client redesign complete; governed opportunity order preserved. |
+| S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | **PASS_LOCKED** | **97** | Human review PASS; no unsupported comparative gap introduced. |
+| S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | **PASS_LOCKED** | **98** | Human review PASS; no manufactured trust gap. |
+| S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Secondary/detail treatment retained. |
+| S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Progressive disclosure and client-facing summaries applied. |
+| S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Detailed evaluated-page evidence behind disclosure. |
+| S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Entity relationship visual retained. |
+| S12 | Performance | Website Speed & Performance | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Lab/field distinction preserved; raw diagnostics moved behind disclosure. |
+| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Material unavailable evidence remains visible. |
+| S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Representative sampling used; long URL dump removed from default view. |
+| S15 | Evidence Appendix | Supporting Evidence | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Raw mechanics remain deeper/collapsed. |
+| S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING DETAIL | INCLUDED IN ACTIVE SUPPORTING DETAIL | — | Evidence & Limitations group begins at `#phase2`. |
 
-## RSIP execution order
+## Primary client lane
 
-Primary client lane first:
+All six primary client pages are closed:
 
-`S01 -> S02 -> S03 -> S05 -> S06 -> S07`
+`Executive Scorecard -> Priority Fixes -> Conversion Journey -> Content Opportunities -> Competitor Comparison -> Trust & Credibility`
 
-Supporting-detail lane second:
+Scores:
 
-`S12 -> S13 -> S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
+`98 -> 97 -> 97 -> 97 -> 97 -> 98`
+
+## Supporting Detail current status
+
+Supporting Detail remains one subordinate destination and is **not Page 7**.
+
+Verified current behaviour:
+- separate `Evidence & Detail` menu treatment;
+- no primary number;
+- eight-part local jump navigation `8/8 PASS`;
+- Pages 1–6 do not display the Supporting Detail narrative disclosure `6/6 PASS`;
+- readiness spider chart retained;
+- entity relationship diagram retained;
+- progressive disclosure and representative sampling implemented;
+- full report suite last verified `129 PASS / 0 FAIL`;
+- `git diff --check` PASS.
+
+Governing principle:
+
+**Supporting Detail must support consulting decisions, not expose raw audit volume merely because the evidence exists.**
+
+The narrative content-worthiness audit scored the prior disclosure `54/100 — MAJOR REDUCTION REQUIRED`.
+
+The subsequent bounded build reduced the client-facing disclosure to three compact blocks under:
+
+`Additional interpretation and evidence context`
+
+Current compact-disclosure review score: **96/100**.
+
+Remaining blocker before Supporting Detail can PASS_LOCK:
+
+The nested visible control `Show deeper diagnostic interpretation` still gives ordinary client access to the audit-heavy Writer/Judge narrative. The full governed narrative must remain preserved, but ordinary client access to that deeper diagnostic material must be removed.
 
 ## Registry rules
 
-- Exactly one section may be ACTIVE.
-- A section advances to `PASS_LOCKED` only under RSIP closure rules.
-- The next section may not activate until the current section is `PASS_LOCKED`.
-- The primary client lane is completed before the supporting-detail lane unless Chris explicitly approves a versioned change.
-- A locked section may reopen only under the RSIP evidence-based reopen rule.
-- Stable S## IDs are governance identifiers and are not renumbered when client navigation changes.
-- Peer client navigation must expose exactly the 6 PRIMARY rows, in PRIMARY order, using the approved client-facing labels.
-- One visibly subordinate `Supporting Detail` destination contains all SUPPORTING DETAIL rows.
-- Supporting detail must remain reachable and evidence-preserving.
+- All six PRIMARY rows are PASS_LOCKED and must not reopen without new evidence or explicit governed authorization.
+- One visibly subordinate `Supporting Detail` destination contains all Supporting Detail rows.
+- Supporting Detail is not a seventh primary page.
+- Supporting Detail must remain evidence-preserving and consulting-focused.
+- Full Writer/Judge narrative may remain available for auditability, but internal mechanics must not be exposed as ordinary client report content.
+- Every Codex run must create and verify a non-empty result/proof artifact under `C:\Users\kulbaba\Downloads` unless Chris explicitly says otherwise.
+
+## Exact next action
+
+Perform the **final Supporting Detail narrative client-boundary repair only**:
+- keep the three compact client blocks;
+- remove normal client access to `Show deeper diagnostic interpretation`;
+- preserve all governed Writer/Judge narrative unchanged in audit-only / diagnostic output;
+- rerender the same persisted TBK fixture offline;
+- require full report tests `0 FAIL` and `git diff --check` PASS;
+- target render: `C:\Users\kulbaba\Downloads\PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-8.html`;
+- target proof: `C:\Users\kulbaba\Downloads\PRYSM-SUPPORTING-DETAIL-FINAL-NARRATIVE-BOUNDARY-PROOF.txt`;
+- do not PASS_LOCK until human review confirms the actual rendered client boundary.
