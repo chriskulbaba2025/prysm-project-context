@@ -4,7 +4,7 @@ Project:
 PRYSM — governed website conversion-readiness report and website decision system
 
 Current objective:
-Complete `S05 — Content Opportunities` build-boundary diagnosis after the baseline human-review audit and bounded client contract were reviewed and approved.
+Complete the final client-boundary repair for the Supporting Detail narrative disclosure, then perform final human review and PASS_LOCK closeout if the rendered artifact is clean.
 
 ## Verified checkpoint
 
@@ -14,109 +14,117 @@ Complete `S05 — Content Opportunities` build-boundary diagnosis after the base
 - RSIP version: `1.2.0`.
 - Report-wide IA contract version: `1.1.0`.
 - Viewer presentation version: `2.3.0`.
-- `S01 — Executive Scorecard`: **PASS_LOCKED**, score `98/100`, hard-gate failures `0`.
-- `S02 — Priority Fixes`: **PASS_LOCKED**, score `97/100`, hard-gate failures `0`.
-- `S03 — Conversion Journey`: **PASS_LOCKED**, score `97/100`, hard-gate failures `0`.
-- S03 final accepted artifact: `C:\Users\kulba\Downloads\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html`.
-- S03 final accepted artifact SHA-256: `A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB`.
-- S03 closure proof: `proof/report-sections/S03-conversion-journey/S03_CLOSURE.md`.
-- Only active RSIP section: `S05 — Content Opportunities`.
-- S05 baseline human-review audit: **COMPLETE**.
-- S05 baseline score: **58/100**.
-- S05 hard-gate failures: **0**.
-- S05 baseline proof: `proof/report-sections/S05-content-opportunities/S05_BASELINE_AUDIT.md`.
-- S05 bounded client contract: **APPROVED FOR BUILD-BOUNDARY DIAGNOSIS**.
-- Current S05 stage: **BUILD_BOUNDARY_DIAGNOSIS**.
+- Exactly six PRIMARY client destinations plus one subordinate Supporting Detail destination.
+- Supporting Detail is **not Page 7**.
 
-## Locked report-wide narrative pattern
+### Locked primary pages
 
-The accepted S03 page establishes the client-facing rule:
+1. Executive Scorecard — **PASS_LOCKED — 98/100**
+2. Priority Fixes — **PASS_LOCKED — 97/100**
+3. Conversion Journey — **PASS_LOCKED — 97/100**
+4. Content Opportunities — **PASS_LOCKED — 97/100**
+5. Competitor Comparison — **PASS_LOCKED — 97/100**
+6. Trust & Credibility — **PASS_LOCKED — 98/100**
+
+Locked narrative rule:
 
 **Primary pages interpret. Deeper pages explain.**
 
-Do not reopen S01, S02, or S03 without new evidence or an explicit user-directed reopen under RSIP.
+Do not reopen Pages 1–6 without new evidence or an explicit governed reopen.
 
-## S05 baseline conclusion
+## Supporting Detail status
 
-Root cause:
+Supporting Detail is the only active review surface.
 
-The current Content Opportunities page is structured as a topical/content export rather than a prioritized client decision page. It presents buyer-need rows, generated opportunities, covered topics, and leading search intents, but it does not make the first commercially meaningful content action obvious.
+Governing principle:
 
-Main defects:
-- no obvious first content action;
-- dense interpretation-heavy tables;
-- weak distinction between current strength, evidence-backed gap, and qualified opportunity;
-- generic journey-connection language;
-- supporting SEO/search-intent detail competes with the primary client story;
-- buyer-stage grouping exists but does not explain decision sequence;
-- PARTIAL content-body evidence requires explicit scope qualification.
+**Supporting Detail must support consulting decisions, not expose raw audit volume merely because the evidence exists.**
 
-## Approved bounded S05 contract
+Current Supporting Detail state:
+- page-level redesign substantially complete;
+- menu is visibly subordinate and has no primary number;
+- eight-part local jump navigation is implemented and verified `8/8 PASS`;
+- readiness spider chart preserved;
+- entity relationship diagram preserved;
+- representative evidence / progressive disclosure implemented;
+- long URL/evidence dumps reduced or collapsed;
+- raw performance diagnostics moved behind disclosure;
+- client-language evidence limitations preserved;
+- Machine Readability ordered before Performance;
+- Evidence & Limitations begins at `#phase2`;
+- full report suite last verified at `129 PASS / 0 FAIL`;
+- `git diff --check` PASS;
+- no audit/provider/production mutation occurred.
 
-Primary hierarchy:
-- Kicker: `Content Opportunities`
-- H2: `What content would help buyers move forward?`
-- one concise bounded verdict explaining that the site has a usable content foundation, the main opportunity is stronger buyer decision support, and content-body evidence remains PARTIAL.
+## Narrative disclosure work completed
 
-Primary client story:
-1. `What is already helping buyers`
-2. `Where decision support is thin`
-3. `What to create or improve first`
+A viewer ownership defect caused `Additional interpretation and evidence lineage` to appear on Pages 1–6. That defect is closed:
+- Pages 1–6 disclosure absence: **6/6 PASS**;
+- Supporting Detail ownership: PASS;
+- outer disclosure remains collapsed by default.
 
-Primary qualified opportunities should render as concise client-facing cards rather than a dense five-column table.
+A content-worthiness audit then scored the disclosure **54/100 — MAJOR REDUCTION REQUIRED** because it exposed nine large Writer/Judge narrative sections, duplicated Pages 1–6, repeated the action sequence, and surfaced internal mechanics.
 
-Each opportunity card must include:
-- buyer question / need;
-- buyer stage;
-- why it matters;
-- recommended asset;
-- journey connection;
-- intended decision-support role;
-- evidence qualification.
+The bounded content-worthiness build passed and reduced the ordinary client-facing disclosure to three compact blocks under the label:
 
-Contract rules:
-- preserve governed opportunity order; do not recompute ranking;
-- make the first opportunity visually obvious without creating a new scoring system;
-- distinguish current strength, evidence-backed gap, and qualified opportunity;
-- journey connection must be specific where governed, otherwise explicitly bounded;
-- keep search-intent and raw topical/technical detail subordinate and move it to Supporting Detail where possible;
-- preserve PARTIAL content-body scope and unassessed-page uncertainty;
-- search demand or competitor presence alone must not create a recommendation;
-- do not claim traffic, rankings, revenue, conversion uplift, or search volume without evidence;
-- follow the locked narrative rule: **Primary pages interpret. Deeper pages explain.**
+`Additional interpretation and evidence context`
 
-## Likely ownership to diagnose
+Client-visible blocks:
+1. `Why the report reached these conclusions`
+2. `What the evidence supports and limits`
+3. `Additional interpretation worth knowing`
 
-Inspect only; no edit authorization yet:
-- `services/worker/src/report/render-report-v2.js`
-- `services/worker/src/report/render-report-v2-sections.test.js`
-- `services/worker/src/report/render-report-v2.test.js`
-- `services/worker/src/report/render-narrative-v2.js`
-- `services/worker/src/report/render-narrative-v2.test.js`
+The compact disclosure review score is **96/100**.
 
-The baseline identified `render-report-v2.js` as the primary presentation owner. The narrative seam must be inspected before determining whether it needs editing or only verification.
+Latest successful render:
+`C:\Users\kulba\Downloads\PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-7.html`
 
-If any additional source/test file appears necessary, identify the exact file and reason before any build authorization.
+Latest build proof:
+`C:\Users\kulba\Downloads\PRYSM-SUPPORTING-DETAIL-NARRATIVE-CONTENT-WORTHINESS-BUILD-PROOF.txt`
 
-## Important preservation rules
+Content-worthiness audit:
+`C:\Users\kulba\Downloads\PRYSM-SUPPORTING-DETAIL-NARRATIVE-CONTENT-WORTHINESS-AUDIT.txt`
 
-Do not change governed evidence, scoring, Client Truth, action priority/order, Writer/Judge objects, S01/S02/S03 locked content/order, viewer navigation count/order/labels, Supporting Detail assignments, canonical artifacts, or production state.
+## Remaining blocker before PASS_LOCK
 
-Preserve the intentional dirty P1/S01/S02/S03 worktree. No reset, clean, restore, checkout-overwrite, destructive revert, stash, discard, push, merge, deploy, provider/model call, production audit, or production mutation.
+The normal client-facing three-block disclosure is now acceptable, but it still contains a nested visible control:
+
+`Show deeper diagnostic interpretation`
+
+Opening that nested control exposes the old audit-heavy Writer/Judge interpretation, including internal language such as governed priority / conversion-influence mechanics, AI-search narrative, detailed action tables, effort codes, and other material that should remain audit-only.
+
+This is the final known client-boundary defect.
 
 ## Exact next action
 
-Perform **S05 build-boundary diagnosis only**.
+Perform **Supporting Detail final narrative client-boundary repair only**.
 
-Inspect the five likely ownership files listed above and return:
-1. exact rendering function(s) owning S05;
-2. exact tests that will become stale;
-3. whether `render-narrative-v2.js` requires editing or inspection only;
-4. any additional source/test file required;
-5. exact bounded build scope;
-6. proposed verification command set.
+Required result:
+- keep `Additional interpretation and evidence context` on Supporting Detail only;
+- keep exactly the three approved compact client-facing blocks;
+- remove the visible `Show deeper diagnostic interpretation` control from normal client interaction;
+- preserve the complete governed Writer/Judge narrative unchanged in an audit-only / diagnostic render surface;
+- do not delete or mutate Writer/Judge objects, prose atoms, statement classes, evidenceRefs, action order, opportunity order, scoring, evidence, Client Truth, or Pages 1–6;
+- rerender the same persisted TBK fixture offline;
+- require full `src/report/*.test.js` suite `0 FAIL` and `git diff --check` PASS;
+- write and verify the mandatory Downloads proof artifact.
 
-Do not edit application code, tests, or report artifacts. Do not rerender. Stop after diagnosis and return the exact bounded build scope for approval.
+Target next render:
+`C:\Users\kulba\Downloads\PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-8.html`
+
+Target proof:
+`C:\Users\kulba\Downloads\PRYSM-SUPPORTING-DETAIL-FINAL-NARRATIVE-BOUNDARY-PROOF.txt`
+
+Do not PASS_LOCK until the actual rendered artifact confirms that deeper Writer/Judge diagnostics are preserved but not exposed through ordinary client controls.
+
+## Important preservation rules
+
+Preserve the intentional dirty P1/S01/S02/S03/S05/S06/S07/Supporting Detail worktree.
+
+Do not reset, clean, restore, stash, discard, checkout-overwrite, push, merge, deploy, rerun the audit, recollect evidence, call providers/models, or mutate production unless explicitly authorized.
+
+Every Codex run must create and verify a non-empty proof/result artifact under:
+`C:\Users\kulba\Downloads`
 
 Last verified:
 2026-09-07
