@@ -2,46 +2,51 @@
 
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Report-wide IA contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
-Viewer source contract: `REPORT_V2_VIEWER_PAGES` in `services/worker/src/report/render-report-v2.js`
-Current viewer version: `2.3.0`
-Current active section: `S01 — Executive Scorecard`
+Viewer version: `2.3.0`
+Current status: **CLOSED — production deployed**
 
-| Stable ID | Current source section | Final client-facing label | Navigation tier | RSIP status | Score | Notes |
-|---|---|---|---|---|---:|---|
-| S01 | Executive Scorecard | Executive Scorecard | PRIMARY 01 | ACTIVE — DETERMINISTIC_AUDIT | 63 | Focused BUILD PASS: 100/100, git diff --check exit 0, viewer 2.3.0. Broad deterministic audit now required before real TBK render. |
-| S02 | Priority Fixes | Priority Fixes | PRIMARY 02 | NOT_STARTED | — | Begins only after S01 PASS_LOCKED. Carry-forward observation: detailed VAN-PERF-001 implementation wording should be reviewed here, not broadened into S01. |
-| S03 | Conversion Path Architecture | Conversion Journey | PRIMARY 03 | NOT_STARTED | — | Rename in client navigation. |
-| S04 | Conversion Readiness Map | Conversion Readiness Detail | SUPPORTING | NOT_STARTED | — | Remove from main menu; retain as supporting detail unless later governed decision removes it entirely. |
-| S05 | Topical Map & Qualified Content Opportunities | Content Opportunities | PRIMARY 04 | NOT_STARTED | — | Rename in client navigation. |
-| S06 | Competitor Benchmarking | Competitor Comparison | PRIMARY 05 | NOT_STARTED | — | Rename in client navigation. |
-| S07 | Trust & E-E-A-T Readiness | Trust & Credibility | PRIMARY 06 | NOT_STARTED | — | Rename in client navigation. |
-| S08 | CMS & Platform Constraints | CMS & Platform Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S09 | Technical SEO Hygiene | Technical SEO Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S10 | Heading & Semantic Structure | Heading & Structure Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S11 | Schema & Entity Clarity | Schema & Entity Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S12 | Performance | Website Speed & Performance | PRIMARY 07 | NOT_STARTED | — | Rename in client navigation. |
-| S13 | Accessibility & Mobile Usability Readiness | Mobile & Accessibility | PRIMARY 08 | NOT_STARTED | — | Rename in client navigation. |
-| S14 | Internal-Link Opportunities | Internal-Link Detail | SUPPORTING | NOT_STARTED | — | Remove from peer primary navigation. |
-| S15 | Evidence Appendix | Supporting Evidence | SUPPORTING | NOT_STARTED | — | Subordinate evidence destination. |
-| S16 | Deferred & Unavailable Analysis | Assessment Limitations | SUPPORTING | NOT_STARTED | — | Subordinate limitations destination. |
+| Stable ID | Final client-facing label | Navigation tier | RSIP status | Score |
+|---|---|---|---|---:|
+| S01 | Executive Scorecard | PRIMARY 01 | **PASS_LOCKED** | **98** |
+| S02 | Priority Fixes | PRIMARY 02 | **PASS_LOCKED** | **97** |
+| S03 | Conversion Journey | PRIMARY 03 | **PASS_LOCKED** | **97** |
+| S04 | Conversion Readiness Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S05 | Content Opportunities | PRIMARY 04 | **PASS_LOCKED** | **97** |
+| S06 | Competitor Comparison | PRIMARY 05 | **PASS_LOCKED** | **97** |
+| S07 | Trust & Credibility | PRIMARY 06 | **PASS_LOCKED** | **98** |
+| S08 | CMS & Platform Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S09 | Technical SEO Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S10 | Heading & Structure Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S11 | Schema & Entity Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S12 | Website Speed & Performance | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S13 | Mobile & Accessibility | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S14 | Internal-Link Detail | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S15 | Supporting Evidence | SUPPORTING DETAIL | **PASS_LOCKED** | — |
+| S16 | Assessment Limitations | SUPPORTING DETAIL | **PASS_LOCKED** | — |
 
-## RSIP execution order
+## Final client architecture
 
-Primary client lane first:
+Primary navigation contains exactly six destinations:
 
-`S01 -> S02 -> S03 -> S05 -> S06 -> S07 -> S12 -> S13`
+`Executive Scorecard -> Priority Fixes -> Conversion Journey -> Content Opportunities -> Competitor Comparison -> Trust & Credibility`
 
-Supporting-detail lane second:
+Supporting Detail is exactly one subordinate destination, is not Page 7, and contains the supporting rows above.
 
-`S04 -> S08 -> S09 -> S10 -> S11 -> S14 -> S15 -> S16`
+Governing principle:
 
-## Registry rules
+**Supporting Detail must support consulting decisions, not expose raw audit volume merely because the evidence exists.**
 
-- Exactly one section may be ACTIVE.
-- A section advances to `PASS_LOCKED` only under RSIP closure rules.
-- The next section may not activate until the current section is `PASS_LOCKED`.
-- The primary client lane is completed before the supporting-detail lane unless Chris explicitly approves a versioned change.
-- A locked section may reopen only under the RSIP evidence-based reopen rule.
-- Stable S## IDs are governance identifiers and are not renumbered when client navigation changes.
-- Primary client navigation must expose exactly the 8 PRIMARY rows, in PRIMARY order, using the approved client-facing labels.
-- SUPPORTING rows must remain reachable but may not appear as equal-weight primary navigation items.
+Supporting Detail retains representative evidence, progressive disclosure, material limitations, readiness and entity visuals, and eight-part local navigation. Full governed narrative remains preserved without exposing internal mechanics as ordinary primary-page content.
+
+## Final release record
+
+- Frozen release SHA: `1028ca6d2719437cd5b3776559f1e811775a98c5`
+- Release tag: `prysm-report-final-2026-09-08`
+- Main SHA: `2cb9a0bf4f9c269f1c47c24195cd126ea5227b59`
+- Vercel project: `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`)
+- Production deployment: `dpl_HdYVFxCB3YYeVGo7Jf3AaUKGN9Ez`
+- Production domain: `https://prysm.omnipressence.com`
+- Production status: **READY**
+- Full worker report suite: `129 PASS / 0 FAIL`
+
+The report-improvement tranche is closed. Reopen only with new evidence or explicit authorization.
