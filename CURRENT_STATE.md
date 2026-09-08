@@ -39,7 +39,6 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 - Deployment URL: `https://prysm-9y7jq2b52-chriskulbabas-projects.vercel.app`
 - Production domain: `https://prysm.omnipressence.com`
 - Production status: **READY**
-- Live verification: domain resolves; application login surface loads; deployment aliases include `prysm.omnipressence.com`.
 
 ## Accepted recovered TBK report
 
@@ -47,8 +46,6 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 - Accepted persisted version: **11**
 - Accepted lifecycle state: **draft_rendered**
 - The report artifact is persisted and served from the existing production report route with HTTP 200.
-- The recovered report preserves the approved Viewer 2.3.0 structure: six PRIMARY client destinations plus one subordinate Supporting Detail destination; Supporting Detail is not Page 7.
-- The obsolete `Show deeper diagnostic interpretation` client control is absent and the approved `Additional interpretation and evidence context` disclosure remains present.
 - Version 11 is the accepted recovered report for this audit. Do not force the record back to version 9 and do not rerun providers solely to change the version number.
 - Separate retry audit `fb78b898-e372-48d8-8f96-99785b5853d9` remains preserved in `collecting` as diagnostic evidence and must not replace the accepted recovered report.
 
@@ -57,16 +54,44 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 - Exactly six PRIMARY client destinations, in approved order: Executive Scorecard, Priority Fixes, Conversion Journey, Content Opportunities, Competitor Comparison, Trust & Credibility.
 - Exactly one subordinate Supporting Detail destination.
 - Supporting Detail is not Page 7.
-- Supporting Detail retains its orientation, eight-part local navigation, readiness spider chart, entity relationship diagram, representative evidence, progressive disclosure, and material evidence limitations.
 
-## Governance and activity boundary
+## Active governed enhancement tranche — Solution Depth
 
-- The intentional dirty PRYSM application candidate was preserved and frozen into the release commit.
-- The accepted recovered TBK report reuses the already-persisted report artifact; no new audit, evidence recollection, Writer/Judge call, provider/model call, scoring recomputation, or deployment was required for acceptance.
-- No destructive reset, clean, restore, checkout-overwrite, stash, or discard was used.
+Status: **OPEN — AUDIT FIRST**
+
+Governing specification:
+
+`PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`
+
+Purpose: strengthen the report from diagnosis/prioritization into credible execution guidance without weakening evidence integrity or reintroducing report bloat.
+
+Core rule:
+
+**Every page should answer “what should I do here?” Priority Fixes should answer “exactly how should I do it?”**
+
+Canonical governance:
+
+- one actionable problem = one canonical solution record;
+- canonical coverage includes all actionable findings even when Priority Fixes displays only the top client-prominent subset;
+- evidence grade governs prescription strength: CONFIRMED may be prescriptive, PARTIAL must be conditional, UNKNOWN must investigate rather than prescribe;
+- prescriptive/conditional fixes require a site-specific artifact anchor;
+- use capability required, not assumed client job-title ownership;
+- include bounded effort, dependency/sequence, mandatory binary implementation check, optional baseline-dependent outcome signal, disposition, issue identity, and merge provenance;
+- deduplicate overlapping findings before display;
+- allow FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE dispositions;
+- validators must enforce the contract before generator changes are accepted;
+- cap client prominence, not canonical traceability.
+
+Preservation boundary:
+
+Do not reopen or alter evidence collection, evidence grades, scoring, governed priority order, Client Truth, Writer/Judge facts, lifecycle semantics, persistence contracts, the six-primary-page architecture, or Supporting Detail’s subordinate status during the audit phase.
+
+No production deployment or new audit run is authorized during this first audit phase.
 
 ## Exact next action
 
-Use accepted recovered TBK audit `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`, version 11, as the rendered report in the PRYSM application. Do not rerun the audit or force a version rollback unless new evidence or explicit authorization requires it.
+Run a bounded **PRYSM Solution Coverage Audit** against the accepted TBK version-11 report and current governed application/model seams. The audit must identify where current guidance is generic, unanchored, too strong for its evidence grade, unverifiable, duplicated, orphaned, or missing capability/effort/sequence/disposition information. It must then identify the exact model, validator, generator, renderer, and test seams needed for implementation.
+
+Do not code until that audit is complete and reviewed.
 
 Last verified: 2026-09-08
