@@ -1,81 +1,86 @@
 # S01 Deterministic Proof — Executive Scorecard
 
-Section: S01 — Executive Scorecard
-Status: IN PROGRESS
+Section: `S01 — Executive Scorecard`
+Status: **PASS — DETERMINISTIC_AUDIT COMPLETE**
 Date opened: 2026-09-07
+Date passed: 2026-09-07
 Protocol: `PRYSM_REPORT_SECTION_IMPROVEMENT_PROTOCOL.md`
 Contract: `S01_CONTRACT.md`
 Repair plan: `S01_REPAIR_PLAN.md`
 Information architecture contract: `PRYSM_REPORT_INFORMATION_ARCHITECTURE_CONTRACT_2026-09-07.md`
+Broad-audit addendum: `S01_BROAD_AUDIT_TEST_MIGRATION_ADDENDUM.md`
+First closure-rerun addendum: `S01_CLOSURE_RERUN_TEST_MIGRATION_ADDENDUM.md`
+Final closure-rerun proof: `S01_CLOSURE_RERUN_2_PROOF.md`
 
-## Focused BUILD gate — VERIFIED PASS
+## Focused BUILD gate — PASS
 
-Uploaded proof reviewed: `PRYSM-S01-FOCUSED-BUILD-PROOF.txt`.
-
-Observed candidate identity:
 - branch: `p1/bounded-build-cross-report-integrity`
-- HEAD: `a9523ac3de98de76335a05304b60bec246242b65`
-- repaired candidate remains an intentional dirty worktree; HEAD alone does not identify it.
+- historical committed HEAD: `a9523ac3de98de76335a05304b60bec246242b65`
+- HEAD alone does not identify the repaired candidate because the governed P1/S01 repair remains an intentional dirty worktree.
+- focused authorized tests: `100/100 PASS`
+- `git diff --check`: exit `0`
+- viewer presentation version: `2.3.0`
+- report-data/scoring contract unchanged
+- no unexpected application paths newly modified by the focused build
+- no provider/model calls, production mutation, push, merge, or deployment.
 
-Focused test command:
+## Broad deterministic audit — stale test migrations resolved
 
-`node --test src/report/render-report-v2-section-viewer.test.js src/report/render-report-v2-conversion.test.js src/report/render-report-v2.test.js src/report/render-report-v2-sections.test.js src/report/karen-style-regression.test.js src/report/render-narrative-v2.test.js`
+The initial broad audit proved the production/report behavior green but exposed two stale presentation assertions created by the approved S01/viewer migration.
 
-Focused result:
-- tests: 100
-- pass: 100
-- fail: 0
-- skipped: 0
-- focused test exit code: 0
-- test duration: 587.2238 ms
-- recorded wall duration: 00:00:00.6618610
+First stale test:
+- `src/application/narrative-v2-production-path.test.js`
+- old expectation: `/A\. Conversion Readiness/`
+- approved migration: `/Executive Scorecard/`
+- targeted result after migration: `10/10 PASS`.
 
-Focused contract proof includes PASS for:
-- 16 addressable destinations split into 8 primary + 8 supporting tiers;
-- 8 peer primary navigation links and 8 subordinate reachable links;
-- deterministic hash navigation and invalid-hash fallback;
-- current-page print/PDF isolation;
-- left-side navigation and accessibility behavior;
-- all governed section content retained in one artifact;
-- byte-identical deterministic rendering;
-- consolidated executive positives require assessed evidence;
-- existing conversion/evidence integrity regressions in the focused authorized suite.
+Second stale test:
+- `scripts/replay-report-cli.test.js`
+- old expectation: `viewer 2.2.0`
+- approved migration: `viewer 2.3.0`
+- targeted result after migration: `4/4 PASS`.
 
-Viewer presentation version recorded by proof: `2.3.0`.
-Report-data/scoring contract version: unchanged.
+Both seams were explicitly authorized as test-only expansions. No production code was reopened for either repair.
 
-`git diff --check`:
-- exit code: 0
-- LF/CRLF working-copy warnings were emitted for existing/modified files;
-- no whitespace-error failure occurred.
+## Final closure rerun — PASS
 
-Scope proof:
-- no unexpected application paths were newly modified by this build;
-- changes remained within the authorized renderer/test boundary;
-- no provider/model calls;
-- no production mutation;
-- no push, merge, or deployment.
+Source proof: uploaded `PRYSM-S01-CLOSURE-RERUN-2-PROOF.txt` and permanent summary `S01_CLOSURE_RERUN_2_PROOF.md`.
 
-## Deterministic audit still required
+Final governed results:
+- targeted replay CLI: `4/4 PASS`, exit `0`
+- complete worker regression families: `993/993 PASS`
+- application production-path tests: `82/82 PASS`
+- Narrative v2 tests: `114/114 PASS`
+- schema/contract tests: `14/14 PASS`
+- artifact tests: `106/106 PASS`
+- lifecycle tests: `57/57 PASS`
+- PRYSM Full-System Acceptance: `87 PASS / 0 FAIL`
+- replay CLI historical compatibility boundary: `4/4 PASS`
+- current replay from production-composed artifacts: `1/1 PASS`, viewer `2.3.0`
+- `PRYSM WHOLE-APP TRANCHE GATE: PASS`
+- `PRYSM CLOSURE MACHINE GATE: PASS`
+- covered branch IDs: `P-B01` through `P-B16`
+- `git diff --check`: exit `0`, LF/CRLF warnings only
+- final normalized scope verification: PASS
+- newly modified path from the second rerun: only `scripts/replay-report-cli.test.js`
+- unexpected new paths: none
+- governed acceptance records zero live provider calls.
 
-Focused BUILD PASS is necessary but does not close the RSIP deterministic-audit stage.
+The long-run proof also demonstrated fail-closed recovery: an invocation that lacked an explicit wrapper completion record was not treated as complete; Codex diagnosed the process state and established a final explicit closure exit code `0` before declaring PASS.
 
-The broad audit must now prove the repaired dirty candidate remains coherent across the wider governed application boundary.
+## Deterministic-audit decision
 
-Required broad gates:
-1. complete worker test suite;
-2. focused P1/cross-report integrity regressions if not already included by the full suite;
-3. CR-43 frozen render/hash gate under the current governed procedure if output-hash migration requires it;
-4. `npm run verify:prysm-closure`;
-5. Whole-App acceptance where required by current governance;
-6. `git diff --check`;
-7. no unexpected new application paths outside the previously authorized S01 build boundary;
-8. no live provider/model calls or production mutation.
+**S01_DETERMINISTIC_AUDIT_PASS**
 
-## Current decision
+The `DETERMINISTIC_AUDIT` stage is complete.
 
-Focused BUILD gate: **PASS**.
+Under RSIP v1.1.0, S01 advances to `REAL_REPORT_RENDER`.
 
-RSIP stage advances to: `DETERMINISTIC_AUDIT`.
+The next review object must be the actual TBK report regenerated from already-governed persisted/canonical artifacts with no live provider/model calls. Source/test inspection cannot substitute for that rendered artifact.
 
-S01 is not yet PASS_LOCKED. Real TBK render and human review remain blocked until the broad deterministic audit passes.
+S01 is not yet `PASS_LOCKED`. It still requires:
+1. actual TBK offline render;
+2. HUMAN_REVIEW of the rendered S01 and primary navigation;
+3. universal score >=95/100;
+4. zero hard-gate failures;
+5. `S01_CLOSURE.md` and state/registry lock update.
