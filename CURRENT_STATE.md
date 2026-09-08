@@ -41,6 +41,17 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 - Production status: **READY**
 - Live verification: domain resolves; application login surface loads; deployment aliases include `prysm.omnipressence.com`.
 
+## Accepted recovered TBK report
+
+- Audit ID: `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`
+- Accepted persisted version: **11**
+- Accepted lifecycle state: **draft_rendered**
+- The report artifact is persisted and served from the existing production report route with HTTP 200.
+- The recovered report preserves the approved Viewer 2.3.0 structure: six PRIMARY client destinations plus one subordinate Supporting Detail destination; Supporting Detail is not Page 7.
+- The obsolete `Show deeper diagnostic interpretation` client control is absent and the approved `Additional interpretation and evidence context` disclosure remains present.
+- Version 11 is the accepted recovered report for this audit. Do not force the record back to version 9 and do not rerun providers solely to change the version number.
+- Separate retry audit `fb78b898-e372-48d8-8f96-99785b5853d9` remains preserved in `collecting` as diagnostic evidence and must not replace the accepted recovered report.
+
 ## Final report architecture
 
 - Exactly six PRIMARY client destinations, in approved order: Executive Scorecard, Priority Fixes, Conversion Journey, Content Opportunities, Competitor Comparison, Trust & Credibility.
@@ -51,12 +62,11 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 ## Governance and activity boundary
 
 - The intentional dirty PRYSM application candidate was preserved and frozen into the release commit.
-- No new audit, evidence recollection, provider/model call, or production data mutation occurred.
+- The accepted recovered TBK report reuses the already-persisted report artifact; no new audit, evidence recollection, Writer/Judge call, provider/model call, scoring recomputation, or deployment was required for acceptance.
 - No destructive reset, clean, restore, checkout-overwrite, stash, or discard was used.
-- The release was pushed normally, merged normally into `main`, and deployed to the existing Vercel PRYSM project.
 
 ## Exact next action
 
-The governed PRYSM report redesign is production-deployed and CLOSED. Do not reopen this tranche unless new evidence or explicit authorization reopens it.
+Use accepted recovered TBK audit `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`, version 11, as the rendered report in the PRYSM application. Do not rerun the audit or force a version rollback unless new evidence or explicit authorization requires it.
 
 Last verified: 2026-09-08
