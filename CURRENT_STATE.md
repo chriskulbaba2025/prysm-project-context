@@ -32,9 +32,10 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 
 Status: **OPEN — VALIDATOR IMPLEMENTATION**
 
-Governing specification:
+Governing specifications:
 
-`PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`
+- `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`
+- `PRYSM_BETTY_REAL_PROGRESS_GATE.md`
 
 Core rule:
 
@@ -52,6 +53,26 @@ Canonical governance:
 - allow FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE dispositions;
 - validators must enforce the contract before generator changes are accepted;
 - cap client prominence, not canonical traceability.
+
+## Mandatory Betty gate — ACTIVE
+
+Betty is a required governance checkpoint, not a suggestion.
+
+After every implementation tranche:
+
+1. Builder/Codex completes the authorized implementation and proof artifact.
+2. Betty independently verifies actual changed files, git diff, tests, and governed requirements.
+3. Governance advances only if Betty returns:
+
+`REAL PROGRESS VERIFIED — READY TO ADVANCE`
+
+A Builder/Codex PASS is insufficient by itself.
+
+If Betty returns `PROGRESS NOT VERIFIED — [exact reason]`, the tranche remains open and no next implementation phase may begin.
+
+The assistant must explicitly remind the user when a Betty checkpoint becomes due and must not advance project-context governance before the checkpoint passes.
+
+Current required checkpoints include validator implementation, generator implementation, canonical integration, renderer/cross-page references, Supporting Detail changes, full regression/fireproofing, and final human-review candidate before production promotion.
 
 ## Solution Coverage Audit — COMPLETE
 
@@ -91,7 +112,7 @@ Highest-risk compatibility rule: existing reports/actions cannot be silently upg
 
 ## Authorized implementation boundary
 
-The next tranche is **validators only**.
+The current tranche is **validators only**.
 
 Authorized new modules/tests:
 - `services/worker/src/solution/solution-contract.js`
@@ -117,6 +138,12 @@ No production deployment or new audit run is authorized during validator impleme
 
 ## Exact next action
 
-Implement the canonical Solution Contract constants, V01–V24 validator rules, sequence/dependency validation, and focused tests only. Run the new tests plus the existing relevant worker regression suites. Stop for review before generator, renderer, cross-page reference, Supporting Detail, Writer/Judge, deployment, or audit integration.
+Implement the canonical Solution Contract constants, V01–V24 validator rules, sequence/dependency validation, and focused tests only. Run the new tests plus the existing relevant worker regression suites.
+
+Then STOP. Do not advance to generator design or update governance state.
+
+The next mandatory action after the validator implementation proof is a Betty real-progress checkpoint under `PRYSM_BETTY_REAL_PROGRESS_GATE.md`.
+
+Only after Betty returns `REAL PROGRESS VERIFIED — READY TO ADVANCE` may project governance advance to the generator phase.
 
 Last verified: 2026-09-08
