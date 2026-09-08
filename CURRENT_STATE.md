@@ -57,7 +57,7 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 
 ## Active governed enhancement tranche — Solution Depth
 
-Status: **OPEN — AUDIT FIRST**
+Status: **OPEN — CONTRACT DESIGN**
 
 Governing specification:
 
@@ -82,16 +82,51 @@ Canonical governance:
 - validators must enforce the contract before generator changes are accepted;
 - cap client prominence, not canonical traceability.
 
-Preservation boundary:
+## Solution Coverage Audit — COMPLETE
 
-Do not reopen or alter evidence collection, evidence grades, scoring, governed priority order, Client Truth, Writer/Judge facts, lifecycle semantics, persistence contracts, the six-primary-page architecture, or Supporting Detail’s subordinate status during the audit phase.
+Accepted diagnostic artifact: `PRYSM-SOLUTION-COVERAGE-AUDIT.txt`.
 
-No production deployment or new audit run is authorized during this first audit phase.
+Audit result:
+
+- Current solution-depth score: **48/100**.
+- Client-delivery verdict: **partially actionable; not sufficiently actionable for implementation handoff without consultant interpretation**.
+- Actionable findings audited: **7**.
+- Site-specific anchor gate failures: **6/7**.
+- Evidence-strength gate failures: **1/7**.
+- Missing or non-binary implementation checks: **3/7**.
+- Capability not explicitly carried without invention: **7/7**.
+- Canonical effort definition absent: **7/7**.
+- Explicit dependency/sequence carried by canonical record: **0/7**.
+
+Single systemic weakness: implementation guidance is emitted as page copy/action-plan rows rather than as one evidence-gated canonical solution record per actionable issue.
+
+The audit established reusable seams in existing priority/action derivation, report model, diagnostic contracts, narrative contracts, renderers, Supporting Detail, and regression tests. It also established that Writer/Judge should remain unchanged initially; the safest first implementation phase is a deterministic canonical solution layer plus validators and renderer references.
+
+Preservation boundary remains active: do not reopen or alter evidence collection, evidence grades, scoring, governed priority order, Client Truth, Writer/Judge facts, lifecycle semantics, persistence contracts, the six-primary-page architecture, or Supporting Detail’s subordinate status.
+
+No production deployment or new audit run is authorized during contract design.
 
 ## Exact next action
 
-Run a bounded **PRYSM Solution Coverage Audit** against the accepted TBK version-11 report and current governed application/model seams. The audit must identify where current guidance is generic, unanchored, too strong for its evidence grade, unverifiable, duplicated, orphaned, or missing capability/effort/sequence/disposition information. It must then identify the exact model, validator, generator, renderer, and test seams needed for implementation.
+Design and freeze the **canonical Solution Contract and validator rules before generator or renderer implementation**.
 
-Do not code until that audit is complete and reviewed.
+The contract must define, at minimum:
+
+- issue ID and merge provenance;
+- evidence-governed prescription mode;
+- mandatory site-specific artifact anchor;
+- problem / why it matters / what to change / how to fix;
+- capability required;
+- bounded effort band;
+- dependencies;
+- mandatory binary implementation check;
+- optional baseline-dependent outcome signal;
+- disposition: FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE;
+- global sequence-plan inputs;
+- cross-page canonical reference rules.
+
+Validator design must fail closed for unsupported prescription strength, missing anchors, duplicate identities, invalid dispositions, missing binary checks, unsupported outcome claims, and dependency cycles.
+
+Do not build the generator or change client rendering until the contract and validator design are reviewed and accepted.
 
 Last verified: 2026-09-08
