@@ -19,51 +19,22 @@ Primary client pages:
 
 Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; not Page 7**.
 
-## Frozen release
+## Production baseline
 
-- Release branch: `p1/bounded-build-cross-report-integrity`
-- Frozen release commit: `1028ca6d2719437cd5b3776559f1e811775a98c5`
-- Release tag: `prysm-report-final-2026-09-08`
-- Promoted main commit: `2cb9a0bf4f9c269f1c47c24195cd126ea5227b59`
 - Application repository: `chriskulbaba2025/vantage-platform`
-- Viewer version: `2.3.0`
-- Full worker report suite: `129 PASS / 0 FAIL`
-- Application production build: PASS
-- Git diff check: PASS
-
-## Production deployment
-
-- Vercel project: `prysm`
-- Vercel project ID: `prj_o4dQkuESOoTphZkOwVKG49BaLQT9`
-- Deployment ID: `dpl_HdYVFxCB3YYeVGo7Jf3AaUKGN9Ez`
-- Deployment URL: `https://prysm-9y7jq2b52-chriskulbabas-projects.vercel.app`
-- Production domain: `https://prysm.omnipressence.com`
-- Production status: **READY**
-
-## Accepted recovered TBK report
-
-- Audit ID: `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`
+- Accepted recovered TBK audit: `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`
 - Accepted persisted version: **11**
 - Accepted lifecycle state: **draft_rendered**
-- The report artifact is persisted and served from the existing production report route with HTTP 200.
-- Version 11 is the accepted recovered report for this audit. Do not force the record back to version 9 and do not rerun providers solely to change the version number.
-- Separate retry audit `fb78b898-e372-48d8-8f96-99785b5853d9` remains preserved in `collecting` as diagnostic evidence and must not replace the accepted recovered report.
-
-## Final report architecture
-
-- Exactly six PRIMARY client destinations, in approved order: Executive Scorecard, Priority Fixes, Conversion Journey, Content Opportunities, Competitor Comparison, Trust & Credibility.
-- Exactly one subordinate Supporting Detail destination.
-- Supporting Detail is not Page 7.
+- Production domain: `https://prysm.omnipressence.com`
+- Viewer version: `2.3.0`
 
 ## Active governed enhancement tranche — Solution Depth
 
-Status: **OPEN — CONTRACT DESIGN**
+Status: **OPEN — VALIDATOR IMPLEMENTATION**
 
 Governing specification:
 
 `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`
-
-Purpose: strengthen the report from diagnosis/prioritization into credible execution guidance without weakening evidence integrity or reintroducing report bloat.
 
 Core rule:
 
@@ -86,47 +57,66 @@ Canonical governance:
 
 Accepted diagnostic artifact: `PRYSM-SOLUTION-COVERAGE-AUDIT.txt`.
 
-Audit result:
-
+Result:
 - Current solution-depth score: **48/100**.
-- Client-delivery verdict: **partially actionable; not sufficiently actionable for implementation handoff without consultant interpretation**.
 - Actionable findings audited: **7**.
 - Site-specific anchor gate failures: **6/7**.
 - Evidence-strength gate failures: **1/7**.
-- Missing or non-binary implementation checks: **3/7**.
-- Capability not explicitly carried without invention: **7/7**.
+- Missing/non-binary implementation checks: **3/7**.
+- Capability absent from canonical records: **7/7**.
 - Canonical effort definition absent: **7/7**.
-- Explicit dependency/sequence carried by canonical record: **0/7**.
+- Canonical dependency/sequence coverage: **0/7**.
 
-Single systemic weakness: implementation guidance is emitted as page copy/action-plan rows rather than as one evidence-gated canonical solution record per actionable issue.
+## Canonical Solution Contract + Validator Design — COMPLETE
 
-The audit established reusable seams in existing priority/action derivation, report model, diagnostic contracts, narrative contracts, renderers, Supporting Detail, and regression tests. It also established that Writer/Judge should remain unchanged initially; the safest first implementation phase is a deterministic canonical solution layer plus validators and renderer references.
+Accepted design artifact: `PRYSM-SOLUTION-CONTRACT-AND-VALIDATOR-DESIGN.txt`.
 
-Preservation boundary remains active: do not reopen or alter evidence collection, evidence grades, scoring, governed priority order, Client Truth, Writer/Judge facts, lifecycle semantics, persistence contracts, the six-primary-page architecture, or Supporting Detail’s subordinate status.
+The design freezes:
+- **21 required top-level canonical solution fields**;
+- evidence grades: CONFIRMED / PARTIAL / UNKNOWN;
+- prescription modes: PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION;
+- controlled site-anchor types;
+- capability taxonomy;
+- bounded effort bands: SMALL / MEDIUM / LARGE / UNKNOWN;
+- mandatory binary implementation checks;
+- optional baseline-dependent outcome signals;
+- dispositions: FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE;
+- deterministic dedupe identity: normalized location/scope × normalized failure mode;
+- merge provenance through `mergedFrom` / `findingRefs`;
+- global sequence rules that preserve governed rank and only add dependency readiness;
+- cross-page canonical solution references;
+- **24 fail-closed validator rules V01–V24**.
 
-No production deployment or new audit run is authorized during contract design.
+Highest-risk compatibility rule: existing reports/actions cannot be silently upgraded into canonical solution records by guessing anchors, capability, effort, checks, or evidence scope. Legacy artifacts must remain renderable and canonical solution validation must be opt-in for new solution records until the generator/integration phase is explicitly authorized.
+
+## Authorized implementation boundary
+
+The next tranche is **validators only**.
+
+Authorized new modules/tests:
+- `services/worker/src/solution/solution-contract.js`
+- `services/worker/src/solution/solution-validator.js`
+- `services/worker/src/solution/solution-sequence.js`
+- `services/worker/src/solution/solution-contract.test.js`
+- `services/worker/src/solution/solution-validator.test.js`
+- `services/worker/src/solution/solution-sequence.test.js`
+
+Existing seams may be read/consumed but must not be changed in this tranche unless a direct compile/test boundary absolutely requires a minimal import-only adjustment:
+- `src/report/action-priority.js`
+- `src/scoring/report-finalization-gate.js`
+- `src/scoring/report-model.js`
+- `src/report-model/cross-report-interpretation.js`
+- `src/scoring/diagnostic-contracts.js`
+- `src/narrative-v2/writer-output.js`
+- `src/report/render-report-v2.js`
+- `src/report/report-detail-sections.js`
+
+Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, lifecycle, persistence, or production behavior in this tranche.
+
+No production deployment or new audit run is authorized during validator implementation.
 
 ## Exact next action
 
-Design and freeze the **canonical Solution Contract and validator rules before generator or renderer implementation**.
-
-The contract must define, at minimum:
-
-- issue ID and merge provenance;
-- evidence-governed prescription mode;
-- mandatory site-specific artifact anchor;
-- problem / why it matters / what to change / how to fix;
-- capability required;
-- bounded effort band;
-- dependencies;
-- mandatory binary implementation check;
-- optional baseline-dependent outcome signal;
-- disposition: FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE;
-- global sequence-plan inputs;
-- cross-page canonical reference rules.
-
-Validator design must fail closed for unsupported prescription strength, missing anchors, duplicate identities, invalid dispositions, missing binary checks, unsupported outcome claims, and dependency cycles.
-
-Do not build the generator or change client rendering until the contract and validator design are reviewed and accepted.
+Implement the canonical Solution Contract constants, V01–V24 validator rules, sequence/dependency validation, and focused tests only. Run the new tests plus the existing relevant worker regression suites. Stop for review before generator, renderer, cross-page reference, Supporting Detail, Writer/Judge, deployment, or audit integration.
 
 Last verified: 2026-09-08
