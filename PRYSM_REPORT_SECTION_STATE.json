@@ -8,84 +8,45 @@
   "primaryNavigationTargetCount": 6,
   "primaryExecutionOrder": ["S01", "S02", "S03", "S05", "S06", "S07"],
   "supportingExecutionOrder": ["S12", "S13", "S04", "S08", "S09", "S10", "S11", "S14", "S15", "S16"],
-  "activeSectionId": "S05",
-  "activeSection": "Content Opportunities",
-  "stage": "BUILD_BOUNDARY_DIAGNOSIS",
-  "status": "ACTIVE_CONTRACT_APPROVED_BOUNDARY_DIAGNOSIS",
+  "activeSectionId": "SUPPORTING_DETAIL",
+  "activeSection": "Supporting Detail",
+  "stage": "FINAL_NARRATIVE_CLIENT_BOUNDARY_REPAIR",
+  "status": "ACTIVE_FINAL_BOUNDARY_REPAIR_PENDING",
   "passThreshold": 95,
-  "baseline": {
-    "status": "COMPLETE",
-    "score": 58,
-    "hardGateFailures": 0,
-    "rootCause": "The Content Opportunities page is structured as a topical/content export rather than as a prioritized client decision page.",
-    "proof": "proof/report-sections/S05-content-opportunities/S05_BASELINE_AUDIT.md"
-  },
-  "contract": {
-    "status": "APPROVED_FOR_BUILD_BOUNDARY_DIAGNOSIS",
-    "kicker": "Content Opportunities",
-    "h2": "What content would help buyers move forward?",
-    "primaryBlocks": [
-      "What is already helping buyers",
-      "Where decision support is thin",
-      "What to create or improve first"
-    ],
-    "opportunityCardFields": [
-      "buyer question / need",
-      "buyer stage",
-      "why it matters",
-      "recommended asset",
-      "journey connection",
-      "intended decision-support role",
-      "evidence qualification"
-    ],
-    "rules": [
-      "Preserve governed opportunity order; do not recompute ranking.",
-      "Make the first opportunity visually obvious without creating a new scoring system.",
-      "Distinguish current strength, evidence-backed gap, and qualified opportunity.",
-      "Keep search-intent and raw topical/technical detail subordinate and move it to Supporting Detail where possible.",
-      "Preserve PARTIAL content-body scope and unassessed-page uncertainty.",
-      "Search demand or competitor presence alone must not create a recommendation.",
-      "Do not claim traffic, rankings, revenue, conversion uplift, or search volume without evidence.",
-      "Primary pages interpret. Deeper pages explain."
-    ]
-  },
-  "lockedPreviousSections": [
-    {
-      "sectionId": "S01",
-      "section": "Executive Scorecard",
-      "status": "PASS_LOCKED",
-      "score": 98,
-      "hardGateFailures": 0
-    },
-    {
-      "sectionId": "S02",
-      "section": "Priority Fixes",
-      "status": "PASS_LOCKED",
-      "score": 97,
-      "hardGateFailures": 0,
-      "reviewArtifact": "C:\\Users\\kulba\\Downloads\\PRYSM-S02-TBK-HUMAN-REVIEW-2.html",
-      "reviewArtifactSha256": "23633CA36C0D8B4DB980810A0115CA8048E626AE783D740F75C05CFD5EB1C800",
-      "closureArtifact": "proof/report-sections/S02-priority-fixes/S02_CLOSURE.md"
-    },
-    {
-      "sectionId": "S03",
-      "section": "Conversion Journey",
-      "status": "PASS_LOCKED",
-      "score": 97,
-      "hardGateFailures": 0,
-      "reviewArtifact": "C:\\Users\\kulbaba\\Downloads\\PRYSM-S03-TBK-EXECUTIVE-BRIDGE-REVIEW.html",
-      "reviewArtifactSha256": "A0D4F0F6AD045D8AC2F25F87850145C3D2E87E48CFDA7AD2A626206B077292DB",
-      "closureArtifact": "proof/report-sections/S03-conversion-journey/S03_CLOSURE.md",
-      "lockedNarrativeRule": "Primary pages interpret. Deeper pages explain."
-    }
+  "primaryPages": [
+    {"sectionId":"S01","section":"Executive Scorecard","status":"PASS_LOCKED","score":98},
+    {"sectionId":"S02","section":"Priority Fixes","status":"PASS_LOCKED","score":97},
+    {"sectionId":"S03","section":"Conversion Journey","status":"PASS_LOCKED","score":97},
+    {"sectionId":"S05","section":"Content Opportunities","status":"PASS_LOCKED","score":97},
+    {"sectionId":"S06","section":"Competitor Comparison","status":"PASS_LOCKED","score":97},
+    {"sectionId":"S07","section":"Trust & Credibility","status":"PASS_LOCKED","score":98}
   ],
-  "likelyOwnershipToDiagnose": [
-    "services/worker/src/report/render-report-v2.js",
-    "services/worker/src/report/render-report-v2-sections.test.js",
-    "services/worker/src/report/render-report-v2.test.js",
-    "services/worker/src/report/render-narrative-v2.js",
-    "services/worker/src/report/render-narrative-v2.test.js"
-  ],
+  "lockedNarrativeRule": "Primary pages interpret. Deeper pages explain.",
+  "supportingDetail": {
+    "status": "ACTIVE_NOT_LOCKED",
+    "isPrimaryPage": false,
+    "isPage7": false,
+    "governingPrinciple": "Supporting Detail must support consulting decisions, not expose raw audit volume merely because the evidence exists.",
+    "jumpNavigation": "PASS_8_OF_8",
+    "primaryPageDisclosureAbsence": "PASS_6_OF_6",
+    "fullReportTests": "129_PASS_0_FAIL",
+    "diffCheck": "PASS",
+    "latestRender": "C:\\Users\\kulbaba\\Downloads\\PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-7.html",
+    "latestBuildProof": "C:\\Users\\kulbaba\\Downloads\\PRYSM-SUPPORTING-DETAIL-NARRATIVE-CONTENT-WORTHINESS-BUILD-PROOF.txt",
+    "contentWorthinessAudit": "C:\\Users\\kulbaba\\Downloads\\PRYSM-SUPPORTING-DETAIL-NARRATIVE-CONTENT-WORTHINESS-AUDIT.txt",
+    "contentWorthinessAuditScore": 54,
+    "contentWorthinessAuditVerdict": "MAJOR_REDUCTION_REQUIRED",
+    "compactDisclosureReviewScore": 96,
+    "clientFacingDisclosureLabel": "Additional interpretation and evidence context",
+    "clientFacingDisclosureBlocks": [
+      "Why the report reached these conclusions",
+      "What the evidence supports and limits",
+      "Additional interpretation worth knowing"
+    ],
+    "remainingBlocker": "The nested client-visible control 'Show deeper diagnostic interpretation' still exposes audit-heavy Writer/Judge narrative and internal mechanics. Preserve the full governed narrative audit-only, but remove ordinary client access to it before PASS_LOCK.",
+    "targetNextRender": "C:\\Users\\kulbaba\\Downloads\\PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-8.html",
+    "targetNextProof": "C:\\Users\\kulbaba\\Downloads\\PRYSM-SUPPORTING-DETAIL-FINAL-NARRATIVE-BOUNDARY-PROOF.txt"
+  },
   "applicationEnvironment": {
     "repository": "chriskulbaba2025/vantage-platform",
     "localPath": "C:\\Users\\kulbaba\\Desktop\\vantage-platform",
@@ -95,6 +56,7 @@
     "headAloneIdentifiesCandidate": false,
     "dirtyWorktreeMustBePreserved": true
   },
-  "nextAllowedAction": "Perform S05 build-boundary diagnosis only. Inspect the five likely ownership files and return exact rendering ownership, exact stale tests, whether render-narrative-v2.js requires editing or inspection only, any additional source/test file required, exact bounded build scope, and proposed verification commands. Do not edit application code, tests, or report artifacts; do not rerender.",
+  "hardProcessRule": "Every Codex run must create and verify a non-empty result/proof artifact under C:\\Users\\kulbaba\\Downloads unless Chris explicitly says otherwise.",
+  "nextAllowedAction": "Perform the Supporting Detail final narrative client-boundary repair only: keep the three compact client-facing interpretation blocks; remove normal client access to 'Show deeper diagnostic interpretation'; preserve all full Writer/Judge narrative unchanged in audit-only/diagnostic output; run full report tests with 0 FAIL and git diff --check; offline-rerender the persisted TBK fixture to PRYSM-SUPPORTING-DETAIL-TBK-CURRENT-REVIEW-8.html; create and verify PRYSM-SUPPORTING-DETAIL-FINAL-NARRATIVE-BOUNDARY-PROOF.txt; do not PASS_LOCK until human review confirms the actual rendered client boundary.",
   "lastUpdated": "2026-09-07"
 }
