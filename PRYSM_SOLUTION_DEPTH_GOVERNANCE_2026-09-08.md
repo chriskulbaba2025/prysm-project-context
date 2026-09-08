@@ -190,6 +190,24 @@ Minimum required assertions:
 - outcome signals require a baseline/measurement path;
 - accepted or investigated findings are not rendered as active fixes.
 
+## Mandatory Betty real-progress gate
+
+The project-wide Betty rule in `PRYSM_BETTY_REAL_PROGRESS_GATE.md` is mandatory for this tranche.
+
+After every implementation tranche and before governance advances:
+
+1. Builder/Codex completes the authorized implementation and proof artifact.
+2. Betty independently checks actual code, git diff, tests, and governed requirements.
+3. Governance may advance only when Betty returns:
+
+`REAL PROGRESS VERIFIED — READY TO ADVANCE`
+
+A Builder/Codex PASS or proof artifact is not sufficient by itself.
+
+If Betty returns `PROGRESS NOT VERIFIED — [exact reason]`, the current tranche remains open and must be repaired/reverified before any next implementation phase begins.
+
+Betty verification is mandatory after validator implementation, generator implementation, canonical integration, renderer/cross-page reference implementation, Supporting Detail changes, full regression/fireproofing, and the final human-review candidate before production promotion.
+
 ## First implementation phase
 
 Before generator or renderer changes, run a Solution Coverage Audit against the accepted TBK report and current governed data model.
