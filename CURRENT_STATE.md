@@ -95,10 +95,17 @@ Not authorized:
 ## Current stage
 TWO BOUNDED RECOVERY DEFECTS REMAIN / MODEL EXECUTION NOT AUTHORIZED.
 
+## New-chat handoff
+Authoritative continuation handoff:
+`HANDOFF_PRYSM_FINAL_PERSISTED_RESPONSE_RECOVERY_REPAIR_2026-09-09.md`
+
+The next chat should read `CURRENT_STATE.md` first, then that handoff, and continue from exact local candidate `760d546c02e892360165497801d25a94cbcb941c` without reconstructing state from prior chat history.
+
 ## Exact next action
-**At exact local candidate `760d546c02e892360165497801d25a94cbcb941c`, implement a bounded test-first repair in `services/worker/src/narrative-v2/live-binding.js` and directly affected recovery tests only: distinguish resumable `POST_RESPONSE_LOCAL_FAILURE` / `RESPONSE_RETURNED` records from terminal returned-provider/recovery failures before persisted-result rejection, and cryptographically plus scope-bind persisted response/state/meta identity before deterministic resume. Preserve all already-closed authorization, execution, durability, duplicate, lineage, budget, call-ceiling, security, canonical-authority, scoring/evidence, Writer/Judge, and report boundaries. Rerun focused, Narrative/storage/production-path, and full worker regressions, run `git diff --check`, create one new local candidate if green, produce a Downloads proof, and STOP for another independent Sol High preflight. Do not call models/providers, push, deploy, merge main, rerun audit providers, or mutate production.**
+**At exact local candidate `760d546c02e892360165497801d25a94cbcb941c`, implement a bounded test-first repair in `services/worker/src/narrative-v2/live-binding.js` and directly affected recovery tests only: distinguish resumable `POST_RESPONSE_LOCAL_FAILURE` / `RESPONSE_RETURNED` records from terminal returned-provider/recovery failures before persisted-result rejection, and cryptographically plus scope-bind persisted response/state/meta identity before deterministic resume. Preserve all already-closed authorization, execution, durability, duplicate, lineage, budget, call-ceiling, security, canonical-authority, scoring/evidence, Writer/Judge, and report boundaries. Rerun focused, Narrative/storage/production-path, and full worker regressions, run `git diff --check`, create one new local candidate if green, produce `C:\Users\kulba\Downloads\PRYSM-NARRATIVE-V2-PERSISTED-RESPONSE-FINAL-REPAIR-PROOF.txt`, and STOP for another independent Sol High preflight. Do not call models/providers, push, deploy, merge main, rerun audit providers, or mutate production.**
 
 ## Active governance
+- `HANDOFF_PRYSM_FINAL_PERSISTED_RESPONSE_RECOVERY_REPAIR_2026-09-09.md`
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
 - `PRYSM_TBK_WRITER_PASS2_TRANSPORT_RECOVERY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
