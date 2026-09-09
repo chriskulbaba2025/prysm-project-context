@@ -1,7 +1,7 @@
 # PRYSM Handoff — Solution Depth Validator to Betty Checkpoint
 
 Date: 2026-09-08
-Status: VALIDATOR IMPLEMENTATION COMPLETE — BETTY CHECKPOINT REQUIRED
+Status: VALIDATOR IMPLEMENTATION COMPLETE — REVIEW-CANDIDATE PUBLICATION REQUIRED BEFORE BETTY
 
 ## Project
 
@@ -30,7 +30,7 @@ Locked rule:
 Artifact: `PRYSM-SOLUTION-COVERAGE-AUDIT.txt`
 
 Result:
-- solution-depth score: 48/100;
+- solution-depth score: **48/100**;
 - 7 actionable findings audited;
 - 6/7 site-anchor failures;
 - 1/7 evidence-strength failure;
@@ -62,28 +62,58 @@ Frozen design:
 
 Artifact: `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt`
 
-Builder/Codex claims:
+Builder/Codex proof states:
 - six authorized files created under `services/worker/src/solution/`;
 - no existing application files changed;
 - 21 canonical fields implemented;
 - V01–V24 implemented;
-- solution tests: 24 PASS / 0 FAIL;
-- existing regressions: 202 PASS / 0 FAIL;
+- solution tests: **24 PASS / 0 FAIL**;
+- existing regressions: **202 PASS / 0 FAIL**;
 - `git diff --check`: PASS;
-- no generator, renderer, Writer/Judge, evidence, scoring, lifecycle, persistence, audit, deployment, push, merge, or production changes.
+- no generator, renderer, Writer/Judge, evidence, scoring, lifecycle, persistence, audit, deployment, merge, or production changes;
+- at proof time: no commit/push yet.
 
-## Betty governance rule
+## Corrected Betty governance
 
 Betty is a separate external LLM and is a mandatory checkpoint after every implementation tranche.
 
 Governing file: `PRYSM_BETTY_REAL_PROGRESS_GATE.md`.
 
-Important corrected pattern:
+The required code-tranche sequence is now:
 
-- Betty receives the same bounded tranche logic used by implementation: project goal, exact tranche, explicit acceptance conditions/invariants, explicit preserved behaviors/forbidden changes, and the full Builder/Codex proof content or an actually attached proof artifact.
-- Do not merely give Betty a local filename/path she cannot access.
-- Betty is not asked for a long second audit.
-- Betty returns only:
+**implementation -> tests -> proof -> bounded commit -> non-production review-branch push -> exact SHA -> Betty inspection -> governance advance**
+
+For a code tranche, Betty must be able to inspect the actual implementation code in GitHub. A local-only candidate plus proof is not enough.
+
+The review push is evidence publication only. It does not authorize merge, deployment, production promotion, audit rerun, provider/model calls, or unrelated changes.
+
+## What Betty must receive
+
+Betty must be given:
+
+Project context:
+- `chriskulbaba2025/prysm-project-context`
+- `CURRENT_STATE.md`
+- this handoff
+- `PRYSM_BETTY_REAL_PROGRESS_GATE.md`
+- `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`
+
+Application code:
+- `chriskulbaba2025/vantage-platform`
+- exact non-production review branch
+- exact implementation commit SHA
+- exact changed-file boundary
+
+Verification evidence:
+- full `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt` content or an actually attached proof artifact
+- tranche-specific acceptance conditions/invariants
+- preserved behaviors / forbidden changes
+
+Betty must not reconstruct state from chat history.
+
+## Betty response contract
+
+Betty returns only:
 
 `RESULT: REAL PROGRESS — YES`
 
@@ -91,25 +121,38 @@ or
 
 `RESULT: REAL PROGRESS — NO`
 
-plus one short reason and confidence HIGH / MEDIUM / LOW.
+then:
 
-The first Betty attempt returned NO only because the implementation proof itself was not supplied to Betty. That checkpoint input was incomplete and does not constitute a validator implementation failure.
+`REASON: <one short sentence>`
+
+`CONFIDENCE: HIGH / MEDIUM / LOW`
+
+No long second audit is required unless separately authorized.
 
 ## Current governance lock
 
-Do not advance to generator work until a valid Betty checkpoint returns:
+Do not advance to generator work until:
 
-`RESULT: REAL PROGRESS — YES`
-
-Do not update project governance to the generator phase before that result.
+1. the exact already-tested validator candidate is committed;
+2. that exact commit is pushed to a non-production review branch;
+3. the exact branch and SHA are recorded;
+4. Betty inspects the actual code plus governance/proof;
+5. Betty returns `RESULT: REAL PROGRESS — YES`.
 
 ## Exact next action
 
-1. Give Betty the complete PRYSM validator checkpoint prompt.
-2. Include the full contents of `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt` in the prompt, or attach the proof directly in Betty's chat.
-3. Obtain Betty's small result.
-4. If `REAL PROGRESS — YES`, update `CURRENT_STATE.md` and begin the bounded deterministic canonical solution generator tranche.
-5. If NO, diagnose only Betty's stated reason and keep the validator tranche open.
+In `vantage-platform`:
+
+1. verify current branch/worktree and preserve unrelated governed state;
+2. commit only the six authorized validator files under `services/worker/src/solution/`;
+3. push the exact tested commit to a non-production review/feature branch;
+4. record exact branch and commit SHA;
+5. do not merge or deploy;
+6. run Betty against the GitHub code at that SHA plus the project-context files and proof.
+
+If Betty returns YES, update `CURRENT_STATE.md` and move to the bounded deterministic canonical solution generator tranche, still stopping before renderer integration.
+
+If Betty returns NO, keep the validator tranche open and diagnose only the stated reason before further implementation.
 
 ## Preservation boundary
 
@@ -124,4 +167,4 @@ While Betty is pending, do not change:
 - accepted TBK report;
 - production configuration.
 
-No push, merge, deploy, provider/model call, or audit rerun is authorized.
+No generator, renderer, merge, deploy, provider/model call, audit rerun, or production promotion is authorized.
