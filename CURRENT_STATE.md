@@ -4,9 +4,9 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Close the remaining Solution Depth remediation-authority leaks so canonical solutions are the sole source of client remediation anywhere in the final client artifact, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page plus Supporting Detail architecture.
 
-Verified checkpoint: **Whole-system Canonical Remediation Authority Closure Diagnosis — READY_FOR_IMPLEMENTATION.**
+Verified checkpoint: **Consolidated Canonical Remediation Authority Closure implementation is IN PROGRESS / FOCUSED TEST HOLD — 110 PASS / 2 FAIL. Diagnose before further implementation.**
 
-## Current application state
+## Current application publication state
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Review branch: `review/prysm-solution-directive-authority-betty`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
@@ -15,8 +15,11 @@ Verified checkpoint: **Whole-system Canonical Remediation Authority Closure Diag
 - Canonical authority-provider integration SHA: `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`
 - Renderer/cross-page integration SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
 - Client Specificity repair SHA: `c37913acfd82580724c74feb26175e2f0c36232c`
-- Writer narrative authority leak repair / current implementation baseline: `ed671bbd50ef836b10c77917e3a78b95963188fc`
+- Writer narrative authority leak repair / published review-branch SHA: `ed671bbd50ef836b10c77917e3a78b95963188fc`
+- GitHub remote review branch was re-verified on 2026-09-09 and still points to `ed671bbd...`.
 - Production remains unchanged.
+
+Important: the latest focused test output came from a local in-progress authority-closure implementation worktree. No ending SHA, commit, or published consolidated repair candidate was supplied. The exact local HEAD/status/diff must be verified before any next edit. Do not reset, clean, discard, overwrite, stash, or rebase that work.
 
 ## Materially completed
 - Canonical Solution Contract + Validator frozen; validator externally Betty-approved.
@@ -28,13 +31,10 @@ Verified checkpoint: **Whole-system Canonical Remediation Authority Closure Diag
 - Priority Fixes owns full canonical remedy detail; canonical cross-page references use stable solution IDs.
 - Client Specificity & Cognitive Load repair at `c37913ac...` improved Priority Fix rendering and Supporting Detail disclosure without changing authority semantics.
 - Writer narrative remediation authority leak repaired at `ed671bbd...`: Writer action plan, executive Change/Do next, hidden Writer narrative, and Writer/Judge HTML metadata are no longer serialized into client HTML while internal Writer/Judge artifacts remain preserved.
-- Latest full `npm test` at `ed671bbd...`: 1007 PASS / 0 FAIL / 0 skipped.
-- `git diff --check`: PASS.
-- No provider/model calls, audit rerun, deployment, production promotion, or production mutation occurred in that repair.
+- Published `ed671bbd...` full `npm test`: 1007 PASS / 0 FAIL / 0 skipped; `git diff --check` PASS.
+- Whole-system Terra High Canonical Remediation Authority Closure Diagnosis completed with `RESULT: READY_FOR_IMPLEMENTATION`.
 
 ## Accelerated operating method
-
-The prior one-symptom-at-a-time review loop is retired for this shared defect class.
 
 Active governance:
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
@@ -43,152 +43,149 @@ Active governance:
 - `WORKFLOW_INSTRUCTIONS.md`
 
 Sequence:
-
 `whole-system invariant diagnosis -> exhaustive surface inventory -> consolidated bounded repair -> permanent invariant tests -> full regression -> adversarial preflight -> external Betty at material checkpoint`
 
 Model routing:
-- **Terra High** — default for architecture diagnosis, authority tracing, consolidated governance-sensitive implementation, and repair-boundary decisions.
-- **Luna Medium** — mechanical work only after architecture, file boundary, acceptance conditions, and tests are frozen.
-- **Sol High** — preferred separate adversarial preflight when available; otherwise use a fresh Terra High context.
+- **Terra High** — architecture diagnosis, semantic classification, authority tracing, consolidated governance-sensitive implementation.
+- **Luna Medium** — mechanical work only after root cause/file boundary/acceptance/tests are frozen.
+- **Sol High** — separate adversarial preflight after a green consolidated candidate exists.
 
-Model selection does not replace exact-SHA inspection, invariant tests, serialized artifact inspection, browser human review, or external Betty before release advancement.
+## Governing invariant
 
-## Whole-system diagnosis complete
+**Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
+
+Priority Fixes remains the sole complete remedy owner. Non-owning pages may contain safe evidence/context/limitations/strengths or bounded canonical summaries/references tied to stable canonical solution IDs. Independent instructions, recommendations, checklists, implied fixes, or hidden remediation are defects.
+
+## Whole-system diagnosis result
 
 Checkpoint:
 `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 
-Diagnosis result:
-`RESULT: READY_FOR_IMPLEMENTATION`
+The diagnosis traced the complete active defect class across:
+- Conversion Journey hard-coded action/improvement copy;
+- Competitor recommendations/advisory output;
+- Content Opportunities action framing, recommended assets, imperative journey connections, unsafe broad canonical-content association;
+- Trust independent action list;
+- Performance legacy Finding businessImpact/recommendation output;
+- Schema/entity recommendations/prioritization;
+- Supporting Detail foundation action grouping;
+- Internal-link implementation-ready recommendations;
+- evidence-roadmap language where it crosses into site-change advice;
+- dormant legacy remedy/narrative re-entry residue.
 
-Starting SHA:
-`ed671bbd50ef836b10c77917e3a78b95963188fc`
-
-Diagnosis mode:
-READ-ONLY / Terra High
-
-The active final HTML composition was traced through `renderReportV2()` / `pageShell()`. The remaining authority defect class is renderer-owned. No provider/authority/generator/Writer/Judge/persistence change is currently required.
-
-## Confirmed remaining competing-remediation surfaces
-
-The diagnosis identified the whole active class, including:
-- Conversion Journey hard-coded improvement/action copy not tied to canonical IDs.
-- Competitor recommendation/advisory output, including gap recommendation fields.
-- Content Opportunities action framing, recommended assets, imperative journey connections, and unsafe broad canonical-content association.
-- Trust & Credibility independent “What to check or improve first” action list.
-- Performance legacy Finding business-impact/recommendation action output.
-- Schema/entity recommended candidate types and prioritization guidance.
-- Supporting Detail foundation “resolve alongside these actions” independent action grouping.
-- Internal-link implementation-ready recommendations and source/target action table.
-- Any evidence-roadmap wording that crosses from evidence limitation into site-change instruction.
-- Dormant legacy remedy helpers and obsolete narrative-layer/viewer/CSS residue that could become a future re-entry path.
-
-## Preserve as canonical / safe
-- Executive Scorecard bounded canonical summaries/references.
-- Priority Fixes as the sole complete canonical remedy owner.
-- Canonical Supporting Detail action summaries / MEASURE where directly tied to canonical records.
-- Evidence, observations, strengths, business meaning, diagnostic detail, and limitations when non-prescriptive.
-- PARTIAL / UNKNOWN semantics and fail-closed evidence policy.
-- Existing stable solution IDs, governed order, evidence grades, prescription modes, site anchors, dispositions, implementation checks, capability and effort.
-- Six primary pages plus Supporting Detail.
-
-## In progress
-
-**One consolidated renderer-only Canonical Remediation Authority Closure implementation.**
-
-Use **Terra High**.
-
-Starting exact application SHA:
-`ed671bbd50ef836b10c77917e3a78b95963188fc`
-
-### Exact production repair boundary
+The proved production repair boundary remains only:
 1. `services/worker/src/report/render-report-v2.js`
 2. `services/worker/src/report/report-detail-sections.js`
 
-If another production file is proven unavoidable, stop and record the exact blocker rather than silently broadening scope.
+No provider, authority, generator, scoring, evidence, Writer/Judge, lifecycle, persistence, or production-config change was proven necessary.
 
-### Required implementation behavior
-- Priority Fixes remains the only full-detail client remedy surface.
-- Non-owning pages retain only safe context or bounded canonical summary/reference tied to the same `solutionId`.
-- Independent deterministic recommendations/actions/checklists are removed or rewritten as neutral context.
-- Do not invent canonical authority for competitor/content/schema/internal-link ideas.
-- Remove safely-unused dormant renderer remedy paths/residue that could re-enter client serialization.
-- Preserve useful evidence/context rather than deleting whole sections merely to pass the gate.
+## Latest focused implementation verification
 
-### Permanent invariant tests
-With `canonicalSolutions` fixed, client remediation must be invariant to mutation of:
-- Writer remedy/interpretation fields already covered by the Writer leak repair;
-- legacy Finding `recommendation`;
-- `businessImpact`;
-- `verificationMethod`;
-- `affectedUrls`;
-- competitor/content/internal-link recommendation/action fields;
-- other discovered non-canonical remedy inputs.
+Checkpoint:
+`PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_FOCUSED_TEST_HOLD_2026-09-09.md`
 
-Tests must also prove:
-- every remaining action-like client surface is canonical full detail or a bounded canonical summary/reference with the same stable solution ID;
-- identified competing phrases/action structures are absent from serialized HTML;
-- missing/malformed canonical authority fails closed with no legacy fallback;
-- canonical IDs/order/evidence grades/prescription modes/site anchors/dispositions remain intact;
-- PARTIAL/UNKNOWN rules remain intact;
-- persisted Writer/Judge artifacts remain internal and preserved;
-- six primary pages plus Supporting Detail remain unchanged.
+Supplied focused test artifact:
+`prysm-focused-closure.txt`
 
-Keyword scans may assist discovery but are not sufficient proof.
+Result:
+- tests: 112
+- pass: 110
+- fail: 2
+- skipped: 0
+- duration: 592.7062 ms
 
-## Required verification after implementation
-- focused Solution suite;
-- direct render-report-v2/canonical renderer tests;
-- nearest report-detail tests;
-- full report suite;
-- report-finalization;
-- WriterOutput;
-- Narrative production path;
-- render-narrative-v2;
-- viewer/page architecture;
-- startup/report-model coverage when part of the established affected-path set;
-- full `npm test` comparable to the current 1007/1007 baseline;
-- `git diff --check`.
+This is **not** Builder PASS and is **not** ready for publication, Sol preflight, browser acceptance, or external Betty.
 
-Publish one bounded non-production review candidate only after green verification.
+### Failure 1
 
-## Required preflight after Builder PASS
-Before external Betty:
-1. run a separate adversarial authority-closure review using Sol High when available, otherwise fresh Terra High;
-2. inspect the complete candidate diff and serialized final HTML, not proof claims alone;
-3. return internal `REAL PROGRESS — YES|NO`;
-4. perform browser-rendered human review using persisted production-shaped inputs without new provider/model calls;
-5. only after internal preflight YES and human review should external Betty be asked to judge the material architecture checkpoint.
+`V2R-03: internal-link opportunities remain supporting evidence without remedy instructions`
 
-## Separate queued blind spots — do not fold into renderer closure
-### Static authority quality
-The static authority registry currently defaults supported entries to `PARTIAL / CONDITIONAL / FIX_LATER`. This is conservative and may later suppress warranted specificity/priority. Diagnose separately after renderer closure.
+Location from test output:
+`src/report/render-report-v2-sections.test.js:270`
 
-### Exact scope specificity
-Canonical records do not yet carry exact per-finding URL/count specificity. Do not restore legacy `affectedUrls` as remedy authority. Treat this as separate governed-data work if still needed.
+Assertion message:
+`independent recommendation confidence is not serialized`
 
-### Future opportunity authority
-If schema/content/internal-link opportunities are later intended to become actionable recommendations, they require their own governed canonical authority/data tranche rather than renderer inference.
+The matcher is a broad negative `/high/` check against the full HTML. Because legitimate report/style content can contain `High/high`, this may be a false-positive test matcher or a real leaked source value. Do not assume either. Prove the exact match source first.
 
-### Client usefulness
-Removing independent recommendations can reduce perceived report usefulness. Browser human review is required after the consolidated repair to ensure the report still answers client questions without recreating a second remedy authority.
+### Failure 2
+
+`AUTH-CLOSURE-01: non-canonical remedy inputs cannot alter client remediation`
+
+Location from test output:
+`src/report/render-report-v2.test.js:380`
+
+The test expected byte-identical entire HTML after non-canonical remedy mutations, but the reports differed.
+
+This may represent:
+1. a real remaining remediation-authority leak;
+2. legitimate safe evidence/context changing because the mutation touched evidence-bearing data;
+3. fixture/test contamination.
+
+The invariant is remediation invariance, not automatically byte-identical complete reports when neutral evidence/context legitimately changes. Diagnose the first exact HTML divergence and triggering mutation before changing product or test code.
+
+## In progress
+
+**Read-only focused-failure diagnosis.**
+
+Use **Terra High**.
+
+First verify the current local worktree:
+- local root `C:\Users\kulba\Desktop\vantage-platform`
+- branch `review/prysm-solution-directive-authority-betty`
+- local HEAD
+- `git status --short`
+- local diff against published `ed671bbd50ef836b10c77917e3a78b95963188fc`
+
+Preserve the local implementation exactly.
+
+Then answer:
+1. What exact source value caused the `/high/` match in `V2R-03`?
+2. Is that value an actual non-canonical internal-link recommendation-confidence leak or unrelated legitimate HTML?
+3. What is the first exact HTML difference in `AUTH-CLOSURE-01`?
+4. Which mutation caused it?
+5. Is the difference competing remediation, safe context/evidence, or fixture/test contamination?
+6. What is the smallest complete repair boundary?
+
+Do not implement during this diagnostic run.
+
+Required proof:
+`C:\Users\kulba\Downloads\PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-FOCUSED-FAILURE-DIAGNOSIS.txt`
+
+## After focused diagnosis
+
+If a bounded correction is proven:
+1. use Terra High for the correction;
+2. rerun the 112-test focused set first;
+3. require 112/112 green before broad regression;
+4. run the full comparable regression set, including full `npm test` and `git diff --check`;
+5. produce `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-REPAIR-PROOF.txt`;
+6. commit/push one bounded non-production candidate;
+7. run separate Sol High adversarial preflight;
+8. perform browser-rendered human review using persisted production-shaped inputs without new provider/model calls;
+9. only then return to external Betty at the material architecture checkpoint.
+
+## Separate queued blind spots — do not fold into this focused repair
+- Static authority quality: current registry defaults supported entries to `PARTIAL / CONDITIONAL / FIX_LATER`; diagnose separately later.
+- Exact scope specificity: canonical records do not yet carry exact per-finding URL/count specificity; do not restore legacy `affectedUrls` as remedy authority.
+- Future content/schema/internal-link action authority requires separate governed canonical authority/data if those surfaces are later intended to be prescriptive.
+- Client usefulness must be reviewed in-browser after closure so removing independent advice does not reduce decision usefulness excessively.
 
 ## Hard stops
+- No reset/clean/discard/stash/rebase of local in-progress implementation work.
 - No application `main` merge.
 - No deployment / production promotion.
 - No provider/model execution for release.
 - No production audit rerun.
 - No production artifact/data mutation.
-- No release-governance advancement before external Betty.
-- No Supporting Detail redesign before remediation-authority closure.
-- Preserve scoring/evidence/DecisionEvidence/CapabilityEvidence/Writer/Judge/lifecycle/persistence/report-content/production configuration unless explicit later governance reopens them.
-- Preserve six primary pages plus Supporting Detail.
+- No release-governance advancement.
+- No Sol adversarial preflight yet.
+- No external Betty yet.
+- No Supporting Detail redesign or separate authority-quality tranche before focused failures are closed.
 
-## Exact next action
+## New-chat handoff
 
-Starting from exact application SHA `ed671bbd50ef836b10c77917e3a78b95963188fc`, use **Terra High** to implement the single consolidated renderer-only authority-closure tranche in the two exact production files, add permanent authority-invariant tests, run the full comparable regression set, produce a Downloads proof artifact, commit/push one bounded non-production candidate, then STOP for separate adversarial preflight.
-
-Required proof artifact:
-`C:\Users\kulba\Downloads\PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-REPAIR-PROOF.txt`
+Use:
+`HANDOFF_PRYSM_AUTHORITY_CLOSURE_FOCUSED_TEST_HOLD_CONTINUATION_2026-09-09.md`
 
 Last verified: 2026-09-09
