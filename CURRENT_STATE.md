@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Solution Directive Authority evidence-reference repair — VERIFIED / PUBLISHED / BETTY REVIEW DEFERRED BY USER FOR DEVELOPMENT CONTINUATION.**
+Verified checkpoint: **Solution Directive Authority evidence-reference repair — VERIFIED / PUBLISHED / BETTY REVIEW DEFERRED BY USER FOR DEVELOPMENT CONTINUATION. Canonical integration inspected; governed authority-record provider is the next verified blocker.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -27,13 +27,11 @@ Completed:
 - Canonical Solution Contract + Validator Design complete: 21 required top-level fields and V01–V24 fail-closed rules frozen.
 - Validator implementation Betty-approved at `206cf89831172edba20fb48684266a7be661b90c`.
 - Deterministic canonical solution generator implemented, verified, published, and Betty-approved at `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`.
-- Solution Directive Authority Diagnosis complete: `READY_FOR_AUTHORITY_IMPLEMENTATION`.
 - Initial authority candidate at `3a048b46d0d03279984b7cfa1219cd5280fff216` received Betty `REAL PROGRESS — NO` because authority records could self-certify unresolved evidence references with `persisted: true`.
-- Exact-code diagnosis verified Betty's stated defect.
-- Bounded repair implemented and published at `7c0667ae0ad9c893bbc04363e8399e476ce473f0`:
+- Bounded authority repair implemented and published at `7c0667ae0ad9c893bbc04363e8399e476ce473f0`:
   - trusted evidence index now derives only from governed finding evidence and `decisionEvidence`;
   - authority records cannot add or self-certify evidence IDs;
-  - exact `persisted: true` counterexample now fails closed with `AUTH-EVIDENCE-REF`;
+  - exact `persisted: true` counterexample fails closed with `AUTH-EVIDENCE-REF`;
   - legitimate governed reference remains valid regardless of authority-side `persisted` flag.
 - GitHub exact diff for repaired SHA verified to contain only:
   - `services/worker/src/solution/solution-directive-authority.js`
@@ -49,27 +47,35 @@ Completed:
   - provider/model calls: NO;
   - audit rerun: NO;
   - deployment/production mutation: NO.
-- User explicitly authorized continued development while Betty is temporarily unavailable.
-- Temporary exception recorded in `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`.
+- User explicitly authorized continued intermediate development while Betty is temporarily unavailable.
+- Temporary development exception recorded in `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`.
+- Canonical production-path integration seam inspected at repaired SHA:
+  - `narrative-v2/production-path.js` loads findings, ScoreSet, DecisionEvidence, and CapabilityEvidence but no authority records;
+  - `createNarrativeV2ProductionPath()` has no authority-provider binding;
+  - `application/production-runtime.js` composes no authority-provider binding;
+  - the current `src/solution/` module set contains no governed production authority-record provider/source.
+- Canonical integration authority-provider blocker recorded in `PRYSM_CANONICAL_INTEGRATION_AUTHORITY_PROVIDER_BLOCKER_2026-09-09.md`.
 
-In progress: **Smallest bounded canonical production-path integration tranche using repaired provisional authority baseline `7c0667ae0ad9c893bbc04363e8399e476ce473f0`.**
+In progress: **Read-only Canonical Solution Authority Provider Diagnosis.**
 
 Blocked:
+- Canonical integration code is blocked until one general governed production source for complete `authorityRecords` is identified and the exact file/test boundary is mapped.
 - Renderer/cross-page work remains blocked until canonical production-path integration itself is implemented, tested, proven, and published.
 - Merge to application `main`, deployment, production promotion, provider/model execution, and production mutation remain blocked until deferred Betty review is caught up and release governance passes.
 
 Important constraints:
-- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `PRYSM_CANONICAL_INTEGRATION_DIRECTIVE_AUTHORITY_BLOCKER_2026-09-08.md`, `PRYSM_SOLUTION_DIRECTIVE_AUTHORITY_DIAGNOSIS_CHECKPOINT_2026-09-08.md`, `PRYSM_BETTY_AUTHORITY_EVIDENCE_REF_SELF_CERTIFICATION_REPAIR_2026-09-09.md`, and `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`.
+- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `PRYSM_BETTY_AUTHORITY_EVIDENCE_REF_SELF_CERTIFICATION_REPAIR_2026-09-09.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, and `PRYSM_CANONICAL_INTEGRATION_AUTHORITY_PROVIDER_BLOCKER_2026-09-09.md`.
 - Betty is deferred for intermediate development only; the repaired authority tranche is not retroactively marked Betty-approved.
 - Deferred Betty review must be caught up before merge/deploy/production promotion.
+- Do not invent or infer solution authority from rejected legacy fields.
 - Preserve CONFIRMED / PARTIAL / UNKNOWN evidence governance and PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION modes.
 - Preserve governed priority/order and deterministic sequencing semantics.
-- Do not change evidence collection, evidence grades, scoring, Client Truth, Writer/Judge facts/contracts, lifecycle, persistence, accepted TBK report, renderer/page architecture, Supporting Detail status, or production configuration unless the bounded canonical integration seam strictly requires a previously authorized application touch.
+- Do not change evidence collection, evidence grades, scoring, Client Truth, Writer/Judge facts/contracts, lifecycle, persistence, accepted TBK report, renderer/page architecture, Supporting Detail status, or production configuration during the authority-provider diagnosis.
 - No renderer/cross-page work yet.
 - Do not merge to application `main`.
 - Do not deploy or promote to production.
 - Do not call providers/models or rerun an audit.
 
-Exact next action: Starting from application SHA `7c0667ae0ad9c893bbc04363e8399e476ce473f0`, inspect the current canonical production path and determine the smallest exact file/test boundary required to wire the repaired `buildSolutionDirectiveInput()` authority output into the accepted `generateCanonicalSolutions()` flow without changing renderer, scoring, evidence, Writer/Judge, lifecycle, persistence, or production configuration; then implement only that bounded canonical integration tranche, run focused and required regressions, produce proof, commit/push to a non-production review branch, and stop before renderer/cross-page work.
+Exact next action: At application SHA `7c0667ae0ad9c893bbc04363e8399e476ce473f0`, run a read-only bounded Canonical Solution Authority Provider Diagnosis: inspect finding/rule producers, production composition, existing governed registry/configuration patterns, and solution contracts; identify one general deterministic fail-closed source for complete `authorityRecords`; classify whether persistence/contract migration is required; map the smallest exact source/test file boundary; produce a Downloads diagnosis proof; do not edit application code in this diagnostic run.
 
 Last verified: 2026-09-09
