@@ -65,15 +65,19 @@ Completed:
   - persistence unchanged;
   - current in-memory report model gains canonicalSolutions.
 - Verified legacy competing remedy sources to replace at render time include Priority Fixes/Executive use of Finding recommendation/businessImpact/affectedUrls/hard-coded remedy prose and Supporting Detail action rows using recommendation/businessImpact/verificationMethod.
+- Team human-review feedback has been accepted and queued as the next human-facing quality gate after renderer/cross-page integration in `PRYSM_HUMAN_REVIEW_CLIENT_SPECIFICITY_COGNITIVE_LOAD_GATE_2026-09-09.md`.
+- The queued gate covers: real `howToFix` detail rather than restated problems; removal of redundant “What needs attention” copy; exact governed counts/URLs instead of vague “some” wording when available; tighter finding-specific uncertainty language; reduced repetitive verification copy; primary-page top-of-page navigation; non-conflicting trust score/finding wording; explicit “identified vs examples shown” orphan-page disclosure; and simpler progressive disclosure in Supporting Detail.
 
 In progress: **Bounded Renderer / Cross-Page Canonical Solution implementation.**
+
+Queued immediately after current implementation: **Client Specificity & Cognitive Load diagnosis/gate on the rendered report.**
 
 Blocked:
 - Supporting Detail solution-depth work remains blocked until renderer/cross-page canonical references are implemented, tested, proven, and published.
 - Merge to application `main`, deployment, production promotion, provider/model execution, audit rerun, and production mutation remain blocked until deferred Betty review is caught up and release governance passes.
 
 Important constraints:
-- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, `PRYSM_CANONICAL_AUTHORITY_PROVIDER_INTEGRATION_BUILDER_PASS_2026-09-09.md`, and `PRYSM_RENDERER_CROSS_PAGE_CANONICAL_SOLUTION_DIAGNOSIS_CHECKPOINT_2026-09-09.md`.
+- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, `PRYSM_CANONICAL_AUTHORITY_PROVIDER_INTEGRATION_BUILDER_PASS_2026-09-09.md`, `PRYSM_RENDERER_CROSS_PAGE_CANONICAL_SOLUTION_DIAGNOSIS_CHECKPOINT_2026-09-09.md`, and `PRYSM_HUMAN_REVIEW_CLIENT_SPECIFICITY_COGNITIVE_LOAD_GATE_2026-09-09.md`.
 - Betty is deferred for intermediate development only; authority/provider/integration/renderer tranches are not retroactively Betty-approved.
 - Deferred Betty review must be caught up before merge/deploy/production promotion.
 - Priority Fixes is the sole owner of complete canonical remedy detail.
@@ -82,11 +86,12 @@ Important constraints:
 - Preserve CONFIRMED / PARTIAL / UNKNOWN and PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION semantics.
 - Preserve governed priority/order and deterministic sequencing.
 - Preserve six primary pages plus Supporting Detail exactly.
-- Do not change solution authority provider, repaired authority resolver, solution contract/validator/generator/sequence, scoring/evidence production, DecisionEvidence, CapabilityEvidence, action-priority ranking semantics, WriterInput/Writer/WriterOutput/Judge contracts, lifecycle, persistence/artifact contracts, report-content contract, production configuration, provider/adapters, or deployment state.
+- Do not change solution authority provider, repaired authority resolver, solution contract/validator/generator/sequence, scoring/evidence production, DecisionEvidence, CapabilityEvidence, action-priority ranking semantics, WriterInput/Writer/WriterOutput/Judge contracts, lifecycle, persistence/artifact contracts, report-content contract, production configuration, provider/adapters, or deployment state during the current renderer integration.
+- During the later specificity gate, exact scope/count/URL wording must come from governed evidence/canonical authority. Do not guess or restore legacy `affectedUrls` as hidden solution authority.
 - No merge to application `main`.
 - No deployment or production promotion.
 - No provider/model calls or audit rerun.
 
-Exact next action: Starting from exact application SHA `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a` on `review/prysm-solution-directive-authority-betty`, implement only the model-carried canonical renderer/cross-page reference architecture within the diagnosed source/test boundary; run focused canonical renderer/reference tests and comparable regressions; produce `C:\Users\kulba\Downloads\PRYSM-RENDERER-CROSS-PAGE-CANONICAL-SOLUTION-INTEGRATION-PROOF.txt`; commit/push the bounded non-production candidate; stop before Supporting Detail solution-depth work and before any release action.
+Exact next action: Starting from exact application SHA `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a` on `review/prysm-solution-directive-authority-betty`, implement only the model-carried canonical renderer/cross-page reference architecture within the diagnosed source/test boundary; run focused canonical renderer/reference tests and comparable regressions; produce `C:\Users\kulba\Downloads\PRYSM-RENDERER-CROSS-PAGE-CANONICAL-SOLUTION-INTEGRATION-PROOF.txt`; commit/push the bounded non-production candidate; then run the queued Client Specificity & Cognitive Load diagnosis/gate before broader Supporting Detail polish or any release action.
 
 Last verified: 2026-09-09
