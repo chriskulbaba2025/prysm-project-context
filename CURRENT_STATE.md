@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Complete browser-rendered human acceptance of the published Canonical Remediation Authority Closure candidate, then return to external Betty at the material architecture checkpoint.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, and PASSED independent Sol High adversarial preflight. Browser review is BLOCKED by replay-evidence currency: a legitimate current artifact now requires one new current production-shaped TBK Writer/Judge release-candidate run.**
+Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, and PASSED independent Sol High adversarial preflight. Browser review requires one new current production-shaped TBK Writer/Judge release-candidate run, and Chris has explicitly AUTHORIZED exactly one bounded execution for that purpose.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -33,55 +33,53 @@ Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBL
 - The diagnosis proved the frozen AuditRequest, DecisionEvidence, and CapabilityEvidence can remain unchanged and current ScoreSet/findings/WriterInput can be deterministically regenerated without provider/model calls.
 - The diagnosis also proved the historical Writer/Judge orchestration cannot remain valid against the regenerated current packet. A current validated Writer/Judge release candidate cannot be deterministically synthesized or relabelled and requires legitimate Writer/Judge execution.
 - The existing replay script is not sufficient browser evidence for the published clean renderer because its current replay path does not inject current `canonicalSolutions` and still contains a stale `id="narrative-layer"` structural assertion.
-- No application provider/model calls, deployment, production mutation, production audit rerun, application-main merge, or application source/fixture/test changes occurred during diagnosis.
+- Chris explicitly authorized exactly one bounded current TBK Writer/Judge release-candidate run on 2026-09-09.
+- Authorization record: `PRYSM_TBK_CURRENT_WRITER_JUDGE_RUN_AUTHORIZATION_2026-09-09.md`.
 
-## Browser replay compatibility result
+## Authorized current run boundary
 
-Result: `NEW_PRODUCTION_SHAPED_RUN_REQUIRED`
+Authorized:
+- reuse frozen TBK `audit-request.json`, `decision-evidence.json`, and `capability-evidence.json`;
+- deterministically regenerate current `findings.json`, current ScoreSet 2.0.0, and current WriterInput;
+- execute only the minimum current governed Writer/Judge path needed to obtain one valid current release-candidate orchestration;
+- generate current canonical solutions through `prepareCanonicalSolutions()` and the governed authority/resolver/generator path;
+- render the current report locally and serve it through localhost for Chris's browser review;
+- write proof artifacts to Downloads.
 
-Root cause: **the frozen TBK evidence inputs remain usable, but the persisted derived ScoreSet/findings/WriterInput and Writer/Judge orchestration are historical. Current deterministic derivation changes score/finding identities and dependencies, which invalidates the persisted Writer/Judge release evidence under current contracts and semantic validation.**
-
-Reusable unchanged, subject to current validation:
-- `governed/canonical/audit-request.json`
-- `governed/canonical/decision-evidence.json`
-- `governed/canonical/capability-evidence.json`
-
-Must be deterministically regenerated together:
-- `governed/canonical/findings.json`
-- `governed/canonical/scores.json` as current ScoreSet 2.0.0
-- `governed/report-v2/narrative-v2/writer-input.json`
-
-Must be newly obtained through the current governed Writer/Judge execution path:
-- `governed/report-v2/narrative-v2/orchestration.json`
-- `governed/report-v2/narrative-v2/orchestration-final-pass.json` / equivalent current release-candidate orchestration
-
-A legitimate browser artifact must then use the current canonical production path: current findings/ScoreSet validation -> `prepareCanonicalSolutions()` -> authority records/directive input/generator -> inject `canonicalSolutions` into current report-model hydration -> finalization -> `renderGovernedNarrativeReportV2()` -> persisted HTML read-back/hash validation -> local HTTP browser review.
+Not authorized:
+- no audit-provider rerun;
+- no production deployment or promotion;
+- no application `main` merge;
+- no production data/artifact mutation;
+- no weakening or bypass of current validation/replay guards;
+- no `--legacy-compat` acceptance evidence;
+- no fabrication/hand-editing of findings, scores, WriterInput, WriterOutput, JudgeResponse, orchestration, or canonical solutions;
+- no unrelated source/test/fixture changes;
+- no model/provider calls beyond the minimum Writer/Judge execution required for this single bounded run.
 
 ## In progress
-Browser review is held pending explicit human authorization for one bounded current TBK Writer/Judge release-candidate execution.
+Execute the single authorized current TBK Writer/Judge release-candidate run and, if it validates, immediately continue through current canonical solution preparation and local browser-rendered report generation.
 
 ## Blocked
 - External Betty remains downstream until browser human review passes.
-- Writer/Judge model execution is not authorized by the diagnostic result itself.
 
 ## Important constraints
 - Governing invariant: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
 - Priority Fixes remains the sole complete remedy owner.
 - Do not weaken or bypass the ScoreSet 2.0.0 replay guard.
 - Do not use `--legacy-compat` as browser acceptance evidence.
-- Do not simply relabel historical artifacts as current.
-- Do not fabricate or hand-edit canonical evidence, findings, scores, WriterInput, orchestration, or solution authority.
+- Do not relabel historical artifacts as current.
 - Preserve canonical authority/provider/resolver/generator/validator/contract/sequence, scoring/evidence semantics, DecisionEvidence, CapabilityEvidence, Writer/Judge, lifecycle, persistence, report-content, production configuration, and six-primary-page plus Supporting Detail architecture.
-- No application `main` merge, deployment, production promotion, production audit rerun, or production artifact/data mutation.
-- No Writer/Judge/provider/model execution for this release until explicitly authorized by Chris.
+- Stop on the first bounded Writer/Judge/release validation failure. Diagnose; do not automatically repair or broaden model execution.
 
 ## Exact next action
-**Obtain explicit human authorization for one bounded current TBK Writer/Judge release-candidate execution. After authorization, use the frozen AuditRequest/DecisionEvidence/CapabilityEvidence, deterministically regenerate current findings/ScoreSet/WriterInput, execute only the minimum current governed Writer/Judge path needed to obtain a valid current release candidate, generate canonical solutions through the current production authority path, render locally, and stop for browser human review. Do not deploy, rerun audit providers, mutate production, or merge `main`.**
+**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, use the frozen TBK evidence inputs to deterministically regenerate current findings/ScoreSet/WriterInput outside production, execute exactly one bounded current governed Writer/Judge release-candidate run, validate the resulting current orchestration, then generate canonical solutions through the current production authority path and render/serve the report locally for Chris's browser review. If any validation fails, stop without repair, additional model calls, deployment, provider rerun, production mutation, or main merge.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
 - `PRYSM_BROWSER_REPLAY_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
+- `PRYSM_TBK_CURRENT_WRITER_JUDGE_RUN_AUTHORIZATION_2026-09-09.md`
 - `DECISION_PRYSM_ACCELERATED_SOLO_DEVELOPMENT_WITH_TERRA_PREFLIGHT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
