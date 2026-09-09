@@ -4,15 +4,16 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Close the Solution Depth remediation-authority invariant so canonical solutions are the sole source of client remediation anywhere in the final client artifact, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page plus Supporting Detail architecture.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate is GREEN LOCALLY through focused and full comparable regressions. Candidate is not yet published to the remote review branch.**
+Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED TO THE NON-PRODUCTION REVIEW BRANCH and GREEN through focused and full comparable regressions. Sol High adversarial preflight is next.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local root: `C:\Users\kulba\Desktop\vantage-platform`
 - Review branch: `review/prysm-solution-directive-authority-betty`
-- Published remote review-branch SHA remains: `ed671bbd50ef836b10c77917e3a78b95963188fc`
-- Current verified local candidate HEAD: `c6c814613bb403705b9711466ebc223e3a4837e2`
-- Local worktree: clean after diagnosis, focused rerun, and full regression verification
+- Published remote review-branch SHA: `c6c814613bb403705b9711466ebc223e3a4837e2`
+- Previous published review-branch SHA: `ed671bbd50ef836b10c77917e3a78b95963188fc`
+- Remote publication verified on 2026-09-09; `c6c8146...` is a direct child of `ed671bbd...` and the branch was advanced without force.
+- Local worktree was clean after diagnosis, focused rerun, and full regression verification.
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
 - Production remains unchanged.
 
@@ -27,20 +28,20 @@ Completed:
 - Terra High whole-system authority-closure diagnosis completed; proved production repair boundary remained renderer-only:
   1. `services/worker/src/report/render-report-v2.js`
   2. `services/worker/src/report/report-detail-sections.js`
-- Local consolidated authority-closure implementation is committed at `c6c814613bb403705b9711466ebc223e3a4837e2`.
+- Consolidated authority-closure implementation committed at `c6c814613bb403705b9711466ebc223e3a4837e2`.
 - Focused-failure diagnosis proved both prior 110/112 failures were **TEST DEFECTS**, not production authority leaks:
   - `V2R-03` broad `/high/` matched unrelated `highest-confidence` canonical action-group copy; internal-link recommendation confidence was not serialized.
   - `AUTH-CLOSURE-01` full-report byte equality was over-broad because an internal-link mutation legitimately changed neutral supporting-evidence count/state while canonical remediation remained invariant.
-- Focused closure rerun at exact local HEAD `c6c8146...`: **112 PASS / 0 FAIL / 0 skipped**; Node duration 712.6006 ms; worktree remained clean.
-- Full comparable regression at exact local HEAD `c6c8146...`: **1009 PASS / 0 FAIL / 0 skipped**; Node duration 18874.2953 ms; `git diff --check` PASS; worktree remained clean.
-- No provider/model application calls, deployment, production mutation, production audit rerun, or application push occurred during these verification gates.
+- Focused closure rerun at exact candidate `c6c8146...`: **112 PASS / 0 FAIL / 0 skipped**; Node duration 712.6006 ms; worktree remained clean.
+- Full comparable regression at exact candidate `c6c8146...`: **1009 PASS / 0 FAIL / 0 skipped**; Node duration 18874.2953 ms; `git diff --check` PASS; worktree remained clean.
+- Exact candidate `c6c8146...` published to `review/prysm-solution-directive-authority-betty` without force and remote SHA verified.
+- No provider/model application calls, deployment, production mutation, production audit rerun, or application-main merge occurred during these gates.
 
 In progress:
-- Candidate publication gate only. The local candidate is green but has not been pushed to the remote review branch.
+- Separate **Sol High adversarial preflight** over the exact published candidate and the complete authority-closure diff.
 
 Blocked:
-- Application push requires explicit user approval under the active repository/approval boundary.
-- Sol High adversarial preflight, browser-rendered human review, and external Betty remain downstream and must not start before the exact candidate is published and remote SHA is verified.
+- Browser-rendered human review and external Betty remain downstream until Sol High preflight returns a positive material-progress result.
 
 Important constraints:
 - Governing invariant: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
@@ -51,9 +52,9 @@ Important constraints:
 - Do not run provider/model application calls for release.
 - Do not rerun a production audit or mutate production artifacts/data.
 - Do not start the queued static-authority-quality or exact-scope-specificity tranches inside this closure gate.
-- Model routing remains: Terra High for governance-sensitive implementation/diagnosis; Sol High for separate adversarial preflight after publication; Luna Medium only for frozen mechanical work.
+- Model routing remains: Terra High for governance-sensitive implementation/diagnosis; Sol High for this separate adversarial preflight; Luna Medium only for frozen mechanical work.
 
-Exact next action: **After explicit user approval, push exact local candidate `c6c814613bb403705b9711466ebc223e3a4837e2` to `review/prysm-solution-directive-authority-betty` without force, then verify the remote branch points to that exact SHA and that no additional application changes occurred. Do not deploy or begin Sol preflight in the same action.**
+Exact next action: **Run a READ-ONLY Sol High adversarial preflight against exact published application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, reviewing the complete diff from `ed671bbd50ef836b10c77917e3a78b95963188fc` and the final serialized client-remediation surface. Return `REAL PROGRESS — YES|NO` with evidence. Do not edit, commit, push, deploy, call application providers/models, or begin browser review in the same run.**
 
 Active governance:
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
