@@ -94,3 +94,30 @@ Technical responses should default to:
 - stop and wait for the result.
 
 When multiple edits exist in a file, **last edit first** is mandatory, not optional.
+
+## Codex model routing for governance-sensitive work
+
+`PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md` governs model selection for the active Solution Depth work.
+
+Default routing:
+- **Terra High** for architecture diagnosis, authority tracing, cross-file semantic review, repair-boundary selection, consolidated governance-sensitive implementation, and whole-system invariant closure.
+- **Luna Medium** only for mechanical work after root cause, file boundary, acceptance conditions, preservation boundary, and proving tests are frozen.
+- **Sol High** when available for final adversarial preflight or unresolved high-risk architecture.
+
+Do not optimize for the cheapest model when repeated semantic rework is the dominant cost.
+
+## Defect-class batching rule
+
+When two or more defects are manifestations of one architectural invariant, stop treating them as independent micro-tranches.
+
+Use:
+
+`whole-system diagnosis -> exhaustive surface inventory -> consolidated bounded repair -> permanent invariant tests -> adversarial preflight -> independent external gate`
+
+instead of:
+
+`one symptom -> one repair -> external review -> next symptom`.
+
+The current remediation-authority closure gate is defined in `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`.
+
+This batching rule does not authorize broader product redesign. It means inspect the complete implementation surface controlled by the same invariant before choosing the smallest complete repair boundary.
