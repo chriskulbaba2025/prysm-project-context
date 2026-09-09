@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Complete browser-rendered human acceptance of the published Canonical Remediation Authority Closure candidate, then return to external Betty at the material architecture checkpoint.
+Current objective: Repair the newly proven Narrative v2 live-call recovery defect, then obtain a valid current TBK release candidate for browser human acceptance of the published Canonical Remediation Authority Closure candidate.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, PASSED Sol High adversarial preflight, and PASSES the corrected deterministic pre-model finalization gate. The previously authorized single current TBK Writer/Judge orchestration was consumed: Writer pass 1 and Judge pass 1 completed and validated, Judge requested one governed revision, and Writer pass 2 failed at the live transport boundary with `fetch failed` after its reservation was recorded. No RELEASE_CANDIDATE or browser render was produced. No further Writer/Judge/model execution is authorized.**
+Verified checkpoint: **Canonical Remediation Authority Closure candidate remains PUBLISHED, GREEN through focused/full regressions, PASSED Sol High adversarial preflight, and PASSES the corrected deterministic pre-model finalization gate. The single authorized current TBK Writer/Judge orchestration was CONSUMED: Writer pass 1 and Judge pass 1 completed and validated, Judge requested one governed revision, and Writer pass 2 failed at the transport boundary with `fetch failed`. Terra High recovery diagnosis result: APPLICATION_RECOVERY_DEFECT_FOUND. No further Writer/Judge/model execution is authorized.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -15,80 +15,103 @@ Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBL
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
 - Production unchanged.
 
-## Completed
-- Canonical Solution Contract + Validator frozen and Betty-approved.
-- Deterministic canonical solution generator Betty-approved at `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`.
-- Authority evidence self-certification repaired at `7c0667ae0ad9c893bbc04363e8399e476ce473f0`.
-- Static Solution Authority Provider integrated at `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`.
-- Renderer/cross-page canonical integration at `61f43682ec425a0708064386c8bde18d94d7f8ca`.
-- Client Specificity repair at `c37913acfd82580724c74feb26175e2f0c36232c`.
-- Writer narrative remediation-authority leak repair at `ed671bbd50ef836b10c77917e3a78b95963188fc`.
-- Consolidated Canonical Remediation Authority Closure candidate published at `c6c814613bb403705b9711466ebc223e3a4837e2`.
+## Canonical Remediation Authority Closure status
+- Consolidated candidate published at `c6c814613bb403705b9711466ebc223e3a4837e2`.
 - Focused closure suite: **112 PASS / 0 FAIL / 0 skipped**.
 - Full regression: **1009 PASS / 0 FAIL / 0 skipped**; `git diff --check` PASS.
 - Sol High adversarial preflight: **REAL PROGRESS — YES / HIGH / READY_FOR_BROWSER_REVIEW**.
+- Governing invariant remains: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
+- Priority Fixes remains the sole complete remedy owner.
+
+## Browser/current-packet preparation already proven
+- Historical replay fixtures are ScoreSet 1.0.0; current replay requires 2.0.0.
 - Replay compatibility diagnosis: **NEW_PRODUCTION_SHAPED_RUN_REQUIRED**.
-- Chris authorized exactly one bounded current TBK Writer/Judge release-candidate run on 2026-09-09.
-- Finalization input compatibility diagnosis: **CURRENT_DECISION_EVIDENCE_RECONSTRUCTION_SAFE**.
-- Corrected current DecisionEvidence reconstruction restores the exact AuditRequest-derived competitor allowlist and current image-denominator availability marker without changing evidence truth.
+- Finalization-input compatibility diagnosis: **CURRENT_DECISION_EVIDENCE_RECONSTRUCTION_SAFE**.
+- Corrected current DecisionEvidence reconstruction restores the AuditRequest competitor allowlist and current DataForSEO image-denominator availability marker without changing evidence truth.
 - CapabilityEvidence remains valid/deep-equal.
 - Current findings, ScoreSet 2.0.0, WriterInput, and canonical solutions regenerate deterministically.
 - Complete corrected pre-model finalization gate: **PASS / 0 errors**.
 - Existing warning only: performance score 71 vs technical hygiene score 6 diverges by more than 60 points.
-- No application repair and no provider rerun required for the deterministic packet.
-- Harness lifecycle dispatch defect corrected by using current enum value `scored`; Narrative v2 dispatch PASS and base orchestrator not invoked.
-- Authorized orchestration then executed once.
-- Writer pass 1: completed; Writer validation PASS.
-- Judge pass 1: completed; Judge validation PASS; bounded revision requested.
+- No audit-provider rerun is required for the deterministic packet.
+
+## Consumed Writer/Judge run
+- Chris authorized exactly one bounded current TBK Writer/Judge release-candidate orchestration on 2026-09-09.
+- Harness lifecycle dispatch was corrected to current enum value `scored`; Narrative v2 dispatch PASS and base orchestrator not invoked.
+- Writer pass 1: completed; validation PASS.
+- Judge pass 1: completed; validation PASS; one bounded revision requested.
 - Writer pass 2: initiated and failed before output with `Narrative v2 writer request failed after paid-call reservation: fetch failed`.
-- Writer call count: **2**.
-- Judge call count: **1**.
-- Orchestration final status: `narrative_failed`.
+- Writer calls: **2**.
+- Judge calls: **1**.
+- Orchestration status: `narrative_failed`.
 - Valid RELEASE_CANDIDATE: **NO**.
-- Post-run canonical generation/render/browser server: not reached.
-- Application source/tests/fixtures remained unchanged; branch/HEAD/worktree/remote SHA remained clean.
-- Audit-provider rerun, deployment, main merge, production mutation: NONE.
+- Render/browser server: not reached.
+- Original Writer/Judge authorization: **CONSUMED**.
 
-## Current hold
+## Transport/recovery diagnosis
 
-Checkpoint: `PRYSM_TBK_WRITER_PASS2_FETCH_FAILURE_HOLD_2026-09-09.md`
+Checkpoint: `PRYSM_TBK_WRITER_PASS2_TRANSPORT_RECOVERY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 
-The authorized orchestration is consumed. Writer pass 2 is an uncertain live-transport attempt because the current Narrative v2 binding records its reservation before network execution and deliberately refuses duplicate/restart execution for the same role/pass.
+Result: **APPLICATION_RECOVERY_DEFECT_FOUND**.
 
-## Not authorized
-- no Writer/Judge/model retry;
-- no second independent orchestration;
-- no removal, mutation, or bypass of the Writer pass-2 reservation;
-- no fresh artifact store or new audit identity solely to evade duplicate protection;
-- no application source/test/fixture edits;
-- no audit-provider rerun;
-- no deployment, production mutation, or main merge.
+Proven facts:
+- Writer pass 2 became a reservation-only uncertain transport attempt.
+- `live-binding.js` persists the reservation before fetch.
+- The fetch-exception path discards native `err.cause` and persists neither provider response nor returned-failure/result ledger.
+- Request-transmission status is **UNKNOWN**; absent response is not proof the provider did not receive/process the request.
+- Duplicate protection correctly blocks same-role/same-pass reuse after a reservation.
+- The temporary release harness used `createMemoryArtifactStore()`, so the live reservation/response/result/orchestration ledger disappeared when the failed process exited; only deterministic packet files remain on disk.
+- Recovery without another model call: **NO**.
+- Safe resume from Writer pass 2 under current binding: **NO**.
+- Beginning again from Writer pass 1 would repeat already completed model calls and is not governed recovery.
+- A fresh store/new execution identity/deleted reservation/manual call-number change would evade deliberate duplicate protection and is prohibited.
+- Current architecture has no governed uncertain-transport recovery state and therefore has a real recovery-design defect.
+
+## Smallest proven recovery boundary
+A future recovery capability is bounded primarily to:
+- `services/worker/src/narrative-v2/live-binding.js`
+- directly affected Narrative v2 orchestration/recovery tests
+- the live-call artifact-store persistence boundary used for release-candidate execution
+
+The recovery design must:
+- preserve reservation integrity and fail closed;
+- persist sanitized native transport failure metadata where available;
+- durably persist live-call ledger state for crash/restart diagnosis;
+- distinguish returned-provider failures from transport-outcome-uncertain attempts;
+- never treat `fetch failed` as proof of non-transmission;
+- define an explicit human-authorized resolution path for uncertain reservations;
+- prohibit silent retries, model escalation, hidden fallback, new-store evasion, or duplicate pass execution.
+
+## Current authorization state
+Not authorized:
+- any Writer/Judge/model call;
+- retrying Writer pass 2;
+- starting a second orchestration;
+- deleting/mutating/bypassing reservation semantics;
+- using a fresh store/new audit identity to evade duplicate protection;
+- application implementation before the recovery-contract design gate passes and Chris explicitly approves implementation;
+- audit-provider rerun;
+- deployment, production mutation, main merge.
+
+A separate explicit human authorization will be required before any future model-backed execution, even after recovery implementation is proven.
 
 ## In progress
-Diagnose the Writer pass-2 `fetch failed` transport boundary and the exact durable reservation/result state without making any provider/model request.
+Run a read-only Terra High recovery-contract design gate for the uncertain-transport state. No source/test/fixture edits and no provider/model calls.
 
 ## Blocked
 - Browser human review waits for a valid current RELEASE_CANDIDATE and local render.
 - External Betty remains downstream until browser human review passes.
-- Any further Writer/Judge execution requires a new explicit human authorization after transport/recovery diagnosis proves the safe bounded path.
-
-## Governing invariant
-**Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
-
-Priority Fixes remains the sole complete remedy owner.
 
 ## Exact next action
-**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, run a READ-ONLY transport/recovery diagnosis using the existing temporary run artifacts and current Narrative v2 live-binding code. Determine the exact Writer pass-2 reservation/response/result state and whether the failed `fetch` is provably pre-transmission, provably returned, or transport-outcome uncertain. Inspect local DNS/TLS/runtime/configuration evidence only as needed without sending a model/provider request. Do not retry, alter reservations, start another orchestration, edit application code, deploy, or mutate production. Return the smallest governed recovery boundary and whether new explicit authorization would be required.**
+**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, perform a READ-ONLY Terra High design gate over the Narrative v2 live binding and directly affected persistence/orchestration boundaries. Define the smallest fail-closed recovery contract for reservation-only transport-outcome-uncertain attempts, including durable ledger persistence, sanitized transport-cause evidence, explicit recovery states, human authorization semantics, idempotency/duplicate protection, crash/restart behavior, and tests. Do not implement, call providers/models, retry the failed pass, commit, push, deploy, or mutate production.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
 - `PRYSM_BROWSER_REPLAY_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 - `PRYSM_TBK_CURRENT_WRITER_JUDGE_RUN_AUTHORIZATION_2026-09-09.md`
-- `PRYSM_TBK_CURRENT_FINALIZATION_INPUT_COMPATIBILITY_HOLD_2026-09-09.md`
 - `PRYSM_TBK_CURRENT_FINALIZATION_INPUT_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
-- `PRYSM_TBK_WRITER_JUDGE_HARNESS_LIFECYCLE_DISPATCH_HOLD_2026-09-09.md`
 - `PRYSM_TBK_WRITER_PASS2_FETCH_FAILURE_HOLD_2026-09-09.md`
+- `PRYSM_TBK_WRITER_PASS2_TRANSPORT_RECOVERY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 - `DECISION_PRYSM_ACCELERATED_SOLO_DEVELOPMENT_WITH_TERRA_PREFLIGHT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
@@ -102,5 +125,6 @@ Priority Fixes remains the sole complete remedy owner.
 - `PRYSM-TBK-CURRENT-FINALIZATION-INPUT-COMPATIBILITY-DIAGNOSIS.txt`
 - `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-2.txt`
 - `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-3.txt`
+- `PRYSM-TBK-WRITER-PASS2-TRANSPORT-RECOVERY-DIAGNOSIS.txt`
 
 Last verified: 2026-09-09
