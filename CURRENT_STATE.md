@@ -2,69 +2,67 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Implement the now-designed Narrative v2 uncertain-transport recovery contract, verify it fail-closed with no model calls, then separately authorize a new clean TBK release-candidate orchestration for browser human acceptance.
+Current objective: Implement and deterministically verify the approved Narrative v2 uncertain-transport recovery contract, then stop for separate human authorization before any new model-backed TBK release-candidate orchestration.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate remains PUBLISHED, GREEN through focused/full regressions, PASSED Sol High adversarial preflight, and PASSES the corrected deterministic pre-model finalization gate. The consumed TBK Writer/Judge orchestration cannot be resumed. Terra High recovery-contract design result: CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY. General recovery repair is design-ready, but implementation is NOT yet authorized and no further Writer/Judge/model execution is authorized.**
+Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED and GREEN. Terra High recovery-contract design returned `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`. Chris has now explicitly approved the bounded recovery-contract implementation. No Writer/Judge/model call is authorized in this implementation stage.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local root: `C:\Users\kulba\Desktop\vantage-platform`
+- Worker: `C:\Users\kulba\Desktop\vantage-platform\services\worker`
 - Review branch: `review/prysm-solution-directive-authority-betty`
 - Published review SHA: `c6c814613bb403705b9711466ebc223e3a4837e2`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
 - Production unchanged.
 
-## Canonical Remediation Authority Closure status
-- Candidate published at `c6c814613bb403705b9711466ebc223e3a4837e2`.
+## Canonical Remediation Authority Closure
 - Focused closure suite: **112 PASS / 0 FAIL / 0 skipped**.
 - Full regression: **1009 PASS / 0 FAIL / 0 skipped**; `git diff --check` PASS.
 - Sol High adversarial preflight: **REAL PROGRESS — YES / HIGH / READY_FOR_BROWSER_REVIEW**.
-- Governing invariant remains: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
+- Governing invariant: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
 - Priority Fixes remains the sole complete remedy owner.
 
-## Current-packet/browser preparation proven
+## Current-packet/browser preparation already proven
 - Historical replay fixtures are ScoreSet 1.0.0; current replay requires 2.0.0.
-- Replay compatibility diagnosis: **NEW_PRODUCTION_SHAPED_RUN_REQUIRED**.
-- Finalization-input compatibility diagnosis: **CURRENT_DECISION_EVIDENCE_RECONSTRUCTION_SAFE**.
+- Replay compatibility diagnosis: `NEW_PRODUCTION_SHAPED_RUN_REQUIRED`.
+- Finalization-input compatibility diagnosis: `CURRENT_DECISION_EVIDENCE_RECONSTRUCTION_SAFE`.
 - Corrected current DecisionEvidence reconstruction restores the AuditRequest competitor allowlist and current DataForSEO image-denominator availability marker without changing evidence truth.
 - CapabilityEvidence remains valid/deep-equal.
 - Current findings, ScoreSet 2.0.0, WriterInput, and canonical solutions regenerate deterministically.
 - Complete corrected pre-model finalization gate: **PASS / 0 errors**.
 - Existing warning only: performance score 71 vs technical hygiene score 6 diverges by more than 60 points.
-- No audit-provider rerun required for the deterministic packet.
+- No audit-provider rerun is required for the deterministic packet.
 
 ## Consumed TBK Writer/Judge orchestration
 - Writer pass 1: completed; validation PASS.
 - Judge pass 1: completed; validation PASS; one governed revision requested.
 - Writer pass 2: failed after paid-call reservation with `Narrative v2 writer request failed after paid-call reservation: fetch failed`.
-- Writer calls: **2**.
-- Judge calls: **1**.
+- Writer calls: 2.
+- Judge calls: 1.
 - Orchestration status: `narrative_failed`.
-- Valid RELEASE_CANDIDATE: **NO**.
+- Valid RELEASE_CANDIDATE: NO.
 - Render/browser server: not reached.
-- Original human authorization: **CONSUMED**.
+- Original model-run authorization: CONSUMED.
 
 ## Recovery diagnosis
 Checkpoint: `PRYSM_TBK_WRITER_PASS2_TRANSPORT_RECOVERY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 
-Result: **APPLICATION_RECOVERY_DEFECT_FOUND**.
+Result: `APPLICATION_RECOVERY_DEFECT_FOUND`.
 
 Proven defect:
-- reservation persisted before fetch;
-- native transport cause discarded on fetch exception;
-- no provider-response/failure/result record persisted for the uncertain call;
-- request transmission outcome remained UNKNOWN;
-- duplicate protection correctly blocked blind replay;
-- the browser harness used process-local memory storage, so its live Writer/Judge ledger disappeared on process exit.
+- reservation is persisted before fetch;
+- native transport cause is discarded on fetch exception;
+- no provider-response/failure/result record is persisted for an uncertain fetch exception;
+- request transmission outcome remains UNKNOWN;
+- duplicate protection correctly blocks blind replay;
+- the browser harness used process-local memory storage, so live Writer/Judge ledger state disappeared on process exit.
 
 ## Recovery-contract design gate
 Checkpoint: `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_CONTRACT_DESIGN_CHECKPOINT_2026-09-09.md`
 
-Result: **CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY**.
+Result: `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`.
 
-The current failed TBK execution itself is unrecoverable because exact Writer 1 / Judge 1 live ledger and lineage were not durably preserved. It must not be resumed or recreated by bypassing reservation integrity.
-
-General repair is design-ready.
+The failed TBK execution itself is unrecoverable because exact Writer 1 / Judge 1 live ledger and lineage were not durably preserved. It must not be resumed by bypassing reservation integrity. A future new clean TBK release-candidate orchestration will require separate explicit human authorization after the repair is proven.
 
 Frozen recovery states:
 - `RESERVED`
@@ -77,10 +75,41 @@ Frozen recovery states:
 - `RECOVERY_AUTHORIZED`
 - `RECOVERY_COMPLETED` / `RECOVERY_FAILED`
 
-Selected bounded future recovery action:
+Selected future bounded recovery action:
 `REISSUE_SAME_PASS_AFTER_HUMAN_AUTHORIZATION`
 
-It requires one immutable authorization linked to the original uncertain reservation, a new ledger call number, exact same semantic role/pass/input/model/lineage, conservative budget accounting, and at most one recovery attempt. No original reservation may be deleted, rewritten, or ignored.
+Required properties:
+- original reservation immutable;
+- new linked ledger call number for a human-authorized recovery;
+- exact same semantic role/pass/input/model/Judge revision lineage;
+- at most one recovery attempt per uncertain reservation;
+- conservative accounting retains uncertain-call estimate and charges any recovery call separately;
+- no silent retry, model escalation, hidden fallback, reservation deletion, new-store evasion, or duplicate-pass execution;
+- sanitized native transport-cause metadata persisted where available;
+- durable reservation/transport/response/result/pass/lifecycle state for live release execution;
+- live release execution must fail closed on memory-only persistence.
+
+## Implementation authorization
+Authorization record: `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_IMPLEMENTATION_AUTHORIZATION_2026-09-09.md`
+
+Chris approved moving to the implementation stage on 2026-09-09.
+
+Authorized:
+- implement the frozen recovery contract primarily in `services/worker/src/narrative-v2/live-binding.js`;
+- touch `orchestrator.js`, `production-path.js`, and live/release persistence composition only when directly required by the approved contract;
+- add/update directly affected deterministic tests;
+- run focused and relevant full regressions with mocked/non-provider execution;
+- create a Downloads proof artifact.
+
+Not authorized:
+- no Writer/Judge/model/provider call;
+- no retry/resume of the failed TBK Writer pass 2;
+- no new TBK model-backed orchestration;
+- no audit-provider rerun;
+- no deployment or production promotion;
+- no production mutation;
+- no main merge;
+- no change to canonical remediation authority, scoring/evidence semantics, Writer/Judge semantic contracts, provider/model selection, automatic semantic pass ceiling, renderer, or client report architecture.
 
 ## Smallest implementation boundary
 Primary:
@@ -98,62 +127,21 @@ Tests:
 - nearest production-path recovery test
 - nearest durable-storage/live-persistence test
 
-## Required repair properties
-- preserve immutable reservation and duplicate protection;
-- persist sanitized native transport-cause metadata where available;
-- durably persist reservation/transport/response/result/pass/lifecycle state for release execution;
-- fail closed on memory-only live release execution;
-- distinguish uncertain transport from returned provider failure and post-response local failure;
-- permit exactly one explicitly human-authorized same-pass recovery in future durable cases;
-- preserve Writer/Judge semantic pass lineage, model identity, WriterInput hash, Judge revision directive, budgets, and total call ceilings;
-- never treat `fetch failed` as proof of zero cost or non-transmission;
-- never alter canonical remediation authority or report semantics.
-
-## Current authorization state
-Not authorized:
-- application implementation of the recovery repair until Chris explicitly approves it;
-- any Writer/Judge/model call;
-- any new TBK orchestration;
-- retrying/resuming the failed TBK Writer pass 2;
-- deleting/mutating/bypassing reservation semantics;
-- audit-provider rerun;
-- deployment, production mutation, or main merge.
-
-After implementation is independently verified, a **separate explicit human authorization** will be required for the new clean TBK model-backed release-candidate orchestration.
-
-## In progress
-Await explicit Chris approval for the bounded recovery-contract implementation only.
-
-## Blocked
-- Browser human review waits for a valid new current RELEASE_CANDIDATE and local render.
-- External Betty remains downstream until browser human review passes.
+## Current stage
+IMPLEMENTATION AUTHORIZED / MODEL EXECUTION NOT AUTHORIZED.
 
 ## Exact next action
-**Obtain explicit Chris approval to implement the bounded Narrative v2 uncertain-transport recovery contract at exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`. Implementation approval must NOT authorize any Writer/Judge/model call, audit-provider rerun, deployment, production mutation, or main merge. After implementation/tests/preflight pass, stop for a separate model-run authorization.**
+**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, implement the approved Narrative v2 uncertain-transport recovery contract test-first within the bounded files above. Preserve reservation integrity, persist sanitized transport outcomes, add explicit human-authorized one-time same-pass recovery, enforce durable live-call persistence, conservative budget/call ceilings, semantic lineage checks, and memory-store fail-closed behavior. Run focused and relevant regressions without any provider/model call. Produce a Downloads proof and STOP. Do not push, deploy, merge, or start a new TBK orchestration.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
-- `PRYSM_BROWSER_REPLAY_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
-- `PRYSM_TBK_CURRENT_WRITER_JUDGE_RUN_AUTHORIZATION_2026-09-09.md`
-- `PRYSM_TBK_CURRENT_FINALIZATION_INPUT_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
-- `PRYSM_TBK_WRITER_PASS2_FETCH_FAILURE_HOLD_2026-09-09.md`
 - `PRYSM_TBK_WRITER_PASS2_TRANSPORT_RECOVERY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_CONTRACT_DESIGN_CHECKPOINT_2026-09-09.md`
+- `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_IMPLEMENTATION_AUTHORIZATION_2026-09-09.md`
 - `DECISION_PRYSM_ACCELERATED_SOLO_DEVELOPMENT_WITH_TERRA_PREFLIGHT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
 - `WORKFLOW_INSTRUCTIONS.md`
-
-## Verification artifacts supplied in chat
-- `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-FOCUSED-RERUN-PROOF.txt`
-- `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-REGRESSION-PROOF.txt`
-- `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-SOL-PREFLIGHT.txt`
-- `PRYSM-BROWSER-REPLAY-COMPATIBILITY-DIAGNOSIS.txt`
-- `PRYSM-TBK-CURRENT-FINALIZATION-INPUT-COMPATIBILITY-DIAGNOSIS.txt`
-- `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-2.txt`
-- `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-3.txt`
-- `PRYSM-TBK-WRITER-PASS2-TRANSPORT-RECOVERY-DIAGNOSIS.txt`
-- `PRYSM-NARRATIVE-V2-UNCERTAIN-TRANSPORT-RECOVERY-CONTRACT-DESIGN.txt`
 
 Last verified: 2026-09-09
