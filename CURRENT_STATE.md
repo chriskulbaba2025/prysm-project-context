@@ -4,83 +4,115 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Renderer / Cross-Page Canonical Solution Integration — BUILDER PASS / PUBLISHED. Client Specificity diagnosis reviewed; false Writer-action-plan blocker rejected by exact-SHA source verification; bounded presentation repair is READY. Betty remains deferred for intermediate development only.**
+Verified checkpoint: **Client Specificity & Cognitive Load Repair — BUILDER PASS / PUBLISHED. COMBINED BETTY CATCH-UP REVIEW IS NOW THE EXACT NEXT GATE.**
 
-Current environment / branch / version:
+## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
-- Production baseline on application `main`: `4202ed684754c382160289c801b83e654d697a69`
-- Accepted validator SHA: `206cf89831172edba20fb48684266a7be661b90c`
-- Accepted generator SHA: `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`
 - Review branch: `review/prysm-solution-directive-authority-betty`
-- Repaired provisional authority baseline SHA: `7c0667ae0ad9c893bbc04363e8399e476ce473f0`
+- Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
+- Last Betty-approved solution milestone: `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`
+- Repaired authority SHA: `7c0667ae0ad9c893bbc04363e8399e476ce473f0`
 - Canonical authority-provider integration SHA: `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`
-- Current provisional renderer/cross-page SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
+- Renderer/cross-page integration SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
+- Current combined candidate: `c37913acfd82580724c74feb26175e2f0c36232c`
 - Production domain: `https://prysm.omnipressence.com`
 - Viewer version: `2.3.0`
 - Accepted TBK audit: `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`
 - Accepted persisted version: `11`
 - Accepted lifecycle state: `draft_rendered`
 
-Completed:
-- Prior six-primary-page presentation tranche remains PASS_LOCKED and production baseline remains unchanged.
-- Canonical Solution Contract + Validator frozen and validator Betty-approved.
-- Deterministic canonical generator Betty-approved.
-- Authority self-certification defect repaired at `7c0667ae0ad9c893bbc04363e8399e476ce473f0`.
-- Versioned static Solution Authority Provider implemented at `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a` for 15 supported actionable score-bearing rules; no rejected legacy recommendation/businessImpact/verificationMethod/affectedUrls authority; no persistence or contract change.
-- Canonical Narrative v2 preparation now runs provider -> repaired `buildSolutionDirectiveInput()` -> accepted `generateCanonicalSolutions()`.
-- Renderer / Cross-Page Canonical Solution Integration implemented and published at `61f43682ec425a0708064386c8bde18d94d7f8ca`.
-- Renderer ownership now implemented:
-  - Priority Fixes owns full canonical remedy detail;
-  - Executive uses the first three eligible canonical sequence records;
-  - Journey, Content, Competitor, Trust and Supporting Detail reference stable canonical IDs within their page roles;
-  - active canonical remedy rendering does not fall back to finding recommendation/businessImpact/verificationMethod/affectedUrls or hard-coded remedy prose;
-  - Writer/Judge/report-content/persistence contracts unchanged;
-  - six primary pages plus Supporting Detail remain the active viewer architecture.
-- Renderer integration verification at `61f43682...`:
-  - focused Solution: 126 PASS / 0 FAIL;
-  - canonical renderer: 4 PASS / 0 FAIL;
-  - report suite: 133 PASS / 0 FAIL;
-  - report-finalization: 37 PASS / 0 FAIL;
-  - WriterOutput: 25 PASS / 0 FAIL;
-  - Narrative production path: 11 PASS / 0 FAIL;
-  - render-narrative: 7 PASS / 0 FAIL;
-  - report model: 3 PASS / 0 FAIL;
-  - comparable existing regressions: 202 PASS / 0 FAIL;
-  - `git diff --check`: PASS;
-  - no provider/model calls, audit rerun, deployment, or production mutation.
-- Team feedback is governed by `PRYSM_HUMAN_REVIEW_CLIENT_SPECIFICITY_COGNITIVE_LOAD_GATE_2026-09-09.md`.
-- Client Specificity diagnosis was run from `61f43682...` and reported BLOCKED due an alleged visible WriterOutput.actionPlan.
-- Exact-SHA source verification disproved that blocker: `actionPlanNarrativeSection()` is contained only inside `deeperNarrative`, which is rendered inside `#narrative-diagnostic-layer` with `hidden`, `aria-hidden="true"`, and CSS `display:none !important`. WriterOutput.actionPlan therefore remains diagnostic-only and is not a visible competing remedy source.
-- Correction recorded in `PRYSM_CLIENT_SPECIFICITY_COGNITIVE_LOAD_DIAGNOSIS_CORRECTION_2026-09-09.md`.
-- Accepted presentation repairs from the diagnosis:
-  - remove duplicate Priority Fix problem / “What needs attention” display;
-  - retain and foreground canonical `howToFix` (all 15 current rules classified sufficiently practical for this tranche);
-  - replace vague visible scope copy with bounded governed-scope wording where exact counts are unavailable;
-  - reduce duplicate verification presentation while keeping canonical `implementationCheck` data;
-  - clarify positive trust score vs no Priority Fix relationship;
-  - state orphan total + examples shown and allow progressive full-list disclosure from governed rows;
-  - apply only bounded Supporting Detail orientation/progressive disclosure improvements;
-  - primary navigation requires no source change based on current code.
+GitHub verification confirms:
+- `c37913ac...` is exactly one commit ahead of `61f43682...`;
+- the specificity repair changes only two authorized production renderer files plus four direct tests;
+- the full catch-up range `8f3896...` -> `c37913ac...` is five commits ahead / zero behind.
 
-In progress: **Bounded Client Specificity & Cognitive Load presentation repair.**
+## Completed solution-depth work
+- Canonical Solution Contract + Validator frozen; validator Betty-approved.
+- Deterministic canonical solution generator Betty-approved at `8f3896...`.
+- Initial Solution Directive Authority candidate received Betty `REAL PROGRESS — NO` for evidence-reference self-certification through authority-side `persisted:true`.
+- Bounded authority repair at `7c0667...` removed self-certification: trusted refs are independently governed; authority records cannot expand/certify trusted evidence.
+- Versioned static Solution Authority Provider implemented at `f0a46f0e...` for 15 current actionable score-bearing rule IDs.
+- Provider does not derive solution semantics from rejected legacy recommendation/businessImpact/implementationEffort/verificationMethod/affectedUrls/confidence/module/dimension/finalPriority fields.
+- Narrative v2 preparation now runs provider -> repaired authority resolver -> accepted generator.
+- Renderer/cross-page integration at `61f43682...` carries `canonicalSolutions` through the current in-memory report model.
+- Priority Fixes owns full canonical remedy detail.
+- Executive uses the first three eligible canonical sequence records.
+- Journey, Content Opportunities, Competitor Comparison, Trust & Credibility, and Supporting Detail reference stable canonical solution IDs within their page roles.
+- Active canonical remedy rendering does not fall back to Finding recommendation/businessImpact/verificationMethod/affectedUrls or hard-coded remedy prose.
+- Writer/Judge/report-content/persistence contracts remain unchanged.
+- Six primary pages plus Supporting Detail remain the active viewer architecture.
+- Client Specificity & Cognitive Load repair published at `c37913ac...`:
+  - duplicate `What needs attention` presentation removed;
+  - canonical `whatToChange` and `howToFix` remain distinct and visible;
+  - safe scope wording tightened without invented counts/URLs;
+  - Priority Fix keeps one canonical implementation check while Supporting Detail duplicate verification presentation is reduced and MEASURE remains;
+  - trust wording explicitly relates relative strength to absence of a Priority Fix without inventing a numeric threshold;
+  - orphan pages show runtime total vs examples shown and expose all governed rows through progressive disclosure;
+  - no navigation change;
+  - no production `render-narrative-v2.js` change; WriterOutput.actionPlan remains hidden diagnostic-only content.
 
-Queued after presentation repair: **Deferred Betty combined-candidate review.**
+## Latest builder verification at `c37913ac...`
+- Focused Solution: 126 PASS / 0 FAIL / 0 skipped.
+- Canonical renderer/direct focus: 92 PASS / 0 FAIL / 0 skipped.
+- Report suite: 136 PASS / 0 FAIL / 0 skipped.
+- Report-finalization: 37 PASS / 0 FAIL / 0 skipped.
+- WriterOutput: 25 PASS / 0 FAIL / 0 skipped.
+- Narrative production path: 11 PASS / 0 FAIL / 0 skipped.
+- Render-narrative: 7 PASS / 0 FAIL / 0 skipped.
+- Viewer: 12 PASS / 0 FAIL / 0 skipped.
+- Startup regression: 20 PASS / 0 FAIL / 0 skipped.
+- Report-model coverage: 20 PASS / 0 FAIL / 0 skipped.
+- Builder-reported invoked regression groups: 268 PASS / 0 FAIL including three new direct presentation tests; 265 PASS / 0 FAIL excluding those three new tests.
+- `git diff --check`: PASS.
+- Provider/model calls: NO.
+- Audit rerun: NO.
+- Deployment/production mutation: NO.
 
-Separate later sub-tranche only if required: exact per-finding `N of M` / complete affected-URL specificity. Current canonical solution records do not carry exact per-finding counts/URL sets; do not reconstruct them from legacy `affectedUrls`.
+## In progress
+**Deferred Betty combined solution-depth catch-up review.**
 
-Blocked:
-- Merge to application `main`, deployment, production promotion, provider/model execution, audit rerun, and production mutation remain blocked until deferred Betty review is caught up and release governance passes.
-- Broad Supporting Detail redesign is not authorized; only bounded human-review presentation repairs are in scope.
+Governing review checkpoint:
+`PRYSM_BETTY_COMBINED_SOLUTION_DEPTH_CATCHUP_REVIEW_2026-09-09.md`
 
-Important constraints:
-- Governing files include `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, `PRYSM_RENDERER_CROSS_PAGE_CANONICAL_SOLUTION_INTEGRATION_BUILDER_PASS_2026-09-09.md`, `PRYSM_HUMAN_REVIEW_CLIENT_SPECIFICITY_COGNITIVE_LOAD_GATE_2026-09-09.md`, and `PRYSM_CLIENT_SPECIFICITY_COGNITIVE_LOAD_DIAGNOSIS_CORRECTION_2026-09-09.md`.
-- Betty is deferred for intermediate development only. Deferred Betty review must be caught up before merge/deploy/production promotion.
-- Priority Fixes remains the sole owner of complete canonical remedy detail.
-- Preserve canonical solution authority, evidence grades, prescription modes, governed order, six primary pages plus Supporting Detail, scoring, evidence, Writer/Judge, lifecycle, persistence, and production configuration.
-- Exact scope/count/URL wording must come from governed evidence/canonical authority; do not guess and do not restore legacy `affectedUrls` as hidden authority.
-- Keep governed implementation checks in canonical data even when repetitive presentation is reduced.
-- No merge, deploy, production promotion, provider/model calls, or audit rerun.
+Builder-pass checkpoint:
+`PRYSM_CLIENT_SPECIFICITY_COGNITIVE_LOAD_REPAIR_BUILDER_PASS_2026-09-09.md`
 
-Exact next action: Starting from exact application SHA `61f43682ec425a0708064386c8bde18d94d7f8ca` on `review/prysm-solution-directive-authority-betty`, implement only the bounded Client Specificity & Cognitive Load presentation repairs in `render-report-v2.js` and `report-detail-sections.js` plus directly affected tests. Preserve production `render-narrative-v2.js`; test-only coverage may lock that Writer actionPlan remains hidden/non-authoritative. Run focused/comparable regressions, write `C:\Users\kulba\Downloads\PRYSM-CLIENT-SPECIFICITY-COGNITIVE-LOAD-REPAIR-PROOF.txt`, commit/push the bounded non-production candidate, then stop and send the combined candidate to Betty review before any release action.
+## Betty review range
+Betty must inspect the actual code and full diff:
+
+`8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`
+→
+`c37913acfd82580724c74feb26175e2f0c36232c`
+
+This catches up every deferred tranche, including the repaired authority defect, provider integration, renderer/cross-page ownership, and human-facing specificity repair.
+
+Required Betty response:
+
+`RESULT: REAL PROGRESS — YES|NO`
+
+`REASON: <one sentence>`
+
+`CONFIDENCE: HIGH|MEDIUM|LOW`
+
+## Blocked pending Betty
+- Merge to application `main`.
+- Deployment / production promotion.
+- Provider/model execution for release.
+- Audit rerun.
+- Production mutation.
+- Release-governance advancement.
+- New Supporting Detail or broader report-expansion tranche.
+
+## Important constraints
+- Preserve canonical solution authority and fail-closed evidence trust.
+- Preserve CONFIRMED / PARTIAL / UNKNOWN and PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION semantics.
+- Preserve governed priority/order and deterministic sequence.
+- Preserve Writer/Judge non-authority boundaries.
+- Preserve scoring/evidence/lifecycle/persistence/report-content contracts.
+- Preserve six primary pages plus Supporting Detail.
+- Do not invent exact per-finding counts/URLs from legacy `affectedUrls`.
+- Production baseline remains unchanged until Betty/release governance passes.
+
+Exact next action: Give Betty the combined catch-up review in `PRYSM_BETTY_COMBINED_SOLUTION_DEPTH_CATCHUP_REVIEW_2026-09-09.md`, instruct her to inspect actual GitHub code at exact SHA `c37913acfd82580724c74feb26175e2f0c36232c` and the full diff from `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`, and return only the required three-line verdict. Do not begin another development tranche before that verdict.
 
 Last verified: 2026-09-09
