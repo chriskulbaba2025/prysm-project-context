@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Complete browser-rendered human acceptance of the published Canonical Remediation Authority Closure candidate, then return to external Betty at the material architecture checkpoint.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, PASSED Sol High adversarial preflight, and PASSES the corrected deterministic pre-model finalization gate. The first authorized release-harness execution failed only because the temporary harness used lifecycle state `SCORED` instead of the current enum value `scored`. No Writer/Judge model call occurred, so Chris's single authorized Writer/Judge execution remains UNUSED.**
+Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, PASSED Sol High adversarial preflight, and PASSES the corrected deterministic pre-model finalization gate. The previously authorized single current TBK Writer/Judge orchestration was consumed: Writer pass 1 and Judge pass 1 completed and validated, Judge requested one governed revision, and Writer pass 2 failed at the live transport boundary with `fetch failed` after its reservation was recorded. No RELEASE_CANDIDATE or browser render was produced. No further Writer/Judge/model execution is authorized.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -35,45 +35,42 @@ Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBL
 - Current findings, ScoreSet 2.0.0, WriterInput, and canonical solutions regenerate deterministically.
 - Complete corrected pre-model finalization gate: **PASS / 0 errors**.
 - Existing warning only: performance score 71 vs technical hygiene score 6 diverges by more than 60 points.
-- No application repair and no provider rerun required.
-- First release-harness attempt entered `createNarrativeV2ProductionPath.execute()` but delegated to the guarded base audit orchestrator because the temporary harness seeded `SCORED` instead of current lifecycle enum value `scored`.
-- Writer calls: **0**.
-- Judge calls: **0**.
-- Authorized Writer/Judge execution remains **UNUSED**.
-- Application branch/HEAD/worktree and remote SHA remained clean and unchanged.
+- No application repair and no provider rerun required for the deterministic packet.
+- Harness lifecycle dispatch defect corrected by using current enum value `scored`; Narrative v2 dispatch PASS and base orchestrator not invoked.
+- Authorized orchestration then executed once.
+- Writer pass 1: completed; Writer validation PASS.
+- Judge pass 1: completed; Judge validation PASS; bounded revision requested.
+- Writer pass 2: initiated and failed before output with `Narrative v2 writer request failed after paid-call reservation: fetch failed`.
+- Writer call count: **2**.
+- Judge call count: **1**.
+- Orchestration final status: `narrative_failed`.
+- Valid RELEASE_CANDIDATE: **NO**.
+- Post-run canonical generation/render/browser server: not reached.
+- Application source/tests/fixtures remained unchanged; branch/HEAD/worktree/remote SHA remained clean.
+- Audit-provider rerun, deployment, main merge, production mutation: NONE.
 
 ## Current hold
 
-Checkpoint: `PRYSM_TBK_WRITER_JUDGE_HARNESS_LIFECYCLE_DISPATCH_HOLD_2026-09-09.md`
+Checkpoint: `PRYSM_TBK_WRITER_PASS2_FETCH_FAILURE_HOLD_2026-09-09.md`
 
-The only proven blocker is the temporary harness lifecycle seed. This is not an application defect.
+The authorized orchestration is consumed. Writer pass 2 is an uncertain live-transport attempt because the current Narrative v2 binding records its reservation before network execution and deliberately refuses duplicate/restart execution for the same role/pass.
 
-## Authorized continuation boundary
-
-Authorized:
-- correct only the temporary harness lifecycle seed outside both repositories;
-- use the current application lifecycle enum value `scored`, preferably by importing/using the enum rather than another string literal;
-- reconstruct the already-proven current deterministic packet outside both repositories;
-- rerun the complete deterministic pre-model finalization gate;
-- if and only if it remains green with zero errors, consume the single previously authorized Writer/Judge release-candidate execution exactly once;
-- if valid, continue through current canonical solution generation, local clean render, localhost serving, and browser-review proof.
-
-Not authorized:
+## Not authorized
+- no Writer/Judge/model retry;
+- no second independent orchestration;
+- no removal, mutation, or bypass of the Writer pass-2 reservation;
+- no fresh artifact store or new audit identity solely to evade duplicate protection;
 - no application source/test/fixture edits;
 - no audit-provider rerun;
-- no production deployment or promotion;
-- no application `main` merge;
-- no production mutation;
-- no `--legacy-compat` acceptance evidence;
-- no hand-edited evidence/model output;
-- no second independent Writer/Judge orchestration if the authorized one fails.
+- no deployment, production mutation, or main merge.
 
 ## In progress
-Correct the temporary harness lifecycle dispatch state and continue the already-authorized bounded run only after the deterministic finalization gate re-passes.
+Diagnose the Writer pass-2 `fetch failed` transport boundary and the exact durable reservation/result state without making any provider/model request.
 
 ## Blocked
-- Browser human review waits for a valid current local render.
+- Browser human review waits for a valid current RELEASE_CANDIDATE and local render.
 - External Betty remains downstream until browser human review passes.
+- Any further Writer/Judge execution requires a new explicit human authorization after transport/recovery diagnosis proves the safe bounded path.
 
 ## Governing invariant
 **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
@@ -81,7 +78,7 @@ Correct the temporary harness lifecycle dispatch state and continue the already-
 Priority Fixes remains the sole complete remedy owner.
 
 ## Exact next action
-**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, correct the temporary harness lifecycle seed from `SCORED` to current enum value `scored` without editing either repository. Reconstruct the proven deterministic TBK packet and rerun the complete pre-model finalization gate. If it passes with zero errors, continue into the single already-authorized Writer/Judge orchestration exactly once. If that yields a valid RELEASE_CANDIDATE, generate current canonical solutions, render locally, serve on localhost, and produce browser-review proof. Stop on any failure without automatic repair or a second model orchestration.**
+**At exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2`, run a READ-ONLY transport/recovery diagnosis using the existing temporary run artifacts and current Narrative v2 live-binding code. Determine the exact Writer pass-2 reservation/response/result state and whether the failed `fetch` is provably pre-transmission, provably returned, or transport-outcome uncertain. Inspect local DNS/TLS/runtime/configuration evidence only as needed without sending a model/provider request. Do not retry, alter reservations, start another orchestration, edit application code, deploy, or mutate production. Return the smallest governed recovery boundary and whether new explicit authorization would be required.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
@@ -91,6 +88,7 @@ Priority Fixes remains the sole complete remedy owner.
 - `PRYSM_TBK_CURRENT_FINALIZATION_INPUT_COMPATIBILITY_HOLD_2026-09-09.md`
 - `PRYSM_TBK_CURRENT_FINALIZATION_INPUT_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 - `PRYSM_TBK_WRITER_JUDGE_HARNESS_LIFECYCLE_DISPATCH_HOLD_2026-09-09.md`
+- `PRYSM_TBK_WRITER_PASS2_FETCH_FAILURE_HOLD_2026-09-09.md`
 - `DECISION_PRYSM_ACCELERATED_SOLO_DEVELOPMENT_WITH_TERRA_PREFLIGHT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
@@ -103,5 +101,6 @@ Priority Fixes remains the sole complete remedy owner.
 - `PRYSM-BROWSER-REPLAY-COMPATIBILITY-DIAGNOSIS.txt`
 - `PRYSM-TBK-CURRENT-FINALIZATION-INPUT-COMPATIBILITY-DIAGNOSIS.txt`
 - `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-2.txt`
+- `PRYSM-TBK-CURRENT-WRITER-JUDGE-BROWSER-RENDER-PROOF-3.txt`
 
 Last verified: 2026-09-09
