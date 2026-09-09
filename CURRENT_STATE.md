@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 ## Final governed report release
 
-The approved PRYSM report-improvement tranche is CLOSED and production-deployed.
+The approved PRYSM report-improvement tranche remains CLOSED and production-deployed.
 
 Locked narrative rule: **Primary pages interpret. Deeper pages explain.**
 
@@ -30,7 +30,7 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 
 ## Active governed enhancement tranche — Solution Depth
 
-Status: **OPEN — VALIDATOR IMPLEMENTATION COMPLETE / REVIEW-CANDIDATE PUSH REQUIRED BEFORE BETTY**
+Status: **OPEN — VALIDATOR IMPLEMENTATION COMPLETE / REVIEW-CANDIDATE PUBLICATION REQUIRED BEFORE BETTY**
 
 Governing specifications:
 
@@ -61,27 +61,24 @@ Accepted design artifact: `PRYSM-SOLUTION-CONTRACT-AND-VALIDATOR-DESIGN(1).txt`.
 
 The design freezes:
 - **21 required top-level canonical solution fields**;
-- evidence grades: CONFIRMED / PARTIAL / UNKNOWN;
-- prescription modes: PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION;
+- CONFIRMED / PARTIAL / UNKNOWN evidence governance;
+- PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION modes;
 - controlled site-anchor types;
-- capability taxonomy;
-- bounded effort bands: SMALL / MEDIUM / LARGE / UNKNOWN;
+- controlled capability taxonomy;
+- SMALL / MEDIUM / LARGE / UNKNOWN effort bands;
 - mandatory binary implementation checks;
 - optional baseline-dependent outcome signals;
-- dispositions: FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE;
-- deterministic dedupe identity: normalized location/scope × normalized failure mode;
-- merge provenance through `mergedFrom` / `findingRefs`;
-- global sequence rules that preserve governed rank and only add dependency readiness;
+- FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE dispositions;
+- deterministic dedupe identity and merge provenance;
+- governed-rank-preserving sequencing;
 - cross-page canonical solution references;
 - **24 fail-closed validator rules V01–V24**.
 
-Highest-risk compatibility rule: existing reports/actions cannot be silently upgraded into canonical solution records by guessing anchors, capability, effort, checks, or evidence scope. Legacy artifacts must remain renderable and canonical solution validation must be opt-in for new solution records until the generator/integration phase is explicitly authorized.
-
-## Validator implementation — BUILDER PASS / LOCAL CANDIDATE ONLY
+## Validator implementation — BUILDER PASS / EXACT CODE NOT YET PUBLISHED FOR BETTY
 
 Accepted Builder/Codex proof artifact: `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt`.
 
-Builder/Codex claims:
+Builder/Codex proof states:
 
 - six authorized new files created under `services/worker/src/solution/`;
 - no existing application files modified;
@@ -98,26 +95,33 @@ Builder/Codex claims:
 - renderer changed: NO;
 - Writer/Judge changed: NO;
 - audit/provider/model/deployment/production mutation: NO;
-- commit/push: NO.
+- commit/push: NO at the time of proof.
 
-This Builder/Codex PASS is not sufficient to advance governance.
+This is material Builder evidence but is not enough for the mandatory Betty gate because Betty must inspect the actual code in GitHub.
 
-## Mandatory Betty gate — CODE MUST BE IN GITHUB FIRST
+## Mandatory Betty process — LOCKED
 
-Betty is a separate external LLM whose job is to audit whether progress is real.
+For every PRYSM code tranche, the required sequence is now:
 
-For a code tranche, Betty must be able to inspect the actual implementation in GitHub. Therefore a local-only candidate is not sufficient checkpoint evidence.
+**implementation -> tests -> proof -> bounded commit -> non-production review-branch push -> exact SHA -> Betty inspection -> governance advance**
 
-Before Betty runs:
+Betty is a separate external LLM.
 
-1. the bounded validator implementation must be committed;
-2. it must be pushed to a non-production review/feature branch in `chriskulbaba2025/vantage-platform`;
-3. the exact branch and ending commit SHA must be recorded;
-4. Betty must receive the project-context repo/files, application repo, exact review branch, exact implementation SHA, tranche acceptance conditions, and proof artifact/content.
+Betty must receive:
 
-The review-branch push is evidence publication only. It does **not** authorize merge, deployment, production promotion, new audit, or any production change.
+- project-context repo: `chriskulbaba2025/prysm-project-context`;
+- `CURRENT_STATE.md`;
+- current tranche handoff;
+- `PRYSM_BETTY_REAL_PROGRESS_GATE.md`;
+- current governing specification;
+- application repo: `chriskulbaba2025/vantage-platform`;
+- exact review branch;
+- exact implementation SHA;
+- tranche-specific acceptance conditions/invariants;
+- preservation/forbidden-change rules;
+- implementation proof/test evidence.
 
-Betty's response remains small:
+Betty's response is intentionally small:
 
 `RESULT: REAL PROGRESS — YES`
 
@@ -127,30 +131,40 @@ or
 
 plus one short reason and confidence HIGH / MEDIUM / LOW.
 
-Governance must not advance until a valid Betty checkpoint returns:
+Governance cannot advance until Betty returns:
 
 `RESULT: REAL PROGRESS — YES`
 
+A review-branch push is evidence publication only. It does **not** authorize merge, deploy, production promotion, provider/model calls, audit rerun, or unrelated changes.
+
 ## Preservation boundary
 
-Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, Client Truth, lifecycle, persistence, production behavior, or the accepted TBK report.
+Do not change while validator Betty verification is pending:
 
-A review-branch push of the already-tested bounded validator candidate is authorized solely so Betty can inspect the actual code. No merge, deploy, production promotion, or audit rerun is authorized.
+- evidence collection or evidence grades;
+- scoring or governed priority order;
+- Client Truth;
+- Writer/Judge facts/contracts;
+- lifecycle or persistence;
+- client rendering/page architecture;
+- Supporting Detail status;
+- accepted TBK report;
+- production configuration.
+
+No generator, renderer, merge, deployment, production promotion, provider/model call, or audit rerun is authorized.
 
 ## Exact next action
 
-Publish the exact already-tested validator candidate to GitHub as a non-production review candidate:
+Publish the exact already-tested validator implementation to GitHub as a review candidate:
 
-- confirm the current application branch and working tree;
-- commit only the six authorized `services/worker/src/solution/` files;
-- push that review/feature branch;
-- record the exact branch and ending commit SHA;
-- do not merge or deploy.
+1. verify the current `vantage-platform` branch/worktree still contains only the authorized validator candidate plus any previously governed unrelated state that must be preserved;
+2. commit only the six authorized `services/worker/src/solution/` validator/contract/sequence files;
+3. push that exact commit to a non-production review/feature branch;
+4. record the exact branch and commit SHA;
+5. do not merge or deploy;
+6. then give Betty the project-context repo/files, application repo/branch/SHA, tranche acceptance conditions, and proof;
+7. advance governance only if Betty returns `RESULT: REAL PROGRESS — YES`.
 
-Then run the Betty checkpoint against the actual GitHub code at that SHA plus the governed project-context files and implementation proof.
-
-If Betty returns `RESULT: REAL PROGRESS — YES`, update governance and move to the next bounded tranche: deterministic canonical solution generator design/implementation, still stopping before renderer integration.
-
-If Betty returns NO, keep the validator tranche open and diagnose the single reason before any next implementation work.
+If Betty returns NO, keep the validator tranche open and diagnose only the stated reason before any next implementation work.
 
 Last verified: 2026-09-08
