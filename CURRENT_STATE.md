@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Client Specificity & Cognitive Load Repair — BUILDER PASS / PUBLISHED. COMBINED BETTY CATCH-UP REVIEW IS NOW THE EXACT NEXT GATE.**
+Verified checkpoint: **Combined Betty catch-up review — REAL PROGRESS NO / WRITER REMEDIATION ARTIFACT LEAK ACCEPTED.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -15,104 +15,72 @@ Verified checkpoint: **Client Specificity & Cognitive Load Repair — BUILDER PA
 - Canonical authority-provider integration SHA: `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`
 - Renderer/cross-page integration SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
 - Current combined candidate: `c37913acfd82580724c74feb26175e2f0c36232c`
-- Production domain: `https://prysm.omnipressence.com`
-- Viewer version: `2.3.0`
-- Accepted TBK audit: `fbba51e3-08f4-4e93-ae92-03c8ec21a16c`
-- Accepted persisted version: `11`
-- Accepted lifecycle state: `draft_rendered`
-
-GitHub verification confirms:
-- `c37913ac...` is exactly one commit ahead of `61f43682...`;
-- the specificity repair changes only two authorized production renderer files plus four direct tests;
-- the full catch-up range `8f3896...` -> `c37913ac...` is five commits ahead / zero behind.
+- Production remains unchanged.
 
 ## Completed solution-depth work
 - Canonical Solution Contract + Validator frozen; validator Betty-approved.
 - Deterministic canonical solution generator Betty-approved at `8f3896...`.
-- Initial Solution Directive Authority candidate received Betty `REAL PROGRESS — NO` for evidence-reference self-certification through authority-side `persisted:true`.
-- Bounded authority repair at `7c0667...` removed self-certification: trusted refs are independently governed; authority records cannot expand/certify trusted evidence.
-- Versioned static Solution Authority Provider implemented at `f0a46f0e...` for 15 current actionable score-bearing rule IDs.
+- Authority self-certification defect repaired at `7c0667...`; authority-side `persisted:true` cannot certify evidence.
+- Versioned static Solution Authority Provider implemented at `f0a46f0e...` for 15 current actionable score-bearing rules.
 - Provider does not derive solution semantics from rejected legacy recommendation/businessImpact/implementationEffort/verificationMethod/affectedUrls/confidence/module/dimension/finalPriority fields.
-- Narrative v2 preparation now runs provider -> repaired authority resolver -> accepted generator.
-- Renderer/cross-page integration at `61f43682...` carries `canonicalSolutions` through the current in-memory report model.
-- Priority Fixes owns full canonical remedy detail.
-- Executive uses the first three eligible canonical sequence records.
-- Journey, Content Opportunities, Competitor Comparison, Trust & Credibility, and Supporting Detail reference stable canonical solution IDs within their page roles.
-- Active canonical remedy rendering does not fall back to Finding recommendation/businessImpact/verificationMethod/affectedUrls or hard-coded remedy prose.
-- Writer/Judge/report-content/persistence contracts remain unchanged.
-- Six primary pages plus Supporting Detail remain the active viewer architecture.
-- Client Specificity & Cognitive Load repair published at `c37913ac...`:
-  - duplicate `What needs attention` presentation removed;
-  - canonical `whatToChange` and `howToFix` remain distinct and visible;
-  - safe scope wording tightened without invented counts/URLs;
-  - Priority Fix keeps one canonical implementation check while Supporting Detail duplicate verification presentation is reduced and MEASURE remains;
-  - trust wording explicitly relates relative strength to absence of a Priority Fix without inventing a numeric threshold;
-  - orphan pages show runtime total vs examples shown and expose all governed rows through progressive disclosure;
-  - no navigation change;
-  - no production `render-narrative-v2.js` change; WriterOutput.actionPlan remains hidden diagnostic-only content.
+- Production preparation runs provider -> repaired authority resolver -> canonical generator.
+- Renderer/cross-page integration at `61f43682...` carries canonical solutions into the report model and assigns full remedy ownership to Priority Fixes with stable cross-page references.
+- Client Specificity & Cognitive Load repair published at `c37913ac...`: duplicate Priority Fix problem copy removed; canonical `howToFix` visible; bounded scope wording tightened; verification duplication reduced; trust wording clarified; orphan total/examples/all disclosure added.
+- Latest builder verification at `c37913ac...` remained green: focused Solution 126/126, report suite 136/136, report-finalization 37/37, WriterOutput 25/25, Narrative production path 11/11, render-narrative 7/7, viewer 12/12, startup 20/20, report-model 20/20, `git diff --check` PASS; no provider/model calls, audit rerun, deployment, or production mutation.
 
-## Latest builder verification at `c37913ac...`
-- Focused Solution: 126 PASS / 0 FAIL / 0 skipped.
-- Canonical renderer/direct focus: 92 PASS / 0 FAIL / 0 skipped.
-- Report suite: 136 PASS / 0 FAIL / 0 skipped.
-- Report-finalization: 37 PASS / 0 FAIL / 0 skipped.
-- WriterOutput: 25 PASS / 0 FAIL / 0 skipped.
-- Narrative production path: 11 PASS / 0 FAIL / 0 skipped.
-- Render-narrative: 7 PASS / 0 FAIL / 0 skipped.
-- Viewer: 12 PASS / 0 FAIL / 0 skipped.
-- Startup regression: 20 PASS / 0 FAIL / 0 skipped.
-- Report-model coverage: 20 PASS / 0 FAIL / 0 skipped.
-- Builder-reported invoked regression groups: 268 PASS / 0 FAIL including three new direct presentation tests; 265 PASS / 0 FAIL excluding those three new tests.
-- `git diff --check`: PASS.
-- Provider/model calls: NO.
-- Audit rerun: NO.
-- Deployment/production mutation: NO.
+## Latest Betty verdict
+
+RESULT: REAL PROGRESS — NO
+
+REASON: `renderWriterNarrativeLayer` still renders `WriterOutput.actionPlan` as a client-facing Action Plan, so canonical solutions are not the sole remediation authority.
+
+CONFIDENCE: HIGH
+
+Checkpoint: `PRYSM_BETTY_NO_WRITER_REMEDIATION_ARTIFACT_LEAK_2026-09-09.md`
+
+## Accepted interpretation change
+
+Exact source at `c37913ac...` shows `actionPlanNarrativeSection(writerOutput)` is serialized into the final report HTML inside `deeperNarrative`, even though the enclosing `#narrative-diagnostic-layer` is browser-hidden using `hidden`, `aria-hidden="true"`, and CSS `display:none !important`.
+
+The prior project interpretation treated browser-hidden HTML as non-client-facing. Betty's NO is accepted as establishing a stricter and cleaner boundary: **non-canonical remediation content must not be serialized into the client report artifact at all merely because CSS hides it.**
+
+Therefore the defect is real and no additional Betty clarification is required before diagnosis.
 
 ## In progress
-**Deferred Betty combined solution-depth catch-up review.**
 
-Governing review checkpoint:
-`PRYSM_BETTY_COMBINED_SOLUTION_DEPTH_CATCHUP_REVIEW_2026-09-09.md`
+**Read-only Writer Narrative Remediation Authority Leakage Diagnosis.**
 
-Builder-pass checkpoint:
-`PRYSM_CLIENT_SPECIFICITY_COGNITIVE_LOAD_REPAIR_BUILDER_PASS_2026-09-09.md`
+The diagnosis must inspect the complete remedy-like surface serialized by `renderWriterNarrativeLayer`, not only `WriterOutput.actionPlan`, including:
+- `WriterOutput.actionPlan`;
+- `executiveDecision.change`;
+- `executiveDecision.doNext`;
+- Writer narrative fields labelled or functioning as `priority`, `opportunity`, or `nextAction`;
+- hard-coded narrative summary text that instructs the client to refine/check/add/do something;
+- hidden/deep narrative content that remains serialized into the client HTML artifact.
 
-## Betty review range
-Betty must inspect the actual code and full diff:
+Each surface must be classified as:
+1. safe interpretation/context;
+2. canonical solution summary/reference only;
+3. competing remediation authority that must be removed/replaced;
+4. diagnostic-only data that must remain outside the client artifact entirely.
 
-`8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`
-→
-`c37913acfd82580724c74feb26175e2f0c36232c`
+## Preferred architecture
 
-This catches up every deferred tranche, including the repaired authority defect, provider integration, renderer/cross-page ownership, and human-facing specificity repair.
+Writer may continue producing internal interpretation/action structures if required by the existing contract. The client renderer must not serialize independent remedy instructions. Client-facing remediation must come only from canonical solutions or bounded summaries/references to the same canonical solution IDs.
 
-Required Betty response:
+Do not change WriterInput, WriterOutput contract, Writer generation, Judge contract, scoring, evidence, lifecycle, persistence, canonical solution authority/provider/generator, or page architecture merely to close this rendering leak.
 
-`RESULT: REAL PROGRESS — YES|NO`
-
-`REASON: <one sentence>`
-
-`CONFIDENCE: HIGH|MEDIUM|LOW`
-
-## Blocked pending Betty
+## Blocked
 - Merge to application `main`.
 - Deployment / production promotion.
 - Provider/model execution for release.
 - Audit rerun.
 - Production mutation.
 - Release-governance advancement.
-- New Supporting Detail or broader report-expansion tranche.
+- New Supporting Detail/report expansion.
 
-## Important constraints
-- Preserve canonical solution authority and fail-closed evidence trust.
-- Preserve CONFIRMED / PARTIAL / UNKNOWN and PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION semantics.
-- Preserve governed priority/order and deterministic sequence.
-- Preserve Writer/Judge non-authority boundaries.
-- Preserve scoring/evidence/lifecycle/persistence/report-content contracts.
-- Preserve six primary pages plus Supporting Detail.
-- Do not invent exact per-finding counts/URLs from legacy `affectedUrls`.
-- Production baseline remains unchanged until Betty/release governance passes.
+## Exact next action
 
-Exact next action: Give Betty the combined catch-up review in `PRYSM_BETTY_COMBINED_SOLUTION_DEPTH_CATCHUP_REVIEW_2026-09-09.md`, instruct her to inspect actual GitHub code at exact SHA `c37913acfd82580724c74feb26175e2f0c36232c` and the full diff from `8f3896fed40f7825a6f2a1d6a17a47a25d397cd2`, and return only the required three-line verdict. Do not begin another development tranche before that verdict.
+Starting from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` on `review/prysm-solution-directive-authority-betty`, run a read-only Writer Narrative Remediation Authority Leakage Diagnosis focused first on `services/worker/src/report/render-narrative-v2.js` and directly connected render tests. Determine every Writer-derived or hard-coded remedy-like item serialized into the client report artifact, select the smallest complete repair boundary, and produce `C:\Users\kulba\Downloads\PRYSM-WRITER-NARRATIVE-REMEDIATION-AUTHORITY-LEAK-DIAGNOSIS.txt`. Do not implement during diagnosis.
 
 Last verified: 2026-09-09
