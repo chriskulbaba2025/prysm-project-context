@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Writer Narrative Remediation Authority Leak Diagnosis — READY_FOR_IMPLEMENTATION. Betty defect confirmed.**
+Verified checkpoint: **Writer Narrative Remediation Authority Leak Repair — BUILDER PASS / PUBLISHED. COMBINED BETTY RE-REVIEW IS NOW THE EXACT NEXT GATE.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -14,8 +14,16 @@ Verified checkpoint: **Writer Narrative Remediation Authority Leak Diagnosis —
 - Repaired authority SHA: `7c0667ae0ad9c893bbc04363e8399e476ce473f0`
 - Canonical authority-provider integration SHA: `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`
 - Renderer/cross-page integration SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
-- Current combined candidate / implementation start SHA: `c37913acfd82580724c74feb26175e2f0c36232c`
+- Client Specificity repair SHA: `c37913acfd82580724c74feb26175e2f0c36232c`
+- Current combined candidate: `ed671bbd50ef836b10c77917e3a78b95963188fc`
 - Production remains unchanged.
+
+GitHub compare verifies `ed671bbd...` is exactly one commit ahead of `c37913ac...` and changes only two authorized production files plus three direct tests:
+- `services/worker/src/report/render-narrative-v2.js`
+- `services/worker/src/narrative-v2/production-path.js`
+- `services/worker/src/report/render-narrative-v2.test.js`
+- `services/worker/src/application/narrative-v2-production-path.test.js`
+- `services/worker/src/report/karen-style-regression.test.js`
 
 ## Completed solution-depth work
 - Canonical Solution Contract + Validator frozen; validator Betty-approved.
@@ -25,10 +33,9 @@ Verified checkpoint: **Writer Narrative Remediation Authority Leak Diagnosis —
 - Provider does not derive solution semantics from rejected legacy recommendation/businessImpact/implementationEffort/verificationMethod/affectedUrls/confidence/module/dimension/finalPriority fields.
 - Production preparation runs provider -> repaired authority resolver -> canonical generator.
 - Renderer/cross-page integration at `61f43682...` carries canonical solutions into the report model and assigns full remedy ownership to Priority Fixes with stable cross-page references.
-- Client Specificity & Cognitive Load repair published at `c37913ac...`: duplicate Priority Fix problem copy removed; canonical `howToFix` visible; bounded scope wording tightened; verification duplication reduced; trust wording clarified; orphan total/examples/all disclosure added.
-- Latest builder verification at `c37913ac...` remained green: focused Solution 126/126, report suite 136/136, report-finalization 37/37, WriterOutput 25/25, Narrative production path 11/11, render-narrative 7/7, viewer 12/12, startup 20/20, report-model 20/20, `git diff --check` PASS; no provider/model calls, audit rerun, deployment, or production mutation.
+- Client Specificity & Cognitive Load repair at `c37913ac...` removed duplicate Priority Fix problem copy, foregrounded canonical howToFix, tightened bounded scope wording, reduced verification duplication, clarified trust wording, and improved orphan disclosure.
 
-## Latest Betty verdict
+## Previous Betty verdict
 
 RESULT: REAL PROGRESS — NO
 
@@ -36,65 +43,78 @@ REASON: `renderWriterNarrativeLayer` still renders `WriterOutput.actionPlan` as 
 
 CONFIDENCE: HIGH
 
-Checkpoint: `PRYSM_BETTY_NO_WRITER_REMEDIATION_ARTIFACT_LEAK_2026-09-09.md`
+The project accepted Betty's stricter boundary: browser-hidden HTML is still part of the client artifact. Non-canonical remediation must not be serialized into the client report artifact at all.
 
-## Accepted authority boundary
+## Writer narrative authority leak repair
 
-Betty's NO is accepted. Browser-hidden HTML is still part of the client artifact.
+Diagnosis checkpoint:
+`PRYSM_WRITER_NARRATIVE_REMEDIATION_AUTHORITY_LEAK_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 
-**Non-canonical remediation content must not be serialized into the client report artifact at all.**
+Builder-pass checkpoint:
+`PRYSM_WRITER_NARRATIVE_REMEDIATION_AUTHORITY_LEAK_REPAIR_BUILDER_PASS_2026-09-09.md`
 
-Writer/Judge may continue producing and validating internal interpretation/action structures under their existing contracts. The client report artifact must contain client remediation only from canonical solutions or existing canonical summaries/references.
+Application candidate:
+`ed671bbd50ef836b10c77917e3a78b95963188fc`
 
-## Writer narrative authority leak diagnosis
+Implemented:
+- `renderGovernedNarrativeReportV2()` retains governed Writer/Judge validation and WriterOutput revalidation;
+- client rendering now returns deterministic `renderReportV2()` HTML only;
+- Writer narrative HTML/CSS serialization path removed;
+- `WriterOutput.actionPlan` no longer enters client HTML;
+- executive Change / Do next no longer enter client HTML;
+- hidden diagnostic Writer content no longer enters client HTML;
+- Writer/Judge HTML metadata no longer enters client HTML;
+- legacy Writer narrative viewer IDs no longer enter client HTML;
+- internal WriterOutput/orchestration JSON remains preserved;
+- canonical Priority Fix authority and cross-page references remain intact.
 
-Diagnosis completed from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` with `RESULT: READY_FOR_IMPLEMENTATION` and `BETTY DEFECT CONFIRMED: YES`.
+Structural guard:
+- `hasRequiredNarrativeV2ReportStructure()` no longer requires `id="narrative-layer"`;
+- it now validates deterministic report-v2 structure using doctype, governed report heading, and `<main id="reportContent" tabindex="-1">`;
+- UAT rerender retains Viewer version validation;
+- malformed, missing-doctype, and missing-report-main cases fail closed.
 
-Checkpoint: `PRYSM_WRITER_NARRATIVE_REMEDIATION_AUTHORITY_LEAK_DIAGNOSIS_CHECKPOINT_2026-09-09.md`.
-
-Diagnosis established:
-- `renderGovernedNarrativeReportV2()` calls `renderReportV2(model)`, then injects `NARRATIVE_CSS` and `renderWriterNarrativeLayer()` into the client HTML;
-- the Writer-derived bytes therefore enter persisted `report-v2/pages/index.html` and are not removed by hiding/CSS;
-- the leak is broader than `WriterOutput.actionPlan` and includes executive Change/Do next, Writer priority/opportunity/nextAction surfaces, mixed hard-coded advisory copy, deeper narrative content, Writer/Judge diagnostic metadata, and legacy narrative page assignments;
-- selectively deleting only `actionPlanNarrativeSection()` is insufficient;
-- safest complete repair is to stop serializing the entire unconstrained Writer narrative layer into client HTML while leaving Writer/Judge internal contracts unchanged.
-
-Exact source verification also confirmed `hasRequiredNarrativeV2ReportStructure(html)` currently requires `id="narrative-layer"`, so the renderer repair must atomically update that structural guard to validate deterministic report-v2 structure instead of the Writer marker.
+## Latest verification at `ed671bbd...`
+- Focused Solution: 126 PASS / 0 FAIL / 0 skipped
+- Render Narrative: 8 PASS / 0 FAIL / 0 skipped
+- Narrative production path: 11 PASS / 0 FAIL / 0 skipped
+- Canonical renderer: 4 PASS / 0 FAIL / 0 skipped
+- Report regressions: 137 PASS / 0 FAIL / 0 skipped
+- Report finalization: 37 PASS / 0 FAIL / 0 skipped
+- WriterOutput: 25 PASS / 0 FAIL / 0 skipped
+- Viewer: 12 PASS / 0 FAIL / 0 skipped
+- Startup: 5 PASS / 0 FAIL / 0 skipped
+- Report model: 20 PASS / 0 FAIL / 0 skipped
+- Narrative v2 full suite: 114 PASS / 0 FAIL / 0 skipped
+- Karen regression: 6 PASS / 0 FAIL / 0 skipped
+- Full `npm test`: 1007 PASS / 0 FAIL / 0 skipped
+- `git diff --check`: PASS
+- Writer mutation invariance: PASS — 14 Writer remedy/interpretation mutations produced byte-identical client HTML with canonical model fixed.
+- Persisted HTML cleanliness: PASS.
+- Internal Writer artifacts preserved: PASS.
+- Provider/model calls: NO.
+- Audit rerun: NO.
+- Deployment/production mutation: NO.
 
 ## In progress
 
-**Bounded Writer Narrative Remediation Authority Leak implementation.**
+**Combined Betty re-review of the repaired solution-depth candidate.**
 
-## Exact implementation boundary
+Betty re-review checkpoint:
+`PRYSM_BETTY_WRITER_AUTHORITY_LEAK_REPAIR_REREVIEW_2026-09-09.md`
 
-Expected production files:
-1. `services/worker/src/report/render-narrative-v2.js`
-   - preserve governed input / WriterOutput revalidation;
-   - stop inserting Writer-derived HTML and Writer-specific CSS into the client artifact;
-   - return deterministic canonical report-v2 HTML after successful governed validation;
-   - do not introduce a second remedy source.
-2. `services/worker/src/narrative-v2/production-path.js`
-   - change only the directly dependent `hasRequiredNarrativeV2ReportStructure()` guard (and strictly necessary adjacent assertion if proven) so finalization validates deterministic report-v2 structure rather than `id="narrative-layer"`;
-   - no lifecycle, persistence, orchestration, provider, model, or audit behavior changes.
+Betty must inspect actual GitHub code at exact application SHA:
+`ed671bbd50ef836b10c77917e3a78b95963188fc`
 
-Expected directly affected tests:
-- `services/worker/src/report/render-narrative-v2.test.js`
-- `services/worker/src/application/narrative-v2-production-path.test.js`
-- `services/worker/src/report/karen-style-regression.test.js` only if directly required because it imports/asserts the old Writer layer.
-- nearest direct guard/render test only if proven necessary.
+Required response:
 
-## Required behavior
+`RESULT: REAL PROGRESS — YES|NO`
 
-Implementation must prove:
-- final client HTML keeps deterministic canonical Priority Fix IDs/details and stable cross-page references;
-- no `narrative-action-plan`, `narrative-decision`, `narrative-diagnostic-layer`, Writer remedy fields, mixed hard-coded advisory copy, Writer/Judge narrative metadata, or old narrative viewer assignments are serialized;
-- mutating WriterOutput.actionPlan, executiveDecision.change/doNext, conversion/SEO priority, AI-search opportunity, funnel nextAction, and other Writer remedy-like fields cannot alter client remediation HTML when canonical solutions are fixed;
-- WriterOutput/orchestration internal artifacts and validation behavior remain unchanged;
-- six primary pages plus Supporting Detail remain unchanged;
-- non-v2 delegation remains unchanged;
-- canonical authority/provider/generator/scoring/evidence/Writer/Judge/lifecycle/persistence/report-content/production configuration remain unchanged.
+`REASON: <one sentence>`
 
-## Blocked
+`CONFIDENCE: HIGH|MEDIUM|LOW`
+
+## Blocked pending Betty
 - Merge to application `main`.
 - Deployment / production promotion.
 - Provider/model execution for release.
@@ -103,10 +123,19 @@ Implementation must prove:
 - Release-governance advancement.
 - New Supporting Detail/report expansion.
 
+## Important constraints
+- Canonical solutions must remain the sole client remediation authority.
+- Priority Fixes remains the sole owner of full canonical remedy detail.
+- Preserve fail-closed evidence trust, CONFIRMED/PARTIAL/UNKNOWN, prescription modes, governed sequence, and stable canonical IDs.
+- Preserve scoring/evidence/Writer/Judge/lifecycle/persistence/report-content contracts.
+- Preserve six primary pages plus Supporting Detail.
+- Do not invent exact per-finding counts/URLs from legacy `affectedUrls`.
+- Production baseline remains unchanged until Betty and release governance pass.
+
 ## Exact next action
 
-Starting from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` on `review/prysm-solution-directive-authority-betty`, implement only the Writer narrative serialization-boundary repair in `render-narrative-v2.js` plus the directly dependent report-structure guard in `narrative-v2/production-path.js`, update only directly affected tests, run the focused/comparable regression groups, produce `C:\Users\kulba\Downloads\PRYSM-WRITER-NARRATIVE-REMEDIATION-AUTHORITY-LEAK-REPAIR-PROOF.txt`, commit/push the bounded non-production candidate, then STOP for combined Betty re-review.
+Give Betty `PRYSM_BETTY_WRITER_AUTHORITY_LEAK_REPAIR_REREVIEW_2026-09-09.md`, instruct her to inspect actual GitHub code at exact SHA `ed671bbd50ef836b10c77917e3a78b95963188fc`, and return only the required three-line verdict.
 
-No merge, deploy, promotion, provider/model calls, audit rerun, production mutation, or new report tranche before Betty re-review.
+Do not begin another implementation tranche before Betty's verdict.
 
 Last verified: 2026-09-09
