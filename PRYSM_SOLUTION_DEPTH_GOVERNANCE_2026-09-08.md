@@ -194,17 +194,37 @@ Minimum required assertions:
 
 The project-wide Betty rule in `PRYSM_BETTY_REAL_PROGRESS_GATE.md` is mandatory for this tranche.
 
-After every implementation tranche and before governance advances:
+Betty is a separate external LLM used to determine whether progress is real rather than merely claimed.
 
-1. Builder/Codex completes the authorized implementation and proof artifact.
-2. Betty independently checks actual code, git diff, tests, and governed requirements.
-3. Governance may advance only when Betty returns:
+For every code implementation tranche, the required sequence is:
 
-`REAL PROGRESS VERIFIED — READY TO ADVANCE`
+1. bounded implementation;
+2. focused/regression verification;
+3. proof artifact;
+4. bounded local commit;
+5. push exact tested candidate to a non-production review/feature branch;
+6. record exact application repository, branch, and SHA;
+7. update project-context state/handoff without advancing tranche;
+8. Betty inspects governance plus the actual GitHub code at that SHA and the proof;
+9. governance advances only if Betty returns:
 
-A Builder/Codex PASS or proof artifact is not sufficient by itself.
+`RESULT: REAL PROGRESS — YES`
 
-If Betty returns `PROGRESS NOT VERIFIED — [exact reason]`, the current tranche remains open and must be repaired/reverified before any next implementation phase begins.
+A Builder/Codex PASS, proof artifact, or local-only code candidate is not sufficient by itself.
+
+The review-branch push is evidence publication only. It does not authorize merge, deployment, production promotion, audit rerun, provider/model calls, or unrelated changes.
+
+If the exact code candidate is not inspectable in GitHub, the Betty checkpoint is not ready to run.
+
+Betty's response remains intentionally small:
+
+`RESULT: REAL PROGRESS — YES`
+
+or
+
+`RESULT: REAL PROGRESS — NO`
+
+plus one short reason and confidence HIGH / MEDIUM / LOW.
 
 Betty verification is mandatory after validator implementation, generator implementation, canonical integration, renderer/cross-page reference implementation, Supporting Detail changes, full regression/fireproofing, and the final human-review candidate before production promotion.
 
@@ -232,18 +252,18 @@ The audit must identify the exact model, validator, generator, renderer, and tes
 
 ## Preservation constraints
 
-Do not change during the audit phase:
+Do not change unless separately authorized:
 
 - audit evidence collection
 - evidence grades
 - scoring
 - priority order
 - Client Truth
-- Writer/Judge facts
+- Writer/Judge facts/contracts
 - lifecycle semantics
 - persistence contracts
-- existing production report
+- accepted production report
 - six-primary-page architecture
 - Supporting Detail status as subordinate, not Page 7
 
-No production deploy or audit rerun is authorized by this governance document alone.
+No merge, production deploy, production promotion, provider/model call, or audit rerun is authorized by this governance document alone.
