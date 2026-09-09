@@ -30,7 +30,7 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 
 ## Active governed enhancement tranche — Solution Depth
 
-Status: **OPEN — VALIDATOR IMPLEMENTATION COMPLETE / BETTY CHECKPOINT REQUIRED**
+Status: **OPEN — VALIDATOR IMPLEMENTATION COMPLETE / REVIEW-CANDIDATE PUSH REQUIRED BEFORE BETTY**
 
 Governing specifications:
 
@@ -40,19 +40,6 @@ Governing specifications:
 Core rule:
 
 **Every page should answer “what should I do here?” Priority Fixes should answer “exactly how should I do it?”**
-
-Canonical governance:
-
-- one actionable problem = one canonical solution record;
-- canonical coverage includes all actionable findings even when Priority Fixes displays only the top client-prominent subset;
-- evidence grade governs prescription strength: CONFIRMED may be prescriptive, PARTIAL must be conditional, UNKNOWN must investigate rather than prescribe;
-- prescriptive/conditional fixes require a site-specific artifact anchor;
-- use capability required, not assumed client job-title ownership;
-- include bounded effort, dependency/sequence, mandatory binary implementation check, optional baseline-dependent outcome signal, disposition, issue identity, and merge provenance;
-- deduplicate overlapping findings before display;
-- allow FIX_NOW / FIX_LATER / ACCEPT / INVESTIGATE dispositions;
-- validators must enforce the contract before generator changes are accepted;
-- cap client prominence, not canonical traceability.
 
 ## Solution Coverage Audit — COMPLETE
 
@@ -90,7 +77,7 @@ The design freezes:
 
 Highest-risk compatibility rule: existing reports/actions cannot be silently upgraded into canonical solution records by guessing anchors, capability, effort, checks, or evidence scope. Legacy artifacts must remain renderable and canonical solution validation must be opt-in for new solution records until the generator/integration phase is explicitly authorized.
 
-## Validator implementation — BUILDER PASS, BETTY NOT YET PASSED
+## Validator implementation — BUILDER PASS / LOCAL CANDIDATE ONLY
 
 Accepted Builder/Codex proof artifact: `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt`.
 
@@ -115,21 +102,22 @@ Builder/Codex claims:
 
 This Builder/Codex PASS is not sufficient to advance governance.
 
-## Mandatory Betty gate — CURRENT BLOCKER
+## Mandatory Betty gate — CODE MUST BE IN GITHUB FIRST
 
-Betty is a **separate external LLM**.
+Betty is a separate external LLM whose job is to audit whether progress is real.
 
-For every implementation tranche, Betty must receive a checkpoint prompt that mirrors the bounded implementation contract and contains:
+For a code tranche, Betty must be able to inspect the actual implementation in GitHub. Therefore a local-only candidate is not sufficient checkpoint evidence.
 
-- project goal;
-- exact tranche;
-- concrete tranche-specific acceptance conditions / invariants;
-- concrete preserved behaviors and forbidden changes;
-- the full Builder/Codex proof content, or a proof artifact actually attached and accessible in Betty's chat.
+Before Betty runs:
 
-Do not merely give Betty a local filename/path she cannot access.
+1. the bounded validator implementation must be committed;
+2. it must be pushed to a non-production review/feature branch in `chriskulbaba2025/vantage-platform`;
+3. the exact branch and ending commit SHA must be recorded;
+4. Betty must receive the project-context repo/files, application repo, exact review branch, exact implementation SHA, tranche acceptance conditions, and proof artifact/content.
 
-Betty's response must remain small:
+The review-branch push is evidence publication only. It does **not** authorize merge, deployment, production promotion, new audit, or any production change.
+
+Betty's response remains small:
 
 `RESULT: REAL PROGRESS — YES`
 
@@ -139,23 +127,29 @@ or
 
 plus one short reason and confidence HIGH / MEDIUM / LOW.
 
-The prior Betty attempt returned NO because the proof itself was not available to Betty. That is an invalid checkpoint input, not evidence that the validator tranche itself failed.
-
 Governance must not advance until a valid Betty checkpoint returns:
 
 `RESULT: REAL PROGRESS — YES`
 
 ## Preservation boundary
 
-Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, Client Truth, lifecycle, persistence, production behavior, or the accepted TBK report while the Betty checkpoint is pending.
+Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, Client Truth, lifecycle, persistence, production behavior, or the accepted TBK report.
 
-No production deployment, push, merge, or new audit run is authorized.
+A review-branch push of the already-tested bounded validator candidate is authorized solely so Betty can inspect the actual code. No merge, deploy, production promotion, or audit rerun is authorized.
 
 ## Exact next action
 
-Send Betty the complete validator checkpoint prompt with the full contents of `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt` embedded or actually attached in Betty's chat.
+Publish the exact already-tested validator candidate to GitHub as a non-production review candidate:
 
-If Betty returns `RESULT: REAL PROGRESS — YES`, then update governance and move to the next bounded tranche: deterministic canonical solution generator design/implementation, still stopping before renderer integration.
+- confirm the current application branch and working tree;
+- commit only the six authorized `services/worker/src/solution/` files;
+- push that review/feature branch;
+- record the exact branch and ending commit SHA;
+- do not merge or deploy.
+
+Then run the Betty checkpoint against the actual GitHub code at that SHA plus the governed project-context files and implementation proof.
+
+If Betty returns `RESULT: REAL PROGRESS — YES`, update governance and move to the next bounded tranche: deterministic canonical solution generator design/implementation, still stopping before renderer integration.
 
 If Betty returns NO, keep the validator tranche open and diagnose the single reason before any next implementation work.
 
