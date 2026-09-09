@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Combined Betty catch-up review — REAL PROGRESS NO / WRITER REMEDIATION ARTIFACT LEAK ACCEPTED.**
+Verified checkpoint: **Writer Narrative Remediation Authority Leak Diagnosis — READY_FOR_IMPLEMENTATION. Betty defect confirmed.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -14,7 +14,7 @@ Verified checkpoint: **Combined Betty catch-up review — REAL PROGRESS NO / WRI
 - Repaired authority SHA: `7c0667ae0ad9c893bbc04363e8399e476ce473f0`
 - Canonical authority-provider integration SHA: `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`
 - Renderer/cross-page integration SHA: `61f43682ec425a0708064386c8bde18d94d7f8ca`
-- Current combined candidate: `c37913acfd82580724c74feb26175e2f0c36232c`
+- Current combined candidate / implementation start SHA: `c37913acfd82580724c74feb26175e2f0c36232c`
 - Production remains unchanged.
 
 ## Completed solution-depth work
@@ -38,37 +38,61 @@ CONFIDENCE: HIGH
 
 Checkpoint: `PRYSM_BETTY_NO_WRITER_REMEDIATION_ARTIFACT_LEAK_2026-09-09.md`
 
-## Accepted interpretation change
+## Accepted authority boundary
 
-Exact source at `c37913ac...` shows `actionPlanNarrativeSection(writerOutput)` is serialized into the final report HTML inside `deeperNarrative`, even though the enclosing `#narrative-diagnostic-layer` is browser-hidden using `hidden`, `aria-hidden="true"`, and CSS `display:none !important`.
+Betty's NO is accepted. Browser-hidden HTML is still part of the client artifact.
 
-The prior project interpretation treated browser-hidden HTML as non-client-facing. Betty's NO is accepted as establishing a stricter and cleaner boundary: **non-canonical remediation content must not be serialized into the client report artifact at all merely because CSS hides it.**
+**Non-canonical remediation content must not be serialized into the client report artifact at all.**
 
-Therefore the defect is real and no additional Betty clarification is required before diagnosis.
+Writer/Judge may continue producing and validating internal interpretation/action structures under their existing contracts. The client report artifact must contain client remediation only from canonical solutions or existing canonical summaries/references.
+
+## Writer narrative authority leak diagnosis
+
+Diagnosis completed from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` with `RESULT: READY_FOR_IMPLEMENTATION` and `BETTY DEFECT CONFIRMED: YES`.
+
+Checkpoint: `PRYSM_WRITER_NARRATIVE_REMEDIATION_AUTHORITY_LEAK_DIAGNOSIS_CHECKPOINT_2026-09-09.md`.
+
+Diagnosis established:
+- `renderGovernedNarrativeReportV2()` calls `renderReportV2(model)`, then injects `NARRATIVE_CSS` and `renderWriterNarrativeLayer()` into the client HTML;
+- the Writer-derived bytes therefore enter persisted `report-v2/pages/index.html` and are not removed by hiding/CSS;
+- the leak is broader than `WriterOutput.actionPlan` and includes executive Change/Do next, Writer priority/opportunity/nextAction surfaces, mixed hard-coded advisory copy, deeper narrative content, Writer/Judge diagnostic metadata, and legacy narrative page assignments;
+- selectively deleting only `actionPlanNarrativeSection()` is insufficient;
+- safest complete repair is to stop serializing the entire unconstrained Writer narrative layer into client HTML while leaving Writer/Judge internal contracts unchanged.
+
+Exact source verification also confirmed `hasRequiredNarrativeV2ReportStructure(html)` currently requires `id="narrative-layer"`, so the renderer repair must atomically update that structural guard to validate deterministic report-v2 structure instead of the Writer marker.
 
 ## In progress
 
-**Read-only Writer Narrative Remediation Authority Leakage Diagnosis.**
+**Bounded Writer Narrative Remediation Authority Leak implementation.**
 
-The diagnosis must inspect the complete remedy-like surface serialized by `renderWriterNarrativeLayer`, not only `WriterOutput.actionPlan`, including:
-- `WriterOutput.actionPlan`;
-- `executiveDecision.change`;
-- `executiveDecision.doNext`;
-- Writer narrative fields labelled or functioning as `priority`, `opportunity`, or `nextAction`;
-- hard-coded narrative summary text that instructs the client to refine/check/add/do something;
-- hidden/deep narrative content that remains serialized into the client HTML artifact.
+## Exact implementation boundary
 
-Each surface must be classified as:
-1. safe interpretation/context;
-2. canonical solution summary/reference only;
-3. competing remediation authority that must be removed/replaced;
-4. diagnostic-only data that must remain outside the client artifact entirely.
+Expected production files:
+1. `services/worker/src/report/render-narrative-v2.js`
+   - preserve governed input / WriterOutput revalidation;
+   - stop inserting Writer-derived HTML and Writer-specific CSS into the client artifact;
+   - return deterministic canonical report-v2 HTML after successful governed validation;
+   - do not introduce a second remedy source.
+2. `services/worker/src/narrative-v2/production-path.js`
+   - change only the directly dependent `hasRequiredNarrativeV2ReportStructure()` guard (and strictly necessary adjacent assertion if proven) so finalization validates deterministic report-v2 structure rather than `id="narrative-layer"`;
+   - no lifecycle, persistence, orchestration, provider, model, or audit behavior changes.
 
-## Preferred architecture
+Expected directly affected tests:
+- `services/worker/src/report/render-narrative-v2.test.js`
+- `services/worker/src/application/narrative-v2-production-path.test.js`
+- `services/worker/src/report/karen-style-regression.test.js` only if directly required because it imports/asserts the old Writer layer.
+- nearest direct guard/render test only if proven necessary.
 
-Writer may continue producing internal interpretation/action structures if required by the existing contract. The client renderer must not serialize independent remedy instructions. Client-facing remediation must come only from canonical solutions or bounded summaries/references to the same canonical solution IDs.
+## Required behavior
 
-Do not change WriterInput, WriterOutput contract, Writer generation, Judge contract, scoring, evidence, lifecycle, persistence, canonical solution authority/provider/generator, or page architecture merely to close this rendering leak.
+Implementation must prove:
+- final client HTML keeps deterministic canonical Priority Fix IDs/details and stable cross-page references;
+- no `narrative-action-plan`, `narrative-decision`, `narrative-diagnostic-layer`, Writer remedy fields, mixed hard-coded advisory copy, Writer/Judge narrative metadata, or old narrative viewer assignments are serialized;
+- mutating WriterOutput.actionPlan, executiveDecision.change/doNext, conversion/SEO priority, AI-search opportunity, funnel nextAction, and other Writer remedy-like fields cannot alter client remediation HTML when canonical solutions are fixed;
+- WriterOutput/orchestration internal artifacts and validation behavior remain unchanged;
+- six primary pages plus Supporting Detail remain unchanged;
+- non-v2 delegation remains unchanged;
+- canonical authority/provider/generator/scoring/evidence/Writer/Judge/lifecycle/persistence/report-content/production configuration remain unchanged.
 
 ## Blocked
 - Merge to application `main`.
@@ -81,6 +105,8 @@ Do not change WriterInput, WriterOutput contract, Writer generation, Judge contr
 
 ## Exact next action
 
-Starting from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` on `review/prysm-solution-directive-authority-betty`, run a read-only Writer Narrative Remediation Authority Leakage Diagnosis focused first on `services/worker/src/report/render-narrative-v2.js` and directly connected render tests. Determine every Writer-derived or hard-coded remedy-like item serialized into the client report artifact, select the smallest complete repair boundary, and produce `C:\Users\kulba\Downloads\PRYSM-WRITER-NARRATIVE-REMEDIATION-AUTHORITY-LEAK-DIAGNOSIS.txt`. Do not implement during diagnosis.
+Starting from exact application SHA `c37913acfd82580724c74feb26175e2f0c36232c` on `review/prysm-solution-directive-authority-betty`, implement only the Writer narrative serialization-boundary repair in `render-narrative-v2.js` plus the directly dependent report-structure guard in `narrative-v2/production-path.js`, update only directly affected tests, run the focused/comparable regression groups, produce `C:\Users\kulba\Downloads\PRYSM-WRITER-NARRATIVE-REMEDIATION-AUTHORITY-LEAK-REPAIR-PROOF.txt`, commit/push the bounded non-production candidate, then STOP for combined Betty re-review.
+
+No merge, deploy, promotion, provider/model calls, audit rerun, production mutation, or new report tranche before Betty re-review.
 
 Last verified: 2026-09-09
