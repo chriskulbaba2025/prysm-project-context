@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Repair the four blocking defects found by independent Sol High preflight in the Narrative v2 uncertain-transport recovery implementation, then rerun deterministic verification and independent preflight before any new clean TBK model-backed release-candidate orchestration.
+Current objective: Run the second independent Sol High preflight against the repaired Narrative v2 uncertain-transport recovery candidate, then stop for separate human authorization before any new clean TBK model-backed release-candidate orchestration.
 
-Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED and GREEN. Recovery implementation candidate `5bc26db3c9e909cca33526b3ac308b7fce55612d` passed all implementation tests, but independent Sol High preflight returned `REPAIR_REQUIRED` with four bounded recovery defects. No Writer/Judge/model/provider call is authorized.**
+Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED and GREEN. The four blockers found by the first Sol High recovery preflight have now been repaired at local application candidate `dea764964800dde03238c925c86fdd44b7eccd3f`. Focused, Narrative, storage, production-path, and full worker regressions are all green. No model/provider call occurred. The candidate is local-only, not pushed or deployed. No new TBK model execution is authorized.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -12,9 +12,10 @@ Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED
 - Worker: `C:\Users\kulba\Desktop\vantage-platform\services\worker`
 - Review branch: `review/prysm-solution-directive-authority-betty`
 - Published remote review SHA: `c6c814613bb403705b9711466ebc223e3a4837e2`
-- Current local recovery candidate SHA: `5bc26db3c9e909cca33526b3ac308b7fce55612d`
+- Previous local recovery candidate: `5bc26db3c9e909cca33526b3ac308b7fce55612d`
+- Current local repaired candidate: `dea764964800dde03238c925c86fdd44b7eccd3f`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
-- Worktree at preflight: CLEAN
+- Worktree after repair: CLEAN
 - Push: NONE
 - Deployment: NONE
 - Production mutation: NONE
@@ -42,67 +43,68 @@ Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED
 - Orchestration status: `narrative_failed`.
 - Valid RELEASE_CANDIDATE: NO.
 - Original model-run authorization: CONSUMED.
-- Failed execution itself is unrecoverable because live ledger state was memory-only and disappeared on process exit.
+- This failed execution itself is unrecoverable because its live ledger was memory-only and disappeared on process exit.
 
-## Recovery diagnosis / design
-- Diagnosis result: `APPLICATION_RECOVERY_DEFECT_FOUND`.
-- Design result: `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`.
-- Selected future bounded recovery action: `REISSUE_SAME_PASS_AFTER_HUMAN_AUTHORIZATION`.
+## Recovery diagnosis and design
+- Recovery diagnosis: `APPLICATION_RECOVERY_DEFECT_FOUND`.
+- Recovery contract design: `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`.
+- Selected future governed recovery action: `REISSUE_SAME_PASS_AFTER_HUMAN_AUTHORIZATION`.
 
-## Recovery implementation candidate
-Implementation result: `IMPLEMENTATION_PASS`.
+## First recovery implementation and Sol preflight
+First implementation candidate: `5bc26db3c9e909cca33526b3ac308b7fce55612d`.
 
-Local candidate:
-`5bc26db3c9e909cca33526b3ac308b7fce55612d`
+Independent Sol High preflight returned `REPAIR_REQUIRED` with four blockers:
+1. durable recovery authorization was not authenticated from its persisted immutable record;
+2. recovery execution identity was not bound to registered scope;
+3. memory-only live-release prohibition was spoofable through mutable store metadata;
+4. generic deterministic post-response recovery was incomplete.
 
-Implementation verification before independent preflight:
-- Focused recovery tests: **9/9 PASS**.
-- Broader Narrative v2 tests: **123/123 PASS**.
-- Artifact-store regression: **106/106 PASS**.
-- Production-path tests: **11/11 PASS**.
-- Full worker suite: **1009/1009 PASS**.
-- `git diff --check`: PASS.
-- Model/provider calls: 0.
+## Recovery repair checkpoint
+Checkpoint: `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_REPAIR_CHECKPOINT_2026-09-09.md`
 
-## Independent Sol High recovery preflight
-Checkpoint: `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_SOL_PREFLIGHT_CHECKPOINT_2026-09-09.md`
+Result: `REPAIR_PASS`.
 
-Result: **REPAIR_REQUIRED**
-Confidence: HIGH
+Current local candidate:
+`dea764964800dde03238c925c86fdd44b7eccd3f`
 
-### Blocking defects
-1. **Durable recovery authorization is not authenticated.** `reserveCall` accepts caller-supplied recovery fields without reloading/verifying the persisted immutable authorization artifact and its hash.
-2. **Recovery execution identity is not bound to registered scope.** Recovery authorization does not prove `executionId === scope.executionId`, permitting a cross-execution recovery metadata path if other hashes match.
-3. **Memory-only live-release prohibition is spoofable.** Durability currently relies on a mutable `storageBackend` string, which a memory wrapper can falsely claim.
-4. **Post-response deterministic recovery is incomplete.** Persisted returned responses / `POST_RESPONSE_LOCAL_FAILURE` records do not yet have a complete generic governed resume path that avoids another provider request.
-
-### Additional test gaps
-- authorization record authenticity/tamper rejection;
-- execution-ID mismatch;
-- non-spoofable durability capability;
-- restart from returned response;
-- restart from completed result;
-- post-response local failure continuation;
-- recovery authorization replay;
-- relevant adversarial budget/concurrency cases.
-
-### Preservation remains PASS
-No canonical-authority, scoring/evidence, Writer/Judge semantic, renderer/report, or provider/model-selection regression was identified.
-
-## Authorized repair boundary
-The original recovery implementation authorization remains scoped to delivering the approved recovery contract. The next repair must remain inside that same bounded surface:
+Files changed in the repair:
 - `services/worker/src/narrative-v2/live-binding.js`
-- `services/worker/src/narrative-v2/orchestrator.js` only if required for deterministic response continuation/lineage
-- storage/live-release capability and production composition only as required for non-spoofable durability
-- directly affected deterministic tests
+- `services/worker/src/narrative-v2/transport-recovery.test.js`
+- `services/worker/src/storage/fs-artifact-store.js`
+- `services/worker/src/storage/object-artifact-store.js`
 
-Required outcomes:
-- authenticate the exact durable recovery authorization artifact and hash before any recovery reservation;
-- bind authorization to exact audit/execution scope;
-- replace mutable-string durability trust with a non-spoofable capability boundary;
-- add complete deterministic restart/resume from persisted returned response and post-response local failure with zero provider calls;
-- persist/handle recovery states consistently, including returned-response/recovery terminal states as required by the frozen contract;
-- add adversarial tests covering all four blockers and material restart/tamper/concurrency/budget gaps.
+Verified repairs:
+- durable authorization artifact is reloaded and authenticated;
+- `authorizationSha256` is recomputed/verified;
+- tampered/missing/forged authorization is rejected;
+- audit/execution identity binding is enforced;
+- cross-execution recovery is rejected;
+- durable-store capability no longer trusts mutable `storageBackend` strings;
+- spoofed memory-store durability is rejected;
+- `RESPONSE_RETURNED` is durably represented;
+- returned response material is persisted before downstream handling;
+- `POST_RESPONSE_LOCAL_FAILURE` is distinguished and retained;
+- generic deterministic restart from persisted returned response works with zero fetch/provider calls;
+- completed governed results are reused with zero fetch/provider calls;
+- `RECOVERY_FAILED` is persisted for failed authorized recovery attempts;
+- one-recovery limit and recovery-authorization replay rejection pass;
+- original reservations remain immutable;
+- request/model/role/pass/WriterInput/Judge-lineage checks pass;
+- conservative cost accounting passes;
+- total call ceiling passes;
+- automatic semantic pass ceiling remains unchanged;
+- secret sanitization passes.
+
+Verification:
+- Focused recovery: **15/15 PASS**.
+- Narrative v2: **129/129 PASS**.
+- Storage: **106/106 PASS**.
+- Production-path: **11/11 PASS**.
+- Full worker: **1009/1009 PASS**.
+- `git diff --check`: PASS.
+- Model calls: 0.
+- Provider calls: 0.
+- Audit-provider rerun: NONE.
 
 ## Current authorization state
 Not authorized:
@@ -115,11 +117,13 @@ Not authorized:
 - production mutation;
 - main merge.
 
+A separate explicit human authorization is still required before any future model-backed TBK execution.
+
 ## Current stage
-RECOVERY REPAIR REQUIRED / MODEL EXECUTION NOT AUTHORIZED.
+RECOVERY REPAIR GREEN / SECOND INDEPENDENT SOL PREFLIGHT PENDING / MODEL EXECUTION NOT AUTHORIZED.
 
 ## Exact next action
-**At exact local candidate `5bc26db3c9e909cca33526b3ac308b7fce55612d`, implement a bounded test-first repair for the four Sol High blockers: durable authorization authentication, exact execution-scope binding, non-spoofable durable-store capability, and complete deterministic post-response recovery. Use mocked/non-provider execution only. Rerun focused, Narrative/storage/production-path, and full worker regressions, run `git diff --check`, create one new local candidate commit if green, produce a Downloads proof, and STOP for a second independent Sol High preflight. Do not call models/providers, push, deploy, merge main, rerun audit providers, or mutate production.**
+**Run an independent READ-ONLY Sol High preflight against exact local application candidate `dea764964800dde03238c925c86fdd44b7eccd3f`, reviewing the complete diff and specifically re-attacking the four previously identified blockers: durable authorization authenticity, execution-scope binding, non-spoofable durability, and deterministic post-response recovery. Verify duplicate protection, pass lineage, cost/call ceilings, crash/restart behavior, secret sanitization, canonical-authority preservation, scoring/evidence preservation, Writer/Judge semantic preservation, and report/renderer preservation. Run deterministic tests if useful, but make zero source changes and zero provider/model calls. If it returns `READY_FOR_NEW_TBK_RELEASE_RUN`, STOP for separate explicit Chris authorization before any new clean TBK Writer/Judge orchestration.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
@@ -129,6 +133,7 @@ RECOVERY REPAIR REQUIRED / MODEL EXECUTION NOT AUTHORIZED.
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_IMPLEMENTATION_AUTHORIZATION_2026-09-09.md`
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_IMPLEMENTATION_CHECKPOINT_2026-09-09.md`
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_SOL_PREFLIGHT_CHECKPOINT_2026-09-09.md`
+- `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_REPAIR_CHECKPOINT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
 - `WORKFLOW_INSTRUCTIONS.md`
