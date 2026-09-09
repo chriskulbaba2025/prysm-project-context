@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Strengthen Solution Depth so every client-facing page answers “what should I do here?” and Priority Fixes answers “exactly how should I do it?”, while preserving evidence integrity, scoring, governed priority, Writer/Judge contracts, lifecycle, persistence, and the approved six-primary-page report architecture.
 
-Verified checkpoint: **Canonical Solution Authority Provider Integration — BUILDER PASS / PUBLISHED / BETTY REVIEW DEFERRED FOR INTERMEDIATE DEVELOPMENT.**
+Verified checkpoint: **Renderer / Cross-Page Canonical Solution Diagnosis — READY_FOR_IMPLEMENTATION / BETTY REVIEW DEFERRED FOR INTERMEDIATE DEVELOPMENT.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -44,15 +44,7 @@ Completed:
   - no persistence change;
   - no contract change.
 - Canonical Narrative v2 preparation now runs provider -> repaired `buildSolutionDirectiveInput()` -> accepted `generateCanonicalSolutions()`.
-- Canonical solution output is not persisted and is not sent to the renderer yet.
-- Non-v2 production delegation remains unchanged.
-- GitHub comparison verified the canonical integration candidate is exactly one commit ahead of `7c0667ae0ad9c893bbc04363e8399e476ce473f0` and changes exactly:
-  - `services/worker/src/solution/solution-authority-provider.js`
-  - `services/worker/src/solution/solution-authority-provider.test.js`
-  - `services/worker/src/narrative-v2/production-path.js`
-  - `services/worker/src/application/production-runtime.js`
-  - `services/worker/src/application/narrative-v2-production-path.test.js`
-- Canonical integration verification:
+- Canonical provider/integration verification at `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`:
   - focused Solution tests: 126 PASS / 0 FAIL / 0 skipped;
   - existing report suite: 129 PASS / 0 FAIL / 0 skipped;
   - report-finalization: 37 PASS / 0 FAIL / 0 skipped;
@@ -60,33 +52,41 @@ Completed:
   - Narrative production path: 11 PASS / 0 FAIL / 0 skipped;
   - existing regression total: 202 PASS / 0 FAIL / 0 skipped;
   - `git diff --check`: PASS;
-  - provider/model calls: NO;
-  - audit rerun: NO;
-  - deployment/production mutation: NO.
-- Builder-pass checkpoint recorded in `PRYSM_CANONICAL_AUTHORITY_PROVIDER_INTEGRATION_BUILDER_PASS_2026-09-09.md`.
+  - no provider/model calls, audit rerun, deployment, or production mutation.
+- Read-only Renderer / Cross-Page Canonical Solution Diagnosis completed with `RESULT: READY_FOR_IMPLEMENTATION`.
+- Selected ownership architecture recorded in `PRYSM_RENDERER_CROSS_PAGE_CANONICAL_SOLUTION_DIAGNOSIS_CHECKPOINT_2026-09-09.md`:
+  - one canonical solution record per actionable underlying issue;
+  - Priority Fixes owns full canonical client-facing solution detail;
+  - Executive Scorecard renders top-three summaries referencing the same stable solution IDs;
+  - Conversion Journey, Content Opportunities, Competitor Comparison, Trust & Credibility, and Supporting Detail may summarize/deep-link only to existing canonical IDs;
+  - WriterOutput.actionPlan remains non-authoritative diagnostic interpretation;
+  - WriterInput / Writer / Judge contracts unchanged;
+  - report content contract unchanged;
+  - persistence unchanged;
+  - current in-memory report model gains canonicalSolutions.
+- Verified legacy competing remedy sources to replace at render time include Priority Fixes/Executive use of Finding recommendation/businessImpact/affectedUrls/hard-coded remedy prose and Supporting Detail action rows using recommendation/businessImpact/verificationMethod.
 
-In progress: **Read-only Renderer / Cross-Page Canonical Solution Reference Diagnosis.**
+In progress: **Bounded Renderer / Cross-Page Canonical Solution implementation.**
 
 Blocked:
-- Renderer/cross-page implementation is blocked until the current renderer/model/WriterInput ownership and reference seams are diagnosed and the smallest non-duplicative change boundary is proven.
-- Supporting Detail solution-depth work remains blocked until renderer/cross-page canonical references are implemented and proven.
+- Supporting Detail solution-depth work remains blocked until renderer/cross-page canonical references are implemented, tested, proven, and published.
 - Merge to application `main`, deployment, production promotion, provider/model execution, audit rerun, and production mutation remain blocked until deferred Betty review is caught up and release governance passes.
 
 Important constraints:
-- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, `PRYSM_CANONICAL_AUTHORITY_PROVIDER_DIAGNOSIS_CHECKPOINT_2026-09-09.md`, and `PRYSM_CANONICAL_AUTHORITY_PROVIDER_INTEGRATION_BUILDER_PASS_2026-09-09.md`.
-- Betty is deferred for intermediate development only; authority/provider/integration tranches are not retroactively Betty-approved.
+- Governing files: `PRYSM_SOLUTION_DEPTH_GOVERNANCE_2026-09-08.md`, `PRYSM_BETTY_REAL_PROGRESS_GATE.md`, `DECISION_PRYSM_TEMPORARY_BETTY_DEFERRED_DEVELOPMENT_2026-09-09.md`, `PRYSM_CANONICAL_AUTHORITY_PROVIDER_INTEGRATION_BUILDER_PASS_2026-09-09.md`, and `PRYSM_RENDERER_CROSS_PAGE_CANONICAL_SOLUTION_DIAGNOSIS_CHECKPOINT_2026-09-09.md`.
+- Betty is deferred for intermediate development only; authority/provider/integration/renderer tranches are not retroactively Betty-approved.
 - Deferred Betty review must be caught up before merge/deploy/production promotion.
-- Canonical solution ownership remains one canonical solution record per actionable underlying issue; other pages may summarize/reference but must not create competing fixes.
-- Priority Fixes owns canonical solution detail; Executive Scorecard owns top-action summaries; Journey, Content Opportunities, Competitor Comparison, and Trust & Credibility may reference/summarize only within their governed page roles; Supporting Detail remains evidence/context depth, not a competing solution authority source.
+- Priority Fixes is the sole owner of complete canonical remedy detail.
+- Other pages may summarize/reference the same canonical solution IDs but must not create competing fixes.
+- Renderer must not fall back to `finding.recommendation`, `businessImpact`, `verificationMethod`, `affectedUrls`, competitor recommendation text, Writer action text, or hard-coded per-rule remedy prose when canonical detail is required.
 - Preserve CONFIRMED / PARTIAL / UNKNOWN and PRESCRIPTIVE / CONDITIONAL / INVESTIGATIVE / NON_REMEDIATION semantics.
 - Preserve governed priority/order and deterministic sequencing.
-- Do not change evidence collection, evidence grades, scoring, Client Truth, Writer/Judge facts/contracts, lifecycle, persistence, accepted TBK report architecture, page count, Supporting Detail status, or production configuration during diagnosis.
-- Do not introduce solution persistence in the diagnosis.
-- Do not change solution contract/validator/generator/sequence, repaired authority resolver, or authority provider during diagnosis.
-- Do not merge to application `main`.
-- Do not deploy or promote to production.
-- Do not call providers/models or rerun an audit.
+- Preserve six primary pages plus Supporting Detail exactly.
+- Do not change solution authority provider, repaired authority resolver, solution contract/validator/generator/sequence, scoring/evidence production, DecisionEvidence, CapabilityEvidence, action-priority ranking semantics, WriterInput/Writer/WriterOutput/Judge contracts, lifecycle, persistence/artifact contracts, report-content contract, production configuration, provider/adapters, or deployment state.
+- No merge to application `main`.
+- No deployment or production promotion.
+- No provider/model calls or audit rerun.
 
-Exact next action: Starting from exact application SHA `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a`, run a read-only bounded Renderer / Cross-Page Canonical Solution Reference Diagnosis. Inspect the current report model, WriterInput/referenceIndex, WriterOutput/action plan, Narrative v2 render path, page builders/sections, and cross-page link ownership. Select one non-duplicative canonical ownership/reference architecture consistent with Solution Depth governance; map the smallest exact source/test file boundary; determine whether Writer/Judge contracts or persistence must change; produce `C:\Users\kulba\Downloads\PRYSM-RENDERER-CROSS-PAGE-CANONICAL-SOLUTION-DIAGNOSIS.txt`; do not edit application code in that diagnostic run.
+Exact next action: Starting from exact application SHA `f0a46f0e23d8b9b0d7a6d4a9a155119344af3e5a` on `review/prysm-solution-directive-authority-betty`, implement only the model-carried canonical renderer/cross-page reference architecture within the diagnosed source/test boundary; run focused canonical renderer/reference tests and comparable regressions; produce `C:\Users\kulba\Downloads\PRYSM-RENDERER-CROSS-PAGE-CANONICAL-SOLUTION-INTEGRATION-PROOF.txt`; commit/push the bounded non-production candidate; stop before Supporting Detail solution-depth work and before any release action.
 
 Last verified: 2026-09-09
