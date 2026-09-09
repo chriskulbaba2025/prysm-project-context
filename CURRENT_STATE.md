@@ -30,7 +30,7 @@ Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; 
 
 ## Active governed enhancement tranche — Solution Depth
 
-Status: **OPEN — VALIDATOR IMPLEMENTATION**
+Status: **OPEN — VALIDATOR IMPLEMENTATION COMPLETE / BETTY CHECKPOINT REQUIRED**
 
 Governing specifications:
 
@@ -54,26 +54,6 @@ Canonical governance:
 - validators must enforce the contract before generator changes are accepted;
 - cap client prominence, not canonical traceability.
 
-## Mandatory Betty gate — ACTIVE
-
-Betty is a required governance checkpoint, not a suggestion.
-
-After every implementation tranche:
-
-1. Builder/Codex completes the authorized implementation and proof artifact.
-2. Betty independently verifies actual changed files, git diff, tests, and governed requirements.
-3. Governance advances only if Betty returns:
-
-`REAL PROGRESS VERIFIED — READY TO ADVANCE`
-
-A Builder/Codex PASS is insufficient by itself.
-
-If Betty returns `PROGRESS NOT VERIFIED — [exact reason]`, the tranche remains open and no next implementation phase may begin.
-
-The assistant must explicitly remind the user when a Betty checkpoint becomes due and must not advance project-context governance before the checkpoint passes.
-
-Current required checkpoints include validator implementation, generator implementation, canonical integration, renderer/cross-page references, Supporting Detail changes, full regression/fireproofing, and final human-review candidate before production promotion.
-
 ## Solution Coverage Audit — COMPLETE
 
 Accepted diagnostic artifact: `PRYSM-SOLUTION-COVERAGE-AUDIT.txt`.
@@ -90,7 +70,7 @@ Result:
 
 ## Canonical Solution Contract + Validator Design — COMPLETE
 
-Accepted design artifact: `PRYSM-SOLUTION-CONTRACT-AND-VALIDATOR-DESIGN.txt`.
+Accepted design artifact: `PRYSM-SOLUTION-CONTRACT-AND-VALIDATOR-DESIGN(1).txt`.
 
 The design freezes:
 - **21 required top-level canonical solution fields**;
@@ -110,40 +90,73 @@ The design freezes:
 
 Highest-risk compatibility rule: existing reports/actions cannot be silently upgraded into canonical solution records by guessing anchors, capability, effort, checks, or evidence scope. Legacy artifacts must remain renderable and canonical solution validation must be opt-in for new solution records until the generator/integration phase is explicitly authorized.
 
-## Authorized implementation boundary
+## Validator implementation — BUILDER PASS, BETTY NOT YET PASSED
 
-The current tranche is **validators only**.
+Accepted Builder/Codex proof artifact: `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt`.
 
-Authorized new modules/tests:
-- `services/worker/src/solution/solution-contract.js`
-- `services/worker/src/solution/solution-validator.js`
-- `services/worker/src/solution/solution-sequence.js`
-- `services/worker/src/solution/solution-contract.test.js`
-- `services/worker/src/solution/solution-validator.test.js`
-- `services/worker/src/solution/solution-sequence.test.js`
+Builder/Codex claims:
 
-Existing seams may be read/consumed but must not be changed in this tranche unless a direct compile/test boundary absolutely requires a minimal import-only adjustment:
-- `src/report/action-priority.js`
-- `src/scoring/report-finalization-gate.js`
-- `src/scoring/report-model.js`
-- `src/report-model/cross-report-interpretation.js`
-- `src/scoring/diagnostic-contracts.js`
-- `src/narrative-v2/writer-output.js`
-- `src/report/render-report-v2.js`
-- `src/report/report-detail-sections.js`
+- six authorized new files created under `services/worker/src/solution/`;
+- no existing application files modified;
+- 21 canonical contract fields implemented;
+- V01–V24 implemented;
+- focused solution tests: **24 PASS / 0 FAIL / 0 skipped**;
+- existing report suite: **129 PASS / 0 FAIL / 0 skipped**;
+- report-finalization gate: **37 PASS / 0 FAIL / 0 skipped**;
+- WriterOutput: **25 PASS / 0 FAIL / 0 skipped**;
+- narrative production path: **11 PASS / 0 FAIL / 0 skipped**;
+- existing regression total: **202 PASS / 0 FAIL / 0 skipped**;
+- `git diff --check`: PASS;
+- generator built: NO;
+- renderer changed: NO;
+- Writer/Judge changed: NO;
+- audit/provider/model/deployment/production mutation: NO;
+- commit/push: NO.
 
-Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, lifecycle, persistence, or production behavior in this tranche.
+This Builder/Codex PASS is not sufficient to advance governance.
 
-No production deployment or new audit run is authorized during validator implementation.
+## Mandatory Betty gate — CURRENT BLOCKER
+
+Betty is a **separate external LLM**.
+
+For every implementation tranche, Betty must receive a checkpoint prompt that mirrors the bounded implementation contract and contains:
+
+- project goal;
+- exact tranche;
+- concrete tranche-specific acceptance conditions / invariants;
+- concrete preserved behaviors and forbidden changes;
+- the full Builder/Codex proof content, or a proof artifact actually attached and accessible in Betty's chat.
+
+Do not merely give Betty a local filename/path she cannot access.
+
+Betty's response must remain small:
+
+`RESULT: REAL PROGRESS — YES`
+
+or
+
+`RESULT: REAL PROGRESS — NO`
+
+plus one short reason and confidence HIGH / MEDIUM / LOW.
+
+The prior Betty attempt returned NO because the proof itself was not available to Betty. That is an invalid checkpoint input, not evidence that the validator tranche itself failed.
+
+Governance must not advance until a valid Betty checkpoint returns:
+
+`RESULT: REAL PROGRESS — YES`
+
+## Preservation boundary
+
+Do not change Writer/Judge contracts, generator logic, client rendering, page architecture, scoring, evidence, Client Truth, lifecycle, persistence, production behavior, or the accepted TBK report while the Betty checkpoint is pending.
+
+No production deployment, push, merge, or new audit run is authorized.
 
 ## Exact next action
 
-Implement the canonical Solution Contract constants, V01–V24 validator rules, sequence/dependency validation, and focused tests only. Run the new tests plus the existing relevant worker regression suites.
+Send Betty the complete validator checkpoint prompt with the full contents of `PRYSM-SOLUTION-VALIDATOR-IMPLEMENTATION-PROOF.txt` embedded or actually attached in Betty's chat.
 
-Then STOP. Do not advance to generator design or update governance state.
+If Betty returns `RESULT: REAL PROGRESS — YES`, then update governance and move to the next bounded tranche: deterministic canonical solution generator design/implementation, still stopping before renderer integration.
 
-The next mandatory action after the validator implementation proof is a Betty real-progress checkpoint under `PRYSM_BETTY_REAL_PROGRESS_GATE.md`.
-
-Only after Betty returns `REAL PROGRESS VERIFIED — READY TO ADVANCE` may project governance advance to the generator phase.
+If Betty returns NO, keep the validator tranche open and diagnose the single reason before any next implementation work.
 
 Last verified: 2026-09-08
