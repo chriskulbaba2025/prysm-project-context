@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Run a third independent Sol High preflight against the fully integrated Narrative v2 persisted-call recovery candidate, then stop for separate human authorization before any new clean TBK model-backed release-candidate orchestration.
+Current objective: Close the final two defects found by the third independent Sol High preflight in Narrative v2 persisted-call restart recovery, then rerun deterministic verification and independent preflight before any new clean TBK model-backed release-candidate orchestration.
 
-Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED and GREEN. The final known recovery integration blocker has now been repaired at local candidate `760d546c02e892360165497801d25a94cbcb941c`. Normal Writer/Judge invocation now checks durable persisted response/result state before any fresh reservation or fetch, and deterministic restart recovery is proven with zero provider calls. Focused, Narrative, storage, production-path, and full worker regressions are green. No Writer/Judge/model/provider call occurred. Candidate is local-only, not pushed or deployed.**
+Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED and GREEN. Candidate `760d546c02e892360165497801d25a94cbcb941c` successfully integrated persisted-call recovery before fresh reserve/fetch, but the third independent Sol High preflight returned `REPAIR_REQUIRED` with two remaining bounded defects in `live-binding.js`: resumable `POST_RESPONSE_LOCAL_FAILURE` is rejected before deterministic resume, and persisted response artifacts are not yet cryptographically/scope-bound tightly enough. Durable authorization, execution binding, non-spoofable durability, duplicate protection, cost/call ceilings, canonical authority, scoring/evidence, Writer/Judge semantics, and report/renderer preservation remain PASS. No model/provider call is authorized.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -12,10 +12,9 @@ Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED
 - Worker: `C:\Users\kulba\Desktop\vantage-platform\services\worker`
 - Review branch: `review/prysm-solution-directive-authority-betty`
 - Published remote review SHA: `c6c814613bb403705b9711466ebc223e3a4837e2`
-- Previous local repair candidate: `dea764964800dde03238c925c86fdd44b7eccd3f`
-- Current local integrated candidate: `760d546c02e892360165497801d25a94cbcb941c`
+- Current local recovery candidate: `760d546c02e892360165497801d25a94cbcb941c`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
-- Worktree after integration: CLEAN
+- Worktree at third Sol preflight: CLEAN
 - Push: NONE
 - Deployment: NONE
 - Production mutation: NONE
@@ -43,54 +42,46 @@ Verified checkpoint: **Canonical Remediation Authority Closure remains PUBLISHED
 - Historical failed execution is unrecoverable because its live ledger was memory-only and disappeared on process exit.
 
 ## Recovery architecture progression
-Recovery diagnosis: `APPLICATION_RECOVERY_DEFECT_FOUND`.
+- Recovery diagnosis: `APPLICATION_RECOVERY_DEFECT_FOUND`.
+- Recovery contract design: `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`.
+- Selected governed future recovery action: `REISSUE_SAME_PASS_AFTER_HUMAN_AUTHORIZATION`.
+- First implementation candidate `5bc26db3c9e909cca33526b3ac308b7fce55612d` passed tests; first Sol found four blockers.
+- Repair candidate `dea764964800dde03238c925c86fdd44b7eccd3f` closed durable authorization authenticity, execution binding, and spoofable durability; second Sol found restart dispatch still incomplete.
+- Integration candidate `760d546c02e892360165497801d25a94cbcb941c` wired persisted-call checks into normal Writer/Judge `invoke()` before fresh reservation/fetch.
 
-Recovery contract design: `CURRENT_TBK_CASE_UNRECOVERABLE_BUT_GENERAL_REPAIR_READY`.
+## Third independent Sol High recovery preflight
+Checkpoint: `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_SOL_PREFLIGHT_3_CHECKPOINT_2026-09-09.md`
 
-Selected governed future recovery action: `REISSUE_SAME_PASS_AFTER_HUMAN_AUTHORIZATION`.
+Result: **REPAIR_REQUIRED**
+Confidence: HIGH
 
-First implementation candidate `5bc26db3c9e909cca33526b3ac308b7fce55612d` passed tests but first independent Sol High preflight found four blockers:
-1. durable authorization authenticity;
-2. execution-scope binding;
-3. spoofable durability capability;
-4. incomplete generic post-response restart integration.
+### Closed boundaries
+1. Durable authorization authenticity — CLOSED.
+2. Exact execution binding — CLOSED.
+3. Non-spoofable durable-store capability — CLOSED.
+4. Normal restart dispatch before new reservation/fetch — PRESENT and PASS for covered `RESPONSE_RETURNED` and completed-result fixtures.
+5. No provider fallback after persisted-recovery failure — PASS.
+6. Uncertain transport governance / one-recovery limit / duplicate protection — PASS.
+7. Cost accounting / call ceiling / semantic pass ceiling — PASS.
+8. Secret sanitization — PASS.
+9. Canonical authority / scoring-evidence / Writer-Judge semantics / report-renderer preservation — PASS.
 
-Repair candidate `dea764964800dde03238c925c86fdd44b7eccd3f` closed blockers 1–3 and implemented persisted response/result helpers. Second Sol High preflight confirmed those three were CLOSED but found the final blocker still OPEN: the normal Narrative v2 restart path did not invoke the persisted-call helper.
+### Remaining blocking defects
+1. **Resumable `POST_RESPONSE_LOCAL_FAILURE` is rejected too early.** `persistReturnedFailure()` records this legitimate local-after-response state with `validationResult: "FAIL"`, while `invoke()` rejects every failed persisted result before `resumePersistedCall()` can consume the already-returned provider response. The dispatcher must distinguish resumable post-response local failure from terminal returned-provider/recovery failure.
+2. **Persisted response identity and digest binding are incomplete.** Before deterministic normalization/reuse, the system must verify persisted response bytes against the recorded response digest and bind response/state/meta identity to the active audit/execution/reservation/call/role/pass/model/request lineage. Tampered or cross-execution substituted response material must fail closed with zero provider calls.
 
-## Persisted-call restart integration
-Checkpoint: `PRYSM_NARRATIVE_V2_PERSISTED_CALL_RESTART_INTEGRATION_CHECKPOINT_2026-09-09.md`
-
-Result: `INTEGRATION_PASS`.
-
-Current local candidate:
-`760d546c02e892360165497801d25a94cbcb941c`
-
-Files changed in the final integration:
-- `services/worker/src/narrative-v2/live-binding.js`
-- `services/worker/src/narrative-v2/transport-recovery.test.js`
-
-Exact integration behavior:
-- `invoke()` checks the durable role/pass ledger before `reserveCall()` / fetch;
-- Writer and Judge executors both route through `invoke()`;
-- valid completed result is reused with zero provider calls;
-- `RESPONSE_RETURNED` resumes deterministically with zero provider calls;
-- `POST_RESPONSE_LOCAL_FAILURE` resumes from exact persisted response with zero provider calls;
-- invalid/tampered/cross-execution/model-role-pass-mismatched persisted state fails closed;
-- no provider fallback occurs after persisted recovery failure;
-- semantic pass lineage, duplicate protection, durable authorization, execution binding, durability capability, conservative cost accounting, and call ceilings remain preserved.
-
-Verification:
-- Focused recovery/restart: **15/15 PASS**.
-- Narrative v2: **129/129 PASS**.
-- Storage: **106/106 PASS**.
-- Production-path: **11/11 PASS**.
-- Full worker: **1009/1009 PASS**.
-- `git diff --check`: PASS.
-- Model calls: 0.
-- Provider calls: 0.
-- Audit-provider rerun: NONE.
+### Required test additions
+- normal restart from valid `POST_RESPONSE_LOCAL_FAILURE` with zero fetch/provider calls;
+- terminal returned-provider/recovery failures stay blocked;
+- tampered response bytes rejected by digest verification;
+- cross-audit/cross-execution response substitution rejected;
+- wrong reservation/model/role/pass/request identity rejected;
+- invalid persisted Writer/Judge response fails closed;
+- no provider fallback on any failed persisted-response validation.
 
 ## Current authorization state
+The existing bounded recovery implementation authorization remains applicable to this final repair because the work stays inside the previously approved Narrative v2 recovery contract and directly affected deterministic tests.
+
 Not authorized:
 - any Writer/Judge/model/provider call;
 - any new clean TBK release-candidate orchestration;
@@ -101,13 +92,11 @@ Not authorized:
 - production mutation;
 - main merge.
 
-A separate explicit Chris authorization is required before any future model-backed TBK execution.
-
 ## Current stage
-PERSISTED-CALL RESTART INTEGRATION GREEN / THIRD INDEPENDENT SOL PREFLIGHT PENDING / MODEL EXECUTION NOT AUTHORIZED.
+TWO BOUNDED RECOVERY DEFECTS REMAIN / MODEL EXECUTION NOT AUTHORIZED.
 
 ## Exact next action
-**Run an independent READ-ONLY Sol High preflight against exact local application candidate `760d546c02e892360165497801d25a94cbcb941c`, reviewing the cumulative recovery diff from `c6c814613bb403705b9711466ebc223e3a4837e2` and re-attacking durable authorization authenticity, execution binding, non-spoofable durability, persisted response/result restart dispatch, crash/restart behavior, duplicate protection, semantic lineage, cost/call ceilings, secret sanitization, and preservation of canonical authority, scoring/evidence, Writer/Judge semantics, and report behavior. Run deterministic tests if useful, but make zero source changes and zero provider/model calls. If the result is `READY_FOR_NEW_TBK_RELEASE_RUN`, STOP for separate explicit Chris authorization before one new clean TBK Writer/Judge orchestration using durable persistence.**
+**At exact local candidate `760d546c02e892360165497801d25a94cbcb941c`, implement a bounded test-first repair in `services/worker/src/narrative-v2/live-binding.js` and directly affected recovery tests only: distinguish resumable `POST_RESPONSE_LOCAL_FAILURE` / `RESPONSE_RETURNED` records from terminal returned-provider/recovery failures before persisted-result rejection, and cryptographically plus scope-bind persisted response/state/meta identity before deterministic resume. Preserve all already-closed authorization, execution, durability, duplicate, lineage, budget, call-ceiling, security, canonical-authority, scoring/evidence, Writer/Judge, and report boundaries. Rerun focused, Narrative/storage/production-path, and full worker regressions, run `git diff --check`, create one new local candidate if green, produce a Downloads proof, and STOP for another independent Sol High preflight. Do not call models/providers, push, deploy, merge main, rerun audit providers, or mutate production.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
@@ -120,6 +109,7 @@ PERSISTED-CALL RESTART INTEGRATION GREEN / THIRD INDEPENDENT SOL PREFLIGHT PENDI
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_REPAIR_CHECKPOINT_2026-09-09.md`
 - `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_SOL_PREFLIGHT_2_CHECKPOINT_2026-09-09.md`
 - `PRYSM_NARRATIVE_V2_PERSISTED_CALL_RESTART_INTEGRATION_CHECKPOINT_2026-09-09.md`
+- `PRYSM_NARRATIVE_V2_UNCERTAIN_TRANSPORT_RECOVERY_SOL_PREFLIGHT_3_CHECKPOINT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
 - `WORKFLOW_INSTRUCTIONS.md`
