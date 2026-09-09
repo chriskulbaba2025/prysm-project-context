@@ -4,7 +4,7 @@ Project: PRYSM — governed website conversion-readiness report and website deci
 
 Current objective: Complete browser-rendered human acceptance of the published Canonical Remediation Authority Closure candidate, then return to external Betty at the material architecture checkpoint.
 
-Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, and PASSED independent Sol High adversarial preflight. Browser review is currently BLOCKED only by a replay-fixture contract-version mismatch.**
+Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBLISHED, GREEN through focused/full regressions, and PASSED independent Sol High adversarial preflight. Browser review is BLOCKED by replay-evidence currency: a legitimate current artifact now requires one new current production-shaped TBK Writer/Judge release-candidate run.**
 
 ## Current application state
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -28,55 +28,60 @@ Verified checkpoint: **Canonical Remediation Authority Closure candidate is PUBL
 - Full comparable regression: **1009 PASS / 0 FAIL / 0 skipped**; `git diff --check` PASS.
 - Sol High adversarial preflight: **REAL PROGRESS — YES**, confidence **HIGH**, blocking defects **NONE**, final verdict **READY_FOR_BROWSER_REVIEW**.
 - Sol verified canonical solutions are the sole active client remediation authority and Priority Fixes remains the only full-remedy surface.
-- No application provider/model calls, deployment, production mutation, production audit rerun, or application-main merge occurred.
+- Offline browser replay preparation proved all available checked-in TBK replay fixtures still carry historical ScoreSet `contractVersion: 1.0.0`, while current replay intentionally requires `2.0.0`.
+- Terra High replay-compatibility diagnosis result: **NEW_PRODUCTION_SHAPED_RUN_REQUIRED**.
+- The diagnosis proved the frozen AuditRequest, DecisionEvidence, and CapabilityEvidence can remain unchanged and current ScoreSet/findings/WriterInput can be deterministically regenerated without provider/model calls.
+- The diagnosis also proved the historical Writer/Judge orchestration cannot remain valid against the regenerated current packet. A current validated Writer/Judge release candidate cannot be deterministically synthesized or relabelled and requires legitimate Writer/Judge execution.
+- The existing replay script is not sufficient browser evidence for the published clean renderer because its current replay path does not inject current `canonicalSolutions` and still contains a stale `id="narrative-layer"` structural assertion.
+- No application provider/model calls, deployment, production mutation, production audit rerun, application-main merge, or application source/fixture/test changes occurred during diagnosis.
 
-## Browser replay compatibility hold
-Browser preparation attempted the governed offline replay against:
-`services/worker/test-fixtures/report-replay/audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
+## Browser replay compatibility result
 
-Command:
-`node scripts/replay-report.js test-fixtures/report-replay/audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
+Result: `NEW_PRODUCTION_SHAPED_RUN_REQUIRED`
 
-Result:
-`BLOCKED`
+Root cause: **the frozen TBK evidence inputs remain usable, but the persisted derived ScoreSet/findings/WriterInput and Writer/Judge orchestration are historical. Current deterministic derivation changes score/finding identities and dependencies, which invalidates the persisted Writer/Judge release evidence under current contracts and semantic validation.**
 
-Exact failure:
-`Current replay requires ScoreSet contract 2.0.0; got 1.0.0. Historical artifacts are compatibility-only.`
+Reusable unchanged, subject to current validation:
+- `governed/canonical/audit-request.json`
+- `governed/canonical/decision-evidence.json`
+- `governed/canonical/capability-evidence.json`
 
-The application worktree remained clean. No HTML was generated, no server was started, and there were no provider/model calls or production mutations.
+Must be deterministically regenerated together:
+- `governed/canonical/findings.json`
+- `governed/canonical/scores.json` as current ScoreSet 2.0.0
+- `governed/report-v2/narrative-v2/writer-input.json`
 
-GitHub verification at exact candidate `c6c8146...` confirmed:
-- all five checked-in `services/worker/test-fixtures/report-replay/*` fixtures carry ScoreSet `contractVersion: 1.0.0`;
-- `services/worker/test-fixtures/report-replay-offline/audit-9714c206-8ed3-4686-8fe2-ceeca0ca0f82-current` also carries ScoreSet `contractVersion: 1.0.0`;
-- therefore there is no existing checked-in ScoreSet 2.0.0 replay fixture that can simply replace the selected fixture;
-- the current replay script intentionally fails closed for non-2.0.0 ScoreSets in current mode;
-- `--legacy-compat` is not acceptable for this browser gate because it reuses historical saved HTML rather than exercising the exact current candidate renderer.
+Must be newly obtained through the current governed Writer/Judge execution path:
+- `governed/report-v2/narrative-v2/orchestration.json`
+- `governed/report-v2/narrative-v2/orchestration-final-pass.json` / equivalent current release-candidate orchestration
 
-Root cause: **the available frozen replay artifacts predate the current ScoreSet 2.0.0 replay contract. The browser-review blocker is fixture compatibility, not a proven product or authority-closure defect.**
+A legitimate browser artifact must then use the current canonical production path: current findings/ScoreSet validation -> `prepareCanonicalSolutions()` -> authority records/directive input/generator -> inject `canonicalSolutions` into current report-model hydration -> finalization -> `renderGovernedNarrativeReportV2()` -> persisted HTML read-back/hash validation -> local HTTP browser review.
 
 ## In progress
-READ-ONLY Terra High diagnosis of the replay-fixture compatibility boundary.
+Browser review is held pending explicit human authorization for one bounded current TBK Writer/Judge release-candidate execution.
 
-The diagnosis must determine the smallest governed way to produce a current-renderable, production-shaped TBK browser-review input from already persisted evidence without provider/model calls, production mutation, or weakening the current replay fail-closed guard.
-
-It must trace whether a current ScoreSet/findings/model snapshot can be deterministically re-derived from the existing frozen canonical inputs and what downstream WriterInput/orchestration/canonical-solution invariants must also be reconciled before current rendering is legitimate.
+## Blocked
+- External Betty remains downstream until browser human review passes.
+- Writer/Judge model execution is not authorized by the diagnostic result itself.
 
 ## Important constraints
 - Governing invariant: **Canonical solutions are the sole source of client remediation anywhere in the final client artifact.**
 - Priority Fixes remains the sole complete remedy owner.
 - Do not weaken or bypass the ScoreSet 2.0.0 replay guard.
 - Do not use `--legacy-compat` as browser acceptance evidence.
-- Do not simply relabel a 1.0.0 artifact as 2.0.0.
+- Do not simply relabel historical artifacts as current.
 - Do not fabricate or hand-edit canonical evidence, findings, scores, WriterInput, orchestration, or solution authority.
 - Preserve canonical authority/provider/resolver/generator/validator/contract/sequence, scoring/evidence semantics, DecisionEvidence, CapabilityEvidence, Writer/Judge, lifecycle, persistence, report-content, production configuration, and six-primary-page plus Supporting Detail architecture.
-- No application `main` merge, deployment, production promotion, release provider/model execution, production audit rerun, or production artifact/data mutation.
+- No application `main` merge, deployment, production promotion, production audit rerun, or production artifact/data mutation.
+- No Writer/Judge/provider/model execution for this release until explicitly authorized by Chris.
 
 ## Exact next action
-**Use Terra High in READ-ONLY mode at exact application SHA `c6c814613bb403705b9711466ebc223e3a4837e2` to diagnose the complete 1.0.0 -> current replay compatibility boundary. Prove exactly which persisted artifacts can be deterministically re-derived from the frozen TBK canonical inputs, which must remain persisted, whether a temporary current-compatible fixture can be produced outside the repositories without changing production code, and the exact validation required before browser review. Do not implement during the diagnostic run.**
+**Obtain explicit human authorization for one bounded current TBK Writer/Judge release-candidate execution. After authorization, use the frozen AuditRequest/DecisionEvidence/CapabilityEvidence, deterministically regenerate current findings/ScoreSet/WriterInput, execute only the minimum current governed Writer/Judge path needed to obtain a valid current release candidate, generate canonical solutions through the current production authority path, render locally, and stop for browser human review. Do not deploy, rerun audit providers, mutate production, or merge `main`.**
 
 ## Active governance
 - `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`
 - `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md`
+- `PRYSM_BROWSER_REPLAY_COMPATIBILITY_DIAGNOSIS_CHECKPOINT_2026-09-09.md`
 - `DECISION_PRYSM_ACCELERATED_SOLO_DEVELOPMENT_WITH_TERRA_PREFLIGHT_2026-09-09.md`
 - `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 - `REPAIR_BOUNDARY_PROTOCOL.md`
@@ -89,5 +94,6 @@ It must trace whether a current ScoreSet/findings/model snapshot can be determin
 - `prysm-regression-npm-test.txt`
 - `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-SOL-PREFLIGHT.txt`
 - `PRYSM-CANONICAL-REMEDIATION-AUTHORITY-CLOSURE-BROWSER-REVIEW-PREP.txt`
+- `PRYSM-BROWSER-REPLAY-COMPATIBILITY-DIAGNOSIS.txt`
 
 Last verified: 2026-09-09
