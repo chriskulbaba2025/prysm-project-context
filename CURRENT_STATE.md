@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Execute one explicitly authorized fresh bounded Model-Bearing Release Gate Plane 3 robustness tranche using published tooling SHA `299418bdfd219e1b8cc3c2be57a735ca147b9a24`, while preserving semantic application base `a16430aa6c000afadcaade3e692e41f0f08ed903`.
+Current objective: Diagnose the exact Reboot Writer validation escape from the stopped Plane 3 robustness tranche. No Writer/Judge/model/provider call is currently authorized.
 
-Verified checkpoint: **The repaired Plane 3 Writer-only harness identity contract passed deterministic verification and independent Sol High preflight, then was published normally/non-force to `review/prysm-solution-directive-authority-betty` at exact tooling SHA `299418bdfd219e1b8cc3c2be57a735ca147b9a24`. GitHub independently verifies the remote branch resolves exactly to that SHA. Chris has now explicitly authorized one single-use Plane 3 model-bearing robustness tranche under the bounded rules recorded in `PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_AUTHORIZATION_2026-09-10.md`. Betty is not a PRYSM gate.**
+Verified checkpoint: **The latest Plane 3 robustness tranche stopped correctly on Reboot Writer-only sample 1 after a complete, non-uncertain Writer response failed semantic validation. Two TBK Writer-only samples completed validly first and are preserved as Plane 3 evidence. Current credit is TBK independent Writer 3/5, Reboot independent Writer 0/3, complete Writer -> Judge orchestrations 1/3. The failed Reboot output stated an unmeasured business outcome with causal certainty in `writerOutput.executiveConclusion.narrative.text`. The single-use authorization closed on that mandatory stop. Writer calls: 3. Judge calls: 0. Uncertain calls: 0. Retries: 0. Betty is not a PRYSM gate.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -13,15 +13,9 @@ Current environment / branch / version:
 - Review branch: `review/prysm-solution-directive-authority-betty` — historical branch name only; Betty is not an active gate
 - Governed semantic application base: `a16430aa6c000afadcaade3e692e41f0f08ed903`
 - Published tooling SHA / remote review SHA: `299418bdfd219e1b8cc3c2be57a735ca147b9a24`
-- Writer-only harness: IDENTITY CONTRACT REPAIRED + VERIFIED + SOL HIGH PREFLIGHT READY + PUBLISHED
-- Approved frozen TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
-- Approved frozen Reboot audit: `97d6b2c7-03b9-4530-8ea7-16557502c638`
-- Second distinct additional real corpus input: NOT CONFIRMED; do not fabricate one
-- Current Plane 3 credit: TBK independent Writer 1/5; Reboot independent Writer 0/3; complete Writer -> Judge orchestrations 1/3
-- Remaining Plane 3 sample: TBK independent Writers 4; Reboot independent Writers 3; complete Writer -> Judge orchestrations 2
-- Minimum expected additional model calls: 9
-- Absolute maximum authorized new model calls: 13
-- Current model/provider authorization: ACTIVE_SINGLE_USE_PLANE3_ROBUSTNESS_TRANCHE
+- Current Plane 3 credit: TBK independent Writer 3/5; Reboot independent Writer 0/3; complete Writer -> Judge orchestrations 1/3
+- Remaining Plane 3 sample: TBK independent Writers 2; Reboot independent Writers 3; complete Writer -> Judge orchestrations 2
+- Additional model/provider authorization: NONE
 - Retry authorization: NONE
 - Pass 3 authorization: NONE
 - Deployment: NONE
@@ -29,35 +23,28 @@ Current environment / branch / version:
 - Main merge: NONE
 
 Completed:
-- Persisted-response recovery remains closed and governed.
-- Prior clean TBK model-backed orchestration remains valid lineage evidence: final Judge PASS / 98, zero validation failures, zero final defects.
-- Prior uncertain Judge pass 2 call 4 was diagnosed as `UNRECOVERABLE_TRANSPORT_UNCERTAIN`, receives zero sample credit, and must not be retried.
-- Writer-only harness identity contract now separates semantic base from tooling HEAD and proves a clean bounded two-file overlay.
-- Actual runtime identity verification passed.
-- Independent Sol High preflight returned `READY_FOR_NEXT_GATE / HIGH`.
-- Tooling candidate `299418bdfd219e1b8cc3c2be57a735ca147b9a24` is published and independently verified on the remote review branch.
-- Chris explicitly authorized the bounded Plane 3 model-bearing robustness tranche on 2026-09-10.
+- Two new TBK Writer-only generations passed validation and receive independent Plane 3 credit.
+- Reboot Writer-only sample 1 returned a complete response but failed semantic validation.
+- No transport uncertainty occurred in the latest tranche.
+- No retry occurred.
+- No complete Writer -> Judge orchestration was started after the mandatory stop.
+- Prior abandoned Judge call remains untouched and receives zero credit.
+- No application/test/fixture changes, commits, pushes, deployment, production mutation, or main merge occurred.
+- Stop checkpoint recorded in `PRYSM_PLANE3_REBOOT_WRITER_VALIDATION_STOP_CHECKPOINT_2026-09-10.md`.
 
-In progress:
-- One single-use Plane 3 model-bearing robustness tranche is authorized and ready to execute.
+Blocked:
+- Plane 3 is incomplete until the Reboot Writer validation escape is diagnosed and any required repair is separately authorized, verified, and followed by a new model-run authorization.
 
 Important constraints:
-- Use only the frozen TBK and Reboot inputs.
-- Use fresh execution identity and isolated durable ledger for every sample.
-- Do not retry or resume abandoned execution `tbk-fresh-narrative-fresh-live-1789012917064-28748` or its Judge pass 2 call 4.
-- Do not fabricate a second distinct real corpus input.
-- Do not recollect/re-crawl audit providers or rescore frozen evidence.
-- Maximum 13 new model calls.
-- No Pass 3.
-- No automatic retries.
-- On uncertain transport/result, use governed persisted-response recovery only when exact persisted response identity can be proven without a fresh request; otherwise STOP.
-- Preserve Writer/Judge semantics, prompts/contracts, model routing, validators, cost controls, persisted-response recovery, evidence/scoring semantics, audit lifecycle, report/renderer behavior, and automatic pass ceilings.
-- No deployment, production mutation, or main merge.
+- Preserve the two newly valid TBK Writer samples.
+- Do not retry failed Reboot sample C.
+- Do not resume or retry the prior abandoned Judge call.
+- Diagnosis must make 0 Writer/Judge/model/provider calls.
+- Do not recollect/re-crawl providers or rescore frozen evidence.
+- Do not change application source during diagnosis.
+- Do not deploy, mutate production, or merge main.
 - Betty is not a required gate.
 
-Authoritative authorization checkpoint:
-`PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_AUTHORIZATION_2026-09-10.md`
-
-Exact next action: **Execute the authorized Plane 3 robustness tranche in this order: 2 TBK Writer-only samples, 3 Reboot Writer-only samples, then 2 fresh complete TBK Writer -> Judge orchestrations. Before any model call, prove local HEAD, remote review SHA, branch, clean worktree, semantic base/tooling identity contract, configured Writer/Judge models, prompt/contract versions, cost ceilings, durable persistence, and persisted-response recovery. Stop on any invalid or uncertain sample. Use at most 13 new model calls. After completion or stop, create `%USERPROFILE%\Downloads\PRYSM-PLANE3-MODEL-BEARING-ROBUSTNESS-TRANCHE-2-PROOF.txt` and STOP. Do not begin Plane 4 or Plane 5.**
+Exact next action: **Perform a zero-model-call diagnosis of the exact Reboot Writer validation escape. Determine whether the root cause lies in the Writer prompt/instructions, Writer validator contract, frozen Reboot WriterInput/evidence qualification, or another upstream deterministic boundary. Inspect the exact persisted Reboot Writer response and the validator rule that rejected it. Make no code changes and no model/provider calls. Produce a diagnosis proof and stop.**
 
 Last verified: 2026-09-10
