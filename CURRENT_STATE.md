@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Prepare the governed clean TBK Writer/Judge release-candidate orchestration authorization now that persisted-response recovery is closed and independently preflighted. Do not execute any Writer/Judge/model/provider call until Chris explicitly authorizes that model-backed run.
+Current objective: Await Chris's separate explicit authorization for exactly one new clean TBK Writer/Judge automatic release-candidate orchestration against the frozen TBK WriterInput at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. Do not execute any Writer/Judge/model/provider call before that authorization.
 
-Verified checkpoint: **Persisted-response recovery is deterministically GREEN and independent Sol High preflight 4 returned `READY_FOR_NEXT_GATE` / HIGH at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. The candidate is published to the existing review branch at that exact SHA. No material persisted-response recovery defect remains. Canonical Remediation Authority Closure remains PUBLISHED and GREEN. Betty is not a required PRYSM gate. No Writer/Judge/model/provider call is currently authorized.**
+Verified checkpoint: **Persisted-response recovery is deterministically GREEN and independent Sol High preflight 4 returned `READY_FOR_NEXT_GATE` / HIGH at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. The remote review branch still resolves exactly to that SHA. The clean TBK Writer/Judge authorization/execution boundary is now prepared and persisted in `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`. `PRYSM_MODEL_BEARING_GATE_STATE.json` has been reconciled from the stale September 1 candidate to the current candidate and is now `AUTHORIZATION_PENDING`. Betty is not a required PRYSM gate. No Writer/Judge/model/provider call has been authorized or executed in this preparation step.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -14,7 +14,10 @@ Current environment / branch / version:
 - Published remote review SHA: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
 - Local candidate SHA at publication: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
-- Worktree after publication: CLEAN
+- Frozen TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
+- Prepared execution entrypoint: `services/worker/TBK-fresh-writer-judge.mjs`
+- Automatic pass ceiling after authorization: 2 Writer/Judge passes / 4 model calls maximum
+- Pass 3: NOT AUTHORIZED; requires separate explicit human authorization if Judge 2 still returns `REVISE`
 - Deployment: NONE
 - Production mutation: NONE
 - Main merge: NONE
@@ -30,27 +33,33 @@ Completed:
 - Bounded cleanup removed only `storageBackend: "memory"`; cleanup candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` remained fully green with the same regression counts and zero provider/model calls.
 - Independent Sol High preflight 4 at `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` returned `READY_FOR_NEXT_GATE` / HIGH and found no material persisted-response recovery defect.
 - Exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` was published by normal non-force push to `origin/review/prysm-solution-directive-authority-betty`; remote verification matched exactly.
-- Review governance was corrected: Betty is no longer a required development/release gate. `PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md` now uses independent Sol High adversarial preflight when available, with applicable human authorization and release gates preserved.
+- Review governance was corrected: Betty is no longer a required development/release gate.
+- Clean TBK execution path was verified against the exact candidate: it loads frozen TBK governed input, creates a fresh isolated filesystem ledger and execution identity, and invokes only the Narrative v2 Writer/Judge orchestration. It does not recrawl or overwrite the frozen TBK audit fixture.
+- Prepared authorization boundary persisted as `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`.
+- Current model-bearing gate state reconciled to candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` with status `AUTHORIZATION_PENDING`; prior September 1 evidence is historical and is not treated as proof for this candidate.
 
 In progress:
-- None. Persisted-response recovery implementation and independent preflight are complete.
+- None. The governed clean TBK execution boundary is prepared.
 
 Blocked:
-- New clean TBK Writer/Judge release-candidate orchestration is blocked only on separate explicit Chris authorization for model-backed execution.
+- The model-backed TBK orchestration is blocked only on separate explicit Chris authorization.
 
 Important constraints:
 - No Writer/Judge/model/provider call without separate explicit authorization.
+- The prepared authorization covers at most two automatic Writer/Judge passes / four model calls.
+- Pass 3 is not included and requires a separate explicit human authorization.
 - Do not retry or reconstruct the historical failed TBK Writer pass 2.
-- No audit-provider rerun unless separately authorized and proven required.
+- Do not recollect/re-crawl audit providers or rescore frozen TBK evidence for this run.
+- Use a fresh isolated execution identity and filesystem ledger; do not overwrite historical TBK artifacts.
 - No deployment or production promotion without explicit authorization.
 - No production mutation without explicit authorization.
 - No main merge without explicit authorization.
 - Preserve canonical remediation authority, scoring/evidence semantics, Writer/Judge semantic contracts, provider/model selection, automatic semantic pass ceiling, report/renderer behavior, and audit lifecycle.
 - Betty is not a required gate; do not reintroduce a Betty dependency from stale files, summaries, branch names, or prior conversations.
 
-Authoritative continuation handoff:
-`HANDOFF_PRYSM_RECOVERY_CLOSED_TO_CLEAN_TBK_AUTHORIZATION_2026-09-09.md`
+Authoritative execution-boundary file:
+`PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`
 
-Exact next action: **In a new chat, read this file and `HANDOFF_PRYSM_RECOVERY_CLOSED_TO_CLEAN_TBK_AUTHORIZATION_2026-09-09.md`, then prepare the governed authorization/execution boundary for a new clean TBK Writer/Judge release-candidate orchestration using exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. Do not run Writer/Judge/models/providers until Chris explicitly authorizes the model-backed run.**
+Exact next action: **Chris explicitly authorizes exactly one new clean TBK Writer/Judge automatic release-candidate orchestration under `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md` against candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. Until that explicit authorization is given, do not run Writer/Judge/models/providers.**
 
 Last verified: 2026-09-09
