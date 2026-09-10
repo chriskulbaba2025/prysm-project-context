@@ -5,7 +5,7 @@ Status: GOVERNING DEVELOPMENT PROTOCOL — ACTIVE
 
 ## Purpose
 
-Reduce rework, token burn, and repeated one-defect-at-a-time external review by matching model capability to task difficulty and requiring whole-system invariant closure before external Betty review.
+Reduce rework, token burn, and repeated one-defect-at-a-time review by matching model capability to task difficulty and requiring whole-system invariant closure before release-governance advancement.
 
 This protocol does not weaken any evidence, release, production, or independent-review boundary.
 
@@ -38,7 +38,7 @@ Do not use Luna Medium as the primary auditor for unresolved authority/governanc
 
 ### Sol High — adversarial preflight / hardest unresolved problems
 Use Sol High when available for:
-- final adversarial review of a consolidated candidate before external Betty;
+- final adversarial review of a consolidated candidate before release-governance advancement;
 - unresolved architectural ambiguity after a Terra High diagnosis;
 - high-risk release-preflight reasoning where a false positive would be expensive.
 
@@ -48,13 +48,13 @@ Sol is not the default Builder. It is an escalation and independent preflight la
 
 Do not use the sequence:
 
-`visible defect -> micro-repair -> Betty -> next visible defect -> micro-repair -> Betty`
+`visible defect -> micro-repair -> independent review -> next visible defect -> micro-repair -> independent review`
 
 for a class of defects that clearly shares one architectural invariant.
 
 Instead use:
 
-`whole-system invariant diagnosis -> exhaustive surface inventory -> consolidated bounded repair -> permanent invariant tests -> adversarial preflight -> Betty`
+`whole-system invariant diagnosis -> exhaustive surface inventory -> consolidated bounded repair -> permanent invariant tests -> adversarial preflight -> governed next gate`
 
 ## Required invariant audit
 
@@ -86,15 +86,15 @@ For remediation authority this includes, where applicable:
 
 Keyword scans may assist discovery but are never sufficient proof by themselves.
 
-## External Betty cadence
+## Independent preflight cadence
 
-During the active solo-development exception, do not spend an external Betty checkpoint on every micro-repair in the same defect class.
+PRYSM no longer uses Betty as a required development or release gate.
 
-Use Terra High to close the full invariant, then run a separate adversarial preflight (Sol High when available; otherwise a fresh Terra High review context) over the complete candidate and diff.
+Use Terra High to close the full invariant, then run a separate adversarial preflight using Sol High when available; otherwise use a fresh Terra High review context over the complete candidate and diff.
 
-Return to external Betty at the next material architecture checkpoint and before any release-governance advancement.
+A HIGH-confidence independent preflight may advance the candidate to the next governed gate when all applicable deterministic and specialized release proofs are also green.
 
-External Betty remains required before merge to application main, deployment, production promotion, provider/model execution for release, production audit rerun, or other production mutation.
+Merge to application main, deployment, production promotion, provider/model execution for release, production audit rerun, or other production mutation still require the applicable explicit human authorization and governing release gates. They do not require a Betty checkpoint.
 
 ## Prompt-size discipline
 
