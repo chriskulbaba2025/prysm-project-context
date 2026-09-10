@@ -35,46 +35,6 @@
       "errors": []
     }
   },
-  "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
-  "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
-  "writerRootCause": "PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE",
-  "promptSchemaInputValidatorCongruence": "PASS_DETERMINISTIC_AND_REAL_STRESS",
-  "writerRetryRecovery": "PASS_DETERMINISTIC_CHALLENGE",
-  "primaryWriterStress": {
-    "status": "PASS",
-    "required": 5,
-    "completed": 5,
-    "passed": 5,
-    "materialFailures": 0
-  },
-  "additionalRealInputWriterStress": {
-    "status": "PASS",
-    "realInputsRequiredWhenAvailable": 1,
-    "runsRequired": 3,
-    "completed": 3,
-    "passed": 3,
-    "materialFailures": 0
-  },
-  "fullNarrativeCompletion": {
-    "status": "PASS",
-    "completeRunsRequired": 3,
-    "completeRunsCompleted": 3,
-    "completeRunsPassed": 3,
-    "primaryTbkRunsRequired": 2,
-    "primaryTbkRunsCompleted": 2,
-    "materialFailures": 0
-  },
-  "semanticQuality": {
-    "status": "PASS_BUILDER_REVIEW",
-    "minimumOverall": 97,
-    "minimumArea": 19,
-    "criticalIntegrityDefects": 0
-  },
-  "writerCompletionChallenge": "PASS: observed conversion actions accepted; asserted downstream outcomes rejected",
-  "deterministicWholeAppRegression": "PASS",
-  "independentAuditor": "PASS_READY_FOR_NEXT_GATE_HIGH",
-  "deploymentIdentity": "NO_DEPLOYMENT",
-  "finalLiveValidation": "NOT_YET_ELIGIBLE",
   "additionalModelProviderAuthorization": "NONE",
   "retryAuthorized": false,
   "pass3Authorized": false,
