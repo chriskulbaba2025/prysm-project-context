@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Diagnose the exact Reboot Writer validation escape from the stopped Plane 3 robustness tranche. No Writer/Judge/model/provider call is currently authorized.
+Current objective: Obtain explicit Chris authorization for the smallest coherent validator-only repair of the Reboot false-positive semantic validation defect. No Writer/Judge/model/provider call is currently authorized.
 
-Verified checkpoint: **The latest Plane 3 robustness tranche stopped correctly on Reboot Writer-only sample 1 after a complete, non-uncertain Writer response failed semantic validation. Two TBK Writer-only samples completed validly first and are preserved as Plane 3 evidence. Current credit is TBK independent Writer 3/5, Reboot independent Writer 0/3, complete Writer -> Judge orchestrations 1/3. The failed Reboot output stated an unmeasured business outcome with causal certainty in `writerOutput.executiveConclusion.narrative.text`. The single-use authorization closed on that mandatory stop. Writer calls: 3. Judge calls: 0. Uncertain calls: 0. Retries: 0. Betty is not a PRYSM gate.**
+Verified checkpoint: **Zero-model-call diagnosis completed with HIGH confidence. Root cause is `VALIDATOR_CONTRACT_DEFECT`, not Writer non-compliance. The failed Reboot sentence explicitly states that conversion-related evidence was not collected and that no overall conversion conclusion is established. Writer prompt v2.3.0 requires this bounded treatment; frozen Reboot WriterInput preserves UNAVAILABLE / Not Assessed conversion evidence; raw and normalized narrative text match materially. `validateWriterSemanticFidelity()` in `services/worker/src/narrative-v2/writer-output.js` falsely matches `conversion` plus `established` while failing to recognize the explicit negative/non-establishment construction. Betty is not a PRYSM gate.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -23,28 +23,30 @@ Current environment / branch / version:
 - Main merge: NONE
 
 Completed:
-- Two new TBK Writer-only generations passed validation and receive independent Plane 3 credit.
-- Reboot Writer-only sample 1 returned a complete response but failed semantic validation.
-- No transport uncertainty occurred in the latest tranche.
-- No retry occurred.
-- No complete Writer -> Judge orchestration was started after the mandatory stop.
-- Prior abandoned Judge call remains untouched and receives zero credit.
-- No application/test/fixture changes, commits, pushes, deployment, production mutation, or main merge occurred.
-- Stop checkpoint recorded in `PRYSM_PLANE3_REBOOT_WRITER_VALIDATION_STOP_CHECKPOINT_2026-09-10.md`.
+- Two new TBK Writer-only samples remain valid and preserved.
+- Reboot Writer failure was proven to be a validator false positive.
+- Writer prompt gap: NOT PROVEN.
+- WriterInput authority gap: NOT PROVEN.
+- Transformation/mapping defect: NOT PROVEN.
+- Exact deterministic validator path reproduced offline.
+- Writer-output deterministic tests remained 25/25 PASS during diagnosis.
+- No model/provider calls or application changes occurred during diagnosis.
+- Diagnosis checkpoint recorded in `PRYSM_PLANE3_REBOOT_WRITER_VALIDATION_ESCAPE_DIAGNOSIS_CHECKPOINT_2026-09-10.md`.
 
 Blocked:
-- Plane 3 is incomplete until the Reboot Writer validation escape is diagnosed and any required repair is separately authorized, verified, and followed by a new model-run authorization.
+- Plane 3 is incomplete until the validator false positive is repaired, deterministically verified, independently preflighted, published, and followed by separately authorized replacement model samples.
 
 Important constraints:
-- Preserve the two newly valid TBK Writer samples.
+- Preserve Plane 3 credit: TBK 3/5, Reboot 0/3, complete orchestrations 1/3.
 - Do not retry failed Reboot sample C.
-- Do not resume or retry the prior abandoned Judge call.
-- Diagnosis must make 0 Writer/Judge/model/provider calls.
-- Do not recollect/re-crawl providers or rescore frozen evidence.
-- Do not change application source during diagnosis.
-- Do not deploy, mutate production, or merge main.
+- Do not resume/retry the abandoned prior Judge call.
+- Repair scope must remain validator-only plus directly coupled deterministic tests unless diagnosis proves broader scope is necessary.
+- Do not change Writer prompt, WriterInput, frozen fixtures, model routing, scoring/evidence semantics, lifecycle, persistence, report rendering, or pass ceilings.
+- Repair/testing must make 0 Writer/Judge/model/provider calls.
+- No provider recollection/rescore.
+- No push, deployment, production mutation, or main merge during repair.
 - Betty is not a required gate.
 
-Exact next action: **Perform a zero-model-call diagnosis of the exact Reboot Writer validation escape. Determine whether the root cause lies in the Writer prompt/instructions, Writer validator contract, frozen Reboot WriterInput/evidence qualification, or another upstream deterministic boundary. Inspect the exact persisted Reboot Writer response and the validator rule that rejected it. Make no code changes and no model/provider calls. Produce a diagnosis proof and stop.**
+Exact next action: **Chris explicitly authorizes a bounded validator-only repair in `services/worker/src/narrative-v2/writer-output.js` plus directly coupled deterministic tests. The repair must accept explicit negative/non-establishment wording such as the failed Reboot sentence while continuing to reject real unsupported causal/commercial outcome claims. Make 0 Writer/Judge/model/provider calls. Run focused semantic-fidelity tests and relevant regressions. If green, commit locally and stop for independent Sol High preflight before publication or any model execution.**
 
 Last verified: 2026-09-10
