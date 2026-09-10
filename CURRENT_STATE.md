@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Execute exactly one new clean TBK Writer/Judge automatic release-candidate orchestration against the frozen TBK WriterInput at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`, under the single-use human authorization recorded in `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`.
+Current objective: Complete the already-authorized single clean TBK Writer/Judge automatic release-candidate orchestration against the frozen TBK WriterInput at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` by using the established Railway-backed execution environment. The single-use authorization remains unconsumed because the first pre-execution attempt stopped before any model/provider call.
 
-Verified checkpoint: **Persisted-response recovery is deterministically GREEN and independent Sol High preflight 4 returned `READY_FOR_NEXT_GATE` / HIGH at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. The remote review branch resolves exactly to that SHA. Chris explicitly authorized exactly one new clean TBK Writer/Judge automatic release-candidate orchestration on 2026-09-09. The authorization is single-use and not yet consumed. `PRYSM_MODEL_BEARING_GATE_STATE.json` is now `AUTHORIZED_READY_TO_EXECUTE`. Betty is not a required PRYSM gate. No Writer/Judge/model/provider call has yet been executed under this authorization.**
+Verified checkpoint: **Persisted-response recovery remains deterministically GREEN and independent Sol High preflight 4 returned `READY_FOR_NEXT_GATE` / HIGH at exact application candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`. Chris explicitly authorized exactly one clean TBK Writer/Judge automatic release-candidate orchestration. The first execution attempt returned `PRE_EXECUTION_BLOCKED` with 0 model calls because the plain local process did not contain the required live Narrative v2 environment. Start SHA and end SHA both remained `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`; worktree remained CLEAN; no application files changed; no provider recollection, deployment, production mutation, or main merge occurred. The single-use authorization remains valid and unconsumed. Repository evidence establishes `railway run -s vantage-platform` as the existing service-environment injection mechanism, and historical TBK evidence shows the fresh Writer/Judge path previously resolving its governed models through Railway. Current model/config values must still be verified from the current Railway-backed preflight rather than copied from history. Betty is not a required PRYSM gate.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -12,39 +12,44 @@ Current environment / branch / version:
 - Worker: `C:\Users\kulba\Desktop\vantage-platform\services\worker`
 - Review branch: `review/prysm-solution-directive-authority-betty` — historical branch name only; Betty is not an active gate
 - Published remote review SHA: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
-- Local candidate SHA at publication: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
+- Local candidate SHA at blocked preflight: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
 - Frozen TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - Authorized execution entrypoint: `services/worker/TBK-fresh-writer-judge.mjs`
+- Established environment mechanism for continuation: `railway run -s vantage-platform`
 - Automatic pass ceiling: 2 Writer/Judge passes / 4 model calls maximum
 - Pass 3: NOT AUTHORIZED; requires separate explicit human authorization if Judge 2 still returns `REVISE`
+- Authorization consumption: UNCONSUMED / 0 model calls
 - Deployment: NONE
 - Production mutation: NONE
 - Main merge: NONE
 
 Completed:
 - Canonical remediation authority closure remains green: focused closure 112/112 PASS; full worker baseline 1009/1009 PASS.
-- Persisted-call recovery architecture preserves durable authorization authenticity, exact execution binding, non-spoofable durable-store capability, duplicate protection, one-recovery limit, conservative cost accounting, total call ceiling, secret sanitization, canonical authority, scoring/evidence, Writer/Judge semantics, and report/renderer behavior.
-- Final persisted-response repair closed the two remaining defects from Sol preflight 3.
-- Cleaned exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` remained fully green and was published to the remote review branch.
-- Independent Sol High preflight 4 returned `READY_FOR_NEXT_GATE` / HIGH.
-- Review governance was corrected: Betty is no longer a required development/release gate.
-- Clean TBK execution path was verified against the exact candidate: it loads frozen TBK governed input, creates a fresh isolated filesystem ledger and execution identity, and invokes only the Narrative v2 Writer/Judge orchestration. It does not recrawl or overwrite the frozen TBK audit fixture.
-- Prepared authorization boundary persisted as `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`.
-- Chris explicitly authorized exactly one clean TBK Writer/Judge automatic orchestration under that boundary. Authorization status is `AUTHORIZED — SINGLE USE, NOT YET CONSUMED`.
+- Persisted-response recovery is closed and independently preflighted HIGH at the current exact candidate.
+- Exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` remains the governed application candidate.
+- Review governance was corrected: Betty is not a required development/release gate.
+- Clean TBK execution path was verified: frozen TBK WriterInput, fresh isolated durable filesystem ledger, fresh execution identity, Narrative v2 Writer/Judge only, no recrawl or overwrite of frozen TBK audit artifacts.
+- Chris explicitly authorized exactly one clean TBK Writer/Judge automatic orchestration under `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`.
+- First execution preflight correctly failed closed before any model call because the required live Narrative environment was absent from the plain local process.
+- Blocked-preflight proof recorded in `PRYSM_CLEAN_TBK_WRITER_JUDGE_PREEXECUTION_BLOCKER_2026-09-09.md`.
+- `PRYSM_MODEL_BEARING_GATE_STATE.json` now records `AUTHORIZED_PREEXECUTION_BLOCKED` and the Railway-backed continuation.
 
 In progress:
-- The authorized clean TBK orchestration has not yet started.
+- None. Execution is waiting only on the Railway-backed environment preflight.
 
 Blocked:
-- None before execution, provided every required pre-execution check passes. If any pre-execution check fails, stop before the first model/provider call.
+- Plain local execution environment does not contain the required live Narrative v2 configuration.
+- This is not a product-code defect and does not authorize configuration edits.
 
 Important constraints:
-- This authorization is single-use and covers at most two automatic Writer/Judge passes / four model calls.
-- The authorization is consumed when the first model/provider call is made.
+- Existing authorization remains single-use and covers at most two automatic Writer/Judge passes / four model calls.
+- Authorization is consumed when the first model/provider call is made.
 - Pass 3 is not included and requires a separate explicit human authorization.
 - Do not retry or reconstruct the historical failed TBK Writer pass 2.
-- Do not recollect/re-crawl audit providers or rescore frozen TBK evidence for this run.
+- Do not create, copy, edit, or manually reconstruct Narrative environment variables from historical values.
+- Verify current configuration through the established Railway service environment.
+- Do not recollect/re-crawl audit providers or rescore frozen TBK evidence.
 - Use a fresh isolated execution identity and filesystem ledger; do not overwrite historical TBK artifacts.
 - No second clean orchestration under this authorization.
 - No deployment or production promotion without explicit authorization.
@@ -56,6 +61,9 @@ Important constraints:
 Authoritative execution-boundary file:
 `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md`
 
-Exact next action: **At local `C:\Users\kulba\Desktop\vantage-platform`, verify HEAD equals `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`, worktree is clean, and all required live Narrative configuration is present without exposing secrets. If and only if those checks pass, execute exactly one clean TBK Writer/Judge automatic orchestration via `services/worker/TBK-fresh-writer-judge.mjs`, capture the complete governed execution evidence and required Downloads proof artifact, and STOP at the first terminal orchestration result. Do not run Pass 3 or a second orchestration.**
+Authoritative blocked-preflight checkpoint:
+`PRYSM_CLEAN_TBK_WRITER_JUDGE_PREEXECUTION_BLOCKER_2026-09-09.md`
+
+Exact next action: **From `C:\Users\kulba\Desktop\vantage-platform\services\worker`, run `railway run -s vantage-platform node TBK-env-check.mjs`. If and only if that current Railway-backed preflight proves all required live Narrative configuration is present, immediately execute exactly one `railway run -s vantage-platform node TBK-fresh-writer-judge.mjs` under the existing single-use authorization, capture the required governed proof artifact, and STOP at the first terminal orchestration result. If the Railway-backed preflight fails, stop before any model/provider call and report the exact blocker without editing configuration. Do not run Pass 3 or a second orchestration.**
 
 Last verified: 2026-09-09
