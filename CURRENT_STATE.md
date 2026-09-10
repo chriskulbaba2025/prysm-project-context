@@ -2,9 +2,9 @@
 
 Project: PRYSM — governed website conversion-readiness report and website decision system
 
-Current objective: Obtain explicit Chris authorization for one bounded current-candidate Model-Bearing Release Gate Plane 3 robustness tranche at exact published application candidate `a16430aa6c000afadcaade3e692e41f0f08ed903`. No additional Writer/Judge/model/provider call is currently authorized.
+Current objective: Diagnose the preserved Judge pass 2 transport-uncertain state from the stopped Plane 3 robustness tranche at exact published application candidate `a16430aa6c000afadcaade3e692e41f0f08ed903`. No Writer/Judge/model/provider call is currently authorized.
 
-Verified checkpoint: **The bounded Writer-only Plane 3 robustness harness was implemented, deterministically verified, committed, and normally/non-force published to `review/prysm-solution-directive-authority-betty` at exact application SHA `a16430aa6c000afadcaade3e692e41f0f08ed903`. GitHub independently verifies the remote branch resolves exactly to that SHA. Harness verification remains fully green: focused 8/8 PASS; Narrative v2 132/132 PASS; storage/artifact 106/106 PASS; production-path 11/11 PASS; full worker 1009/1009 PASS; `git diff --check` PASS. Publication made 0 Writer calls, 0 Judge calls, 0 model/provider calls, no provider recollection, no deployment, no production mutation, and no main merge. Betty is not a PRYSM gate.**
+Verified checkpoint: **The bounded Plane 3 model-bearing robustness tranche was started under explicit Chris authorization and stopped correctly during the first required additional TBK complete Writer -> Judge orchestration. Calls 1-3 returned and validated: Writer pass 1 PASS, Judge pass 1 REVISE / 96, Writer pass 2 PASS. Judge pass 2 call 4 was durably reserved but ended `TRANSPORT_OUTCOME_UNCERTAIN` after `fetch failed` / `UND_ERR_SOCKET` / `other side closed`, with no response/result artifact persisted. No retry was attempted. The tranche authorization is consumed and closed. No later orchestration or Writer-only sample ran. Plane 3 is NOT PASS. This is not yet a semantic/model-quality failure; it is an unresolved transport/result-state integrity boundary. Betty is not a PRYSM gate.**
 
 Current environment / branch / version:
 - Application repository: `chriskulbaba2025/vantage-platform`
@@ -12,60 +12,64 @@ Current environment / branch / version:
 - Worker: `C:\Users\kulba\Desktop\vantage-platform\services\worker`
 - Review branch: `review/prysm-solution-directive-authority-betty` — historical branch name only; Betty is not an active gate
 - Exact current published candidate: `a16430aa6c000afadcaade3e692e41f0f08ed903`
-- Previous candidate: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`
+- Remote review SHA: `a16430aa6c000afadcaade3e692e41f0f08ed903`
 - Production baseline on `main`: `4202ed684754c382160289c801b83e654d697a69`
 - Primary frozen TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - Confirmed additional frozen real input: Reboot Business Coaching, audit `97d6b2c7-03b9-4530-8ea7-16557502c638`
-- Second distinct additional real corpus input: NOT CONFIRMED; do not fabricate one
 - Writer-only harness: IMPLEMENTED + VERIFIED + PUBLISHED
-- Current Plane 3 credit: TBK independent Writer 1/5; complete orchestration 1/3
-- Plane 3 remaining: TBK Writers 4; Reboot Writers 3; complete orchestrations 2
-- Minimum remaining model calls: 9
-- Maximum bounded model-call exposure: 13
+- Stopped execution ID: `tbk-fresh-narrative-fresh-live-1789012917064-28748`
+- Stopped execution ledger: `C:\Users\kulba\AppData\Local\Temp\prysm-pdv5-evidence\fresh-live-1789012917064-28748`
+- Failed boundary: Judge pass 2 / call 4 / `TRANSPORT_OUTCOME_UNCERTAIN`
+- Returned validated calls in stopped tranche: 3
+- Uncertain reserved call: 1
+- Actual Writer calls/reservations: 2
+- Actual Judge calls/reservations: 2
+- Returned-call actual cost: USD `0.433091`
+- Total reserved estimated cost including uncertain call: USD `1.4815`
+- Current Plane 3 credit remains: TBK independent Writer 1/5; complete orchestration 1/3
+- Nominal remaining sample remains: TBK Writers 4; Reboot Writers 3; complete orchestrations 2
 - Additional model/provider authorization: NONE
+- Retry authorization: NONE
+- Pass 3 authorization: NONE
 - Deployment: NONE
 - Production mutation: NONE
 - Main merge: NONE
 
 Completed:
 - Canonical remediation authority closure remains green.
-- Persisted-response recovery remains closed.
-- One clean TBK model-backed orchestration completed successfully at the prior candidate: final Judge `PASS` / 98, zero validation failures, zero final defects.
-- That single-use authorization is consumed and closed.
-- Plane 3 robustness plan is frozen in `PRYSM_CURRENT_CANDIDATE_PLANE3_ROBUSTNESS_PLAN_CHECKPOINT_2026-09-09.md`.
-- Writer-only harness implementation passed and is recorded in `PRYSM_PLANE3_WRITER_ONLY_HARNESS_IMPLEMENTATION_CHECKPOINT_2026-09-09.md`.
-- Harness publication passed and is recorded in `PRYSM_PLANE3_HARNESS_REVIEW_BRANCH_PUBLICATION_CHECKPOINT_2026-09-09.md`.
-- Exact remote review branch now equals `a16430aa6c000afadcaade3e692e41f0f08ed903`.
-- Harness supports only frozen TBK/Reboot inputs, uses existing live `writerExecutor`, Writer validation and cost controls, fresh isolated filesystem ledger identity, and no Judge/provider/evidence path in Writer-only mode.
+- Persisted-response recovery implementation remains previously closed and tested.
+- Writer-only Plane 3 harness remains implemented, deterministically verified, and published.
+- One prior clean TBK model-backed orchestration remains valid current-candidate lineage evidence: final Judge PASS / 98, zero validation failures, zero final defects.
+- The new Plane 3 robustness tranche started once and failed closed at the uncertain Judge pass 2 boundary.
+- No implicit retry, provider recollection, evidence rescore, application mutation, push, deployment, production mutation, or main merge occurred.
+- Transport-uncertain checkpoint recorded in `PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_TRANSPORT_UNCERTAIN_CHECKPOINT_2026-09-10.md`.
 
 In progress:
-- None. The next model-bearing robustness tranche is waiting for explicit Chris authorization.
+- None. The exact preserved uncertain call must be diagnosed before any new execution authorization.
 
 Blocked:
-- Plane 3 robustness model execution is blocked until Chris explicitly authorizes the exact bounded paid/model tranche.
+- Plane 3 robustness execution is blocked by unresolved Judge pass 2 call 4 outcome state.
+- No remaining sample may run until that state is governed and a separate Chris authorization is granted.
 
 Important constraints:
+- Do not retry Judge pass 2 automatically.
+- Do not restart the failed orchestration automatically.
+- Do not execute Writer-only remaining samples while the uncertain call remains unresolved.
+- Use the existing governed persisted-response recovery mechanism only if it can prove exact response identity and recover without issuing a new network/model request.
+- If exact persisted-response recovery cannot be proven, classify the call as unrecoverable/abandoned under existing governance before defining any replacement sample authorization.
 - No Writer/Judge/model/provider call is currently authorized.
-- The prior clean-TBK authorization is consumed and cannot be reused.
-- Any new authorization must bind to exact candidate `a16430aa6c000afadcaade3e692e41f0f08ed903`.
 - Do not fabricate a second distinct real corpus input.
 - Do not recollect/re-crawl audit providers or rescore frozen evidence.
-- Do not use mock outputs as model-bearing evidence.
-- Use fresh isolated durable ledgers for every sample.
-- Stop rather than implicitly retry a materially invalid required sample.
-- No Pass 3 without separate explicit authorization.
 - Preserve Writer/Judge semantics, model routing, validators, cost controls, evidence/scoring semantics, audit lifecycle, persistence behavior, report/renderer behavior, and automatic pass ceilings.
+- No Pass 3.
 - No deployment or production promotion without explicit authorization.
 - No production mutation without explicit authorization.
 - No main merge without explicit authorization.
 - Betty is not a required gate.
 
-Authoritative checkpoints:
-- `PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZED_RUN_CHECKPOINT_2026-09-09.md`
-- `PRYSM_CURRENT_CANDIDATE_PLANE3_ROBUSTNESS_PLAN_CHECKPOINT_2026-09-09.md`
-- `PRYSM_PLANE3_WRITER_ONLY_HARNESS_IMPLEMENTATION_CHECKPOINT_2026-09-09.md`
-- `PRYSM_PLANE3_HARNESS_REVIEW_BRANCH_PUBLICATION_CHECKPOINT_2026-09-09.md`
+Authoritative transport checkpoint:
+`PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_TRANSPORT_UNCERTAIN_CHECKPOINT_2026-09-10.md`
 
-Exact next action: **Chris explicitly authorizes one bounded Plane 3 model-bearing robustness tranche at exact published candidate `a16430aa6c000afadcaade3e692e41f0f08ed903`. The tranche may use only the frozen TBK and Reboot inputs; must satisfy the remaining allocation of 4 TBK independent Writer generations, 3 Reboot independent Writer generations, and 2 additional complete Writer -> Judge orchestrations; may use at most 13 model calls; must use existing governed cost ceilings and fresh isolated durable ledgers; must make no provider recollection/recrawl/rescore calls; must not run Pass 3; and must not deploy, mutate production, or merge main. After completion, STOP and produce proof for Plane 3 assessment.**
+Exact next action: **Run a deterministic diagnosis of execution `tbk-fresh-narrative-fresh-live-1789012917064-28748`, Judge pass 2 call 4, with 0 Writer/Judge/model/provider calls. Inspect the isolated ledger, reservation and transport record, persisted-response recovery eligibility/identity rules, and any safely available local persisted artifacts. Prove whether the exact reserved call can be recovered without a fresh network request. If yes, freeze the exact safe recovery method and stop before executing it unless the recovery itself is demonstrably zero-call and already authorized by governance. If no, classify the call as unrecoverable/abandoned and freeze the smallest replacement-sample authorization boundary. Do not retry, restart orchestration, run remaining samples, change application source, deploy, mutate production, or merge main.**
 
-Last verified: 2026-09-09
+Last verified: 2026-09-10
