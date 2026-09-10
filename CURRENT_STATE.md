@@ -23,9 +23,25 @@ Current environment / branch / version:
 - Production mutation: NONE
 - Main merge: NONE
 
+Current coding-process authority:
+- Governed Coding Upgrade baseline: `governed-coding-upgrade` v2.1.0
+- Canonical GCU repository: `chriskulbaba2025/governed-coding-upgrade-skill`
+- Pinned supplied canonical main SHA: `caa81324026b9936f4c9e658e9fb1819f7f403cf`
+- PRYSM invocation: `SKILLS/GOVERNED_CODING_UPGRADE.md`
+- Agent-role decision: `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md`
+- Agent pipeline: `TRIAGE / SCOUT -> PLAN + FREEZE -> BUILDER -> VERIFY -> CHALLENGE -> TERMINAL VERIFY / MACHINE GATE -> EXACT-HEAD AUDIT -> RELEASE AUTHORITY`
+- One Builder/write owner per active governed change; specialist Scout/Planner/Verifier/Challenger/Auditor roles are read-only by default.
+- Routine PASS stages auto-continue inside the already authorized boundary; stop at blockers, correction/anti-thrash limits, material scope changes, or new explicit authorization boundaries.
+- Model/intelligence escalation does not grant broader autonomy, scope, retries, provider/model-call authority, push/deploy authority, production mutation, or release authority.
+- When another Codex/agent run is the exact next governed action, ChatGPT must include the execution-ready next prompt automatically; Chris does not need to ask separately.
+- Manual `WORKFLOW_INSTRUCTIONS.md` copy/paste mechanics remain for explicitly selected direct manual/chat-guided edits; they do not constrain a coherent frozen Codex/agent repair boundary.
+
 Completed:
-- Reboot Writer failure diagnosed as validator false positive, not Writer/prompt/input/mapping failure.
-- First validator repair closed the Reboot false positive and preserved mixed-clause protections.
+- Plane 3 harness identity contract repaired, independently preflighted, and published at `299418bdfd219e1b8cc3c2be57a735ca147b9a24`.
+- Two new TBK Writer-only samples passed and are preserved, raising TBK Writer credit to 3/5.
+- Reboot Writer-only sample stopped on a semantic validation failure with a certain returned response and zero transport uncertainty.
+- Zero-call diagnosis proved the Reboot Writer was compliant and the validator produced a false positive.
+- First validator repair closed that Reboot false positive and preserved mixed-clause protections.
 - Independent Sol High preflight then found one concrete false negative: past-tense `increased` was not recognized.
 - Second validator-only repair added the single missing `increased` form.
 - `The change increased conversions.` now rejects correctly.
@@ -37,7 +53,8 @@ Completed:
 - Writer prompt 2.3.0, WriterInput authority, frozen evidence, model routing, scoring/lifecycle/persistence/report rendering and pass ceilings remain unchanged.
 - Valid Plane 3 evidence remains preserved: TBK 3/5, Reboot 0/3, complete orchestrations 1/3.
 - Prior failed Reboot sample and abandoned Judge call must not be retried.
-- Repair checkpoint recorded in `PRYSM_PLANE3_REBOOT_VALIDATOR_INCREASED_FALSE_NEGATIVE_REPAIR_CHECKPOINT_2026-09-10.md`.
+- PRYSM adopted the agent-role governed coding process in `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md`; `PROJECT.md`, `SKILLS/GOVERNED_CODING_UPGRADE.md`, and `WORKFLOW_INSTRUCTIONS.md` were updated to bind it.
+- New-chat handoff recorded in `HANDOFF_PRYSM_AGENT_ROLE_PROCESS_AND_VALIDATOR_PREFLIGHT_2026-09-10.md`.
 
 Blocked:
 - Local repair candidate must pass a fresh independent Sol High preflight before publication.
@@ -57,6 +74,12 @@ Important constraints:
 Authoritative repair checkpoint:
 `PRYSM_PLANE3_REBOOT_VALIDATOR_INCREASED_FALSE_NEGATIVE_REPAIR_CHECKPOINT_2026-09-10.md`
 
-Exact next action: **Run a fresh independent Sol High preflight of exact local candidate `b47f7bdc935dcd7708a859eb5605e220c2c21ae5` against published / remote SHA `299418bdfd219e1b8cc3c2be57a735ca147b9a24`. Verify the exact two-file validator diff, preservation of the Reboot non-establishment acceptance fix, closure of the past-tense `increased` false negative, rejection of unsupported causal/commercial claims, mixed-clause laundering resistance, exact Reboot offline replay evidence, and completed regressions. Make 0 Writer/Judge/model/provider calls and no application changes. If `READY_FOR_NEXT_GATE / HIGH`, stop and request separate normal/non-force publication authorization before any replacement Reboot or remaining Plane 3 model execution.**
+Current handoff:
+`HANDOFF_PRYSM_AGENT_ROLE_PROCESS_AND_VALIDATOR_PREFLIGHT_2026-09-10.md`
+
+Exact next action: **Run a fresh independent Sol High preflight of exact local candidate `b47f7bdc935dcd7708a859eb5605e220c2c21ae5` against published / remote SHA `299418bdfd219e1b8cc3c2be57a735ca147b9a24`. Verify the exact two-file validator diff, preservation of the Reboot non-establishment acceptance fix, closure of the past-tense `increased` false negative, ordinary grammatical forms across the governed causal-verb families, rejection of unsupported causal/commercial claims, mixed-clause/punctuation laundering resistance, exact Reboot offline replay evidence, and completed regressions. Make 0 Writer/Judge/model/provider calls and no application changes. If `READY_FOR_NEXT_GATE / HIGH`, the next gate is separate normal/non-force publication before any replacement Reboot or remaining Plane 3 model execution.**
+
+Expected proof file:
+`%USERPROFILE%\Downloads\PRYSM-PLANE3-REBOOT-VALIDATOR-INCREASED-SOL-PREFLIGHT.txt`
 
 Last verified: 2026-09-10
