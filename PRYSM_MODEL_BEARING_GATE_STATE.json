@@ -1,10 +1,40 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PDV5",
+  "checkpoint": "PLANE3_VALIDATOR_REPAIR_PUBLICATION",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "AUDIT_PENDING",
-  "candidateSha": "9b9e85d00a0d8b65a5ba6cad37583aa79151b15e",
+  "status": "VALIDATOR_REPAIR_PUBLISHED / PLANE3_MODEL_AUTHORIZATION_PENDING",
+  "publishedToolingSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
+  "remoteReviewSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
+  "applicationRepository": "chriskulbaba2025/vantage-platform",
+  "applicationBranch": "review/prysm-solution-directive-authority-betty",
+  "applicationWorktree": "CLEAN",
+  "publication": {
+    "status": "PASS",
+    "mode": "NORMAL_NON_FORCE",
+    "commitMessage": "fix(prysm): preserve parenthetical qualifier scope",
+    "deployment": "NONE",
+    "mainMerge": "NONE",
+    "productionMutation": "NONE"
+  },
+  "validatorRepair": {
+    "status": "COMPLETED_VERIFIED",
+    "architecture": "DETERMINISTIC_SUBJECT_PREDICATE_CLAIM_GROUP_SCANNER",
+    "finalIndependentSolHighPreflight": "READY_FOR_NEXT_GATE / HIGH",
+    "freshParentheticalCorpus": {
+      "total": 90,
+      "expectedAccepts": 43,
+      "actualAccepts": 43,
+      "expectedRejects": 47,
+      "actualRejects": 47,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "rebootOfflineReplay": {
+      "valid": true,
+      "errors": []
+    }
+  },
   "incidentAuditId": "aab3c6f9-0cfd-44fb-a263-5c02f6834d8d",
   "incidentReplay": "RECOVERED_EXACT_INPUT_AND_RESPONSE_REPLAYED",
   "writerRootCause": "PDV5.WRITER_COMMERCIAL_OUTCOME_CONTEXT_FALSE_POSITIVE",
@@ -42,9 +72,29 @@
   },
   "writerCompletionChallenge": "PASS: observed conversion actions accepted; asserted downstream outcomes rejected",
   "deterministicWholeAppRegression": "PASS",
-  "independentAuditor": "PENDING_CANDIDATE_AUDIT",
-  "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
+  "independentAuditor": "PASS_READY_FOR_NEXT_GATE_HIGH",
+  "deploymentIdentity": "NO_DEPLOYMENT",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "nextAction": "Hand exact candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e to the independent Auditor after required model-bearing evidence is reconciled.",
-  "lastVerified": "2026-09-01 America/Toronto"
+  "additionalModelProviderAuthorization": "NONE",
+  "retryAuthorized": false,
+  "pass3Authorized": false,
+  "plane3": {
+    "status": "INCOMPLETE_MODEL_BEARING_SAMPLES_REQUIRED",
+    "credit": {
+      "tbkIndependentWriterGenerations": "3/5",
+      "rebootIndependentWriterGenerations": "0/3",
+      "completeWriterJudgeOrchestrations": "1/3"
+    },
+    "remainingRecordedSamples": {
+      "tbkIndependentWriters": 2,
+      "rebootIndependentWriters": 3,
+      "completeWriterJudgeOrchestrations": 2
+    },
+    "failedRebootSampleRetry": "NO_RETRY",
+    "abandonedJudgeCallResume": "NO_RETRY / NO_RESUME"
+  },
+  "plane4": "NOT_YET_ELIGIBLE",
+  "plane5": "NOT_YET_ELIGIBLE",
+  "nextAction": "Obtain separate explicit Chris authorization for the next bounded Plane 3 model-bearing robustness tranche against published application SHA 52eadcc5a8f6bd3a99da7155d0af86ae261a14ab. The tranche must use frozen production-shaped inputs, no provider recollection/rescore, preserve existing Plane 3 credit, never retry the historically failed Reboot sample or abandoned Judge call, and stop immediately on any structural-validation failure, semantic-fidelity critical defect, UNKNOWN/PARTIAL integrity conversion, fabricated evidence, unsupported causal/commercial certainty, materially irrelevant citation, root-cause/action contradiction, or unexplained prompt/schema/validator mismatch.",
+  "lastVerified": "2026-09-10 America/Toronto"
 }

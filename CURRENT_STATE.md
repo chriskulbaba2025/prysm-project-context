@@ -1,62 +1,64 @@
 # Current State
 
-Project: PRYSM — governed website conversion-readiness report and website decision system
+Project: PRYSM
 
-## Final governed report release
+## Current objective
 
-The approved PRYSM report-improvement tranche is CLOSED and production-deployed.
+Maintain authoritative PRYSM state after publication of the bounded WriterOutput validator repair, before any further Plane 3 model-bearing execution.
 
-Locked narrative rule: **Primary pages interpret. Deeper pages explain.**
+## Verified publication checkpoint
 
-Primary client pages:
-
-1. Executive Scorecard — **PASS_LOCKED — 98/100**
-2. Priority Fixes — **PASS_LOCKED — 97/100**
-3. Conversion Journey — **PASS_LOCKED — 97/100**
-4. Content Opportunities — **PASS_LOCKED — 97/100**
-5. Competitor Comparison — **PASS_LOCKED — 97/100**
-6. Trust & Credibility — **PASS_LOCKED — 98/100**
-
-Supporting Detail — **PASS_LOCKED — approved final supporting-detail layer; not Page 7**.
-
-## Frozen release
-
-- Release branch: `p1/bounded-build-cross-report-integrity`
-- Frozen release commit: `1028ca6d2719437cd5b3776559f1e811775a98c5`
-- Release tag: `prysm-report-final-2026-09-08`
-- Promoted main commit: `2cb9a0bf4f9c269f1c47c24195cd126ea5227b59`
 - Application repository: `chriskulbaba2025/vantage-platform`
-- Viewer version: `2.3.0`
-- Full worker report suite: `129 PASS / 0 FAIL`
-- Application production build: PASS
-- Git diff check: PASS
+- Review branch: `review/prysm-solution-directive-authority-betty` (historical branch name only; Betty is not a PRYSM gate)
+- Published application SHA: `52eadcc5a8f6bd3a99da7155d0af86ae261a14ab`
+- Commit: `fix(prysm): preserve parenthetical qualifier scope`
+- Remote review SHA: `52eadcc5a8f6bd3a99da7155d0af86ae261a14ab`
+- Local/remote publication match: **PASS**
+- Application worktree: **CLEAN**
+- Deployment: **NONE**
+- Main merge: **NONE**
+- Production mutation: **NONE**
 
-## Production deployment
+## Validator repair closure
 
-- Vercel project: `prysm`
-- Vercel project ID: `prj_o4dQkuESOoTphZkOwVKG49BaLQT9`
-- Deployment ID: `dpl_HdYVFxCB3YYeVGo7Jf3AaUKGN9Ez`
-- Deployment URL: `https://prysm-9y7jq2b52-chriskulbabas-projects.vercel.app`
-- Production domain: `https://prysm.omnipressence.com`
-- Production status: **READY**
-- Live verification: domain resolves; application login surface loads; deployment aliases include `prysm.omnipressence.com`.
+The deterministic subject/predicate claim-group validator repair is published and independently verified.
 
-## Final report architecture
+- No clause-start noun allowlist.
+- No unconditional `and` splitting.
+- No atom-wide bounded-token sanitization.
+- Shared-subject coordinated predicates inherit legitimate qualifiers.
+- Explicit subjects, negation, non-establishment, Reboot denial, observed actions, and parenthetical local claims remain locally scoped.
+- Parenthetical coordinated predicate continuation inherits active qualifier scope only when structurally continued.
+- Final independent Sol High preflight: **READY_FOR_NEXT_GATE / HIGH**.
+- Fresh parenthetical corpus: 90/90 correct; 0 false positives; 0 false negatives.
+- Exact persisted Reboot replay: `valid=true`, `errors=[]`.
 
-- Exactly six PRIMARY client destinations, in approved order: Executive Scorecard, Priority Fixes, Conversion Journey, Content Opportunities, Competitor Comparison, Trust & Credibility.
-- Exactly one subordinate Supporting Detail destination.
-- Supporting Detail is not Page 7.
-- Supporting Detail retains its orientation, eight-part local navigation, readiness spider chart, entity relationship diagram, representative evidence, progressive disclosure, and material evidence limitations.
+## Plane 3 state
 
-## Governance and activity boundary
+- Status: **INCOMPLETE_MODEL_BEARING_SAMPLES_REQUIRED**
+- TBK independent Writer generations: **3/5**
+- Reboot independent Writer generations: **0/3**
+- Complete Writer -> Judge orchestrations: **1/3**
+- Remaining recorded samples: TBK independent Writers **2**; Reboot independent Writers **3**; complete Writer -> Judge orchestrations **2**
+- Historically failed Reboot sample: **NO RETRY**
+- Abandoned Judge call: **NO RETRY / NO RESUME**
 
-- The intentional dirty PRYSM application candidate was preserved and frozen into the release commit.
-- No new audit, evidence recollection, provider/model call, or production data mutation occurred.
-- No destructive reset, clean, restore, checkout-overwrite, stash, or discard was used.
-- The release was pushed normally, merged normally into `main`, and deployed to the existing Vercel PRYSM project.
+## Authorization and eligibility
+
+- Current additional model/provider authorization: **NONE**
+- Plane 4: **NOT_YET_ELIGIBLE**
+- Plane 5: **NOT_YET_ELIGIBLE**
+- No Writer, Judge, model/provider, recollection, rescore, deployment, merge, or production operation is authorized by this state sync.
+
+## Historical completed facts
+
+- The earlier governed report-redesign release remains CLOSED and production-deployed under its recorded release governance.
+- Historical report release, production deployment, and main-merge details are preserved in prior authoritative history; they do not authorize this Plane 3 tranche or change the current application publication checkpoint above.
 
 ## Exact next action
 
-The governed PRYSM report redesign is production-deployed and CLOSED. Do not reopen this tranche unless new evidence or explicit authorization reopens it.
+Obtain separate explicit Chris authorization for the next bounded Plane 3 model-bearing robustness tranche against published application SHA `52eadcc5a8f6bd3a99da7155d0af86ae261a14ab`. The tranche must use frozen production-shaped inputs, no provider recollection/rescore, preserve existing Plane 3 credit, never retry the historically failed Reboot sample or abandoned Judge call, and stop immediately on any structural-validation failure, semantic-fidelity critical defect, UNKNOWN/PARTIAL integrity conversion, fabricated evidence, unsupported causal/commercial certainty, materially irrelevant citation, root-cause/action contradiction, or unexplained prompt/schema/validator mismatch.
 
-Last verified: 2026-09-08
+Historical report-release and deployment facts remain recorded in prior governance history; they are not current authorization for this Plane 3 tranche.
+
+Last verified: 2026-09-10 America/Toronto
