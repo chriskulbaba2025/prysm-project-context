@@ -1,19 +1,19 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_WRITER_ONLY_HARNESS",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_MODEL_BEARING_ROBUSTNESS",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "HARNESS_IMPLEMENTATION_PASS_PUBLICATION_PENDING",
+  "status": "MODEL_CALL_AUTHORIZATION_PENDING",
   "candidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "previousCandidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
-  "remoteReviewSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
+  "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "primaryAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
   "primaryTarget": "https://www.tbkcreative.com/",
   "persistedResponseRecovery": "CLOSED",
   "independentPreflight": "READY_FOR_NEXT_GATE_HIGH",
   "priorModelAuthorization": "CONSUMED_2026-09-09_SINGLE_USE_CLOSED",
   "harnessImplementation": {
-    "status": "PASS_LOCAL_ONLY",
+    "status": "PASS_PUBLISHED",
     "changedFiles": [
       "services/worker/scripts/plane3-writer-only.mjs",
       "services/worker/scripts/plane3-writer-only.test.js"
@@ -31,7 +31,7 @@
     "deployment": "NONE",
     "productionMutation": "NONE",
     "mainMerge": "NONE",
-    "push": "NONE"
+    "push": "PASS_NON_FORCE"
   },
   "currentCandidateSample": {
     "status": "PASS",
@@ -72,8 +72,8 @@
     "minimumAdditionalModelCalls": 9,
     "maximumBoundedModelCallExposure": 13
   },
-  "writerOnlyHarness": "IMPLEMENTED_AND_DETERMINISTICALLY_VERIFIED_LOCAL_ONLY",
-  "additionalModelProviderAuthorization": "NONE",
+  "writerOnlyHarness": "IMPLEMENTED_DETERMINISTICALLY_VERIFIED_AND_PUBLISHED",
+  "additionalModelProviderAuthorization": "NONE_PENDING_EXPLICIT_CHRIS_APPROVAL",
   "plane3": "INCOMPLETE_CURRENT_CANDIDATE",
   "plane4": "NOT_YET_COMPLETE_CURRENT_CANDIDATE",
   "plane5": "NOT_YET_ELIGIBLE",
@@ -86,6 +86,7 @@
   "runCheckpoint": "PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZED_RUN_CHECKPOINT_2026-09-09.md",
   "robustnessPlanCheckpoint": "PRYSM_CURRENT_CANDIDATE_PLANE3_ROBUSTNESS_PLAN_CHECKPOINT_2026-09-09.md",
   "harnessCheckpoint": "PRYSM_PLANE3_WRITER_ONLY_HARNESS_IMPLEMENTATION_CHECKPOINT_2026-09-09.md",
-  "nextAction": "Obtain explicit Chris authorization to publish local candidate a16430aa6c000afadcaade3e692e41f0f08ed903 normally/non-force to review/prysm-solution-directive-authority-betty and verify the remote branch resolves exactly to that SHA. Make zero model/provider calls and do not deploy, merge main, or mutate production. After publication verification, freeze the exact Plane 3 model-call authorization boundary.",
+  "publicationCheckpoint": "PRYSM_PLANE3_HARNESS_REVIEW_BRANCH_PUBLICATION_CHECKPOINT_2026-09-09.md",
+  "nextAction": "Obtain explicit Chris authorization for one bounded Plane 3 model-bearing robustness tranche at exact published candidate a16430aa6c000afadcaade3e692e41f0f08ed903. Authorization must cover only the frozen TBK/Reboot sample, maximum 13 model calls, existing governed budget ceilings, isolated ledgers, no provider recollection/rescore, no Pass 3, no deployment, no production mutation, and no main merge.",
   "lastVerified": "2026-09-09 America/Toronto"
 }
