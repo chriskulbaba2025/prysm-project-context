@@ -1,92 +1,74 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE_FRESH_BASELINE_PENDING",
+  "checkpoint": "PLANE3_PREFLIGHT_HARNESS_IDENTITY_AND_LIVE_CONFIG_RECONCILIATION",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / FRESH_BASELINE_AUTHORIZATION_PENDING",
+  "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / PREFLIGHT_RECONCILIATION_REQUIRED",
   "publishedToolingSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "remoteReviewSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "currentLocalCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AFTER_PUBLICATION",
-  "publication": {
-    "status": "PUBLISHED_EXACT_CANDIDATE",
-    "requiredCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-    "mode": "NORMAL_NON_FORCE_FAST_FORWARD_ONLY",
-    "deployment": "NONE",
-    "mainMerge": "NONE",
-    "productionMutation": "NONE"
-  },
+  "applicationWorktree": "CLEAN_AT_LAST_PROOF",
   "ga4ConversionOutcomeDecision": {
     "decision": "PAUSED_FOR_CURRENT_RELEASE",
-    "approvedByChris": true,
-    "decisionFile": "DECISION_PRYSM_GA4_CONVERSION_OUTCOME_PAUSE_2026-09-10.md",
     "observedDownstreamCommercialOutcomeRequiredForCurrentRelease": false,
     "ga4ObservedConversionAuthority": "NOT_AUTHORIZED",
-    "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE",
-    "futureFeature": "SEPARATELY_GOVERNED_CONVERSION_EVENT_AUTHORITY"
+    "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE"
   },
   "verifiedCandidate": {
     "sha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-    "parentSha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
-    "builder": {
-      "model": "gpt-5.6-terra",
-      "effort": "high",
-      "result": "REPAIR_PASS / HIGH"
-    },
-    "independentVerifier": {
-      "model": "gpt-5.6-sol",
-      "effort": "high",
-      "result": "INDEPENDENT_VERIFIER_PASS / HIGH",
-      "blockingDefects": 0
-    },
+    "builder": "REPAIR_PASS / HIGH",
+    "builderModel": "gpt-5.6-terra / high",
+    "independentVerifier": "INDEPENDENT_VERIFIER_PASS / HIGH",
+    "independentVerifierModel": "gpt-5.6-sol / high",
     "writerInputVersion": "1.2.0",
-    "rawSourceBusinessImpactAsWriterAuthority": false,
-    "downstreamCommercialImpactBasis": "INFERRED_ONLY_FOR_CURRENT_RELEASE",
-    "lexicalBlacklistAsSafetyMechanism": false,
-    "proxyEvidencePromotionToCommercialOutcome": false,
-    "observedConditionEvidencePreserved": true,
-    "writerOutputValidatorChanged": false,
-    "scoringSemanticsChanged": false,
-    "ga4ArchitectureChanged": false,
     "fullWorker": "1009/1009 PASS",
     "narrativeV2": "150/150 PASS",
     "storageRecovery": "41/41 PASS",
     "productionPath": "11/11 PASS"
   },
+  "latestPlane3Preflight": {
+    "result": "PLANE3_PREFLIGHT_BLOCKED / HIGH",
+    "writerCalls": 0,
+    "judgeCalls": 0,
+    "providerModelCalls": 0,
+    "blockers": [
+      "HARNESS_SEMANTIC_APPLICATION_BASE_STALE",
+      "LIVE_WRITER_JUDGE_ROUTING_AND_COST_CONFIGURATION_UNAVAILABLE"
+    ],
+    "currentHarnessSemanticBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
+    "authorizedToolingOverlay": [
+      "services/worker/scripts/plane3-writer-only.mjs",
+      "services/worker/scripts/plane3-writer-only.test.js"
+    ],
+    "checkpointFile": "PRYSM-PLANE3-PREFLIGHT-HARNESS-IDENTITY-AND-LIVE-CONFIG-BLOCKER_2026-09-10.md"
+  },
   "authorization": {
-    "semanticBuilder": "COMPLETED_PASS",
-    "independentVerification": "COMPLETED_PASS",
-    "mechanicalPublication": "COMPLETED_EXACT_VERIFIED_SHA_NORMAL_NON_FORCE",
-    "mechanicalPublicationRoute": "gpt-5.6-luna / medium",
-    "writerJudgeProviderModelBearingCalls": "NONE",
+    "deterministicPreflightReconciliation": "AUTHORIZED_BY_CHRIS_MOVE_AHEAD_INSTRUCTION",
+    "preflightRoute": "gpt-5.6-luna / medium",
+    "semanticRepairIfRequired": "STOP_AND_ROUTE_TO_GPT-5.6-TERRA_HIGH",
+    "independentVerificationAfterSemanticChange": "gpt-5.6-sol / high",
+    "writerJudgeProviderModelBearingCallsDuringReconciliation": "NONE",
     "providerRecollectionRescore": "NONE",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
   },
   "plane3": {
-    "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / FRESH_BASELINE_AUTHORIZATION_PENDING",
+    "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / PREFLIGHT_RECONCILIATION_REQUIRED",
     "historicalPreChangeCredit": {
       "tbkIndependentWriterGenerations": "3/5",
       "rebootIndependentWriterGenerations": "0/3",
       "completeWriterJudgeOrchestrations": "1/3"
     },
     "historicalCreditTransferToNewCandidate": "NONE_AUTOMATIC",
-    "freshBaselineAuthorizationRequiredAfterPublicationAndContextSync": true,
-    "rebootRun1": "PRESERVED_HISTORICAL_EVIDENCE",
     "rebootRun2": "FAILED_HISTORICAL_EVIDENCE / NO_RETRY",
     "abandonedJudgeCall": "NO_RETRY / NO_RESUME"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Obtain fresh explicit Chris authorization for a new governed Plane 3 Writer/Judge model-bearing baseline against exact published candidate d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97.",
-  "postPublicationSequenceBeforeModelBearing": [
-    "EXACT_REMOTE_SHA_VERIFIED",
-    "AUTHORITATIVE_CONTEXT_SYNCHRONIZATION_TO_PUBLISHED_SHA",
-    "FRESH_EXPLICIT_CHRIS_AUTHORIZATION_FOR_NEW_PLANE3_BASELINE"
-  ],
+  "nextAction": "Run one long governed GPT-5.6 Luna / Medium deterministic preflight-reconciliation operation against exact published candidate d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97. Prove and, if purely mechanical, advance the Plane 3 harness semantic-base checkpoint while preserving clean-tree/exact-SHA/tooling-overlay protections; discover and validate existing live Narrative v2 routing, endpoint, token, price-table and budget configuration without exposing secrets and without making any model/provider call; run focused harness/config tests and required deterministic regressions; stop with the exact remaining configuration list if unavailable, or SEMANTIC_REPAIR_REQUIRED if application semantics would need to change.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
