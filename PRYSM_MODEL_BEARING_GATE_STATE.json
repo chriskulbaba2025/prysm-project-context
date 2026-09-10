@@ -1,29 +1,21 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_REBOOT_RUN2_SEMANTIC_FAILURE_WRITERINPUT_CONTRACT_BUILD_PENDING",
+  "checkpoint": "PLANE3_WRITERINPUT_FAIL_CLOSED_REPAIR_WITH_GA4_OUTCOME_AUTHORITY_PAUSED",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "PLANE3_GATE_FAILED / WRITERINPUT_AUTHORITY_CHANGE_REQUIRED",
+  "status": "PLANE3_GATE_FAILED / NEW_SEMANTIC_CANDIDATE_REQUIRED",
   "publishedToolingSha": "089405fcd49dea825394092d8920637c3b167324",
   "remoteReviewSha": "089405fcd49dea825394092d8920637c3b167324",
+  "currentLocalCandidateSha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
   "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AFTER_HARNESS_PUBLICATION",
+  "applicationWorktree": "CLEAN_AT_LAST_PROOF",
   "publication": {
-    "status": "PASS",
-    "mode": "NORMAL_NON_FORCE",
+    "status": "CURRENT_LOCAL_SEMANTIC_CANDIDATE_NOT_PUBLISHED",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
-  },
-  "harnessIdentityRepair": {
-    "status": "COMPLETED_VERIFIED_AND_PUBLISHED",
-    "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
-    "publishedHarnessSha": "089405fcd49dea825394092d8920637c3b167324",
-    "publicationStatus": "PASS",
-    "mode": "NORMAL_NON_FORCE",
-    "commitMessage": "fix(prysm): advance Plane 3 harness semantic base"
   },
   "rebootRun2Failure": {
     "diagnosis": "DIAGNOSIS_COMPLETE / HIGH",
@@ -39,29 +31,68 @@
     "validatorFalsePositive": false,
     "writerCalls": 2,
     "judgeCalls": 0,
-    "actualModelCostUsd": 0.21364,
-    "rawFileSha256": "1057aa5f9859c231813df8bee3a1eac8711b4ae08a5e4314e4461731daa0bad",
-    "parsedJsonSha256": "e7f8fa281abdb28a444e1db88cadcb416425893653ae20eed6d0e8fce1c3d5cb",
-    "hashDiscrepancyCause": "HASHING_METHOD_DIFFERENCE_NOT_INPUT_DRIFT"
+    "actualModelCostUsd": 0.21364
   },
-  "writerRobustnessDesign": {
-    "result": "CONTRACT_READY_FOR_BUILD / HIGH",
-    "selectedPath": "WRITERINPUT_AUTHORITY_CHANGE_REQUIRED",
-    "architecture": "SOURCE_PRESERVED_TYPED_DERIVED_WRITER_FACING_BUSINESS_IMPACT_AUTHORITY",
-    "sourceFieldPreserved": "finding.businessImpact",
-    "writerOutputValidatorChangeExpected": false,
-    "phraseBlacklist": "PROHIBITED_AS_PRIMARY_REPAIR",
-    "writerModelSwitch": "NOT_AUTHORIZED_WITHOUT_SEPARATE_ROUTING_EVIDENCE_GOVERNANCE"
+  "firstWriterInputCandidate": {
+    "sha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
+    "builder": "PASS",
+    "independentVerifier": "BLOCKED",
+    "blockingClass": "FAIL_OPEN_BUSINESS_IMPACT_AUTHORITY",
+    "reason": "Inferred safety still relied on incomplete lexical detection and OBSERVED authority could be manufactured by nonempty refs without structurally proven downstream-outcome identity."
+  },
+  "ga4ConversionOutcomeDecision": {
+    "decision": "PAUSED_FOR_CURRENT_RELEASE",
+    "approvedByChris": true,
+    "decisionFile": "DECISION_PRYSM_GA4_CONVERSION_OUTCOME_PAUSE_2026-09-10.md",
+    "observedDownstreamCommercialOutcomeRequiredForCurrentRelease": false,
+    "ga4ObservedConversionAuthority": "NOT_AUTHORIZED",
+    "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE",
+    "futureFeature": "SEPARATELY_GOVERNED_CONVERSION_EVENT_AUTHORITY"
+  },
+  "currentReleaseWriterImpactRules": {
+    "sourceBusinessImpactPreserved": true,
+    "rawSourceBusinessImpactAsWriterAuthority": false,
+    "downstreamCommercialImpactBasis": "INFERRED_ONLY_FOR_CURRENT_RELEASE",
+    "lexicalBlacklistAsSafetyMechanism": "PROHIBITED",
+    "proxyEvidencePromotionToCommercialOutcome": "PROHIBITED",
+    "writerOutputValidatorChange": "NONE",
+    "observedConditionEvidence": "PRESERVE_EXISTING_GOVERNED_CONTRACTS"
   },
   "authorization": {
-    "builderDeterministicImplementation": "AUTHORIZED_BY_CURRENT_USER_INSTRUCTION_WITHIN_FROZEN_CONTRACT",
+    "builderDeterministicImplementation": "AUTHORIZED_BY_CHRIS_WITHIN_PAUSED_GA4_RELEASE_BOUNDARY",
     "builderRoute": "gpt-5.6-terra / high",
+    "mechanicalRouteAfterSemanticsFrozen": "gpt-5.6-luna / medium",
     "independentVerificationRoute": "gpt-5.6-sol / high",
     "writerJudgeProviderModelBearingCalls": "NONE",
     "providerRecollectionRescore": "NONE",
+    "pushPublication": "NONE_UNTIL_BUILDER_AND_INDEPENDENT_VERIFICATION_PASS",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
+  },
+  "longRunPolicy": {
+    "preferred": true,
+    "builderSequence": [
+      "DIAGNOSIS_CONFIRMATION",
+      "BOUNDED_IMPLEMENTATION",
+      "FOCUSED_ADVERSARIAL_FIRETESTS",
+      "COMPATIBILITY_TESTS",
+      "NARRATIVE_V2_REGRESSION",
+      "STORAGE_RECOVERY_REGRESSION",
+      "PRODUCTION_PATH_REGRESSION",
+      "FULL_WORKER_REGRESSION",
+      "EXACT_HEAD_VERIFICATION",
+      "LOCAL_COMMIT",
+      "DOWNLOADS_PROOF"
+    ],
+    "stopEarlyOnlyFor": [
+      "BOUNDARY_EXPANSION_REQUIRED",
+      "PROTECTED_INVARIANT_FAILURE",
+      "UNRESOLVED_AUTHORITY_AMBIGUITY",
+      "UNAUTHORIZED_MODEL_PROVIDER_CALL",
+      "PROVIDER_RECOLLECTION_OR_RESCORE",
+      "PUSH_DEPLOY_MERGE_PRODUCTION_MUTATION"
+    ]
   },
   "plane3": {
     "status": "GATE_FAILED / NEW_SEMANTIC_CANDIDATE_REQUIRED",
@@ -78,7 +109,7 @@
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one governed GPT-5.6 Terra / High Builder implementation against local application C:\\Users\\kulba\\Desktop\\vantage-platform, branch review/prysm-solution-directive-authority-betty, starting from exact published harness HEAD 089405fcd49dea825394092d8920637c3b167324. Verify repository/branch/HEAD/worktree first; use CHANGE_ONLY; implement only the frozen source-preserved typed derived WriterInput business-impact authority contract plus minimum prompt/test/schema compatibility changes; make zero Writer/Judge/provider/model-bearing calls; preserve protected scoring/evidence/lifecycle/provider invariants; run deterministic focused/affected verification; write the required Downloads proof artifact; stop if the exact required file boundary expands materially or any governed proof fails.",
+  "nextAction": "Run one long governed GPT-5.6 Terra / High Semantic Repair Builder against local application C:\\Users\\kulba\\Desktop\\vantage-platform, branch review/prysm-solution-directive-authority-betty, starting from exact clean local SHA 125e296a0ff2878c1cebfa576740a11b5039ca9f. Implement only the paused-GA4 fail-closed WriterInput repair: preserve source businessImpact, remove lexical safety logic, derive bounded INFERRED Writer-facing commercial significance from structured governed finding/evidence context, preserve existing observed-condition authority, make no GA4 conversion-authority architecture changes, run focused adversarial firetests plus complete deterministic regressions, commit locally only after all gates PASS, write Downloads proof, then stop with no push/publication/model-bearing testing.",
   "postBuildSequenceBeforeModelBearing": [
     "BUILDER_PASS",
     "INDEPENDENT_SOL_HIGH_PASS",
