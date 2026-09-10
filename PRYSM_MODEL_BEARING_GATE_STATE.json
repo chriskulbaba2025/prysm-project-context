@@ -3,7 +3,7 @@
   "project": "PRYSM",
   "checkpoint": "CLEAN_TBK_RELEASE_CANDIDATE_ORCHESTRATION",
   "scope": "FROZEN_TBK_WRITER_JUDGE_ONLY",
-  "status": "AUTHORIZED_READY_TO_EXECUTE",
+  "status": "AUTHORIZED_PREEXECUTION_BLOCKED",
   "candidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
   "sourceAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
   "sourceTarget": "https://www.tbkcreative.com/",
@@ -11,6 +11,8 @@
   "persistedResponseRecovery": "CLOSED",
   "independentPreflight": "READY_FOR_NEXT_GATE_HIGH",
   "humanAuthorization": "GRANTED_2026-09-09_SINGLE_USE_NOT_YET_CONSUMED",
+  "preExecutionResult": "FAIL_REQUIRED_LIVE_NARRATIVE_ENVIRONMENT_ABSENT_FROM_PLAIN_LOCAL_PROCESS",
+  "establishedExecutionEnvironment": "RAILWAY_RUN_SERVICE_vantage-platform",
   "automaticPassCeiling": 2,
   "automaticModelCallCeiling": 4,
   "thirdPass": "NOT_AUTHORIZED_REQUIRES_SEPARATE_EXPLICIT_HUMAN_AUTHORIZATION",
@@ -21,7 +23,8 @@
   "productionMutation": "NOT_AUTHORIZED",
   "mainMerge": "NOT_AUTHORIZED",
   "authorizationBoundary": "PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZATION_BOUNDARY_2026-09-09.md",
-  "previousCheckpointNote": "The prior PDV5 state at candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e remains available in Git history and is not treated as current-candidate model-bearing proof.",
-  "nextAction": "Run the required pre-execution checks against exact local candidate a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893 and, only if all pass, execute exactly one clean TBK Writer/Judge automatic orchestration through services/worker/TBK-fresh-writer-judge.mjs. Stop at the first terminal result; do not run Pass 3 or a second orchestration.",
+  "blockerCheckpoint": "PRYSM_CLEAN_TBK_WRITER_JUDGE_PREEXECUTION_BLOCKER_2026-09-09.md",
+  "previousCheckpointNote": "The prior PDV5 state at candidate 9b9e85d00a0d8b65a5ba6cad37583aa79151b15e remains historical and is not current-candidate model-bearing proof.",
+  "nextAction": "From C:\\Users\\kulba\\Desktop\\vantage-platform\\services\\worker run railway run -s vantage-platform node TBK-env-check.mjs. If and only if the required live Narrative configuration is present, execute exactly one railway run -s vantage-platform node TBK-fresh-writer-judge.mjs under the existing single-use authorization. Stop at the first terminal result; do not run Pass 3 or a second orchestration. If the Railway-backed preflight fails, stop before any model/provider call without editing configuration.",
   "lastVerified": "2026-09-09 America/Toronto"
 }
