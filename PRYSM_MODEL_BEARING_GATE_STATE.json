@@ -1,15 +1,15 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_MODEL_BEARING_ROBUSTNESS",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_WRITER_ONLY_HARNESS",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "SAMPLE_PASS_ROBUSTNESS_PREPARATION",
+  "status": "HARNESS_IMPLEMENTATION_AUTHORIZATION_PENDING",
   "candidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
   "primaryAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
   "primaryTarget": "https://www.tbkcreative.com/",
   "persistedResponseRecovery": "CLOSED",
   "independentPreflight": "READY_FOR_NEXT_GATE_HIGH",
-  "humanAuthorization": "CONSUMED_2026-09-09_SINGLE_USE_CLOSED",
+  "priorModelAuthorization": "CONSUMED_2026-09-09_SINGLE_USE_CLOSED",
   "currentCandidateSample": {
     "status": "PASS",
     "executionId": "tbk-fresh-narrative-fresh-live-1789008473452-31952",
@@ -40,18 +40,28 @@
       }
     ],
     "confirmedAdditionalRealInputCount": 1,
-    "secondAdditionalRealInput": "NOT_CONFIRMED_IN_CURRENT_REPOSITORY_DO_NOT_FABRICATE"
+    "secondAdditionalRealInput": "NOT_CONFIRMED_DO_NOT_FABRICATE"
   },
+  "remainingPlane3Sample": {
+    "tbkIndependentWriterGenerations": 4,
+    "rebootIndependentWriterGenerations": 3,
+    "additionalCompleteWriterJudgeRuns": 2,
+    "minimumAdditionalModelCalls": 9,
+    "maximumBoundedModelCallExposure": 13
+  },
+  "writerOnlyHarness": "REQUIRED_NOT_YET_IMPLEMENTED",
+  "writerOnlyHarnessModelCallsAuthorized": 0,
   "plane3": "INCOMPLETE_CURRENT_CANDIDATE",
   "plane4": "NOT_YET_COMPLETE_CURRENT_CANDIDATE",
   "plane5": "NOT_YET_ELIGIBLE",
   "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
   "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "providerRecollection": "NONE",
+  "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
   "runCheckpoint": "PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZED_RUN_CHECKPOINT_2026-09-09.md",
-  "nextAction": "Recover and verify the governed current-candidate model-bearing robustness execution method and freeze the minimum remaining Plane 3 sample/call/cost plan across TBK and the one confirmed distinct Reboot input. Do not call models/providers before separate Chris authorization.",
+  "robustnessPlanCheckpoint": "PRYSM_CURRENT_CANDIDATE_PLANE3_ROBUSTNESS_PLAN_CHECKPOINT_2026-09-09.md",
+  "nextAction": "Obtain explicit Chris authorization to implement and deterministically test the bounded non-production Writer-only robustness harness. That implementation authorization permits zero model/provider calls. After deterministic harness verification passes, freeze the exact Plane 3 execution allocation and request separate model-call authorization.",
   "lastVerified": "2026-09-09 America/Toronto"
 }
