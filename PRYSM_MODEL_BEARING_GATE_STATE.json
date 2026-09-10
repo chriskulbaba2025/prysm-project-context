@@ -1,34 +1,45 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_IDENTITY_CONTRACT_REPAIR",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_IDENTITY_CONTRACT_REPAIRED",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "HARNESS_IDENTITY_CONTRACT_REPAIR_AUTHORIZATION_PENDING",
+  "status": "INDEPENDENT_SOL_HIGH_PREFLIGHT_PENDING",
   "semanticCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "localToolingCandidateSha": "61303af4d7d567c2d77eb61379b98dff6f1974aa",
+  "localToolingCandidateSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
   "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "writerOnlyHarness": "NOT_READY_SELF_REFERENCE_IDENTITY_DEFECT",
-  "independentSolHighPreflight": {
-    "result": "NOT_READY",
-    "confidence": "HIGH",
-    "reason": "Harness main derives executing git HEAD while fixed EXPECTED_CANDIDATE_SHA represents the semantic published base, so the tooling candidate rejects itself. Unit coverage injects the base SHA and misses the real main/HEAD path.",
-    "writerCalls": 0,
-    "judgeCalls": 0,
-    "modelProviderApplicationCalls": 0
-  },
+  "writerOnlyHarness": "IDENTITY_CONTRACT_REPAIRED_AND_DETERMINISTICALLY_VERIFIED_LOCAL_ONLY",
   "identityContract": {
-    "executingHeadMayNotBeSelfHardcoded": true,
-    "semanticCandidateMustBeDistinctFromToolingHead": true,
-    "requiredDesign": "FAIL_CLOSED_BOUNDED_TOOLING_OVERLAY_ON_SEMANTIC_BASE",
+    "semanticBaseDistinctFromToolingHead": true,
+    "semanticBaseAncestorRequired": true,
+    "cleanWorktreeRequired": true,
+    "correctRepositoryRootRequired": true,
+    "boundedOverlayRequired": true,
+    "authorizedChangedPaths": [
+      "services/worker/scripts/plane3-writer-only.mjs",
+      "services/worker/scripts/plane3-writer-only.test.js"
+    ],
     "arbitraryShaInput": "PROHIBITED",
     "environmentBypass": "PROHIBITED",
     "wildcard": "PROHIBITED",
     "guardRemoval": "PROHIBITED"
   },
-  "expectedRepairFiles": [
-    "services/worker/scripts/plane3-writer-only.mjs",
-    "services/worker/scripts/plane3-writer-only.test.js"
-  ],
+  "repairVerification": {
+    "result": "HARNESS_IDENTITY_CONTRACT_REPAIR_PASS",
+    "focusedTests": "11/11 PASS",
+    "narrativeRegression": "132/132 PASS",
+    "storageRegression": "106/106 PASS",
+    "productionPathRegression": "11/11 PASS",
+    "fullWorkerRegression": "1009/1009 PASS",
+    "gitDiffCheck": "PASS",
+    "postCommitRuntimeIdentityVerification": "PASS",
+    "writerCalls": 0,
+    "judgeCalls": 0,
+    "modelProviderCalls": 0,
+    "push": "NONE",
+    "deployment": "NONE",
+    "productionMutation": "NONE",
+    "mainMerge": "NONE"
+  },
   "abandonedPriorCall": {
     "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
     "callNumber": 4,
@@ -51,14 +62,13 @@
   "additionalModelProviderAuthorization": "NONE",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "INCOMPLETE_HARNESS_IDENTITY_CONTRACT_REPAIR_REQUIRED",
+  "plane3": "INCOMPLETE_PREFLIGHT_PUBLICATION_AND_MODEL_TRANCHE_REQUIRED",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
   "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "preflightCheckpoint": "PRYSM_PLANE3_HARNESS_IDENTITY_SOL_PREFLIGHT_NOT_READY_CHECKPOINT_2026-09-10.md",
-  "nextAction": "Obtain explicit Chris authorization for a bounded two-file non-production repair that separates semantic application candidate identity from tooling HEAD, preserves fail-closed bounded-overlay validation, adds deterministic coverage of the real main/HEAD path and invalid overlays, makes zero Writer/Judge/model/provider calls, commits locally if green, and stops for a fresh independent Sol High preflight before publication or Plane 3 execution.",
+  "nextAction": "Run an independent Sol High preflight of exact local tooling candidate 299418bdfd219e1b8cc3c2be57a735ca147b9a24 against semantic base a16430aa6c000afadcaade3e692e41f0f08ed903 with zero Writer/Judge/model/provider calls and no application changes. If READY_FOR_NEXT_GATE / HIGH, request separate normal/non-force publication authorization before any Plane 3 model execution.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
