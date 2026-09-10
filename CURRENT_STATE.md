@@ -4,115 +4,81 @@ Project: PRYSM
 
 ## Current objective
 
-Close the Plane 3 WriterInput business-impact authority defect under the approved current-release boundary that pauses GA4 downstream commercial-outcome authority. Build a fail-closed Writer-facing business-impact contract that preserves canonical source findings, removes lexical sanitization as the safety mechanism, and treats downstream commercial impact as bounded `INFERRED` significance for this release.
-
-No further Writer/Judge model-bearing execution is permitted until the new semantic candidate is built, independently verified, published, synchronized to authoritative context, and separately authorized by Chris for a fresh Plane 3 baseline.
+Publish and synchronize the exact independently verified paused-GA4 WriterInput semantic candidate, then stop for fresh Chris authorization before any new Plane 3 model-bearing Writer/Judge baseline.
 
 ## Exact application checkpoint
 
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
-- Review branch: `review/prysm-solution-directive-authority-betty` (historical branch name only; Betty is not a PRYSM gate)
-- Published harness HEAD / parent before WriterInput authority work: `089405fcd49dea825394092d8920637c3b167324`
-- Current local WriterInput authority candidate: `125e296a0ff2878c1cebfa576740a11b5039ca9f`
-- Current candidate worktree at last proof: **CLEAN**
+- Review branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
+- Parent before paused-GA4 repair: `125e296a0ff2878c1cebfa576740a11b5039ca9f`
+- Exact verified semantic candidate: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
+- Candidate worktree at Builder and verifier close: **CLEAN**
+- Candidate publication: **PENDING**
 - Deployment: **NONE**
 - Main merge: **NONE**
 - Production mutation: **NONE**
 
-## Plane 3 Reboot Run 2 failure checkpoint
-
-- Configured Writer: `gpt-5.6-terra`
-- Configured Judge: `gpt-5.6-sol`
-- Reboot Writer Run 1: **PASS**
-- Reboot Writer Run 2: **FAIL**
-- Failing Writer text: `The finding states that slow first impressions increase mobile abandonment. Field performance evidence was unavailable, so real-user performance was not established.`
-- Validator error: `writerOutput.performanceUx.userImpact.text states an unmeasured business outcome with causal certainty`
-- Validator disposition: **CORRECT FAIL-CLOSED STOP**
-- Diagnosis: `DIAGNOSIS_COMPLETE / HIGH`
-- Primary root-cause class: `MODEL_INSTRUCTION_FOLLOWING_VARIANCE`
-- Harness defect: **NO**
-- Validator false positive: **NO**
-
-## WriterInput repair history
-
-- First typed WriterInput candidate committed locally at `125e296a0ff2878c1cebfa576740a11b5039ca9f`.
-- Builder deterministic suites passed, but independent Sol High verification correctly BLOCKED the candidate.
-- Blocking class: Writer-facing business-impact authority remained fail-open because inferred safety depended on incomplete lexical detection, and the proposed OBSERVED path accepted nonempty refs without structurally proving downstream-outcome identity.
-- Follow-on architecture reviews proved that a legitimate direct downstream commercial `OBSERVED` path would require a larger producer/transport authority expansion.
-- GA4 was inspected as the likely source but current `keyEvents / sessions` data does not establish which events represent a governed business conversion.
-
-## Approved GA4 conversion-outcome pause
+## Current-release GA4 decision
 
 Decision file: `DECISION_PRYSM_GA4_CONVERSION_OUTCOME_PAUSE_2026-09-10.md`
 
-Chris approved pausing GA4-based downstream commercial-outcome authority for the current release.
-
-Current release rules:
+GA4 downstream commercial-outcome authority is PAUSED for this release.
 
 - No GA4-based `OBSERVED` conversion, enquiry, lead, revenue, abandonment, or other downstream commercial-outcome authority.
-- GA4 may continue only within its existing governed contextual/analytics evidence role.
-- Do not expand audit-request GA4 configuration, GA4 event mapping, GA4 provider collection, scoring transport, or conversion-authority architecture in this repair.
+- GA4 remains only in its existing governed contextual/analytics role.
+- Do not expand GA4 event mapping, audit-request GA4 configuration, provider collection, scoring transport, or conversion-authority architecture in this release repair.
 - No positive `OBSERVED` downstream commercial-outcome path is required for the current release.
-- Raw `finding.businessImpact` remains preserved source/history provenance only.
-- Arbitrary source `businessImpact` prose must not become Writer authority.
-- Writer-facing commercial significance must be deterministically bounded and `INFERRED`.
-- Existing directly observed technical/search/accessibility/rendering/condition evidence remains governed by its existing contracts and is not downgraded by this decision.
-- WriterOutput validator remains unchanged.
-- Phrase-blacklist/lexical detection is prohibited as the primary safety mechanism.
 
-## Implementation boundary now authorized
+## Verified WriterInput repair
 
-Chris has authorized moving ahead with deterministic implementation of the paused-GA4 current-release WriterInput repair.
+Builder:
 
-Preferred semantic Builder route: **GPT-5.6 Terra / High**.
+- Model: GPT-5.6 Terra / High
+- Result: `REPAIR_PASS / HIGH`
+- Final local candidate: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
+- Full worker: 1009/1009 PASS
+- Worktree: CLEAN
 
-Use a long governed run where safe:
+Independent verifier:
 
-diagnosis confirmation → bounded implementation → focused adversarial firetests → compatibility tests → Narrative v2 regression → storage/recovery regression → production-path regression → full worker deterministic regression → exact-head verification → local commit → Downloads proof.
+- Model: GPT-5.6 Sol / High
+- Result: `INDEPENDENT_VERIFIER_PASS / HIGH`
+- Exact verified SHA: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
+- Blocking defects: NONE
+- Full worker: 1009/1009 PASS
+- Narrative v2: 150/150 PASS
+- Storage/recovery: 41/41 PASS
+- Production path: 11/11 PASS
+- Worktree at close: CLEAN
 
-Stop early only for:
+Checkpoint: `PRYSM-PAUSED-GA4-WRITERINPUT-INDEPENDENT-VERIFIER-PASS_2026-09-10.md`
 
-- required production-code boundary expansion beyond the paused-GA4 WriterInput repair;
-- protected scoring/evidence/lifecycle/provider invariant failure;
-- unresolved authority ambiguity;
-- requirement for a Writer/Judge/provider/model-bearing call;
-- provider recollection/rescore;
-- push/deploy/merge/production mutation.
+## Verified release semantics
 
-Expected primary production edit boundary:
-
-- `services/worker/src/narrative-v2/writer-findings.js`
-- `services/worker/src/narrative-v2/writer-input.js` if required for the fail-closed contract/version
-- `services/worker/src/narrative-v2/writer-prompt.js` only for the minimum aligned typed-authority instruction
-
-Focused tests and compatibility fixtures may change as required.
-
-Do NOT modify GA4 conversion-event architecture, scoring formulas/weights, priorities/order, provider collection semantics, canonical evidence, canonical solution authority, WriterOutput validator semantics, Judge, lifecycle/state, storage algorithms, authentication, model routing, renderer semantics, or historical persisted artifacts.
-
-## Required repair semantics
-
-1. Preserve original canonical `finding.businessImpact` unchanged.
-2. Remove lexical commercial-outcome/certainty detection as the safety decision.
-3. For Writer authority, derive bounded significance deterministically from structured governed finding/evidence context rather than sanitizing arbitrary source prose.
-4. Legacy/untyped business-impact authority fails closed to `INFERRED`.
-5. Downstream commercial outcome authority fails closed to `INFERRED` for this release.
-6. AVAILABLE proxy/condition evidence never upgrades downstream commercial impact.
-7. Exact Reboot case with slow LCP and unmeasured abandonment must project bounded significance only.
-8. Initial and revision prompt paths must apply the same rule.
-9. WriterOutput validator must remain unchanged and retain rejection behavior.
-10. Numeric scores, finding priorities/order, evidence values/statuses, solution IDs, and root-cause identity must remain unchanged.
+- Canonical `finding.businessImpact` remains unchanged as source/history provenance.
+- Raw source business-impact prose cannot become Writer authority.
+- Writer-facing downstream commercial significance is bounded `INFERRED` for this release.
+- Finite lexical/commercial-word detection is not the safety mechanism.
+- AVAILABLE proxy/condition evidence cannot create observed commercial-outcome authority.
+- Existing observed technical/search/accessibility/rendering/condition evidence remains preserved under its existing contracts.
+- WriterInput current version is `1.2.0`.
+- Historical `1.0.0` / `1.1.0` packets are not silently upgraded.
+- WriterOutput validator remains unchanged and defensive.
+- Scoring/evidence/priority/canonical-solution semantics remain unchanged.
+- GA4 architecture remains unchanged.
 
 ## Plane 3 state
 
-- Status: **GATE_FAILED / NEW_SEMANTIC_CANDIDATE_REQUIRED**
+- Status: **VERIFIED_SEMANTIC_CANDIDATE / PUBLICATION_PENDING**
 - Durable historical pre-change credit remains evidence only:
   - TBK independent Writer generations: **3/5**
   - Reboot independent Writer generations: **0/3**
   - Complete Writer → Judge orchestrations: **1/3**
-- Reboot Run 1 remains preserved evidence.
-- Reboot Run 2 remains failed evidence.
+- Reboot Run 1 remains preserved historical evidence.
+- Reboot Run 2 remains failed historical evidence.
 - Do not retry failed Run 2 or resume the abandoned Judge call.
+- No credit transfers automatically to the new semantic candidate.
 - Plane 4: **NOT_YET_ELIGIBLE**
 - Plane 5: **NOT_YET_ELIGIBLE**
 
@@ -122,20 +88,31 @@ Do NOT modify GA4 conversion-event architecture, scoring formulas/weights, prior
 - Bounded mechanical work after semantics are frozen: **GPT-5.6 Luna / Medium**
 - Independent adversarial verifier: **GPT-5.6 Sol / High**
 
+The next step is mechanical publication, so the correct route is **GPT-5.6 Luna / Medium**.
+
 No Writer/Judge/provider/model-bearing PRYSM calls are currently authorized.
 
-## Governing checkpoint files
+## Publication authorization boundary
 
-- `PRYSM-PLANE3-REBOOT-RUN2-SEMANTIC-FAILURE-DIAGNOSIS.md`
-- `PRYSM-PLANE3-WRITER-ROBUSTNESS-DESIGN-GATE.md`
-- `PRYSM-WRITERINPUT-BUSINESS-IMPACT-AUTHORITY-CONTRACT-DESIGN.md`
-- `DECISION_PRYSM_GA4_CONVERSION_OUTCOME_PAUSE_2026-09-10.md`
-- `PRYSM_MODEL_BEARING_RELEASE_GATE.md`
-- `PRYSM_MODEL_BEARING_GATE_STATE.json`
-- `SKILLS/GOVERNED_CODING_UPGRADE.md`
+Builder PASS + independent Sol High PASS satisfy the prerequisite for publishing the exact semantic candidate to the existing review branch.
+
+Authorized next operation:
+
+- verify local root/branch/HEAD/worktree;
+- verify local HEAD is exactly `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`;
+- verify remote review branch is the expected ancestor and there is no divergence requiring force;
+- push the exact existing commit to `origin/review/prysm-solution-directive-authority-betty` using normal/non-force push;
+- verify remote branch resolves exactly to `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`;
+- make no application edits or new commits;
+- make zero Writer/Judge/provider/model-bearing calls;
+- no deployment, main merge, production mutation, recollection, or rescore.
+
+If normal fast-forward publication is not possible, STOP. Force push is not authorized.
+
+After publication, synchronize authoritative context to the exact published SHA. After context synchronization, STOP for fresh explicit Chris authorization before any new Plane 3 Writer/Judge model-bearing baseline.
 
 ## Exact next action
 
-Run one long governed **GPT-5.6 Terra / High Semantic Repair Builder** against local application `C:\Users\kulba\Desktop\vantage-platform`, branch `review/prysm-solution-directive-authority-betty`, starting from exact clean local SHA `125e296a0ff2878c1cebfa576740a11b5039ca9f`. Implement the paused-GA4 fail-closed WriterInput repair only, run focused adversarial firetests and the complete deterministic regression chain, create one local commit only after all gates PASS, write a Downloads proof artifact, and stop without push/publication or model-bearing testing.
+Run one governed **GPT-5.6 Luna / Medium Mechanical Publication Operator** against `C:\Users\kulba\Desktop\vantage-platform`. Publish only exact verified commit `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97` to the existing review branch by normal/non-force fast-forward push, verify exact remote identity, write a Downloads proof file, and stop. Do not edit, commit, deploy, merge, or run Writer/Judge/model/provider calls.
 
 Last verified: 2026-09-10 America/Toronto
