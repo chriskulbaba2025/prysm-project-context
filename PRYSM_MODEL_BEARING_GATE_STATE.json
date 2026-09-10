@@ -1,14 +1,22 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_REBOOT_WRITER_VALIDATION_STOP",
-  "status": "REBOOT_WRITER_VALIDATION_DIAGNOSIS_REQUIRED",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_REBOOT_VALIDATOR_DEFECT_DIAGNOSED",
+  "status": "VALIDATOR_ONLY_REPAIR_AUTHORIZATION_PENDING",
   "semanticCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "publishedToolingSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
   "remoteReviewSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
-  "latestTrancheResult": "PLANE3_MODEL_BEARING_ROBUSTNESS_STOPPED_WRITER_VALIDATION_FAILURE",
-  "authorizationState": "CLOSED_MANDATORY_STOP_AFTER_SAMPLE_C",
-  "latestTrancheCalls": {"writer": 3, "judge": 0, "total": 3, "uncertain": 0, "retries": 0},
+  "diagnosis": {
+    "result": "DIAGNOSIS_COMPLETE",
+    "rootCause": "VALIDATOR_CONTRACT_DEFECT",
+    "confidence": "HIGH",
+    "repairRequired": true,
+    "smallestRepairBoundary": "services/worker/src/narrative-v2/writer-output.js plus directly coupled deterministic tests",
+    "writerPromptGap": false,
+    "writerInputAuthorityGap": false,
+    "transformationMappingDefect": false,
+    "modelProviderCalls": 0
+  },
   "currentCandidateSampleCredit": {
     "tbkIndependentWriterGenerations": "3/5",
     "rebootIndependentWriterGenerations": "0/3",
@@ -19,24 +27,17 @@
     "rebootIndependentWriterGenerations": 3,
     "additionalCompleteWriterJudgeRuns": 2
   },
-  "failedRebootSample": {
-    "auditId": "97d6b2c7-03b9-4530-8ea7-16557502c638",
-    "executionId": "plane3-writer-only-97d6b2c7-03b9-4530-8ea7-16557502c638-64612c75-a2c7-49f3-88d4-670b07c80b00",
-    "sampleCredit": 0,
-    "retryAuthorized": false,
-    "failure": "writerOutput.executiveConclusion.narrative.text states an unmeasured business outcome with causal certainty"
-  },
   "additionalModelProviderAuthorization": "NONE",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "INCOMPLETE_DIAGNOSIS_REQUIRED",
+  "plane3": "INCOMPLETE_VALIDATOR_REPAIR_REQUIRED",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
   "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "checkpointFile": "PRYSM_PLANE3_REBOOT_WRITER_VALIDATION_STOP_CHECKPOINT_2026-09-10.md",
-  "nextAction": "Perform a zero-model-call diagnosis of the exact Reboot Writer validation escape, inspecting the persisted Writer response, frozen WriterInput, Writer prompt/instructions, and validator rule. Make no code changes and no model/provider calls. Preserve valid TBK evidence and do not retry failed samples.",
+  "checkpointFile": "PRYSM_PLANE3_REBOOT_WRITER_VALIDATION_ESCAPE_DIAGNOSIS_CHECKPOINT_2026-09-10.md",
+  "nextAction": "Obtain explicit Chris authorization for a validator-only semantic-fidelity repair that accepts explicit negative/non-establishment wording while preserving rejection of unsupported causal/commercial outcome claims. Make zero Writer/Judge/model/provider calls, run deterministic regressions, commit locally if green, then stop for independent Sol High preflight before publication or replacement model execution.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
