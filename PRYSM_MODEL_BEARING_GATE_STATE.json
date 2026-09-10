@@ -1,51 +1,57 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_REPLACEMENT_AUTHORIZATION",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_IDENTITY_REPAIR",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "REPLACEMENT_MODEL_CALL_AUTHORIZATION_PENDING",
+  "status": "HARNESS_CANDIDATE_IDENTITY_REPAIR_AUTHORIZATION_PENDING",
   "candidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "primaryAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-  "primaryTarget": "https://www.tbkcreative.com/",
-  "writerOnlyHarness": "IMPLEMENTED_DETERMINISTICALLY_VERIFIED_AND_PUBLISHED",
-  "persistedResponseRecovery": "NOT_APPLICABLE_TO_ABANDONED_CALL_4_NO_RESPONSE_ARTIFACT",
-  "priorRobustnessAuthorization": "CONSUMED_2026-09-10_TRANCHE_STOPPED",
-  "abandonedCall": {
+  "writerOnlyHarness": "IMPLEMENTED_VERIFIED_PUBLISHED_STALE_CANDIDATE_GUARD",
+  "staleHarnessExpectedCandidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
+  "requiredHarnessCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
+  "replacementRobustnessAuthorization": "CONSUMED_PRE_MODEL_STOP_2026-09-10",
+  "replacementPreModelStop": {
+    "result": "PRE_MODEL_STOP",
+    "reason": "HARNESS_CANDIDATE_GUARD_MISMATCH",
+    "writerCalls": 0,
+    "judgeCalls": 0,
+    "providerCalls": 0,
+    "newPlane3Credit": 0,
+    "applicationChanges": "NONE",
+    "deployment": "NONE",
+    "productionMutation": "NONE",
+    "mainMerge": "NONE"
+  },
+  "abandonedPriorCall": {
     "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
     "callNumber": 4,
     "role": "JUDGE",
     "pass": 2,
     "state": "UNRECOVERABLE_TRANSPORT_UNCERTAIN",
     "sampleCredit": 0,
-    "retryAuthorized": false,
-    "responseArtifact": "ABSENT",
-    "responseMetaArtifact": "ABSENT",
-    "responseStateArtifact": "ABSENT",
-    "resultArtifact": "ABSENT",
-    "reservationSha256": "18dfa28e7be605800ac614e4dc000dfcb7e22ccbbb7e0987b53294386ba38ae",
-    "transportSha256": "2487c4ab21e6524d828d737e4930f6e195cba3aeb18fc01a09012889c9d6c83f"
+    "retryAuthorized": false
   },
   "currentCandidateSampleCredit": {
     "tbkIndependentWriterGenerations": "1/5",
-    "completeWriterJudgeOrchestrations": "1/3",
-    "newCreditFromStoppedTranche": 0
+    "rebootIndependentWriterGenerations": "0/3",
+    "completeWriterJudgeOrchestrations": "1/3"
   },
   "remainingPlane3Sample": {
     "tbkIndependentWriterGenerations": 4,
     "rebootIndependentWriterGenerations": 3,
     "additionalCompleteWriterJudgeRuns": 2
   },
-  "additionalModelProviderAuthorization": "NONE_PENDING_EXPLICIT_CHRIS_APPROVAL",
+  "harnessRepairModelProviderAuthorization": 0,
+  "additionalModelProviderAuthorization": "NONE",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "NOT_PASS_REPLACEMENT_SAMPLE_REQUIRED",
+  "plane3": "INCOMPLETE_HARNESS_IDENTITY_REPAIR_REQUIRED",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
   "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "nextAction": "Obtain explicit Chris authorization for a replacement Plane 3 robustness tranche using fresh execution identities only. Do not retry abandoned call 4. Complete the remaining 4 TBK independent Writers, 3 Reboot independent Writers, and 2 complete Writer-Judge orchestrations under a newly bounded call ceiling and existing governed budgets, with no provider recollection/rescore, no Pass 3, no deployment, no production mutation, and no main merge.",
+  "nextAction": "Obtain explicit Chris authorization for the smallest coherent non-production repair of the stale Writer-only harness candidate identity guard and its directly coupled deterministic tests. Make zero Writer/Judge/model/provider calls. Do not weaken the guard. If deterministic verification is green, commit locally and stop for a separate publication gate before any new Plane 3 model authorization.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
