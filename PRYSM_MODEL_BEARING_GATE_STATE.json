@@ -1,92 +1,59 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_MODEL_BEARING_ROBUSTNESS",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_TRANSPORT_UNCERTAIN_DIAGNOSIS",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "MODEL_CALL_AUTHORIZATION_PENDING",
+  "status": "TRANSPORT_UNCERTAIN_RECOVERY_DIAGNOSIS_PENDING",
   "candidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "previousCandidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
   "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "primaryAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
   "primaryTarget": "https://www.tbkcreative.com/",
-  "persistedResponseRecovery": "CLOSED",
-  "independentPreflight": "READY_FOR_NEXT_GATE_HIGH",
-  "priorModelAuthorization": "CONSUMED_2026-09-09_SINGLE_USE_CLOSED",
-  "harnessImplementation": {
-    "status": "PASS_PUBLISHED",
-    "changedFiles": [
-      "services/worker/scripts/plane3-writer-only.mjs",
-      "services/worker/scripts/plane3-writer-only.test.js"
-    ],
-    "focusedTests": "8/8 PASS",
-    "narrativeRegression": "132/132 PASS",
-    "storageRegression": "106/106 PASS",
-    "productionPathRegression": "11/11 PASS",
-    "fullWorkerRegression": "1009/1009 PASS",
-    "gitDiffCheck": "PASS",
-    "writerModelCalls": 0,
-    "judgeModelCalls": 0,
-    "providerCalls": 0,
-    "productionBehaviorChange": "NONE",
-    "deployment": "NONE",
-    "productionMutation": "NONE",
-    "mainMerge": "NONE",
-    "push": "PASS_NON_FORCE"
-  },
-  "currentCandidateSample": {
-    "status": "PASS",
-    "executionId": "tbk-fresh-narrative-fresh-live-1789008473452-31952",
-    "completeOrchestrationRuns": 1,
-    "independentPrimaryWriterGenerationsObserved": 1,
-    "modelCalls": 4,
-    "passes": 2,
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "finalJudgeDecision": "PASS",
-    "finalJudgeScore": 98,
-    "validationFailures": 0,
-    "finalDefects": 0,
-    "terminalStatus": "RELEASE_CANDIDATE",
-    "actualCostUsd": 0.659863,
-    "resultSha256": "2d3f23ee9c96c940e9eb5cf4b6c61c1bc5f2f47b365c563a2557a46aadbfb4de"
-  },
-  "corpus": {
-    "primary": {
-      "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-      "businessName": "Tbkcreative"
+  "writerOnlyHarness": "IMPLEMENTED_DETERMINISTICALLY_VERIFIED_AND_PUBLISHED",
+  "persistedResponseRecovery": "CLOSED_BUT_MUST_BE_APPLIED_TO_CURRENT_UNCERTAIN_CALL_BEFORE_ANY_RETRY",
+  "robustnessAuthorization": "CONSUMED_2026-09-10_TRANCHE_STOPPED",
+  "stoppedExecution": {
+    "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
+    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
+    "sampleType": "PRIMARY_TBK_COMPLETE_ORCHESTRATION_2",
+    "terminalStatus": "NARRATIVE_V2_ORCHESTRATION_FAILURE",
+    "newModelCallReservations": 4,
+    "returnedValidatedCalls": 3,
+    "uncertainReservedCalls": 1,
+    "writerCalls": 2,
+    "judgeCalls": 2,
+    "returnedActualCostUsd": 0.433091,
+    "reservedEstimatedCostUsd": 1.4815,
+    "failedCall": {
+      "role": "JUDGE",
+      "pass": 2,
+      "state": "TRANSPORT_OUTCOME_UNCERTAIN",
+      "responseArtifact": "ABSENT",
+      "resultArtifact": "ABSENT",
+      "cause": "fetch failed / UND_ERR_SOCKET / other side closed"
     },
-    "confirmedDistinctAdditionalRealInputs": [
-      {
-        "auditId": "97d6b2c7-03b9-4530-8ea7-16557502c638",
-        "businessName": "Reboot Business Coaching",
-        "targetUrl": "https://rebootbusinesscoaching.com/"
-      }
-    ],
-    "confirmedAdditionalRealInputCount": 1,
-    "secondAdditionalRealInput": "NOT_CONFIRMED_DO_NOT_FABRICATE"
+    "retries": 0
   },
-  "remainingPlane3Sample": {
+  "currentCandidateSampleCredit": {
+    "tbkIndependentWriterGenerations": "1/5",
+    "completeWriterJudgeOrchestrations": "1/3",
+    "newCreditFromStoppedTranche": 0
+  },
+  "remainingPlane3SampleNominal": {
     "tbkIndependentWriterGenerations": 4,
     "rebootIndependentWriterGenerations": 3,
-    "additionalCompleteWriterJudgeRuns": 2,
-    "minimumAdditionalModelCalls": 9,
-    "maximumBoundedModelCallExposure": 13
+    "additionalCompleteWriterJudgeRuns": 2
   },
-  "writerOnlyHarness": "IMPLEMENTED_DETERMINISTICALLY_VERIFIED_AND_PUBLISHED",
-  "additionalModelProviderAuthorization": "NONE_PENDING_EXPLICIT_CHRIS_APPROVAL",
-  "plane3": "INCOMPLETE_CURRENT_CANDIDATE",
-  "plane4": "NOT_YET_COMPLETE_CURRENT_CANDIDATE",
+  "additionalModelProviderAuthorization": "NONE",
+  "retryAuthorized": false,
+  "pass3Authorized": false,
+  "plane3": "NOT_PASS_TRANSPORT_UNCERTAIN",
+  "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "deploymentIdentity": "NOT_IN_ACTIVE_PREPROMOTION_SCOPE",
-  "finalLiveValidation": "NOT_YET_ELIGIBLE",
-  "providerRecollection": "PROHIBITED",
+  "providerRecollection": "NONE_PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "runCheckpoint": "PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZED_RUN_CHECKPOINT_2026-09-09.md",
-  "robustnessPlanCheckpoint": "PRYSM_CURRENT_CANDIDATE_PLANE3_ROBUSTNESS_PLAN_CHECKPOINT_2026-09-09.md",
-  "harnessCheckpoint": "PRYSM_PLANE3_WRITER_ONLY_HARNESS_IMPLEMENTATION_CHECKPOINT_2026-09-09.md",
-  "publicationCheckpoint": "PRYSM_PLANE3_HARNESS_REVIEW_BRANCH_PUBLICATION_CHECKPOINT_2026-09-09.md",
-  "nextAction": "Obtain explicit Chris authorization for one bounded Plane 3 model-bearing robustness tranche at exact published candidate a16430aa6c000afadcaade3e692e41f0f08ed903. Authorization must cover only the frozen TBK/Reboot sample, maximum 13 model calls, existing governed budget ceilings, isolated ledgers, no provider recollection/rescore, no Pass 3, no deployment, no production mutation, and no main merge.",
-  "lastVerified": "2026-09-09 America/Toronto"
+  "transportCheckpoint": "PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_TRANSPORT_UNCERTAIN_CHECKPOINT_2026-09-10.md",
+  "nextAction": "Run a zero-model, zero-provider diagnosis of the preserved Judge pass 2 TRANSPORT_OUTCOME_UNCERTAIN state. Determine whether governed persisted-response recovery can prove and recover the exact call-4 response without a fresh network/model request. If not recoverable, classify the call under existing governance and freeze the smallest next authorization boundary. Do not retry, restart orchestration, execute remaining samples, deploy, or merge.",
+  "lastVerified": "2026-09-10 America/Toronto"
 }
