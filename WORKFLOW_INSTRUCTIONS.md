@@ -1,13 +1,37 @@
 # PRYSM Workflow Instructions
 
-**Status:** Governing project instruction
-**Applies to:** All manual application-code work unless the user explicitly changes the operating method
+**Status:** Governing project instruction  
+**Applies to:** PRYSM coding coordination; exact manual edit delivery when manual mode is selected
 
 ## Core execution rule
 
-PRYSM application changes use a governed manual VS Code workflow. The assistant diagnoses, designs, specifies exact edits, and verifies results. The user applies application-source edits locally unless explicitly authorized otherwise.
+PRYSM has two governed implementation modes.
 
-## Mandatory edit-delivery protocol
+### Agent / Codex mode
+
+When implementation is intended for Codex or another coding agent, use:
+
+- `SKILLS/GOVERNED_CODING_UPGRADE.md`;
+- `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md`;
+- the active PRYSM state/constraints/decision files.
+
+The default agent-role sequence is:
+
+`TRIAGE / SCOUT → PLAN + FREEZE → BUILDER → VERIFY → CHALLENGE → TERMINAL VERIFY / MACHINE GATE → EXACT-HEAD AUDIT → RELEASE AUTHORITY`.
+
+Use one implementation/write owner. Specialist planning, verification, challenge, and audit roles are read-only unless a later explicit protocol defines safe non-overlapping write ownership.
+
+Routine PASS stages auto-continue inside an already authorized boundary. Stop at a true blocker, correction/anti-thrash limit, material scope change, or new explicit authorization boundary.
+
+When ChatGPT determines that another Codex/agent run is the exact next governed action, include the complete execution-ready next prompt automatically in the same response. Chris must not have to ask for it separately.
+
+### Manual / direct-chat mode
+
+When Chris explicitly chooses direct manual VS Code editing, the assistant diagnoses, designs, specifies exact edits, and verifies results. Chris applies application-source edits locally unless explicitly authorized otherwise. The manual edit-delivery protocol below governs that mode.
+
+Manual copy/paste mechanics do not force a Codex Builder to stop after each file when an explicitly frozen coherent multi-file agent boundary has already been authorized.
+
+## Mandatory manual edit-delivery protocol
 
 For every manual source-file change:
 
@@ -81,8 +105,23 @@ Do not call a candidate fixed, production-ready, or proven merely because the cu
 - Do not push, deploy, rerun a production audit, invoke paid providers/models, rescore, or mutate persisted production artifacts without explicit approval or an active durable authorization in current governance.
 - Do not commit until the current governed unit's direct proving verification is green.
 - A commit becoming eligible for release still requires every applicable release gate; commit eligibility is not release readiness.
+- A Builder cannot grant itself broader scope or release authority.
+- Verification, challenge, and independent audit must not silently become additional write owners.
 
 ## Response form
+
+### Agent / Codex mode
+
+Technical responses should default to:
+
+- concise result/state;
+- exact blocker or next governed boundary;
+- complete execution-ready Codex/agent prompt when another run is next;
+- explicit authorization boundary when required.
+
+Do not force Chris to send a second message merely to obtain the next prompt.
+
+### Manual mode
 
 Technical responses should default to:
 
@@ -94,3 +133,32 @@ Technical responses should default to:
 - stop and wait for the result.
 
 When multiple edits exist in a file, **last edit first** is mandatory, not optional.
+
+## Codex model routing for governance-sensitive work
+
+`PRYSM_MODEL_ROUTING_AND_WHOLE_SYSTEM_PREFLIGHT_PROTOCOL_2026-09-09.md` governs model selection for the active Solution Depth work.
+
+Default routing:
+- **Terra High** for architecture diagnosis, authority tracing, cross-file semantic review, repair-boundary selection, consolidated governance-sensitive implementation, and whole-system invariant closure.
+- **Luna Medium** only for mechanical work after root cause, file boundary, acceptance conditions, preservation boundary, and proving tests are frozen.
+- **Sol High** when available for final adversarial preflight or unresolved high-risk architecture.
+
+Do not optimize for the cheapest model when repeated semantic rework is the dominant cost.
+
+Model escalation changes cognition, not authority. A stronger model does not gain broader file scope, more retries, paid-call permission, push/deploy permission, or release authority.
+
+## Defect-class batching rule
+
+When two or more defects are manifestations of one architectural invariant, stop treating them as independent micro-tranches.
+
+Use:
+
+`whole-system diagnosis -> exhaustive surface inventory -> consolidated bounded repair -> permanent invariant tests -> adversarial preflight -> independent external gate`
+
+instead of:
+
+`one symptom -> one repair -> external review -> next symptom`.
+
+The current remediation-authority closure gate is defined in `PRYSM_CANONICAL_REMEDIATION_AUTHORITY_CLOSURE_GATE_2026-09-09.md`.
+
+This batching rule does not authorize broader product redesign. It means inspect the complete implementation surface controlled by the same invariant before choosing the smallest complete repair boundary.

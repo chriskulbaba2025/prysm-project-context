@@ -16,10 +16,12 @@ Read these before substantive PRYSM work:
 4. `REPAIR_BOUNDARY_PROTOCOL.md`
 5. `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`
 6. `WORKFLOW_INSTRUCTIONS.md`
-7. `TERMINOLOGY.md`
-8. `CURRENT_STATE.md`
-9. `CONSTRAINTS.md`
-10. `DECISIONS.md`
+7. `SKILLS/GOVERNED_CODING_UPGRADE.md` for qualifying coding changes
+8. `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md` for Codex/agent coding work
+9. `TERMINOLOGY.md`
+10. `CURRENT_STATE.md`
+11. `CONSTRAINTS.md`
+12. `DECISIONS.md`
 
 For any application-changing production-closure or post-deployment validation repair, also read:
 
@@ -37,9 +39,11 @@ Load additional specifications, skills, and reference material only when require
 
 GitHub is the authoritative durable project memory. Chats are temporary working sessions. Current GitHub state overrides stale conversational summaries or duplicated Project Sources.
 
-`PRYSM_PERMANENT_MEMORY.md` is the mandatory high-value operating-memory bootstrap for recurring launcher, diagnostic-hygiene, anti-thrash, and role-handoff rules. It is an index; the detailed governing files it cites remain the source of truth.
+`PRYSM_PERMANENT_MEMORY.md` is the mandatory high-value operating-memory bootstrap for recurring launcher, diagnostic-hygiene, anti-thrash, agent-role, and role-handoff rules. It is an index; the detailed governing files it cites remain the source of truth.
 
-`WORKFLOW_INSTRUCTIONS.md` is the current governing manual-edit delivery protocol and supersedes older manual-code-flow wording elsewhere in the context repository when that older wording is inconsistent with it. Hard production/authorization constraints remain unaffected.
+`SKILLS/GOVERNED_CODING_UPGRADE.md` binds qualifying PRYSM coding changes to Governed Coding Upgrade v2.1.0 and its pinned provenance. `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md` defines the PRYSM agent-role authority profile: read-only Scout/Planner/Verifier/Challenger/Auditor roles, one Builder/write owner, machine/terminal proof, and separate Release Authority. These controls apply when Codex or another coding agent performs the implementation.
+
+`WORKFLOW_INSTRUCTIONS.md` remains the governing manual-edit delivery protocol when Chris explicitly chooses direct manual/chat-guided source editing. Manual copy/paste mechanics do not override an explicitly authorized coherent Codex/agent change boundary governed by GCU and the agent-role decision. Hard production/authorization constraints remain unaffected.
 
 `PRYSM_MODEL_BEARING_RELEASE_GATE.md` is the permanent release-proof standard for Writer/Judge/model-bearing changes. Deterministic Whole-App PASS is necessary but is not sufficient to prove stochastic Narrative reliability. `PRYSM_MODEL_BEARING_GATE_STATE.json` records that separate gate's durable current status and must not be inferred from `wholeAppGate`.
 
@@ -60,12 +64,16 @@ At the start of a new substantive chat:
 - read this file;
 - read `GITHUB_PROJECT_MEMORY_PROTOCOL.md` and `PRYSM_PERMANENT_MEMORY.md` first;
 - read `REPAIR_BOUNDARY_PROTOCOL.md`, `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`, and `WORKFLOW_INSTRUCTIONS.md`;
+- for any qualifying coding change, read `SKILLS/GOVERNED_CODING_UPGRADE.md`;
+- for any Codex/agent coding workflow, read `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md`;
 - read `TERMINOLOGY.md` when the task concerns footprint discovery, representative acquisition, provider crawl limits, assessed pages, or report coverage wording;
 - read the latest `CURRENT_STATE.md`;
 - read active `CONSTRAINTS.md` and `DECISIONS.md`;
 - read `PRYSM_MODEL_BEARING_RELEASE_GATE.md` and `PRYSM_MODEL_BEARING_GATE_STATE.json` whenever the active task touches Writer/Judge/model-bearing behavior or Narrative semantic quality;
 - load only the additional context required;
 - continue from the exact next action in `CURRENT_STATE.md`.
+
+For Codex/agent implementation, use the agent-role governed process: recover state → Scout/Triage → Plan + Freeze → Builder → Verify → Challenge → Terminal Verify/Machine Gate → Exact-Head Audit → Release Authority. Keep one implementation/write owner. Specialist agents are read-only unless a later explicit protocol defines non-overlapping write ownership. Routine PASS stages auto-continue inside the already authorized boundary; stop at blockers, scope changes, correction limits, or new authorization boundaries.
 
 For ordinary/manual PRYSM work, before any application-file edit or request for a source file, the Mandatory Pre-Edit Gate in `REPAIR_BOUNDARY_PROTOCOL.md` must pass. Complete the repair design and expected file/test boundary first; only then begin the governed one-source-file-at-a-time implementation workflow.
 
@@ -74,6 +82,8 @@ For the active autonomous Production Closure package or explicitly active bounde
 For every ordinary/manual source-file edit, `WORKFLOW_INSTRUCTIONS.md` is mandatory. In particular: give the exact path, exact current line numbers/ranges and anchors, present multiple edits bottom-up (highest line first), provide complete replacement blocks, and stop for verification before moving to the next source-file unit.
 
 For diagnostics, troubleshooting, defect analysis, and repair planning, follow `DIAGNOSTIC_EVIDENCE_PROTOCOL.md`: verify the executing boundary and direct evidence before stating a root cause or directing the user through a diagnostic path.
+
+When ChatGPT facilitates PRYSM and another Codex/agent run is the exact next governed action, provide the execution-ready next prompt automatically in the same response. Do not make Chris ask separately for the prompt. This does not bypass any explicit approval boundary.
 
 ## Handoff rule
 
