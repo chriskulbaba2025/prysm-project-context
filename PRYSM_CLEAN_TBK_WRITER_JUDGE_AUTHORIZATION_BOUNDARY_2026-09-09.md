@@ -1,7 +1,7 @@
 # PRYSM Clean TBK Writer/Judge Authorization Boundary
 
 Date: 2026-09-09
-Status: AUTHORIZED — ONE CLEAN MODEL-BACKED EXECUTION
+Status: CONSUMED — COMPLETED RELEASE-CANDIDATE PASS
 
 ## Authority
 
@@ -17,91 +17,62 @@ Frozen TBK audit identity: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 
 Frozen target: `https://www.tbkcreative.com/`
 
-Prepared execution entrypoint:
-`services/worker/TBK-fresh-writer-judge.mjs`
+Execution entrypoint: `services/worker/TBK-fresh-writer-judge.mjs`
 
-## Explicit human authorization
+## Human authorization
 
-On 2026-09-09 Chris explicitly authorized exactly one new clean TBK Writer/Judge automatic release-candidate orchestration under this prepared boundary against exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`.
+On 2026-09-09 Chris explicitly authorized exactly one new clean TBK Writer/Judge automatic release-candidate orchestration against exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`.
 
-This authorization is single-use and limited to the automatic two-pass/four-call boundary below.
-
-## Authorized execution boundary
-
-The authorized execution is one new clean Narrative v2 TBK Writer/Judge release-candidate orchestration against the frozen governed TBK WriterInput already stored in the repository fixture.
-
-The prepared entrypoint:
-- loads the frozen TBK WriterInput and frozen canonical audit request;
-- creates a fresh execution ID;
-- creates an isolated durable filesystem artifact store under the operating-system temp directory;
-- invokes the current candidate's real Narrative v2 live Writer/Judge binding;
-- writes the new orchestration result only to that isolated execution ledger.
-
-This is not a retry, resume, or reconstruction of the historical failed TBK Writer pass 2.
-
-## Automatic model-call ceiling
-
-The current live binding permits at most two automatic Writer/Judge passes:
+That authorization was single-use and allowed at most:
 
 `Writer 1 -> Judge 1 -> Writer 2 -> Judge 2`
 
-Maximum authorized model/provider calls for this single clean automatic run: **4**.
+Maximum: two automatic Writer/Judge passes / four model calls.
 
-If Judge 2 still returns `REVISE`, the orchestration must stop at governed human review. Writer/Judge Pass 3 is **not** included in this authorization and requires a separate explicit human authorization.
+Pass 3 was not authorized.
 
-The absolute six-call ceiling remains unchanged but is not permission to use calls 5-6.
+## Consumed execution result
 
-## Explicitly prohibited
+The authorization was consumed on the first governed model call and exactly one clean orchestration completed.
 
-This authorization does not permit:
-- retry or reconstruction of the historical failed TBK Writer pass 2;
-- audit-provider recollection or recrawl;
-- DataForSEO/PageSpeed/backlink/GA4/GSC/provider reruns;
-- rescoring or mutation of frozen governed TBK evidence;
-- mutation or overwrite of historical TBK Narrative artifacts;
-- Pass 3 Writer/Judge execution;
-- model escalation or hidden fallback;
-- network retry outside the governed recovery contract;
-- a second clean orchestration run under this authorization;
-- deployment or production promotion;
-- production mutation;
-- application main merge.
+Verified terminal result: `RELEASE_CANDIDATE_PASS`.
 
-## Required pre-execution checks
+- model calls executed: 4;
+- passes executed: 2;
+- Judge 1: `REVISE`, score 86;
+- Judge 2: `PASS`, score 98;
+- Writer/Judge validation failures: 0;
+- final defects: 0;
+- final orchestration status: `RELEASE_CANDIDATE`;
+- fresh execution ID: `tbk-fresh-narrative-fresh-live-1789008473452-31952`;
+- actual model cost: USD `0.659863`;
+- orchestration result SHA-256: `2d3f23ee9c96c940e9eb5cf4b6c61c1bc5f2f47b365c563a2557a46aadbfb4de`;
+- start/end application SHA: `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893`;
+- worktree before/after: CLEAN.
 
-Before the first paid/model call:
-1. verify local application HEAD equals exact candidate `a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893` and worktree is clean;
-2. verify the configured live Narrative environment is enabled and required model/provider configuration is present without printing secrets;
-3. record the configured Writer model ID, Judge model ID, prompt/contract versions, and applicable cost/budget configuration;
-4. confirm the execution uses the frozen TBK input and a new isolated execution identity;
-5. confirm no provider recrawl/recollection path is invoked.
+No Pass 3 or second orchestration was executed.
 
-If any check fails, stop before a model/provider call. The authorization remains unconsumed until the first model/provider call is actually made.
+## Preserved boundaries
 
-## Required execution evidence
+- historical failed TBK Writer pass 2 was not retried or reconstructed;
+- audit providers were not recollected or recrawled;
+- frozen evidence was not rescored;
+- historical TBK Narrative artifacts were not overwritten;
+- no model escalation or hidden fallback occurred;
+- deployment: NONE;
+- production mutation: NONE;
+- application main merge: NONE;
+- application/source/test/fixture changes: NONE.
 
-The model-backed run must record at minimum:
-- exact candidate SHA;
-- frozen audit ID;
-- fresh execution ID;
-- Writer/Judge model identifiers;
-- prompt/contract versions;
-- pass number for each call;
-- raw/parsed output artifact identities or hashes where produced by the governed binding;
-- validation result and complete validation errors;
-- Judge result for every completed pass;
-- usage/cost for every returned model call;
-- terminal orchestration status;
-- proof that no audit-provider recollection, deployment, production mutation, or main merge occurred.
+## Authorization state
 
-Any Codex/execution run longer than 10 lines must also create the required Downloads proof artifact under the active PRYSM proof discipline.
+**CONSUMED AND CLOSED.**
 
-## Stop condition
+This file grants no authority for another Writer/Judge/model/provider call. Any additional model-bearing robustness execution requires a new, separately bounded Chris authorization.
 
-After the clean automatic orchestration reaches either `RELEASE_CANDIDATE`, a governed execution failure, or `HUMAN_REVIEW_REQUIRED`, stop and return the exact result and evidence. Do not launch Pass 3, rerun the orchestration, retry an uncertain call outside the persisted-response recovery contract, deploy, merge, or mutate production without a new explicit authorization.
+Authoritative result checkpoint:
+`PRYSM_CLEAN_TBK_WRITER_JUDGE_AUTHORIZED_RUN_CHECKPOINT_2026-09-09.md`
 
-## Current authorization state
+## Exact next gate
 
-**AUTHORIZED — SINGLE USE, NOT YET CONSUMED.**
-
-Exact next action: execute the required pre-execution checks against the exact local candidate and, only if they all pass, run exactly one clean TBK Writer/Judge automatic orchestration through `services/worker/TBK-fresh-writer-judge.mjs`. Stop at the first terminal result and produce the required proof artifact. Do not run Pass 3 or any second orchestration.
+Recover and verify the governed current-candidate model-bearing robustness execution method and freeze the minimum remaining Plane 3 sample/call/cost plan. Do not execute further Writer/Judge/model/provider calls until separately authorized.
