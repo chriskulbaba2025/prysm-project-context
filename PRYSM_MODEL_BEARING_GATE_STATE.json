@@ -1,48 +1,39 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_PUBLISHED",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_MODEL_BEARING_ROBUSTNESS_ACTIVE",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "PLANE3_MODEL_CALL_AUTHORIZATION_PENDING",
+  "status": "PLANE3_MODEL_BEARING_TRANCHE_AUTHORIZED_ACTIVE",
   "semanticCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
   "publishedToolingSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
   "remoteReviewSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
   "writerOnlyHarness": "IDENTITY_CONTRACT_REPAIRED_VERIFIED_SOL_HIGH_PREFLIGHT_READY_AND_PUBLISHED",
-  "publication": {
-    "result": "PLANE3_HARNESS_PUBLICATION_PASS",
-    "remoteBefore": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-    "remoteAfter": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
-    "normalNonForce": true,
-    "worktreeBefore": "CLEAN",
-    "worktreeAfter": "CLEAN",
-    "writerCalls": 0,
-    "judgeCalls": 0,
-    "modelProviderApplicationCalls": 0,
-    "applicationChanges": "NONE",
-    "newApplicationCommits": "NONE",
-    "deployment": "NONE",
-    "productionMutation": "NONE",
-    "mainMerge": "NONE"
+  "authorization": {
+    "state": "ACTIVE_SINGLE_USE",
+    "authorizedBy": "Chris",
+    "date": "2026-09-10",
+    "minimumExpectedNewModelCalls": 9,
+    "maximumAuthorizedNewModelCalls": 13,
+    "writerOnlyMaximumCalls": 5,
+    "completeOrchestrations": 2,
+    "maximumCallsPerCompleteOrchestration": 4,
+    "pass3Authorized": false,
+    "checkpoint": "PRYSM_PLANE3_MODEL_BEARING_ROBUSTNESS_AUTHORIZATION_2026-09-10.md"
   },
-  "identityContract": {
-    "semanticBaseDistinctFromToolingHead": true,
-    "semanticBaseAncestorRequired": true,
-    "cleanWorktreeRequired": true,
-    "correctRepositoryRootRequired": true,
-    "boundedOverlayRequired": true,
-    "authorizedChangedPaths": [
-      "services/worker/scripts/plane3-writer-only.mjs",
-      "services/worker/scripts/plane3-writer-only.test.js"
-    ],
-    "arbitraryShaInput": "PROHIBITED",
-    "environmentBypass": "PROHIBITED",
-    "wildcard": "PROHIBITED",
-    "guardRemoval": "PROHIBITED"
+  "approvedInputs": {
+    "tbkAuditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
+    "rebootAuditId": "97d6b2c7-03b9-4530-8ea7-16557502c638",
+    "secondAdditionalRealInput": "NOT_CONFIRMED_DO_NOT_FABRICATE"
   },
-  "independentSolHighPreflight": {
-    "result": "READY_FOR_NEXT_GATE",
-    "confidence": "HIGH"
-  },
+  "executionOrder": [
+    "TBK_WRITER_ONLY_1",
+    "TBK_WRITER_ONLY_2",
+    "REBOOT_WRITER_ONLY_1",
+    "REBOOT_WRITER_ONLY_2",
+    "REBOOT_WRITER_ONLY_3",
+    "TBK_COMPLETE_ORCHESTRATION_2",
+    "TBK_COMPLETE_ORCHESTRATION_3"
+  ],
   "abandonedPriorCall": {
     "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
     "callNumber": 4,
@@ -60,22 +51,17 @@
   "remainingPlane3Sample": {
     "tbkIndependentWriterGenerations": 4,
     "rebootIndependentWriterGenerations": 3,
-    "additionalCompleteWriterJudgeRuns": 2,
-    "minimumAdditionalModelCalls": 9,
-    "maximumBoundedModelCallExposure": 13
+    "additionalCompleteWriterJudgeRuns": 2
   },
-  "additionalModelProviderAuthorization": "NONE_PENDING_EXPLICIT_CHRIS_APPROVAL",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "INCOMPLETE_MODEL_TRANCHE_REQUIRED",
+  "providerRecollection": "PROHIBITED",
+  "plane3": "AUTHORIZED_EXECUTION_PENDING_COMPLETION",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "preflightCheckpoint": "PRYSM_PLANE3_HARNESS_IDENTITY_CONTRACT_SOL_PREFLIGHT_READY_CHECKPOINT_2026-09-10.md",
-  "publicationCheckpoint": "PRYSM_PLANE3_HARNESS_IDENTITY_CONTRACT_PUBLICATION_CHECKPOINT_2026-09-10.md",
-  "nextAction": "Obtain explicit Chris authorization for one fresh bounded Plane 3 model-bearing robustness tranche against published tooling SHA 299418bdfd219e1b8cc3c2be57a735ca147b9a24 while preserving semantic application base a16430aa6c000afadcaade3e692e41f0f08ed903. Use only frozen TBK/Reboot inputs, fresh execution identities and isolated ledgers, maximum 13 new model calls, no retry of abandoned call 4, no provider recollection/rescore, no Pass 3, no deployment, no production mutation, and no main merge.",
+  "nextAction": "Execute the single-use authorized Plane 3 robustness tranche at published tooling SHA 299418bdfd219e1b8cc3c2be57a735ca147b9a24 while preserving semantic base a16430aa6c000afadcaade3e692e41f0f08ed903. Run 2 TBK Writer-only, 3 Reboot Writer-only, then 2 fresh complete TBK Writer-Judge orchestrations, maximum 13 new model calls, no retry of abandoned call 4, no provider recollection/rescore, no Pass 3, no deployment, no production mutation, no main merge. Stop on any invalid/uncertain call and create PRYSM-PLANE3-MODEL-BEARING-ROBUSTNESS-TRANCHE-2-PROOF.txt.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
