@@ -1,26 +1,38 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_IDENTITY_REPAIR",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_REPAIR_PREFLIGHT",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "HARNESS_CANDIDATE_IDENTITY_REPAIR_AUTHORIZATION_PENDING",
-  "candidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
+  "status": "INDEPENDENT_SOL_HIGH_PREFLIGHT_PENDING",
+  "localCandidateSha": "61303af4d7d567c2d77eb61379b98dff6f1974aa",
   "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "writerOnlyHarness": "IMPLEMENTED_VERIFIED_PUBLISHED_STALE_CANDIDATE_GUARD",
-  "staleHarnessExpectedCandidateSha": "a2c1587aa4dfa799dab3b6b2cfbd42b384e1a893",
-  "requiredHarnessCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "replacementRobustnessAuthorization": "CONSUMED_PRE_MODEL_STOP_2026-09-10",
-  "replacementPreModelStop": {
-    "result": "PRE_MODEL_STOP",
-    "reason": "HARNESS_CANDIDATE_GUARD_MISMATCH",
+  "priorPublishedCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
+  "writerOnlyHarness": "CANDIDATE_IDENTITY_REPAIRED_AND_DETERMINISTICALLY_VERIFIED_LOCAL_ONLY",
+  "harnessRepair": {
+    "status": "PASS_LOCAL_ONLY",
+    "changedFiles": [
+      "services/worker/scripts/plane3-writer-only.mjs",
+      "services/worker/scripts/plane3-writer-only.test.js"
+    ],
+    "focusedTests": "9/9 PASS",
+    "narrativeRegression": "132/132 PASS",
+    "storageRegression": "106/106 PASS",
+    "productionPathRegression": "11/11 PASS",
+    "fullWorkerRegression": "1009/1009 PASS",
+    "gitDiffCheck": "PASS",
     "writerCalls": 0,
     "judgeCalls": 0,
-    "providerCalls": 0,
-    "newPlane3Credit": 0,
-    "applicationChanges": "NONE",
+    "modelProviderCalls": 0,
+    "push": "NONE",
     "deployment": "NONE",
     "productionMutation": "NONE",
     "mainMerge": "NONE"
+  },
+  "guard": {
+    "expectedCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
+    "staleCandidateRejected": true,
+    "arbitraryCandidateRejected": true,
+    "failClosed": true
   },
   "abandonedPriorCall": {
     "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
@@ -41,17 +53,17 @@
     "rebootIndependentWriterGenerations": 3,
     "additionalCompleteWriterJudgeRuns": 2
   },
-  "harnessRepairModelProviderAuthorization": 0,
   "additionalModelProviderAuthorization": "NONE",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "INCOMPLETE_HARNESS_IDENTITY_REPAIR_REQUIRED",
+  "plane3": "INCOMPLETE_PREFLIGHT_AND_PUBLICATION_REQUIRED",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
   "providerRecollection": "PROHIBITED",
   "deployment": "NONE",
   "productionMutation": "NONE",
   "mainMerge": "NONE",
-  "nextAction": "Obtain explicit Chris authorization for the smallest coherent non-production repair of the stale Writer-only harness candidate identity guard and its directly coupled deterministic tests. Make zero Writer/Judge/model/provider calls. Do not weaken the guard. If deterministic verification is green, commit locally and stop for a separate publication gate before any new Plane 3 model authorization.",
+  "repairCheckpoint": "PRYSM_PLANE3_HARNESS_CANDIDATE_IDENTITY_REPAIR_CHECKPOINT_2026-09-10.md",
+  "nextAction": "Run an independent Sol High preflight of exact local candidate 61303af4d7d567c2d77eb61379b98dff6f1974aa with zero Writer/Judge/model/provider calls and no application changes. If READY_FOR_NEXT_GATE / HIGH, request separate normal/non-force publication authorization before any Plane 3 model execution.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
