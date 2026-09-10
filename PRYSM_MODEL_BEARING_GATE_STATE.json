@@ -1,44 +1,23 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_WRITERINPUT_FAIL_CLOSED_REPAIR_WITH_GA4_OUTCOME_AUTHORITY_PAUSED",
+  "checkpoint": "PLANE3_PAUSED_GA4_WRITERINPUT_VERIFIED_PUBLICATION_PENDING",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "PLANE3_GATE_FAILED / NEW_SEMANTIC_CANDIDATE_REQUIRED",
+  "status": "VERIFIED_SEMANTIC_CANDIDATE / PUBLICATION_PENDING",
   "publishedToolingSha": "089405fcd49dea825394092d8920637c3b167324",
   "remoteReviewSha": "089405fcd49dea825394092d8920637c3b167324",
-  "currentLocalCandidateSha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
+  "currentLocalCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AT_LAST_PROOF",
+  "applicationWorktree": "CLEAN_AT_BUILDER_AND_VERIFIER_CLOSE",
   "publication": {
-    "status": "CURRENT_LOCAL_SEMANTIC_CANDIDATE_NOT_PUBLISHED",
+    "status": "PENDING_EXACT_CANDIDATE_PUBLICATION",
+    "requiredCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+    "mode": "NORMAL_NON_FORCE_FAST_FORWARD_ONLY",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
-  },
-  "rebootRun2Failure": {
-    "diagnosis": "DIAGNOSIS_COMPLETE / HIGH",
-    "rootCauseClass": "MODEL_INSTRUCTION_FOLLOWING_VARIANCE",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "writerRun1": "PASS",
-    "writerRun2": "FAIL",
-    "validatorError": "writerOutput.performanceUx.userImpact.text states an unmeasured business outcome with causal certainty",
-    "validatorDisposition": "CORRECT_FAIL_CLOSED_STOP",
-    "inputContentDrift": false,
-    "harnessDefect": false,
-    "validatorFalsePositive": false,
-    "writerCalls": 2,
-    "judgeCalls": 0,
-    "actualModelCostUsd": 0.21364
-  },
-  "firstWriterInputCandidate": {
-    "sha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
-    "builder": "PASS",
-    "independentVerifier": "BLOCKED",
-    "blockingClass": "FAIL_OPEN_BUSINESS_IMPACT_AUTHORITY",
-    "reason": "Inferred safety still relied on incomplete lexical detection and OBSERVED authority could be manufactured by nonempty refs without structurally proven downstream-outcome identity."
   },
   "ga4ConversionOutcomeDecision": {
     "decision": "PAUSED_FOR_CURRENT_RELEASE",
@@ -49,72 +28,64 @@
     "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE",
     "futureFeature": "SEPARATELY_GOVERNED_CONVERSION_EVENT_AUTHORITY"
   },
-  "currentReleaseWriterImpactRules": {
-    "sourceBusinessImpactPreserved": true,
+  "verifiedCandidate": {
+    "sha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+    "parentSha": "125e296a0ff2878c1cebfa576740a11b5039ca9f",
+    "builder": {
+      "model": "gpt-5.6-terra",
+      "effort": "high",
+      "result": "REPAIR_PASS / HIGH"
+    },
+    "independentVerifier": {
+      "model": "gpt-5.6-sol",
+      "effort": "high",
+      "result": "INDEPENDENT_VERIFIER_PASS / HIGH",
+      "blockingDefects": 0
+    },
+    "writerInputVersion": "1.2.0",
     "rawSourceBusinessImpactAsWriterAuthority": false,
     "downstreamCommercialImpactBasis": "INFERRED_ONLY_FOR_CURRENT_RELEASE",
-    "lexicalBlacklistAsSafetyMechanism": "PROHIBITED",
-    "proxyEvidencePromotionToCommercialOutcome": "PROHIBITED",
-    "writerOutputValidatorChange": "NONE",
-    "observedConditionEvidence": "PRESERVE_EXISTING_GOVERNED_CONTRACTS"
+    "lexicalBlacklistAsSafetyMechanism": false,
+    "proxyEvidencePromotionToCommercialOutcome": false,
+    "observedConditionEvidencePreserved": true,
+    "writerOutputValidatorChanged": false,
+    "scoringSemanticsChanged": false,
+    "ga4ArchitectureChanged": false,
+    "fullWorker": "1009/1009 PASS",
+    "narrativeV2": "150/150 PASS",
+    "storageRecovery": "41/41 PASS",
+    "productionPath": "11/11 PASS"
   },
   "authorization": {
-    "builderDeterministicImplementation": "AUTHORIZED_BY_CHRIS_WITHIN_PAUSED_GA4_RELEASE_BOUNDARY",
-    "builderRoute": "gpt-5.6-terra / high",
-    "mechanicalRouteAfterSemanticsFrozen": "gpt-5.6-luna / medium",
-    "independentVerificationRoute": "gpt-5.6-sol / high",
+    "semanticBuilder": "COMPLETED_PASS",
+    "independentVerification": "COMPLETED_PASS",
+    "mechanicalPublication": "AUTHORIZED_FOR_EXACT_VERIFIED_SHA_NORMAL_NON_FORCE_ONLY",
+    "mechanicalPublicationRoute": "gpt-5.6-luna / medium",
     "writerJudgeProviderModelBearingCalls": "NONE",
     "providerRecollectionRescore": "NONE",
-    "pushPublication": "NONE_UNTIL_BUILDER_AND_INDEPENDENT_VERIFICATION_PASS",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
   },
-  "longRunPolicy": {
-    "preferred": true,
-    "builderSequence": [
-      "DIAGNOSIS_CONFIRMATION",
-      "BOUNDED_IMPLEMENTATION",
-      "FOCUSED_ADVERSARIAL_FIRETESTS",
-      "COMPATIBILITY_TESTS",
-      "NARRATIVE_V2_REGRESSION",
-      "STORAGE_RECOVERY_REGRESSION",
-      "PRODUCTION_PATH_REGRESSION",
-      "FULL_WORKER_REGRESSION",
-      "EXACT_HEAD_VERIFICATION",
-      "LOCAL_COMMIT",
-      "DOWNLOADS_PROOF"
-    ],
-    "stopEarlyOnlyFor": [
-      "BOUNDARY_EXPANSION_REQUIRED",
-      "PROTECTED_INVARIANT_FAILURE",
-      "UNRESOLVED_AUTHORITY_AMBIGUITY",
-      "UNAUTHORIZED_MODEL_PROVIDER_CALL",
-      "PROVIDER_RECOLLECTION_OR_RESCORE",
-      "PUSH_DEPLOY_MERGE_PRODUCTION_MUTATION"
-    ]
-  },
   "plane3": {
-    "status": "GATE_FAILED / NEW_SEMANTIC_CANDIDATE_REQUIRED",
+    "status": "VERIFIED_SEMANTIC_CANDIDATE / PUBLICATION_PENDING",
     "historicalPreChangeCredit": {
       "tbkIndependentWriterGenerations": "3/5",
       "rebootIndependentWriterGenerations": "0/3",
       "completeWriterJudgeOrchestrations": "1/3"
     },
-    "historicalCreditTransferToNewCandidate": "NOT_INFERRED / REQUIRES_GOVERNANCE_RECONCILIATION",
-    "rebootRun1": "PRESERVED_EVIDENCE",
-    "rebootRun2": "FAILED_EVIDENCE / NO_RETRY",
-    "abandonedJudgeCall": "NO_RETRY / NO_RESUME",
-    "freshBaselineRequiredAfterNewCandidate": true
+    "historicalCreditTransferToNewCandidate": "NONE_AUTOMATIC",
+    "freshBaselineAuthorizationRequiredAfterPublicationAndContextSync": true,
+    "rebootRun1": "PRESERVED_HISTORICAL_EVIDENCE",
+    "rebootRun2": "FAILED_HISTORICAL_EVIDENCE / NO_RETRY",
+    "abandonedJudgeCall": "NO_RETRY / NO_RESUME"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one long governed GPT-5.6 Terra / High Semantic Repair Builder against local application C:\\Users\\kulba\\Desktop\\vantage-platform, branch review/prysm-solution-directive-authority-betty, starting from exact clean local SHA 125e296a0ff2878c1cebfa576740a11b5039ca9f. Implement only the paused-GA4 fail-closed WriterInput repair: preserve source businessImpact, remove lexical safety logic, derive bounded INFERRED Writer-facing commercial significance from structured governed finding/evidence context, preserve existing observed-condition authority, make no GA4 conversion-authority architecture changes, run focused adversarial firetests plus complete deterministic regressions, commit locally only after all gates PASS, write Downloads proof, then stop with no push/publication/model-bearing testing.",
-  "postBuildSequenceBeforeModelBearing": [
-    "BUILDER_PASS",
-    "INDEPENDENT_SOL_HIGH_PASS",
-    "SEMANTIC_CANDIDATE_PUBLICATION",
-    "AUTHORITATIVE_CONTEXT_SYNCHRONIZATION",
+  "nextAction": "Run one governed GPT-5.6 Luna / Medium Mechanical Publication Operator against C:\\Users\\kulba\\Desktop\\vantage-platform. Verify root, branch, exact clean HEAD d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97 and remote ancestry. Publish that exact existing commit to origin/review/prysm-solution-directive-authority-betty using normal non-force fast-forward push only. Verify remote branch resolves exactly to the candidate, write a Downloads proof file, then stop. No edits, new commits, deployment, main merge, production mutation, Writer/Judge/model/provider calls, provider recollection, or rescore. If fast-forward publication is not possible, stop without force.",
+  "postPublicationSequenceBeforeModelBearing": [
+    "EXACT_REMOTE_SHA_VERIFIED",
+    "AUTHORITATIVE_CONTEXT_SYNCHRONIZATION_TO_PUBLISHED_SHA",
     "FRESH_EXPLICIT_CHRIS_AUTHORIZATION_FOR_NEW_PLANE3_BASELINE"
   ],
   "lastVerified": "2026-09-10 America/Toronto"
