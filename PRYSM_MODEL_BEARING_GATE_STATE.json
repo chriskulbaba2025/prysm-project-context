@@ -1,18 +1,18 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_PAUSED_GA4_WRITERINPUT_VERIFIED_PUBLICATION_PENDING",
+  "checkpoint": "PLANE3_PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE_FRESH_BASELINE_PENDING",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "VERIFIED_SEMANTIC_CANDIDATE / PUBLICATION_PENDING",
-  "publishedToolingSha": "089405fcd49dea825394092d8920637c3b167324",
-  "remoteReviewSha": "089405fcd49dea825394092d8920637c3b167324",
+  "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / FRESH_BASELINE_AUTHORIZATION_PENDING",
+  "publishedToolingSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+  "remoteReviewSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "currentLocalCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AT_BUILDER_AND_VERIFIER_CLOSE",
+  "applicationWorktree": "CLEAN_AFTER_PUBLICATION",
   "publication": {
-    "status": "PENDING_EXACT_CANDIDATE_PUBLICATION",
+    "status": "PUBLISHED_EXACT_CANDIDATE",
     "requiredCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
     "mode": "NORMAL_NON_FORCE_FAST_FORWARD_ONLY",
     "deployment": "NONE",
@@ -59,7 +59,7 @@
   "authorization": {
     "semanticBuilder": "COMPLETED_PASS",
     "independentVerification": "COMPLETED_PASS",
-    "mechanicalPublication": "AUTHORIZED_FOR_EXACT_VERIFIED_SHA_NORMAL_NON_FORCE_ONLY",
+    "mechanicalPublication": "COMPLETED_EXACT_VERIFIED_SHA_NORMAL_NON_FORCE",
     "mechanicalPublicationRoute": "gpt-5.6-luna / medium",
     "writerJudgeProviderModelBearingCalls": "NONE",
     "providerRecollectionRescore": "NONE",
@@ -68,7 +68,7 @@
     "productionMutation": "NONE"
   },
   "plane3": {
-    "status": "VERIFIED_SEMANTIC_CANDIDATE / PUBLICATION_PENDING",
+    "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / FRESH_BASELINE_AUTHORIZATION_PENDING",
     "historicalPreChangeCredit": {
       "tbkIndependentWriterGenerations": "3/5",
       "rebootIndependentWriterGenerations": "0/3",
@@ -82,7 +82,7 @@
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one governed GPT-5.6 Luna / Medium Mechanical Publication Operator against C:\\Users\\kulba\\Desktop\\vantage-platform. Verify root, branch, exact clean HEAD d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97 and remote ancestry. Publish that exact existing commit to origin/review/prysm-solution-directive-authority-betty using normal non-force fast-forward push only. Verify remote branch resolves exactly to the candidate, write a Downloads proof file, then stop. No edits, new commits, deployment, main merge, production mutation, Writer/Judge/model/provider calls, provider recollection, or rescore. If fast-forward publication is not possible, stop without force.",
+  "nextAction": "Obtain fresh explicit Chris authorization for a new governed Plane 3 Writer/Judge model-bearing baseline against exact published candidate d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97.",
   "postPublicationSequenceBeforeModelBearing": [
     "EXACT_REMOTE_SHA_VERIFIED",
     "AUTHORITATIVE_CONTEXT_SYNCHRONIZATION_TO_PUBLISHED_SHA",
