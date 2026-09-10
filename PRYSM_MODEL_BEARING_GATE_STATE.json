@@ -1,33 +1,47 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_PREFLIGHT_READY",
+  "checkpoint": "CURRENT_CANDIDATE_PLANE3_HARNESS_PUBLISHED",
   "scope": "CURRENT_CANDIDATE_WRITER_JUDGE_ROBUSTNESS",
-  "status": "HARNESS_PUBLICATION_AUTHORIZATION_PENDING",
+  "status": "PLANE3_MODEL_CALL_AUTHORIZATION_PENDING",
   "semanticCandidateSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "localToolingCandidateSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
-  "remoteReviewSha": "a16430aa6c000afadcaade3e692e41f0f08ed903",
-  "writerOnlyHarness": "IDENTITY_CONTRACT_REPAIRED_VERIFIED_AND_SOL_HIGH_PREFLIGHT_READY_LOCAL_ONLY",
-  "independentSolHighPreflight": {
-    "result": "READY_FOR_NEXT_GATE",
-    "confidence": "HIGH",
-    "runtimeIdentityVerification": "PASS",
-    "semanticBaseDistinctFromToolingHead": true,
-    "semanticBaseAncestorVerified": true,
-    "worktreeClean": true,
-    "boundedOverlayVerified": true,
-    "changedPaths": [
-      "services/worker/scripts/plane3-writer-only.mjs",
-      "services/worker/scripts/plane3-writer-only.test.js"
-    ],
+  "publishedToolingSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
+  "remoteReviewSha": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
+  "writerOnlyHarness": "IDENTITY_CONTRACT_REPAIRED_VERIFIED_SOL_HIGH_PREFLIGHT_READY_AND_PUBLISHED",
+  "publication": {
+    "result": "PLANE3_HARNESS_PUBLICATION_PASS",
+    "remoteBefore": "a16430aa6c000afadcaade3e692e41f0f08ed903",
+    "remoteAfter": "299418bdfd219e1b8cc3c2be57a735ca147b9a24",
+    "normalNonForce": true,
+    "worktreeBefore": "CLEAN",
+    "worktreeAfter": "CLEAN",
     "writerCalls": 0,
     "judgeCalls": 0,
     "modelProviderApplicationCalls": 0,
     "applicationChanges": "NONE",
-    "push": "NONE",
+    "newApplicationCommits": "NONE",
     "deployment": "NONE",
     "productionMutation": "NONE",
     "mainMerge": "NONE"
+  },
+  "identityContract": {
+    "semanticBaseDistinctFromToolingHead": true,
+    "semanticBaseAncestorRequired": true,
+    "cleanWorktreeRequired": true,
+    "correctRepositoryRootRequired": true,
+    "boundedOverlayRequired": true,
+    "authorizedChangedPaths": [
+      "services/worker/scripts/plane3-writer-only.mjs",
+      "services/worker/scripts/plane3-writer-only.test.js"
+    ],
+    "arbitraryShaInput": "PROHIBITED",
+    "environmentBypass": "PROHIBITED",
+    "wildcard": "PROHIBITED",
+    "guardRemoval": "PROHIBITED"
+  },
+  "independentSolHighPreflight": {
+    "result": "READY_FOR_NEXT_GATE",
+    "confidence": "HIGH"
   },
   "abandonedPriorCall": {
     "executionId": "tbk-fresh-narrative-fresh-live-1789012917064-28748",
@@ -46,12 +60,14 @@
   "remainingPlane3Sample": {
     "tbkIndependentWriterGenerations": 4,
     "rebootIndependentWriterGenerations": 3,
-    "additionalCompleteWriterJudgeRuns": 2
+    "additionalCompleteWriterJudgeRuns": 2,
+    "minimumAdditionalModelCalls": 9,
+    "maximumBoundedModelCallExposure": 13
   },
-  "additionalModelProviderAuthorization": "NONE",
+  "additionalModelProviderAuthorization": "NONE_PENDING_EXPLICIT_CHRIS_APPROVAL",
   "retryAuthorized": false,
   "pass3Authorized": false,
-  "plane3": "INCOMPLETE_PUBLICATION_AND_MODEL_TRANCHE_REQUIRED",
+  "plane3": "INCOMPLETE_MODEL_TRANCHE_REQUIRED",
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
   "providerRecollection": "PROHIBITED",
@@ -59,6 +75,7 @@
   "productionMutation": "NONE",
   "mainMerge": "NONE",
   "preflightCheckpoint": "PRYSM_PLANE3_HARNESS_IDENTITY_CONTRACT_SOL_PREFLIGHT_READY_CHECKPOINT_2026-09-10.md",
-  "nextAction": "Obtain explicit Chris authorization for normal/non-force publication of exact local tooling candidate 299418bdfd219e1b8cc3c2be57a735ca147b9a24 to the existing review branch. Verify local and remote identities before push and exact remote SHA after push. Make zero Writer/Judge/model/provider calls. Do not deploy, mutate production, or merge main. A separate Plane 3 model-call authorization remains required afterward.",
+  "publicationCheckpoint": "PRYSM_PLANE3_HARNESS_IDENTITY_CONTRACT_PUBLICATION_CHECKPOINT_2026-09-10.md",
+  "nextAction": "Obtain explicit Chris authorization for one fresh bounded Plane 3 model-bearing robustness tranche against published tooling SHA 299418bdfd219e1b8cc3c2be57a735ca147b9a24 while preserving semantic application base a16430aa6c000afadcaade3e692e41f0f08ed903. Use only frozen TBK/Reboot inputs, fresh execution identities and isolated ledgers, maximum 13 new model calls, no retry of abandoned call 4, no provider recollection/rescore, no Pass 3, no deployment, no production mutation, and no main merge.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
