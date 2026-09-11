@@ -4,62 +4,92 @@ Project: PRYSM
 
 ## Current objective
 
-Reach live human UAT now through the accelerated current-format TBK path. The narrow Writer prompt contradiction has been repaired and deterministically verified. Chris has now explicitly authorized exactly one fresh current-format TBK Writer -> Judge validation against the repaired application HEAD and, if and only if that validation passes, immediate deployment of that exact candidate to the PRYSM staging/UAT environment for live testing.
-
-Authorization checkpoint: `PRYSM-LIVE-UAT-VALIDATION-AND-STAGING-AUTHORIZATION_2026-09-10.md`.
+Reach live human UAT as quickly as possible through the accelerated current-format TBK path. The repaired Writer prompt produced correctly bounded conversion-path language, but the live run exposed a narrow WriterOutput validator false positive. Repair that validator grammar deterministically, then return directly to one fresh validation-and-staging authorization against the repaired HEAD.
 
 ## Exact application checkpoint
 
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
-- Exact authorized candidate HEAD: `6a87037c3c94a13d5c42ca505d6c6557eb962664`
+- Current application HEAD tested: `6a87037c3c94a13d5c42ca505d6c6557eb962664`
 - Writer prompt version: `2.4.0`
-- Current WriterInput version: `1.2.0`
-- Current ScoreSet contract: `2.0.0`
-- Current TBK fixture audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
+- WriterInput version: `1.2.0`
+- ScoreSet contract: `2.0.0`
+- TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - GA4 downstream commercial-outcome authority: PAUSED
-- Worktree: CLEAN at repair close
+- Worktree after failed validation: CLEAN
+- Staging deployment: NOT ATTEMPTED
 
-## Deterministic repair verification
+## Latest live validation
 
-Checkpoint: `PRYSM-LIVE-UAT-PROMPT-REPAIR-PASS_2026-09-10.md`
+Checkpoint: `PRYSM-LIVE-UAT-VALIDATOR-NEGATION-FALSE-POSITIVE_2026-09-10.md`
 
-Result: `LIVE_UAT_PROMPT_REPAIR_PASS / HIGH`.
+Result: `LIVE_UAT_VALIDATION_FAIL / VALIDATOR_FALSE_POSITIVE_DIAGNOSED / HIGH`.
 
-- Focused Writer/prompt/input/output: 64/64 PASS
-- Narrative v2: 151/151 PASS
-- Production path: 11/11 PASS
-- Storage: 41/41 PASS
-- Artifact/recovery: 106/106 PASS
-- Full worker: 1009/1009 PASS
-- `git diff --check`: PASS
-- worktree: CLEAN
+Fresh Writer call:
 
-The repaired Rule 11a now states that CTA clarity assesses the observed invitation, conversion-path clarity assesses the observed route toward the next step, and path clarity does not establish that visitors completed the action or converted.
+- model: `gpt-5.6-terra`
+- prompt: `2.4.0`
+- structural/provider execution: completed
+- actual cost: USD 0.125490
+- Judge calls: 0 because WriterOutput validation stopped the run
 
-## Current authorization boundary
+Exact rejected text:
 
-Authorized now:
-- exactly one fresh current-format TBK Writer call using `gpt-5.6-terra`;
-- exactly one Judge call using `gpt-5.6-sol` if Writer validation passes;
-- Writer prompt version `2.4.0`;
-- approved current TBK UAT fixture;
-- current budget gates and permanent PRYSM model-bearing release gate;
-- no automatic revision or replacement sample;
-- if and only if the validation passes, deployment of exact candidate `6a87037c3c94a13d5c42ca505d6c6557eb962664` to PRYSM staging/UAT and verification of the exact live UAT URL.
+`No material conversion-path limitation was established from the assessed evidence. A visible invitation and a clear assessed path do not establish visitor completion or conversion performance.`
 
-Not authorized:
+The text is correctly bounded: it explicitly says path evidence does **not** establish completion or conversion performance.
+
+## Proven root cause
+
+`WRITER_OUTPUT_NEGATION_GRAMMAR_FALSE_POSITIVE`
+
+In `services/worker/src/narrative-v2/writer-output.js`, `establishedOutcomePattern` detects `establish`, while `nonEstablishmentOutcomePattern` is intended to exempt explicit non-establishment wording.
+
+The exemption recognizes `does not establish`, `did not establish`, `cannot establish`, and related forms, but it omits `do not establish`.
+
+Therefore the valid bounded phrase `do not establish visitor completion or conversion performance` is falsely rejected as an affirmative unmeasured commercial-outcome claim.
+
+This is not a Writer prompt, WriterInput, ScoreSet, scoring, Judge, GA4, fixture, provider, or Vercel-linkage defect.
+
+## Minimum repair boundary
+
+Repair only the non-establishment grammar in `writer-output.js` and focused tests.
+
+Required behavioral proof:
+
+- `do not establish visitor completion or conversion performance` must PASS;
+- existing explicit non-establishment forms remain PASS;
+- affirmative `establishes conversion performance` remains FAIL;
+- causal certainty such as `will increase conversions` remains FAIL;
+- a bounded denial must not launder a separate affirmative unsupported commercial claim.
+
+Do not weaken the commercial-outcome guard broadly.
+
+## Authorization boundary
+
+The prior Writer/Judge + staging authorization was tied to exact HEAD `6a87037c3c94a13d5c42ca505d6c6557eb962664` and was consumed by the failed execution.
+
+Authorized next action:
+
+- zero-model-call bounded validator repair;
+- focused deterministic regression;
+- required broad deterministic regression;
+- one local repair commit.
+
+Not authorized until fresh Chris approval against the resulting repaired HEAD:
+
+- Writer/Judge/provider/model-bearing calls;
+- staging deployment;
 - production deployment;
-- main merge;
+- push or main merge;
 - provider recollection;
-- additional robustness sampling;
-- any different application candidate;
-- GA4 conversion-authority expansion;
-- unrelated production mutation.
+- additional robustness sampling.
 
 ## Exact next action
 
-Run one combined governed validation-and-UAT-deploy operation. Preflight exact candidate identity, fixture, routes, config, and budgets; execute exactly one fresh current-format TBK Writer -> Judge validation with no automatic revision; stop on any material failure. If and only if it passes, deploy that exact validated candidate to PRYSM staging/UAT, verify deployment readiness, and return the exact URL and minimal human test steps. No further staging authorization is required if the validation passes.
+Run one bounded zero-model-call GPT-5.6 Luna / Medium repair of the proven `do not establish` negation false positive, add focused positive and negative regressions, run Narrative v2, production-path, storage/recovery and full worker tests, create one local commit, and stop before any model call or deployment.
+
+If the repair passes, obtain one fresh combined authorization for exactly one current-format TBK Writer -> Judge validation and conditional staging/UAT deployment of that exact repaired candidate.
 
 Last verified: 2026-09-10 America/Toronto
