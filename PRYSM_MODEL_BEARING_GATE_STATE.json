@@ -1,33 +1,24 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PRODUCTION_LIVE",
-  "status": "PRYSM_PRODUCTION_LIVE",
+  "checkpoint": "PRODUCTION_WORKER_BASE_URL_BLOCKER",
+  "status": "PRODUCTION_ENVIRONMENT_REPAIR_AUTHORIZATION_REQUIRED",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
-  "writerPromptVersion": "2.4.0",
-  "validation": {
-    "writer": "PASS",
-    "judge": "PASS",
-    "judgeScore": 96,
-    "judgeDefects": 0,
-    "orchestration": "RELEASE_CANDIDATE"
-  },
   "production": {
-    "checkpointFile": "PRYSM-PRODUCTION-LIVE_2026-09-11.md",
     "deploymentId": "dpl_AFV2hrhjY96VGTGsQ6xynUuQwgu6",
-    "status": "READY",
     "domain": "https://prysm.omnipressence.com",
-    "loginUrl": "https://prysm.omnipressence.com/login",
-    "tbkReportUrl": "https://prysm.omnipressence.com/audits/9714c206-8ed3-4686-8fe2-ceeca0ca0f82/report",
-    "loginHttp": 200
+    "login": "PASS",
+    "dashboardWorkerConnectivity": "FAIL",
+    "rootCause": "VANTAGE_WORKER_API_URL_MISSING_RUNTIME_FALLBACK_TO_LOCALHOST",
+    "intendedWorkerUrl": "https://vantage-platform-production.up.railway.app"
   },
   "authorization": {
-    "humanProductionTest": "READY_NOW",
-    "mainMerge": "NOT_AUTHORIZED",
+    "productionEnvironmentRepair": "PENDING_CHRIS_AUTHORIZATION",
+    "modelCalls": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
-    "additionalModelCalls": "NOT_AUTHORIZED"
+    "mainMerge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Chris tests the live production login and TBK report and reports any concrete defect with a screenshot and exact page or section.",
+  "nextAction": "Obtain Chris authorization to repair production VANTAGE_WORKER_API_URL, redeploy/promote only as required, and verify dashboard/report connectivity.",
   "lastVerified": "2026-09-11 America/Toronto"
 }
