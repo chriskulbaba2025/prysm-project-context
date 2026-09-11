@@ -1,87 +1,78 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_STALE_FROZEN_WRITERINPUT_BYPASS_REPAIR_REQUIRED",
+  "checkpoint": "PLANE3_CURRENT_CORPUS_DERIVATION_BLOCKED",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "DIAGNOSIS_COMPLETE / FROZEN_INPUT_PRODUCTION_WRITERINPUT_BOUNDARY_REPAIR_REQUIRED",
+  "status": "CORPUS_CURRENT_INPUT_DERIVATION_BLOCKED / CORPUS_AUTHORITY_DESIGN_REQUIRED",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "localToolingHeadSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
   "semanticApplicationBaseSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AT_DIAGNOSIS_CLOSE",
+  "applicationWorktree": "CLEAN_AT_DERIVATION_BLOCKER_CLOSE",
+  "currentWriterInputVersion": "1.2.0",
   "ga4ConversionOutcomeDecision": {
     "decision": "PAUSED_FOR_CURRENT_RELEASE",
     "ga4ObservedConversionAuthority": "NOT_AUTHORIZED",
     "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE"
   },
-  "freshPlane3Baseline": {
-    "result": "PLANE3_BASELINE_FAIL / HIGH",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "tbkWriter": "5/5 PASS_ON_SUBMITTED_BYTES",
-    "rebootWriter": "1 PASS / 1 FAIL / THIRD_NOT_RUN",
+  "freshPlane3Evidence": {
+    "tbkWriter": "5/5 PASS_ON_HISTORICAL_1.0.0_PACKET_BYTES_ONLY",
+    "rebootWriter": "1 PASS / 1 FAIL_ON_HISTORICAL_1.0.0_PACKET_BYTES",
     "writerJudgeOrchestrations": "0/3_NOT_ENTERED",
-    "writerCalls": 7,
-    "judgeCalls": 0,
-    "actualCostUsd": 0.785116,
-    "failedFreshRebootExecution": "plane3-writer-only-97d6b2c7-03b9-4530-8ea7-16557502c638-13d81fc4-0ca0-4bc4-8d27-f447a50e7fe0",
-    "failedFreshRebootRetry": "PROHIBITED"
+    "currentWriterInputBoundaryProven": false,
+    "automaticCreditTransfer": "NONE"
   },
-  "diagnosis": {
-    "result": "DIAGNOSIS_COMPLETE / HIGH",
-    "checkpointFile": "PRYSM-PLANE3-STALE-FROZEN-WRITERINPUT-BYPASS-DIAGNOSIS_2026-09-10.md",
-    "primaryRootCause": "STALE_FROZEN_WRITERINPUT_BYPASSES_CURRENT_PRODUCTION_BUILDER",
-    "currentWriterInputVersion": "1.2.0",
-    "failedFrozenRebootWriterInputVersion": "1.0.0",
-    "currentProductionBuilderExercisedByHarness": false,
-    "preCallWriterInputVersionAssertionPresent": false,
+  "provenRootCause": {
+    "class": "STALE_FROZEN_WRITERINPUT_BYPASSES_CURRENT_PRODUCTION_BUILDER",
     "validatorDisposition": "CORRECT",
-    "writerInputSemanticRepairDisproven": false,
-    "firstDivergence": "resolveApprovedInput directly loads historical writer-input.json and runWriterOnlySample passes selected.writerInput to buildWriterPrompt/writerExecutor without current buildWriterInput production boundary"
+    "writerInputSemanticRepairDisproven": false
   },
-  "repairBoundary": {
-    "scope": "PLANE3_FROZEN_INPUT_DERIVATION_LOADING_ONLY",
-    "required": [
-      "Exercise current production WriterInput 1.2.0 builder/load boundary for approved corpus",
-      "Fail closed if an approved packet is not current contract/version",
-      "Record deterministic current WriterInput hash identity before any model call",
-      "Preserve historical 1.0.0/1.1.0 packets and failed ledgers unchanged",
-      "Add focused positive and negative harness regressions"
-    ],
-    "prohibitedWithoutNewEvidence": [
-      "WriterOutput validator change",
-      "Writer prompt semantic change",
-      "scoring change",
-      "evidence semantic change",
-      "provider recollection",
-      "GA4 conversion-authority expansion",
-      "Writer/Judge model-route change",
-      "deployment",
-      "production mutation"
-    ]
+  "corpusDerivationBlocker": {
+    "checkpointFile": "PRYSM-PLANE3-CURRENT-CORPUS-DERIVATION-BLOCKED_2026-09-10.md",
+    "result": "CORPUS_CURRENT_INPUT_DERIVATION_BLOCKED / HIGH",
+    "tbkHistoricalWriterInputVersion": "1.0.0",
+    "rebootHistoricalWriterInputVersion": "1.0.0",
+    "tbkScoreSetContractVersion": "1.0.0",
+    "rebootScoreSetContractVersion": "1.0.0",
+    "currentScoreSetContractRequired": "2.0.0",
+    "decisionHierarchyRequired": true,
+    "tbkDecisionHierarchyPresent": false,
+    "rebootDecisionHierarchyPresent": false,
+    "currentBuildWriterInputCanRunFromFrozenCorpus": false
+  },
+  "preservation": {
+    "manufactureDecisionHierarchy": "PROHIBITED",
+    "handEditHistoricalScores": "PROHIBITED",
+    "silentRescore": "PROHIBITED",
+    "rewriteHistoricalFixtures": "PROHIBITED",
+    "providerRecollection": "PROHIBITED",
+    "failedFreshRebootRetry": "PROHIBITED",
+    "failedFreshRebootReplacement": "PROHIBITED"
   },
   "authorization": {
-    "zeroModelCallBoundaryRepair": "AUTHORIZED_TO_PROCEED",
-    "repairRoute": "gpt-5.6-terra / high",
-    "independentVerificationRoute": "gpt-5.6-sol / high",
-    "furtherWriterJudgeProviderModelBearingCalls": "NOT_AUTHORIZED_PENDING_REPAIR_AND_INDEPENDENT_VERIFICATION",
-    "providerRecollectionRescore": "NOT_AUTHORIZED",
+    "corpusAuthorityDiagnosisDesign": "AUTHORIZED_ZERO_MODEL_CALLS",
+    "writerJudgeProviderModelBearingCalls": "NOT_AUTHORIZED",
+    "rescore": "NOT_AUTHORIZED",
+    "providerRecollection": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
     "productionMutation": "NOT_AUTHORIZED"
   },
+  "modelRouting": {
+    "corpusAuthorityDiagnosisDesign": "gpt-5.6-terra / high",
+    "mechanicalImplementationAfterFreeze": "gpt-5.6-luna / medium",
+    "independentVerification": "gpt-5.6-sol / high"
+  },
   "plane3": {
-    "status": "FAILED_SAMPLE_DIAGNOSED / BOUNDARY_REPAIR_REQUIRED",
-    "freshTbkevidence": "5/5 PASS_ON_EXACT_SUBMITTED_BYTES_ONLY",
-    "freshRebootEvidence": "1 PASS / 1 FAIL_ON_STALE_1.0.0_BYTES",
-    "freshEvidenceTransferToRepairedBoundary": "NONE_AUTOMATIC",
+    "status": "CURRENT_CORPUS_DERIVATION_BLOCKED / AUTHORITY_PATH_REQUIRED",
+    "currentBoundaryCredit": "NONE_ESTABLISHED",
     "historicalRebootRun2": "NO_RETRY",
     "freshFailedRebootGeneration": "NO_RETRY / NO_REPLACEMENT",
     "abandonedHistoricalJudgeCall": "NO_RETRY / NO_RESUME"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one long governed GPT-5.6 Terra / High zero-model-call repair against tooling HEAD 5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb. Repair only the Plane 3 approved-corpus frozen-input derivation/loading boundary so each sample exercises current WriterInput 1.2.0 via the production builder/load path, add fail-closed contract/version/hash assertions and focused regressions, preserve historical packets and ledgers, run deterministic regression, create one local repair commit, and stop before any Writer/Judge/provider/model call. Then independently verify with GPT-5.6 Sol / High.",
+  "nextAction": "Run one long governed GPT-5.6 Terra / High zero-model-call corpus-derivation authority diagnosis. Trace the current producer path for ScoreSet 2.0.0 and decisionHierarchy, determine whether TBK and Reboot can be deterministically reconstructed from already persisted canonical pre-score inputs without provider recollection or changing scoring meaning, and select one minimum legitimate derivation path. Do not implement, rescore, recollect providers, or make Writer/Judge/model calls.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
