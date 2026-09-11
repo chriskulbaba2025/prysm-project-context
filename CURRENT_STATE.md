@@ -4,92 +4,102 @@ Project: PRYSM
 
 ## Current objective
 
-Clear the fresh Plane 3 pre-call blocker against the exact published and independently verified paused-GA4 semantic candidate, without changing application semantics or making a paid/model-bearing call.
+Complete the final pre-call configuration reconciliation for Plane 3 against the independently verified paused-GA4 semantic candidate. The stale harness semantic-base blocker is now repaired locally; no Writer/Judge/model-bearing call is permitted until authoritative live Narrative v2 configuration is present and independently preflighted.
 
 ## Exact application checkpoint
 
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
-- Review branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
-- Exact published semantic candidate: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
-- Remote review branch: same exact SHA
-- Candidate Builder: GPT-5.6 Terra / High — `REPAIR_PASS / HIGH`
-- Independent verifier: GPT-5.6 Sol / High — `INDEPENDENT_VERIFIER_PASS / HIGH`
-- Full worker: 1009/1009 PASS
-- Narrative v2: 150/150 PASS
-- Storage/recovery: 41/41 PASS
-- Production path: 11/11 PASS
-- Application worktree at last proof: CLEAN
+- Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
+- Published verified semantic candidate: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
+- Local Plane 3 tooling repair commit: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
+- Local worktree: CLEAN
+- Remote review branch remains at `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`; tooling repair not yet pushed.
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
 
-## Current-release GA4 boundary
+## Verified semantic candidate
 
-Decision file: `DECISION_PRYSM_GA4_CONVERSION_OUTCOME_PAUSE_2026-09-10.md`
+- Terra High Builder: `REPAIR_PASS / HIGH`
+- Sol High independent verifier: `INDEPENDENT_VERIFIER_PASS / HIGH`
+- WriterInput: `1.2.0`
+- Full worker: 1009/1009 PASS
+- Narrative v2: 150/150 PASS
+- Storage/recovery: 41/41 PASS
+- Production path: 11/11 PASS
+- GA4 downstream commercial-outcome authority remains PAUSED for this release.
 
-GA4 downstream commercial-outcome authority remains PAUSED for this release. GA4 stays in its existing contextual/analytics role only. No GA4 event mapping, provider recollection, score transport expansion, or direct observed commercial-outcome authority is authorized.
+## Latest Plane 3 preflight reconciliation
 
-## Verified WriterInput semantics
+Checkpoint: `PRYSM-PLANE3-HARNESS-REPAIRED-LIVE-CONFIG-MISSING_2026-09-10.md`
 
-- Canonical `finding.businessImpact` remains unchanged as source/history provenance.
-- Raw source business-impact prose cannot become Writer authority.
-- Writer-facing downstream commercial significance is bounded `INFERRED` for this release.
-- Lexical/commercial-word detection is not the safety mechanism.
-- AVAILABLE proxy/condition evidence cannot create observed commercial-outcome authority.
-- Existing observed technical/search/accessibility/rendering/condition evidence remains preserved.
-- WriterInput current version: `1.2.0`.
-- Historical `1.0.0` / `1.1.0` packets are not silently upgraded.
-- WriterOutput validator remains unchanged and defensive.
-- Scoring/evidence/priority/canonical-solution semantics remain unchanged.
+Result: `PLANE3_CONFIG_INPUT_REQUIRED / HIGH`.
 
-## Fresh Plane 3 preflight result
+### Harness identity blocker
 
-Checkpoint: `PRYSM-PLANE3-PREFLIGHT-HARNESS-IDENTITY-AND-LIVE-CONFIG-BLOCKER_2026-09-10.md`
+CLOSED locally.
 
-Latest tranche result: `PLANE3_PREFLIGHT_BLOCKED / HIGH`.
+The Plane 3 harness semantic base advanced from `52eadcc5a8f6bd3a99da7155d0af86ae261a14ab` to exact verified semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`.
 
-No Writer, Judge, provider, or model call occurred.
+Only these tooling files changed:
 
-### Blocker 1 — stale harness semantic base
+- `services/worker/scripts/plane3-writer-only.mjs`
+- `services/worker/scripts/plane3-writer-only.test.js`
 
-`services/worker/scripts/plane3-writer-only.mjs` still hardcodes semantic application base `52eadcc5a8f6bd3a99da7155d0af86ae261a14ab` and allows only the two Plane 3 tooling files as overlay paths. Because the verified candidate legitimately changes WriterInput/projection/prompt semantics, the harness rejects the current candidate as an unauthorized overlay.
+All clean-tree, ancestry, exact-base, and tooling-overlay protections remain active. Focused harness firetests: 14/14 PASS. Narrative v2: 150/150 PASS. Production path: 11/11 PASS. Full worker: 1009/1009 PASS. `git diff --check`: PASS.
 
-The next repair must advance/reconcile this semantic-base identity mechanically to the verified published candidate while preserving clean-tree, exact-SHA, ancestry, and tooling-overlay protections. Do not weaken the identity gate.
+### Remaining blocker — authoritative live configuration
 
-### Blocker 2 — live configuration unavailable
+The current execution environment does not expose the governed Narrative v2 live configuration required by `live-binding.js`.
 
-The execution environment did not expose the governed live Narrative v2 configuration required by `live-binding.js`. Missing/unavailable values include enabled/live mode, Writer/Judge model IDs, chat-completions endpoint/API credential, token ceilings, price table, and budget values.
+Missing/unavailable:
 
-Do not invent or expose secrets, prices, endpoints, or budgets. Discover and validate existing governed configuration if it already exists. If a required value cannot be recovered from authoritative configuration, stop and report the exact missing item requiring Chris input/authorization.
+- `PRYSM_NARRATIVE_V2_ENABLED`
+- `PRYSM_LLM_MODE`
+- `PRYSM_NARRATIVE_V2_WRITER_MODEL`
+- `PRYSM_NARRATIVE_V2_JUDGE_MODEL`
+- `PRYSM_NARRATIVE_V2_CHAT_COMPLETIONS_URL`
+- `PRYSM_NARRATIVE_V2_API_KEY`
+- `PRYSM_NARRATIVE_V2_MAX_INPUT_TOKENS`
+- `PRYSM_NARRATIVE_V2_WRITER_MAX_OUTPUT_TOKENS`
+- `PRYSM_NARRATIVE_V2_JUDGE_MAX_OUTPUT_TOKENS`
+- `PRYSM_NARRATIVE_V2_PRICE_TABLE_JSON`
+- `PRYSM_LLM_SOFT_BUDGET_USD`
+- `PRYSM_LLM_HARD_BUDGET_USD`
+- `PRYSM_LLM_DAILY_HARD_BUDGET_USD`
+- current daily spend when applicable
+
+Expected governed model route remains Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`.
+
+Do not invent endpoint, credential, prices, token ceilings, or budgets. Secrets must not be printed or committed.
+
+## Frozen inputs
+
+- TBK `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`: resolved PASS.
+- Reboot `97d6b2c7-03b9-4530-8ea7-16557502c638`: resolved PASS.
+- Failed historical Reboot Run 2: NO RETRY.
+- Abandoned historical Judge call: NO RESUME.
 
 ## Plane 3 state
 
-- Status: **PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / PREFLIGHT_RECONCILIATION_REQUIRED**
-- Historical pre-change credit remains evidence only:
-  - TBK independent Writer generations: 3/5
-  - Reboot independent Writer generations: 0/3
-  - Complete Writer → Judge orchestrations: 1/3
-- Failed historical Reboot Run 2: NO RETRY.
-- Abandoned historical Judge call: NO RESUME.
-- No automatic historical credit transfer.
+- Status: **PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / LIVE_CONFIG_RECONCILIATION_REQUIRED**
+- Historical credit remains evidence only; no automatic transfer.
 - Plane 4: NOT_YET_ELIGIBLE.
 - Plane 5: NOT_YET_ELIGIBLE.
 
 ## Model routing
 
-- Mechanical harness/config reconciliation: **GPT-5.6 Luna / Medium**.
-- Semantic/architecture change, only if proven necessary: **GPT-5.6 Terra / High** after a separate gate.
-- Independent adversarial verification after semantic changes: **GPT-5.6 Sol / High**.
+- Mechanical harness/config work: GPT-5.6 Luna / Medium.
+- Semantic/architecture changes only when proven necessary: GPT-5.6 Terra / High.
+- Independent adversarial verification: GPT-5.6 Sol / High.
 
 ## Current authorization boundary
 
-Chris has instructed the project to move ahead. This authorizes the bounded deterministic preflight reconciliation described below. It does not authorize inventing missing configuration or bypassing paid/model-bearing gates.
-
-No new Writer/Judge/provider/model-bearing call should occur during the reconciliation run. After both preflight blockers are cleared, the exact bounded Plane 3 model-bearing tranche must use the governed release gate and current authorization state.
+Chris has authorized continuing the bounded preflight path. No Writer/Judge/provider/model-bearing call is currently authorized until live configuration is reconciled and preflight returns READY. No provider recollection, rescore, deployment, main merge, or production mutation is authorized.
 
 ## Exact next action
 
-Run one long governed **GPT-5.6 Luna / Medium** preflight-reconciliation operation against exact application candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`. First prove whether advancing the Plane 3 harness `SEMANTIC_APPLICATION_BASE_SHA` to the exact verified published candidate is a purely mechanical harness checkpoint repair; if yes, update only the Plane 3 harness/tooling tests and preserve all overlay protections. In the same run, discover and validate existing live Narrative v2 routing/cost/budget configuration without printing secrets and without making any live/model call. Run focused harness/config tests and deterministic regression required by the changed tooling. If exact configuration remains unavailable, stop with a concise missing-configuration list. If an application-semantic change is required, stop with `SEMANTIC_REPAIR_REQUIRED`. Do not execute Writer/Judge yet.
+Run one governed GPT-5.6 Luna / Medium configuration-reconciliation and independent preflight against local tooling commit `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`. Recover only authoritative existing live configuration, validate the exact Writer/Judge models, endpoint presence, token ceilings, price table, budgets, daily spend, frozen inputs, harness identity, and live-binding readiness with ZERO model/network calls. If required values remain unavailable, stop with only the missing variable names and what Chris must supply. If everything validates, stop at `PLANE3_PREFLIGHT_READY` before the first paid call.
 
 Last verified: 2026-09-10 America/Toronto
