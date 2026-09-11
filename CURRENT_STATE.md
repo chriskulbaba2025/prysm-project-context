@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Execute one fresh governed Plane 3 model-bearing baseline against the exact independently verified paused-GA4 semantic candidate and the exact preflight-verified tooling HEAD. Chris has now explicitly authorized this tranche.
+Diagnose the single demonstrated fresh Plane 3 Reboot Writer semantic failure against the exact published paused-GA4 semantic candidate. No further Writer/Judge/model-bearing calls are authorized until the exact authority leak is proven and any required repair is separately governed.
 
 ## Exact application checkpoint
 
@@ -12,13 +12,13 @@ Execute one fresh governed Plane 3 model-bearing baseline against the exact inde
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Verified semantic application base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
-- Current local Plane 3 tooling HEAD: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
-- Application worktree at preflight close: CLEAN
+- Current Plane 3 tooling HEAD: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
+- Application worktree at failed baseline close: CLEAN
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
 
-## Verified semantic candidate
+## Verified semantic candidate before fresh baseline
 
 - Terra High Builder: `REPAIR_PASS / HIGH`
 - Sol High independent verifier: `INDEPENDENT_VERIFIER_PASS / HIGH`
@@ -31,67 +31,69 @@ Execute one fresh governed Plane 3 model-bearing baseline against the exact inde
 - Scoring/evidence/priority/canonical-solution semantics unchanged
 - GA4 downstream commercial-outcome authority remains PAUSED for this release.
 
-## Plane 3 preflight
+## Plane 3 fresh model-bearing baseline result
 
-Checkpoint: `PRYSM-PLANE3-PREFLIGHT-READY_2026-09-10.md`
+Checkpoint: `PRYSM-PLANE3-FRESH-BASELINE-REBOOT-SEMANTIC-FAILURE_2026-09-10.md`
 
-Result: `PLANE3_PREFLIGHT_READY / HIGH`.
+Result: `PLANE3_BASELINE_FAIL / HIGH`.
 
-Validated before any paid call:
+Fresh model-bearing evidence against the current candidate:
 
-- harness identity PASS;
-- semantic base `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`;
-- tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`;
-- bounded tooling overlay PASS;
-- focused harness tests 14/14 PASS;
-- Writer `gpt-5.6-terra`;
-- Judge `gpt-5.6-sol`;
-- HTTPS chat-completions endpoint present;
-- API credential present, secret not recorded;
-- max input 120000;
-- Writer max output 12000;
-- Judge max output 8000;
-- price table valid for exact Writer/Judge IDs;
-- soft budget USD 1;
-- hard budget USD 5;
-- daily hard budget USD 30;
-- daily spend at preflight USD 0;
-- first Writer deterministic max-cost preflight PASS at USD 0.1966;
-- TBK frozen input PASS;
-- Reboot frozen input PASS;
-- zero Writer/Judge/provider/model calls during preflight;
-- zero paid reservations during preflight.
+- TBK Writer-only: **5/5 PASS**
+- Reboot Writer-only: first fresh generation PASS; second fresh generation FAIL
+- Complete Writer -> Judge orchestrations: **0**, because mandatory stop triggered before that phase
+- Writer calls: **7**
+- Judge calls: **0**
+- Actual persisted Writer cost: **USD 0.785116**
 
-## Fresh Chris authorization
+Exact first failure:
 
-Checkpoint: `PRYSM-PLANE3-FRESH-MODEL-BEARING-AUTHORIZATION_2026-09-10.md`
+- audit: `97d6b2c7-03b9-4530-8ea7-16557502c638`
+- fresh execution: `plane3-writer-only-97d6b2c7-03b9-4530-8ea7-16557502c638-13d81fc4-0ca0-4bc4-8d27-f447a50e7fe0`
+- response SHA: `f3c94d3422566bf22de778f3836df069f8927847c66aa7577ad32488febfb56c`
+- validator error: `writerOutput.actionPlan[0].whyNow.text states an unmeasured business outcome with causal certainty`
+- the failed sample also contained a performance user-impact statement that copied unsupported causal business-impact meaning from source context
+- semantic disposition: material failure; must not be averaged away
 
-Chris explicitly authorized one fresh governed Plane 3 model-bearing baseline against semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`, using tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved frozen corpus, current budget gates, the paused-GA4 release boundary, and `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
+## Governance consequences
 
-The authorization does not permit provider recollection, rescore, fresh production audit, GA4 conversion-authority expansion, deployment, application-main merge, production mutation, model-route changes, retry of historical failed Reboot Run 2, or resume of the abandoned historical Judge call.
+- Plane 3 is failed for the current semantic candidate.
+- Do not retry or replace the failed fresh Reboot generation.
+- Do not continue to the remaining Reboot Writer sample.
+- Do not enter Writer -> Judge orchestration.
+- Do not resume any historical abandoned Judge call.
+- The 5/5 TBK fresh PASS outputs and one Reboot fresh PASS output remain preserved evidence only; no automatic transfer to a future semantic candidate is authorized.
+- No new Writer/Judge/provider/model-bearing call is currently authorized.
+- No provider recollection, rescore, deployment, main merge, production mutation, or GA4 conversion-authority expansion is authorized.
 
-## Plane 3 execution rule
+## Required diagnosis scope
 
-- Status: **FRESH_MODEL_BEARING_BASELINE_AUTHORIZED / READY_TO_EXECUTE**
-- Follow `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
-- Use only approved frozen production-shaped inputs.
-- A single materially invalid fresh generation is a gate FAIL; stop and diagnose it rather than averaging it away or silently retrying.
-- Record exact candidate/tooling/input/model/prompt/output/validator identities, artifact hashes, usage/cost, validation outcome, and semantic-quality outcome for every fresh run.
-- Historical pre-change credit remains historical evidence only and does not automatically transfer.
-- Failed historical Reboot Run 2: NO RETRY.
-- Abandoned historical Judge call: NO RESUME.
-- Plane 4: NOT_YET_ELIGIBLE until Plane 3 baseline closes cleanly.
-- Plane 5: NOT_YET_ELIGIBLE.
+The next run is diagnosis only and must use ZERO PRYSM model/provider calls.
+
+Recover and compare:
+
+1. exact frozen Reboot WriterInput bytes and parsed object;
+2. exact built Writer prompt used for the failed execution;
+3. exact parsed provider response before normalization;
+4. normalized WriterOutput;
+5. exact validator failure;
+6. the passing fresh Reboot sibling;
+7. the relevant WriterInput projection, prompt construction, structured-output/schema, normalization, and WriterOutput validation code.
+
+Prove the single first authority divergence that allowed unsupported causal/commercial certainty into `actionPlan[0].whyNow.text` and the sampled performance user-impact text.
+
+Classify the proven root cause, including whether it is stale frozen WriterInput, WriterInput projection leakage, prompt authority leakage, schema/structured-output insufficiency, validator-only reliance, or another directly evidenced boundary.
+
+Do not implement a repair during the diagnosis run.
 
 ## Model routing
 
-- Mechanical harness/execution orchestration: GPT-5.6 Luna / Medium where Codex/operator reasoning is required.
-- Actual Writer under Plane 3: `gpt-5.6-terra`.
-- Actual Judge under Plane 3: `gpt-5.6-sol`.
-- Independent semantic challenge after Plane 3 as required: GPT-5.6 Sol / High.
+- Semantic root-cause diagnosis: **GPT-5.6 Terra / High**
+- Mechanical work only after semantics are frozen: **GPT-5.6 Luna / Medium**
+- Independent post-repair adversarial verification: **GPT-5.6 Sol / High**
 
 ## Exact next action
 
-Execute one long governed Plane 3 model-bearing baseline using exact semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`, exact tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved frozen corpus, recovered authoritative live configuration, current budget gates, paused-GA4 boundary, and `PRYSM_MODEL_BEARING_RELEASE_GATE.md`. Stop immediately on the first material failure. If Plane 3 completes cleanly, write the full Downloads proof and stop before deployment or fresh production audit.
+Run one long governed GPT-5.6 Terra / High diagnosis against exact application tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb` and semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`. Diagnose the exact failed fresh Reboot execution using persisted artifacts and source tracing only, make zero Writer/Judge/provider/model-bearing calls, make no application changes, and stop after identifying the single first authority leak and the minimum repair boundary.
 
 Last verified: 2026-09-10 America/Toronto
