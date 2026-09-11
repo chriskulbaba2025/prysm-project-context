@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_PRODUCTION_AUDIT_NARRATIVE_PASS2_COLLATERAL_REWRITE_BLOCKER",
-  "status": "ZERO_MODEL_PASS2_DIAGNOSIS_REQUIRED",
+  "checkpoint": "LIVE_PASS2_DIAGNOSIS_BLOCKED",
+  "status": "PERSISTED_ARTIFACT_ACCESS_REQUIRED_BEFORE_ROOT_CAUSE",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
   "production": {
@@ -18,14 +18,27 @@
     "narrative": "FAIL_PASS_2",
     "failure": "UNAUTHORIZED_WRITER_CHANGE_OUTSIDE_REVISION_DIRECTIVE"
   },
+  "diagnosis": {
+    "checkpointFile": "PRYSM-LIVE-PASS2-DIAGNOSIS-BLOCKED_2026-09-11.md",
+    "result": "LIVE_PASS2_DIAGNOSIS_BLOCKED",
+    "persistedArtifactsRecovered": false,
+    "readOnlyAuditProbe": "401_UNAUTHORIZED",
+    "rootCauseClassification": "UNPROVEN",
+    "localGovernanceOriginMainObserved": "4202ed684754c382160289c801b83e654d697a69",
+    "localGovernanceSyncRequired": true
+  },
   "authorization": {
-    "readOnlyPass2Diagnosis": "AUTHORIZED",
+    "readOnlyArtifactRecovery": "AUTHORIZED",
     "finalNarrativePass": "NOT_AUTHORIZED",
     "additionalModelCalls": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
-    "codeRepair": "NOT_AUTHORIZED_PENDING_DIAGNOSIS"
+    "resume": "NOT_AUTHORIZED",
+    "codeRepair": "NOT_AUTHORIZED_PENDING_ROOT_CAUSE",
+    "deployment": "NOT_AUTHORIZED",
+    "push": "NOT_AUTHORIZED",
+    "merge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Recover pass-1 Writer output, Judge revisionDirective, and pass-2 Writer output for audit 4b0b3568-19e5-4bff-a4e8-20b23f401f5e; identify exact collateral changed sections and root cause; stop before coding or model calls.",
+  "nextAction": "Synchronize local governance repo to authoritative origin/main, then obtain read-only access to the exact persisted pass-1 Writer, Judge revisionDirective, pass-2 Writer and validation-error artifacts for audit 4b0b3568-19e5-4bff-a4e8-20b23f401f5e and rerun deterministic diagnosis only.",
   "lastVerified": "2026-09-11 America/Toronto"
 }
