@@ -1,30 +1,62 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_CURRENT_CORPUS_RECONSTRUCTION_AUTHORIZED",
-  "status": "ISOLATED_CURRENT_SCORING_RECONSTRUCTION_AUTHORIZED / READY_TO_EXECUTE",
+  "checkpoint": "ACCELERATED_UAT_CURRENT_SCORING_AUTHORITY_ACCEPTED",
+  "status": "CURRENT_FORMAT_TBK_UAT_FIXTURE_BUILD_AUTHORIZED / ZERO_MODEL_CALLS",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "localToolingHeadSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
+  "uatAuthorityDecision": {
+    "file": "DECISION_PRYSM_UAT_CURRENT_SCORING_AUTHORITY_2026-09-10.md",
+    "currentProductionScoringAuthoritativeForUat": true,
+    "historicalTbKSemanticEquivalenceRequiredBeforeUat": false,
+    "historicalArtifactsRemainImmutable": true,
+    "rebootMigrationDeferred": true
+  },
+  "latestTbKCurrentReconstruction": {
+    "priorGateResult": "TBK_MATERIAL_SCORING_CHANGE",
+    "currentScoringReconstructionSucceeded": true,
+    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
+    "scoringVersion": "4.1.1",
+    "currentScoreSetVersion": "2.0.0",
+    "currentScoreSetSha256": "6492e317299099c90e3389ca768d05e5acdfb3f00a6b1722ae0bf70eb62d334e",
+    "currentWriterInputVersion": "1.2.0",
+    "currentWriterInputSha256": "d95dc2922f8cef3813812a7f3704aef10fc78e5dc2e43e4dd04ddf8fdfa3d6da",
+    "currentDecisionHierarchyValidated": true,
+    "primaryNumericAndEligibilityStateMatchedHistorical": true,
+    "currentRootCauseActionSemanticsDifferFromHistorical": true,
+    "differenceAcceptedAsCurrentUatProductSemantics": true,
+    "providerModelCalls": 0,
+    "providerRecollection": 0,
+    "historicalMutations": 0
+  },
   "authorization": {
-    "isolatedCurrentScoringReconstruction": "AUTHORIZED_BY_CHRIS",
-    "source": "EXISTING_PERSISTED_CANONICAL_EVIDENCE_ONLY",
-    "persistence": "ISOLATED_SCRATCH_DERIVATIVE_ONLY",
-    "semanticEquivalenceRequired": true,
-    "stopOnMaterialDifference": true,
-    "writerJudgeCalls": "NOT_AUTHORIZED",
-    "historicalMutation": "NOT_AUTHORIZED",
+    "currentFormatTbKUatFixtureBuild": "AUTHORIZED_BY_ACCELERATED_UAT_DIRECTION",
+    "harnessRepair": "AUTHORIZED_CURRENT_UAT_BOUNDARY_ONLY",
+    "deterministicRegression": "AUTHORIZED",
+    "localCommit": "AUTHORIZED",
+    "writerJudgeProviderModelBearingCalls": "NOT_AUTHORIZED",
+    "providerRecollection": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED"
+    "mainMerge": "NOT_AUTHORIZED",
+    "productionMutation": "NOT_AUTHORIZED"
   },
   "plane3": {
-    "status": "CURRENT_CORPUS_RECONSTRUCTION_AUTHORIZED / READY_TO_EXECUTE",
-    "currentBoundaryCredit": "NONE_ESTABLISHED",
+    "status": "ACCELERATED_UAT_CURRENT_FORMAT_FIXTURE_BUILD_REQUIRED",
+    "currentBoundaryCredit": "NOT_YET_ESTABLISHED",
+    "legacyTbKModelEvidence": "HISTORICAL_BYTES_ONLY",
+    "legacyRebootEvidence": "PRESERVED_AND_DEFERRED_FOR_UAT",
     "failedFreshRebootRetry": "PROHIBITED"
   },
-  "plane4": "NOT_YET_ELIGIBLE",
+  "uat": {
+    "target": "LIVE_UAT_PRECALL_READY",
+    "corpus": "TBK_CURRENT_FORMAT_ONLY",
+    "nextModelBearingGateAfterDeterministicPass": "ONE_FRESH_TBK_WRITER_TO_JUDGE_VALIDATION",
+    "afterSingleValidationPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION"
+  },
+  "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Execute the authorized isolated deterministic reconstruction for TBK and Reboot using current production scoring and WriterInput 1.2.0, compare reconstructed authority against historical authority, and stop on any material difference.",
+  "nextAction": "Create one durable current-format TBK UAT fixture from current production ScoreSet 2.0.0 and WriterInput 1.2.0, repair the UAT harness to enforce current version/hash/audit/manifest identity, run deterministic regressions, create one local commit, and stop at LIVE_UAT_PRECALL_READY before any Writer/Judge/provider/model call.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
