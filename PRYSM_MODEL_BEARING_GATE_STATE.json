@@ -1,28 +1,28 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PRODUCTION_WORKER_URL_REPAIR_AUTHORIZED",
-  "status": "PRODUCTION_ENVIRONMENT_REPAIR_AUTHORIZED",
+  "checkpoint": "PRODUCTION_WORKER_CONNECTIVITY_RESTORED",
+  "status": "AUTHENTICATED_PRODUCTION_VERIFICATION_REQUIRED",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
   "production": {
-    "deploymentId": "dpl_AFV2hrhjY96VGTGsQ6xynUuQwgu6",
+    "deploymentId": "dpl_FS2KazkLNZFFss4nn9C3377FadJe",
     "domain": "https://prysm.omnipressence.com",
-    "login": "PASS",
-    "dashboardWorkerConnectivity": "FAIL",
-    "rootCause": "VANTAGE_WORKER_API_URL_MISSING_RUNTIME_FALLBACK_TO_LOCALHOST",
-    "intendedWorkerUrl": "https://vantage-platform-production.up.railway.app"
+    "workerUrl": "https://vantage-platform-production.up.railway.app",
+    "workerHealth": "PASS_HTTP_200",
+    "login": "PASS_HTTP_200",
+    "localhostFallbackErrorsAfterRepair": 0,
+    "authenticatedDashboard": "PENDING_CHRIS_VERIFICATION",
+    "authenticatedTbkReport": "PENDING_CHRIS_VERIFICATION"
   },
   "authorization": {
-    "checkpointFile": "PRYSM-PRODUCTION-WORKER-URL-REPAIR-AUTHORIZATION_2026-09-11.md",
-    "productionEnvironmentRepair": "AUTHORIZED_BY_CHRIS",
-    "productionRedeployAsRequired": "AUTHORIZED",
+    "humanProductionVerification": "READY_NOW",
     "modelCalls": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
     "push": "NOT_AUTHORIZED",
     "unrelatedCodeChanges": "NOT_AUTHORIZED"
   },
-  "nextAction": "Set or update VANTAGE_WORKER_API_URL in Vercel production to https://vantage-platform-production.up.railway.app, redeploy production only as required for the environment change, and verify dashboard/report connectivity without localhost fallback.",
+  "nextAction": "Chris signs in to production, refreshes the dashboard, and opens the TBK report. Capture any remaining defect with a screenshot and exact page.",
   "lastVerified": "2026-09-11 America/Toronto"
 }
