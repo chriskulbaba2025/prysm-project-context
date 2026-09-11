@@ -1,35 +1,32 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_RUNTIME_IDENTITY_RECONCILIATION_PASS",
-  "status": "FRESH_COMBINED_LIVE_UAT_AUTHORIZATION_REQUIRED",
+  "checkpoint": "LIVE_UAT_RECONCILED_TOOLING_AUTHORIZED",
+  "status": "ONE_VALIDATION_THEN_STAGING_IF_PASS_AUTHORIZED",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
-  "reconciliation": {
-    "result": "LIVE_UAT_RUNTIME_IDENTITY_RECONCILIATION_PASS",
-    "checkpointFile": "PRYSM-LIVE-UAT-RUNTIME-IDENTITY-RECONCILIATION-PASS_2026-09-10.md",
-    "runtimeIdentity": "PASS",
-    "fullWorker": "1009/1009 PASS",
-    "worktree": "CLEAN"
-  },
   "authorization": {
-    "singleWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION",
-    "stagingUatDeploymentAfterPass": "PENDING_FRESH_CHRIS_AUTHORIZATION",
+    "checkpointFile": "PRYSM-LIVE-UAT-RECONCILED-TOOLING-AUTH_2026-09-10.md",
+    "singleWriterJudgeValidation": "AUTHORIZED_BY_CHRIS",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "stagingUatDeploymentAfterPass": "AUTHORIZED",
+    "automaticRevision": "NOT_AUTHORIZED",
+    "replacementSample": "NOT_AUTHORIZED",
     "productionDeployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
-    "additionalRobustnessSampling": "NOT_AUTHORIZED"
+    "additionalRobustnessSampling": "NOT_AUTHORIZED",
+    "differentSemanticCandidate": "NOT_AUTHORIZED"
   },
   "uat": {
     "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
     "target": "LIVE_HUMAN_UAT",
-    "nextGate": "OBTAIN_FRESH_COMBINED_LIVE_UAT_AUTHORIZATION"
+    "nextGate": "EXECUTE_ONE_VALIDATION_THEN_DEPLOY_STAGING_IF_PASS"
   },
-  "nextAction": "Obtain fresh Chris authorization for exactly one current-format TBK Writer -> Judge live validation using tooling HEAD 608b7193e6a38c61cff91a8367d232ad52965de2 with frozen semantic candidate 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f, followed by immediate staging/UAT deployment if and only if validation passes.",
+  "nextAction": "Execute one Writer -> Judge validation using tooling HEAD 608b7193e6a38c61cff91a8367d232ad52965de2 against semantic candidate 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f; deploy immediately to staging/UAT only on full PASS and return the live URL.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
