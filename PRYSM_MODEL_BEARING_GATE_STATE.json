@@ -1,48 +1,40 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_SINGLE_TBK_WRITER_JUDGE_AUTHORIZED",
-  "status": "LIVE_UAT_SINGLE_VALIDATION_AUTHORIZED / READY_TO_EXECUTE",
+  "checkpoint": "LIVE_UAT_SINGLE_VALIDATION_FAILED_PROMPT_REPAIR_REQUIRED",
+  "status": "ZERO_MODEL_PROMPT_REPAIR_REQUIRED",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "localUatReadyHeadSha": "e8130770401f0e68bd05e310cf6dd66fc6ca1c4a",
+  "localUatHeadSha": "e8130770401f0e68bd05e310cf6dd66fc6ca1c4a",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
-  "uatCorpus": {
-    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "fixture": "services/worker/test-fixtures/plane3-current-uat/tbk-9714c206/",
-    "rootCauseRuleId": "VAN-CONTENT-002",
-    "writerInputSha256": "d95dc2922f8cef3813812a7f3704aef10fc78e5dc2e43e4dd04ddf8fdfa3d6da"
+  "liveValidation": {
+    "result": "FAIL",
+    "writerCalls": 1,
+    "judgeCalls": 1,
+    "judgeDecision": "REVISE",
+    "judgeScore": 94,
+    "costUsd": 0.365653
   },
-  "deterministicVerification": {
-    "focusedHarness": "16/16 PASS",
-    "writerInputPromptOutput": "58/58 PASS",
-    "narrativeV2": "150/150 PASS",
-    "productionPath": "11/11 PASS",
-    "storageRecovery": "59/59 PASS",
-    "fullWorker": "1009/1009 PASS",
-    "diffCheck": "PASS",
-    "worktree": "CLEAN"
+  "diagnosis": {
+    "rootCause": "WRITER_PROMPT_AUTHORITY_CONTRADICTION",
+    "checkpointFile": "PRYSM-LIVE-UAT-TBK-PROMPT-CONTRADICTION-DIAGNOSIS_2026-09-10.md",
+    "repairFile": "services/worker/src/narrative-v2/writer-prompt.js",
+    "writerInputDefect": false,
+    "scoreSetDefect": false,
+    "judgeDefect": false
   },
-  "ga4ConversionOutcomeAuthority": "PAUSED_FOR_CURRENT_RELEASE",
   "authorization": {
-    "checkpointFile": "PRYSM-LIVE-UAT-SINGLE-TBK-WRITER-JUDGE-AUTHORIZATION_2026-09-10.md",
-    "singleCurrentFormatTbKWriterJudgeValidation": "AUTHORIZED_BY_CHRIS",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "providerRecollection": "NOT_AUTHORIZED",
-    "additionalRobustnessSampling": "NOT_AUTHORIZED",
-    "deployment": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED",
-    "productionMutation": "NOT_AUTHORIZED"
+    "zeroModelPromptRepair": "AUTHORIZED",
+    "deterministicRegression": "AUTHORIZED",
+    "localRepairCommit": "AUTHORIZED",
+    "nextModelCall": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
+    "deployment": "NOT_AUTHORIZED"
   },
   "uat": {
-    "nextGate": "EXECUTE_ONE_CURRENT_FORMAT_TBK_WRITER_TO_JUDGE_VALIDATION",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "afterPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION",
-    "afterFail": "STOP_AND_DIAGNOSE_NO_REPLACEMENT_SAMPLE"
+    "nextGate": "PROMPT_REPAIR",
+    "afterRepairPass": "ONE_FRESH_TBK_WRITER_JUDGE_AUTHORIZATION",
+    "afterValidationPass": "UAT_DEPLOYMENT_AUTHORIZATION"
   },
-  "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
-  "nextAction": "Execute exactly one governed current-format TBK Writer -> Judge live validation against application HEAD e8130770401f0e68bd05e310cf6dd66fc6ca1c4a using the approved current TBK UAT fixture, current budget gates, paused-GA4 boundary, Writer gpt-5.6-terra, Judge gpt-5.6-sol, and the permanent model-bearing release gate. Stop on the first material failure; if it passes, move directly to staging/live UAT deployment authorization.",
+  "nextAction": "Repair the narrow Writer prompt contradiction, add a focused regression, run deterministic tests, create one local commit, and stop before any model call.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
