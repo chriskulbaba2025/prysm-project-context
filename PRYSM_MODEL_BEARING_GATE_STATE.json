@@ -1,57 +1,30 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_CURRENT_CORPUS_RECONSTRUCTION_APPROVAL_REQUIRED",
-  "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / EXPLICIT_RESCORE_AUTHORIZATION_REQUIRED",
+  "checkpoint": "PLANE3_CURRENT_CORPUS_RECONSTRUCTION_AUTHORIZED",
+  "status": "ISOLATED_CURRENT_SCORING_RECONSTRUCTION_AUTHORIZED / READY_TO_EXECUTE",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "localToolingHeadSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
-  "semanticApplicationBaseSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
-  "historicalCorpus": {
-    "tbkWriterInputVersion": "1.0.0",
-    "rebootWriterInputVersion": "1.0.0",
-    "tbkScoreSetContract": "1.0.0",
-    "rebootScoreSetContract": "1.0.0",
-    "scoringVersion": "4.1.1"
-  },
-  "diagnosis": {
-    "result": "CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / HIGH",
-    "classification": "CURRENT_SCORING_RECONSTRUCTION_REQUIRES_EXPLICIT_RESCORE_AUTHORIZATION",
-    "providerRecollectionRequired": false,
-    "historicalArtifactMutationRequired": false,
-    "materialSemanticChangeExpected": "UNPROVEN",
-    "tbkTechnicallyViable": true,
-    "rebootTechnicallyViable": true
-  },
-  "requiredExecutionBoundary": {
+  "authorization": {
+    "isolatedCurrentScoringReconstruction": "AUTHORIZED_BY_CHRIS",
     "source": "EXISTING_PERSISTED_CANONICAL_EVIDENCE_ONLY",
     "persistence": "ISOLATED_SCRATCH_DERIVATIVE_ONLY",
-    "productionScoringFunctions": "REUSE_CURRENT_PRODUCTION_PATH",
-    "writerInputConstruction": "REUSE_BUILD_WRITER_INPUT_1_2_0",
     "semanticEquivalenceRequired": true,
     "stopOnMaterialDifference": true,
-    "providerModelCalls": 0,
-    "providerRecollection": 0,
-    "historicalMutation": 0
-  },
-  "authorization": {
-    "isolatedCurrentScoringReconstruction": "PENDING_EXPLICIT_CHRIS_AUTHORIZATION",
-    "writerJudgeProviderModelBearingCalls": "NOT_AUTHORIZED",
+    "writerJudgeCalls": "NOT_AUTHORIZED",
+    "historicalMutation": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED",
-    "productionMutation": "NOT_AUTHORIZED"
+    "mainMerge": "NOT_AUTHORIZED"
   },
   "plane3": {
-    "status": "CURRENT_CORPUS_RECONSTRUCTION_APPROVAL_REQUIRED",
+    "status": "CURRENT_CORPUS_RECONSTRUCTION_AUTHORIZED / READY_TO_EXECUTE",
     "currentBoundaryCredit": "NONE_ESTABLISHED",
-    "historicalTbKPasses": "5/5 ON LEGACY BYTES ONLY",
-    "historicalRebootEvidence": "1 PASS / 1 FAIL ON LEGACY BYTES",
     "failedFreshRebootRetry": "PROHIBITED"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Obtain explicit Chris authorization for one isolated deterministic current-scoring reconstruction of TBK and Reboot from existing canonical evidence with zero provider/model calls, no provider recollection, no historical artifact mutation, and strict semantic-equivalence comparison before corpus qualification.",
+  "nextAction": "Execute the authorized isolated deterministic reconstruction for TBK and Reboot using current production scoring and WriterInput 1.2.0, compare reconstructed authority against historical authority, and stop on any material difference.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
