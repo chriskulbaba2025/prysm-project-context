@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PRODUCTION_DEPLOYMENT_AUTHORIZED",
-  "status": "DEPLOY_EXACT_VALIDATED_CANDIDATE_TO_PRODUCTION",
+  "checkpoint": "PRODUCTION_LIVE",
+  "status": "PRYSM_PRODUCTION_LIVE",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
   "writerPromptVersion": "2.4.0",
@@ -13,21 +13,21 @@
     "judgeDefects": 0,
     "orchestration": "RELEASE_CANDIDATE"
   },
+  "production": {
+    "checkpointFile": "PRYSM-PRODUCTION-LIVE_2026-09-11.md",
+    "deploymentId": "dpl_AFV2hrhjY96VGTGsQ6xynUuQwgu6",
+    "status": "READY",
+    "domain": "https://prysm.omnipressence.com",
+    "loginUrl": "https://prysm.omnipressence.com/login",
+    "tbkReportUrl": "https://prysm.omnipressence.com/audits/9714c206-8ed3-4686-8fe2-ceeca0ca0f82/report",
+    "loginHttp": 200
+  },
   "authorization": {
-    "checkpointFile": "PRYSM-PRODUCTION-DEPLOYMENT-AUTHORIZATION_2026-09-10.md",
-    "productionDeployment": "AUTHORIZED_EXACT_CANDIDATE_ONLY",
+    "humanProductionTest": "READY_NOW",
     "mainMerge": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
-    "additionalModelCalls": "NOT_AUTHORIZED",
-    "differentCandidate": "NOT_AUTHORIZED"
+    "additionalModelCalls": "NOT_AUTHORIZED"
   },
-  "production": {
-    "project": "prysm",
-    "projectId": "prj_o4dQkuESOoTphZkOwVKG49BaLQT9",
-    "teamId": "team_QupWFSpz8cNhhY8OAySLXC6e",
-    "domain": "https://prysm.omnipressence.com",
-    "nextGate": "DEPLOY_AND_VERIFY_PRODUCTION"
-  },
-  "nextAction": "Deploy exact local HEAD 608b7193e6a38c61cff91a8367d232ad52965de2 to existing Vercel production project prysm, verify READY and custom-domain login, record deployment identity, and stop.",
-  "lastVerified": "2026-09-10 America/Toronto"
+  "nextAction": "Chris tests the live production login and TBK report and reports any concrete defect with a screenshot and exact page or section.",
+  "lastVerified": "2026-09-11 America/Toronto"
 }
