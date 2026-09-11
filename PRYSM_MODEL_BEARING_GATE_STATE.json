@@ -1,40 +1,35 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_RUNTIME_IDENTITY_RECONCILIATION_REQUIRED",
-  "status": "ZERO_MODEL_RUNTIME_IDENTITY_RECONCILIATION_REQUIRED",
+  "checkpoint": "LIVE_UAT_RUNTIME_IDENTITY_RECONCILIATION_PASS",
+  "status": "FRESH_COMBINED_LIVE_UAT_AUTHORIZATION_REQUIRED",
   "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
+  "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
-  "latestRun": {
-    "result": "LIVE_UAT_FINAL_GATE_BLOCKED",
-    "writerCalls": 0,
-    "judgeCalls": 0,
-    "deploymentAttempted": false,
+  "reconciliation": {
+    "result": "LIVE_UAT_RUNTIME_IDENTITY_RECONCILIATION_PASS",
+    "checkpointFile": "PRYSM-LIVE-UAT-RUNTIME-IDENTITY-RECONCILIATION-PASS_2026-09-10.md",
+    "runtimeIdentity": "PASS",
+    "fullWorker": "1009/1009 PASS",
     "worktree": "CLEAN"
   },
-  "diagnosis": {
-    "rootCause": "PLANE3_SEMANTIC_BASE_STALE_AFTER_GOVERNED_SEMANTIC_REPAIRS",
-    "checkpointFile": "PRYSM-LIVE-UAT-RUNTIME-IDENTITY-RECONCILIATION-BLOCKER_2026-09-10.md",
-    "semanticFilesMayJoinToolingOverlay": false,
-    "requiredSemanticBaseSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f"
-  },
   "authorization": {
-    "runtimeIdentityReconciliation": "AUTHORIZED_ZERO_MODEL_ONLY",
-    "deterministicRegression": "AUTHORIZED",
-    "localToolingCommit": "AUTHORIZED",
-    "writerJudgeModelCalls": "NOT_AUTHORIZED_PENDING_RECONCILIATION_AND_FRESH_CHRIS_AUTHORIZATION",
-    "stagingDeployment": "NOT_AUTHORIZED_PENDING_RECONCILIATION_AND_FRESH_CHRIS_AUTHORIZATION",
+    "singleWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION",
+    "stagingUatDeploymentAfterPass": "PENDING_FRESH_CHRIS_AUTHORIZATION",
     "productionDeployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
-    "providerRecollection": "NOT_AUTHORIZED"
+    "providerRecollection": "NOT_AUTHORIZED",
+    "additionalRobustnessSampling": "NOT_AUTHORIZED"
   },
   "uat": {
     "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "nextGate": "PLANE3_RUNTIME_IDENTITY_RECONCILIATION",
-    "target": "LIVE_HUMAN_UAT"
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "target": "LIVE_HUMAN_UAT",
+    "nextGate": "OBTAIN_FRESH_COMBINED_LIVE_UAT_AUTHORIZATION"
   },
-  "nextAction": "Freeze 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f as the Plane 3 semantic application base, change only harness tooling identity/tests above it, prove unauthorized semantic paths still fail closed, run deterministic regressions, create one local tooling-only commit, and stop before model calls or deployment.",
+  "nextAction": "Obtain fresh Chris authorization for exactly one current-format TBK Writer -> Judge live validation using tooling HEAD 608b7193e6a38c61cff91a8367d232ad52965de2 with frozen semantic candidate 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f, followed by immediate staging/UAT deployment if and only if validation passes.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
