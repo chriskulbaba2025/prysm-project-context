@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Resolve the approved Plane 3 corpus authority gap that prevents current WriterInput `1.2.0` from being constructed for TBK and Reboot. No further Writer/Judge/model-bearing calls are authorized until a legitimate current canonical corpus derivation is designed, verified, and implemented under a separate bounded gate.
+Obtain Chris approval for one isolated deterministic reconstruction of the approved TBK and Reboot corpus through the current scoring and WriterInput boundaries. No provider or model calls are permitted in that operation.
 
 ## Exact application checkpoint
 
@@ -18,95 +18,47 @@ Resolve the approved Plane 3 corpus authority gap that prevents current WriterIn
 - Main merge: NONE
 - Production mutation: NONE
 
-## Verified WriterInput semantic candidate
+## Proven Plane 3 issue
 
-- Terra High Builder: `REPAIR_PASS / HIGH`
-- Sol High independent verifier: `INDEPENDENT_VERIFIER_PASS / HIGH`
-- Current WriterInput: `1.2.0`
-- Full worker: 1009/1009 PASS at last verified semantic candidate
-- WriterOutput validator unchanged and defensive
-- GA4 downstream commercial-outcome authority remains PAUSED for this release
+The prior fresh Plane 3 run used historical WriterInput `1.0.0` packets directly. It therefore did not prove the current WriterInput `1.2.0` production boundary.
 
-## Fresh Plane 3 model-bearing evidence
+Both approved corpus cases have historical ScoreSet contract `1.0.0`, scoringVersion `4.1.1`, and no current `decisionHierarchy`. Current WriterInput `1.2.0` requires current ScoreSet contract `2.0.0`.
 
-The prior authorized fresh baseline used historical WriterInput `1.0.0` packets directly and therefore did not prove current WriterInput `1.2.0` robustness.
+## Corpus derivation diagnosis
 
-Preserved evidence:
+Checkpoint: `PRYSM-PLANE3-CORPUS-RECONSTRUCTION-GATE_2026-09-10.md`
 
-- TBK Writer-only: 5/5 PASS on exact historical submitted bytes
-- Reboot Writer-only: first fresh generation PASS; second fresh generation FAIL
-- Writer -> Judge orchestration: not entered
-- Failed Reboot generation remains immutable and must not be retried or replaced
+Result: `CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / HIGH`
 
-## Proven first root cause
+Classification: `CURRENT_SCORING_RECONSTRUCTION_REQUIRES_EXPLICIT_RESCORE_AUTHORIZATION`
 
-Checkpoint: `PRYSM-PLANE3-STALE-FROZEN-WRITERINPUT-BYPASS-DIAGNOSIS_2026-09-10.md`
+The current deterministic scoring path can technically reconstruct current score authority for both TBK and Reboot from their already persisted canonical evidence without provider recollection, provided the evidence passes current validation.
 
-Primary root cause:
+This reconstruction is still a true scoring recomputation and therefore needs fresh Chris approval. Historical artifacts must remain immutable.
 
-`STALE_FROZEN_WRITERINPUT_BYPASSES_CURRENT_PRODUCTION_BUILDER`
+The isolated operation must compare historical and reconstructed authority for scores, bands, readiness, assessed weight, evidence confidence, root cause, findings, eligibility, suppression, priority/rank/effort/order, conversion influence, evidence values/statuses, and solution/root-cause bindings. Any material difference blocks automatic corpus qualification.
 
-The Plane 3 harness directly loaded historical WriterInput fixtures instead of exercising current production `buildWriterInput()` and did not assert current WriterInput version before the paid call.
+## Evidence preservation
 
-## Current repair attempt result
-
-Checkpoint: `PRYSM-PLANE3-CURRENT-CORPUS-DERIVATION-BLOCKED_2026-09-10.md`
-
-Result: `CORPUS_CURRENT_INPUT_DERIVATION_BLOCKED / HIGH`.
-
-The bounded harness repair could not proceed because neither approved frozen corpus contains sufficient current canonical ScoreSet authority to construct WriterInput `1.2.0` safely.
-
-### TBK
-
-- historical WriterInput contract/version: `1.0.0`
-- canonical ScoreSet contract: `1.0.0`
-- current ScoreSet contract required: `2.0.0`
-- current `decisionHierarchy`: absent
-
-### Reboot
-
-- historical WriterInput contract/version: `1.0.0`
-- canonical ScoreSet contract: `1.0.0`
-- current ScoreSet contract required: `2.0.0`
-- current `decisionHierarchy`: absent
-
-Current `buildWriterInput()` cannot legitimately run for either approved corpus without a current ScoreSet `2.0.0` and required `decisionHierarchy`.
-
-Do not manufacture `decisionHierarchy`, hand-edit historical scores, silently rescore, rewrite historical fixtures, or recollect provider evidence.
-
-## Evidence consequence
-
-- TBK 5/5 model-bearing PASS remains valid evidence on historical submitted bytes only.
-- Reboot PASS/FAIL remains valid evidence on historical submitted bytes only.
-- Neither proves current WriterInput `1.2.0` robustness.
-- No automatic current-boundary Plane 3 credit transfer is authorized.
+- TBK 5/5 prior model outputs remain evidence on the exact legacy bytes only.
+- Reboot prior PASS/FAIL remain evidence on the exact legacy bytes only.
+- No current-boundary Plane 3 credit transfers automatically.
+- Failed fresh Reboot generation remains immutable and is not retried or replaced.
 
 ## Current authorization boundary
 
-Authorized now: zero-model-call diagnosis/design of a legitimate current canonical corpus derivation path.
+Allowed now: planning and deterministic preflight only.
 
-Not authorized:
-
-- Writer calls
-- Judge calls
-- provider/model-bearing calls
-- provider recollection
-- rescore or score-semantic change
-- manufacturing `decisionHierarchy`
-- rewriting historical canonical artifacts
-- GA4 conversion-authority expansion
-- deployment
-- application-main merge
-- production mutation
+Not yet allowed: isolated current-scoring reconstruction, Writer/Judge/provider/model calls, provider recollection, deployment, main merge, production mutation, or GA4 conversion-authority expansion.
 
 ## Model routing
 
-- Corpus authority / scoring-boundary diagnosis and design: **GPT-5.6 Terra / High**
-- Mechanical implementation after semantics are frozen: **GPT-5.6 Luna / Medium** where applicable
-- Independent adversarial verification after any semantic/corpus authority repair: **GPT-5.6 Sol / High**
+- Isolated scoring reconstruction and semantic-equivalence assessment: GPT-5.6 Terra / High
+- Mechanical follow-up after semantics are frozen: GPT-5.6 Luna / Medium
+- Independent verification after corpus authority repair: GPT-5.6 Sol / High
 
 ## Exact next action
 
-Run one long governed GPT-5.6 Terra / High zero-model-call corpus-derivation authority diagnosis. Trace how current ScoreSet `2.0.0` and `decisionHierarchy` are normally produced, determine whether both TBK and Reboot can be deterministically reconstructed from already persisted canonical pre-score inputs without provider recollection or changing scoring meaning, and select exactly one legitimate minimum derivation path. Do not implement, rescore, recollect providers, or make Writer/Judge/model calls. Stop with either a bounded execution-ready derivation contract or a proven blocker requiring explicit new authorization.
+Obtain fresh explicit Chris approval for one isolated deterministic current-scoring reconstruction of TBK and Reboot from their existing canonical evidence, with zero provider/model calls, no provider recollection, no historical artifact mutation, and strict semantic-equivalence comparison before either corpus is qualified for a new Plane 3 run.
 
 Last verified: 2026-09-10 America/Toronto
