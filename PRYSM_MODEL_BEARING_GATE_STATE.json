@@ -1,24 +1,22 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_PREFLIGHT_HARNESS_IDENTITY_AND_LIVE_CONFIG_RECONCILIATION",
+  "checkpoint": "PLANE3_HARNESS_REPAIRED_LIVE_CONFIG_MISSING",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / PREFLIGHT_RECONCILIATION_REQUIRED",
-  "publishedToolingSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+  "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / LIVE_CONFIG_RECONCILIATION_REQUIRED",
+  "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "remoteReviewSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "currentLocalCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "semanticApplicationBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
+  "localToolingRepairSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
+  "semanticApplicationBaseSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "applicationRepository": "chriskulbaba2025/vantage-platform",
   "applicationBranch": "review/prysm-solution-directive-authority-betty",
   "applicationWorktree": "CLEAN_AT_LAST_PROOF",
   "ga4ConversionOutcomeDecision": {
     "decision": "PAUSED_FOR_CURRENT_RELEASE",
-    "observedDownstreamCommercialOutcomeRequiredForCurrentRelease": false,
     "ga4ObservedConversionAuthority": "NOT_AUTHORIZED",
     "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE"
   },
-  "verifiedCandidate": {
-    "sha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+  "verifiedSemanticCandidate": {
     "builder": "REPAIR_PASS / HIGH",
     "builderModel": "gpt-5.6-terra / high",
     "independentVerifier": "INDEPENDENT_VERIFIER_PASS / HIGH",
@@ -29,46 +27,66 @@
     "storageRecovery": "41/41 PASS",
     "productionPath": "11/11 PASS"
   },
-  "latestPlane3Preflight": {
-    "result": "PLANE3_PREFLIGHT_BLOCKED / HIGH",
-    "writerCalls": 0,
-    "judgeCalls": 0,
-    "providerModelCalls": 0,
-    "blockers": [
-      "HARNESS_SEMANTIC_APPLICATION_BASE_STALE",
-      "LIVE_WRITER_JUDGE_ROUTING_AND_COST_CONFIGURATION_UNAVAILABLE"
-    ],
-    "currentHarnessSemanticBaseSha": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
-    "authorizedToolingOverlay": [
+  "latestHarnessReconciliation": {
+    "result": "PLANE3_CONFIG_INPUT_REQUIRED / HIGH",
+    "executor": "gpt-5.6-luna / medium",
+    "harnessIdentityBlocker": "CLOSED_LOCALLY",
+    "semanticBaseBefore": "52eadcc5a8f6bd3a99da7155d0af86ae261a14ab",
+    "semanticBaseAfter": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+    "localToolingCommit": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
+    "toolingFiles": [
       "services/worker/scripts/plane3-writer-only.mjs",
       "services/worker/scripts/plane3-writer-only.test.js"
     ],
-    "checkpointFile": "PRYSM-PLANE3-PREFLIGHT-HARNESS-IDENTITY-AND-LIVE-CONFIG-BLOCKER_2026-09-10.md"
+    "focusedHarness": "14/14 PASS",
+    "narrativeV2": "150/150 PASS",
+    "productionPath": "11/11 PASS",
+    "fullWorker": "1009/1009 PASS",
+    "diffCheck": "PASS",
+    "writerCalls": 0,
+    "judgeCalls": 0,
+    "providerModelCalls": 0
+  },
+  "liveConfiguration": {
+    "status": "MISSING_FROM_CURRENT_EXECUTION_ENVIRONMENT",
+    "expectedWriterModel": "gpt-5.6-terra",
+    "expectedJudgeModel": "gpt-5.6-sol",
+    "missingVariables": [
+      "PRYSM_NARRATIVE_V2_ENABLED",
+      "PRYSM_LLM_MODE",
+      "PRYSM_NARRATIVE_V2_WRITER_MODEL",
+      "PRYSM_NARRATIVE_V2_JUDGE_MODEL",
+      "PRYSM_NARRATIVE_V2_CHAT_COMPLETIONS_URL",
+      "PRYSM_NARRATIVE_V2_API_KEY",
+      "PRYSM_NARRATIVE_V2_MAX_INPUT_TOKENS",
+      "PRYSM_NARRATIVE_V2_WRITER_MAX_OUTPUT_TOKENS",
+      "PRYSM_NARRATIVE_V2_JUDGE_MAX_OUTPUT_TOKENS",
+      "PRYSM_NARRATIVE_V2_PRICE_TABLE_JSON",
+      "PRYSM_LLM_SOFT_BUDGET_USD",
+      "PRYSM_LLM_HARD_BUDGET_USD",
+      "PRYSM_LLM_DAILY_HARD_BUDGET_USD"
+    ],
+    "currentDailySpend": "REQUIRED_WHEN_APPLICABLE",
+    "inventValues": false,
+    "printOrCommitSecrets": false
   },
   "authorization": {
-    "deterministicPreflightReconciliation": "AUTHORIZED_BY_CHRIS_MOVE_AHEAD_INSTRUCTION",
-    "preflightRoute": "gpt-5.6-luna / medium",
-    "semanticRepairIfRequired": "STOP_AND_ROUTE_TO_GPT-5.6-TERRA_HIGH",
-    "independentVerificationAfterSemanticChange": "gpt-5.6-sol / high",
-    "writerJudgeProviderModelBearingCallsDuringReconciliation": "NONE",
+    "configurationReconciliation": "AUTHORIZED_BY_CHRIS_MOVE_AHEAD_INSTRUCTION",
+    "route": "gpt-5.6-luna / medium",
+    "writerJudgeProviderModelBearingCalls": "NONE_UNTIL_PREFLIGHT_READY_AND_SEPARATELY_AUTHORIZED",
     "providerRecollectionRescore": "NONE",
     "deployment": "NONE",
     "mainMerge": "NONE",
     "productionMutation": "NONE"
   },
   "plane3": {
-    "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / PREFLIGHT_RECONCILIATION_REQUIRED",
-    "historicalPreChangeCredit": {
-      "tbkIndependentWriterGenerations": "3/5",
-      "rebootIndependentWriterGenerations": "0/3",
-      "completeWriterJudgeOrchestrations": "1/3"
-    },
+    "status": "PUBLISHED_VERIFIED_SEMANTIC_CANDIDATE / LIVE_CONFIG_RECONCILIATION_REQUIRED",
     "historicalCreditTransferToNewCandidate": "NONE_AUTOMATIC",
     "rebootRun2": "FAILED_HISTORICAL_EVIDENCE / NO_RETRY",
     "abandonedJudgeCall": "NO_RETRY / NO_RESUME"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one long governed GPT-5.6 Luna / Medium deterministic preflight-reconciliation operation against exact published candidate d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97. Prove and, if purely mechanical, advance the Plane 3 harness semantic-base checkpoint while preserving clean-tree/exact-SHA/tooling-overlay protections; discover and validate existing live Narrative v2 routing, endpoint, token, price-table and budget configuration without exposing secrets and without making any model/provider call; run focused harness/config tests and required deterministic regressions; stop with the exact remaining configuration list if unavailable, or SEMANTIC_REPAIR_REQUIRED if application semantics would need to change.",
+  "nextAction": "Run one GPT-5.6 Luna / Medium governed configuration-reconciliation and independent preflight against exact local tooling SHA 5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb. Recover only authoritative existing live Narrative v2 configuration; validate harness identity, exact Writer/Judge routing, endpoint presence, token ceilings, price table, budgets, daily spend, frozen inputs and live-binding readiness without any network/model call. If configuration remains unavailable, stop with the exact missing variable names and required Chris input. If complete, stop at PLANE3_PREFLIGHT_READY before the first paid call.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
