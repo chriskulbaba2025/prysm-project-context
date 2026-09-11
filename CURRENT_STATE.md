@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Diagnose the single demonstrated fresh Plane 3 Reboot Writer semantic failure against the exact published paused-GA4 semantic candidate. No further Writer/Judge/model-bearing calls are authorized until the exact authority leak is proven and any required repair is separately governed.
+Repair the proven Plane 3 frozen-input loading/derivation defect that caused the harness to test historical WriterInput `1.0.0` bytes instead of the current WriterInput `1.2.0` production boundary. No further Writer/Judge/model-bearing calls are authorized until this boundary repair is independently verified and reconciled.
 
 ## Exact application checkpoint
 
@@ -13,87 +13,83 @@ Diagnose the single demonstrated fresh Plane 3 Reboot Writer semantic failure ag
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Verified semantic application base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
 - Current Plane 3 tooling HEAD: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
-- Application worktree at failed baseline close: CLEAN
+- Application worktree at diagnosis close: CLEAN
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
 
-## Verified semantic candidate before fresh baseline
+## Verified WriterInput semantic candidate
 
 - Terra High Builder: `REPAIR_PASS / HIGH`
 - Sol High independent verifier: `INDEPENDENT_VERIFIER_PASS / HIGH`
-- WriterInput: `1.2.0`
+- Current WriterInput: `1.2.0`
 - Full worker: 1009/1009 PASS
 - Narrative v2: 150/150 PASS
 - Storage/recovery: 41/41 PASS
 - Production path: 11/11 PASS
-- WriterOutput validator unchanged
-- Scoring/evidence/priority/canonical-solution semantics unchanged
-- GA4 downstream commercial-outcome authority remains PAUSED for this release.
+- WriterOutput validator unchanged and defensive
+- GA4 downstream commercial-outcome authority remains PAUSED for this release
 
-## Plane 3 fresh model-bearing baseline result
+## Fresh Plane 3 baseline evidence
 
-Checkpoint: `PRYSM-PLANE3-FRESH-BASELINE-REBOOT-SEMANTIC-FAILURE_2026-09-10.md`
+The authorized fresh baseline stopped on the first material failure:
 
-Result: `PLANE3_BASELINE_FAIL / HIGH`.
-
-Fresh model-bearing evidence against the current candidate:
-
-- TBK Writer-only: **5/5 PASS**
+- TBK Writer-only: 5/5 PASS on the exact bytes submitted
 - Reboot Writer-only: first fresh generation PASS; second fresh generation FAIL
-- Complete Writer -> Judge orchestrations: **0**, because mandatory stop triggered before that phase
-- Writer calls: **7**
-- Judge calls: **0**
-- Actual persisted Writer cost: **USD 0.785116**
+- Writer -> Judge orchestrations: not entered
+- Writer calls: 7
+- Judge calls: 0
+- Actual persisted Writer cost: USD 0.785116
 
-Exact first failure:
+The failed Reboot generation was correctly rejected by the WriterOutput validator for unsupported causal/unmeasured business-outcome certainty in `actionPlan[0].whyNow.text`.
 
-- audit: `97d6b2c7-03b9-4530-8ea7-16557502c638`
-- fresh execution: `plane3-writer-only-97d6b2c7-03b9-4530-8ea7-16557502c638-13d81fc4-0ca0-4bc4-8d27-f447a50e7fe0`
-- response SHA: `f3c94d3422566bf22de778f3836df069f8927847c66aa7577ad32488febfb56c`
-- validator error: `writerOutput.actionPlan[0].whyNow.text states an unmeasured business outcome with causal certainty`
-- the failed sample also contained a performance user-impact statement that copied unsupported causal business-impact meaning from source context
-- semantic disposition: material failure; must not be averaged away
+## Root-cause diagnosis
 
-## Governance consequences
+Checkpoint: `PRYSM-PLANE3-STALE-FROZEN-WRITERINPUT-BYPASS-DIAGNOSIS_2026-09-10.md`
 
-- Plane 3 is failed for the current semantic candidate.
-- Do not retry or replace the failed fresh Reboot generation.
-- Do not continue to the remaining Reboot Writer sample.
-- Do not enter Writer -> Judge orchestration.
-- Do not resume any historical abandoned Judge call.
-- The 5/5 TBK fresh PASS outputs and one Reboot fresh PASS output remain preserved evidence only; no automatic transfer to a future semantic candidate is authorized.
-- No new Writer/Judge/provider/model-bearing call is currently authorized.
-- No provider recollection, rescore, deployment, main merge, production mutation, or GA4 conversion-authority expansion is authorized.
+Result: `DIAGNOSIS_COMPLETE / HIGH`
 
-## Required diagnosis scope
+Primary root cause:
 
-The next run is diagnosis only and must use ZERO PRYSM model/provider calls.
+`STALE_FROZEN_WRITERINPUT_BYPASSES_CURRENT_PRODUCTION_BUILDER`
 
-Recover and compare:
+The Plane 3 harness directly loads historical approved `writer-input.json` fixtures through `resolveApprovedInput()` and passes `selected.writerInput` to `buildWriterPrompt()` / `writerExecutor()` without invoking the current production `buildWriterInput()` boundary and without asserting the current WriterInput version before the model call.
 
-1. exact frozen Reboot WriterInput bytes and parsed object;
-2. exact built Writer prompt used for the failed execution;
-3. exact parsed provider response before normalization;
-4. normalized WriterOutput;
-5. exact validator failure;
-6. the passing fresh Reboot sibling;
-7. the relevant WriterInput projection, prompt construction, structured-output/schema, normalization, and WriterOutput validation code.
+The frozen Reboot packet is WriterInput `1.0.0`, not `1.2.0`. It retains raw historical causal `businessImpact` prose and lacks current typed `businessImpactContext`. Current production WriterInput `1.2.0` instead emits bounded inferred significance and preserves the paused-GA4 commercial-outcome boundary.
 
-Prove the single first authority divergence that allowed unsupported causal/commercial certainty into `actionPlan[0].whyNow.text` and the sampled performance user-impact text.
+PASS and FAIL Reboot siblings used identical stale input and prompt bytes; stochastic output differed. The validator rejection was correct. The WriterInput semantic repair itself has not been disproven because the harness bypassed it.
 
-Classify the proven root cause, including whether it is stale frozen WriterInput, WriterInput projection leakage, prompt authority leakage, schema/structured-output insufficiency, validator-only reliance, or another directly evidenced boundary.
+## Evidence consequence
 
-Do not implement a repair during the diagnosis run.
+- Fresh TBK 5/5 PASS remains valid evidence on the exact submitted bytes, but does not yet establish current WriterInput `1.2.0` robustness unless its corpus packet is qualified through the current production boundary.
+- Fresh Reboot PASS likewise remains evidence on historical bytes only.
+- Fresh Reboot FAIL remains preserved failure evidence and must not be retried or replaced.
+- No automatic Plane 3 credit transfer is authorized.
+
+## Minimum repair boundary
+
+Repair only the Plane 3 approved-corpus loading/derivation boundary so each approved sample is generated or deterministically reconstructed through the current production WriterInput `1.2.0` builder/load boundary from persisted canonical evidence/scores.
+
+Add fail-closed pre-call assertions for current WriterInput contract/version/hash identity and prove the harness cannot silently submit historical `1.0.0` / `1.1.0` packets.
+
+Preserve all historical frozen packets and run ledgers unchanged as evidence.
+
+Do not change WriterOutput validation, prompt semantics, scoring, evidence semantics, provider collection, GA4 conversion authority, Writer/Judge model routing, deployment, or production state unless a new separately proven defect requires it.
+
+## Current authorization boundary
+
+A zero-model-call bounded repair and deterministic verification of the stale frozen-input / current production WriterInput boundary may proceed.
+
+No Writer, Judge, provider/model-bearing execution, provider recollection, rescore, deployment, main merge, production mutation, or GA4 expansion is currently authorized.
 
 ## Model routing
 
-- Semantic root-cause diagnosis: **GPT-5.6 Terra / High**
-- Mechanical work only after semantics are frozen: **GPT-5.6 Luna / Medium**
-- Independent post-repair adversarial verification: **GPT-5.6 Sol / High**
+- Repair of the proven production WriterInput/harness authority boundary: GPT-5.6 Terra / High
+- Mechanical follow-up after semantic boundary is frozen: GPT-5.6 Luna / Medium
+- Independent adversarial verification after repair: GPT-5.6 Sol / High
 
 ## Exact next action
 
-Run one long governed GPT-5.6 Terra / High diagnosis against exact application tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb` and semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`. Diagnose the exact failed fresh Reboot execution using persisted artifacts and source tracing only, make zero Writer/Judge/provider/model-bearing calls, make no application changes, and stop after identifying the single first authority leak and the minimum repair boundary.
+Run one long governed GPT-5.6 Terra / High zero-model-call repair against tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`. Repair only the Plane 3 frozen-input derivation/loading boundary so approved corpus samples exercise current WriterInput `1.2.0` through the production builder/load path, add pre-call version/hash assertions and focused positive/negative tests, preserve historical fixtures and ledgers, run required deterministic regression, create one local repair commit, and stop before any Writer/Judge/provider/model call. Then route the exact repair candidate to independent GPT-5.6 Sol / High verification.
 
 Last verified: 2026-09-10 America/Toronto
