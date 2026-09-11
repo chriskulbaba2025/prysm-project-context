@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Reach live human UAT through the accelerated current-format TBK path.
+Human live UAT is now READY. Chris should test the deployed TBK report and report concrete visual, navigation, evidence-status, or wording defects with screenshots.
 
 ## Exact application checkpoint
 
@@ -16,21 +16,35 @@ Reach live human UAT through the accelerated current-format TBK path.
 - TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - GA4 downstream commercial-outcome authority: PAUSED
 - Runtime identity: PASS
-- Full worker: 1009/1009 PASS
-- Worktree: CLEAN at reconciliation close
+- Final worktree: CLEAN
 
-## Fresh combined authorization
+## Live validation result
 
-Checkpoint: `PRYSM-LIVE-UAT-RECONCILED-TOOLING-AUTH_2026-09-10.md`
+Checkpoint: `PRYSM-LIVE-UAT-READY-FOR-CHRIS_2026-09-10.md`
 
-Chris explicitly authorized exactly one fresh current-format TBK Writer -> Judge validation using tooling HEAD `608b7193e6a38c61cff91a8367d232ad52965de2` with frozen semantic candidate `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, the approved TBK fixture, current budget gates, paused GA4 boundary, and the permanent model-bearing release gate.
+Result: `LIVE_UAT_READY_FOR_CHRIS / HIGH`.
 
-If and only if validation passes, immediate deployment to the existing PRYSM staging/UAT environment is authorized. No further staging authorization is required.
+- Writer `gpt-5.6-terra`: PASS
+- Judge `gpt-5.6-sol`: PASS
+- Judge score: 96
+- Judge defects: 0
+- Orchestration: `RELEASE_CANDIDATE`
+- Total cost: USD 0.327825
+- Automatic revisions: 0
+- Provider recollection: 0
 
-Not authorized: production deployment, main merge, provider recollection, additional robustness sampling, automatic revision, replacement sample, or any different semantic candidate.
+## Staging/UAT deployment
+
+- Deployment ID: `dpl_FZiPAXeFtBg8wfbcdbUzfd4yPLMD`
+- Status: READY
+- Target: preview / staging-UAT, not production
+- Test URL: `https://prysm-o1t401wpo-chriskulbabas-projects.vercel.app/audits/9714c206-8ed3-4686-8fe2-ceeca0ca0f82/report`
+- Production deployment: 0
+- Main merge: 0
+- Push: 0
 
 ## Exact next action
 
-Execute exactly one governed Writer -> Judge validation using reconciled tooling HEAD `608b7193e6a38c61cff91a8367d232ad52965de2` against frozen semantic candidate `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`. If it passes, immediately deploy to existing PRYSM staging/UAT, verify readiness and identity, and return the live URL. If it fails, stop without deployment.
+Chris performs human UAT now. No further model-bearing, deployment, or approval gate is required before opening and testing the URL.
 
 Last verified: 2026-09-10 America/Toronto
