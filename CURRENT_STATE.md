@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Reach live human UAT as quickly as possible through the accelerated current-format TBK path. The single current-format Writer -> Judge validation exposed one narrow prompt-authority contradiction; repair that prompt defect deterministically, then return directly to one fresh single validation. Final-release hardening remains deferred until after first human UAT.
+Reach live human UAT as quickly as possible through the accelerated current-format TBK path. The narrow Writer prompt contradiction exposed by the first live validation has now been repaired and deterministically verified. The only remaining gate before rerunning the single live Writer -> Judge validation is fresh Chris authorization against the repaired application HEAD.
 
 ## Exact application checkpoint
 
@@ -12,8 +12,9 @@ Reach live human UAT as quickly as possible through the accelerated current-form
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Verified semantic base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
-- Current local UAT HEAD tested: `e8130770401f0e68bd05e310cf6dd66fc6ca1c4a`
-- Worktree at failed validation close: CLEAN
+- Current repaired UAT HEAD: `6a87037c3c94a13d5c42ca505d6c6557eb962664`
+- Worktree: CLEAN
+- Writer prompt version: `2.4.0`
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
@@ -29,79 +30,54 @@ Reach live human UAT as quickly as possible through the accelerated current-form
 - Fixture: `services/worker/test-fixtures/plane3-current-uat/tbk-9714c206/`
 - GA4 downstream commercial-outcome authority: PAUSED
 
-Deterministic readiness before live validation:
+## Prior live validation
 
-- Focused harness: 16/16 PASS
-- WriterInput/prompt/output: 58/58 PASS
-- Narrative v2: 150/150 PASS
+The first authorized current-format TBK Writer -> Judge validation reached Writer and Judge successfully but failed one semantic hard gate. Writer structural validation passed; Judge structural validation passed; Judge returned REVISE with score 94 because `conversion.whatWorks.text` implied measured visitor completion from path clarity.
+
+No replacement generation was attempted.
+
+## Prompt repair
+
+Checkpoint: `PRYSM-LIVE-UAT-PROMPT-REPAIR-PASS_2026-09-10.md`
+
+Result: `LIVE_UAT_PROMPT_REPAIR_PASS / HIGH`.
+
+Proven repair:
+
+- Rule 11a no longer says path clarity measures completion of the invitation.
+- CTA clarity now assesses the observed invitation.
+- Conversion-path clarity now assesses the observed route from that invitation toward the next step.
+- The prompt explicitly states that path clarity does not establish that visitors completed the action or converted.
+- Writer prompt version advanced from `2.3.0` to `2.4.0`.
+
+Deterministic verification:
+
+- Focused Writer/prompt/input/output: 64/64 PASS
+- Narrative v2: 151/151 PASS
 - Production path: 11/11 PASS
-- Storage/recovery: 59/59 PASS
+- Storage: 41/41 PASS
+- Artifact/recovery: 106/106 PASS
 - Full worker: 1009/1009 PASS
 - `git diff --check`: PASS
+- Worktree: CLEAN
 
-## Single live validation result
-
-Checkpoint: `PRYSM-LIVE-UAT-TBK-PROMPT-CONTRADICTION-DIAGNOSIS_2026-09-10.md`
-
-Result: `LIVE_UAT_SINGLE_VALIDATION_FAIL / HIGH`.
-
-The authorized live validation used exactly:
-
-- Writer: `gpt-5.6-terra`, 1 call
-- Judge: `gpt-5.6-sol`, 1 call
-- Writer structural validation: PASS
-- Judge structural validation: PASS
-- Judge decision: REVISE
-- Judge score: 94
-- Hard gate: FAIL
-- Total model cost: USD 0.365653
-
-The material defect was narrow: `conversion.whatWorks.text` implied measured completion/effectiveness even though governed evidence established only an observed CTA/invitation and assessed path clarity.
-
-## Proven root cause
-
-`WRITER_PROMPT_AUTHORITY_CONTRADICTION`
-
-In `services/worker/src/narrative-v2/writer-prompt.js`:
-
-- Rule 8d correctly says a CTA, form, enquiry route, or conversion-path condition is not a confirmed conversion, lead, enquiry, or customer outcome.
-- Rule 11a then says `CTA clarity measures the observed invitation and path clarity measures completion of that invitation.`
-
-The phrase `measures completion of that invitation` can be read as measured visitor completion and directly conflicts with Rule 8d and the paused downstream commercial-outcome boundary. The Judge correctly rejected the resulting overstatement.
-
-This is not a WriterInput, ScoreSet, scoring, GA4, provider, or Judge defect.
-
-## Minimum repair boundary
-
-Repair only Rule 11a in `writer-prompt.js` so conversion-path clarity means the assessed route from the observed invitation toward the next step and explicitly does not mean that visitors completed the action or converted.
-
-Add focused deterministic regression proving the prompt does not authorize measured visitor completion from path clarity.
-
-Do not weaken the WriterOutput validator or Judge. Do not change WriterInput, ScoreSet, scoring, evidence contracts, GA4 authority, provider routes, or renderer.
+No Writer/Judge/provider/model calls occurred during repair.
 
 ## Current authorization boundary
 
-Authorized now:
+Not yet authorized against repaired HEAD `6a87037c3c94a13d5c42ca505d6c6557eb962664`:
 
-- zero-model-call prompt repair within the proven Rule 11a boundary;
-- focused deterministic regression;
-- required broader deterministic regression;
-- one local repair commit.
-
-Not authorized now:
-
-- further Writer/Judge/provider/model-bearing calls;
-- provider recollection;
-- additional robustness sampling;
+- Writer/Judge/provider/model-bearing execution;
 - deployment;
-- merge;
-- production mutation;
-- GA4 conversion-authority expansion.
+- main merge;
+- production mutation.
+
+Provider recollection and additional robustness sampling remain outside the accelerated UAT path.
 
 ## Exact next action
 
-Run one bounded zero-model-call repair of the proven `writer-prompt.js` Rule 11a contradiction, add a focused regression for the completion/CTA-path distinction, run deterministic regression, create one local commit, and stop before any model call.
+Obtain fresh explicit Chris authorization for exactly one current-format TBK Writer -> Judge live validation against application HEAD `6a87037c3c94a13d5c42ca505d6c6557eb962664`, using Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt version `2.4.0`, the approved current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent PRYSM model-bearing release gate.
 
-If that repair passes, obtain one fresh explicit authorization for exactly one new current-format TBK Writer -> Judge validation against the repaired HEAD. If that one validation passes, move directly to staging/live UAT deployment authorization and provide Chris the test URL.
+If that one validation passes, move directly to staging/live UAT deployment authorization and provide Chris the test URL.
 
 Last verified: 2026-09-10 America/Toronto
