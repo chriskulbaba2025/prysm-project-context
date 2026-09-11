@@ -1,33 +1,31 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_VALIDATOR_REPAIR_PASS",
-  "status": "FRESH_COMBINED_VALIDATION_AND_STAGING_AUTHORIZATION_REQUIRED",
+  "checkpoint": "LIVE_UAT_FINAL_COMBINED_AUTHORIZED",
+  "status": "ONE_VALIDATION_THEN_STAGING_IF_PASS_AUTHORIZED",
   "localUatHeadSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
-  "repair": {
-    "result": "LIVE_UAT_VALIDATOR_REPAIR_PASS",
-    "checkpointFile": "PRYSM-LIVE-UAT-VALIDATOR-NEGATION-REPAIR-PASS_2026-09-10.md",
-    "fullWorker": "1009/1009 PASS",
-    "narrativeV2": "152/152 PASS",
-    "productionPath": "11/11 PASS",
-    "worktree": "CLEAN"
-  },
   "authorization": {
-    "singleWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION",
-    "stagingUatDeploymentAfterPass": "PENDING_FRESH_CHRIS_AUTHORIZATION",
+    "checkpointFile": "PRYSM-LIVE-UAT-FINAL-COMBINED-AUTHORIZATION_2026-09-10.md",
+    "singleWriterJudgeValidation": "AUTHORIZED_BY_CHRIS",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "stagingUatDeploymentAfterPass": "AUTHORIZED_EXACT_CANDIDATE_ONLY",
+    "automaticRevision": "NOT_AUTHORIZED",
+    "replacementSample": "NOT_AUTHORIZED",
     "productionDeployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
-    "providerRecollection": "NOT_AUTHORIZED"
+    "providerRecollection": "NOT_AUTHORIZED",
+    "additionalRobustnessSampling": "NOT_AUTHORIZED",
+    "differentCandidate": "NOT_AUTHORIZED"
   },
   "uat": {
     "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
+    "nextGate": "EXECUTE_ONE_VALIDATION_THEN_DEPLOY_STAGING_IF_PASS",
     "target": "LIVE_HUMAN_UAT"
   },
-  "nextAction": "Obtain fresh combined authorization for one current-format TBK Writer -> Judge validation against HEAD 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f and immediate staging/UAT deployment of that exact candidate if validation passes.",
+  "nextAction": "Execute exactly one current-format TBK Writer -> Judge validation against HEAD 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f. If it passes, deploy that exact candidate to the existing PRYSM staging/UAT environment, verify readiness and identity, and return the live UAT URL. If it fails, stop without deployment.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
