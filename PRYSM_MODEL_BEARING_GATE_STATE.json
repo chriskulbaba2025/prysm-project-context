@@ -1,33 +1,44 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_VALIDATION_AND_STAGING_AUTHORIZED",
-  "status": "ONE_LIVE_VALIDATION_AUTHORIZED_THEN_STAGING_UAT_IF_PASS",
-  "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
+  "checkpoint": "LIVE_UAT_VALIDATOR_NEGATION_FALSE_POSITIVE",
+  "status": "ZERO_MODEL_VALIDATOR_REPAIR_REQUIRED",
   "localUatHeadSha": "6a87037c3c94a13d5c42ca505d6c6557eb962664",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
+  "latestValidation": {
+    "result": "LIVE_UAT_VALIDATION_FAIL",
+    "writerCalls": 1,
+    "judgeCalls": 0,
+    "writerCostUsd": 0.12549,
+    "deploymentAttempted": false
+  },
+  "diagnosis": {
+    "rootCause": "WRITER_OUTPUT_NEGATION_GRAMMAR_FALSE_POSITIVE",
+    "checkpointFile": "PRYSM-LIVE-UAT-VALIDATOR-NEGATION-FALSE-POSITIVE_2026-09-10.md",
+    "repairFile": "services/worker/src/narrative-v2/writer-output.js",
+    "offendingBoundedForm": "do not establish visitor completion or conversion performance",
+    "promptDefect": false,
+    "writerInputDefect": false,
+    "scoreSetDefect": false,
+    "judgeDefect": false
+  },
   "authorization": {
-    "singleCurrentFormatTbKWriterJudgeValidation": "AUTHORIZED_BY_CHRIS",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "stagingUatDeploymentAfterPass": "AUTHORIZED_EXACT_CANDIDATE_ONLY",
+    "zeroModelValidatorRepair": "AUTHORIZED_ACCELERATED_UAT_REMEDIATION",
+    "deterministicRegression": "AUTHORIZED",
+    "localRepairCommit": "AUTHORIZED",
+    "writerJudgeModelCalls": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
+    "stagingDeployment": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
     "productionDeployment": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
-    "additionalRobustnessSampling": "NOT_AUTHORIZED",
-    "differentCandidate": "NOT_AUTHORIZED"
+    "mainMerge": "NOT_AUTHORIZED"
   },
   "uat": {
-    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "nextGate": "EXECUTE_ONE_VALIDATION_THEN_DEPLOY_STAGING_IF_PASS",
-    "automaticRevision": false,
-    "replacementSample": false,
-    "afterValidationPass": "DEPLOY_EXACT_HEAD_TO_STAGING_UAT_AND_RETURN_URL",
-    "afterValidationFail": "STOP_NO_DEPLOYMENT"
+    "nextGate": "VALIDATOR_NEGATION_REPAIR",
+    "afterRepairPass": "FRESH_COMBINED_VALIDATION_AND_STAGING_AUTHORIZATION",
+    "target": "LIVE_HUMAN_UAT"
   },
-  "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
-  "nextAction": "Execute exactly one current-format TBK Writer -> Judge validation against application HEAD 6a87037c3c94a13d5c42ca505d6c6557eb962664. If and only if it passes, deploy that exact validated candidate to PRYSM staging/UAT, verify readiness, and return the live UAT URL and minimal test steps.",
+  "nextAction": "Repair only the WriterOutput explicit non-establishment grammar so 'do not establish' is accepted while affirmative or causal commercial-outcome claims remain rejected; run deterministic regressions; create one local commit; stop before model/deployment actions.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
