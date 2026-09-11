@@ -11,46 +11,51 @@ Reach live human UAT through the accelerated current-format TBK path.
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
-- Exact authorized UAT candidate HEAD: `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`
-- Writer prompt version: `2.4.0`
-- WriterInput version: `1.2.0`
-- ScoreSet contract: `2.0.0`
+- Frozen semantic UAT candidate: `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`
+- Writer prompt: `2.4.0`
+- WriterInput: `1.2.0`
+- ScoreSet: `2.0.0`
 - TBK audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - GA4 downstream commercial-outcome authority: PAUSED
-- Worktree: CLEAN at validator-repair close
 
-## Latest repair
+## Latest result
 
-Checkpoint: `PRYSM-LIVE-UAT-VALIDATOR-NEGATION-REPAIR-PASS_2026-09-10.md`
+Checkpoint: `PRYSM-LIVE-UAT-RUNTIME-IDENTITY-RECONCILIATION-BLOCKER_2026-09-10.md`
 
-Result: `LIVE_UAT_VALIDATOR_REPAIR_PASS / HIGH`.
+Result: `LIVE_UAT_FINAL_GATE_BLOCKED / HIGH`.
 
-Verification:
-- focused tests: 65/65 PASS
-- Narrative v2: 152/152 PASS
-- production path: 11/11 PASS
-- storage/recovery: 147/147 PASS
-- full worker: 1009/1009 PASS
-- diff check: PASS
-- worktree: CLEAN
+All ordinary preflight checks passed, but Plane 3 runtime identity stopped before any model call or deployment because the harness semantic base predates the governed prompt and WriterOutput validator repairs.
 
-## Fresh combined authorization
+No Writer call, Judge call, deployment, push, merge, provider recollection or production mutation occurred. Worktree remained clean.
 
-Checkpoint: `PRYSM-LIVE-UAT-FINAL-COMBINED-AUTHORIZATION_2026-09-10.md`
+## Proven root cause
 
-Chris explicitly authorized exactly one fresh current-format TBK Writer -> Judge live validation against exact HEAD `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`, using Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, the approved current TBK fixture, current budget gates, paused-GA4 boundary, and permanent model-bearing release gate.
+`PLANE3_SEMANTIC_BASE_STALE_AFTER_GOVERNED_SEMANTIC_REPAIRS`
 
-If and only if that validation passes all governed gates, immediate deployment of that exact candidate to the existing PRYSM staging/UAT environment is also authorized. No further staging authorization is required.
+The semantic repairs are part of the product candidate. They must not be added to the tooling overlay.
 
-Not authorized:
+## Correct reconciliation
+
+Freeze `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f` as the new semantic application base. Then create one tooling-only commit above it updating only the Plane 3 harness identity declaration/tests as required. The overlay must remain limited to harness tooling files, and unauthorized post-base semantic paths must still fail closed.
+
+## Current authorization boundary
+
+Authorized now:
+- zero-model-call Plane 3 runtime identity reconciliation;
+- focused and broad deterministic regression;
+- one local tooling-only commit.
+
+Not authorized now:
+- Writer/Judge/provider calls;
+- deployment;
 - production deployment;
 - main merge;
 - provider recollection;
 - additional robustness sampling;
-- any different candidate.
+- any new semantic product change.
 
 ## Exact next action
 
-Execute exactly one governed current-format TBK Writer -> Judge validation against HEAD `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`. No automatic revision or replacement sample. If validation passes, immediately deploy that exact candidate to the existing PRYSM staging/UAT environment, verify readiness and candidate identity, and return the exact live URL and minimal human test steps. If validation fails, stop without deployment.
+Reconcile Plane 3 runtime identity so `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f` is the frozen semantic application base, prove only harness tooling differs above that base, rerun deterministic regression, create one local tooling-only commit, and stop before any model call or deployment.
 
 Last verified: 2026-09-10 America/Toronto
