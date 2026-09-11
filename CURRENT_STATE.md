@@ -23,10 +23,16 @@ Result: `PRODUCTION_DASHBOARD_WORKER_BASE_URL_MISSING / HIGH`.
 
 Vercel runtime shows `fetch failed` caused by `ECONNREFUSED 127.0.0.1:3000` on the live app. `lib/worker-client.ts` falls back to `http://localhost:3000` when `VANTAGE_WORKER_API_URL` is absent. The repository-declared worker URL is `https://vantage-platform-production.up.railway.app`.
 
-No model call, provider recollection, code change, push, merge, or new deployment occurred during diagnosis.
+## Production repair authorization
+
+Checkpoint: `PRYSM-PRODUCTION-WORKER-URL-REPAIR-AUTHORIZATION_2026-09-11.md`
+
+Chris explicitly authorized setting production `VANTAGE_WORKER_API_URL` to `https://vantage-platform-production.up.railway.app` and redeploying/promoting production only as required to apply that environment configuration and verify the dashboard and TBK report.
+
+Not authorized: unrelated code changes, model calls, provider recollection, GitHub push, or main merge.
 
 ## Exact next action
 
-Obtain explicit authorization to repair the production `VANTAGE_WORKER_API_URL` configuration for Vercel project `prysm`, redeploy/promote only as required for that environment change, then verify the dashboard and TBK report successfully reach the Railway worker and no longer call localhost.
+Set or update the production Vercel environment variable `VANTAGE_WORKER_API_URL` for project `prysm` to `https://vantage-platform-production.up.railway.app`, redeploy production only as required for the environment change to take effect, then verify the dashboard and TBK report no longer call localhost and successfully reach the Railway worker.
 
 Last verified: 2026-09-11 America/Toronto
