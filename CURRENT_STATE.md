@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Proceed from a fully cleared Plane 3 deterministic/configuration preflight to one fresh governed model-bearing baseline against the exact verified semantic candidate. No Writer/Judge call may occur until Chris gives fresh explicit authorization for that model-bearing tranche.
+Execute one fresh governed Plane 3 model-bearing baseline against the exact independently verified paused-GA4 semantic candidate and the exact preflight-verified tooling HEAD. Chris has now explicitly authorized this tranche.
 
 ## Exact application checkpoint
 
@@ -14,7 +14,6 @@ Proceed from a fully cleared Plane 3 deterministic/configuration preflight to on
 - Verified semantic application base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
 - Current local Plane 3 tooling HEAD: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
 - Application worktree at preflight close: CLEAN
-- Remote review branch still contains the verified semantic candidate; local tooling overlay is the two governed Plane 3 harness files.
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
@@ -32,81 +31,67 @@ Proceed from a fully cleared Plane 3 deterministic/configuration preflight to on
 - Scoring/evidence/priority/canonical-solution semantics unchanged
 - GA4 downstream commercial-outcome authority remains PAUSED for this release.
 
-## Plane 3 harness state
+## Plane 3 preflight
 
 Checkpoint: `PRYSM-PLANE3-PREFLIGHT-READY_2026-09-10.md`
 
-- Harness stale semantic-base blocker: CLOSED
-- Harness semantic base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
-- Tooling HEAD: `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`
-- Authorized tooling overlay remains exactly:
-  - `services/worker/scripts/plane3-writer-only.mjs`
-  - `services/worker/scripts/plane3-writer-only.test.js`
-- Harness independent verification: PASS
-- Focused harness tests: 14/14 PASS
-- Runtime identity / ancestry / clean-tree / changed-path gates: PASS
+Result: `PLANE3_PREFLIGHT_READY / HIGH`.
 
-## Live configuration state
+Validated before any paid call:
 
-Authoritative existing live Narrative v2 configuration was recovered read-only from Railway production variables and corroborated against prior successful PRYSM run evidence.
+- harness identity PASS;
+- semantic base `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`;
+- tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`;
+- bounded tooling overlay PASS;
+- focused harness tests 14/14 PASS;
+- Writer `gpt-5.6-terra`;
+- Judge `gpt-5.6-sol`;
+- HTTPS chat-completions endpoint present;
+- API credential present, secret not recorded;
+- max input 120000;
+- Writer max output 12000;
+- Judge max output 8000;
+- price table valid for exact Writer/Judge IDs;
+- soft budget USD 1;
+- hard budget USD 5;
+- daily hard budget USD 30;
+- daily spend at preflight USD 0;
+- first Writer deterministic max-cost preflight PASS at USD 0.1966;
+- TBK frozen input PASS;
+- Reboot frozen input PASS;
+- zero Writer/Judge/provider/model calls during preflight;
+- zero paid reservations during preflight.
 
-Validated:
+## Fresh Chris authorization
 
-- `PRYSM_NARRATIVE_V2_ENABLED=true`
-- `PRYSM_LLM_MODE=live`
-- Writer: `gpt-5.6-terra`
-- Judge: `gpt-5.6-sol`
-- chat-completions endpoint: PRESENT / HTTPS / `api.openai.com`
-- API credential: PRESENT; secret not recorded
-- max input tokens: 120000
-- Writer max output tokens: 12000
-- Judge max output tokens: 8000
-- price table: VALID for exact Writer/Judge IDs
-- soft budget: USD 1
-- hard budget: USD 5
-- daily hard budget: USD 30
-- daily spend at preflight: USD 0
-- deterministic first Writer cost preflight: PASS, maximum estimated USD 0.1966
-- paid reservation: NONE
+Checkpoint: `PRYSM-PLANE3-FRESH-MODEL-BEARING-AUTHORIZATION_2026-09-10.md`
 
-## Frozen inputs
+Chris explicitly authorized one fresh governed Plane 3 model-bearing baseline against semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`, using tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved frozen corpus, current budget gates, the paused-GA4 release boundary, and `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
 
-- TBK `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`: PASS
-- Reboot `97d6b2c7-03b9-4530-8ea7-16557502c638`: PASS
-- Failed historical Reboot Run 2: NO RETRY
-- Abandoned historical Judge call: NO RESUME
-- No provider recollection or rescore occurred.
+The authorization does not permit provider recollection, rescore, fresh production audit, GA4 conversion-authority expansion, deployment, application-main merge, production mutation, model-route changes, retry of historical failed Reboot Run 2, or resume of the abandoned historical Judge call.
 
-## Plane 3 state
+## Plane 3 execution rule
 
-Status: **PREFLIGHT_READY / FRESH_MODEL_BEARING_AUTHORIZATION_PENDING**
-
-Historical pre-change credit remains evidence only and does not automatically transfer:
-
-- TBK independent Writer generations: 3/5
-- Reboot independent Writer generations: 0/3
-- Complete Writer → Judge orchestrations: 1/3
-
-The fresh baseline must follow the permanent model-bearing release gate. A materially invalid generation is a gate failure and must be diagnosed rather than averaged away.
-
-Plane 4: NOT_YET_ELIGIBLE.
-Plane 5: NOT_YET_ELIGIBLE.
+- Status: **FRESH_MODEL_BEARING_BASELINE_AUTHORIZED / READY_TO_EXECUTE**
+- Follow `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
+- Use only approved frozen production-shaped inputs.
+- A single materially invalid fresh generation is a gate FAIL; stop and diagnose it rather than averaging it away or silently retrying.
+- Record exact candidate/tooling/input/model/prompt/output/validator identities, artifact hashes, usage/cost, validation outcome, and semantic-quality outcome for every fresh run.
+- Historical pre-change credit remains historical evidence only and does not automatically transfer.
+- Failed historical Reboot Run 2: NO RETRY.
+- Abandoned historical Judge call: NO RESUME.
+- Plane 4: NOT_YET_ELIGIBLE until Plane 3 baseline closes cleanly.
+- Plane 5: NOT_YET_ELIGIBLE.
 
 ## Model routing
 
-- Mechanical preflight/tooling: GPT-5.6 Luna / Medium
-- Writer under Plane 3: `gpt-5.6-terra`
-- Judge under Plane 3: `gpt-5.6-sol`
-- Independent semantic/audit review where required: GPT-5.6 Sol / High
-
-## Current authorization boundary
-
-Deterministic preflight is complete. No current authorization exists for a fresh Writer/Judge model-bearing tranche yet.
-
-No deployment, application-main merge, provider recollection, rescore, GA4 conversion-authority expansion, or production mutation is authorized.
+- Mechanical harness/execution orchestration: GPT-5.6 Luna / Medium where Codex/operator reasoning is required.
+- Actual Writer under Plane 3: `gpt-5.6-terra`.
+- Actual Judge under Plane 3: `gpt-5.6-sol`.
+- Independent semantic challenge after Plane 3 as required: GPT-5.6 Sol / High.
 
 ## Exact next action
 
-Obtain fresh explicit Chris authorization for one new governed Plane 3 model-bearing baseline against semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`, using tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved frozen corpus, current budget gates, current paused-GA4 release boundary, and `PRYSM_MODEL_BEARING_RELEASE_GATE.md`.
+Execute one long governed Plane 3 model-bearing baseline using exact semantic candidate `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`, exact tooling HEAD `5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb`, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved frozen corpus, recovered authoritative live configuration, current budget gates, paused-GA4 boundary, and `PRYSM_MODEL_BEARING_RELEASE_GATE.md`. Stop immediately on the first material failure. If Plane 3 completes cleanly, write the full Downloads proof and stop before deployment or fresh production audit.
 
 Last verified: 2026-09-10 America/Toronto
