@@ -1,40 +1,38 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_SINGLE_VALIDATION_FAILED_PROMPT_REPAIR_REQUIRED",
-  "status": "ZERO_MODEL_PROMPT_REPAIR_REQUIRED",
+  "checkpoint": "LIVE_UAT_PROMPT_REPAIR_PASS_FRESH_VALIDATION_AUTH_REQUIRED",
+  "status": "PROMPT_REPAIR_PASS / FRESH_SINGLE_VALIDATION_AUTHORIZATION_REQUIRED",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "localUatHeadSha": "e8130770401f0e68bd05e310cf6dd66fc6ca1c4a",
+  "localUatHeadSha": "6a87037c3c94a13d5c42ca505d6c6557eb962664",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
-  "liveValidation": {
-    "result": "FAIL",
-    "writerCalls": 1,
-    "judgeCalls": 1,
-    "judgeDecision": "REVISE",
-    "judgeScore": 94,
-    "costUsd": 0.365653
-  },
-  "diagnosis": {
+  "writerPromptVersion": "2.4.0",
+  "repair": {
+    "result": "LIVE_UAT_PROMPT_REPAIR_PASS / HIGH",
+    "checkpointFile": "PRYSM-LIVE-UAT-PROMPT-REPAIR-PASS_2026-09-10.md",
     "rootCause": "WRITER_PROMPT_AUTHORITY_CONTRADICTION",
-    "checkpointFile": "PRYSM-LIVE-UAT-TBK-PROMPT-CONTRADICTION-DIAGNOSIS_2026-09-10.md",
-    "repairFile": "services/worker/src/narrative-v2/writer-prompt.js",
-    "writerInputDefect": false,
-    "scoreSetDefect": false,
-    "judgeDefect": false
+    "fullWorker": "1009/1009 PASS",
+    "narrativeV2": "151/151 PASS",
+    "productionPath": "11/11 PASS",
+    "worktree": "CLEAN"
   },
   "authorization": {
-    "zeroModelPromptRepair": "AUTHORIZED",
-    "deterministicRegression": "AUTHORIZED",
-    "localRepairCommit": "AUTHORIZED",
-    "nextModelCall": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
-    "deployment": "NOT_AUTHORIZED"
+    "singleCurrentFormatTbKWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION_FOR_REPAIRED_HEAD",
+    "providerRecollection": "NOT_AUTHORIZED",
+    "additionalRobustnessSampling": "NOT_AUTHORIZED",
+    "deployment": "NOT_AUTHORIZED",
+    "mainMerge": "NOT_AUTHORIZED",
+    "productionMutation": "NOT_AUTHORIZED"
   },
   "uat": {
-    "nextGate": "PROMPT_REPAIR",
-    "afterRepairPass": "ONE_FRESH_TBK_WRITER_JUDGE_AUTHORIZATION",
-    "afterValidationPass": "UAT_DEPLOYMENT_AUTHORIZATION"
+    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "nextGate": "OBTAIN_ONE_FRESH_CURRENT_FORMAT_TBK_WRITER_JUDGE_AUTHORIZATION",
+    "afterValidationPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION"
   },
-  "nextAction": "Repair the narrow Writer prompt contradiction, add a focused regression, run deterministic tests, create one local commit, and stop before any model call.",
+  "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
+  "nextAction": "Obtain fresh Chris authorization for exactly one current-format TBK Writer -> Judge validation against repaired application HEAD 6a87037c3c94a13d5c42ca505d6c6557eb962664 using Writer gpt-5.6-terra, Judge gpt-5.6-sol, Writer prompt version 2.4.0, the approved current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent PRYSM model-bearing release gate. If it passes, move directly to UAT deployment authorization.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
