@@ -4,34 +4,41 @@ Project: PRYSM
 
 ## Current objective
 
-Diagnose the first fresh live production Narrative v2 pass-2 failure without authorizing another model call or final narrative pass.
+Recover the exact persisted Narrative v2 artifacts for the first fresh live production pass-2 failure and prove the single root cause without another model call.
 
 ## Production checkpoint
 
 - Frozen semantic candidate: `354d01eaaa1eb7eac096ab1997ada9b2c9d4359f`
 - Tooling/application HEAD: `608b7193e6a38c61cff91a8367d232ad52965de2`
 - Production deployment: `dpl_FS2KazkLNZFFss4nn9C3377FadJe` READY
-- Worker connectivity: restored
+- Worker connectivity: PASS
 - Live domain: `https://prysm.omnipressence.com`
 
 ## Fresh live audit
 
 Audit: `4b0b3568-19e5-4bff-a4e8-20b23f401f5e` (TBK Creative).
 
-Lifecycle successfully reached:
-- `evidence_locked`
-- `scored`
-- `narrative_pending`
+Lifecycle reached `evidence_locked`, `scored`, and `narrative_pending`, then Writer pass 2 failed with `Unauthorized Writer change outside revision directive`.
 
-Then failed at Writer pass 2 with:
-`Narrative v2 writer validation failed: Unauthorized Writer change outside revision directive ...`
+## Latest diagnosis
 
-Checkpoint: `PRYSM-LIVE-PRODUCTION-AUDIT-NARRATIVE-PASS2-COLLATERAL-REWRITE-BLOCKER_2026-09-11.md`
+Checkpoint: `PRYSM-LIVE-PASS2-DIAGNOSIS-BLOCKED_2026-09-11.md`
 
-The pass-2 validator is intended to reject changes outside `revisionDirective.fieldsToRewrite`. Do not click `Authorize Final Narrative Pass` yet.
+Result: `LIVE_PASS2_DIAGNOSIS_BLOCKED`.
+
+The exact persisted pass-1 Writer output, first Judge response/revisionDirective, pass-2 Writer output, and validation-error artifact were not recovered. Read-only production probes for this audit returned `401 Unauthorized`. Therefore no Writer-prompt, Judge-directive, validator-granularity, or persistence root cause is proven yet.
+
+The Codex run also reported a stale/incorrect local governance `origin/main` (`4202ed684754c382160289c801b83e654d697a69`) instead of the expected governance state. Fix local governance synchronization before the next diagnostic run.
+
+Do not click `Authorize Final Narrative Pass`.
 
 ## Exact next action
 
-Perform a zero-model diagnostic recovery of the persisted pass-1 Writer output, first Judge response/revisionDirective, and pass-2 Writer output for audit `4b0b3568-19e5-4bff-a4e8-20b23f401f5e`. Identify the exact unauthorized changed section(s) and prove whether the defect is Writer prompt compliance, revision-directive construction, or validator section granularity. Stop before coding or another model call.
+1. Synchronize local `C:\Users\kulba\Desktop\prysm-project-context` to authoritative GitHub `origin/main`.
+2. Obtain read-only access to the authoritative persisted artifact namespace for audit `4b0b3568-19e5-4bff-a4e8-20b23f401f5e`, or recover the exact persisted Writer/Judge artifacts through an existing governed read path.
+3. Rerun deterministic pass-1 vs pass-2 comparison and classify the single root cause.
+4. Stop before code repair or any new Writer/Judge call.
+
+Not authorized: final narrative pass, additional model calls, provider recollection, rescore, resume, code repair, deployment, push, or merge.
 
 Last verified: 2026-09-11 America/Toronto
