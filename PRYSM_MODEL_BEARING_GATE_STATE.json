@@ -1,38 +1,33 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_PROMPT_REPAIR_PASS_FRESH_VALIDATION_AUTH_REQUIRED",
-  "status": "PROMPT_REPAIR_PASS / FRESH_SINGLE_VALIDATION_AUTHORIZATION_REQUIRED",
+  "checkpoint": "LIVE_UAT_VALIDATION_AND_STAGING_AUTHORIZED",
+  "status": "ONE_LIVE_VALIDATION_AUTHORIZED_THEN_STAGING_UAT_IF_PASS",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "localUatHeadSha": "6a87037c3c94a13d5c42ca505d6c6557eb962664",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
-  "repair": {
-    "result": "LIVE_UAT_PROMPT_REPAIR_PASS / HIGH",
-    "checkpointFile": "PRYSM-LIVE-UAT-PROMPT-REPAIR-PASS_2026-09-10.md",
-    "rootCause": "WRITER_PROMPT_AUTHORITY_CONTRADICTION",
-    "fullWorker": "1009/1009 PASS",
-    "narrativeV2": "151/151 PASS",
-    "productionPath": "11/11 PASS",
-    "worktree": "CLEAN"
-  },
   "authorization": {
-    "singleCurrentFormatTbKWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION_FOR_REPAIRED_HEAD",
+    "singleCurrentFormatTbKWriterJudgeValidation": "AUTHORIZED_BY_CHRIS",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "stagingUatDeploymentAfterPass": "AUTHORIZED_EXACT_CANDIDATE_ONLY",
+    "productionDeployment": "NOT_AUTHORIZED",
+    "mainMerge": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "additionalRobustnessSampling": "NOT_AUTHORIZED",
-    "deployment": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED",
-    "productionMutation": "NOT_AUTHORIZED"
+    "differentCandidate": "NOT_AUTHORIZED"
   },
   "uat": {
     "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol",
-    "nextGate": "OBTAIN_ONE_FRESH_CURRENT_FORMAT_TBK_WRITER_JUDGE_AUTHORIZATION",
-    "afterValidationPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION"
+    "nextGate": "EXECUTE_ONE_VALIDATION_THEN_DEPLOY_STAGING_IF_PASS",
+    "automaticRevision": false,
+    "replacementSample": false,
+    "afterValidationPass": "DEPLOY_EXACT_HEAD_TO_STAGING_UAT_AND_RETURN_URL",
+    "afterValidationFail": "STOP_NO_DEPLOYMENT"
   },
   "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
-  "nextAction": "Obtain fresh Chris authorization for exactly one current-format TBK Writer -> Judge validation against repaired application HEAD 6a87037c3c94a13d5c42ca505d6c6557eb962664 using Writer gpt-5.6-terra, Judge gpt-5.6-sol, Writer prompt version 2.4.0, the approved current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent PRYSM model-bearing release gate. If it passes, move directly to UAT deployment authorization.",
+  "nextAction": "Execute exactly one current-format TBK Writer -> Judge validation against application HEAD 6a87037c3c94a13d5c42ca505d6c6557eb962664. If and only if it passes, deploy that exact validated candidate to PRYSM staging/UAT, verify readiness, and return the live UAT URL and minimal test steps.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
