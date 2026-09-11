@@ -1,44 +1,33 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_UAT_VALIDATOR_NEGATION_FALSE_POSITIVE",
-  "status": "ZERO_MODEL_VALIDATOR_REPAIR_REQUIRED",
-  "localUatHeadSha": "6a87037c3c94a13d5c42ca505d6c6557eb962664",
+  "checkpoint": "LIVE_UAT_VALIDATOR_REPAIR_PASS",
+  "status": "FRESH_COMBINED_VALIDATION_AND_STAGING_AUTHORIZATION_REQUIRED",
+  "localUatHeadSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
   "writerPromptVersion": "2.4.0",
-  "latestValidation": {
-    "result": "LIVE_UAT_VALIDATION_FAIL",
-    "writerCalls": 1,
-    "judgeCalls": 0,
-    "writerCostUsd": 0.12549,
-    "deploymentAttempted": false
-  },
-  "diagnosis": {
-    "rootCause": "WRITER_OUTPUT_NEGATION_GRAMMAR_FALSE_POSITIVE",
-    "checkpointFile": "PRYSM-LIVE-UAT-VALIDATOR-NEGATION-FALSE-POSITIVE_2026-09-10.md",
-    "repairFile": "services/worker/src/narrative-v2/writer-output.js",
-    "offendingBoundedForm": "do not establish visitor completion or conversion performance",
-    "promptDefect": false,
-    "writerInputDefect": false,
-    "scoreSetDefect": false,
-    "judgeDefect": false
+  "repair": {
+    "result": "LIVE_UAT_VALIDATOR_REPAIR_PASS",
+    "checkpointFile": "PRYSM-LIVE-UAT-VALIDATOR-NEGATION-REPAIR-PASS_2026-09-10.md",
+    "fullWorker": "1009/1009 PASS",
+    "narrativeV2": "152/152 PASS",
+    "productionPath": "11/11 PASS",
+    "worktree": "CLEAN"
   },
   "authorization": {
-    "zeroModelValidatorRepair": "AUTHORIZED_ACCELERATED_UAT_REMEDIATION",
-    "deterministicRegression": "AUTHORIZED",
-    "localRepairCommit": "AUTHORIZED",
-    "writerJudgeModelCalls": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
-    "stagingDeployment": "NOT_AUTHORIZED_PENDING_REPAIR_AND_FRESH_CHRIS_AUTHORIZATION",
+    "singleWriterJudgeValidation": "PENDING_FRESH_CHRIS_AUTHORIZATION",
+    "stagingUatDeploymentAfterPass": "PENDING_FRESH_CHRIS_AUTHORIZATION",
     "productionDeployment": "NOT_AUTHORIZED",
-    "providerRecollection": "NOT_AUTHORIZED",
-    "mainMerge": "NOT_AUTHORIZED"
+    "mainMerge": "NOT_AUTHORIZED",
+    "providerRecollection": "NOT_AUTHORIZED"
   },
   "uat": {
-    "nextGate": "VALIDATOR_NEGATION_REPAIR",
-    "afterRepairPass": "FRESH_COMBINED_VALIDATION_AND_STAGING_AUTHORIZATION",
+    "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
     "target": "LIVE_HUMAN_UAT"
   },
-  "nextAction": "Repair only the WriterOutput explicit non-establishment grammar so 'do not establish' is accepted while affirmative or causal commercial-outcome claims remain rejected; run deterministic regressions; create one local commit; stop before model/deployment actions.",
+  "nextAction": "Obtain fresh combined authorization for one current-format TBK Writer -> Judge validation against HEAD 354d01eaaa1eb7eac096ab1997ada9b2c9d4359f and immediate staging/UAT deployment of that exact candidate if validation passes.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
