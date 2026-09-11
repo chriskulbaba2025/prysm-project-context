@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Reach live human UAT as quickly as possible through the accelerated current-format TBK path. Final-release hardening remains deferred until after first human UAT.
+Execute exactly one fresh current-format TBK Writer -> Judge live validation, then move directly to staging/live UAT deployment authorization if it passes. Final-release hardening remains deferred until after first human UAT.
 
 ## Exact application checkpoint
 
@@ -13,7 +13,7 @@ Reach live human UAT as quickly as possible through the accelerated current-form
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Verified semantic base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
 - Current local UAT-ready HEAD: `e8130770401f0e68bd05e310cf6dd66fc6ca1c4a`
-- Worktree: CLEAN
+- Worktree: CLEAN at readiness close
 - Deployment: NONE
 - Main merge: NONE
 - Production mutation: NONE
@@ -45,21 +45,25 @@ Deterministic verification:
 - Full worker: 1009/1009 PASS
 - `git diff --check`: PASS
 
-No model/provider calls, provider recollection, deployment, merge, or production mutation occurred in the readiness build.
+## Fresh Chris authorization
 
-## Current authorization boundary
+Checkpoint: `PRYSM-LIVE-UAT-SINGLE-TBK-WRITER-JUDGE-AUTHORIZATION_2026-09-10.md`
 
-Not yet authorized:
+Chris explicitly authorized exactly one fresh current-format TBK Writer -> Judge live validation against application HEAD `e8130770401f0e68bd05e310cf6dd66fc6ca1c4a`, using Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the approved current TBK UAT fixture, current budget gates, the paused-GA4 boundary, and the permanent PRYSM model-bearing release gate.
 
-- Writer/Judge/provider/model-bearing call;
+Not authorized by this approval:
+
+- provider recollection;
+- additional robustness sampling;
 - deployment;
-- main merge;
-- production mutation.
+- merge;
+- production mutation;
+- GA4 conversion-authority expansion.
 
 ## Exact next action
 
-Obtain fresh explicit Chris authorization for exactly one current-format TBK Writer -> Judge live validation against application HEAD `e8130770401f0e68bd05e310cf6dd66fc6ca1c4a`, using Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, the current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent PRYSM model-bearing release gate.
+Run exactly one governed current-format TBK Writer -> Judge live validation. Before the first paid call re-verify exact application HEAD, clean worktree, current fixture identity/hash, Writer/Judge routes, live configuration, and budgets. Use the production Writer/Judge path and stop immediately on any material Writer, Judge, semantic-integrity, transport, identity, or budget failure. Do not make a replacement sample.
 
-If that one validation passes, move directly to staging/live UAT deployment authorization and provide Chris the exact URL and test steps.
+If and only if the single validation passes, stop with a complete proof and move directly to staging/live UAT deployment authorization. Do not perform additional robustness sampling before Chris's first UAT.
 
 Last verified: 2026-09-10 America/Toronto
