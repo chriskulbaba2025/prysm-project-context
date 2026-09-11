@@ -1,78 +1,57 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_CURRENT_CORPUS_DERIVATION_BLOCKED",
+  "checkpoint": "PLANE3_CURRENT_CORPUS_RECONSTRUCTION_APPROVAL_REQUIRED",
   "scope": "WRITER_NARRATIVE_AUDIT_COMPLETION_ONLY",
-  "status": "CORPUS_CURRENT_INPUT_DERIVATION_BLOCKED / CORPUS_AUTHORITY_DESIGN_REQUIRED",
+  "status": "CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / EXPLICIT_RESCORE_AUTHORIZATION_REQUIRED",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
   "localToolingHeadSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
   "semanticApplicationBaseSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "applicationRepository": "chriskulbaba2025/vantage-platform",
-  "applicationBranch": "review/prysm-solution-directive-authority-betty",
-  "applicationWorktree": "CLEAN_AT_DERIVATION_BLOCKER_CLOSE",
   "currentWriterInputVersion": "1.2.0",
-  "ga4ConversionOutcomeDecision": {
-    "decision": "PAUSED_FOR_CURRENT_RELEASE",
-    "ga4ObservedConversionAuthority": "NOT_AUTHORIZED",
-    "ga4ContextualAnalyticsUse": "PRESERVE_EXISTING_GOVERNED_ROLE"
+  "currentScoreSetContract": "2.0.0",
+  "historicalCorpus": {
+    "tbkWriterInputVersion": "1.0.0",
+    "rebootWriterInputVersion": "1.0.0",
+    "tbkScoreSetContract": "1.0.0",
+    "rebootScoreSetContract": "1.0.0",
+    "scoringVersion": "4.1.1"
   },
-  "freshPlane3Evidence": {
-    "tbkWriter": "5/5 PASS_ON_HISTORICAL_1.0.0_PACKET_BYTES_ONLY",
-    "rebootWriter": "1 PASS / 1 FAIL_ON_HISTORICAL_1.0.0_PACKET_BYTES",
-    "writerJudgeOrchestrations": "0/3_NOT_ENTERED",
-    "currentWriterInputBoundaryProven": false,
-    "automaticCreditTransfer": "NONE"
+  "diagnosis": {
+    "result": "CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / HIGH",
+    "classification": "CURRENT_SCORING_RECONSTRUCTION_REQUIRES_EXPLICIT_RESCORE_AUTHORIZATION",
+    "providerRecollectionRequired": false,
+    "historicalArtifactMutationRequired": false,
+    "materialSemanticChangeExpected": "UNPROVEN",
+    "tbkTechnicallyViable": true,
+    "rebootTechnicallyViable": true
   },
-  "provenRootCause": {
-    "class": "STALE_FROZEN_WRITERINPUT_BYPASSES_CURRENT_PRODUCTION_BUILDER",
-    "validatorDisposition": "CORRECT",
-    "writerInputSemanticRepairDisproven": false
-  },
-  "corpusDerivationBlocker": {
-    "checkpointFile": "PRYSM-PLANE3-CURRENT-CORPUS-DERIVATION-BLOCKED_2026-09-10.md",
-    "result": "CORPUS_CURRENT_INPUT_DERIVATION_BLOCKED / HIGH",
-    "tbkHistoricalWriterInputVersion": "1.0.0",
-    "rebootHistoricalWriterInputVersion": "1.0.0",
-    "tbkScoreSetContractVersion": "1.0.0",
-    "rebootScoreSetContractVersion": "1.0.0",
-    "currentScoreSetContractRequired": "2.0.0",
-    "decisionHierarchyRequired": true,
-    "tbkDecisionHierarchyPresent": false,
-    "rebootDecisionHierarchyPresent": false,
-    "currentBuildWriterInputCanRunFromFrozenCorpus": false
-  },
-  "preservation": {
-    "manufactureDecisionHierarchy": "PROHIBITED",
-    "handEditHistoricalScores": "PROHIBITED",
-    "silentRescore": "PROHIBITED",
-    "rewriteHistoricalFixtures": "PROHIBITED",
-    "providerRecollection": "PROHIBITED",
-    "failedFreshRebootRetry": "PROHIBITED",
-    "failedFreshRebootReplacement": "PROHIBITED"
+  "requiredExecutionBoundary": {
+    "source": "EXISTING_PERSISTED_CANONICAL_EVIDENCE_ONLY",
+    "persistence": "ISOLATED_SCRATCH_DERIVATIVE_ONLY",
+    "productionScoringFunctions": "REUSE_CURRENT_PRODUCTION_PATH",
+    "writerInputConstruction": "REUSE_BUILD_WRITER_INPUT_1_2_0",
+    "semanticEquivalenceRequired": true,
+    "stopOnMaterialDifference": true,
+    "providerModelCalls": 0,
+    "providerRecollection": 0,
+    "historicalMutation": 0
   },
   "authorization": {
-    "corpusAuthorityDiagnosisDesign": "AUTHORIZED_ZERO_MODEL_CALLS",
+    "isolatedCurrentScoringReconstruction": "PENDING_EXPLICIT_CHRIS_AUTHORIZATION",
     "writerJudgeProviderModelBearingCalls": "NOT_AUTHORIZED",
-    "rescore": "NOT_AUTHORIZED",
-    "providerRecollection": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
     "productionMutation": "NOT_AUTHORIZED"
   },
-  "modelRouting": {
-    "corpusAuthorityDiagnosisDesign": "gpt-5.6-terra / high",
-    "mechanicalImplementationAfterFreeze": "gpt-5.6-luna / medium",
-    "independentVerification": "gpt-5.6-sol / high"
-  },
   "plane3": {
-    "status": "CURRENT_CORPUS_DERIVATION_BLOCKED / AUTHORITY_PATH_REQUIRED",
+    "status": "CURRENT_CORPUS_RECONSTRUCTION_APPROVAL_REQUIRED",
     "currentBoundaryCredit": "NONE_ESTABLISHED",
-    "historicalRebootRun2": "NO_RETRY",
-    "freshFailedRebootGeneration": "NO_RETRY / NO_REPLACEMENT",
-    "abandonedHistoricalJudgeCall": "NO_RETRY / NO_RESUME"
+    "historicalTbKPasses": "5/5 ON LEGACY BYTES ONLY",
+    "historicalRebootEvidence": "1 PASS / 1 FAIL ON LEGACY BYTES",
+    "failedFreshRebootRetry": "PROHIBITED"
   },
   "plane4": "NOT_YET_ELIGIBLE",
   "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Run one long governed GPT-5.6 Terra / High zero-model-call corpus-derivation authority diagnosis. Trace the current producer path for ScoreSet 2.0.0 and decisionHierarchy, determine whether TBK and Reboot can be deterministically reconstructed from already persisted canonical pre-score inputs without provider recollection or changing scoring meaning, and select one minimum legitimate derivation path. Do not implement, rescore, recollect providers, or make Writer/Judge/model calls.",
+  "nextAction": "Obtain explicit Chris authorization for one isolated deterministic current-scoring reconstruction of TBK and Reboot from existing canonical evidence with zero provider/model calls, no provider recollection, no historical artifact mutation, and strict semantic-equivalence comparison before corpus qualification.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
