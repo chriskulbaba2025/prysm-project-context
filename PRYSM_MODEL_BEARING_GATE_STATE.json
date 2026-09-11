@@ -1,62 +1,43 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "ACCELERATED_UAT_CURRENT_SCORING_AUTHORITY_ACCEPTED",
-  "status": "CURRENT_FORMAT_TBK_UAT_FIXTURE_BUILD_AUTHORIZED / ZERO_MODEL_CALLS",
+  "checkpoint": "LIVE_UAT_PRECALL_READY",
+  "status": "LIVE_UAT_PRECALL_READY / EXPLICIT_SINGLE_VALIDATION_AUTHORIZATION_REQUIRED",
   "publishedSemanticCandidateSha": "d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97",
-  "localToolingHeadSha": "5f2c1a27cbb6eaf022fb9d61dc9a2d6c37a9c3eb",
+  "localUatReadyHeadSha": "e8130770401f0e68bd05e310cf6dd66fc6ca1c4a",
   "currentWriterInputVersion": "1.2.0",
   "currentScoreSetContract": "2.0.0",
-  "uatAuthorityDecision": {
-    "file": "DECISION_PRYSM_UAT_CURRENT_SCORING_AUTHORITY_2026-09-10.md",
-    "currentProductionScoringAuthoritativeForUat": true,
-    "historicalTbKSemanticEquivalenceRequiredBeforeUat": false,
-    "historicalArtifactsRemainImmutable": true,
-    "rebootMigrationDeferred": true
-  },
-  "latestTbKCurrentReconstruction": {
-    "priorGateResult": "TBK_MATERIAL_SCORING_CHANGE",
-    "currentScoringReconstructionSucceeded": true,
+  "uatCorpus": {
     "auditId": "9714c206-8ed3-4686-8fe2-ceeca0ca0f82",
-    "scoringVersion": "4.1.1",
-    "currentScoreSetVersion": "2.0.0",
-    "currentScoreSetSha256": "6492e317299099c90e3389ca768d05e5acdfb3f00a6b1722ae0bf70eb62d334e",
-    "currentWriterInputVersion": "1.2.0",
-    "currentWriterInputSha256": "d95dc2922f8cef3813812a7f3704aef10fc78e5dc2e43e4dd04ddf8fdfa3d6da",
-    "currentDecisionHierarchyValidated": true,
-    "primaryNumericAndEligibilityStateMatchedHistorical": true,
-    "currentRootCauseActionSemanticsDifferFromHistorical": true,
-    "differenceAcceptedAsCurrentUatProductSemantics": true,
-    "providerModelCalls": 0,
-    "providerRecollection": 0,
-    "historicalMutations": 0
+    "fixture": "services/worker/test-fixtures/plane3-current-uat/tbk-9714c206/",
+    "rootCauseRuleId": "VAN-CONTENT-002",
+    "writerInputSha256": "d95dc2922f8cef3813812a7f3704aef10fc78e5dc2e43e4dd04ddf8fdfa3d6da"
   },
+  "deterministicVerification": {
+    "focusedHarness": "16/16 PASS",
+    "writerInputPromptOutput": "58/58 PASS",
+    "narrativeV2": "150/150 PASS",
+    "productionPath": "11/11 PASS",
+    "storageRecovery": "59/59 PASS",
+    "fullWorker": "1009/1009 PASS",
+    "diffCheck": "PASS",
+    "worktree": "CLEAN"
+  },
+  "ga4ConversionOutcomeAuthority": "PAUSED_FOR_CURRENT_RELEASE",
   "authorization": {
-    "currentFormatTbKUatFixtureBuild": "AUTHORIZED_BY_ACCELERATED_UAT_DIRECTION",
-    "harnessRepair": "AUTHORIZED_CURRENT_UAT_BOUNDARY_ONLY",
-    "deterministicRegression": "AUTHORIZED",
-    "localCommit": "AUTHORIZED",
-    "writerJudgeProviderModelBearingCalls": "NOT_AUTHORIZED",
+    "singleCurrentFormatTbKWriterJudgeValidation": "PENDING_EXPLICIT_CHRIS_AUTHORIZATION",
     "providerRecollection": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
     "mainMerge": "NOT_AUTHORIZED",
     "productionMutation": "NOT_AUTHORIZED"
   },
-  "plane3": {
-    "status": "ACCELERATED_UAT_CURRENT_FORMAT_FIXTURE_BUILD_REQUIRED",
-    "currentBoundaryCredit": "NOT_YET_ESTABLISHED",
-    "legacyTbKModelEvidence": "HISTORICAL_BYTES_ONLY",
-    "legacyRebootEvidence": "PRESERVED_AND_DEFERRED_FOR_UAT",
-    "failedFreshRebootRetry": "PROHIBITED"
-  },
   "uat": {
-    "target": "LIVE_UAT_PRECALL_READY",
-    "corpus": "TBK_CURRENT_FORMAT_ONLY",
-    "nextModelBearingGateAfterDeterministicPass": "ONE_FRESH_TBK_WRITER_TO_JUDGE_VALIDATION",
-    "afterSingleValidationPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION"
+    "nextGate": "ONE_CURRENT_FORMAT_TBK_WRITER_TO_JUDGE_VALIDATION",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol",
+    "afterPass": "STAGING_OR_LIVE_UAT_DEPLOYMENT_AUTHORIZATION"
   },
   "plane4": "DEFERRED_UNTIL_FINAL_RELEASE_HARDENING",
-  "plane5": "NOT_YET_ELIGIBLE",
-  "nextAction": "Create one durable current-format TBK UAT fixture from current production ScoreSet 2.0.0 and WriterInput 1.2.0, repair the UAT harness to enforce current version/hash/audit/manifest identity, run deterministic regressions, create one local commit, and stop at LIVE_UAT_PRECALL_READY before any Writer/Judge/provider/model call.",
+  "nextAction": "Obtain explicit Chris authorization for exactly one current-format TBK Writer -> Judge live validation against application HEAD e8130770401f0e68bd05e310cf6dd66fc6ca1c4a using the current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent model-bearing release gate. If it passes, move directly to staging/live UAT deployment authorization.",
   "lastVerified": "2026-09-10 America/Toronto"
 }
