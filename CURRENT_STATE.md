@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Obtain Chris approval for one isolated deterministic reconstruction of the approved TBK and Reboot corpus through the current scoring and WriterInput boundaries. No provider or model calls are permitted in that operation.
+Execute one isolated deterministic current-scoring reconstruction of the approved TBK and Reboot corpus from their existing persisted canonical evidence, followed by strict semantic-equivalence comparison and current WriterInput `1.2.0` construction. Chris has explicitly authorized this bounded rescore/reconstruction.
 
 ## Exact application checkpoint
 
@@ -20,45 +20,56 @@ Obtain Chris approval for one isolated deterministic reconstruction of the appro
 
 ## Proven Plane 3 issue
 
-The prior fresh Plane 3 run used historical WriterInput `1.0.0` packets directly. It therefore did not prove the current WriterInput `1.2.0` production boundary.
-
-Both approved corpus cases have historical ScoreSet contract `1.0.0`, scoringVersion `4.1.1`, and no current `decisionHierarchy`. Current WriterInput `1.2.0` requires current ScoreSet contract `2.0.0`.
+The prior fresh Plane 3 run exercised historical WriterInput `1.0.0` packets rather than the current WriterInput `1.2.0` production boundary. Both approved corpus cases also contain historical ScoreSet contract `1.0.0`, scoringVersion `4.1.1`, and no current `decisionHierarchy`. Current WriterInput `1.2.0` requires current ScoreSet contract `2.0.0`.
 
 ## Corpus derivation diagnosis
-
-Checkpoint: `PRYSM-PLANE3-CORPUS-RECONSTRUCTION-GATE_2026-09-10.md`
 
 Result: `CORPUS_DERIVATION_DIAGNOSIS_COMPLETE / HIGH`
 
 Classification: `CURRENT_SCORING_RECONSTRUCTION_REQUIRES_EXPLICIT_RESCORE_AUTHORIZATION`
 
-The current deterministic scoring path can technically reconstruct current score authority for both TBK and Reboot from their already persisted canonical evidence without provider recollection, provided the evidence passes current validation.
+Both TBK and Reboot contain enough existing persisted canonical evidence to make an isolated current deterministic scoring reconstruction technically viable without provider recollection, provided current validation accepts those artifacts. The operation is a true rescore/reconstruction and can potentially change material scoring conclusions, so strict equivalence comparison is mandatory.
 
-This reconstruction is still a true scoring recomputation and therefore needs fresh Chris approval. Historical artifacts must remain immutable.
+## Chris authorization
 
-The isolated operation must compare historical and reconstructed authority for scores, bands, readiness, assessed weight, evidence confidence, root cause, findings, eligibility, suppression, priority/rank/effort/order, conversion influence, evidence values/statuses, and solution/root-cause bindings. Any material difference blocks automatic corpus qualification.
+Checkpoint: `PRYSM-PLANE3-CURRENT-CORPUS-RESCORE-AUTHORIZATION_2026-09-10.md`
+
+Chris explicitly authorized one isolated deterministic current-scoring reconstruction of TBK and Reboot from their existing persisted canonical evidence using the current PRYSM scoring path and current WriterInput `1.2.0` construction boundary.
+
+Permitted:
+- isolated scratch reconstruction only;
+- existing persisted canonical evidence only;
+- current production scoring functions and validators;
+- current WriterInput `1.2.0` construction;
+- strict semantic-equivalence comparison;
+- derivative hashes/manifests/proof artifacts.
+
+Not permitted:
+- provider recollection;
+- Writer/Judge/model calls;
+- historical artifact mutation;
+- deployment;
+- merge;
+- production mutation;
+- GA4 conversion-authority expansion;
+- continuation if any material scoring conclusion changes.
 
 ## Evidence preservation
 
-- TBK 5/5 prior model outputs remain evidence on the exact legacy bytes only.
-- Reboot prior PASS/FAIL remain evidence on the exact legacy bytes only.
+- TBK 5/5 prior model outputs remain evidence on exact legacy bytes only.
+- Reboot prior PASS/FAIL remain evidence on exact legacy bytes only.
 - No current-boundary Plane 3 credit transfers automatically.
 - Failed fresh Reboot generation remains immutable and is not retried or replaced.
-
-## Current authorization boundary
-
-Allowed now: planning and deterministic preflight only.
-
-Not yet allowed: isolated current-scoring reconstruction, Writer/Judge/provider/model calls, provider recollection, deployment, main merge, production mutation, or GA4 conversion-authority expansion.
+- Historical scores, findings, WriterInputs, reports, and ledgers remain immutable.
 
 ## Model routing
 
-- Isolated scoring reconstruction and semantic-equivalence assessment: GPT-5.6 Terra / High
+- Isolated deterministic reconstruction/equivalence assessment: GPT-5.6 Terra / High
 - Mechanical follow-up after semantics are frozen: GPT-5.6 Luna / Medium
 - Independent verification after corpus authority repair: GPT-5.6 Sol / High
 
 ## Exact next action
 
-Obtain fresh explicit Chris approval for one isolated deterministic current-scoring reconstruction of TBK and Reboot from their existing canonical evidence, with zero provider/model calls, no provider recollection, no historical artifact mutation, and strict semantic-equivalence comparison before either corpus is qualified for a new Plane 3 run.
+Run one long governed GPT-5.6 Terra / High isolated deterministic reconstruction of both TBK and Reboot using only their existing persisted canonical evidence. Reuse the current production scoring service and current WriterInput builder in isolated scratch persistence, write derivative artifacts only, compare historical vs reconstructed scoring authority across every material field, and stop immediately on any material difference or current-input validation failure. Make zero Writer/Judge/provider/model calls, perform no provider recollection, modify no historical artifact, and do not deploy/merge/push production changes.
 
 Last verified: 2026-09-10 America/Toronto
