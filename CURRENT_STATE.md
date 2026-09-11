@@ -4,53 +4,28 @@ Project: PRYSM
 
 ## Current objective
 
-Reach live human UAT as quickly as possible through the accelerated current-format TBK path. The narrow Writer prompt contradiction exposed by the first live validation has now been repaired and deterministically verified. The only remaining gate before rerunning the single live Writer -> Judge validation is fresh Chris authorization against the repaired application HEAD.
+Reach live human UAT now through the accelerated current-format TBK path. The narrow Writer prompt contradiction has been repaired and deterministically verified. Chris has now explicitly authorized exactly one fresh current-format TBK Writer -> Judge validation against the repaired application HEAD and, if and only if that validation passes, immediate deployment of that exact candidate to the PRYSM staging/UAT environment for live testing.
+
+Authorization checkpoint: `PRYSM-LIVE-UAT-VALIDATION-AND-STAGING-AUTHORIZATION_2026-09-10.md`.
 
 ## Exact application checkpoint
 
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Local application: `C:\Users\kulba\Desktop\vantage-platform`
 - Branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
-- Verified semantic base: `d7ce3cfe69d5ada8f6d4541c8a9603f17e932a97`
-- Current repaired UAT HEAD: `6a87037c3c94a13d5c42ca505d6c6557eb962664`
-- Worktree: CLEAN
+- Exact authorized candidate HEAD: `6a87037c3c94a13d5c42ca505d6c6557eb962664`
 - Writer prompt version: `2.4.0`
-- Deployment: NONE
-- Main merge: NONE
-- Production mutation: NONE
-
-## Current-format TBK UAT corpus
-
-- Audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
-- ScoreSet: `2.0.0`
-- scoringVersion: `4.1.1`
-- rootCauseRuleId: `VAN-CONTENT-002`
-- WriterInput: `1.2.0`
-- WriterInput SHA: `d95dc2922f8cef3813812a7f3704aef10fc78e5dc2e43e4dd04ddf8fdfa3d6da`
-- Fixture: `services/worker/test-fixtures/plane3-current-uat/tbk-9714c206/`
+- Current WriterInput version: `1.2.0`
+- Current ScoreSet contract: `2.0.0`
+- Current TBK fixture audit: `9714c206-8ed3-4686-8fe2-ceeca0ca0f82`
 - GA4 downstream commercial-outcome authority: PAUSED
+- Worktree: CLEAN at repair close
 
-## Prior live validation
-
-The first authorized current-format TBK Writer -> Judge validation reached Writer and Judge successfully but failed one semantic hard gate. Writer structural validation passed; Judge structural validation passed; Judge returned REVISE with score 94 because `conversion.whatWorks.text` implied measured visitor completion from path clarity.
-
-No replacement generation was attempted.
-
-## Prompt repair
+## Deterministic repair verification
 
 Checkpoint: `PRYSM-LIVE-UAT-PROMPT-REPAIR-PASS_2026-09-10.md`
 
 Result: `LIVE_UAT_PROMPT_REPAIR_PASS / HIGH`.
-
-Proven repair:
-
-- Rule 11a no longer says path clarity measures completion of the invitation.
-- CTA clarity now assesses the observed invitation.
-- Conversion-path clarity now assesses the observed route from that invitation toward the next step.
-- The prompt explicitly states that path clarity does not establish that visitors completed the action or converted.
-- Writer prompt version advanced from `2.3.0` to `2.4.0`.
-
-Deterministic verification:
 
 - Focused Writer/prompt/input/output: 64/64 PASS
 - Narrative v2: 151/151 PASS
@@ -59,25 +34,32 @@ Deterministic verification:
 - Artifact/recovery: 106/106 PASS
 - Full worker: 1009/1009 PASS
 - `git diff --check`: PASS
-- Worktree: CLEAN
+- worktree: CLEAN
 
-No Writer/Judge/provider/model calls occurred during repair.
+The repaired Rule 11a now states that CTA clarity assesses the observed invitation, conversion-path clarity assesses the observed route toward the next step, and path clarity does not establish that visitors completed the action or converted.
 
 ## Current authorization boundary
 
-Not yet authorized against repaired HEAD `6a87037c3c94a13d5c42ca505d6c6557eb962664`:
+Authorized now:
+- exactly one fresh current-format TBK Writer call using `gpt-5.6-terra`;
+- exactly one Judge call using `gpt-5.6-sol` if Writer validation passes;
+- Writer prompt version `2.4.0`;
+- approved current TBK UAT fixture;
+- current budget gates and permanent PRYSM model-bearing release gate;
+- no automatic revision or replacement sample;
+- if and only if the validation passes, deployment of exact candidate `6a87037c3c94a13d5c42ca505d6c6557eb962664` to PRYSM staging/UAT and verification of the exact live UAT URL.
 
-- Writer/Judge/provider/model-bearing execution;
-- deployment;
+Not authorized:
+- production deployment;
 - main merge;
-- production mutation.
-
-Provider recollection and additional robustness sampling remain outside the accelerated UAT path.
+- provider recollection;
+- additional robustness sampling;
+- any different application candidate;
+- GA4 conversion-authority expansion;
+- unrelated production mutation.
 
 ## Exact next action
 
-Obtain fresh explicit Chris authorization for exactly one current-format TBK Writer -> Judge live validation against application HEAD `6a87037c3c94a13d5c42ca505d6c6557eb962664`, using Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt version `2.4.0`, the approved current TBK UAT fixture, current budget gates, paused-GA4 boundary, and the permanent PRYSM model-bearing release gate.
-
-If that one validation passes, move directly to staging/live UAT deployment authorization and provide Chris the test URL.
+Run one combined governed validation-and-UAT-deploy operation. Preflight exact candidate identity, fixture, routes, config, and budgets; execute exactly one fresh current-format TBK Writer -> Judge validation with no automatic revision; stop on any material failure. If and only if it passes, deploy that exact validated candidate to PRYSM staging/UAT, verify deployment readiness, and return the exact URL and minimal human test steps. No further staging authorization is required if the validation passes.
 
 Last verified: 2026-09-10 America/Toronto
