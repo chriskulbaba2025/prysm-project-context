@@ -1,9 +1,9 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_CONSOLIDATED_P01_REPAIR_AND_PAID_VERIFICATION_AUTHORIZED",
-  "status": "CONSOLIDATED_REPAIR_AND_AUTONOMOUS_PAID_VERIFICATION_AUTHORIZED",
-  "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
+  "checkpoint": "PLANE3_P02_JUDGE_SHAPING_REPAIR_AND_CONTINUATION",
+  "status": "PLANE3_IN_PROGRESS_JUDGE_SHAPING_REPAIR_REQUIRED",
+  "applicationCandidateSha": "000c55f0ac38db9e6df1d12348cea1867b7af4b0",
   "applicationWorktree": "CLEAN",
   "activeModels": {
     "writer": "gpt-5.6-terra",
@@ -13,43 +13,58 @@
     "version": "1.2.0",
     "canonicalSha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
   },
-  "harnessHardening": {
-    "repairResult": "PLANE3_HARNESS_HARDENING_REPAIR_PASS",
-    "focusedTests": "22_PASS_0_FAIL_0_SKIPPED",
-    "historicalArtifactsPreserved": true
+  "deterministicClosure": {
+    "p01Replay": "PASS_ZERO_ERRORS",
+    "writerSemanticPromptTests": "49_PASS_0_FAIL",
+    "narrativeV2": "164_PASS_0_FAIL",
+    "wholeApp": "90_PASS_0_FAIL",
+    "pB01ThroughPB16": "PASS"
   },
-  "consumedRun": {
-    "runId": "plane34-45741b4-20260912-r01",
-    "executionStatus": "STOPPED_ON_P01_WRITER_VALIDATION",
-    "writerCallsCompleted": 1,
-    "judgeCallsCompleted": 0,
-    "actualProviderCostUsd": 0.140972,
-    "authorizationConsumed": true
-  },
-  "p01KnownDeterministicErrors": [
-    {
-      "error": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
-      "rootCause": "VALIDATOR_FALSE_POSITIVE",
-      "confidence": 0.98,
-      "status": "PROVEN"
-    },
-    {
-      "error": "limitations[1].whatThisMeans.evidenceRefs contains duplicate reference: capability:performance.field",
-      "rootCause": "TO_BE_CLASSIFIED_IN_CONSOLIDATED_REPAIR",
-      "status": "DETERMINISTICALLY_REPRODUCED"
-    }
+  "repairCommits": [
+    "9ca6989ef7dbd900be61fc13f4ca19524d99d0c2",
+    "8c2cf15519378f5ac67bc0c3ac4bc41f9add822d",
+    "000c55f0ac38db9e6df1d12348cea1867b7af4b0"
   ],
+  "currentValidatorSha256": "5F7C4606B4546023A75BE9B1A434FD9B525CFFC61F7F869DE5AC730C40DFD5AC",
+  "currentWriterPromptSha256": "BFBB2D2591E6D12D22A406651F63BF5F95F6F719C9EAD342DFF2A6854F5D53C0",
+  "latestPaidRun": {
+    "runId": "plane34-000c55f-20260912-r03",
+    "p01Writer": "PASS",
+    "p01Judge": "PASS",
+    "p02Writer": "PASS",
+    "p02Judge": "REVISE_HARD_GATE_FAIL",
+    "p03": "NOT_EXECUTED",
+    "p04": "NOT_EXECUTED",
+    "p05": "NOT_EXECUTED",
+    "writerCalls": 2,
+    "judgeCalls": 2,
+    "actualProviderCostUsd": 0.751339
+  },
+  "currentBlocker": {
+    "classification": "P02_JUDGE_WRITER_SHAPING_DEFECT",
+    "fields": ["rootCause", "conversion", "actionPlan"],
+    "defects": [
+      "slow lab-measured mobile LCP upgraded to assessed friction",
+      "clear assessed route upgraded to usable foundation",
+      "slow lab LCP upgraded to assessed mobile performance friction condition"
+    ]
+  },
+  "executionPolicy": {
+    "microApprovalLoop": "DISABLED_FOR_NARROW_PLANE3_REPAIRS",
+    "previousThreeCycleCap": "SUPERSEDED",
+    "continueUntilSampleSetCompleteOrRealBoundaryBlocker": true,
+    "freshCandidateRequiresFreshManifestRunIdPayloadAndPreflight": true,
+    "perRunHarnessSafetyControlsMustRemainFailClosed": true,
+    "doNotWeakenSemanticIntegrityOrJudgeHardGates": true
+  },
   "authorization": {
-    "userDirective": "I do not care what expenses are - fix this.",
-    "consolidatedRepair": "AUTHORIZED",
+    "narrowWriterJudgeRepair": "AUTHORIZED",
     "deterministicReplay": "AUTHORIZED",
     "focusedAndDirectlyAffectedClosureTests": "AUTHORIZED",
     "localApplicationCommit": "AUTHORIZED_AFTER_PASS",
     "freshRunPackagePreparation": "AUTHORIZED",
-    "railwayInjectedZeroCallPreflight": "AUTHORIZED",
-    "paidPlane3Verification": "AUTHORIZED_WITHOUT_INTERMEDIATE_MICRO_APPROVAL",
-    "maximumAutonomousRepairPaidCycles": 3,
-    "perRunHarnessSafetyLimits": "MUST_REMAIN_FAIL_CLOSED",
+    "zeroCallRailwayPreflight": "AUTHORIZED",
+    "freshPlane3VerificationRuns": "AUTHORIZED_WITHOUT_MICRO_APPROVAL",
     "productionWrites": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "crawl": "NOT_AUTHORIZED",
@@ -61,26 +76,16 @@
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "executionPolicy": {
-    "inventoryAllPersistedP01ValidationErrorsBeforeFreeze": true,
-    "repairCompleteCoherentCurrentBoundary": true,
-    "preservedP01ReplayMustBeCleanBeforePaidRun": true,
-    "doNotWeakenSemanticIntegrityRulesToPass": true,
-    "newCandidateRequiresFreshManifestRunIdPayloadPreflight": true,
-    "paidVerificationMayProceedAutomaticallyAfterZeroCallPreflight": true,
-    "newNarrowDeterministicValidationDefectMayBeRepairedWithinCycleLimit": true,
-    "stopOnInfrastructureOrArchitectureExpansion": true
-  },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
     "plane3Harness": "HARDENED_FOCUSED_PASS",
-    "plane3": "IN_PROGRESS_CONSOLIDATED_REPAIR_AND_PAID_VERIFICATION",
+    "plane3": "IN_PROGRESS_P02_JUDGE_SHAPING_REPAIR",
     "plane4": "PENDING_VALID_PLANE3_SAMPLE_SET",
     "plane5": "NOT_STARTED",
     "plane6": "NOT_STARTED_FOR_RESULTING_CANDIDATE",
     "plane7": "NOT_STARTED_FOR_RESULTING_CANDIDATE"
   },
-  "nextAction": "Run one consolidated P01 deterministic-validation repair: inventory all current replay errors from the preserved paid response, classify the duplicate-reference defect in-process, repair every currently reproducible blocker coherently, prove exact persisted replay clean, run focused/directly affected closure tests, commit the new candidate, prepare a fresh manifest/run/payload, pass zero-call Railway preflight, then execute a fresh paid Plane 3 run automatically. Up to three total repair/paid-verification cycles are authorized for newly exposed narrow deterministic Writer-validation defects; do not return for micro-approval between those cycles.",
+  "nextAction": "Inspect preserved cycle-3 P02 Writer/Judge artifacts, repair the exact Writer shaping boundary for rootCause/conversion/actionPlan, add direct regressions, re-close deterministic tests, commit a fresh candidate, create a fresh manifest/run/payload, pass zero-call preflight, and continue Plane 3 verification. Repeat narrow repair/verification cycles without micro-approval until 5 Writer + 3 Judge samples complete or a genuine architectural/infrastructure/evidence blocker is proven.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
