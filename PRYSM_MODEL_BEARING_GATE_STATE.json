@@ -1,9 +1,9 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_HARNESS_HARDENING_REQUIRED",
-  "status": "HARNESS_EXECUTION_IDENTITY_DEFECT",
-  "applicationCandidateSha": "8604603c789cbeb6af920467ab0a87434399692a",
+  "checkpoint": "PLANE3_AUTHORIZATION_PREPARATION_REQUIRED",
+  "status": "PLANE3_HARNESS_HARDENING_REPAIR_PASS",
+  "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
   "applicationWorktree": "CLEAN",
   "liveAudit": {
     "auditId": "4b0b3568-19e5-4bff-a4e8-20b23f401f5e",
@@ -49,6 +49,8 @@
     "additionalCurrentCompatibleCorpusCases": 0,
     "writerSamples": 5,
     "judgeSamples": 3,
+    "maximumWriterCalls": 5,
+    "maximumJudgeCalls": 3,
     "maximumTotalCalls": 8,
     "conservativeMaximumSpendUsd": 4.44,
     "writerModel": "gpt-5.6-terra",
@@ -62,41 +64,64 @@
     "zeroCallPreflight": "READY",
     "secretsPrinted": false
   },
-  "currentBlocker": {
-    "classification": "HARNESS_EXECUTION_IDENTITY_DEFECT",
-    "owningFile": "services/worker/scripts/plane3-model-bearing.mjs",
-    "owningFunction": "executeManifest",
-    "currentExecutionIdConstruction": "plane34-${sample.sampleId}",
-    "oldP01ExecutionId": "plane34-PRIMARY_TBK_P01",
-    "noCodeFreshRunIdSupported": false,
-    "latestAttemptWriterCalls": 0,
-    "latestAttemptJudgeCalls": 0,
-    "latestAttemptProviderCostUsd": 0.0,
+  "harnessHardening": {
+    "auditResult": "HARNESS_HARDENING_SCOPE_PROVEN",
+    "repairResult": "PLANE3_HARNESS_HARDENING_REPAIR_PASS",
+    "startingApplicationSha": "8604603c789cbeb6af920467ab0a87434399692a",
+    "endingApplicationSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
+    "changedFiles": [
+      "services/worker/scripts/plane3-model-bearing.mjs",
+      "services/worker/scripts/plane3-model-bearing.test.js"
+    ],
+    "focusedTests": "22_PASS_0_FAIL_0_SKIPPED",
+    "freshRunIdentityRequired": true,
+    "freshRunRootRequired": true,
+    "duplicateSampleIdsFailClosed": true,
+    "runtimeManifestParityFailClosed": true,
+    "structuredAuthorizationBinding": true,
+    "aggregateCallCeilings": true,
+    "aggregateUsdCeiling": true,
+    "immutableHarnessEvidence": true,
+    "restartReusesFailClosed": true,
+    "latestVerificationWriterCalls": 0,
+    "latestVerificationJudgeCalls": 0,
+    "latestVerificationProviderCalls": 0,
+    "latestVerificationProviderCostUsd": 0.0,
     "historicalArtifactsPreserved": true
+  },
+  "currentBlocker": {
+    "classification": "FRESH_PAID_AUTHORIZATION_REQUIRED",
+    "reason": "Harness source changed and the prior external manifest is bound to the superseded candidate SHA. A fresh manifest/run identity and structured authorization payload must be prepared and pass zero-call preflight before explicit human paid authorization can be granted.",
+    "supersededManifestCandidateSha": "8604603c789cbeb6af920467ab0a87434399692a",
+    "requiredCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12"
   },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
-    "plane3": "BLOCKED_HARNESS_EXECUTION_PLUMBING",
+    "plane3Harness": "HARDENED_FOCUSED_PASS",
+    "plane3RealModelBearingSample": "AWAITING_AUTHORIZATION_PREPARATION_AND_EXPLICIT_PAID_AUTHORIZATION",
     "plane4": "NOT_COMPLETE",
     "plane5": "NOT_STARTED",
     "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
     "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "nextHarnessHardeningAudit": "AUTHORIZED_ZERO_COST_ONLY",
-    "paidWriterJudgeCalls": "NOT_AUTHORIZED_DURING_HARDENING_AUDIT",
+    "authorizationPreparation": "AUTHORIZED_ZERO_COST_ONLY",
+    "localZeroCallPreflight": "AUTHORIZED",
+    "railwayInjectedZeroCallPreflight": "AUTHORIZED",
+    "paidWriterJudgeCalls": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
     "finalNarrativePass": "NOT_AUTHORIZED",
     "productionWrites": "NOT_AUTHORIZED",
+    "productionConfigurationMutation": "NOT_AUTHORIZED",
     "push": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED",
-    "freshPaidAuthorizationAfterSourceChange": "REQUIRED"
+    "freshPaidAuthorizationForCurrentSha": "REQUIRED"
   },
-  "nextAction": "Run one consolidated zero-cost Plane 3 harness-hardening audit against application SHA 8604603c789cbeb6af920467ab0a87434399692a covering run identity, sample isolation, historical reservation preservation, secure runtime injection, identity parity, output namespace, retry/restart behavior, call and cost ceilings, authorization cleanup, stop-on-failure behavior, artifact preservation, zero-call preflight, no production mutation, and repository integrity. Freeze one coherent harness-only repair scope if required before any further paid execution.",
+  "nextAction": "Prepare a fresh Plane 3 manifest/run package bound to application SHA 45741b4043376f7af8ee3756c569c7075eb34f12, choose a fresh unused run ID, construct the matching structured authorization payload without granting paid authorization, and prove READY through zero-call local and Railway-injected preflight. Stop for explicit human paid authorization before any Writer/Judge execution.",
   "handoff": "HANDOFF_PRYSM_PLANE3_HARNESS_HARDENING_2026-09-11.md",
-  "lastVerified": "2026-09-11 America/Toronto"
+  "lastVerified": "2026-09-12 America/Toronto"
 }
