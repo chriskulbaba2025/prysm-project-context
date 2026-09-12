@@ -1,81 +1,93 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_PAID_RUN_AUTHORIZED",
-  "status": "PLANE3_READY_FOR_AUTHORIZED_PAID_EXECUTION",
+  "checkpoint": "PLANE3_P01_SEMANTIC_VALIDATION_DIAGNOSIS_REQUIRED",
+  "status": "PLANE3_PAID_MODEL_BEARING_RUN_STOPPED",
   "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
   "applicationWorktree": "CLEAN",
-  "liveAudit": {
-    "auditId": "4b0b3568-19e5-4bff-a4e8-20b23f401f5e",
-    "business": "TBK Creative",
-    "evidenceLocked": "PASS",
-    "scoring": "PASS",
-    "narrativeOriginalFailure": "UNAUTHORIZED_WRITER_CHANGE_OUTSIDE_REVISION_DIRECTIVE",
-    "persistedArtifactsRecovered": true,
-    "originalRootCauseDiagnosed": true
-  },
-  "deterministicClosure": {
-    "targetedRevisionRepair": "PASS",
-    "historicalContinuationCompatibility": "PASS",
-    "workerRegressions": "1009_PASS_0_FAIL",
-    "productionPath": "83_PASS_0_FAIL",
-    "narrativeV2": "160_PASS_0_FAIL",
-    "schemaContract": "14_PASS_0_FAIL",
-    "artifact": "106_PASS_0_FAIL",
-    "lifecycle": "57_PASS_0_FAIL",
-    "wholeApp": "90_PASS_0_FAIL",
-    "pB01ThroughPB16": "PASS",
-    "pB08": "PASS"
-  },
-  "writerInput": {
-    "version": "1.2.0",
-    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
-  },
   "activeModels": {
     "writer": "gpt-5.6-terra",
     "judge": "gpt-5.6-sol"
+  },
+  "writerInput": {
+    "version": "1.2.0",
+    "canonicalSha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
   },
   "harnessHardening": {
     "repairResult": "PLANE3_HARNESS_HARDENING_REPAIR_PASS",
     "focusedTests": "22_PASS_0_FAIL_0_SKIPPED",
     "historicalArtifactsPreserved": true
   },
-  "authorizedRun": {
+  "consumedAuthorizedRun": {
     "humanAuthorizationGranted": true,
-    "authorizationDate": "2026-09-12",
     "singleUse": true,
     "applicationSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
-    "manifestPath": "C:\\Users\\kulba\\Downloads\\PRYSM-PLANE34-RUN-MANIFEST.json",
     "manifestSha256": "8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546",
     "runId": "plane34-45741b4-20260912-r01",
     "corpusIdentity": "431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9",
-    "authorizationPayloadPath": "C:\\Users\\kulba\\Downloads\\PRYSM-PLANE3-AUTHORIZATION-PAYLOAD.json",
     "authorizationPayloadSha256": "3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c",
     "maximumWriterCalls": 5,
     "maximumJudgeCalls": 3,
     "maximumTotalCalls": 8,
     "maximumSpendUsd": 4.44,
-    "stopOnMaterialFailure": true,
-    "executionStatus": "NOT_YET_EXECUTED"
+    "executionStatus": "STOPPED_ON_P01_WRITER_VALIDATION",
+    "authorizationConsumed": true,
+    "rerunAuthorized": false
+  },
+  "paidRunResult": {
+    "classification": "PLANE3_PAID_MODEL_BEARING_RUN_STOPPED",
+    "writerCallsCompleted": 1,
+    "judgeCallsCompleted": 0,
+    "totalPaidCallsCompleted": 1,
+    "actualProviderCostUsd": 0.140972,
+    "runSummaryStatus": "FAILED",
+    "p01": {
+      "sampleId": "PRIMARY_TBK_P01",
+      "executionId": "plane34-45741b4-20260912-r01-PRIMARY_TBK_P01",
+      "writerInputSha256": "3eb8d35b399353cb51ada5a4d75724857560d8ce0103f6765fba7bdbf724e4ea",
+      "requestPromptSha256": "cbf99c38c97dc9ba1b165c1952f6f7ca07fbf03c77e3659fdfa513936fc82deb",
+      "rawWriterResponseSha256": "5074d64a769c1838639d40d1239f69bfe1a8af01ca633cd3a36638b886565450",
+      "writerValidation": "FAIL",
+      "judgeExecuted": false,
+      "inputTokens": 31780,
+      "outputTokens": 6451,
+      "actualCostUsd": 0.140972,
+      "validationError": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim"
+    },
+    "p02": "NOT_EXECUTED",
+    "p03": "NOT_EXECUTED",
+    "p04": "NOT_EXECUTED",
+    "p05": "NOT_EXECUTED",
+    "historicalArtifactsPreserved": true,
+    "productionWrites": 0,
+    "railwayConfigurationMutations": 0,
+    "applicationSourceChanges": 0,
+    "pushes": 0,
+    "deployments": 0
+  },
+  "currentBlocker": {
+    "classification": "P01_WRITER_SEMANTIC_VALIDATION_FAILURE_ROOT_CAUSE_UNRESOLVED",
+    "verifiedObservedFailure": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
+    "rootCauseStatus": "UNRESOLVED",
+    "requiredDiagnosis": "Recover exact persisted P01 WriterInput and raw/parsed Writer response, trace governing PARTIAL semantics in prompt/reference and validator, replay exact persisted bytes through the current validator, then classify one root cause before any repair or rerun."
   },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
     "plane3Harness": "HARDENED_FOCUSED_PASS",
     "plane3AuthorizationPreflight": "READY",
-    "plane3RealModelBearingSample": "AUTHORIZED_NOT_YET_EXECUTED",
-    "plane4": "NOT_COMPLETE",
+    "plane3RealModelBearingSample": "STOPPED_P01_WRITER_VALIDATION",
+    "plane3": "NOT_PASS",
+    "plane4": "NOT_STARTED_FOR_STOPPED_RUN",
     "plane5": "NOT_STARTED",
     "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
     "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "paidWriterJudgeCalls": "AUTHORIZED_ONCE_EXACT_PACKAGE_ONLY",
-    "maximumWriterCalls": 5,
-    "maximumJudgeCalls": 3,
-    "maximumTotalCalls": 8,
-    "maximumSpendUsd": 4.44,
+    "paidWriterJudgeCalls": "NOT_AUTHORIZED",
     "secondPaidRun": "NOT_AUTHORIZED",
+    "readOnlyDiagnosis": "AUTHORIZED_ZERO_COST_ONLY",
+    "sourceRepairBeforeDiagnosis": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
@@ -86,6 +98,6 @@
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Execute exactly one paid Plane 3 model-bearing run for the authorized package through the hardened harness and proven Railway production-variable injection. Reverify exact SHA/hash/run namespace/runtime parity immediately before execution. Enable the exact structured authorization payload and paid YES flag only for that child process. Stop immediately on any material failure, preserve raw artifacts and ledgers, and do not repair or rerun under this authorization.",
+  "nextAction": "Run one zero-cost read-only diagnosis of the preserved P01 failure at exact application SHA 45741b4043376f7af8ee3756c569c7075eb34f12. Recover the exact failing rationale text and exact PARTIAL source/reference evidence, trace the relevant Writer instruction and validator rule, replay the persisted response unchanged through the current validator, classify one verified root cause, and freeze the smallest coherent repair boundary if proven. No source edit and no model/provider call.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
