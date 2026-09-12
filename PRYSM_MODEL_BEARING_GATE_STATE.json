@@ -1,44 +1,102 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "LIVE_PASS2_DIAGNOSIS_BLOCKED",
-  "status": "PERSISTED_ARTIFACT_ACCESS_REQUIRED_BEFORE_ROOT_CAUSE",
-  "frozenSemanticCandidateSha": "354d01eaaa1eb7eac096ab1997ada9b2c9d4359f",
-  "toolingHeadSha": "608b7193e6a38c61cff91a8367d232ad52965de2",
-  "production": {
-    "deploymentId": "dpl_FS2KazkLNZFFss4nn9C3377FadJe",
-    "domain": "https://prysm.omnipressence.com",
-    "workerConnectivity": "PASS"
-  },
+  "checkpoint": "PLANE3_HARNESS_HARDENING_REQUIRED",
+  "status": "HARNESS_EXECUTION_IDENTITY_DEFECT",
+  "applicationCandidateSha": "8604603c789cbeb6af920467ab0a87434399692a",
+  "applicationWorktree": "CLEAN",
   "liveAudit": {
     "auditId": "4b0b3568-19e5-4bff-a4e8-20b23f401f5e",
     "business": "TBK Creative",
     "evidenceLocked": "PASS",
     "scoring": "PASS",
-    "narrative": "FAIL_PASS_2",
-    "failure": "UNAUTHORIZED_WRITER_CHANGE_OUTSIDE_REVISION_DIRECTIVE"
+    "narrativeOriginalFailure": "UNAUTHORIZED_WRITER_CHANGE_OUTSIDE_REVISION_DIRECTIVE",
+    "persistedArtifactsRecovered": true,
+    "originalRootCauseDiagnosed": true
   },
-  "diagnosis": {
-    "checkpointFile": "PRYSM-LIVE-PASS2-DIAGNOSIS-BLOCKED_2026-09-11.md",
-    "result": "LIVE_PASS2_DIAGNOSIS_BLOCKED",
-    "persistedArtifactsRecovered": false,
-    "readOnlyAuditProbe": "401_UNAUTHORIZED",
-    "rootCauseClassification": "UNPROVEN",
-    "localGovernanceOriginMainObserved": "4202ed684754c382160289c801b83e654d697a69",
-    "localGovernanceSyncRequired": true
+  "deterministicClosure": {
+    "targetedRevisionRepair": "PASS",
+    "historicalContinuationCompatibility": "PASS",
+    "workerRegressions": "1009_PASS_0_FAIL",
+    "productionPath": "83_PASS_0_FAIL",
+    "narrativeV2": "160_PASS_0_FAIL",
+    "schemaContract": "14_PASS_0_FAIL",
+    "artifact": "106_PASS_0_FAIL",
+    "lifecycle": "57_PASS_0_FAIL",
+    "wholeApp": "90_PASS_0_FAIL",
+    "pB01ThroughPB16": "PASS",
+    "pB08": "PASS"
+  },
+  "writerInput": {
+    "version": "1.2.0",
+    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2",
+    "historicalWriterInputRole": "REFERENCE_ONLY"
+  },
+  "activeModels": {
+    "writer": "gpt-5.6-terra",
+    "judge": "gpt-5.6-sol"
+  },
+  "validatorRepair": {
+    "classification": "VALIDATOR_FALSE_POSITIVE",
+    "exactIssue": "explicit non-establishment wording using 'without establishing' was misclassified as an established commercial outcome",
+    "repairStatus": "PASS",
+    "writerValidatorSha256": "0C702869DBAE1BA99E17A15B23F33A271AD78A6A6D894D0AF86D8BB46F0776CF",
+    "historicalP01ResponseSha256": "7a3d95525e633a0897ff0a2612f94b6c0fe8821ffcc63f305c5fb2b9899e00b6",
+    "historicalPaidWriterCostUsd": 0.137876
+  },
+  "plane3Plan": {
+    "primaryCorpus": "TBK_FROZEN_PERSISTED_ARTIFACTS",
+    "additionalCurrentCompatibleCorpusCases": 0,
+    "writerSamples": 5,
+    "judgeSamples": 3,
+    "maximumTotalCalls": 8,
+    "conservativeMaximumSpendUsd": 4.44,
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol"
+  },
+  "secureRuntime": {
+    "status": "PROVEN",
+    "railwayProject": "GENSEN",
+    "environment": "production",
+    "service": "vantage-platform",
+    "zeroCallPreflight": "READY",
+    "secretsPrinted": false
+  },
+  "currentBlocker": {
+    "classification": "HARNESS_EXECUTION_IDENTITY_DEFECT",
+    "owningFile": "services/worker/scripts/plane3-model-bearing.mjs",
+    "owningFunction": "executeManifest",
+    "currentExecutionIdConstruction": "plane34-${sample.sampleId}",
+    "oldP01ExecutionId": "plane34-PRIMARY_TBK_P01",
+    "noCodeFreshRunIdSupported": false,
+    "latestAttemptWriterCalls": 0,
+    "latestAttemptJudgeCalls": 0,
+    "latestAttemptProviderCostUsd": 0.0,
+    "historicalArtifactsPreserved": true
+  },
+  "releaseGate": {
+    "plane1": "SUBSTANTIALLY_CLOSED",
+    "plane2": "SUBSTANTIALLY_CLOSED",
+    "plane3": "BLOCKED_HARNESS_EXECUTION_PLUMBING",
+    "plane4": "NOT_COMPLETE",
+    "plane5": "NOT_STARTED",
+    "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
+    "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "readOnlyArtifactRecovery": "AUTHORIZED",
-    "finalNarrativePass": "NOT_AUTHORIZED",
-    "additionalModelCalls": "NOT_AUTHORIZED",
+    "nextHarnessHardeningAudit": "AUTHORIZED_ZERO_COST_ONLY",
+    "paidWriterJudgeCalls": "NOT_AUTHORIZED_DURING_HARDENING_AUDIT",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
-    "resume": "NOT_AUTHORIZED",
-    "codeRepair": "NOT_AUTHORIZED_PENDING_ROOT_CAUSE",
-    "deployment": "NOT_AUTHORIZED",
+    "auditResume": "NOT_AUTHORIZED",
+    "finalNarrativePass": "NOT_AUTHORIZED",
+    "productionWrites": "NOT_AUTHORIZED",
     "push": "NOT_AUTHORIZED",
-    "merge": "NOT_AUTHORIZED"
+    "deployment": "NOT_AUTHORIZED",
+    "merge": "NOT_AUTHORIZED",
+    "freshPaidAuthorizationAfterSourceChange": "REQUIRED"
   },
-  "nextAction": "Synchronize local governance repo to authoritative origin/main, then obtain read-only access to the exact persisted pass-1 Writer, Judge revisionDirective, pass-2 Writer and validation-error artifacts for audit 4b0b3568-19e5-4bff-a4e8-20b23f401f5e and rerun deterministic diagnosis only.",
+  "nextAction": "Run one consolidated zero-cost Plane 3 harness-hardening audit against application SHA 8604603c789cbeb6af920467ab0a87434399692a covering run identity, sample isolation, historical reservation preservation, secure runtime injection, identity parity, output namespace, retry/restart behavior, call and cost ceilings, authorization cleanup, stop-on-failure behavior, artifact preservation, zero-call preflight, no production mutation, and repository integrity. Freeze one coherent harness-only repair scope if required before any further paid execution.",
+  "handoff": "HANDOFF_PRYSM_PLANE3_HARNESS_HARDENING_2026-09-11.md",
   "lastVerified": "2026-09-11 America/Toronto"
 }
