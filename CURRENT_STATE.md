@@ -4,104 +4,87 @@ Project: PRYSM
 
 ## Current objective
 
-Close the complete P01 Writer-validation boundary without further one-defect-at-a-time governance loops, then continue directly into a fresh paid Plane 3 verification run.
+Finish Plane 3 model-bearing validation without further micro-gates. Repair the remaining P02 Judge-identified Writer shaping defect, prove the repair deterministically, and continue fresh Plane 3 verification runs until the required 5 Writer + 3 Judge sample set completes or a genuine architectural/infrastructure blocker is proven.
 
 ## Exact application checkpoint
 
-- Current local application candidate SHA: `45741b4043376f7af8ee3756c569c7075eb34f12`
-- Application branch: `review/prysm-solution-directive-authority-betty` (historical branch name only; Betty is not a PRYSM gate)
+- Current application candidate SHA: `000c55f0ac38db9e6df1d12348cea1867b7af4b0`
 - Application worktree: CLEAN at latest proof
-- No application source/test edit has occurred since the P01 diagnosis.
+- No push, deployment, merge, production audit resume, production evidence mutation, Final Narrative Pass, rescore, crawl, provider recollection, or Railway configuration mutation occurred.
 
-## Paid Plane 3 execution already completed
+## Closed work
 
-Classification: `PLANE3_PAID_MODEL_BEARING_RUN_STOPPED`.
+- The PARTIAL/absence validator false positive is repaired.
+- Duplicate evidence references are deterministically deduplicated by the production normalization path.
+- Exact preserved P01 replay is clean: `valid: true`, `errors: []`.
+- Writer semantic/prompt tests: 49/49 PASS.
+- Narrative v2 tests: 164/164 PASS.
+- Whole-App: 90 PASS / 0 FAIL; P-B01 through P-B16 PASS.
 
-- Run ID: `plane34-45741b4-20260912-r01`
-- Writer calls completed: 1
-- Judge calls completed: 0
-- actual provider cost: USD 0.140972
-- stop point: P01 Writer pass 1 validation
-- prior authorization: consumed
-- artifacts: preserved
+Repair commits:
 
-## Proven deterministic blocker 1
+1. `9ca6989ef7dbd900be61fc13f4ca19524d99d0c2`
+2. `8c2cf15519378f5ac67bc0c3ac4bc41f9add822d`
+3. `000c55f0ac38db9e6df1d12348cea1867b7af4b0`
 
-`VALIDATOR_FALSE_POSITIVE`, confidence `0.98`.
+Current validator SHA-256: `5F7C4606B4546023A75BE9B1A434FD9B525CFFC61F7F869DE5AC730C40DFD5AC`
 
-Exact persisted text:
+Current Writer prompt SHA-256: `BFBB2D2591E6D12D22A406651F63BF5F95F6F719C9EAD342DFF2A6854F5D53C0`
 
-`This governed consideration-stage opportunity is supported as an opportunity, not as evidence that an equivalent current asset is absent.`
+## Latest paid verification state
 
-The Writer correctly bounded the statement and explicitly denied that PARTIAL evidence established absence. The current PARTIAL absence detector in `services/worker/src/narrative-v2/writer-output.js` falsely rejects the negated construction because it matches `absent` syntactically without recognizing `not as evidence that ... is absent` as bounded non-establishment language.
+Latest run ID: `plane34-000c55f-20260912-r03`
 
-Expected repair surface:
+- P01 Writer PASS
+- P01 Judge PASS
+- P02 Writer PASS
+- P02 Judge validation PASS, decision REVISE, hardGate FAIL
+- P03/P04/P05 not executed
 
-- `services/worker/src/narrative-v2/writer-output.js`
-- `services/worker/src/narrative-v2/writer-output.test.js`
+The P02 Judge identified three narrow evidence-strength defects:
 
-## Proven additional deterministic validation error
+1. rootCause headline upgraded slow lab-measured mobile LCP into an assessed friction condition;
+2. conversion language called a clear assessed route a `usable foundation`, implying usability not established by evidence;
+3. actionPlan described an assessed mobile performance friction condition although only slow lab LCP was measured.
 
-Exact replay also returns:
+Revision fields: `rootCause`, `conversion`, `actionPlan`.
 
-`limitations[1].whatThisMeans.evidenceRefs contains duplicate reference: capability:performance.field`
+## Process correction
 
-This duplicate-reference defect is not yet root-classified, but it is already deterministically reproducible from the preserved paid P01 response and must be closed in the same implementation tranche.
+The previous three-cycle cap is superseded for this boundary. Do not stop merely because that count was reached.
 
-## Process correction approved by Chris
+Continue bounded repair + deterministic closure + fresh Plane 3 verification cycles until either:
 
-Chris explicitly directed: `I do not care what expenses are - fix this.`
+1. 5 valid Writer samples and 3 valid Judge results are complete; or
+2. a real blocker requires architectural expansion outside the current Narrative v2 Writer/Judge contract, new evidence collection, rescoring, production mutation, authentication/infrastructure intervention, or weakening semantic-integrity rules.
 
-The previous micro-gate sequence is superseded for this boundary.
-
-Do not require a separate read-only diagnosis turn for each deterministic validation error before implementation.
-
-The next execution may:
-
-1. inspect the preserved P01 response and current validation stack;
-2. classify the duplicate-reference root cause in-process;
-3. inventory the complete deterministic validation error set from the exact preserved P01 replay;
-4. implement one coherent repair covering every currently reproducible P01 deterministic validation blocker;
-5. run focused regression and deterministic replay until the preserved P01 response is validation-clean;
-6. run the directly affected deterministic closure suites required by the touched production validator path;
-7. commit the application repair locally;
-8. prepare a fresh manifest, fresh run ID, authorization payload, and zero-call Railway-injected preflight for the new exact candidate SHA;
-9. execute a fresh paid Plane 3 run automatically without returning for another micro-approval.
-
-If a subsequent paid Plane 3 run exposes another narrowly repairable deterministic Writer-validation defect, the same execution is authorized to diagnose and repair it, re-close deterministic replay/tests, create a new exact candidate/run package, and retry. Maximum three repair/paid-verification cycles total before stopping for human review.
-
-## Safety / preservation boundaries
-
-Cost is not a user-requested stopping reason for this repair effort, but the harness call/cost fail-closed protections must remain intact per run. Do not weaken or bypass them.
-
-Still prohibited:
-
-- production audit mutation
-- production writes outside isolated Plane 3 replay artifacts
-- crawls or provider recollection
-- rescoring
-- Final Narrative Pass
-- deployment
-- merge
-- push
-- Railway configuration mutation
-- deleting or rewriting preserved historical or failed-run artifacts
-- weakening actual PARTIAL-absence, unsupported commercial-outcome, causal-certainty, evidence-reference, or other semantic-integrity protections merely to make validation pass
+No additional micro-approval is required between narrow repairs and fresh verification cycles. Per-run identity, namespace, immutable-artifact, call-ceiling, and cost/accounting fail-closed protections remain mandatory.
 
 ## Exact next action
 
-Run one consolidated PRYSM P01 validation repair-and-verification execution against application SHA `45741b4043376f7af8ee3756c569c7075eb34f12`.
+Start from the preserved cycle-3 P02 Writer/Judge artifacts. Repair the Writer prompt/shaping boundary so measured technical conditions remain measured technical conditions and visitor effects remain possible/risk language unless directly measured. Add direct regressions, run focused closure, commit the new candidate, create a fresh run package, zero-call preflight, and continue Plane 3 verification. If another narrow reproducible Writer/Judge shaping or validator defect appears, preserve it, repair the complete directly reproducible boundary, re-close deterministically, and continue with a fresh run package without another micro-gate.
 
-The execution must begin from the exact preserved P01 output, inventory all current deterministic validation errors, repair the complete coherent boundary, prove the preserved response replay clean, run focused/directly affected closure tests, commit the repair, prepare a fresh identity-bound Plane 3 package, zero-call preflight it, and then execute a fresh paid Plane 3 run automatically.
+## Still prohibited
 
-If the fresh run completes all 5 Writer and 3 Judge samples, stop with Plane 3 evidence ready for Plane 4. If a new narrowly repairable deterministic validation defect appears, use the bounded autonomous repair cycle described above. Stop immediately on infrastructure/authentication failure, evidence/corpus inconsistency, production-side mutation risk, or a defect requiring architectural expansion beyond the current Narrative v2 Writer/validator contract.
+- production audit/evidence mutation
+- crawl or provider recollection
+- rescoring
+- audit resume
+- Final Narrative Pass
+- Railway configuration mutation
+- push
+- deployment
+- merge
+- deleting or rewriting historical/failed-run artifacts
+- weakening semantic-integrity or Judge hard-gate protections merely to make output pass
 
 ## Release-gate status
 
 - Planes 1-2: substantially closed.
 - Plane 3 harness: HARDENED / PASS.
-- Plane 3 real model-bearing validation: IN PROGRESS; first authorized run exposed deterministic validator defects.
-- Plane 4: pending successful Plane 3 sample set.
+- Plane 3 deterministic Writer validation: known validator blockers closed.
+- Plane 3 paid model-bearing validation: IN PROGRESS; latest state P01 PASS/PASS, P02 Writer PASS, P02 Judge REVISE.
+- Plane 4: pending complete Plane 3 sample set.
 - Plane 5: not started.
 - Planes 6-7: not started for the resulting candidate.
 
