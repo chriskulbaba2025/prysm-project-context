@@ -4,103 +4,113 @@ Project: PRYSM
 
 ## Current objective
 
-Execute exactly one explicitly authorized Plane 3 paid model-bearing run through the hardened harness and proven Railway production-variable injection, then stop for result review.
+Diagnose the exact P01 Writer semantic-validation failure from the preserved paid Plane 3 run before any further model call.
 
 ## Exact application checkpoint
 
 - Current local application candidate SHA: `45741b4043376f7af8ee3756c569c7075eb34f12`
 - Application branch: `review/prysm-solution-directive-authority-betty` (historical branch name only; Betty is not a PRYSM gate)
-- Application worktree: CLEAN at latest proof
-- Plane 3 harness hardening local commit: `45741b4043376f7af8ee3756c569c7075eb34f12`
-- Harness hardening changed only:
-  - `services/worker/scripts/plane3-model-bearing.mjs`
-  - `services/worker/scripts/plane3-model-bearing.test.js`
-- No push, deployment, merge, production audit resume, Final Narrative Pass, production write, or Railway configuration mutation occurred.
+- Application worktree: CLEAN after the stopped run
+- Governance was at `52280d1c2eb6582021edc51be4d50972c78e9b0a` during execution
+- No application source change, push, deployment, merge, production audit resume, Final Narrative Pass, production write, or Railway configuration mutation occurred.
 
 ## What is closed
 
-- Exact persisted pass-1 Writer, Judge1, pass-2 Writer, and validation artifacts were recovered read-only.
-- The original unauthorized targeted-revision escape was reproduced and repaired deterministically.
-- Version-aware historical continuation compatibility is repaired.
+- Deterministic targeted-revision repair and historical continuation compatibility are closed.
 - Whole-App and broad deterministic closure passed before Plane 3 harness hardening.
-- Frozen canonical artifacts reconstruct current WriterInput `1.2.0` with SHA-256 `5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2`.
-- Active production runtime identities are proven: Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`.
-- Writer validator false positive around `without establishing ...` is repaired. Governed Writer validator SHA-256: `0C702869DBAE1BA99E17A15B23F33A271AD78A6A6D894D0AF86D8BB46F0776CF`.
-- Consolidated zero-cost Plane 3 harness-hardening audit returned `HARNESS_HARDENING_SCOPE_PROVEN`.
-- Coherent two-file harness repair returned `PLANE3_HARNESS_HARDENING_REPAIR_PASS`.
-- Focused exact-head harness verification: 22 PASS / 0 FAIL / 0 skipped.
+- Plane 3 harness hardening returned `PLANE3_HARNESS_HARDENING_REPAIR_PASS` with 22 PASS / 0 FAIL / 0 skipped.
 - Fresh run identity, namespace isolation, immutable evidence, runtime/manifest parity, structured authorization binding, restart refusal, aggregate call ceilings, USD ceiling, and zero-call preflight are implemented and tested.
 - Authorization preparation and both local + Railway-injected zero-call preflight returned `PLANE3_READY_FOR_EXPLICIT_PAID_AUTHORIZATION`.
-- Historical P01 response remains preserved. SHA-256: `7a3d95525e633a0897ff0a2612f94b6c0fe8821ffcc63f305c5fb2b9899e00b6`.
+- The exact paid package was explicitly authorized once and executed exactly once.
+- Historical P01 response remains preserved with SHA-256 `7a3d95525e633a0897ff0a2612f94b6c0fe8821ffcc63f305c5fb2b9899e00b6`.
 
-## Authorized paid run package
+## Paid Plane 3 execution result
 
-Explicit human authorization was granted on 2026-09-12 for exactly one Plane 3 paid model-bearing run bound to:
+Classification: `PLANE3_PAID_MODEL_BEARING_RUN_STOPPED`.
 
-- application SHA: `45741b4043376f7af8ee3756c569c7075eb34f12`;
-- manifest path: `C:\Users\kulba\Downloads\PRYSM-PLANE34-RUN-MANIFEST.json`;
-- manifest SHA-256: `8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546`;
-- fresh run ID: `plane34-45741b4-20260912-r01`;
-- frozen corpus identity: `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`;
-- authorization payload path: `C:\Users\kulba\Downloads\PRYSM-PLANE3-AUTHORIZATION-PAYLOAD.json`;
-- authorization payload SHA-256: `3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c`;
-- maximum Writer calls: 5;
-- maximum Judge calls: 3;
-- maximum total calls: 8;
-- maximum aggregate spend: USD 4.44.
+Authorized run package:
 
-This authorization is single-use and exact-package only. Any change to candidate SHA, manifest bytes/hash, run ID, corpus identity, authorization payload identity, model/runtime identity, call ceilings, or spend ceiling voids this authorization and requires a fresh zero-call preflight plus fresh explicit human authorization.
+- application SHA: `45741b4043376f7af8ee3756c569c7075eb34f12`
+- manifest SHA-256: `8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546`
+- run ID: `plane34-45741b4-20260912-r01`
+- frozen corpus identity: `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`
+- maximum authorized: 5 Writer / 3 Judge / 8 total / USD 4.44
 
-## Plane 3 governed plan
+Observed execution:
 
-- Frozen TBK corpus only
-- 5 independent Writer samples using `gpt-5.6-terra`
-- Judge on P01/P02/P03 using `gpt-5.6-sol`
-- Maximum Writer calls: 5
-- Maximum Judge calls: 3
-- Maximum total calls: 8
-- Conservative provider-spend ceiling: USD 4.44
-- Stop immediately on any material failure
-- No additional current-compatible real corpus cases are available; do not fabricate them.
+- Writer calls completed: 1
+- Judge calls completed: 0
+- total paid calls: 1
+- actual provider cost: USD 0.140972
+- P02-P05: not executed
+- authorization was cleared after the execution shell
+- no rerun occurred
+
+The run stopped during `PRIMARY_TBK_P01` Writer pass 1 validation.
+
+Exact validator failure:
+
+`writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim`
+
+P01 identities:
+
+- execution identity: `plane34-45741b4-20260912-r01-PRIMARY_TBK_P01`
+- WriterInput SHA-256: `3eb8d35b399353cb51ada5a4d75724857560d8ce0103f6765fba7bdbf724e4ea`
+- request/prompt SHA-256: `cbf99c38c97dc9ba1b165c1952f6f7ca07fbf03c77e3659fdfa513936fc82deb`
+- raw Writer response SHA-256: `5074d64a769c1838639d40d1239f69bfe1a8af01ca633cd3a36638b886565450`
+- input tokens: 31780
+- output tokens: 6451
+- actual cost: USD 0.140972
+
+The run root and all raw/result/ledger/error artifacts are preserved. `run-summary.json` status is `FAILED`.
+
+## Current blocker
+
+Checkpoint: `PLANE3_P01_SEMANTIC_VALIDATION_DIAGNOSIS_REQUIRED`.
+
+The observed failure is verified. The root cause is **not yet classified** as Writer shaping, prompt/reference semantics, validator interpretation, or another model-bearing contract defect.
+
+Do not repair or rerun until the exact persisted WriterInput, raw/parsed Writer output, validator path, and governing PARTIAL reference semantics are compared directly.
 
 ## Exact next action
 
-Execute exactly one paid Plane 3 model-bearing run for the authorized package above through the hardened harness and the proven Railway production-variable injection. Before execution, reverify the exact application SHA, clean worktree, manifest SHA, authorization-payload SHA, fresh unused run namespace, and runtime/manifest parity. Then enable the exact structured authorization payload and `PRYSM_MODEL_BEARING_PAID_RUN_AUTHORIZED=YES` only for that child process and invoke `--execute` once.
+Run one zero-cost read-only diagnosis of the preserved P01 failure at exact application SHA `45741b4043376f7af8ee3756c569c7075eb34f12`.
 
-Stop immediately on any material Writer, Judge, validation, identity, namespace, persistence, call-ceiling, or cost-ceiling failure. Preserve all raw artifacts and ledgers. Do not repair or rerun inside the same authorization.
+The diagnosis must:
+
+- recover the exact failing `writerOutput.funnelOpportunities.consideration[0].rationale.text` from the preserved P01 response;
+- identify the exact PARTIAL source/reference evidence it relied on;
+- trace the Writer prompt/reference instruction relevant to PARTIAL/absence wording;
+- trace the exact validator rule that rejected the sentence;
+- replay the persisted response through the current validator without modification;
+- classify one verified root cause;
+- define the smallest coherent repair boundary only if the root cause is proven.
+
+No source edit and no model/provider call are authorized during diagnosis.
 
 ## Authorization
 
-Authorized now, once only:
+Not authorized now:
 
-- paid Writer calls: maximum 5
-- paid Judge calls: maximum 3
-- total paid model calls: maximum 8
-- aggregate provider spend: maximum USD 4.44
-- exact candidate/manifest/run/corpus/payload package above only
-
-Still not authorized:
-
+- any additional Writer/Judge/model call
 - a second Plane 3 paid run
-- changed manifest/run/corpus/candidate/payload execution
-- crawls
-- provider recollection
+- source repair before diagnosis closes
+- crawl or provider recollection
 - rescoring
 - audit resume
 - Final Narrative Pass
-- production writes
-- production configuration mutation
-- push
-- deployment
-- merge
+- production writes or configuration mutation
+- push, deployment, or merge
+
+The prior paid authorization is consumed and may not be reused.
 
 ## Release-gate status
 
 - Planes 1-2: deterministic/replay foundations substantially closed for this candidate path.
 - Plane 3 harness plumbing: HARDENED / focused PASS.
-- Plane 3 authorization preflight: READY.
-- Plane 3 real model-bearing sample: AUTHORIZED / NOT YET EXECUTED.
-- Plane 4: NOT COMPLETE; awaiting valid Plane 3 sample evidence.
+- Plane 3 authorized real sample: STOPPED after P01 Writer validation failure.
+- Plane 3: NOT PASS.
+- Plane 4: NOT STARTED on this run because no valid five-sample Writer set exists.
 - Plane 5: NOT STARTED.
 - Planes 6-7: NOT STARTED for this candidate.
 
