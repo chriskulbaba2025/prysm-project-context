@@ -4,65 +4,74 @@ Project: PRYSM
 
 ## Current objective
 
-Finish Plane 3 model-bearing validation without further micro-gates. Repair the remaining P02 Judge-identified Writer shaping defect, prove the repair deterministically, and continue fresh Plane 3 verification runs until the required 5 Writer + 3 Judge sample set completes or a genuine architectural/infrastructure blocker is proven.
+Finish Plane 3 model-bearing validation by repairing the P04 live-binding/provider-response handling failure, then continue fresh verification until the required 5 Writer + 3 Judge sample set completes or a genuinely external blocker is proven.
 
 ## Exact application checkpoint
 
-- Current application candidate SHA: `000c55f0ac38db9e6df1d12348cea1867b7af4b0`
+- Current application candidate SHA: `ddf7b9cbf3addbce7f89c77787626a4a1a960c85`
+- Application branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Application worktree: CLEAN at latest proof
-- No push, deployment, merge, production audit resume, production evidence mutation, Final Narrative Pass, rescore, crawl, provider recollection, or Railway configuration mutation occurred.
+- Governance checkpoint before this update: `69418b89b49a36cae10f1be0ded47eaeadc18279`
+- No push, deployment, merge, production audit resume, production evidence mutation, rescore, crawl/provider recollection, Final Narrative Pass, or Railway configuration mutation occurred.
 
 ## Closed work
 
-- The PARTIAL/absence validator false positive is repaired.
-- Duplicate evidence references are deterministically deduplicated by the production normalization path.
-- Exact preserved P01 replay is clean: `valid: true`, `errors: []`.
-- Writer semantic/prompt tests: 49/49 PASS.
-- Narrative v2 tests: 164/164 PASS.
+- P01 PARTIAL/absence validator false positive: repaired.
+- Duplicate evidence-reference normalization: deterministic production path clean.
+- P02 Judge evidence-strength shaping defect: repaired in commit `ddf7b9cbf3addbce7f89c77787626a4a1a960c85`.
+- Writer prompt/output direct tests: 50/50 PASS.
+- Narrative v2 tests: 165/165 PASS.
 - Whole-App: 90 PASS / 0 FAIL; P-B01 through P-B16 PASS.
+- `git diff --check`: PASS.
 
-Repair commits:
+## Latest paid Plane 3 verification
 
-1. `9ca6989ef7dbd900be61fc13f4ca19524d99d0c2`
-2. `8c2cf15519378f5ac67bc0c3ac4bc41f9add822d`
-3. `000c55f0ac38db9e6df1d12348cea1867b7af4b0`
+Run ID: `plane34-ddf7b9c-20260912-r04`
 
-Current validator SHA-256: `5F7C4606B4546023A75BE9B1A434FD9B525CFFC61F7F869DE5AC730C40DFD5AC`
+Successful samples:
 
-Current Writer prompt SHA-256: `BFBB2D2591E6D12D22A406651F63BF5F95F6F719C9EAD342DFF2A6854F5D53C0`
+- P01 Writer PASS / Judge PASS / finalization-render PASS
+- P02 Writer PASS / Judge PASS / finalization-render PASS
+- P03 Writer PASS / Judge PASS / finalization-render PASS
 
-## Latest paid verification state
+P04 Writer failed before a usable Writer artifact was persisted.
+P05 was not executed.
 
-Latest run ID: `plane34-000c55f-20260912-r03`
+Completed calls before stop:
 
-- P01 Writer PASS
-- P01 Judge PASS
-- P02 Writer PASS
-- P02 Judge validation PASS, decision REVISE, hardGate FAIL
-- P03/P04/P05 not executed
+- Writer calls: 4 including failed/reserved P04
+- Judge calls: 3
+- total calls: 7
+- known completed provider usage cost through P03: USD 1.078813
+- failed P04 reservation/ledger amount: USD 0.384000
 
-The P02 Judge identified three narrow evidence-strength defects:
+The required Plane 3 target remains 5 valid Writer samples + 3 valid Judge results.
 
-1. rootCause headline upgraded slow lab-measured mobile LCP into an assessed friction condition;
-2. conversion language called a clear assessed route a `usable foundation`, implying usability not established by evidence;
-3. actionPlan described an assessed mobile performance friction condition although only slow lab LCP was measured.
+## Current blocker
 
-Revision fields: `rootCause`, `conversion`, `actionPlan`.
+Classification: `P04_LIVE_BINDING_RESPONSE_HANDLING_FAILURE`.
 
-## Process correction
+Exact failure:
 
-The previous three-cycle cap is superseded for this boundary. Do not stop merely because that count was reached.
+`TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`
 
-Continue bounded repair + deterministic closure + fresh Plane 3 verification cycles until either:
+Stack boundary:
 
-1. 5 valid Writer samples and 3 valid Judge results are complete; or
-2. a real blocker requires architectural expansion outside the current Narrative v2 Writer/Judge contract, new evidence collection, rescoring, production mutation, authentication/infrastructure intervention, or weakening semantic-integrity rules.
+- `sha256` at `src/narrative-v2/live-binding.js:88`
+- `invoke` at `src/narrative-v2/live-binding.js:1484`
+- `writerExecutor` at `src/narrative-v2/live-binding.js:2289`
 
-No additional micro-approval is required between narrow repairs and fresh verification cycles. Per-run identity, namespace, immutable-artifact, call-ceiling, and cost/accounting fail-closed protections remain mandatory.
+The provider/live-binding path did not yield a hashable response payload for P04. No usable P04 raw Writer response artifact was persisted.
 
-## Exact next action
+This is not a Writer prompt, Writer validator, Judge, or evidence-strength defect. P01-P03 passed end-to-end under the current candidate.
 
-Start from the preserved cycle-3 P02 Writer/Judge artifacts. Repair the Writer prompt/shaping boundary so measured technical conditions remain measured technical conditions and visitor effects remain possible/risk language unless directly measured. Add direct regressions, run focused closure, commit the new candidate, create a fresh run package, zero-call preflight, and continue Plane 3 verification. If another narrow reproducible Writer/Judge shaping or validator defect appears, preserve it, repair the complete directly reproducible boundary, re-close deterministically, and continue with a fresh run package without another micro-gate.
+## Process direction
+
+Do not reopen the closed prompt/validator work.
+
+The next execution may diagnose and repair the live-binding/provider-response handling boundary in-process, add focused regressions for missing/undefined provider payloads, prove response persistence/hash behavior fail-closed, run directly affected deterministic tests, commit a fresh candidate, generate a fresh manifest/run/payload, zero-call preflight, and continue paid Plane 3 verification without a new micro-approval.
+
+Do not weaken provider-response integrity. A missing or malformed provider payload must become an explicit governed provider/live-binding failure with preserved request/response metadata where available, never an uncaught hashing TypeError.
 
 ## Still prohibited
 
@@ -76,18 +85,21 @@ Start from the preserved cycle-3 P02 Writer/Judge artifacts. Repair the Writer p
 - deployment
 - merge
 - deleting or rewriting historical/failed-run artifacts
-- weakening semantic-integrity or Judge hard-gate protections merely to make output pass
+- bypassing call/cost/identity controls
+- treating a missing provider response as a successful Writer result
+
+## Exact next action
+
+Start from the preserved run `plane34-ddf7b9c-20260912-r04`. Trace the exact P04 provider/live-binding response path that supplied `undefined` to `sha256`, classify whether the provider returned no payload, an unexpected response shape, or the adapter dropped a valid payload, then repair the smallest coherent live-binding boundary. Add tests for the exact failure class and nearby malformed/empty-response cases. After deterministic closure, commit the new candidate, create a fresh run package, pass local and Railway-injected zero-call preflight, and continue Plane 3 verification until 5 valid Writer + 3 valid Judge samples complete or a true external provider/authentication/infrastructure outage prevents execution.
 
 ## Release-gate status
 
 - Planes 1-2: substantially closed.
 - Plane 3 harness: HARDENED / PASS.
-- Plane 3 deterministic Writer validation: known validator blockers closed.
-- Plane 3 paid model-bearing validation: IN PROGRESS; latest state P01 PASS/PASS, P02 Writer PASS, P02 Judge REVISE.
+- Plane 3 semantic Writer/Judge shaping through P03: PASS in latest run.
+- Plane 3 live-binding execution: BLOCKED at P04 response handling.
 - Plane 4: pending complete Plane 3 sample set.
 - Plane 5: not started.
 - Planes 6-7: not started for the resulting candidate.
-
-Betty is not a PRYSM gate.
 
 Last verified: 2026-09-12 America/Toronto
