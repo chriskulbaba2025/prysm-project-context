@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_EXPLICIT_PAID_AUTHORIZATION_REQUIRED",
-  "status": "PLANE3_READY_FOR_EXPLICIT_PAID_AUTHORIZATION",
+  "checkpoint": "PLANE3_PAID_RUN_AUTHORIZED",
+  "status": "PLANE3_READY_FOR_AUTHORIZED_PAID_EXECUTION",
   "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
   "applicationWorktree": "CLEAN",
   "liveAudit": {
@@ -29,76 +29,53 @@
   },
   "writerInput": {
     "version": "1.2.0",
-    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2",
-    "historicalWriterInputRole": "REFERENCE_ONLY"
+    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
   },
   "activeModels": {
     "writer": "gpt-5.6-terra",
     "judge": "gpt-5.6-sol"
   },
-  "validatorRepair": {
-    "classification": "VALIDATOR_FALSE_POSITIVE",
-    "repairStatus": "PASS",
-    "writerValidatorSha256": "0C702869DBAE1BA99E17A15B23F33A271AD78A6A6D894D0AF86D8BB46F0776CF",
-    "historicalP01ResponseSha256": "7a3d95525e633a0897ff0a2612f94b6c0fe8821ffcc63f305c5fb2b9899e00b6"
-  },
-  "plane3Plan": {
-    "primaryCorpus": "TBK_FROZEN_PERSISTED_ARTIFACTS",
-    "additionalCurrentCompatibleCorpusCases": 0,
-    "writerSamples": 5,
-    "judgeSamples": 3,
-    "maximumWriterCalls": 5,
-    "maximumJudgeCalls": 3,
-    "maximumTotalCalls": 8,
-    "conservativeMaximumSpendUsd": 4.44,
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol"
-  },
   "harnessHardening": {
-    "auditResult": "HARNESS_HARDENING_SCOPE_PROVEN",
     "repairResult": "PLANE3_HARNESS_HARDENING_REPAIR_PASS",
     "focusedTests": "22_PASS_0_FAIL_0_SKIPPED",
-    "endingApplicationSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
     "historicalArtifactsPreserved": true
   },
-  "authorizationPreparation": {
-    "result": "PLANE3_READY_FOR_EXPLICIT_PAID_AUTHORIZATION",
+  "authorizedRun": {
+    "humanAuthorizationGranted": true,
+    "authorizationDate": "2026-09-12",
+    "singleUse": true,
+    "applicationSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
     "manifestPath": "C:\\Users\\kulba\\Downloads\\PRYSM-PLANE34-RUN-MANIFEST.json",
     "manifestSha256": "8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546",
     "runId": "plane34-45741b4-20260912-r01",
     "corpusIdentity": "431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9",
     "authorizationPayloadPath": "C:\\Users\\kulba\\Downloads\\PRYSM-PLANE3-AUTHORIZATION-PAYLOAD.json",
     "authorizationPayloadSha256": "3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c",
-    "localPreflight": "READY_ZERO_CALL",
-    "railwayInjectedPreflight": "READY_ZERO_CALL_RUNTIME_PARITY_PASS",
-    "freshRunNamespaceAvailable": true,
-    "writerCalls": 0,
-    "judgeCalls": 0,
-    "providerCalls": 0,
-    "providerCostUsd": 0.0,
-    "productionWrites": 0
-  },
-  "currentBlocker": {
-    "classification": "EXPLICIT_PAID_AUTHORIZATION_REQUIRED",
-    "reason": "The hardened harness and exact run package passed zero-call preflight. Paid Writer/Judge execution now requires explicit human authorization bound to the exact candidate SHA, manifest SHA, run ID, corpus identity, call ceilings, and USD ceiling."
+    "maximumWriterCalls": 5,
+    "maximumJudgeCalls": 3,
+    "maximumTotalCalls": 8,
+    "maximumSpendUsd": 4.44,
+    "stopOnMaterialFailure": true,
+    "executionStatus": "NOT_YET_EXECUTED"
   },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
     "plane3Harness": "HARDENED_FOCUSED_PASS",
     "plane3AuthorizationPreflight": "READY",
-    "plane3RealModelBearingSample": "AWAITING_EXPLICIT_PAID_AUTHORIZATION",
+    "plane3RealModelBearingSample": "AUTHORIZED_NOT_YET_EXECUTED",
     "plane4": "NOT_COMPLETE",
     "plane5": "NOT_STARTED",
     "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
     "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "paidWriterJudgeCalls": "NOT_YET_AUTHORIZED",
+    "paidWriterJudgeCalls": "AUTHORIZED_ONCE_EXACT_PACKAGE_ONLY",
     "maximumWriterCalls": 5,
     "maximumJudgeCalls": 3,
     "maximumTotalCalls": 8,
     "maximumSpendUsd": 4.44,
+    "secondPaidRun": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
@@ -109,6 +86,6 @@
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Obtain explicit human paid authorization for application SHA 45741b4043376f7af8ee3756c569c7075eb34f12, manifest SHA-256 8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546, run ID plane34-45741b4-20260912-r01, frozen corpus identity 431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9, maximum 5 Writer + 3 Judge = 8 calls, and maximum USD 4.44. After authorization, execute exactly one hardened Plane 3 run and stop on any material failure.",
+  "nextAction": "Execute exactly one paid Plane 3 model-bearing run for the authorized package through the hardened harness and proven Railway production-variable injection. Reverify exact SHA/hash/run namespace/runtime parity immediately before execution. Enable the exact structured authorization payload and paid YES flag only for that child process. Stop immediately on any material failure, preserve raw artifacts and ledgers, and do not repair or rerun under this authorization.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
