@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_P01_FULL_VALIDATION_CLOSURE_REQUIRED",
-  "status": "P01_PRIMARY_ROOT_CAUSE_PROVEN_REMAINING_DETERMINISTIC_ERROR_UNRESOLVED",
+  "checkpoint": "PLANE3_CONSOLIDATED_P01_REPAIR_AND_PAID_VERIFICATION_AUTHORIZED",
+  "status": "CONSOLIDATED_REPAIR_AND_AUTONOMOUS_PAID_VERIFICATION_AUTHORIZED",
   "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
   "applicationWorktree": "CLEAN",
   "activeModels": {
@@ -18,67 +18,69 @@
     "focusedTests": "22_PASS_0_FAIL_0_SKIPPED",
     "historicalArtifactsPreserved": true
   },
-  "consumedAuthorizedRun": {
+  "consumedRun": {
     "runId": "plane34-45741b4-20260912-r01",
     "executionStatus": "STOPPED_ON_P01_WRITER_VALIDATION",
-    "authorizationConsumed": true,
-    "rerunAuthorized": false,
     "writerCallsCompleted": 1,
     "judgeCallsCompleted": 0,
-    "totalPaidCallsCompleted": 1,
-    "actualProviderCostUsd": 0.140972
+    "actualProviderCostUsd": 0.140972,
+    "authorizationConsumed": true
   },
-  "p01Diagnosis": {
-    "result": "ROOT_CAUSE_PROVEN",
-    "primaryRootCause": "VALIDATOR_FALSE_POSITIVE",
-    "confidence": 0.98,
-    "failingField": "writerOutput.funnelOpportunities.consideration[0].rationale.text",
-    "exactText": "This governed consideration-stage opportunity is supported as an opportunity, not as evidence that an equivalent current asset is absent.",
-    "primaryValidatorFailure": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
-    "primaryCauseSummary": "The PARTIAL absence detector matches the word absent but does not recognize the negated non-establishment construction 'not as evidence that ... is absent'. The Writer prompt and reference semantics are correctly bounded.",
-    "expectedPrimaryRepairFiles": [
-      "services/worker/src/narrative-v2/writer-output.js",
-      "services/worker/src/narrative-v2/writer-output.test.js"
-    ],
-    "exactReplayAlsoReturned": [
-      "limitations[1].whatThisMeans.evidenceRefs contains duplicate reference: capability:performance.field",
-      "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim"
-    ]
-  },
-  "currentBlocker": {
-    "classification": "P01_DUPLICATE_REFERENCE_ROOT_CAUSE_UNRESOLVED",
-    "reason": "Exact deterministic replay exposed a second validation error involving duplicate capability:performance.field evidenceRefs. Repairing only the proven validator false positive before diagnosing this second blocker risks another one-defect-at-a-time closure/rerun cycle.",
-    "requiredDiagnosis": "Recover the exact limitations[1].whatThisMeans object and duplicate references from the preserved P01 output, trace Writer prompt/schema/reference and validator rules, replay unchanged, classify one root cause, and freeze the smallest coherent repair boundary before any source edit or model call."
-  },
-  "releaseGate": {
-    "plane1": "SUBSTANTIALLY_CLOSED",
-    "plane2": "SUBSTANTIALLY_CLOSED",
-    "plane3Harness": "HARDENED_FOCUSED_PASS",
-    "plane3RealModelBearingSample": "STOPPED_P01_WRITER_VALIDATION",
-    "p01PrimarySemanticRootCause": "PROVEN_VALIDATOR_FALSE_POSITIVE",
-    "p01FullDeterministicValidationClosure": "BLOCKED_DUPLICATE_REFERENCE_DIAGNOSIS",
-    "plane3": "NOT_PASS",
-    "plane4": "NOT_STARTED_FOR_STOPPED_RUN",
-    "plane5": "NOT_STARTED",
-    "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
-    "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
-  },
+  "p01KnownDeterministicErrors": [
+    {
+      "error": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
+      "rootCause": "VALIDATOR_FALSE_POSITIVE",
+      "confidence": 0.98,
+      "status": "PROVEN"
+    },
+    {
+      "error": "limitations[1].whatThisMeans.evidenceRefs contains duplicate reference: capability:performance.field",
+      "rootCause": "TO_BE_CLASSIFIED_IN_CONSOLIDATED_REPAIR",
+      "status": "DETERMINISTICALLY_REPRODUCED"
+    }
+  ],
   "authorization": {
-    "paidWriterJudgeCalls": "NOT_AUTHORIZED",
-    "secondPaidRun": "NOT_AUTHORIZED",
-    "readOnlyDuplicateReferenceDiagnosis": "AUTHORIZED_ZERO_COST_ONLY",
-    "deterministicReplay": "AUTHORIZED_ZERO_COST_ONLY",
-    "sourceRepairBeforeDuplicateDiagnosis": "NOT_AUTHORIZED",
+    "userDirective": "I do not care what expenses are - fix this.",
+    "consolidatedRepair": "AUTHORIZED",
+    "deterministicReplay": "AUTHORIZED",
+    "focusedAndDirectlyAffectedClosureTests": "AUTHORIZED",
+    "localApplicationCommit": "AUTHORIZED_AFTER_PASS",
+    "freshRunPackagePreparation": "AUTHORIZED",
+    "railwayInjectedZeroCallPreflight": "AUTHORIZED",
+    "paidPlane3Verification": "AUTHORIZED_WITHOUT_INTERMEDIATE_MICRO_APPROVAL",
+    "maximumAutonomousRepairPaidCycles": 3,
+    "perRunHarnessSafetyLimits": "MUST_REMAIN_FAIL_CLOSED",
+    "productionWrites": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
+    "crawl": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
     "finalNarrativePass": "NOT_AUTHORIZED",
-    "productionWrites": "NOT_AUTHORIZED",
     "productionConfigurationMutation": "NOT_AUTHORIZED",
     "push": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Run one zero-cost read-only diagnosis of the persisted duplicate-reference validation error at application SHA 45741b4043376f7af8ee3756c569c7075eb34f12. Recover limitations[1].whatThisMeans and duplicate capability:performance.field evidenceRefs, trace governing Writer prompt/schema/reference and validator rules, replay the exact persisted response unchanged, classify one root cause, and freeze the complete coherent repair boundary together with the already-proven PARTIAL/absence validator false-positive repair. No source edit and no model/provider call.",
+  "executionPolicy": {
+    "inventoryAllPersistedP01ValidationErrorsBeforeFreeze": true,
+    "repairCompleteCoherentCurrentBoundary": true,
+    "preservedP01ReplayMustBeCleanBeforePaidRun": true,
+    "doNotWeakenSemanticIntegrityRulesToPass": true,
+    "newCandidateRequiresFreshManifestRunIdPayloadPreflight": true,
+    "paidVerificationMayProceedAutomaticallyAfterZeroCallPreflight": true,
+    "newNarrowDeterministicValidationDefectMayBeRepairedWithinCycleLimit": true,
+    "stopOnInfrastructureOrArchitectureExpansion": true
+  },
+  "releaseGate": {
+    "plane1": "SUBSTANTIALLY_CLOSED",
+    "plane2": "SUBSTANTIALLY_CLOSED",
+    "plane3Harness": "HARDENED_FOCUSED_PASS",
+    "plane3": "IN_PROGRESS_CONSOLIDATED_REPAIR_AND_PAID_VERIFICATION",
+    "plane4": "PENDING_VALID_PLANE3_SAMPLE_SET",
+    "plane5": "NOT_STARTED",
+    "plane6": "NOT_STARTED_FOR_RESULTING_CANDIDATE",
+    "plane7": "NOT_STARTED_FOR_RESULTING_CANDIDATE"
+  },
+  "nextAction": "Run one consolidated P01 deterministic-validation repair: inventory all current replay errors from the preserved paid response, classify the duplicate-reference defect in-process, repair every currently reproducible blocker coherently, prove exact persisted replay clean, run focused/directly affected closure tests, commit the new candidate, prepare a fresh manifest/run/payload, pass zero-call Railway preflight, then execute a fresh paid Plane 3 run automatically. Up to three total repair/paid-verification cycles are authorized for newly exposed narrow deterministic Writer-validation defects; do not return for micro-approval between those cycles.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
