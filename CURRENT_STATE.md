@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Advance Plane 3 from completed harness hardening and zero-call authorization preflight into the explicitly authorized paid model-bearing sample, without reopening harness repair or broader closure.
+Execute exactly one explicitly authorized Plane 3 paid model-bearing run through the hardened harness and proven Railway production-variable injection, then stop for result review.
 
 ## Exact application checkpoint
 
@@ -12,7 +12,7 @@ Advance Plane 3 from completed harness hardening and zero-call authorization pre
 - Application branch: `review/prysm-solution-directive-authority-betty` (historical branch name only; Betty is not a PRYSM gate)
 - Application worktree: CLEAN at latest proof
 - Plane 3 harness hardening local commit: `45741b4043376f7af8ee3756c569c7075eb34f12`
-- Changed files only:
+- Harness hardening changed only:
   - `services/worker/scripts/plane3-model-bearing.mjs`
   - `services/worker/scripts/plane3-model-bearing.test.js`
 - No push, deployment, merge, production audit resume, Final Narrative Pass, production write, or Railway configuration mutation occurred.
@@ -33,34 +33,23 @@ Advance Plane 3 from completed harness hardening and zero-call authorization pre
 - Authorization preparation and both local + Railway-injected zero-call preflight returned `PLANE3_READY_FOR_EXPLICIT_PAID_AUTHORIZATION`.
 - Historical P01 response remains preserved. SHA-256: `7a3d95525e633a0897ff0a2612f94b6c0fe8821ffcc63f305c5fb2b9899e00b6`.
 
-## Prepared paid run package
+## Authorized paid run package
 
-- Manifest path: `C:\Users\kulba\Downloads\PRYSM-PLANE34-RUN-MANIFEST.json`
-- Manifest SHA-256: `8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546`
-- Fresh run ID: `plane34-45741b4-20260912-r01`
-- Frozen corpus identity: `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`
-- Authorization payload path: `C:\Users\kulba\Downloads\PRYSM-PLANE3-AUTHORIZATION-PAYLOAD.json`
-- Authorization payload SHA-256: `3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c`
-- Fresh run namespace: proven unused and not consumed by preflight.
-- Local preflight: READY / 0 calls.
-- Railway-injected preflight: READY / runtime parity PASS / 0 calls.
+Explicit human authorization was granted on 2026-09-12 for exactly one Plane 3 paid model-bearing run bound to:
 
-## Current blocker / authorization boundary
+- application SHA: `45741b4043376f7af8ee3756c569c7075eb34f12`;
+- manifest path: `C:\Users\kulba\Downloads\PRYSM-PLANE34-RUN-MANIFEST.json`;
+- manifest SHA-256: `8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546`;
+- fresh run ID: `plane34-45741b4-20260912-r01`;
+- frozen corpus identity: `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`;
+- authorization payload path: `C:\Users\kulba\Downloads\PRYSM-PLANE3-AUTHORIZATION-PAYLOAD.json`;
+- authorization payload SHA-256: `3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c`;
+- maximum Writer calls: 5;
+- maximum Judge calls: 3;
+- maximum total calls: 8;
+- maximum aggregate spend: USD 4.44.
 
-Result: `EXPLICIT_PAID_AUTHORIZATION_REQUIRED`.
-
-The run package is fully prepared and zero-call preflight is green. No paid authorization has yet been granted or consumed.
-
-The required explicit authorization must bind exactly:
-
-- application SHA `45741b4043376f7af8ee3756c569c7075eb34f12`;
-- manifest SHA-256 `8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546`;
-- run ID `plane34-45741b4-20260912-r01`;
-- frozen corpus identity `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`;
-- maximum Writer calls 5;
-- maximum Judge calls 3;
-- maximum total calls 8;
-- maximum aggregate spend USD 4.44.
+This authorization is single-use and exact-package only. Any change to candidate SHA, manifest bytes/hash, run ID, corpus identity, authorization payload identity, model/runtime identity, call ceilings, or spend ceiling voids this authorization and requires a fresh zero-call preflight plus fresh explicit human authorization.
 
 ## Plane 3 governed plan
 
@@ -71,27 +60,29 @@ The required explicit authorization must bind exactly:
 - Maximum Judge calls: 3
 - Maximum total calls: 8
 - Conservative provider-spend ceiling: USD 4.44
+- Stop immediately on any material failure
 - No additional current-compatible real corpus cases are available; do not fabricate them.
 
 ## Exact next action
 
-Obtain explicit human paid authorization for the exact prepared package above. After authorization, execute exactly one Plane 3 paid run through the hardened harness and proven Railway production-variable injection, preserving the 5 Writer / 3 Judge / USD 4.44 ceilings and stopping immediately on any material failure.
+Execute exactly one paid Plane 3 model-bearing run for the authorized package above through the hardened harness and the proven Railway production-variable injection. Before execution, reverify the exact application SHA, clean worktree, manifest SHA, authorization-payload SHA, fresh unused run namespace, and runtime/manifest parity. Then enable the exact structured authorization payload and `PRYSM_MODEL_BEARING_PAID_RUN_AUTHORIZED=YES` only for that child process and invoke `--execute` once.
 
-Do not change the manifest, run ID, corpus, candidate SHA, authorization payload identity, model configuration, or budget after authorization. Any such change requires a new zero-call preflight and new explicit authorization.
+Stop immediately on any material Writer, Judge, validation, identity, namespace, persistence, call-ceiling, or cost-ceiling failure. Preserve all raw artifacts and ledgers. Do not repair or rerun inside the same authorization.
 
 ## Authorization
 
-Authorized now:
+Authorized now, once only:
 
-- read-only verification of the prepared package
-- zero-call preflight only
-
-Not authorized until explicit human approval:
-
-- paid Writer/Judge calls
+- paid Writer calls: maximum 5
+- paid Judge calls: maximum 3
+- total paid model calls: maximum 8
+- aggregate provider spend: maximum USD 4.44
+- exact candidate/manifest/run/corpus/payload package above only
 
 Still not authorized:
 
+- a second Plane 3 paid run
+- changed manifest/run/corpus/candidate/payload execution
 - crawls
 - provider recollection
 - rescoring
@@ -108,8 +99,8 @@ Still not authorized:
 - Planes 1-2: deterministic/replay foundations substantially closed for this candidate path.
 - Plane 3 harness plumbing: HARDENED / focused PASS.
 - Plane 3 authorization preflight: READY.
-- Plane 3 real model-bearing sample: NOT YET EXECUTED; awaiting explicit paid authorization.
-- Plane 4: NOT COMPLETE; no valid five-sample Writer set yet.
+- Plane 3 real model-bearing sample: AUTHORIZED / NOT YET EXECUTED.
+- Plane 4: NOT COMPLETE; awaiting valid Plane 3 sample evidence.
 - Plane 5: NOT STARTED.
 - Planes 6-7: NOT STARTED for this candidate.
 
