@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_P01_SEMANTIC_VALIDATION_DIAGNOSIS_REQUIRED",
-  "status": "PLANE3_PAID_MODEL_BEARING_RUN_STOPPED",
+  "checkpoint": "PLANE3_P01_FULL_VALIDATION_CLOSURE_REQUIRED",
+  "status": "P01_PRIMARY_ROOT_CAUSE_PROVEN_REMAINING_DETERMINISTIC_ERROR_UNRESOLVED",
   "applicationCandidateSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
   "applicationWorktree": "CLEAN",
   "activeModels": {
@@ -19,64 +19,44 @@
     "historicalArtifactsPreserved": true
   },
   "consumedAuthorizedRun": {
-    "humanAuthorizationGranted": true,
-    "singleUse": true,
-    "applicationSha": "45741b4043376f7af8ee3756c569c7075eb34f12",
-    "manifestSha256": "8ae441ca86d348c43b4c875a85705332fd49bda4e3964af486bc68342dce2546",
     "runId": "plane34-45741b4-20260912-r01",
-    "corpusIdentity": "431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9",
-    "authorizationPayloadSha256": "3a93329f18b4d06838ba2ecda68645c6e960923956e26136e6c579add672de3c",
-    "maximumWriterCalls": 5,
-    "maximumJudgeCalls": 3,
-    "maximumTotalCalls": 8,
-    "maximumSpendUsd": 4.44,
     "executionStatus": "STOPPED_ON_P01_WRITER_VALIDATION",
     "authorizationConsumed": true,
-    "rerunAuthorized": false
-  },
-  "paidRunResult": {
-    "classification": "PLANE3_PAID_MODEL_BEARING_RUN_STOPPED",
+    "rerunAuthorized": false,
     "writerCallsCompleted": 1,
     "judgeCallsCompleted": 0,
     "totalPaidCallsCompleted": 1,
-    "actualProviderCostUsd": 0.140972,
-    "runSummaryStatus": "FAILED",
-    "p01": {
-      "sampleId": "PRIMARY_TBK_P01",
-      "executionId": "plane34-45741b4-20260912-r01-PRIMARY_TBK_P01",
-      "writerInputSha256": "3eb8d35b399353cb51ada5a4d75724857560d8ce0103f6765fba7bdbf724e4ea",
-      "requestPromptSha256": "cbf99c38c97dc9ba1b165c1952f6f7ca07fbf03c77e3659fdfa513936fc82deb",
-      "rawWriterResponseSha256": "5074d64a769c1838639d40d1239f69bfe1a8af01ca633cd3a36638b886565450",
-      "writerValidation": "FAIL",
-      "judgeExecuted": false,
-      "inputTokens": 31780,
-      "outputTokens": 6451,
-      "actualCostUsd": 0.140972,
-      "validationError": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim"
-    },
-    "p02": "NOT_EXECUTED",
-    "p03": "NOT_EXECUTED",
-    "p04": "NOT_EXECUTED",
-    "p05": "NOT_EXECUTED",
-    "historicalArtifactsPreserved": true,
-    "productionWrites": 0,
-    "railwayConfigurationMutations": 0,
-    "applicationSourceChanges": 0,
-    "pushes": 0,
-    "deployments": 0
+    "actualProviderCostUsd": 0.140972
+  },
+  "p01Diagnosis": {
+    "result": "ROOT_CAUSE_PROVEN",
+    "primaryRootCause": "VALIDATOR_FALSE_POSITIVE",
+    "confidence": 0.98,
+    "failingField": "writerOutput.funnelOpportunities.consideration[0].rationale.text",
+    "exactText": "This governed consideration-stage opportunity is supported as an opportunity, not as evidence that an equivalent current asset is absent.",
+    "primaryValidatorFailure": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
+    "primaryCauseSummary": "The PARTIAL absence detector matches the word absent but does not recognize the negated non-establishment construction 'not as evidence that ... is absent'. The Writer prompt and reference semantics are correctly bounded.",
+    "expectedPrimaryRepairFiles": [
+      "services/worker/src/narrative-v2/writer-output.js",
+      "services/worker/src/narrative-v2/writer-output.test.js"
+    ],
+    "exactReplayAlsoReturned": [
+      "limitations[1].whatThisMeans.evidenceRefs contains duplicate reference: capability:performance.field",
+      "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim"
+    ]
   },
   "currentBlocker": {
-    "classification": "P01_WRITER_SEMANTIC_VALIDATION_FAILURE_ROOT_CAUSE_UNRESOLVED",
-    "verifiedObservedFailure": "writerOutput.funnelOpportunities.consideration[0].rationale.text converts PARTIAL evidence into an unqualified absence claim",
-    "rootCauseStatus": "UNRESOLVED",
-    "requiredDiagnosis": "Recover exact persisted P01 WriterInput and raw/parsed Writer response, trace governing PARTIAL semantics in prompt/reference and validator, replay exact persisted bytes through the current validator, then classify one root cause before any repair or rerun."
+    "classification": "P01_DUPLICATE_REFERENCE_ROOT_CAUSE_UNRESOLVED",
+    "reason": "Exact deterministic replay exposed a second validation error involving duplicate capability:performance.field evidenceRefs. Repairing only the proven validator false positive before diagnosing this second blocker risks another one-defect-at-a-time closure/rerun cycle.",
+    "requiredDiagnosis": "Recover the exact limitations[1].whatThisMeans object and duplicate references from the preserved P01 output, trace Writer prompt/schema/reference and validator rules, replay unchanged, classify one root cause, and freeze the smallest coherent repair boundary before any source edit or model call."
   },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
     "plane3Harness": "HARDENED_FOCUSED_PASS",
-    "plane3AuthorizationPreflight": "READY",
     "plane3RealModelBearingSample": "STOPPED_P01_WRITER_VALIDATION",
+    "p01PrimarySemanticRootCause": "PROVEN_VALIDATOR_FALSE_POSITIVE",
+    "p01FullDeterministicValidationClosure": "BLOCKED_DUPLICATE_REFERENCE_DIAGNOSIS",
     "plane3": "NOT_PASS",
     "plane4": "NOT_STARTED_FOR_STOPPED_RUN",
     "plane5": "NOT_STARTED",
@@ -86,8 +66,9 @@
   "authorization": {
     "paidWriterJudgeCalls": "NOT_AUTHORIZED",
     "secondPaidRun": "NOT_AUTHORIZED",
-    "readOnlyDiagnosis": "AUTHORIZED_ZERO_COST_ONLY",
-    "sourceRepairBeforeDiagnosis": "NOT_AUTHORIZED",
+    "readOnlyDuplicateReferenceDiagnosis": "AUTHORIZED_ZERO_COST_ONLY",
+    "deterministicReplay": "AUTHORIZED_ZERO_COST_ONLY",
+    "sourceRepairBeforeDuplicateDiagnosis": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "rescore": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
@@ -98,6 +79,6 @@
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "nextAction": "Run one zero-cost read-only diagnosis of the preserved P01 failure at exact application SHA 45741b4043376f7af8ee3756c569c7075eb34f12. Recover the exact failing rationale text and exact PARTIAL source/reference evidence, trace the relevant Writer instruction and validator rule, replay the persisted response unchanged through the current validator, classify one verified root cause, and freeze the smallest coherent repair boundary if proven. No source edit and no model/provider call.",
+  "nextAction": "Run one zero-cost read-only diagnosis of the persisted duplicate-reference validation error at application SHA 45741b4043376f7af8ee3756c569c7075eb34f12. Recover limitations[1].whatThisMeans and duplicate capability:performance.field evidenceRefs, trace governing Writer prompt/schema/reference and validator rules, replay the exact persisted response unchanged, classify one root cause, and freeze the complete coherent repair boundary together with the already-proven PARTIAL/absence validator false-positive repair. No source edit and no model/provider call.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
