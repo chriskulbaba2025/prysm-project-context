@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE4_FIVE_AREA_SEMANTIC_QUALITY_REQUIRED",
-  "status": "PLANE3_COMPLETE_PLANE4_REQUIRED",
+  "checkpoint": "PLANE5_INDEPENDENT_SEMANTIC_CHALLENGE_REQUIRED",
+  "status": "PLANE4_PASS_PLANE5_REQUIRED",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "applicationWorktree": "CLEAN",
   "activeModels": {
@@ -16,67 +16,94 @@
   "plane3Closure": {
     "classification": "PLANE3_MODEL_BEARING_GATE_SAMPLE_SET_COMPLETE",
     "runId": "plane34-e82f7f1-20260912-r05",
-    "manifestSha256": "2c44c567b978e32065c0df4003eadd051a5aa82ee44c685aa5c3fa30d9253f51",
-    "authorizationPayloadSha256": "ab2f314c7ff9a98fbfb03ad173be3ed47b0417a16ae0fa0ff8105448e4c8912c",
-    "corpusIdentity": "431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9",
-    "writerCalls": 5,
-    "judgeCalls": 3,
+    "writerSamplesPass": 5,
+    "judgeSamplesPass": 3,
     "totalProviderCalls": 8,
     "actualProviderCostUsd": 1.334964,
-    "writerSamples": {
-      "P01": "PASS",
-      "P02": "PASS",
-      "P03": "PASS",
-      "P04": "PASS",
-      "P05": "PASS"
+    "criticalIntegrityFailures": 0
+  },
+  "plane4Closure": {
+    "classification": "PASS",
+    "sampleScores": {
+      "P01": {
+        "Evidence Fidelity": 20,
+        "Semantic Traceability": 20,
+        "Decision Quality": 20,
+        "Coherence and Non-Redundancy": 20,
+        "Client Actionability": 19,
+        "total": 99,
+        "criticalIntegrityDefect": false
+      },
+      "P02": {
+        "Evidence Fidelity": 20,
+        "Semantic Traceability": 20,
+        "Decision Quality": 20,
+        "Coherence and Non-Redundancy": 20,
+        "Client Actionability": 19,
+        "total": 99,
+        "criticalIntegrityDefect": false
+      },
+      "P03": {
+        "Evidence Fidelity": 20,
+        "Semantic Traceability": 20,
+        "Decision Quality": 19,
+        "Coherence and Non-Redundancy": 20,
+        "Client Actionability": 20,
+        "total": 99,
+        "criticalIntegrityDefect": false
+      },
+      "P04": {
+        "Evidence Fidelity": 20,
+        "Semantic Traceability": 20,
+        "Decision Quality": 20,
+        "Coherence and Non-Redundancy": 20,
+        "Client Actionability": 19,
+        "total": 99,
+        "criticalIntegrityDefect": false
+      },
+      "P05": {
+        "Evidence Fidelity": 20,
+        "Semantic Traceability": 20,
+        "Decision Quality": 20,
+        "Coherence and Non-Redundancy": 20,
+        "Client Actionability": 20,
+        "total": 100,
+        "criticalIntegrityDefect": false
+      }
     },
-    "judgeSamples": {
-      "P01": "PASS",
-      "P02": "PASS",
-      "P03": "PASS"
-    },
+    "allSamplesMeetMinimumOverall": true,
+    "allAreasAtLeast19": true,
     "criticalIntegrityFailures": 0,
-    "historicalArtifactsPreserved": true
+    "crossSampleConsistency": "PASS_NO_MATERIAL_GOVERNED_CONTRADICTION"
   },
-  "finalRepair": {
-    "commit": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "classification": "WRITER_ONLY_HARNESS_PROMPT_OMISSION",
-    "summary": "The writer-only Plane 3 harness branch omitted the governed Writer prompt, so live-binding attempted sha256(undefined) before network execution. The repair supplies buildWriterPrompt for writer-only samples and explicitly fails closed on missing/blank prompts before hashing or provider execution.",
-    "focusedHarnessAndLiveBinding": "34_PASS_0_FAIL",
-    "narrativeV2": "166_PASS_0_FAIL",
-    "productionPath": "11_PASS_0_FAIL",
-    "wholeApp": "90_PASS_0_FAIL",
-    "pB01ThroughPB16": "PASS",
-    "gitDiffCheck": "PASS"
-  },
-  "plane4Requirement": {
-    "areas": [
-      "Evidence Fidelity",
-      "Semantic Traceability",
-      "Decision Quality",
-      "Coherence and Non-Redundancy",
-      "Client Actionability"
-    ],
-    "pointsPerArea": 20,
-    "minimumOverallPerSample": 97,
-    "minimumAreaPerSample": 19,
-    "criticalEvidenceIntegrityDefect": "AUTOMATIC_FAIL",
-    "everyDeductionRequiresExactOutputPathAndReason": true,
-    "weakSampleMayNotBeAveragedAway": true
+  "plane5Requirement": {
+    "independentAuditorRequired": true,
+    "minimumOutputsToRescore": 3,
+    "mustIncludePrimaryEscapedInputOutput": true,
+    "auditorMustIndependentlySelectAtLeastOneOutput": true,
+    "inspectEvidenceReferenceSemanticRelevance": true,
+    "challengeCrossSectionConsistency": true,
+    "challengeRepetition": true,
+    "challengeBoundedLanguage": true,
+    "challengeActionHierarchy": true,
+    "totalScoreDisagreementReviewThreshold": 2,
+    "dimensionDisagreementReviewThreshold": 1,
+    "criticalIntegrityDefect": "AUTOMATIC_FAIL",
+    "additionalCorpusLimitation": "NO_ADDITIONAL_REAL_PRODUCTION_SHAPED_INPUTS_AVAILABLE"
   },
   "releaseGate": {
     "plane1": "SUBSTANTIALLY_CLOSED",
     "plane2": "SUBSTANTIALLY_CLOSED",
     "plane3Harness": "HARDENED_FOCUSED_PASS",
     "plane3": "PASS_SAMPLE_SET_COMPLETE",
-    "plane4": "REQUIRED_NOT_YET_SCORED",
-    "plane5": "NOT_STARTED",
+    "plane4": "PASS",
+    "plane5": "REQUIRED_NOT_YET_EXECUTED",
     "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
     "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "plane4ReadOnlyScoring": "AUTHORIZED",
-    "newWriterJudgeCalls": "NOT_REQUIRED_FOR_PLANE4_UNLESS_GOVERNING_METHOD_EXPLICITLY_REQUIRES",
+    "plane5IndependentReadOnlyChallenge": "AUTHORIZED",
+    "newWriterJudgeCalls": "NOT_AUTHORIZED",
     "productionWrites": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "crawl": "NOT_AUTHORIZED",
@@ -86,8 +113,9 @@
     "productionConfigurationMutation": "NOT_AUTHORIZED",
     "push": "NOT_AUTHORIZED",
     "deployment": "NOT_AUTHORIZED",
-    "merge": "NOT_AUTHORIZED"
+    "merge": "NOT_AUTHORIZED",
+    "plane6": "NOT_AUTHORIZED_UNTIL_PLANE5_PASS"
   },
-  "nextAction": "Score all five exact Writer outputs from run plane34-e82f7f1-20260912-r05 in the five required Plane 4 areas. Each sample must score at least 97/100, no area below 19/20, no critical evidence-integrity defect, and every deduction must identify exact output path and reason. Also record cross-sample variance/consistency. Do not begin Plane 5 or production promotion until Plane 4 is complete.",
+  "nextAction": "Run the independent Plane 5 semantic challenge against the immutable Plane 3 Writer outputs and Plane 4 scores. Independently re-score at least 3 outputs including P01 and at least one independently selected additional output, inspect evidence-reference semantic relevance, challenge cross-section consistency/repetition/bounded language/action hierarchy, compare to Plane 4 scores, and resolve any disagreement over the governed thresholds before PASS. No source edits or production/deployment actions.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
