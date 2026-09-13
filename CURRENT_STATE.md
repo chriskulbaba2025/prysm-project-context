@@ -4,7 +4,7 @@ Project: PRYSM
 
 Current objective: Complete the page-by-page client-facing content refinement of Report v2 using the existing TBK audit evidence, then perform one whole-report persisted-artifact rerender before a final fresh production audit.
 
-Verified checkpoint: Pages 1–5 are locally committed and closed. Page 6 — Trust & Credibility — has been supplied in its current live rendered form for direct human review in chat and has not yet been changed in this content pass.
+Verified checkpoint: Pages 1–5 are locally committed and closed. Page 6 — Trust & Credibility — has completed direct human review from the supplied current live render. One bounded content defect is established: the page repeats proof already observed but does not turn the remaining placement uncertainty into enough practical client guidance.
 
 Current environment / branch / version:
 - Governance: `chriskulbaba2025/prysm-project-context` / `main`
@@ -22,11 +22,12 @@ Completed:
 - Page 3 — Conversion Journey: CLOSED at local commit `4364338b83b5f52eea17e598f165edf7fd45864a`; focused tests 18/18 PASS; journey explanation separated from Priority Fixes.
 - Page 4 — Content Opportunities: CLOSED at local commit `885182698d1c49bba941e28015834705f39aa236`; focused tests 19/19 plus V2R-01 1/1 PASS; expanded into a practical buyer-question/content action plan.
 - Page 5 — Competitor Comparison: CLOSED at local commit `51bc686e6dde4adc8c2847cf1f3b6b82a4b73406`; focused `P11` PASS 1/1; `git diff --check` PASS; unsupported parity/ranking claims removed, trust/proof comparison preserved where supported, concise competitor display names added, insufficient evidence explained correctly, protected evidence/identity/threshold/other-page invariants preserved; post-commit worktree clean; not pushed or deployed.
+- Page 6 direct human review: current live render supplied and reviewed in chat. The page correctly shows a 75/100 trust strength, observed proof categories, PASS buyer-trust questions, no material trust finding, and an explicit limitation that proof placement was not established across every important decision point. The single material content weakness is repetition in the lower section without a concrete evidence-safe action for using the proof already available.
 - Active client-report content standard recorded in `DECISION_PRYSM_CLIENT_REPORT_CONTENT_STANDARD_2026-09-13.md`.
 - For this content phase, no provider/model/network calls were used for page verification.
 
 In progress:
-- Page 6 — Trust & Credibility — direct human review of the supplied current rendered page. No separate Codex baseline audit is required before this review.
+- Page 6 — Trust & Credibility — bounded presentation/content repair only: preserve the strong evidence and buyer-question structure, and replace the repetitive lower proof summary with concise practical guidance for checking/using already-observed trust proof near important decision points while explicitly preserving the uncertainty that page-level placement was not established everywhere.
 
 Blocked:
 - No Page 6 content blocker is currently established.
@@ -43,6 +44,6 @@ Important constraints:
 - Do not push or deploy the current content changes without explicit authorization.
 - After Pages 1–7 are complete, rerender the report from the correct persisted TBK production artifacts using a safe read-only path, review the whole report, then—after explicit authorization—deploy and run one fresh production audit for final proof/team demonstration.
 
-Exact next action: Review the supplied current Page 6 — Trust & Credibility — render directly in chat against the active client-report content standard. Identify the single highest-value evidence-safe content/presentation improvement, if any; only then provide one bounded Codex repair prompt. Do not run a separate baseline audit first.
+Exact next action: Run one bounded Codex Page 6 repair from local HEAD `51bc686e6dde4adc8c2847cf1f3b6b82a4b73406`. Verify the exact local source/test boundary first, implement only the approved lower-section actionability repair, run only the narrow Page 6-focused tests plus `git diff --check`, render Page 6 for human review from existing local/offline artifacts, and stop without commit, push, deployment, provider/model calls, production audit, or Page 7 work.
 
 Last verified: 2026-09-13 America/Toronto
