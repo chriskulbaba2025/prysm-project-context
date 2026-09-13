@@ -4,102 +4,127 @@ Project: PRYSM
 
 ## Current objective
 
-Finish Plane 3 model-bearing validation by repairing the P04 live-binding/provider-response handling failure, then continue fresh verification until the required 5 Writer + 3 Judge sample set completes or a genuinely external blocker is proven.
+Advance from completed Plane 3 real model-bearing robustness into Plane 4 five-area semantic quality scoring against the completed five-sample Writer set.
 
 ## Exact application checkpoint
 
-- Current application candidate SHA: `ddf7b9cbf3addbce7f89c77787626a4a1a960c85`
+- Current application candidate SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
 - Application branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate)
 - Application worktree: CLEAN at latest proof
-- Governance checkpoint before this update: `69418b89b49a36cae10f1be0ded47eaeadc18279`
 - No push, deployment, merge, production audit resume, production evidence mutation, rescore, crawl/provider recollection, Final Narrative Pass, or Railway configuration mutation occurred.
 
-## Closed work
+## Plane 3 closure
 
-- P01 PARTIAL/absence validator false positive: repaired.
-- Duplicate evidence-reference normalization: deterministic production path clean.
-- P02 Judge evidence-strength shaping defect: repaired in commit `ddf7b9cbf3addbce7f89c77787626a4a1a960c85`.
-- Writer prompt/output direct tests: 50/50 PASS.
-- Narrative v2 tests: 165/165 PASS.
-- Whole-App: 90 PASS / 0 FAIL; P-B01 through P-B16 PASS.
-- `git diff --check`: PASS.
+Final classification: `PLANE3_MODEL_BEARING_GATE_SAMPLE_SET_COMPLETE`.
 
-## Latest paid Plane 3 verification
+Final run ID: `plane34-e82f7f1-20260912-r05`.
 
-Run ID: `plane34-ddf7b9c-20260912-r04`
+Root cause of prior P04 infrastructure failure was proven and repaired: the Plane 3 writer-only branch omitted the governed Writer prompt, causing `live-binding.js` to hash `undefined` before network execution. The repair now supplies the production `buildWriterPrompt` for writer-only samples and explicitly rejects missing/blank prompts before hashing or network execution.
 
-Successful samples:
+Repair commit:
+
+- `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065` — `fix(prysm): supply governed prompt for writer-only samples`
+
+Changed files:
+
+- `services/worker/scripts/plane3-model-bearing.mjs`
+- `services/worker/scripts/plane3-model-bearing.test.js`
+- `services/worker/src/narrative-v2/live-binding.js`
+- `services/worker/src/narrative-v2/live-binding.test.js`
+
+Post-repair deterministic closure:
+
+- focused live-binding + Plane 3 harness: 34/34 PASS
+- Narrative v2: 166/166 PASS
+- production-path: 11/11 PASS
+- Whole-App: 90 PASS / 0 FAIL
+- P-B01 through P-B16: PASS
+- `git diff --check`: PASS
+
+Final Plane 3 run results:
 
 - P01 Writer PASS / Judge PASS / finalization-render PASS
 - P02 Writer PASS / Judge PASS / finalization-render PASS
 - P03 Writer PASS / Judge PASS / finalization-render PASS
+- P04 Writer PASS / validation PASS / no Judge by manifest
+- P05 Writer PASS / validation PASS / no Judge by manifest
 
-P04 Writer failed before a usable Writer artifact was persisted.
-P05 was not executed.
+Required Plane 3 outcome achieved:
 
-Completed calls before stop:
-
-- Writer calls: 4 including failed/reserved P04
+- Writer calls: 5
 - Judge calls: 3
-- total calls: 7
-- known completed provider usage cost through P03: USD 1.078813
-- failed P04 reservation/ledger amount: USD 0.384000
+- total provider calls: 8
+- all five Writer outputs valid
+- all three scheduled Judge outputs PASS
+- zero structural, semantic-fidelity, evidence-integrity, unsupported-claim, contract, or prompt/schema/validator mismatch failures
+- actual provider usage total: USD 1.334964
+- conservative per-run ceiling: USD 4.44
 
-The required Plane 3 target remains 5 valid Writer samples + 3 valid Judge results.
+Final run identities:
 
-## Current blocker
+- candidate SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
+- manifest SHA-256: `2c44c567b978e32065c0df4003eadd051a5aa82ee44c685aa5c3fa30d9253f51`
+- authorization payload SHA-256: `ab2f314c7ff9a98fbfb03ad173be3ed47b0417a16ae0fa0ff8105448e4c8912c`
+- corpus identity: `431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9`
+- Writer model: `gpt-5.6-terra`
+- Judge model: `gpt-5.6-sol`
+- WriterInput version: `1.2.0`
+- WriterInput SHA-256: `5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2`
 
-Classification: `P04_LIVE_BINDING_RESPONSE_HANDLING_FAILURE`.
+Historical failed runs remain preserved and immutable.
 
-Exact failure:
+## Current checkpoint
 
-`TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined`
+Checkpoint: `PLANE4_FIVE_AREA_SEMANTIC_QUALITY_REQUIRED`.
 
-Stack boundary:
+Plane 3 is closed for this candidate. Do not reopen Plane 3 unless Plane 4 or Plane 5 surfaces a material defect that requires returning to model-shaping repair.
 
-- `sha256` at `src/narrative-v2/live-binding.js:88`
-- `invoke` at `src/narrative-v2/live-binding.js:1484`
-- `writerExecutor` at `src/narrative-v2/live-binding.js:2289`
+## Plane 4 governed requirement
 
-The provider/live-binding path did not yield a hashable response payload for P04. No usable P04 raw Writer response artifact was persisted.
+Score every required model-bearing Writer sample in exactly five areas, 20 points each:
 
-This is not a Writer prompt, Writer validator, Judge, or evidence-strength defect. P01-P03 passed end-to-end under the current candidate.
+1. Evidence Fidelity
+2. Semantic Traceability
+3. Decision Quality
+4. Coherence and Non-Redundancy
+5. Client Actionability
 
-## Process direction
+For each of P01-P05:
 
-Do not reopen the closed prompt/validator work.
+- overall score must be at least 97/100;
+- no area may be below 19/20;
+- any critical evidence-integrity defect is automatic FAIL regardless of score;
+- every deduction must identify the exact output path and reason;
+- do not average a weak sample away.
 
-The next execution may diagnose and repair the live-binding/provider-response handling boundary in-process, add focused regressions for missing/undefined provider payloads, prove response persistence/hash behavior fail-closed, run directly affected deterministic tests, commit a fresh candidate, generate a fresh manifest/run/payload, zero-call preflight, and continue paid Plane 3 verification without a new micro-approval.
+Plane 4 must score the preserved exact Writer outputs from run `plane34-e82f7f1-20260912-r05`. No new model generation is required for scoring unless the governing Plane 4 method explicitly invokes an independent scorer; otherwise use read-only deterministic/manual semantic review of the frozen artifacts.
 
-Do not weaken provider-response integrity. A missing or malformed provider payload must become an explicit governed provider/live-binding failure with preserved request/response metadata where available, never an uncaught hashing TypeError.
+## Exact next action
+
+Run one Plane 4 scoring pass over all five exact Writer outputs from final Plane 3 run `plane34-e82f7f1-20260912-r05`. Produce per-sample five-area scores, exact deductions, critical-integrity check, overall PASS/FAIL, and corpus-level variance/consistency findings. Do not alter Writer outputs, regenerate samples, deploy, push, merge, resume production, or begin Plane 5 until Plane 4 is scored and reviewed.
 
 ## Still prohibited
 
 - production audit/evidence mutation
 - crawl or provider recollection
-- rescoring
+- rescoring of production audit evidence
 - audit resume
 - Final Narrative Pass
 - Railway configuration mutation
 - push
 - deployment
 - merge
-- deleting or rewriting historical/failed-run artifacts
-- bypassing call/cost/identity controls
-- treating a missing provider response as a successful Writer result
-
-## Exact next action
-
-Start from the preserved run `plane34-ddf7b9c-20260912-r04`. Trace the exact P04 provider/live-binding response path that supplied `undefined` to `sha256`, classify whether the provider returned no payload, an unexpected response shape, or the adapter dropped a valid payload, then repair the smallest coherent live-binding boundary. Add tests for the exact failure class and nearby malformed/empty-response cases. After deterministic closure, commit the new candidate, create a fresh run package, pass local and Railway-injected zero-call preflight, and continue Plane 3 verification until 5 valid Writer + 3 valid Judge samples complete or a true external provider/authentication/infrastructure outage prevents execution.
+- deleting or rewriting historical or final Plane 3 artifacts
 
 ## Release-gate status
 
 - Planes 1-2: substantially closed.
 - Plane 3 harness: HARDENED / PASS.
-- Plane 3 semantic Writer/Judge shaping through P03: PASS in latest run.
-- Plane 3 live-binding execution: BLOCKED at P04 response handling.
-- Plane 4: pending complete Plane 3 sample set.
-- Plane 5: not started.
-- Planes 6-7: not started for the resulting candidate.
+- Plane 3 real model-bearing robustness: PASS — 5 Writer + 3 Judge sample set complete.
+- Plane 4: REQUIRED / NOT YET SCORED.
+- Plane 5: NOT STARTED.
+- Planes 6-7: NOT STARTED for candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`.
+
+Do not claim PRYSM is ready to deploy/live-test until the remaining Model-Bearing Release Gate planes close.
 
 Last verified: 2026-09-12 America/Toronto
