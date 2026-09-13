@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_AUTHORIZED",
-  "status": "PLANE6_PASS_PLANE7_AUTHORIZED_NOT_EXECUTED",
+  "checkpoint": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
+  "status": "PLANE7_FAIL_TENANT_IDENTITY_BOUNDARY",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "plane3": {"status": "PASS"},
   "plane4": {"status": "PASS"},
@@ -19,31 +19,27 @@
     "judgeModel": "gpt-5.6-sol"
   },
   "plane7": {
-    "status": "AUTHORIZED_NOT_EXECUTED",
-    "target": "ONE_FRESH_GOVERNED_TBK_CREATIVE_PRODUCTION_AUDIT",
-    "authorizedScope": [
-      "crawl_evidence_collection",
-      "scoring",
-      "writer_execution",
-      "judge_execution",
-      "finalization",
-      "report_rendering"
-    ],
-    "sourceEdits": "NOT_AUTHORIZED",
-    "configurationChanges": "NOT_AUTHORIZED",
-    "additionalDeployments": "NOT_AUTHORIZED",
-    "additionalAuditsOrReruns": "NOT_AUTHORIZED",
-    "openEndedRepair": "NOT_AUTHORIZED",
-    "onMaterialFailure": "PRESERVE_EVIDENCE_AND_STOP_FAIL_DIAGNOSIS_REQUIRED",
-    "onSuccess": "CLOSE_PLANE7_AND_MODEL_BEARING_RELEASE_GATE"
+    "status": "FAIL",
+    "classification": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
+    "auditId": "6c55141f-30e7-41c1-bede-19f7ebd7202b",
+    "executionId": "81b9f7a5-b810-4b41-b7ef-ee6c71f47862",
+    "requestedTenant": "omnipressence",
+    "returnedTenantId": "default",
+    "lastObservedLifecycle": "collecting",
+    "writerCallsObserved": 0,
+    "judgeCallsObserved": 0,
+    "additionalAuditRuns": 0,
+    "repairOrRerun": false,
+    "failure": "Production tenant identity did not hold: x-prysm-tenant=omnipressence resolved to tenantId=default. The audit remained collecting and downstream scoring/Writer/Judge/finalization/rendering were not reached.",
+    "evidencePreservation": "Preserve failed audit as immutable evidence; do not repair or rerun under the expired authorization."
   },
-  "nextAction": "Execute exactly one fresh governed TBK Creative Plane 7 production audit against deployed SHA e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065. Verify deployed identities first, then capture crawl/evidence, scoring, Writer, Judge, finalization, rendering, report retrieval, semantic/evidence-integrity checks, provider calls/cost, and stale-response contamination check. Return PASS or FAIL and do not rerun/repair. Write PRYSM-PLANE7-FINAL-PRODUCTION-CONFIRMATION-PROOF.txt to Downloads.",
+  "nextAction": "Diagnose the production tenant identity propagation boundary that maps x-prysm-tenant=omnipressence to persisted/returned tenantId=default, using audit 6c55141f-30e7-41c1-bede-19f7ebd7202b as immutable reproduction evidence. Stop at root-cause proof before any source edit.",
   "releaseGate": {
     "plane3": "PASS",
     "plane4": "PASS",
     "plane5": "PASS",
     "plane6": "PASS",
-    "plane7": "AUTHORIZED_NOT_EXECUTED"
+    "plane7": "FAIL"
   },
   "lastVerified": "2026-09-13 America/Toronto"
 }
