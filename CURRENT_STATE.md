@@ -4,7 +4,7 @@ Project: PRYSM
 
 ## Current objective
 
-Advance from completed Plane 6 deployment identity proof to the final Plane 7 end-to-end production confirmation for validated candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`.
+Execute exactly one authorized Plane 7 end-to-end production confirmation for validated/deployed candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`, then close PASS/FAIL without an open-ended repair loop.
 
 ## Closed proof planes
 
@@ -13,55 +13,71 @@ Advance from completed Plane 6 deployment identity proof to the final Plane 7 en
 - Plane 5: PASS — independent semantic challenge passed with no unresolved disagreement.
 - Plane 6: PASS — GitHub, Vercel, Railway, health, runtime model/token settings, and prompt/contract/validator identities all match the validated candidate.
 
-## Plane 6 deployed identity
+## Deployed production identity
 
-GitHub:
+GitHub main:
 - repository: `chriskulbaba2025/vantage-platform`
-- branch: `main`
 - SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
 
-Vercel:
+Vercel production:
 - project: `prysm`
 - deployment ID: `dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz`
 - state: READY
-- target: production
 - Git SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
 
-Railway:
+Railway production:
 - project ID: `9dfaead1-79d7-4582-9c58-0999a1d07b84`
 - environment: production
 - service: `vantage-platform`
 - deployment ID: `18397ad7-00f4-4deb-86a1-d987e6915735`
 - status: SUCCESS / running
-- repository/ref: `chriskulbaba2025/vantage-platform` / `main`
 - commitHash: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
-- image digest: `sha256:6c497b2dbf9a1914b2fe9c8142065dd780ff157cd809d00dded5372f53d3553c`
-- `/health`: HTTP 200, `{"status":"ok","service":"prysm-worker","version":"0.2.0"}`
+- `/health`: PASS / HTTP 200
 
 Runtime identity:
-- PRYSM_LLM_MODE: live
-- PRYSM_NARRATIVE_V2_ENABLED: true
 - Writer: `gpt-5.6-terra`
 - Judge: `gpt-5.6-sol`
-- max input: 120000
-- Writer max output: 12000
-- Judge max output: 8000
 - Writer prompt: 2.4.0
 - Writer output contract: 1.0.0
 - Judge prompt: 2.1.0
 - Judge contract: 1.1.0
-- Writer validator SHA-256: `5F7C4606B4546023A75BE9B1A434FD9B525CFFC61F7F869DE5AC730C40DFD5AC`
-- Judge contract/validator SHA-256: `7F46E29421174B5DCB34E49A548C2C996516B066875731A07BA5A386358483B3`
+
+## Plane 7 authorization
+
+Chris explicitly authorized exactly one final Plane 7 end-to-end production confirmation against the deployed validated candidate for the governed TBK Creative production audit path.
+
+Authorized only for that single fresh production confirmation:
+- normal governed crawl/evidence collection;
+- scoring;
+- Writer execution;
+- Judge execution;
+- finalization;
+- report rendering.
+
+Not authorized:
+- source edits;
+- configuration changes;
+- additional deployments;
+- additional audits/reruns;
+- open-ended repair cycles.
+
+If the single run exposes a material defect, preserve evidence and STOP with Plane 7 FAIL / diagnosis required. If it completes without material failure, close Plane 7 and the post-deployment Model-Bearing Release Gate.
 
 ## Current checkpoint
 
-Checkpoint: `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
+Checkpoint: `PLANE7_FINAL_PRODUCTION_CONFIRMATION_AUTHORIZED`.
 
-Plane 6 is closed PASS. Do not reopen earlier planes unless Plane 7 exposes a new material failure.
+Plane 7 has been authorized but has NOT yet been executed.
 
 ## Exact next action
 
-Obtain separate authorization for exactly one final end-to-end production confirmation under Plane 7. That run may confirm production behavior only; it must not become an open-ended discovery or repair loop. If it exposes a material defect, preserve the evidence and return to diagnosis rather than calling the release gate closed.
+Run exactly one fresh governed TBK Creative production audit through the normal production path against candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`. Verify deployed identities first. Capture crawl/evidence, scoring, Writer, Judge, finalization, render, report retrieval, evidence-integrity, semantic quality, provider calls/cost, and confirmation that no stale persisted-response fallback contaminated the run.
+
+Return exactly one final classification:
+- `PLANE7_FINAL_PRODUCTION_CONFIRMATION_PASS`, or
+- `PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL`.
+
+Do not rerun or repair under this authorization. Write proof to `C:\Users\kulba\Downloads\PRYSM-PLANE7-FINAL-PRODUCTION-CONFIRMATION-PROOF.txt` and STOP.
 
 ## Release-gate status
 
@@ -69,9 +85,6 @@ Obtain separate authorization for exactly one final end-to-end production confir
 - Plane 4: PASS.
 - Plane 5: PASS.
 - Plane 6: PASS.
-- Current state: `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
-- Plane 7: PENDING SEPARATE AUTHORIZATION.
-
-No additional production audit, Final Narrative Pass, crawl/recollection, rescore, or repair is authorized until the separate Plane 7 authorization is given.
+- Plane 7: AUTHORIZED / NOT YET EXECUTED.
 
 Last verified: 2026-09-13 America/Toronto
