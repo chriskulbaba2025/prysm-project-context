@@ -1,121 +1,46 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE5_INDEPENDENT_SEMANTIC_CHALLENGE_REQUIRED",
-  "status": "PLANE4_PASS_PLANE5_REQUIRED",
+  "checkpoint": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION",
+  "status": "PLANE5_PASS_PLANE6_PREFLIGHT_REQUIRED",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "applicationWorktree": "CLEAN",
-  "activeModels": {
-    "writer": "gpt-5.6-terra",
-    "judge": "gpt-5.6-sol"
-  },
-  "writerInput": {
-    "version": "1.2.0",
-    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
-  },
-  "plane3Closure": {
-    "classification": "PLANE3_MODEL_BEARING_GATE_SAMPLE_SET_COMPLETE",
+  "plane3": {
+    "status": "PASS",
     "runId": "plane34-e82f7f1-20260912-r05",
     "writerSamplesPass": 5,
-    "judgeSamplesPass": 3,
-    "totalProviderCalls": 8,
-    "actualProviderCostUsd": 1.334964,
+    "judgeSamplesPass": 3
+  },
+  "plane4": {
+    "status": "PASS",
+    "sampleTotals": [99, 99, 99, 99, 100],
+    "allAreasAtLeast19": true,
     "criticalIntegrityFailures": 0
   },
-  "plane4Closure": {
-    "classification": "PASS",
-    "sampleScores": {
-      "P01": {
-        "Evidence Fidelity": 20,
-        "Semantic Traceability": 20,
-        "Decision Quality": 20,
-        "Coherence and Non-Redundancy": 20,
-        "Client Actionability": 19,
-        "total": 99,
-        "criticalIntegrityDefect": false
-      },
-      "P02": {
-        "Evidence Fidelity": 20,
-        "Semantic Traceability": 20,
-        "Decision Quality": 20,
-        "Coherence and Non-Redundancy": 20,
-        "Client Actionability": 19,
-        "total": 99,
-        "criticalIntegrityDefect": false
-      },
-      "P03": {
-        "Evidence Fidelity": 20,
-        "Semantic Traceability": 20,
-        "Decision Quality": 19,
-        "Coherence and Non-Redundancy": 20,
-        "Client Actionability": 20,
-        "total": 99,
-        "criticalIntegrityDefect": false
-      },
-      "P04": {
-        "Evidence Fidelity": 20,
-        "Semantic Traceability": 20,
-        "Decision Quality": 20,
-        "Coherence and Non-Redundancy": 20,
-        "Client Actionability": 19,
-        "total": 99,
-        "criticalIntegrityDefect": false
-      },
-      "P05": {
-        "Evidence Fidelity": 20,
-        "Semantic Traceability": 20,
-        "Decision Quality": 20,
-        "Coherence and Non-Redundancy": 20,
-        "Client Actionability": 20,
-        "total": 100,
-        "criticalIntegrityDefect": false
-      }
-    },
-    "allSamplesMeetMinimumOverall": true,
-    "allAreasAtLeast19": true,
+  "plane5": {
+    "status": "PASS",
+    "classification": "PLANE5_INDEPENDENT_SEMANTIC_CHALLENGE_PASS",
+    "independentSamples": ["P01", "P03", "P05"],
+    "independentTotals": {"P01": 99, "P03": 99, "P05": 100},
+    "scoreDisagreements": 0,
     "criticalIntegrityFailures": 0,
-    "crossSampleConsistency": "PASS_NO_MATERIAL_GOVERNED_CONTRADICTION"
-  },
-  "plane5Requirement": {
-    "independentAuditorRequired": true,
-    "minimumOutputsToRescore": 3,
-    "mustIncludePrimaryEscapedInputOutput": true,
-    "auditorMustIndependentlySelectAtLeastOneOutput": true,
-    "inspectEvidenceReferenceSemanticRelevance": true,
-    "challengeCrossSectionConsistency": true,
-    "challengeRepetition": true,
-    "challengeBoundedLanguage": true,
-    "challengeActionHierarchy": true,
-    "totalScoreDisagreementReviewThreshold": 2,
-    "dimensionDisagreementReviewThreshold": 1,
-    "criticalIntegrityDefect": "AUTOMATIC_FAIL",
-    "additionalCorpusLimitation": "NO_ADDITIONAL_REAL_PRODUCTION_SHAPED_INPUTS_AVAILABLE"
+    "corpusLimitation": "ONE_REAL_PRODUCTION_SHAPED_INPUT"
   },
   "releaseGate": {
-    "plane1": "SUBSTANTIALLY_CLOSED",
-    "plane2": "SUBSTANTIALLY_CLOSED",
-    "plane3Harness": "HARDENED_FOCUSED_PASS",
-    "plane3": "PASS_SAMPLE_SET_COMPLETE",
+    "plane3": "PASS",
     "plane4": "PASS",
-    "plane5": "REQUIRED_NOT_YET_EXECUTED",
-    "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
-    "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
+    "plane5": "PASS",
+    "plane6": "PENDING_DEPLOYED_IDENTITY_PROOF",
+    "plane7": "NOT_STARTED"
   },
   "authorization": {
-    "plane5IndependentReadOnlyChallenge": "AUTHORIZED",
-    "newWriterJudgeCalls": "NOT_AUTHORIZED",
-    "productionWrites": "NOT_AUTHORIZED",
-    "providerRecollection": "NOT_AUTHORIZED",
-    "crawl": "NOT_AUTHORIZED",
-    "rescoreProductionAuditEvidence": "NOT_AUTHORIZED",
-    "auditResume": "NOT_AUTHORIZED",
-    "finalNarrativePass": "NOT_AUTHORIZED",
-    "productionConfigurationMutation": "NOT_AUTHORIZED",
+    "plane6ReadOnlyPromotionPreflight": "AUTHORIZED",
     "push": "NOT_AUTHORIZED",
-    "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED",
-    "plane6": "NOT_AUTHORIZED_UNTIL_PLANE5_PASS"
+    "deployment": "NOT_AUTHORIZED",
+    "productionAuditResume": "NOT_AUTHORIZED",
+    "finalNarrativePass": "NOT_AUTHORIZED"
   },
-  "nextAction": "Run the independent Plane 5 semantic challenge against the immutable Plane 3 Writer outputs and Plane 4 scores. Independently re-score at least 3 outputs including P01 and at least one independently selected additional output, inspect evidence-reference semantic relevance, challenge cross-section consistency/repetition/bounded language/action hierarchy, compare to Plane 4 scores, and resolve any disagreement over the governed thresholds before PASS. No source edits or production/deployment actions.",
+  "nextAction": "Run a read-only Plane 6 promotion preflight for candidate e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065. Verify local/remote Git topology, exact promotion path, Railway worker and Vercel/UI targets and current identities, and the exact post-deploy identity proof method for each participating runtime. Do not push, merge, or deploy during preflight.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
