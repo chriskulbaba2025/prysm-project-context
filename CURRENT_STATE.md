@@ -2,89 +2,42 @@
 
 Project: PRYSM
 
-## Current objective
+Current objective: Diagnose and repair the production tenant identity boundary that caused the single authorized Plane 7 production confirmation to create the TBK Creative audit under `tenantId=default` instead of the governed tenant `omnipressence`.
 
-Execute exactly one authorized Plane 7 end-to-end production confirmation for validated/deployed candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`, then close PASS/FAIL without an open-ended repair loop.
+Verified checkpoint: `PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL`.
 
-## Closed proof planes
+Current environment / branch / version:
+- Governance: `chriskulbaba2025/prysm-project-context` / `main`
+- Application: `chriskulbaba2025/vantage-platform`
+- Validated/deployed application SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
+- Failed Plane 7 audit ID: `6c55141f-30e7-41c1-bede-19f7ebd7202b`
+- Execution ID: `81b9f7a5-b810-4b41-b7ef-ee6c71f47862`
 
-- Plane 3: PASS — 5/5 Writer and 3/3 Judge samples passed.
-- Plane 4: PASS — scores 99, 99, 99, 99, 100; all areas >=19/20; zero critical integrity defects.
-- Plane 5: PASS — independent semantic challenge passed with no unresolved disagreement.
-- Plane 6: PASS — GitHub, Vercel, Railway, health, runtime model/token settings, and prompt/contract/validator identities all match the validated candidate.
-
-## Deployed production identity
-
-GitHub main:
-- repository: `chriskulbaba2025/vantage-platform`
-- SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
-
-Vercel production:
-- project: `prysm`
-- deployment ID: `dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz`
-- state: READY
-- Git SHA: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
-
-Railway production:
-- project ID: `9dfaead1-79d7-4582-9c58-0999a1d07b84`
-- environment: production
-- service: `vantage-platform`
-- deployment ID: `18397ad7-00f4-4deb-86a1-d987e6915735`
-- status: SUCCESS / running
-- commitHash: `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`
-- `/health`: PASS / HTTP 200
-
-Runtime identity:
-- Writer: `gpt-5.6-terra`
-- Judge: `gpt-5.6-sol`
-- Writer prompt: 2.4.0
-- Writer output contract: 1.0.0
-- Judge prompt: 2.1.0
-- Judge contract: 1.1.0
-
-## Plane 7 authorization
-
-Chris explicitly authorized exactly one final Plane 7 end-to-end production confirmation against the deployed validated candidate for the governed TBK Creative production audit path.
-
-Authorized only for that single fresh production confirmation:
-- normal governed crawl/evidence collection;
-- scoring;
-- Writer execution;
-- Judge execution;
-- finalization;
-- report rendering.
-
-Not authorized:
-- source edits;
-- configuration changes;
-- additional deployments;
-- additional audits/reruns;
-- open-ended repair cycles.
-
-If the single run exposes a material defect, preserve evidence and STOP with Plane 7 FAIL / diagnosis required. If it completes without material failure, close Plane 7 and the post-deployment Model-Bearing Release Gate.
-
-## Current checkpoint
-
-Checkpoint: `PLANE7_FINAL_PRODUCTION_CONFIRMATION_AUTHORIZED`.
-
-Plane 7 has been authorized but has NOT yet been executed.
-
-## Exact next action
-
-Run exactly one fresh governed TBK Creative production audit through the normal production path against candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`. Verify deployed identities first. Capture crawl/evidence, scoring, Writer, Judge, finalization, render, report retrieval, evidence-integrity, semantic quality, provider calls/cost, and confirmation that no stale persisted-response fallback contaminated the run.
-
-Return exactly one final classification:
-- `PLANE7_FINAL_PRODUCTION_CONFIRMATION_PASS`, or
-- `PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL`.
-
-Do not rerun or repair under this authorization. Write proof to `C:\Users\kulba\Downloads\PRYSM-PLANE7-FINAL-PRODUCTION-CONFIRMATION-PROOF.txt` and STOP.
-
-## Release-gate status
-
+Completed:
 - Plane 3: PASS.
 - Plane 4: PASS.
 - Plane 5: PASS.
 - Plane 6: PASS.
-- Plane 7: AUTHORIZED / NOT YET EXECUTED.
+- Exactly one authorized Plane 7 production audit was created through the normal production path.
+- The audit returned HTTP 201 and entered `created -> validated -> collecting`.
+- No second audit, resume, rerun, repair, source edit, configuration change, deployment, or manual evidence rewrite occurred.
+- Plane 7 final classification: `PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL`.
+
+In progress:
+- None. The failed production confirmation is preserved as evidence.
+
+Blocked:
+- Plane 7 and the post-deployment PRYSM Model-Bearing Release Gate remain OPEN/FAILED.
+- The production tenant identity boundary is invalid: the request supplied governed tenant `omnipressence`, but the created audit resolved to `tenantId=default`.
+- The failed audit remained in `collecting`; scoring, Writer, Judge, finalization, and rendering were not reached.
+
+Important constraints:
+- Preserve audit `6c55141f-30e7-41c1-bede-19f7ebd7202b` and its collecting state as immutable failure evidence.
+- Do not repair or rerun that audit under the expired Plane 7 authorization.
+- Do not claim semantic PASS; no new Writer output reached semantic review.
+- Do not reopen Planes 3-6 unless later evidence directly invalidates them.
+- Any future production confirmation requires a new explicit authorization after the tenant identity defect is repaired and governed verification is complete.
+
+Exact next action: Diagnose the production tenant identity propagation boundary that maps a request carrying `x-prysm-tenant=omnipressence` to persisted/returned `tenantId=default`, using the failed audit `6c55141f-30e7-41c1-bede-19f7ebd7202b` as the immutable reproduction artifact. Stop at root-cause proof before any source edit.
 
 Last verified: 2026-09-13 America/Toronto
