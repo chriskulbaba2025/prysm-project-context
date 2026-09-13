@@ -22,6 +22,7 @@ Completed:
 - The audit returned HTTP 201 and entered `created -> validated -> collecting`.
 - No second audit, resume, rerun, repair, source edit, configuration change, deployment, or manual evidence rewrite occurred.
 - Plane 7 final classification: `PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL`.
+- Global GCU governance now includes the mandatory Production Identity Continuity Gate and account-level Codex AGENTS rule so identity propagation must be proven before expensive downstream release validation on future applicable work.
 
 In progress:
 - None. The failed production confirmation is preserved as evidence.
@@ -37,6 +38,8 @@ Important constraints:
 - Do not claim semantic PASS; no new Writer output reached semantic review.
 - Do not reopen Planes 3-6 unless later evidence directly invalidates them.
 - Any future production confirmation requires a new explicit authorization after the tenant identity defect is repaired and governed verification is complete.
+- Apply the canonical GCU Production Identity Continuity Gate: applicable auth/tenant/account/client/environment/deployment/job/provider/artifact identities must be proven across a real production-shaped end-to-end path before downstream model-bearing/final release confirmation can count as release proof.
+- Do not defer the first real tenant/account identity propagation proof to the final production confirmation again.
 
 Exact next action: Diagnose the production tenant identity propagation boundary that maps a request carrying `x-prysm-tenant=omnipressence` to persisted/returned `tenantId=default`, using the failed audit `6c55141f-30e7-41c1-bede-19f7ebd7202b` as the immutable reproduction artifact. Stop at root-cause proof before any source edit.
 
