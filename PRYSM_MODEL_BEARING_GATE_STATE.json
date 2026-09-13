@@ -1,46 +1,39 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "READY_FOR_AUTHORIZED_PRODUCTION_PROMOTION",
-  "status": "PLANE5_PASS_PLANE6_PREFLIGHT_REQUIRED",
+  "checkpoint": "PLANE6_PROMOTION_BLOCKED_REMOTE_CANDIDATE_MISSING",
+  "status": "AUTHORIZED_PROMOTION_BLOCKED_BEFORE_PRODUCTION_MUTATION",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-  "applicationWorktree": "CLEAN",
-  "plane3": {
-    "status": "PASS",
-    "runId": "plane34-e82f7f1-20260912-r05",
-    "writerSamplesPass": 5,
-    "judgeSamplesPass": 3
+  "plane3": {"status": "PASS"},
+  "plane4": {"status": "PASS"},
+  "plane5": {"status": "PASS"},
+  "plane6": {
+    "preflight": "READY",
+    "promotionAuthorized": true,
+    "remoteMainBeforeAttempt": "4202ed684754c382160289c801b83e654d697a69",
+    "candidatePresentOnGitHubRemote": false,
+    "refUpdateAttempt": "FAILED_422_OBJECT_DOES_NOT_EXIST",
+    "productionMutationOccurred": false,
+    "railwayDeploymentTriggered": false,
+    "vercelDeploymentTriggered": false,
+    "identityVerification": "NOT_STARTED_BECAUSE_PROMOTION_DID_NOT_OCCUR"
   },
-  "plane4": {
-    "status": "PASS",
-    "sampleTotals": [99, 99, 99, 99, 100],
-    "allAreasAtLeast19": true,
-    "criticalIntegrityFailures": 0
+  "authorization": {
+    "promotion": "AUTHORIZED_BY_CHRIS",
+    "linkedRailwayVercelDeployments": "AUTHORIZED_IF_TRIGGERED_BY_MAIN_UPDATE",
+    "plane6IdentityVerification": "AUTHORIZED",
+    "plane7": "NOT_AUTHORIZED",
+    "productionAuditResume": "NOT_AUTHORIZED",
+    "finalNarrativePass": "NOT_AUTHORIZED",
+    "crawlRecollectionRescore": "NOT_AUTHORIZED"
   },
-  "plane5": {
-    "status": "PASS",
-    "classification": "PLANE5_INDEPENDENT_SEMANTIC_CHALLENGE_PASS",
-    "independentSamples": ["P01", "P03", "P05"],
-    "independentTotals": {"P01": 99, "P03": 99, "P05": 100},
-    "scoreDisagreements": 0,
-    "criticalIntegrityFailures": 0,
-    "corpusLimitation": "ONE_REAL_PRODUCTION_SHAPED_INPUT"
-  },
+  "nextAction": "From C:\\Users\\kulba\\Desktop\\vantage-platform verify HEAD equals e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065 and worktree clean, fetch origin main, reconfirm origin/main is 4202ed684754c382160289c801b83e654d697a69 and ancestor of candidate, then execute the already-authorized fast-forward push: git push origin e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065:refs/heads/main. After push, perform Plane 6 deployed identity verification only.",
   "releaseGate": {
     "plane3": "PASS",
     "plane4": "PASS",
     "plane5": "PASS",
-    "plane6": "PENDING_DEPLOYED_IDENTITY_PROOF",
+    "plane6": "BLOCKED_REMOTE_CANDIDATE_MISSING",
     "plane7": "NOT_STARTED"
   },
-  "authorization": {
-    "plane6ReadOnlyPromotionPreflight": "AUTHORIZED",
-    "push": "NOT_AUTHORIZED",
-    "merge": "NOT_AUTHORIZED",
-    "deployment": "NOT_AUTHORIZED",
-    "productionAuditResume": "NOT_AUTHORIZED",
-    "finalNarrativePass": "NOT_AUTHORIZED"
-  },
-  "nextAction": "Run a read-only Plane 6 promotion preflight for candidate e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065. Verify local/remote Git topology, exact promotion path, Railway worker and Vercel/UI targets and current identities, and the exact post-deploy identity proof method for each participating runtime. Do not push, merge, or deploy during preflight.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
