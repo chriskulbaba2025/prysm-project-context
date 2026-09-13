@@ -4,7 +4,7 @@ Project: PRYSM
 
 Current objective: Complete the page-by-page client-facing content refinement of Report v2 using the existing TBK audit evidence, then perform one whole-report persisted-artifact rerender before a final fresh production audit.
 
-Verified checkpoint: Pages 1–5 are locally committed and closed. Page 6 — Trust & Credibility — is the next page for client-usefulness and evidence-safety review and has not yet been changed in this content pass.
+Verified checkpoint: Pages 1–5 are locally committed and closed. Page 6 — Trust & Credibility — has been supplied in its current live rendered form for direct human review in chat and has not yet been changed in this content pass.
 
 Current environment / branch / version:
 - Governance: `chriskulbaba2025/prysm-project-context` / `main`
@@ -26,7 +26,7 @@ Completed:
 - For this content phase, no provider/model/network calls were used for page verification.
 
 In progress:
-- Page 6 — Trust & Credibility — baseline client-usefulness/evidence-safety review only.
+- Page 6 — Trust & Credibility — direct human review of the supplied current rendered page. No separate Codex baseline audit is required before this review.
 
 Blocked:
 - No Page 6 content blocker is currently established.
@@ -43,6 +43,6 @@ Important constraints:
 - Do not push or deploy the current content changes without explicit authorization.
 - After Pages 1–7 are complete, rerender the report from the correct persisted TBK production artifacts using a safe read-only path, review the whole report, then—after explicit authorization—deploy and run one fresh production audit for final proof/team demonstration.
 
-Exact next action: Perform a read-only baseline review of Page 6 — Trust & Credibility — from the current local application HEAD and existing TBK persisted/offline evidence only. Assess whether the page meets the active client-report content standard, identify the smallest evidence-safe content/presentation repair boundary if needed, produce a review proof/render for human inspection, and make no source changes yet.
+Exact next action: Review the supplied current Page 6 — Trust & Credibility — render directly in chat against the active client-report content standard. Identify the single highest-value evidence-safe content/presentation improvement, if any; only then provide one bounded Codex repair prompt. Do not run a separate baseline audit first.
 
 Last verified: 2026-09-13 America/Toronto
