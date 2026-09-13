@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE6_PROMOTION_BLOCKED_REMOTE_CANDIDATE_MISSING",
-  "status": "AUTHORIZED_PROMOTION_BLOCKED_BEFORE_PRODUCTION_MUTATION",
+  "checkpoint": "PLANE6_RAILWAY_IDENTITY_PENDING",
+  "status": "GITHUB_AND_VERCEL_IDENTITY_PASS_RAILWAY_PENDING",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "plane3": {"status": "PASS"},
   "plane4": {"status": "PASS"},
@@ -10,30 +10,44 @@
   "plane6": {
     "preflight": "READY",
     "promotionAuthorized": true,
-    "remoteMainBeforeAttempt": "4202ed684754c382160289c801b83e654d697a69",
-    "candidatePresentOnGitHubRemote": false,
-    "refUpdateAttempt": "FAILED_422_OBJECT_DOES_NOT_EXIST",
-    "productionMutationOccurred": false,
-    "railwayDeploymentTriggered": false,
-    "vercelDeploymentTriggered": false,
-    "identityVerification": "NOT_STARTED_BECAUSE_PROMOTION_DID_NOT_OCCUR"
+    "github": {
+      "status": "PASS",
+      "repository": "chriskulbaba2025/vantage-platform",
+      "branch": "main",
+      "sha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065"
+    },
+    "vercel": {
+      "status": "PASS",
+      "project": "prysm",
+      "projectId": "prj_o4dQkuESOoTphZkOwVKG49BaLQT9",
+      "deploymentId": "dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz",
+      "state": "READY",
+      "target": "production",
+      "gitRef": "main",
+      "gitSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065"
+    },
+    "railway": {
+      "status": "PENDING_ACCOUNT_LEVEL_IDENTITY_VERIFICATION",
+      "projectId": "9dfaead1-79d7-4582-9c58-0999a1d07b84",
+      "environment": "production",
+      "service": "vantage-platform"
+    }
   },
   "authorization": {
-    "promotion": "AUTHORIZED_BY_CHRIS",
-    "linkedRailwayVercelDeployments": "AUTHORIZED_IF_TRIGGERED_BY_MAIN_UPDATE",
+    "promotion": "AUTHORIZED_AND_EXECUTED",
     "plane6IdentityVerification": "AUTHORIZED",
     "plane7": "NOT_AUTHORIZED",
     "productionAuditResume": "NOT_AUTHORIZED",
     "finalNarrativePass": "NOT_AUTHORIZED",
     "crawlRecollectionRescore": "NOT_AUTHORIZED"
   },
-  "nextAction": "From C:\\Users\\kulba\\Desktop\\vantage-platform verify HEAD equals e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065 and worktree clean, fetch origin main, reconfirm origin/main is 4202ed684754c382160289c801b83e654d697a69 and ancestor of candidate, then execute the already-authorized fast-forward push: git push origin e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065:refs/heads/main. After push, perform Plane 6 deployed identity verification only.",
+  "nextAction": "Perform read-only Railway identity verification only: prove production service vantage-platform is SUCCESS/running on commit e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065 from chriskulbaba2025/vantage-platform main, verify /health and active Writer/Judge/model/token identities plus the validated prompt/contract/schema/validator identities. If all match, classify Plane 6 PASS and stop before Plane 7.",
   "releaseGate": {
     "plane3": "PASS",
     "plane4": "PASS",
     "plane5": "PASS",
-    "plane6": "BLOCKED_REMOTE_CANDIDATE_MISSING",
+    "plane6": "PARTIAL_GITHUB_VERCEL_PASS_RAILWAY_PENDING",
     "plane7": "NOT_STARTED"
   },
-  "lastVerified": "2026-09-12 America/Toronto"
+  "lastVerified": "2026-09-13 America/Toronto"
 }
