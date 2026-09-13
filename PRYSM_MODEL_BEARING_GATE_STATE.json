@@ -1,68 +1,86 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE3_P04_LIVE_BINDING_REPAIR_AND_CONTINUATION",
-  "status": "PLANE3_BLOCKED_P04_LIVE_BINDING_RESPONSE_HANDLING",
-  "applicationCandidateSha": "ddf7b9cbf3addbce7f89c77787626a4a1a960c85",
+  "checkpoint": "PLANE4_FIVE_AREA_SEMANTIC_QUALITY_REQUIRED",
+  "status": "PLANE3_COMPLETE_PLANE4_REQUIRED",
+  "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "applicationWorktree": "CLEAN",
   "activeModels": {
     "writer": "gpt-5.6-terra",
     "judge": "gpt-5.6-sol"
   },
-  "deterministicClosure": {
-    "writerPromptOutputDirect": "50_PASS_0_FAIL",
-    "narrativeV2": "165_PASS_0_FAIL",
+  "writerInput": {
+    "version": "1.2.0",
+    "sha256": "5313c1929a5bfca31d8ed7e92ade706d378c426b3dddab22d37778ea69eef7e2"
+  },
+  "plane3Closure": {
+    "classification": "PLANE3_MODEL_BEARING_GATE_SAMPLE_SET_COMPLETE",
+    "runId": "plane34-e82f7f1-20260912-r05",
+    "manifestSha256": "2c44c567b978e32065c0df4003eadd051a5aa82ee44c685aa5c3fa30d9253f51",
+    "authorizationPayloadSha256": "ab2f314c7ff9a98fbfb03ad173be3ed47b0417a16ae0fa0ff8105448e4c8912c",
+    "corpusIdentity": "431bce41ff0a5c05dd9123f78ab02681638ea2582f0b9792fefd1625d6bd7ad9",
+    "writerCalls": 5,
+    "judgeCalls": 3,
+    "totalProviderCalls": 8,
+    "actualProviderCostUsd": 1.334964,
+    "writerSamples": {
+      "P01": "PASS",
+      "P02": "PASS",
+      "P03": "PASS",
+      "P04": "PASS",
+      "P05": "PASS"
+    },
+    "judgeSamples": {
+      "P01": "PASS",
+      "P02": "PASS",
+      "P03": "PASS"
+    },
+    "criticalIntegrityFailures": 0,
+    "historicalArtifactsPreserved": true
+  },
+  "finalRepair": {
+    "commit": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
+    "classification": "WRITER_ONLY_HARNESS_PROMPT_OMISSION",
+    "summary": "The writer-only Plane 3 harness branch omitted the governed Writer prompt, so live-binding attempted sha256(undefined) before network execution. The repair supplies buildWriterPrompt for writer-only samples and explicitly fails closed on missing/blank prompts before hashing or provider execution.",
+    "focusedHarnessAndLiveBinding": "34_PASS_0_FAIL",
+    "narrativeV2": "166_PASS_0_FAIL",
+    "productionPath": "11_PASS_0_FAIL",
     "wholeApp": "90_PASS_0_FAIL",
     "pB01ThroughPB16": "PASS",
     "gitDiffCheck": "PASS"
   },
-  "latestPaidRun": {
-    "runId": "plane34-ddf7b9c-20260912-r04",
-    "p01Writer": "PASS",
-    "p01Judge": "PASS",
-    "p02Writer": "PASS",
-    "p02Judge": "PASS",
-    "p03Writer": "PASS",
-    "p03Judge": "PASS",
-    "p04Writer": "FAILED_LIVE_BINDING_RESPONSE_HASHING",
-    "p05": "NOT_EXECUTED",
-    "writerCalls": 4,
-    "judgeCalls": 3,
-    "totalCalls": 7,
-    "knownCompletedProviderCostUsd": 1.078813,
-    "failedP04ReservedLedgerUsd": 0.384,
-    "runIdFreshAndIsolated": true
-  },
-  "currentBlocker": {
-    "classification": "P04_LIVE_BINDING_RESPONSE_HANDLING_FAILURE",
-    "error": "TypeError [ERR_INVALID_ARG_TYPE]: The data argument must be of type string or Buffer/TypedArray/DataView; received undefined",
-    "stack": [
-      "src/narrative-v2/live-binding.js:88 sha256",
-      "src/narrative-v2/live-binding.js:1484 invoke",
-      "src/narrative-v2/live-binding.js:2289 writerExecutor"
+  "plane4Requirement": {
+    "areas": [
+      "Evidence Fidelity",
+      "Semantic Traceability",
+      "Decision Quality",
+      "Coherence and Non-Redundancy",
+      "Client Actionability"
     ],
-    "summary": "The provider/live-binding path supplied no hashable response payload for P04 before a usable Writer artifact was persisted. P01-P03 passed end-to-end under the current candidate."
+    "pointsPerArea": 20,
+    "minimumOverallPerSample": 97,
+    "minimumAreaPerSample": 19,
+    "criticalEvidenceIntegrityDefect": "AUTOMATIC_FAIL",
+    "everyDeductionRequiresExactOutputPathAndReason": true,
+    "weakSampleMayNotBeAveragedAway": true
   },
-  "executionPolicy": {
-    "microApprovalLoop": "DISABLED_FOR_NARROW_PLANE3_REPAIRS",
-    "continueUntilSampleSetCompleteOrRealExternalBlocker": true,
-    "freshCandidateRequiresFreshManifestRunIdPayloadAndPreflight": true,
-    "perRunHarnessSafetyControlsMustRemainFailClosed": true,
-    "providerResponseIntegrityMustRemainFailClosed": true,
-    "doNotTreatMissingPayloadAsSuccess": true,
-    "doNotReopenClosedPromptValidatorWorkWithoutEvidence": true
+  "releaseGate": {
+    "plane1": "SUBSTANTIALLY_CLOSED",
+    "plane2": "SUBSTANTIALLY_CLOSED",
+    "plane3Harness": "HARDENED_FOCUSED_PASS",
+    "plane3": "PASS_SAMPLE_SET_COMPLETE",
+    "plane4": "REQUIRED_NOT_YET_SCORED",
+    "plane5": "NOT_STARTED",
+    "plane6": "NOT_STARTED_FOR_CURRENT_CANDIDATE",
+    "plane7": "NOT_STARTED_FOR_CURRENT_CANDIDATE"
   },
   "authorization": {
-    "liveBindingDiagnosisAndRepair": "AUTHORIZED",
-    "focusedAndDirectlyAffectedClosureTests": "AUTHORIZED",
-    "localApplicationCommit": "AUTHORIZED_AFTER_PASS",
-    "freshRunPackagePreparation": "AUTHORIZED",
-    "zeroCallRailwayPreflight": "AUTHORIZED",
-    "freshPlane3VerificationRuns": "AUTHORIZED_WITHOUT_MICRO_APPROVAL",
+    "plane4ReadOnlyScoring": "AUTHORIZED",
+    "newWriterJudgeCalls": "NOT_REQUIRED_FOR_PLANE4_UNLESS_GOVERNING_METHOD_EXPLICITLY_REQUIRES",
     "productionWrites": "NOT_AUTHORIZED",
     "providerRecollection": "NOT_AUTHORIZED",
     "crawl": "NOT_AUTHORIZED",
-    "rescore": "NOT_AUTHORIZED",
+    "rescoreProductionAuditEvidence": "NOT_AUTHORIZED",
     "auditResume": "NOT_AUTHORIZED",
     "finalNarrativePass": "NOT_AUTHORIZED",
     "productionConfigurationMutation": "NOT_AUTHORIZED",
@@ -70,18 +88,6 @@
     "deployment": "NOT_AUTHORIZED",
     "merge": "NOT_AUTHORIZED"
   },
-  "releaseGate": {
-    "plane1": "SUBSTANTIALLY_CLOSED",
-    "plane2": "SUBSTANTIALLY_CLOSED",
-    "plane3Harness": "HARDENED_FOCUSED_PASS",
-    "plane3SemanticSamplesP01ToP03": "PASS_WRITER_AND_JUDGE",
-    "plane3P04": "BLOCKED_LIVE_BINDING_RESPONSE_HANDLING",
-    "plane3": "IN_PROGRESS",
-    "plane4": "PENDING_VALID_PLANE3_SAMPLE_SET",
-    "plane5": "NOT_STARTED",
-    "plane6": "NOT_STARTED_FOR_RESULTING_CANDIDATE",
-    "plane7": "NOT_STARTED_FOR_RESULTING_CANDIDATE"
-  },
-  "nextAction": "Inspect preserved run plane34-ddf7b9c-20260912-r04 and trace the exact provider/live-binding response path that supplied undefined to sha256. Prove whether the provider returned no payload, returned an unexpected shape, or the adapter dropped a valid payload. Repair the smallest coherent live-binding response/persistence boundary with focused malformed/empty-response regressions, re-close directly affected tests, commit a fresh candidate, prepare fresh manifest/run/payload, pass zero-call preflight, and continue Plane 3 verification until 5 Writer + 3 Judge samples complete or a true external provider/authentication outage prevents execution.",
+  "nextAction": "Score all five exact Writer outputs from run plane34-e82f7f1-20260912-r05 in the five required Plane 4 areas. Each sample must score at least 97/100, no area below 19/20, no critical evidence-integrity defect, and every deduction must identify exact output path and reason. Also record cross-sample variance/consistency. Do not begin Plane 5 or production promotion until Plane 4 is complete.",
   "lastVerified": "2026-09-12 America/Toronto"
 }
