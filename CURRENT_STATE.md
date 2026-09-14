@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Complete the final production confirmation from the already published exact Report v2 candidate by exercising the normal authenticated browser entry path exactly once, then verify the fresh production report and close the release if it passes.
+Current objective: Diagnose the scored-to-narrative handoff stall for the single authorized fresh TBK production audit, without rerunning or mutating production, then determine the smallest safe recovery action.
 
 Verified checkpoint:
 - Final whole-report release gate: PASS.
@@ -12,11 +12,14 @@ Verified checkpoint:
 - Pages 1–6: CLOSED.
 - Supporting Detail client-language cleanup: CLOSED.
 - Scoring version: 4.1.2.
-- Final persisted/offline TBK report: Conversion Readiness 81/100; Technical Health 85/100 on assessed technical checks; 20 of 100 technical points assessed.
 - Exact candidate publication to GitHub main: PASS.
 - Railway production deployment identity: PASS at exact SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Vercel production deployment identity: PASS at exact SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
-- Fresh production confirmation: NOT RUN. The release flow stopped before audit entry because the Codex session had no authenticated browser surface and a direct worker bypass was correctly not used.
+- Exactly one fresh governed TBK production audit was started through the normal authenticated browser path.
+- Fresh production audit ID: `6dca53ed-ae00-484c-bf77-b59c059eef51`.
+- Fresh production audit persisted state: `scored`, version 6.
+- Scoring completed at `2026-09-14T03:04:17.415Z` UTC with lifecycle reason `governed-scoring-complete`.
+- Read-only Railway diagnosis classifies the audit as STALLED because no post-scoring continuation is recorded or evidenced.
 
 Completed:
 - Page 1 Executive Scorecard: CLOSED at `6ab5e7fc653970e406129b484baf7d40f42b9c1d`.
@@ -40,30 +43,32 @@ Completed:
 - GitHub main publication: PASS. `origin/main` advanced by fast-forward from `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065` to exact candidate `60169bf23eec37c29683937d459d7d96f82aba73`; publication count 1; no extra release commit.
 - Railway production deployment: PASS. Project `GENSEN process`, service `vantage-platform`, deployment `e1e588b3-ed35-41ea-b588-43eff0d0eb8c`, SUCCESS/RUNNING, source SHA exactly `60169bf23eec37c29683937d459d7d96f82aba73`; worker health returned `status: ok`; one automatic deployment only.
 - Vercel production deployment: PASS. Project `prysm`, deployment `dpl_66RQhYL8Ri9hr7VN5MyHAk9YNBeV`, READY, production alias `https://prysm-sand.vercel.app`, source SHA exactly `60169bf23eec37c29683937d459d7d96f82aba73`; one automatic deployment only.
-- Production configuration check: PASS for configuration state — production environment, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, live LLM mode, Narrative v2 enabled, tenant `default`, no configuration changes.
-- Documented production handoff path remains: authenticated browser session → Vercel same-origin `POST /api/audits` → signed principal/tenant worker call → Railway production orchestrator → persisted report.
-- Direct application-to-worker handoff equivalence was read-only proven, but end-to-end production identity continuity was intentionally not claimed because the authenticated browser entry boundary was not exercised.
+- Production configuration check: PASS — production environment, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, live LLM mode, Narrative v2 enabled, tenant `default`, no configuration changes.
+- The authorized browser entry boundary was exercised successfully for the single fresh production audit. Lifecycle reached: created → validated → collecting → evidence_stored → evidence_locked → scored.
+- Read-only stall diagnosis: Railway CLI access PASS; worker health PASS; persisted state recheck remained `scored` with unchanged `updatedAt`; no audit-specific post-scoring log event was found; no Writer/Judge/narrative/finalization/report-persistence/rendering error was observed for this audit.
 
 In progress:
-- Final production confirmation only. Publication and platform deployment are complete and exact-head aligned. The remaining step is to exercise the normal authenticated browser audit path exactly once and then verify that fresh production report.
+- Root-cause diagnosis at the scored-to-narrative handoff for audit `6dca53ed-ae00-484c-bf77-b59c059eef51`.
 
 Blocked:
-- RELEASE CONFIRMATION BLOCKER ONLY: the Codex publication session had no authenticated browser surface, so the authorized normal production audit entry boundary could not be exercised.
-- Fresh production audit count remains 0. No audit/run ID or fresh production report exists yet.
-- No direct worker bypass was used; no rerun, repair, redeploy, source edit, provider call, model call, or evidence collection occurred after the browser boundary blocked.
-- No known client-report content, scoring, navigation, duplication, security/header-policy, Supporting Detail language, deployment-identity, or release-gate blocker remains.
-- Historical persisted-artifact mismatch remains recorded: some earlier local artifacts lacked a previously observed live LCP finding. Do not synthesize or transplant evidence. The fresh production confirmation must prove the deployed candidate against current production evidence.
+- RELEASE CONFIRMATION BLOCKER: the single fresh production audit is stalled at `scored` and has not advanced to narrative generation/finalization.
+- No post-scoring continuation is recorded for this audit.
+- The underlying trigger for the missing continuation is not yet proven from the available read-only evidence.
+- Fresh production report does not yet exist, so final live report verification remains blocked.
+- No source edit, redeploy, restart, rerun, configuration change, direct worker bypass, manual Writer/Judge call, or second audit has occurred.
+- Historical persisted-artifact mismatch remains recorded: some earlier local artifacts lacked a previously observed live LCP finding. Do not synthesize or transplant evidence. Final verification must use only this fresh audit if safely recoverable.
 
 Important constraints:
-- Do not republish, redeploy, edit, merge, rebase, cherry-pick, or change configuration. GitHub main, Railway production, and Vercel production already resolve to exact candidate `60169bf23eec37c29683937d459d7d96f82aba73`.
-- Do not bypass the authenticated browser/Vercel same-origin production entry path by calling the Railway worker directly.
-- The fresh production confirmation must be exactly one governed TBK production audit. No open-ended reruns or repair cycles.
-- If the fresh production confirmation exposes a new material defect, preserve evidence and STOP before repair.
-- Do not reopen Pages 1–6, Technical Health mathematics, header policy, or Supporting Detail language cleanup without direct fresh-production regression proof.
-- Preserve UNKNOWN/PARTIAL semantics, evidence authority, canonical solution linkage, competitor boundaries, and Writer/Judge governance.
-- The fresh report may legitimately differ from the old persisted/offline 81/85 scores because current evidence may differ. Judge correctness from fresh evidence under scoring version 4.1.2, not from score equality.
-- When Codex is the exact next action, provide the complete execution-ready prompt automatically. The immediate next action is NOT Codex because Codex cannot provide the required authenticated browser surface in the blocked session.
+- Do not start another audit.
+- Do not rerun this audit or any stage until root cause is proven and a bounded recovery is explicitly authorized.
+- Do not restart Railway, redeploy, edit source, change configuration, or call Writer/Judge manually during diagnosis.
+- Do not bypass the normal production entry path.
+- Preserve audit `6dca53ed-ae00-484c-bf77-b59c059eef51` and its persisted evidence/scoring state.
+- Preserve exact application identity `60169bf23eec37c29683937d459d7d96f82aba73` across GitHub main, Railway, and Vercel.
+- If recovery can continue this exact audit without duplicating crawl/provider/model work, prefer that over creating a new audit.
+- If the only recovery requires a new audit or materially re-executing paid/provider/model stages, STOP for explicit authorization.
+- When Codex is the exact next action, provide the complete execution-ready prompt automatically.
 
-Exact next action: From a normal authenticated browser session on the live PRYSM production application, start exactly one fresh governed TBK Creative production audit through the normal UI. Do not trigger any second audit. When the run completes, capture the audit/run ID and resulting production report URL/identity and preserve the report. Then perform a read-only final-production verification against that one fresh report: exact deployed candidate identity, seven-page structure, scoring version 4.1.2, corrected Technical Health assessed-coverage semantics, zero client-visible SOL/VAN/governance/provider-mechanics/header terms, preserved UNKNOWN/PARTIAL/UNAVAILABLE semantics, evidence-qualified competitor language, and current LCP/performance treatment from the fresh evidence. If any material divergence appears, STOP without repair or rerun.
+Exact next action: Run one bounded read-only Codex diagnosis of the persistence/orchestration path from lifecycle state `scored` to narrative generation for audit `6dca53ed-ae00-484c-bf77-b59c059eef51`. Trace the exact code path, trigger/continuation mechanism, persisted fields, startup/recovery behavior, and conditions that should advance a scored audit into Writer/Judge/finalization. Compare those conditions with this audit's persisted record and production logs. Identify the first proven divergence only. Do not mutate production or execute recovery. Produce a proof artifact with the one smallest safe recovery option and whether it can resume this exact audit without new crawl/provider/model work.
 
 Last verified: 2026-09-13 America/Toronto
