@@ -4,7 +4,15 @@ Project: PRYSM
 
 ## Current objective
 
-Advance from completed Plane 6 deployment identity proof to the final Plane 7 end-to-end production confirmation for validated candidate `e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065`.
+Preserve the accepted PRYSM baseline before finishing-touch repair begins.
+
+## Accepted frozen application baseline
+
+- SHA: `60169bf23eec37c29683937d459d7d96f82aba73`
+- tag: `prysm-finishing-touches-baseline-2026-09-15`
+- later application SHA `0e4a97e68f19b974e7ef3dfdd1480cbc390d090b` exists but is not part of the accepted frozen baseline.
+- finishing-touch repair work must branch from the frozen baseline.
+- production remains unchanged.
 
 ## Closed proof planes
 
@@ -55,13 +63,11 @@ Runtime identity:
 
 ## Current checkpoint
 
-Checkpoint: `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
-
-Plane 6 is closed PASS. Do not reopen earlier planes unless Plane 7 exposes a new material failure.
+Checkpoint: `ACCEPTED_PRYSM_BASELINE_FROZEN`.
 
 ## Exact next action
 
-Obtain separate authorization for exactly one final end-to-end production confirmation under Plane 7. That run may confirm production behavior only; it must not become an open-ended discovery or repair loop. If it exposes a material defect, preserve the evidence and return to diagnosis rather than calling the release gate closed.
+Create the finishing-touch repair branch from the frozen baseline and run the whole-system authority audit before implementation.
 
 ## Release-gate status
 
@@ -69,9 +75,8 @@ Obtain separate authorization for exactly one final end-to-end production confir
 - Plane 4: PASS.
 - Plane 5: PASS.
 - Plane 6: PASS.
-- Current state: `READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION`.
-- Plane 7: PENDING SEPARATE AUTHORIZATION.
+- Current state: `ACCEPTED_PRYSM_BASELINE_FROZEN`.
 
-No additional production audit, Final Narrative Pass, crawl/recollection, rescore, or repair is authorized until the separate Plane 7 authorization is given.
+Production is unchanged. No implementation has begun.
 
 Last verified: 2026-09-13 America/Toronto
