@@ -1,63 +1,45 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "READY_FOR_ONE_AUTHORIZED_LIVE_VALIDATION",
-  "status": "PLANE6_PASS_PLANE7_AUTHORIZATION_REQUIRED",
+  "checkpoint": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
+  "status": "PLANE7_FAIL_TENANT_IDENTITY_BOUNDARY",
   "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
   "plane3": {"status": "PASS"},
   "plane4": {"status": "PASS"},
   "plane5": {"status": "PASS"},
   "plane6": {
     "status": "PASS",
-    "github": {
-      "repository": "chriskulbaba2025/vantage-platform",
-      "branch": "main",
-      "sha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065"
-    },
-    "vercel": {
-      "deploymentId": "dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz",
-      "state": "READY",
-      "target": "production",
-      "gitSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065"
-    },
-    "railway": {
-      "projectId": "9dfaead1-79d7-4582-9c58-0999a1d07b84",
-      "environment": "production",
-      "service": "vantage-platform",
-      "deploymentId": "18397ad7-00f4-4deb-86a1-d987e6915735",
-      "status": "SUCCESS_RUNNING",
-      "commitHash": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-      "health": "PASS_HTTP_200"
-    },
-    "runtime": {
-      "llmMode": "live",
-      "narrativeV2Enabled": true,
-      "writerModel": "gpt-5.6-terra",
-      "judgeModel": "gpt-5.6-sol",
-      "maxInputTokens": 120000,
-      "writerMaxOutputTokens": 12000,
-      "judgeMaxOutputTokens": 8000,
-      "writerPromptVersion": "2.4.0",
-      "writerOutputVersion": "1.0.0",
-      "judgePromptVersion": "2.1.0",
-      "judgeContractVersion": "1.1.0",
-      "writerValidatorSha256": "5F7C4606B4546023A75BE9B1A434FD9B525CFFC61F7F869DE5AC730C40DFD5AC",
-      "judgeValidatorSha256": "7F46E29421174B5DCB34E49A548C2C996516B066875731A07BA5A386358483B3"
-    }
+    "githubSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
+    "vercelDeploymentId": "dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz",
+    "vercelGitSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
+    "railwayDeploymentId": "18397ad7-00f4-4deb-86a1-d987e6915735",
+    "railwayCommitHash": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
+    "health": "PASS_HTTP_200",
+    "writerModel": "gpt-5.6-terra",
+    "judgeModel": "gpt-5.6-sol"
   },
-  "authorization": {
-    "plane7": "NOT_AUTHORIZED",
-    "productionAuditResume": "NOT_AUTHORIZED_UNTIL_PLANE7_EXPLICIT_AUTHORIZATION",
-    "finalNarrativePass": "NOT_AUTHORIZED",
-    "crawlRecollectionRescore": "NOT_AUTHORIZED"
+  "plane7": {
+    "status": "FAIL",
+    "classification": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
+    "auditId": "6c55141f-30e7-41c1-bede-19f7ebd7202b",
+    "executionId": "81b9f7a5-b810-4b41-b7ef-ee6c71f47862",
+    "requestedTenant": "omnipressence",
+    "returnedTenantId": "default",
+    "lastObservedLifecycle": "collecting",
+    "writerCallsObserved": 0,
+    "judgeCallsObserved": 0,
+    "additionalAuditRuns": 0,
+    "repairOrRerun": false,
+    "failure": "Production tenant identity did not hold: x-prysm-tenant=omnipressence resolved to tenantId=default. The audit remained collecting and downstream scoring/Writer/Judge/finalization/rendering were not reached.",
+    "evidencePreservation": "Preserve failed audit as immutable evidence; do not repair or rerun under the expired authorization."
   },
-  "nextAction": "Obtain separate explicit authorization for exactly one final Plane 7 end-to-end production confirmation. If that confirmation exposes a new material failure, preserve it and return to diagnosis; otherwise close the post-deployment release checkpoint.",
+  "nextAction": "Diagnose the production tenant identity propagation boundary that maps x-prysm-tenant=omnipressence to persisted/returned tenantId=default, using audit 6c55141f-30e7-41c1-bede-19f7ebd7202b as immutable reproduction evidence. Stop at root-cause proof before any source edit.",
   "releaseGate": {
     "plane3": "PASS",
     "plane4": "PASS",
     "plane5": "PASS",
     "plane6": "PASS",
-    "plane7": "PENDING_SEPARATE_AUTHORIZATION"
+    "plane7": "FAIL"
   },
   "lastVerified": "2026-09-13 America/Toronto"
 }
