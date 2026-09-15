@@ -2,21 +2,23 @@
 
 Project: PRYSM
 
-Current objective: Preserve the accepted PRYSM baseline before finishing-touch repair begins.
+Current objective: Run the whole-system authority audit on the finishing-touch repair branch before any implementation.
 
 ## Accepted frozen application baseline
 
 - SHA: `60169bf23eec37c29683937d459d7d96f82aba73`
 - tag: `prysm-finishing-touches-baseline-2026-09-15`
+- finishing-touch repair branch: `repair/prysm-finishing-touches-2026-09-15`
+- repair branch verified to start exactly at frozen baseline SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
 - later application SHA `0e4a97e68f19b974e7ef3dfdd1480cbc390d090b` exists but is not part of the accepted frozen baseline.
-- finishing-touch repair work must branch from the frozen baseline.
 - production remains unchanged.
 
 Verified checkpoint:
 - Final whole-report release gate: PASS.
 - Exact verified application candidate: `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Candidate branch: `review/prysm-solution-directive-authority-betty` (historical name only; Betty is not a PRYSM gate).
-- Candidate worktree: CLEAN.
+- Finishing-touch repair branch: `repair/prysm-finishing-touches-2026-09-15`, created from and verified at exact SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
+- Candidate worktree: CLEAN at the frozen checkpoint; local repair-branch worktree must be re-verified by the authority audit before implementation.
 - Pages 1–6: CLOSED.
 - Supporting Detail client-language cleanup: CLOSED.
 - Scoring version: 4.1.2.
@@ -54,12 +56,14 @@ Completed:
 - Production configuration check: PASS — production environment, Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, live LLM mode, Narrative v2 enabled, tenant `default`, no configuration changes.
 - The authorized browser entry boundary was exercised successfully for the single fresh production audit. Lifecycle reached: created → validated → collecting → evidence_stored → evidence_locked → scored.
 - Read-only stall diagnosis: Railway CLI access PASS; worker health PASS; persisted state recheck remained `scored` with unchanged `updatedAt`; no audit-specific post-scoring log event was found; no Writer/Judge/narrative/finalization/report-persistence/rendering error was observed for this audit.
+- Finishing-touch repair branch creation: PASS. GitHub branch `repair/prysm-finishing-touches-2026-09-15` exists and points exactly to frozen baseline SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
 
 In progress:
-- Root-cause diagnosis at the scored-to-narrative handoff for audit `6dca53ed-ae00-484c-bf77-b59c059eef51`.
+- Whole-system authority audit on `repair/prysm-finishing-touches-2026-09-15` before any finishing-touch implementation.
 
 Blocked:
-- RELEASE CONFIRMATION BLOCKER: the single fresh production audit is stalled at `scored` and has not advanced to narrative generation/finalization.
+- Finishing-touch implementation is blocked until the whole-system authority audit completes and freezes the permitted repair boundary.
+- RELEASE CONFIRMATION BLOCKER remains recorded independently: the single fresh production audit is stalled at `scored` and has not advanced to narrative generation/finalization.
 - No post-scoring continuation is recorded for this audit.
 - The underlying trigger for the missing continuation is not yet proven from the available read-only evidence.
 - Fresh production report does not yet exist, so final live report verification remains blocked.
@@ -67,16 +71,18 @@ Blocked:
 - Historical persisted-artifact mismatch remains recorded: some earlier local artifacts lacked a previously observed live LCP finding. Do not synthesize or transplant evidence. Final verification must use only this fresh audit if safely recoverable.
 
 Important constraints:
+- Do not implement finishing-touch changes until the whole-system authority audit is complete and the bounded change scope is frozen.
+- The authority audit is read-only: no source/test/config edits, commits, pushes, deployments, provider/model calls, production mutation, or new audit execution.
 - Do not start another audit.
 - Do not rerun this audit or any stage until root cause is proven and a bounded recovery is explicitly authorized.
 - Do not restart Railway, redeploy, edit source, change configuration, or call Writer/Judge manually during diagnosis.
 - Do not bypass the normal production entry path.
 - Preserve audit `6dca53ed-ae00-484c-bf77-b59c059eef51` and its persisted evidence/scoring state.
-- Preserve exact application identity `60169bf23eec37c29683937d459d7d96f82aba73` across GitHub main, Railway, and Vercel.
+- Preserve exact accepted baseline identity `60169bf23eec37c29683937d459d7d96f82aba73`.
 - If recovery can continue this exact audit without duplicating crawl/provider/model work, prefer that over creating a new audit.
 - If the only recovery requires a new audit or materially re-executing paid/provider/model stages, STOP for explicit authorization.
 - When Codex is the exact next action, provide the complete execution-ready prompt automatically.
 
-Exact next action: Create the finishing-touch repair branch from the frozen baseline and run the whole-system authority audit before implementation.
+Exact next action: Run the read-only whole-system authority audit on `repair/prysm-finishing-touches-2026-09-15` at exact starting SHA `60169bf23eec37c29683937d459d7d96f82aba73`; produce the governed proof artifact and STOP before implementation so the repair boundary can be reviewed and frozen.
 
-Last verified: 2026-09-13 America/Toronto
+Last verified: 2026-09-15 America/Toronto
