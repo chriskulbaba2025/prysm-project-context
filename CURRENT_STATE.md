@@ -2,60 +2,60 @@
 
 Project: PRYSM
 
-Current objective: Diagnose and disposition the CR-43 full-render golden/hash failure caused by the intentional print-CSS repair before any test-contract edit or Chromium acceptance run.
+Current objective: Preserve restored stable production at `60169bf23eec37c29683937d459d7d96f82aba73`, use the finishing-touch branch only in the isolated localhost sandbox, and validate a safe localhost audit-execution path before Chris runs a new manual test audit. After localhost testing is complete, resume the held CR-43 print-contract diagnosis.
 
 Verified checkpoint:
 - Accepted frozen application baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Frozen baseline tag remains `prysm-finishing-touches-baseline-2026-09-15`.
 - Finishing-touch branch is `repair/prysm-finishing-touches-2026-09-15`.
-- Production remains unchanged at the accepted frozen baseline.
-- Finishing-touch implementation remains presentation-only.
-- The frozen one-file print repair was applied locally only in `services/worker/src/report/render-report-v2.js` with exactly three removals: direct `page-break-inside:avoid;`, direct `break-inside:avoid;`, and `.content-opportunity-card,` from the explicit print group.
-- Syntax/import checks PASS.
-- Targeted CSS assertions PASS.
-- Required presentation regression stopped at CR-43 with 111 PASS / 1 FAIL in `src/report/render-report-v2-conversion.test.js`.
-- CR-43 is a full rendered-report SHA freeze across the foundation branch matrix. Direct source inspection confirms it hashes complete rendered HTML for every branch against frozen golden hashes.
-- Because the authorized repair intentionally changes renderer CSS embedded in full rendered HTML, CR-43 necessarily changes hashes across branches even when no semantic/content regression exists. The current acceptance contract that simultaneously requires the CSS change and unchanged full-render hashes is therefore contradictory.
-- No test, fixture, golden, snapshot, matrix, governance, or generated artifact was edited by Builder.
-- Chromium acceptance was correctly NOT RUN after the regression stop condition fired.
-- Provider/model calls: 0. Audit runs: 0. Production mutations: 0. Commits/pushes/deployments: 0.
-- Active durable process decision remains `DECISION_PRYSM_PRESENTATION_BASELINE_TEST_CONTRACT_GATE_2026-09-15.md`.
+- Production was restored to the frozen baseline on both Vercel and Railway.
+- Vercel production target: SHA `60169bf23eec37c29683937d459d7d96f82aba73`, deployment `dpl_66RQhYL8Ri9hr7VN5MyHAk9YNBeV`, production aliases healthy.
+- Railway production worker restored to SHA `60169bf23eec37c29683937d459d7d96f82aba73`; `/health` returned HTTP 200.
+- Cross-system production identity after restore: PASS.
+- Production exposure of finishing-touch candidate: NONE.
+- Current finishing-touch work remains local/uncommitted on `repair/prysm-finishing-touches-2026-09-15`.
+- Local frontend is available at `http://127.0.0.1:19400/`.
+- Local login is available at `http://127.0.0.1:19400/login` using the local mock identity only.
+- Local worker is safely bound to `127.0.0.1:19350` through the local-only `VANTAGE_BIND_HOST` path; production default remains `0.0.0.0` when unset.
+- Local dashboard history `GET /api/v1/audits` returns HTTP 200.
+- Local persistent sandbox PASS: lifecycle state uses an atomic JSON file-backed repository; reports/artifacts use local filesystem stores.
+- Local persistent data directory: `C:\Users\kulba\AppData\Local\PRYSM\sandbox\`.
+- Restart proof PASS: deterministic sandbox audit `33333333-3333-4333-8333-333333333333` survived worker restart and its report remained retrievable.
+- Dashboard history after restart: PASS.
+- Production isolation during localhost setup: PASS with 0 production Railway requests, 0 production Vercel requests, 0 production Cognito requests, 0 provider/model calls, 0 production database/storage mutations, 0 deployments, 0 pushes, and 0 commits.
+- Local-only source additions/changes currently include `services/worker/src/server.js`, `services/worker/src/lifecycle/local-memory-history.js`, and `services/worker/src/lifecycle/file-repository.js`; no production deployment contains these changes.
+- Existing governed finishing-touch/report modifications remain preserved in the local worktree.
+- The frozen one-file print repair remains locally applied in `services/worker/src/report/render-report-v2.js` and CR-43 remains unresolved/held.
 
 Completed:
 - Frozen finishing-touch baseline created and tagged.
-- Finishing-touch repair branch created from exact frozen baseline.
-- Whole-system authority audit completed.
-- Presentation-only implementation boundary frozen.
-- Presentation finishing-touch candidate implemented and prior stale baseline presentation contracts reconciled.
-- Required presentation suite previously reconciled to 135 PASS / 0 FAIL before this new print repair.
-- Governed parity, whole-system smoke, and independent audit passed for the prior finishing-touch candidate.
-- Browser-added print headers/footers proven to be browser decorations, not PRYSM report HTML.
-- Controlled Chromium one-variable experiment proved `.content-opportunity-card` print non-splitting behavior causal.
-- GACM/GCU PLAN + FREEZE completed with a one-file repair boundary.
-- Builder applied exactly the frozen CSS repair and stopped correctly at the first regression failure.
-- Read-only inspection of CR-43 confirms it freezes normalized full-render HTML SHA-256 values for every matrix branch, so an intentional shared CSS change invalidates those hashes by construction.
+- Production restored and verified at the frozen baseline on Vercel and Railway.
+- Finishing-touch candidate isolated from production.
+- Safe localhost frontend established.
+- Safe localhost loopback worker established.
+- Local mock dashboard login established without Cognito.
+- Local dashboard history repaired for the in-memory/local path without changing production lifecycle semantics.
+- Persistent localhost lifecycle/report/artifact storage implemented and restart-tested.
+- Local sandbox persistence and dashboard continuity verified.
 
 In progress:
-- GACM DIAGNOSE / PROVE for the CR-43 presentation-contract mismatch introduced by the intentional renderer CSS change.
+- Localhost functional test preparation: validate whether a manually initiated localhost audit can execute entirely within the isolated sandbox without touching production or live provider/model paths unless separately authorized.
 
 Blocked:
-- No test/golden edit is authorized until direct evidence proves the CR-43 differences are limited to the intended CSS delta across every affected branch and a bounded test-contract refresh is frozen.
-- Chromium acceptance remains on HOLD until the CR-43 contract is explicitly dispositioned and the exact presentation suite is green under the governed updated contract.
-- Push, deployment, main merge, Vercel promotion, Railway mutation, provider/model calls, fresh audit execution, and production mutation remain unauthorized.
+- Chris should not start a new localhost audit until the exact local audit execution path is verified and any live-provider behavior is explicitly classified/authorized.
+- CR-43 print-contract work remains on HOLD while localhost product testing takes priority.
+- Push, deployment, main merge, Vercel promotion, Railway mutation, and production mutation remain unauthorized for the finishing-touch candidate.
 
 Important constraints:
-- Preserve frozen baseline `60169bf23eec37c29683937d459d7d96f82aba73` and tag `prysm-finishing-touches-baseline-2026-09-15`.
-- Keep finishing-touch work presentation-only.
-- Preserve the current local print repair in `services/worker/src/report/render-report-v2.js`; do not revert or expand it while diagnosing CR-43.
-- Do not modify any test/golden/fixture/matrix until the CR-43 mismatch is proven to be only the intended renderer CSS delta and the contract update is separately frozen.
-- Do not modify `services/worker/src/report/report-detail-sections.js` or any unrelated source.
-- Do not modify scoring, findings, evidence, priorities, solution authority, lifecycle, persistence, orchestration, authentication, Writer/Judge governance, providers/adapters, or production plumbing.
-- Do not start a fresh audit or call providers/models.
-- Do not push, deploy, merge to application main, promote Vercel, mutate Railway, or change production.
-- Preserve unrelated print non-splitting behavior for `.card`, `.pillar`, `.priority-action`, conversion-journey selectors, supporting-detail selectors, and all other unrelated selectors.
-- Follow GACM diagnose → prove → freeze → repair → verify → challenge → smoke → process review.
-- Apply `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 and `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md`.
+- Keep production pinned to `60169bf23eec37c29683937d459d7d96f82aba73` until separately authorized.
+- Do not expose the finishing-touch branch to production.
+- Local sandbox must continue using loopback-only worker binding and local persistent stores.
+- Do not use production database, production S3/storage, production Cognito, production queues, production Railway, or production Vercel for localhost testing.
+- Preserve current local worktree; no reset, clean, stash, destructive restore, or branch switch.
+- Any local live provider/model/audit execution requires explicit verification and authorization before use.
+- Resume CR-43 only after the current localhost testing phase is complete or explicitly reprioritized.
+- Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 for any further source changes.
 
-Exact next action: Run a read-only CR-43 contract-difference proof that renders the frozen baseline and current repaired candidate across the exact CR-43 foundation matrix, proves every normalized HTML difference is exclusively the intended `.content-opportunity-card` CSS removal with no content/semantic/branch drift, records the resulting candidate hashes, and STOP before editing `render-report-v2-conversion.test.js` or any other test/golden file.
+Exact next action: Run a read-only localhost audit-execution path audit that traces the New Audit flow end-to-end, identifies every network/provider/model/persistence dependency that would execute, proves whether the current sandbox configuration can complete an audit safely, and STOP before actually starting a new audit. If the path is fully local/mock and isolated, authorize a single manual localhost test audit; otherwise identify the exact additional local-only configuration required.
 
 Last verified: 2026-09-16 America/Toronto
