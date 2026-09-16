@@ -2,60 +2,57 @@
 
 Project: PRYSM
 
-Current objective: Preserve restored stable production at `60169bf23eec37c29683937d459d7d96f82aba73`, use the finishing-touch branch only in the isolated localhost sandbox, and validate a safe localhost audit-execution path before Chris runs a new manual test audit. After localhost testing is complete, resume the held CR-43 print-contract diagnosis.
+Current objective: Preserve restored stable production at `60169bf23eec37c29683937d459d7d96f82aba73`, keep the finishing-touch branch isolated to localhost, and resume the held CR-43 print-contract diagnosis now that the localhost authoritative viewer path is restored and verified.
 
 Verified checkpoint:
 - Accepted frozen application baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Frozen baseline tag remains `prysm-finishing-touches-baseline-2026-09-15`.
 - Finishing-touch branch is `repair/prysm-finishing-touches-2026-09-15`.
-- Production was restored to the frozen baseline on both Vercel and Railway.
-- Vercel production target: SHA `60169bf23eec37c29683937d459d7d96f82aba73`, deployment `dpl_66RQhYL8Ri9hr7VN5MyHAk9YNBeV`, production aliases healthy.
-- Railway production worker restored to SHA `60169bf23eec37c29683937d459d7d96f82aba73`; `/health` returned HTTP 200.
-- Cross-system production identity after restore: PASS.
-- Production exposure of finishing-touch candidate: NONE.
+- Production remains restored and frozen at the accepted baseline on Vercel and Railway.
+- Vercel production target remains SHA `60169bf23eec37c29683937d459d7d96f82aba73`, deployment `dpl_66RQhYL8Ri9hr7VN5MyHAk9YNBeV`.
+- Railway production worker remains at SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
+- Production exposure of finishing-touch candidate remains NONE.
 - Current finishing-touch work remains local/uncommitted on `repair/prysm-finishing-touches-2026-09-15`.
-- Local frontend is available at `http://127.0.0.1:19400/`.
-- Local login is available at `http://127.0.0.1:19400/login` using the local mock identity only.
-- Local worker is safely bound to `127.0.0.1:19350` through the local-only `VANTAGE_BIND_HOST` path; production default remains `0.0.0.0` when unset.
-- Local dashboard history `GET /api/v1/audits` returns HTTP 200.
-- Local persistent sandbox PASS: lifecycle state uses an atomic JSON file-backed repository; reports/artifacts use local filesystem stores.
-- Local persistent data directory: `C:\Users\kulba\AppData\Local\PRYSM\sandbox\`.
-- Restart proof PASS: deterministic sandbox audit `33333333-3333-4333-8333-333333333333` survived worker restart and its report remained retrievable.
-- Dashboard history after restart: PASS.
-- Production isolation during localhost setup: PASS with 0 production Railway requests, 0 production Vercel requests, 0 production Cognito requests, 0 provider/model calls, 0 production database/storage mutations, 0 deployments, 0 pushes, and 0 commits.
-- Local-only source additions/changes currently include `services/worker/src/server.js`, `services/worker/src/lifecycle/local-memory-history.js`, and `services/worker/src/lifecycle/file-repository.js`; no production deployment contains these changes.
+- Local frontend remains `http://127.0.0.1:19400/` and local worker remains `http://127.0.0.1:19350/`.
+- Local persistent sandbox remains at `C:\Users\kulba\AppData\Local\PRYSM\sandbox\`.
+- Local dashboard history and restart persistence remain verified.
+- Deterministic localhost audit execution is verified with 0 DataForSEO, 0 PageSpeed/CRUX, 0 GA4/GSC, 0 model, 0 live-browser, 0 production Railway/Vercel/Cognito requests, and 0 production mutations.
+- Localhost report-viewer divergence root cause is VERIFIED as `WRONG_RENDERER_SELECTED`: the deterministic local audit retained report design `1.0.0`, which routed to the legacy v1 renderer instead of the governed v2 renderer.
+- Local-only repair applied in `services/worker/src/server.js`: inside the existing deterministic-local guard, the audit request now forces `report.designVersion = "2.0.0"`; normal/non-local behavior remains unchanged.
+- Fresh deterministic localhost audit `fa08468a-eed3-4cd2-a70d-9b49ac4035ba` reached `draft_rendered` and produced `report-v2/pages/index.html`.
+- Authoritative viewer restoration PASS: left sidebar present; 6/6 primary pages present in governed order; Supporting Detail present; Executive Scorecard present with scores; viewer navigation PASS; frontend report request HTTP 200.
+- Targeted v2 renderer verification: 50 passed, 0 failed.
+- Branch and HEAD remained unchanged through the repair proof: `repair/prysm-finishing-touches-2026-09-15` at `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Existing governed finishing-touch/report modifications remain preserved in the local worktree.
-- The frozen one-file print repair remains locally applied in `services/worker/src/report/render-report-v2.js` and CR-43 remains unresolved/held.
+- The frozen one-file print repair remains locally applied in `services/worker/src/report/render-report-v2.js`; CR-43 remains unresolved and is now the active next work item.
 
 Completed:
 - Frozen finishing-touch baseline created and tagged.
 - Production restored and verified at the frozen baseline on Vercel and Railway.
 - Finishing-touch candidate isolated from production.
-- Safe localhost frontend established.
-- Safe localhost loopback worker established.
-- Local mock dashboard login established without Cognito.
-- Local dashboard history repaired for the in-memory/local path without changing production lifecycle semantics.
-- Persistent localhost lifecycle/report/artifact storage implemented and restart-tested.
-- Local sandbox persistence and dashboard continuity verified.
+- Safe localhost frontend and loopback worker established.
+- Local mock login, dashboard history, persistent lifecycle/report/artifact storage, and restart continuity verified.
+- Deterministic local audit execution path verified safe and isolated.
+- Localhost authoritative v2 report viewer restored without changing production behavior.
+- Fresh local audit verified the existing governed viewer contract end to end.
 
 In progress:
-- Localhost functional test preparation: validate whether a manually initiated localhost audit can execute entirely within the isolated sandbox without touching production or live provider/model paths unless separately authorized.
+- CR-43 print-contract diagnosis for the existing locally applied one-file print repair in `services/worker/src/report/render-report-v2.js`.
 
 Blocked:
-- Chris should not start a new localhost audit until the exact local audit execution path is verified and any live-provider behavior is explicitly classified/authorized.
-- CR-43 print-contract work remains on HOLD while localhost product testing takes priority.
 - Push, deployment, main merge, Vercel promotion, Railway mutation, and production mutation remain unauthorized for the finishing-touch candidate.
+- No additional viewer redesign or renderer replacement is authorized; the authoritative viewer path is restored and should remain frozen unless new evidence proves a defect.
 
 Important constraints:
 - Keep production pinned to `60169bf23eec37c29683937d459d7d96f82aba73` until separately authorized.
 - Do not expose the finishing-touch branch to production.
+- Preserve the current local worktree; no reset, clean, stash, destructive restore, or branch switch.
 - Local sandbox must continue using loopback-only worker binding and local persistent stores.
 - Do not use production database, production S3/storage, production Cognito, production queues, production Railway, or production Vercel for localhost testing.
-- Preserve current local worktree; no reset, clean, stash, destructive restore, or branch switch.
-- Any local live provider/model/audit execution requires explicit verification and authorization before use.
-- Resume CR-43 only after the current localhost testing phase is complete or explicitly reprioritized.
+- Any live provider/model execution requires separate explicit verification and authorization.
+- Preserve the restored v2 viewer contract: left sidebar, six primary pages, Supporting Detail, Executive Scorecard scores, and existing navigation behavior.
 - Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 for any further source changes.
 
-Exact next action: Run a read-only localhost audit-execution path audit that traces the New Audit flow end-to-end, identifies every network/provider/model/persistence dependency that would execute, proves whether the current sandbox configuration can complete an audit safely, and STOP before actually starting a new audit. If the path is fully local/mock and isolated, authorize a single manual localhost test audit; otherwise identify the exact additional local-only configuration required.
+Exact next action: Resume CR-43 with a read-only print-contract diagnosis against the current local `services/worker/src/report/render-report-v2.js` and the already-generated authoritative v2 localhost artifact. Prove the first divergence between browser presentation and print/PDF output before making any additional source change.
 
 Last verified: 2026-09-16 America/Toronto
