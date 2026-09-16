@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Prove the root cause of the remaining print/PDF pagination defects in the finishing-touch candidate before any print-CSS repair.
+Current objective: Freeze the smallest coherent source-only print repair boundary for the proven Content Opportunities pagination defect before any Builder edit.
 
 Verified checkpoint:
 - Accepted frozen application baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -21,7 +21,10 @@ Verified checkpoint:
 - Provider/model calls: 0.
 - New audit runs: 0.
 - Pushes/deployments/production changes: 0.
-- GACM process repair identified and closed the pre-Builder weakness that allowed stale presentation tests to be discovered after implementation.
+- GACM controlled Chromium A/B experiment proved the Content Opportunities print-pagination defect is caused by the print-only non-splitting rule on `.content-opportunity-card` (`break-inside: avoid` / `page-break-inside: avoid`).
+- Proof source artifact: `C:\Users\kulba\Downloads\prysm-step4-changed-renderer-output\assessed.html` SHA-256 `DA98C799DF669C9007EDD5C5F88DE950D4A95A3E578908ED745F2592B7A14B51`.
+- With all other Chromium print inputs held constant, overriding only `.content-opportunity-card` to `break-inside:auto !important; page-break-inside:auto !important;` changed the PDF from 9 pages to 7 and allowed card 1 to begin on page 3 instead of being forced wholly to page 4.
+- Screen content parity: PASS. Print content parity: PASS. Repository mutations during experiment: 0. Provider/model calls: 0.
 - Active durable process decision: `DECISION_PRYSM_PRESENTATION_BASELINE_TEST_CONTRACT_GATE_2026-09-15.md`.
 
 Completed:
@@ -37,15 +40,15 @@ Completed:
 - Independent audit confirmed no unauthorized scoring, evidence, lifecycle, persistence, orchestration, Writer/Judge, fixture, production, or deployment changes.
 - Seven changed-renderer report PDFs were reviewed manually. Browser/screen presentation is acceptable; remaining visible defects are print/PDF pagination and print-density issues.
 - Browser-added print headers/footers (date/time, localhost URL, page number) are proven browser print decorations, not PRYSM report HTML.
-- Print source inspection identified `break-inside: avoid` / `page-break-inside: avoid` rules as leading suspects, especially on `.content-opportunity-card` and broad report/card selectors.
-- Print-pagination root cause remains NOT PROVEN because no controlled Chromium before/after override comparison has yet been executed.
+- Controlled Chromium one-variable experiment completed outside the repositories.
+- Root cause for the Content Opportunities pagination defect is PROVEN: `.content-opportunity-card` print non-splitting behavior is causal.
 
 In progress:
-- GACM diagnose/prove stage for print/PDF pagination.
+- GACM PLAN + FREEZE stage for the smallest coherent source-only print repair boundary.
 
 Blocked:
-- No print-CSS repair is authorized until one causal print-pagination rule is proven by controlled browser comparison.
-- Final visual GACM gate remains HOLD only for real-browser responsive/print verification; deterministic/static report gates are green.
+- No Builder/source edit is authorized until the repair boundary, permitted/prohibited files, acceptance proof, negative proof, protected invariants, and stop conditions are frozen under GCU v2.1.0 / PRYSM agent-role governance.
+- Final visual GACM gate remains HOLD pending repair plus real-browser responsive/print verification; deterministic/static report gates remain green.
 
 Important constraints:
 - Preserve frozen baseline `60169bf23eec37c29683937d459d7d96f82aba73` and tag `prysm-finishing-touches-baseline-2026-09-15`.
@@ -53,9 +56,10 @@ Important constraints:
 - Do not modify scoring, findings, evidence, priorities, solution authority, lifecycle, persistence, orchestration, authentication, Writer/Judge governance, providers/adapters, or production plumbing.
 - Do not start a fresh audit or call providers/models for presentation verification.
 - Do not push, deploy, merge to application main, promote Vercel, mutate Railway, or change production without separate explicit authorization.
-- Do not repair print CSS from suspicion alone; follow GACM diagnose → prove → freeze → repair → verify → challenge → smoke → process review.
-- Before any future PRYSM presentation Builder stage, apply `DECISION_PRYSM_PRESENTATION_BASELINE_TEST_CONTRACT_GATE_2026-09-15.md`.
+- Follow GACM diagnose → prove → freeze → repair → verify → challenge → smoke → process review.
+- Apply `DECISION_PRYSM_PRESENTATION_BASELINE_TEST_CONTRACT_GATE_2026-09-15.md` before Builder work.
+- Apply `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 and `DECISION_PRYSM_AGENT_ROLE_GOVERNED_CODING_2026-09-10.md` for any Codex/agent coding change.
 
-Exact next action: Run the controlled Chromium print-pagination experiment outside the repository using the unchanged changed-renderer artifact as baseline and a temporary copy with only `.content-opportunity-card { break-inside:auto !important; page-break-inside:auto !important; }` overridden; compare identical PDF print settings and STOP without repairing source unless causation is proven.
+Exact next action: Run a read-only GACM/GCU PLAN + FREEZE pass that locates the exact source selector(s) producing `.content-opportunity-card` print non-splitting behavior, freezes the smallest permitted/prohibited source/test boundary and acceptance/negative proof, and STOP before any edit unless that frozen repair boundary is complete and unambiguous.
 
-Last verified: 2026-09-15 America/Toronto
+Last verified: 2026-09-16 America/Toronto
