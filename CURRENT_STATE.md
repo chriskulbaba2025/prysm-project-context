@@ -2,77 +2,50 @@
 
 Project: PRYSM
 
-Current objective: Perform one comprehensive read-only whole-system staging blind-spot audit before any further repair, so the remaining PRYSM staging defects and latent risks are identified as a complete dependency-ordered register rather than discovered one at a time.
+Current objective: Complete Stage 2 staging identity continuity from the whole-system blind-spot audit, then resume the dependency-ordered repair queue.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Authoritative TBK audit ID: `6dca53ed-ae00-484c-bf77-b59c059eef51`.
 - Frozen recovered TBK dataset remains authoritative: 51/51 objects; zero frozen dataset writes.
-- Stage 1 report/presentation work is CLOSED — PASS.
-- Stage 2 local plumbing is CLOSED — PASS.
-- Exact candidate SHA: `68ff63266efe1f91212e27b62f97c394383146c5`.
-- Structured lifecycle migration to `prysm-stage2-staging` is PASS.
-- Railway worker attachment repair is PASS:
-  - service now runs `vantage-worker` / `node src/server.js`;
-  - startup log includes `Prysm worker listening on :3000`;
-  - `/health` returns HTTP 200 worker JSON;
-  - domain/service/port mapping is correct.
-- Pre-restart signed staging principal path previously passed:
-  - audit list HTTP 200;
-  - authoritative audit present;
-  - audit detail HTTP 200;
-  - report read HTTP 200.
-- Current proven blocker: staging identity repository is memory-backed and loses `prysm-stage2-staging`, the staging user, and reviewer membership on redeploy.
-- No second manual bootstrap is authorized yet.
 - Production remains frozen and untouched.
+- Whole-system blind-spot audit is complete.
+- Blind-spot audit identified one active staging blocker: memory-backed staging identity continuity across worker process replacement.
+- Repair branch: `repair/prysm-stage2-candidate-2026-09-18`.
+- Starting candidate for this repair: `68ff63266efe1f91212e27b62f97c394383146c5`.
+- Current repair candidate: `97435e9a51a7b880dd0a6691fb20e5b7d25eae27`.
+- Candidate diff from 68ff632 is bounded to:
+  - `services/worker/src/local/stage2-staging-identity-bootstrap.js` (new);
+  - `services/worker/src/local/stage2-staging-identity-bootstrap.test.js` (new);
+  - `services/worker/src/server.js` (startup wiring only).
+- The repair idempotently seeds exactly the isolated Stage 2 staging tenant/user/reviewer identity on worker startup.
+- The bootstrap is guarded by the existing non-production local-persistence composition and exact tenant `prysm-stage2-staging`; no generic self-registration and no admin role are introduced.
+- Accepted staging identity:
+  - tenant: `prysm-stage2-staging`;
+  - Cognito sub: `2408e438-0041-70dd-4a37-8709020a8068`;
+  - email: `prysm-stage2-browser-20260918@staging.invalid`;
+  - role: reviewer only.
+- Direct bootstrap proof: 2/2 targeted tests PASS for exact guard behavior and idempotent reviewer-only creation.
+- Railway auto-deploy status for exact candidate `97435e9a...`: FAIL.
+- Earlier staging candidates `d91432dc...` and `68ff632...` have Railway SUCCESS status, so the failed exact-candidate deployment must be diagnosed from its deployment logs before any further source change.
+- No evidence yet proves that the identity repair itself caused the Railway failure.
+- No production mutation, provider/model call, new audit, dataset write, Cognito mutation, or production deployment has occurred.
 
-Process correction:
-- Previous execution pattern stopped at the first material defect. That controlled mutation but caused remaining architectural blind spots to surface sequentially.
-- Before any further repair, PRYSM must now undergo one comprehensive read-only whole-system audit with NO stop-at-first-defect rule.
-- The audit must inventory all remaining defects, latent restart/deploy risks, configuration mismatches, untested boundaries, and staging-vs-production equivalence gaps in one pass.
-
-Required audit coverage:
-- application/source startup entry points;
-- Railway builder/root/start/domain/port/volume/runtime behavior;
-- all staging environment/config variables and restart persistence implications;
-- identity repository type, tenant/user/membership/bootstrap behavior, and restart survival;
-- lifecycle and artifact persistence;
-- authoritative audit registration/idempotency;
-- signed-principal authorization;
-- Cognito/session continuity;
-- Vercel Preview configuration and deployment protection;
-- frontend -> worker routing;
-- audit discovery/detail/report loading;
-- seven-section report viewer;
-- restart/redeploy survivability;
-- clean-deployment behavior;
-- staging-vs-production configuration and runtime differences;
-- any known or inferable dependency that could block final staging equivalence or later production promotion.
-
-Required output:
-- one defect register, not piecemeal repair;
-- each item classified as:
-  - VERIFIED GOOD;
-  - KNOWN BROKEN;
-  - LATENT RISK;
-  - NOT YET TESTABLE;
-- exact evidence for each item;
-- severity/impact without altering product state;
-- dependency order;
-- smallest repair boundary per defect;
-- one consolidated repair sequence;
-- no source/config/identity/lifecycle/dataset/deployment/browser mutation during the audit.
+Active blocker:
+- Exact Railway staging deployment for `97435e9a51a7b880dd0a6691fb20e5b7d25eae27` failed.
+- Railway deployment logs are required to classify build/start/health/runtime cause before another code or config repair.
+- Do not guess from source alone.
 
 Important constraints:
-- Read-only audit only.
-- Do not repair while auditing.
-- Do not stop at first defect.
-- Preserve exact candidate SHA `68ff63266efe1f91212e27b62f97c394383146c5`.
-- Preserve all 51 frozen audit objects.
 - Production remains frozen.
-- After the comprehensive audit is accepted, execute the repair queue in dependency order.
-- Use Terra Medium for the comprehensive mechanical/architectural audit; reserve Astra for final independent tip-to-tail adversarial acceptance after staging is fully green.
+- Preserve all 51 frozen audit objects.
+- Do not manually reprovision the staging identity again as a workaround.
+- Do not broaden into report/scoring/dataset work.
+- Do not change production Railway/Vercel/Cognito/Postgres/S3 configuration.
+- Use the existing isolated staging service only.
+- If Railway failure is external/configuration-only, repair only that exact staging deployment boundary.
+- If source is proven responsible, repair only the directly proven defect and rerun targeted + deployment verification.
 
-Exact next action: Start a fresh chat and run one read-only whole-system PRYSM staging blind-spot audit against the authoritative GitHub state and current isolated staging environment. Produce a consolidated defect register and repair sequence before authorizing any additional change.
+Exact next action: Use authenticated Codex/Railway CLI access to inspect the failed Railway deployment for exact candidate `97435e9a51a7b880dd0a6691fb20e5b7d25eae27`, deployment/status target ID `1519e757-edd5-45e8-b3e6-5f6e435f09de`, determine the exact build/start/health failure from logs, apply the smallest staging-only repair if required, then redeploy and prove: worker /health 200, staging tenant/user/reviewer present on startup, signed audit list/detail/report 200, one restart/redeploy, and the same checks pass again.
 
 Last verified: 2026-09-18 America/Toronto
