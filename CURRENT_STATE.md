@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Validate and complete the staging tenant-scope continuity repair for candidate `68ff63266efe1f91212e27b62f97c394383146c5`, then perform the one bounded staging lifecycle ownership migration and rerun browser equivalence without touching production.
+Current objective: Reconcile the stale local checkout to authoritative GitHub candidate `68ff63266efe1f91212e27b62f97c394383146c5`, then resume the already-authorized staging validation/migration/deploy flow without changing production.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -10,45 +10,42 @@ Verified checkpoint:
 - Frozen recovered TBK dataset remains authoritative: 51/51 objects; no dataset mutation authorized.
 - Stage 1 report/presentation work is CLOSED — PASS.
 - Stage 2 local plumbing is CLOSED — PASS.
-- Previous exact candidate before tenant-scope source repair: `d91432dc7dd63c222651cd676dbded9cc21e60d0`.
-- Tenant-scope root cause is proven: authoritative local registration was unconditionally bound to `local-sandbox`, while the authenticated staging principal is correctly scoped to `prysm-stage2-staging`.
-- ChatGPT applied the authorized bounded source repair directly on branch `repair/prysm-stage2-candidate-2026-09-18`.
-- New candidate SHA: `68ff63266efe1f91212e27b62f97c394383146c5`.
-- Parent SHA: `d91432dc7dd63c222651cd676dbded9cc21e60d0`.
-- Exact changed source files only:
+- Authoritative GitHub candidate branch: `repair/prysm-stage2-candidate-2026-09-18`.
+- Authoritative GitHub candidate SHA: `68ff63266efe1f91212e27b62f97c394383146c5`.
+- Candidate parent SHA: `d91432dc7dd63c222651cd676dbded9cc21e60d0`.
+- GitHub commit inspection proves candidate `68ff632...` changes exactly two files relative to parent:
   - `services/worker/src/server.js`;
   - `services/worker/src/local/authoritative-audit-registration.js`.
-- Diff scope verified: 2 files, 21 changed lines total (20 additions / 1 deletion).
-- Implemented source contract:
-  - local sandbox remains the default authoritative registration tenant;
-  - new explicit `PRYSM_LOCAL_AUTHORITATIVE_TENANT_ID` may select the isolated staging tenant;
-  - staging selection is accepted only when the requested tenant is exactly `prysm-stage2-staging` and matches configured `VANTAGE_TENANT_ID`;
-  - unsupported tenant values fail closed;
-  - lifecycle registration and artifact bridge continue to use one identical registered tenant.
-- No tests, Railway changes, Vercel changes, lifecycle metadata migration, restart, deployment, dataset mutation, production mutation, provider/model call, or fresh audit were performed by the chat-side source edit.
-- Existing staging resources remain as previously verified; production remains frozen.
+- Candidate GitHub diff contains only the bounded tenant-scope source repair: 20 additions / 1 deletion.
+- Local Codex checkout was stale:
+  - local HEAD remained `d91432dc7dd63c222651cd676dbded9cc21e60d0`;
+  - local working tree also held uncommitted versions of the two tenant-scope repair files;
+  - no reset/checkout/stash/clean was performed because exact-identity gate stopped safely.
+- The staging-completion proof incorrectly reported a four-file candidate diff; those four files are the prior cross-platform path-repair commit contents, not the actual `68ff632...` commit diff. GitHub authoritative commit inspection resolves this discrepancy.
+- No tests, lifecycle migration, Railway config, deployment, restart, browser rerun, dataset mutation, or production mutation occurred during the blocked local run.
 
 Completed:
 - Tenant-scope diagnosis and repair-boundary freeze.
-- Bounded two-file source repair committed and published to the existing candidate branch.
-- Before/after GitHub diff scope verification.
+- Bounded two-file source repair committed to GitHub.
+- GitHub authoritative commit diff re-verification after local identity HOLD.
 
 In progress:
-- None. Candidate source change is awaiting local regression validation and staging-only lifecycle ownership migration.
+- None. Local checkout reconciliation is the next mechanical action.
 
 Blocked:
-- Staging browser path still cannot discover the frozen audit until the existing staging lifecycle record for audit `6dca53ed-ae00-484c-bf77-b59c059eef51` is migrated from `local-sandbox` to `prysm-stage2-staging` and the repaired worker is deployed.
-- The new candidate has not yet been test-validated or deployed.
+- Local validation cannot proceed until the local branch is reconciled to exact GitHub candidate `68ff63266efe1f91212e27b62f97c394383146c5` without losing unrelated local evidence/work.
+- Staging browser path remains uncompleted until tests, lifecycle ownership migration, staging env config, deploy, and browser rerun pass.
 - Production remains frozen.
 
 Important constraints:
-- Preserve all 51 frozen audit objects byte-for-byte.
-- Preserve audit ID, client ID, recovered source tenant, lifecycle status, report content, scores, findings, evidence semantics, and seven-section viewer.
-- Do not create a duplicate audit identity.
-- Lifecycle migration must be staging-only and limited to this one audit.
-- Use Terra Medium for the mechanical validation/migration/deploy step; reserve Astra for the final independent tip-to-tail adversarial audit after staging is fully green.
+- Treat GitHub as authoritative for candidate identity.
+- Preserve any unrelated local untracked files; do not clean them.
+- Preserve the 51 frozen audit objects byte-for-byte.
+- Do not reconstruct the candidate from local uncommitted changes; fetch/check out the exact GitHub commit.
+- After reconciliation, require clean tracked state at exact HEAD before tests.
+- Use Terra Medium for mechanical reconciliation/validation; reserve Astra for final independent tip-to-tail adversarial audit after staging is fully green.
 - Do not use production Cognito/Railway/Postgres/S3/secrets/providers/models or start a fresh audit.
 
-Exact next action: Using Terra Medium, verify candidate SHA `68ff63266efe1f91212e27b62f97c394383146c5`, run the frozen local acceptance/regression suite, configure the isolated staging worker with `PRYSM_LOCAL_AUTHORITATIVE_TENANT_ID=prysm-stage2-staging`, back up and migrate only the target audit's lifecycle ownership in `/data/lifecycle.json` from `local-sandbox` to `prysm-stage2-staging`, redeploy the existing isolated Railway worker, and rerun the staging browser path. Stop at the first new material defect or complete PASS.
+Exact next action: In the local application repo, preserve unrelated untracked files, discard only the duplicate tracked tenant-scope working-tree edits after proving they match GitHub candidate `68ff632...`, fetch the branch, move local HEAD to exact `68ff63266efe1f91212e27b62f97c394383146c5`, verify tracked working tree clean and GitHub diff exactly two files vs parent, then resume the prior staging-completion procedure from local tests.
 
 Last verified: 2026-09-18 America/Toronto
