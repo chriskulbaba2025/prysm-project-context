@@ -2,57 +2,75 @@
 
 Project: PRYSM
 
-Current objective: Preserve restored stable production at `60169bf23eec37c29683937d459d7d96f82aba73`, keep the finishing-touch branch isolated to localhost, and resume the held CR-43 print-contract diagnosis now that the localhost authoritative viewer path is restored and verified.
+Current objective: Close local Stage 2 plumbing and prepare the accepted Stage 1 + Stage 2 local candidate for deployed/staging path-equivalence validation without touching production.
 
 Verified checkpoint:
-- Accepted frozen application baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
-- Frozen baseline tag remains `prysm-finishing-touches-baseline-2026-09-15`.
-- Finishing-touch branch is `repair/prysm-finishing-touches-2026-09-15`.
-- Production remains restored and frozen at the accepted baseline on Vercel and Railway.
-- Vercel production target remains SHA `60169bf23eec37c29683937d459d7d96f82aba73`, deployment `dpl_66RQhYL8Ri9hr7VN5MyHAk9YNBeV`.
-- Railway production worker remains at SHA `60169bf23eec37c29683937d459d7d96f82aba73`.
-- Production exposure of finishing-touch candidate remains NONE.
-- Current finishing-touch work remains local/uncommitted on `repair/prysm-finishing-touches-2026-09-15`.
-- Local frontend remains `http://127.0.0.1:19400/` and local worker remains `http://127.0.0.1:19350/`.
-- Local persistent sandbox remains at `C:\Users\kulba\AppData\Local\PRYSM\sandbox\`.
-- Local dashboard history and restart persistence remain verified.
-- Deterministic localhost audit execution is verified with 0 DataForSEO, 0 PageSpeed/CRUX, 0 GA4/GSC, 0 model, 0 live-browser, 0 production Railway/Vercel/Cognito requests, and 0 production mutations.
-- Localhost report-viewer divergence root cause is VERIFIED as `WRONG_RENDERER_SELECTED`: the deterministic local audit retained report design `1.0.0`, which routed to the legacy v1 renderer instead of the governed v2 renderer.
-- Local-only repair applied in `services/worker/src/server.js`: inside the existing deterministic-local guard, the audit request now forces `report.designVersion = "2.0.0"`; normal/non-local behavior remains unchanged.
-- Fresh deterministic localhost audit `fa08468a-eed3-4cd2-a70d-9b49ac4035ba` reached `draft_rendered` and produced `report-v2/pages/index.html`.
-- Authoritative viewer restoration PASS: left sidebar present; 6/6 primary pages present in governed order; Supporting Detail present; Executive Scorecard present with scores; viewer navigation PASS; frontend report request HTTP 200.
-- Targeted v2 renderer verification: 50 passed, 0 failed.
-- Branch and HEAD remained unchanged through the repair proof: `repair/prysm-finishing-touches-2026-09-15` at `60169bf23eec37c29683937d459d7d96f82aba73`.
-- Existing governed finishing-touch/report modifications remain preserved in the local worktree.
-- The frozen one-file print repair remains locally applied in `services/worker/src/report/render-report-v2.js`; CR-43 remains unresolved and is now the active next work item.
+- Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`; production was not touched during the current local work.
+- Local finishing-touch/sandbox work remains isolated from production.
+- Authoritative TBK audit ID: `6dca53ed-ae00-484c-bf77-b59c059eef51`.
+- Frozen recovered TBK dataset is complete and authoritative: 51/51 objects recovered, hashed, and reconciled with 0 missing, 0 mismatched, and 0 false-ABSENT classifications.
+- Stage 1 report/presentation work is CLOSED — PASS.
+- Accepted report invariants remain:
+  - Conversion Readiness 78/100.
+  - Trust & Proof 75/100.
+  - exactly 5 findings in the accepted order.
+  - mobile LCP 5.5s is a FINDING.
+  - PARTIAL / UNAVAILABLE evidence semantics preserved.
+  - seven client-facing report sections preserved.
+- Client-facing presentation consistency repair PASS.
+- Client traceability-language repair PASS: normal Supporting Detail is plain language; full technical traceability remains behind disclosure; 51/51 audit records preserved.
+- Clean PDF export PASS for all seven client PDFs with browser headers/footers and local file paths removed.
+- Stage 1 final report test-contract closure PASS: complete report suite 143 PASS / 0 FAIL.
+- Stage 2 initial local end-to-end plumbing validation correctly BLOCKED because the authoritative recovered audit existed only under the frozen `authoritative-audits` directory and was not registered in governed local lifecycle/artifact stores.
+- Stage 2 authoritative-audit registration repair PASS:
+  - local startup registers the authoritative audit read-only;
+  - dashboard exposes the target audit;
+  - target audit detail route returns 200;
+  - report opens through the normal application UI;
+  - application-served report is byte-identical to the frozen accepted Stage 1 report after removing only the known dashboard wrapper;
+  - restart persistence PASS;
+  - no duplicate mutable target artifact directory created;
+  - frozen authoritative dataset unchanged.
+- Registration/lifecycle/artifact checks PASS:
+  - authoritative registration 1/1;
+  - lifecycle 57/57;
+  - artifacts 106/106.
+- Stage 2 WP11 fixture-contract reconciliation PASS:
+  - stale WP11 fixture updated only to the current accepted ScoreSet/cross-report-interpretation/capability-evidence contract;
+  - `npm run test:wp11`: 62 PASS / 0 FAIL;
+  - registration 1/1 PASS;
+  - lifecycle 57/57 PASS;
+  - artifacts 106/106 PASS;
+  - no product/runtime behavior changed by the WP11 reconciliation.
+- No production deployment, production S3 access, paid audit, provider call, or model call occurred during these Stage 1/Stage 2 local closures.
 
 Completed:
-- Frozen finishing-touch baseline created and tagged.
-- Production restored and verified at the frozen baseline on Vercel and Railway.
-- Finishing-touch candidate isolated from production.
-- Safe localhost frontend and loopback worker established.
-- Local mock login, dashboard history, persistent lifecycle/report/artifact storage, and restart continuity verified.
-- Deterministic local audit execution path verified safe and isolated.
-- Localhost authoritative v2 report viewer restored without changing production behavior.
-- Fresh local audit verified the existing governed viewer contract end to end.
+- Full September 14 TBK production audit recovery and completeness reconciliation.
+- Report-input coverage diagnosis and canonical-model join repair.
+- Cross-report presentation consistency repair.
+- Clean PDF export path and proof.
+- Final client traceability-language repair.
+- Stage 1 stale test-contract reconciliation; report suite fully green.
+- Stage 2 local authoritative-audit registration bridge with read-only artifact access and restart continuity.
+- Stage 2 WP11 fixture-contract reconciliation.
+- Local Stage 2 plumbing is effectively CLOSED — PASS.
 
 In progress:
-- CR-43 print-contract diagnosis for the existing locally applied one-file print repair in `services/worker/src/report/render-report-v2.js`.
+- None. Local Stage 2 work is closed pending the next governed deployed/staging-equivalence gate.
 
 Blocked:
-- Push, deployment, main merge, Vercel promotion, Railway mutation, and production mutation remain unauthorized for the finishing-touch candidate.
-- No additional viewer redesign or renderer replacement is authorized; the authoritative viewer path is restored and should remain frozen unless new evidence proves a defect.
+- Deployment, production mutation, production S3 access, and fresh paid/provider/model execution remain unauthorized.
+- No deployed/staging equivalence claim has yet been made for the current accepted local candidate.
+- Production remains frozen at the accepted baseline until separately authorized.
 
 Important constraints:
-- Keep production pinned to `60169bf23eec37c29683937d459d7d96f82aba73` until separately authorized.
-- Do not expose the finishing-touch branch to production.
-- Preserve the current local worktree; no reset, clean, stash, destructive restore, or branch switch.
-- Local sandbox must continue using loopback-only worker binding and local persistent stores.
-- Do not use production database, production S3/storage, production Cognito, production queues, production Railway, or production Vercel for localhost testing.
-- Any live provider/model execution requires separate explicit verification and authorization.
-- Preserve the restored v2 viewer contract: left sidebar, six primary pages, Supporting Detail, Executive Scorecard scores, and existing navigation behavior.
-- Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 for any further source changes.
+- Preserve the accepted Stage 1 report semantics, scores, finding IDs/order, evidence states, seven-section viewer, and client-facing wording.
+- Preserve the frozen 51-object authoritative TBK dataset; no mutation or duplicate mutable source of truth.
+- Keep the authoritative local registration read-only and idempotent.
+- Keep production frozen and do not expose local finishing-touch work to production without explicit authorization.
+- Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0 for qualifying source changes.
+- Before any deployed-path work, recover exact application branch/worktree/candidate identity and do not infer a deployable SHA from chat history.
 
-Exact next action: Resume CR-43 with a read-only print-contract diagnosis against the current local `services/worker/src/report/render-report-v2.js` and the already-generated authoritative v2 localhost artifact. Prove the first divergence between browser presentation and print/PDF output before making any additional source change.
+Exact next action: Start the deployed/staging-equivalence phase with a READ-ONLY candidate-identity and deployment-path preflight. Recover the exact current `vantage-platform` branch, HEAD, dirty-worktree changes, and existing staging/deployment targets; determine the smallest governed path to freeze the accepted local candidate for staging equivalence. Do not deploy or mutate any environment during this preflight.
 
-Last verified: 2026-09-16 America/Toronto
+Last verified: 2026-09-18 America/Toronto
