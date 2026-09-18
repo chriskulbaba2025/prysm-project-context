@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Execute terminal Stage 2 staging tip-to-tail acceptance against the exact repaired candidate, then perform one independent adversarial release audit. Production remains a separate explicit authorization boundary.
+Current objective: Complete terminal Stage 2 staging real-browser acceptance in an environment with an available browser connection, then perform one independent adversarial exact-head release audit. Production remains a separate explicit authorization boundary.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -72,6 +72,8 @@ Important constraints:
 - Preserve exact screenshot/browser evidence for any demonstrated UI failure.
 - If terminal acceptance passes, proceed next only to the independent adversarial release audit. Production promotion remains separately authorized.
 
-Exact next action: Run one governed real-browser Stage 2 terminal staging acceptance against exact candidate `c22ee74647ad6c4e27a748051dadb304b586d175`, including one restart/reopen cycle and protected report invariant checks. Write one proof and stop. If PASS, the only remaining pre-production stage is the independent adversarial release audit.
+Terminal acceptance attempt result: BLOCKED by browser environment capability, not by a demonstrated application defect. The exact Vercel Preview for candidate `c22ee74647ad6c4e27a748051dadb304b586d175` was READY, but browser discovery returned no available browser connection. No UI acceptance item or restart/reopen cycle was executed, and no source/config/production state changed.
+
+Exact next action: Rerun the same real-browser terminal staging acceptance in ChatGPT Work Cloud Browser or another environment with an available authenticated browser connection, against the same exact candidate and Preview. If PASS before and after exactly one isolated staging restart, proceed only to the independent adversarial exact-head release audit.
 
 Last verified: 2026-09-18 America/Toronto
