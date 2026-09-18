@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Repair the isolated staging Railway service attachment so `prysm-stage2-worker` actually runs the worker process for exact candidate `68ff63266efe1f91212e27b62f97c394383146c5`, then re-run worker route and identity continuity checks before any further bootstrap or browser-equivalence work.
+Current objective: Perform one comprehensive read-only whole-system staging blind-spot audit before any further repair, so the remaining PRYSM staging defects and latent risks are identified as a complete dependency-ordered register rather than discovered one at a time.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -12,62 +12,67 @@ Verified checkpoint:
 - Stage 2 local plumbing is CLOSED — PASS.
 - Exact candidate SHA: `68ff63266efe1f91212e27b62f97c394383146c5`.
 - Structured lifecycle migration to `prysm-stage2-staging` is PASS.
-- Pre-restart staging identity bootstrap and signed-principal audit/detail/report path are PASS.
-- Latest staging redeploy:
-  - deployment ID `094591ab-0151-4846-aa66-44dbdfe0627a`;
-  - status SUCCESS;
-  - exact SHA `68ff63266efe1f91212e27b62f97c394383146c5`;
-  - volume `/data`.
-- Post-restart route diagnosis proves the configured Railway service is running the wrong application:
-  - project `prysm-stage2-staging-2026-09-18`;
-  - environment `staging`;
-  - service `prysm-stage2-worker`;
-  - public domain `prysm-stage2-worker-staging.up.railway.app` correctly maps to that service on port 3000;
-  - deployment metadata has `rootDirectory: null`, no explicit start command, Railpack builder;
-  - runtime logs show root app startup: `prysm-web@0.1.0 start`, `next start`, Next.js 14.2.35;
-  - worker startup marker `Prysm worker listening` is absent;
-  - `/health` and admin endpoints return Next.js 404 HTML.
-- Proven root cause classification: wrong application process behind correctly mapped worker service (classification F, manifested by C).
-- Disproven current causes:
-  - wrong URL;
-  - wrong domain-to-service mapping;
-  - wrong target port;
-  - custom-domain routing defect.
-- Smallest repair boundary: one staging-only Railway service build/runtime attachment repair so existing `prysm-stage2-worker` explicitly builds/runs the worker via `services/worker/Dockerfile` or equivalent explicit worker root/start configuration, while preserving current variables, volume, domain, and exact candidate SHA.
-- No source change is required by current diagnosis.
-- Post-restart identity continuity remains unproven until worker routes are restored.
-- Do not reprovision identity before worker routes are reachable.
+- Railway worker attachment repair is PASS:
+  - service now runs `vantage-worker` / `node src/server.js`;
+  - startup log includes `Prysm worker listening on :3000`;
+  - `/health` returns HTTP 200 worker JSON;
+  - domain/service/port mapping is correct.
+- Pre-restart signed staging principal path previously passed:
+  - audit list HTTP 200;
+  - authoritative audit present;
+  - audit detail HTTP 200;
+  - report read HTTP 200.
+- Current proven blocker: staging identity repository is memory-backed and loses `prysm-stage2-staging`, the staging user, and reviewer membership on redeploy.
+- No second manual bootstrap is authorized yet.
 - Production remains frozen and untouched.
 
-Completed:
-- Tenant-scope source repair.
-- Candidate reconciliation.
-- Full local validation.
-- Structured lifecycle migration.
-- Initial exact-SHA staging deployment.
-- Initial staging identity bootstrap.
-- Pre-restart signed-principal audit/detail/report validation.
-- Post-restart Railway route/runtime diagnosis.
+Process correction:
+- Previous execution pattern stopped at the first material defect. That controlled mutation but caused remaining architectural blind spots to surface sequentially.
+- Before any further repair, PRYSM must now undergo one comprehensive read-only whole-system audit with NO stop-at-first-defect rule.
+- The audit must inventory all remaining defects, latent restart/deploy risks, configuration mismatches, untested boundaries, and staging-vs-production equivalence gaps in one pass.
 
-In progress:
-- None.
+Required audit coverage:
+- application/source startup entry points;
+- Railway builder/root/start/domain/port/volume/runtime behavior;
+- all staging environment/config variables and restart persistence implications;
+- identity repository type, tenant/user/membership/bootstrap behavior, and restart survival;
+- lifecycle and artifact persistence;
+- authoritative audit registration/idempotency;
+- signed-principal authorization;
+- Cognito/session continuity;
+- Vercel Preview configuration and deployment protection;
+- frontend -> worker routing;
+- audit discovery/detail/report loading;
+- seven-section report viewer;
+- restart/redeploy survivability;
+- clean-deployment behavior;
+- staging-vs-production configuration and runtime differences;
+- any known or inferable dependency that could block final staging equivalence or later production promotion.
 
-Blocked:
-- Staging worker service is running Next.js instead of the worker process.
-- Post-restart identity continuity cannot be tested until worker routes are restored.
-- Browser-equivalence remains blocked.
-- Production remains frozen.
+Required output:
+- one defect register, not piecemeal repair;
+- each item classified as:
+  - VERIFIED GOOD;
+  - KNOWN BROKEN;
+  - LATENT RISK;
+  - NOT YET TESTABLE;
+- exact evidence for each item;
+- severity/impact without altering product state;
+- dependency order;
+- smallest repair boundary per defect;
+- one consolidated repair sequence;
+- no source/config/identity/lifecycle/dataset/deployment/browser mutation during the audit.
 
 Important constraints:
+- Read-only audit only.
+- Do not repair while auditing.
+- Do not stop at first defect.
 - Preserve exact candidate SHA `68ff63266efe1f91212e27b62f97c394383146c5`.
-- Preserve current staging variables, volume `/data`, and public domain.
-- Do not change source unless a new defect is directly proven.
-- Do not reprovision identity before route restoration.
-- Do not mutate lifecycle metadata, frozen dataset, report data, scoring, findings, or evidence.
-- After worker route restoration, first test `/health` and admin identity readback. If identity is absent, STOP and freeze persistent bootstrap-on-startup as next repair boundary.
-- Use Terra Medium for this bounded staging configuration repair; reserve Astra for final independent tip-to-tail audit after staging is fully green.
-- Do not touch production or start a fresh audit.
+- Preserve all 51 frozen audit objects.
+- Production remains frozen.
+- After the comprehensive audit is accepted, execute the repair queue in dependency order.
+- Use Terra Medium for the comprehensive mechanical/architectural audit; reserve Astra for final independent tip-to-tail adversarial acceptance after staging is fully green.
 
-Exact next action: Apply one staging-only Railway service configuration repair on `prysm-stage2-worker` so the service explicitly uses `services/worker/Dockerfile` or equivalent worker root/start configuration; redeploy exact candidate `68ff63266efe1f91212e27b62f97c394383146c5`; verify worker startup log and `/health`; then perform read-only identity readback before any reprovisioning. STOP at first new material defect.
+Exact next action: Start a fresh chat and run one read-only whole-system PRYSM staging blind-spot audit against the authoritative GitHub state and current isolated staging environment. Produce a consolidated defect register and repair sequence before authorizing any additional change.
 
 Last verified: 2026-09-18 America/Toronto
