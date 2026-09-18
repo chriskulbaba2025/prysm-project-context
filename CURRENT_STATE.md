@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Complete terminal Stage 2 staging real-browser acceptance in an environment with an available browser connection, then perform one independent adversarial exact-head release audit. Production remains a separate explicit authorization boundary.
+Current objective: Complete terminal Stage 2 staging acceptance through Chris's own browser against the exact READY Vercel Preview, then perform one independent adversarial exact-head release audit. Production remains a separate explicit authorization boundary.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -74,6 +74,6 @@ Important constraints:
 
 Terminal acceptance attempt result: BLOCKED by browser environment capability, not by a demonstrated application defect. The exact Vercel Preview for candidate `c22ee74647ad6c4e27a748051dadb304b586d175` was READY, but browser discovery returned no available browser connection. No UI acceptance item or restart/reopen cycle was executed, and no source/config/production state changed.
 
-Exact next action: Rerun the same real-browser terminal staging acceptance in ChatGPT Work Cloud Browser or another environment with an available authenticated browser connection, against the same exact candidate and Preview. If PASS before and after exactly one isolated staging restart, proceed only to the independent adversarial exact-head release audit.
+Exact next action: Use Chris's own browser for the terminal staging acceptance against the exact READY Preview `https://prysm-dnnp6voec-chriskulbabas-projects.vercel.app`. Verify login/session, dashboard, authoritative audit, audit detail, report viewer, and protected invariants. If the first browser path passes, perform exactly one isolated staging worker restart and repeat the essential browser path. If both passes succeed, proceed only to the independent adversarial exact-head release audit.
 
 Last verified: 2026-09-18 America/Toronto
