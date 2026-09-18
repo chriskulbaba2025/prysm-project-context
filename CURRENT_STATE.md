@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Resolve the isolated staging principal-to-worker authorization/membership handoff so exact candidate `d91432dc7dd63c222651cd676dbded9cc21e60d0` can complete the browser-equivalence flow without touching production.
+Current objective: Provision the isolated staging worker identity repository with the existing staging tenant, Cognito user, and reviewer membership so exact candidate `d91432dc7dd63c222651cd676dbded9cc21e60d0` can continue the browser-equivalence flow without touching production.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`; production was not touched during the current work.
@@ -19,27 +19,44 @@ Verified checkpoint:
   - service RUNNING;
   - `/health` HTTP 200;
   - authoritative audit registered read-only.
-- Vercel Preview environment attachment defect was repaired.
-- Latest Preview deployment:
+- Vercel Preview environment attachment is PASS:
   - deployment ID `dpl_7c8784qR4rGLyYrQY9V8NFTGRAmh`;
-  - URL `https://prysm-9w96g7f3p-chriskulbabas-projects.vercel.app`;
-  - exact Git ref `repair/prysm-stage2-candidate-2026-09-18`;
-  - exact SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0`;
-  - staging Cognito, worker URL, staging tenant, and staging-only webhook secret attached successfully.
-- Browser rerun progressed:
-  - Preview load PASS;
-  - staging login PASS;
-  - secure httpOnly `prysm_session` cookie issued;
-  - session persistence PASS after reload;
-  - no production endpoint observed.
-- New first material blocker:
-  - dashboard rendered `Unauthorized`;
-  - isolated Railway worker received `GET /api/v1/audits`;
-  - worker returned HTTP 401;
-  - failure boundary is staging Cognito/session principal -> worker audit authorization/membership handoff.
-- No membership repair, secret rotation, source edit, or second deployment was attempted after the 401.
-- Full browser equivalence remains incomplete; audit discovery, detail, report, viewer, persistence/reopen, and final report invariant checks were not run.
-- No source writes, source commits, production changes, production S3 access, provider/model calls, or new audits occurred during the rerun.
+  - exact branch/SHA attached;
+  - staging Cognito, worker URL, tenant, and webhook secret attached.
+- Browser path currently passes:
+  - Preview load;
+  - staging Cognito login;
+  - secure `prysm_session` issuance;
+  - session persistence;
+  - routing to isolated Railway worker.
+- Read-only bounded diagnosis of worker HTTP 401 completed — PASS.
+- Proven root cause:
+  - staging worker runs with `DATABASE_URL` absent, `VANTAGE_DEV_MEMORY_STORE=true`, and `PRYSM_LOCAL_PERSISTENCE=true`;
+  - deployed composition therefore uses an in-memory identity repository;
+  - startup seeds only local mock identity/tenant/membership;
+  - staging Cognito sub `2408e438-0041-70dd-4a37-8709020a8068` is absent from the Prysm identity repository;
+  - staging tenant `prysm-stage2-staging` is absent;
+  - target tenant membership list is empty;
+  - worker therefore returns unauthenticated/HTTP 401 before tenant selection or audit retrieval.
+- Ruled out as root cause:
+  - Cognito authentication;
+  - Vercel session issuance;
+  - HMAC principal construction/verification;
+  - shared-secret mismatch;
+  - browser tenant selection.
+- Direct evidence:
+  - internal secret authorization HTTP 200;
+  - seeded local mock principal -> `GET /api/v1/audits` HTTP 200 and authoritative audit returned;
+  - staging Cognito principal -> `GET /api/v1/audits` HTTP 401;
+  - `prysm-stage2-staging` memberships = [];
+  - tenant listing contains only `local-sandbox`.
+- Smallest frozen repair boundary: staging worker identity bootstrap/provisioning only.
+- Required staging bootstrap data:
+  - tenant: `prysm-stage2-staging`;
+  - Cognito sub: `2408e438-0041-70dd-4a37-8709020a8068`;
+  - verified staging email mapped to that sub;
+  - one active non-admin reviewer membership for that tenant.
+- No repair, membership mutation, secret/config change, deployment, production mutation, provider/model call, or fresh audit occurred during diagnosis.
 
 Completed:
 - September 14 TBK audit recovery and reconciliation.
@@ -50,24 +67,26 @@ Completed:
 - Cross-platform path repair.
 - Linux Railway startup/authoritative-registration validation.
 - Vercel Preview environment attachment repair.
-- Browser equivalence through successful staging login/session and routing to the isolated worker.
+- Browser equivalence through login/session and isolated worker routing.
+- Read-only worker authorization 401 diagnosis and repair-boundary freeze.
 
 In progress:
-- None. Awaiting a separate bounded decision/review for the staging principal-to-worker authorization/membership contract.
+- None. Awaiting explicit authorization for staging-only identity bootstrap/provisioning.
 
 Blocked:
-- Full deployed path equivalence is blocked at the worker authorization boundary: authenticated staging principal -> `GET /api/v1/audits` returns HTTP 401.
+- Full deployed path equivalence remains blocked because the staging Cognito identity is not initialized in the staging worker identity repository.
 - Production path equivalence and identity continuity are not claimed.
 - Production remains frozen.
 
 Important constraints:
-- Preserve exact candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0` unless direct evidence proves a source repair is required.
-- Diagnose the authorization/membership handoff before changing source, membership, secrets, or staging configuration.
-- Use lower-tier/mechanical model routing for bounded diagnosis/repairs; reserve Astra for the final independent tip-to-tail adversarial audit after the full staging path is green.
+- Preserve exact candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0` unless the authorized bootstrap mechanism itself requires a source change; prefer configuration/provisioning over source change if existing interfaces support it.
+- Scope any next repair strictly to staging identity bootstrap/provisioning for the existing isolated worker.
+- Create only the staging tenant, exact staging Prysm user identity, and one active reviewer membership needed for browser validation.
+- Do not alter Vercel session logic, Cognito pool/client/user, HMAC signing, webhook secret, frozen dataset, report path, or production resources.
+- Use lower-tier/mechanical model routing for this bounded repair; reserve Astra for the final independent tip-to-tail adversarial audit after staging is fully green.
 - Do not use production Cognito, Railway, Postgres, S3, secrets, providers, models, or start a fresh audit.
-- Stop at the first new material defect rather than entering open-ended repair.
 - Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0.
 
-Exact next action: Perform a READ-ONLY bounded diagnosis of the staging Cognito/session principal -> worker authorization/membership handoff for `GET /api/v1/audits`, identify the exact cause of the HTTP 401, freeze the smallest repair/configuration boundary, and do not mutate membership, secrets, source, or infrastructure yet.
+Exact next action: Obtain explicit bounded authorization to initialize only the isolated staging worker identity repository with tenant `prysm-stage2-staging`, staging Cognito sub `2408e438-0041-70dd-4a37-8709020a8068`, its verified staging email, and one active non-admin reviewer membership; verify `GET /api/v1/audits` returns 200 for that principal, then rerun the browser path from login and stop at the first new material defect or complete PASS.
 
 Last verified: 2026-09-18 America/Toronto
