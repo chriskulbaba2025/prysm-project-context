@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Repair the isolated Vercel Preview environment attachment so exact candidate `d91432dc7dd63c222651cd676dbded9cc21e60d0` receives the staging Cognito variables and staging worker binding, then rerun the full browser-equivalence path without touching production.
+Current objective: Resolve the isolated staging principal-to-worker authorization/membership handoff so exact candidate `d91432dc7dd63c222651cd676dbded9cc21e60d0` can complete the browser-equivalence flow without touching production.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`; production was not touched during the current work.
@@ -19,30 +19,27 @@ Verified checkpoint:
   - service RUNNING;
   - `/health` HTTP 200;
   - authoritative audit registered read-only.
-- First full staging browser-equivalence attempt completed with RESULT: BLOCKED.
-- Exact Vercel Preview attempt:
-  - project `prysm`;
-  - deployment ID `dpl_9q4QqV5ijfPTwJEQ2if7YUAmQHmv`;
-  - URL `https://prysm-ph6jrw9dg-chriskulbabas-projects.vercel.app`;
-  - status READY;
-  - candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0`.
-- Preview page load PASS after temporary protected-deployment access.
-- Browser login BLOCKED:
-  - POST `/api/auth/login` returned HTTP 500;
-  - Vercel runtime reported missing `COGNITO_USER_POOL_ID`, `COGNITO_CLIENT_ID`, and `COGNITO_REGION`;
-  - no session cookie was issued.
-- Proven root cause classification: deployed configuration / environment attachment defect.
-- Branch-scoped Preview staging variables had been configured, but the CLI-created deployment identified its Vercel Git ref as `HEAD`, so those branch-scoped variables did not attach at runtime.
-- Staging-only auth resources already exist:
-  - Cognito region `us-east-1`;
-  - staging-only user pool `us-east-1_ZYZ57LwIX`;
-  - staging-only app client `4f08gdm0k88lfu3cfhgvgietln`;
-  - staging-only test principal exists;
-  - production Cognito was not used.
-- Intended isolated worker binding is `https://prysm-stage2-worker-staging.up.railway.app`.
-- Browser flow stopped at first material defect; dashboard, audit discovery, detail, report, viewer, scores/findings semantics, and restart/reopen persistence were not run.
-- Browser network evidence showed only Preview/Vercel hosts and no production Railway endpoint.
-- No source writes, source commits, production mutations, production S3 access, provider/model calls, or new audit occurred during the blocked browser attempt.
+- Vercel Preview environment attachment defect was repaired.
+- Latest Preview deployment:
+  - deployment ID `dpl_7c8784qR4rGLyYrQY9V8NFTGRAmh`;
+  - URL `https://prysm-9w96g7f3p-chriskulbabas-projects.vercel.app`;
+  - exact Git ref `repair/prysm-stage2-candidate-2026-09-18`;
+  - exact SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0`;
+  - staging Cognito, worker URL, staging tenant, and staging-only webhook secret attached successfully.
+- Browser rerun progressed:
+  - Preview load PASS;
+  - staging login PASS;
+  - secure httpOnly `prysm_session` cookie issued;
+  - session persistence PASS after reload;
+  - no production endpoint observed.
+- New first material blocker:
+  - dashboard rendered `Unauthorized`;
+  - isolated Railway worker received `GET /api/v1/audits`;
+  - worker returned HTTP 401;
+  - failure boundary is staging Cognito/session principal -> worker audit authorization/membership handoff.
+- No membership repair, secret rotation, source edit, or second deployment was attempted after the 401.
+- Full browser equivalence remains incomplete; audit discovery, detail, report, viewer, persistence/reopen, and final report invariant checks were not run.
+- No source writes, source commits, production changes, production S3 access, provider/model calls, or new audits occurred during the rerun.
 
 Completed:
 - September 14 TBK audit recovery and reconciliation.
@@ -52,24 +49,25 @@ Completed:
 - Isolated Railway staging creation and frozen dataset transfer.
 - Cross-platform path repair.
 - Linux Railway startup/authoritative-registration validation.
-- First Vercel Preview/browser-equivalence attempt through the login boundary.
+- Vercel Preview environment attachment repair.
+- Browser equivalence through successful staging login/session and routing to the isolated worker.
 
 In progress:
-- None. Awaiting explicit authorization to repair only the Vercel Preview staging environment attachment and rerun.
+- None. Awaiting a separate bounded decision/review for the staging principal-to-worker authorization/membership contract.
 
 Blocked:
-- Full deployed path equivalence remains blocked at the staging auth/session boundary because the exact Preview deployment did not receive the configured staging Cognito variables.
+- Full deployed path equivalence is blocked at the worker authorization boundary: authenticated staging principal -> `GET /api/v1/audits` returns HTTP 401.
 - Production path equivalence and identity continuity are not claimed.
 - Production remains frozen.
 
 Important constraints:
-- Preserve exact candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0`; no source repair is indicated by current evidence.
-- Repair only the Preview environment attachment/deployment binding; do not modify application source.
-- Preview must receive the staging Cognito variables, staging tenant, staging webhook secret, and staging worker URL only.
+- Preserve exact candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0` unless direct evidence proves a source repair is required.
+- Diagnose the authorization/membership handoff before changing source, membership, secrets, or staging configuration.
+- Use lower-tier/mechanical model routing for bounded diagnosis/repairs; reserve Astra for the final independent tip-to-tail adversarial audit after the full staging path is green.
 - Do not use production Cognito, Railway, Postgres, S3, secrets, providers, models, or start a fresh audit.
-- Stop at the first new material deployed-path defect rather than entering open-ended repair.
+- Stop at the first new material defect rather than entering open-ended repair.
 - Follow GACM and `SKILLS/GOVERNED_CODING_UPGRADE.md` v2.1.0.
 
-Exact next action: Obtain explicit bounded authorization to correct the Vercel Preview environment/deployment attachment for exact candidate SHA `d91432dc7dd63c222651cd676dbded9cc21e60d0` so the runtime receives the existing staging Cognito variables, staging tenant/secret, and staging worker binding; then rerun the browser-equivalence flow from login and stop at the first material defect or a complete PASS. Do not promote to production.
+Exact next action: Perform a READ-ONLY bounded diagnosis of the staging Cognito/session principal -> worker authorization/membership handoff for `GET /api/v1/audits`, identify the exact cause of the HTTP 401, freeze the smallest repair/configuration boundary, and do not mutate membership, secrets, source, or infrastructure yet.
 
 Last verified: 2026-09-18 America/Toronto
