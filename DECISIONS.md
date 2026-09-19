@@ -513,3 +513,20 @@ The page reached the required client-facing quality threshold while improving di
 
 Implication:
 Do not redesign or add content to Priority Fixes unless explicitly reopened. Future implementation must source the three diagnostic checks deterministically and preserve the distinction between proven finding, common checks, and verified remedy. Production remains frozen. The next presentation-design target is Conversion Journey.
+
+
+---
+
+## Decision: Conversion Journey middle-road v4 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved middle-road Conversion Journey presentation represented by `prysm-conversion-journey-middle-road-v4.html`. Preserve the existing PRYSM shell and the approved page hierarchy: executive journey call; three journey stages with explicit evidence seen and status; three equal-weight friction cards with plain-language conversion impact; keep guidance; measurement boundary; and next-step sequence.
+
+Reason:
+The page reached the required client-facing quality threshold while clearly distinguishing observed journey evidence, likely conversion friction, business impact, and action. The design communicates a fixable middle-state journey without implying either that the site is healthy or that it requires a rebuild.
+
+Implication:
+Do not redesign or add content to this middle-road Conversion Journey state unless explicitly reopened. Future implementation must preserve evidence-safe language and deterministic state selection across strong, middle, and materially weak journey outcomes. Production remains frozen. The next presentation-design target is Content Opportunities.
