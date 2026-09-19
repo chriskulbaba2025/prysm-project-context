@@ -496,3 +496,20 @@ The approved mockup reached the required client-facing quality threshold after r
 
 Implication:
 Do not add content or redesign the Executive Scorecard. Any later implementation must reproduce the frozen design generically from audit data, without TBK-specific hard-coding. “Rebuild the whole site” must not be triggered casually by a score alone. Production remains frozen. The next presentation-design target is the second report page, Priority Fixes.
+
+
+---
+
+## Decision: Priority Fixes v2 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved Priority Fixes presentation represented by `prysm-priority-fixes-v2.html`. Preserve the existing PRYSM shell and the approved page hierarchy: primary instruction, three main priorities, each using What we know → Check these first → How to know it worked, with an explicit evidence guardrail, followed by two lower-priority cleanup items and the final work-order sequence.
+
+Reason:
+The page reached the required client-facing quality threshold while improving diagnostic usefulness without turning likely causes into asserted diagnoses.
+
+Implication:
+Do not redesign or add content to Priority Fixes unless explicitly reopened. Future implementation must source the three diagnostic checks deterministically and preserve the distinction between proven finding, common checks, and verified remedy. Production remains frozen. The next presentation-design target is Conversion Journey.
