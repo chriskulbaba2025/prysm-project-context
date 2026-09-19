@@ -660,3 +660,20 @@ The contract passed a multi-pass review gate. The original 15 core cases passed;
 
 Implication:
 Future implementation must conform to the frozen contract and must not create a second narrative-state engine. No raw finding may become a Priority Fix before whole-site mapping, relationship/materiality/duplicate/dependency review, and challenge. Critical blockers remain the explicit immediate-surfacing exception. Production remains frozen. The next governed work is implementation-boundary design only: map existing PRYSM evidence/finding surfaces to the frozen canonical model, identify exact application files and tests that would need change, prove that the seven-page narrative-state contract remains authoritative, and define the smallest coherent implementation tranche before any code is changed.
+
+
+---
+
+## Decision: Encyclopedia implementation uses autonomous GACM tranche execution
+
+Date: 2026-09-19
+Status: Active
+
+Decision:
+Authorize the PRYSM Conversion Friction Encyclopedia implementation to run as one locally autonomous Codex/GCU execution under the GACM control pattern after exact local authority is verified. The run begins with a read-only implementation-boundary tranche, then may continue automatically through bounded implementation tranches when the current tranche satisfies its frozen scope, proving tests, independent verification, affected-scope regression checks, and an evidence-backed quality-confidence floor of at least 97%. A failed test, independent-verifier FAIL/BLOCKED/UNOBSERVABLE result, unresolved major defect, authority mismatch, scope expansion, or protected release boundary overrides any numeric confidence estimate and prevents progression.
+
+Reason:
+The encyclopedia contract is frozen and has already passed adversarial contract review. Chris wants the implementation completed with minimal stop/start supervision while retaining GACM discipline: freeze before change, bounded units, one implementation owner, independent verification, scoped repair, re-verification, evidence preservation, and fail-closed progression. A numeric confidence floor is useful as an additional quality criterion but cannot replace deterministic evidence or independent PASS.
+
+Implication:
+Codex may autonomously perform local diagnosis, planning, implementation, local commits, testing, challenge, bounded repair, affected-scope re-verification, and final local whole-system acceptance on the exact PRYSM repair branch. Each tranche must produce evidence and may auto-continue only after independent PASS plus >=97% evidence-backed confidence. Up to three same-root repair attempts are allowed before mandatory diagnostic reset; the run must not game confidence or weaken tests. All generated proof/report artifacts must be written to `C:\Users\kulba\Downloads\`. The run may not push the local-only accepted baseline or implementation commits, merge, deploy, mutate production, call paid/live providers or models, start a production audit, or cross another explicit authorization boundary. Final output is a comprehensive completion report for human review before any promotion/release action.
