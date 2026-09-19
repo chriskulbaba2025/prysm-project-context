@@ -530,3 +530,20 @@ The page reached the required client-facing quality threshold while clearly dist
 
 Implication:
 Do not redesign or add content to this middle-road Conversion Journey state unless explicitly reopened. Future implementation must preserve evidence-safe language and deterministic state selection across strong, middle, and materially weak journey outcomes. Production remains frozen. The next presentation-design target is Content Opportunities.
+
+
+---
+
+## Decision: Content Opportunities v2 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved Content Opportunities presentation represented by `prysm-content-opportunities-v2.html`. Preserve the existing PRYSM shell and the approved page hierarchy: audit-derived content strengths; ranked opportunities with buyer question, rationale, creation guidance, funnel stage, and evidence confidence; hub-and-spoke planning; funnel architecture; plan → create → adapt → distribute → measure system; content-planning principles; evidence guardrail; and a restrained optional-support note naming Omnipressence.
+
+Reason:
+The page reached the strongest client-facing quality level in the current redesign. It demonstrates both audit authority and practical content-strategy expertise without collapsing the audit into a sales pitch.
+
+Implication:
+Do not redesign or add content to Content Opportunities unless explicitly reopened. Future implementation must preserve the distinction between audit findings and optional Omnipressence services, keep funnel/hub-spoke guidance as a planning layer rather than pretending the audit directly observed that architecture, and preserve evidence-confidence language. Production remains frozen. The next presentation-design target is Trust & Credibility.
