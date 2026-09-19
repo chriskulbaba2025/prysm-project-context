@@ -117,6 +117,17 @@ The operating sequence is mandatory:
 - Terminal states provide Windows desktop/audible notices for `READY_FOR_BRAD`, `BLOCKED`, and `CONTROLLER_FAILURE`; final controller state is written before notification and notification failure is non-fatal.
 - Governing decision: `DECISION_PRYSM_P_SCOPED_CONTINUOUS_BUILDER_AUTORUN_2026-09-05.md`.
 
+
+## Permanent no-placeholder account-access rule
+
+- When an instruction requires AWS SSO, AWS CLI profile selection, Railway account/workspace access, Vercel account/team access, GitHub account/repository access, or any other authenticated cloud/account context, never give Chris placeholders such as `YOUR-PROFILE-NAME`, `ACCOUNT_ID`, `ROLE_NAME`, `PROJECT_ID`, or similar stand-ins when the real value can be discovered.
+- Before giving the command, retrieve the authoritative current account details from the available source or run the shortest read-only discovery command needed to obtain them.
+- For AWS SSO specifically, provide the exact known profile name, AWS account identity, role/permission-set identity, region when relevant, and the exact `aws sso login --profile <real-profile>` command.
+- If the required exact value is not currently known, do not substitute a placeholder. First instruct/run discovery such as `aws configure list-profiles`, `aws sts get-caller-identity --profile <discovered-profile>`, or the equivalent authoritative lookup, then give the exact command using the discovered values.
+- Never ask Chris to manually replace a placeholder that the system can discover itself.
+- Do not print secrets, access keys, session tokens, passwords, or private credential material; exact account/profile/role identifiers are required, secret values are not.
+- This rule applies permanently to PRYSM operating instructions and should be followed before any future authenticated cloud action.
+
 ## Permanent diagnostic hygiene rule
 
 - Diagnostics must observe governed state; they must not contaminate governed state.
