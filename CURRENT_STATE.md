@@ -2,56 +2,47 @@
 
 Project: PRYSM
 
-Current objective: Convert the frozen seven-page PRYSM report redesign and frozen deterministic narrative-state contract into a governed report-layer implementation plan before any application-code change. Production remains frozen.
+Current objective: Perform the final rendered acceptance of the completed seven-page deterministic narrative-state implementation against frozen audit data before any production action. Production remains frozen.
 
 Verified checkpoint:
 - Accepted frozen application production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Authoritative TBK audit ID remains `6dca53ed-ae00-484c-bf77-b59c059eef51`.
-- Production remains frozen and untouched.
-- Stage 2 staging acceptance remains blocked by browser-environment capability, not by a demonstrated application defect; no acceptance repair is authorized inside this presentation work.
-- The approved client-facing report shell remains: existing sidebar, header, colours, typography, borders, spacing style, navigation, and seven report sections.
-- Executive Scorecard v6 design: FROZEN.
-- Priority Fixes v2 design: FROZEN.
-- Conversion Journey middle-road v4 design: FROZEN.
-- Content Opportunities v2 design: FROZEN.
-- Trust & Credibility v2 design: FROZEN.
-- Competitor Comparison v1 design: FROZEN.
-- Supporting Detail v2 design: FROZEN.
-- Deterministic seven-page narrative-state contract v1.0: FROZEN at `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`.
-- Allowed narrative states are exactly STRONG / MIDDLE / WEAK / INSUFFICIENT_EVIDENCE.
-- Governing sequence is frozen: evidence sufficiency → condition state → allowed narrative state → page-specific message → bounded action.
-- Evidence sufficiency states are SUFFICIENT / BOUNDED_PARTIAL / INSUFFICIENT / NOT_APPLICABLE.
-- AVAILABLE / PARTIAL / UNAVAILABLE / UNKNOWN semantics remain authoritative and cannot be improved downstream.
-- Missing evidence may not create either a positive or negative condition.
-- Strong / Middle / Weak messaging may not be selected from score, finding count, severity, competitor behavior, search demand, or missing evidence alone.
-- Cross-page consistency invariants are frozen; Executive Scorecard may not overrule contradictory underlying evidence, and Supporting Detail is the final traceability check.
-- Recommendation certainty may not exceed evidence certainty.
-- No narrative state, score, finding count, severity, or combination thereof automatically authorizes "rebuild the whole site."
-- Rebuild language is permitted only when a separate governed evidence-backed platform/architecture determination already proves material priority fixes cannot reasonably be achieved within the current site.
-- Fifteen false-certainty rejection cases are frozen as mandatory implementation acceptance checks.
-- TBK remains a design fixture only; no TBK-specific logic may be hard-coded into PRYSM.
-- The proposed common-cause library remains parked for later and is outside the current implementation tranche.
+- Seven-page deterministic narrative-state contract remains FROZEN at `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`.
+- Narrative-state implementation boundary audit: BOUNDARY_CONFIRMED.
+- Narrative-state implementation tranche: completed.
+- Final closure tranche: CLOSURE_PASS.
+- Final application repair-branch SHA: `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
+- Shared `deriveNarrativeStates()` producer is the sole active four-state classifier for the v2 seven-page report path.
+- Allowed narrative states remain exactly STRONG / MIDDLE / WEAK / INSUFFICIENT_EVIDENCE.
+- Allowed sufficiency states remain SUFFICIENT / BOUNDED_PARTIAL / INSUFFICIENT / NOT_APPLICABLE.
+- Governing sequence remains evidence sufficiency → condition state → allowed narrative state → page-specific message → bounded action.
+- All 15 frozen false-certainty rejection tests PASS.
+- Targeted narrative/render/viewer/canonical/conversion/sections verification: 123/123 PASS.
+- Conversion suite including CR-43 and CR-26: 52/52 PASS.
+- Dead competing v2 narrative helpers were removed and repository-wide duplicate-classifier search passed.
+- Frozen seven-page order is Executive Scorecard → Priority Fixes → Conversion Journey → Content Opportunities → Trust & Credibility → Competitor Comparison → Supporting Detail.
+- No evidence, scoring, provider, persistence, lifecycle, Writer/Judge, orchestration, auth, deployment, production, or protected v1 path changed.
+- Existing unrelated dirty worktree inventory was preserved.
+- A pre-existing protected-path test failure remains in `render-narrative-v2.js` test NARRATIVE-RENDER-06; it was not introduced or modified by this tranche and is not evidence of failure in the seven-page v2 narrative-state path.
+- Production remains untouched and frozen.
+- The proposed common-cause/problem library remains a separate future tranche and has not been implemented.
 
 In progress:
-- No application implementation has begun.
-- The next work is to map the frozen contract to the smallest existing report-layer producer/renderer/test boundary and define the exact governed implementation tranche.
-- No scoring thresholds are to be invented by the renderer; existing governed evidence/materiality/scoring truth must remain upstream.
+- Final rendered acceptance has not yet been performed against the frozen audit data.
+- No production-shaped or release-critical execution has been authorized or performed for this closure.
 
 Blocked:
-- Production implementation is intentionally blocked by the production freeze.
-- Application code changes are not yet authorized by this contract-freeze checkpoint.
-- Do not begin source edits until the implementation boundary identifies the exact files, inputs, outputs, and tests required without crossing into evidence, scoring, Writer/Judge, lifecycle, storage, provider, authentication, n8n, or orchestration logic.
+- Production promotion remains blocked until final rendered acceptance is completed and separately reviewed.
+- No deploy, main merge, provider/model call, new audit, or production mutation is authorized.
 
 Important constraints:
-- Presentation/report-layer only until an implementation tranche is explicitly authorized.
-- Preserve the frozen seven-page shell and page structures.
-- Do not add content to frozen pages unless explicitly reopened.
-- Do not modify evidence collection, provider/adaptor behavior, scoring logic/versions, lifecycle/state transitions, storage, canonical evidence plumbing, Writer/Judge governance, n8n, authentication, or orchestration as part of the report redesign.
-- Future implementation must be generic and deterministic across audits.
-- Every page must separate observed fact from inference, evidence coverage from condition, and recommendation from unproven cause.
+- Preserve the frozen seven-page shell, page structures, and narrative-state contract.
+- Do not reopen scoring, evidence semantics, Writer/Judge, provider, storage, lifecycle, auth, n8n, or orchestration during final rendered acceptance.
+- Final acceptance must verify actual rendered page content, page order, evidence limits, state selection, cross-page consistency, and rebuild guardrail behavior using frozen audit data.
+- Any acceptance defect must be classified before repair; do not broaden scope automatically.
+- All generated PRYSM proof/report artifacts must be written to `C:\\Users\\kulba\\Downloads\\` unless Chris explicitly specifies another path.
 - Production remains frozen.
-- No new audit, provider call, model call, deployment, main merge, or production mutation is authorized.
 
-Exact next action: Perform a read-only implementation-boundary audit in `chriskulbaba2025/vantage-platform` to identify the exact existing report-layer producer(s), renderer(s), and tests that must implement `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`. Produce a smallest-coherent-change plan and prove that it does not require scoring, evidence, Writer/Judge, lifecycle, storage, provider, authentication, n8n, orchestration, or production changes. Do not edit application code.
+Exact next action: Run one read-only/local final rendered acceptance against the frozen authoritative audit data using application SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`. Verify all seven rendered pages against their frozen designs and narrative-state contract, confirm no cross-page contradiction or false certainty, produce the acceptance proof in `C:\\Users\\kulba\\Downloads\\`, and stop without deployment, main merge, provider/model calls, new audit, or production mutation.
 
 Last verified: 2026-09-18 America/Toronto
