@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: The PRYSM Conversion Friction Encyclopedia and the broader local reconciliation are complete. Exact local candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427` has achieved `LOCAL_ACCEPTANCE_PASS` under the GACM process. Production remains frozen and no promotion/release action is authorized yet.
+Current objective: The PRYSM Conversion Friction Encyclopedia and broader local reconciliation are complete at accepted candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. One governed release/staging tranche is now authorized: push the exact candidate chain to the existing repair branch, prove remote/deployment identity continuity, deploy only to non-production preview/staging, perform real staging acceptance, and stop before production promotion.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -63,7 +63,7 @@ In progress:
 
 Blocked:
 - No local implementation or acceptance blocker remains.
-- Promotion, push, merge, deployment, and production acceptance remain separate governed actions and are not authorized by local acceptance.
+- Production promotion/merge/deployment remains blocked pending successful staging/preview release acceptance and separate explicit authorization.
 
 Important constraints:
 - Do not reopen the completed encyclopedia or reconciliation fixes without new evidence of a defect.
@@ -72,8 +72,8 @@ Important constraints:
 - Preserve exact final candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427` as the locally accepted authority.
 - Continue prospective efficiency telemetry on every future governed run.
 - All proof/report artifacts must be written to `C:\Users\kulba\Downloads\`.
-- Production remains frozen. No push, merge, deploy, promotion, production mutation, paid/live provider call, or production audit without separate explicit authorization.
+- Production remains frozen. This tranche may push the exact accepted commit chain to the existing repair branch and deploy only to non-production preview/staging. No merge, production deployment, production promotion, production mutation, paid production audit, or production configuration change is authorized.
 
-Exact next action: STOP at local acceptance. Any push, promotion, deployment, staging/production acceptance, or production audit requires a separately authorized governed release tranche beginning from exact candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`.
+Exact next action: Run one autonomous GACM-governed release/staging tranche from exact candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`: verify local authority, push only the exact accepted commit chain to the existing repair branch, verify remote SHA equality, deploy only to non-production preview/staging, prove deployment identity, run release-quality staging/browser acceptance, independently verify the deployed candidate, write all timing/efficiency/release proofs to Downloads, and stop before merge or production promotion.
 
 Last verified: 2026-09-19 America/Toronto
