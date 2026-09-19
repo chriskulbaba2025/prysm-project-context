@@ -31,10 +31,10 @@ Completed:
 - Freeze of the Conversion Friction Encyclopedia and Relationship Contract v1.0.
 
 In progress:
-- None.
+- Implementation-boundary design is moving to a local read-only Codex audit because the accepted application SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195` is local-only on `repair/prysm-stage2-candidate-2026-09-18`. GitHub's remote repair branch remains at `c22ee74647ad6c4e27a748051dadb304b586d175`, so exact source mapping cannot safely be performed from remote GitHub state alone.
 
 Blocked:
-- None.
+- Remote-only implementation-boundary mapping is blocked by application-ref divergence: accepted local SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195` is not present on GitHub. This is not an application defect and does not authorize a push.
 
 Important constraints:
 - Do not reopen or modify the completed seven-page narrative-state architecture unless new evidence proves a defect.
@@ -44,6 +44,6 @@ Important constraints:
 - Do not code the encyclopedia until the implementation boundary, expected file set, dependency impact, and proving test set are mapped and reviewed.
 - All generated PRYSM proof/report artifacts must be written to `C:\Users\kulba\Downloads\` unless Chris explicitly specifies another path.
 
-Exact next action: Design the implementation boundary for the frozen Conversion Friction Encyclopedia contract without changing application code: map the existing PRYSM evidence and finding pipeline to the 75 canonical problems and six relationship types, identify the exact producer/contract/consumer files and tests that would need change, define migration and backward-compatibility rules, and produce the smallest coherent governed implementation plan for review before implementation.
+Exact next action: Run one local read-only Codex implementation-boundary audit at exact application branch `repair/prysm-stage2-candidate-2026-09-18` and exact local SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`. Codex must map the existing evidence/finding pipeline to the frozen 75 canonical problems and six relationship types; identify exact producer/contract/consumer files and required tests; define migration/backward-compatibility rules; prove separation from the frozen seven-page narrative-state classifier; write one boundary-audit report to `C:\Users\kulba\Downloads\`; make no application/governance/code/test/config changes; and stop for review.
 
 Last verified: 2026-09-19 America/Toronto
