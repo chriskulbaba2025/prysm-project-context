@@ -564,3 +564,20 @@ The page reached the required client-facing quality threshold while connecting t
 
 Implication:
 Do not redesign or add content to Trust & Credibility unless explicitly reopened. Future implementation must preserve the distinction between observed trust evidence, buyer-confidence effects, search/AI understanding signals, and non-guaranteed growth outcomes. Production remains frozen. The next presentation-design target is Competitor Comparison.
+
+
+---
+
+## Decision: Competitor Comparison v1 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved Competitor Comparison presentation represented by `prysm-competitor-comparison-v1.html`. Preserve the existing PRYSM shell and the approved page hierarchy: comparison call; named-competitor scope; descriptive benchmark table; meaningful differences; protect/improve/differentiate/ignore actions; anti-copy guardrail; comparison limits; and next-step sequence.
+
+Reason:
+The page reached the required client-facing quality threshold while using competitor evidence as decision context rather than vanity ranking or a reason to copy surface design.
+
+Implication:
+Do not redesign or add content to Competitor Comparison unless explicitly reopened. Future implementation must preserve named-competitor scope, descriptive non-ranking language, and the distinction between contextual comparison and evidence-backed client action. Production remains frozen. The next presentation-design target is Supporting Detail.
