@@ -609,3 +609,20 @@ A three-state good / middle / weak system can otherwise turn missing evidence in
 
 Implication:
 All frozen report-page designs are decision templates, not fixed narratives. Their shell and information architecture may remain stable, but executive calls, emphasis, recommendations, guardrails, and next-step sequences must change deterministically according to both evidence coverage and condition state. Missing evidence must never be treated as a positive result. Production remains frozen; this rule governs later deterministic implementation and the strong/middle/weak mockup set.
+
+
+---
+
+## Decision: Supporting Detail v2 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved Supporting Detail presentation represented by `prysm-supporting-detail-v2.html`. Preserve the existing PRYSM shell and the approved page hierarchy: evidence-completeness states; readiness dimensions; material findings; lab-performance evidence with field-data guardrail; evidence limits; source status; direct conclusion → evidence → coverage traceability; and a concise verification next step.
+
+Reason:
+The page reached the required client-facing quality threshold while providing enough evidence to prove the report without becoming a raw technical dump.
+
+Implication:
+Do not redesign or add content to Supporting Detail unless explicitly reopened. Raw crawl tables, URL dumps, schema dumps, heading-count dumps, and implementation diagnostics remain deeper evidence rather than default client-facing content. Future implementation must preserve PARTIAL / UNAVAILABLE / UNKNOWN semantics and conclusion-to-evidence traceability. Production remains frozen.
