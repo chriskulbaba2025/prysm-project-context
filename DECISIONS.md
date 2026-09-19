@@ -711,3 +711,20 @@ The reconciliation reproduced the original eight failures at both the original e
 
 Implication:
 The local candidate is accepted for the completed repair scope, but this does not itself authorize push, merge, promotion, deployment, production mutation, or production audit. Any release action is a separate governed tranche. Preserve the exact accepted candidate identity and use the measured 18m25.10s run telemetry as the first prospective autonomous whole-system efficiency baseline.
+
+
+---
+
+## Decision: Authorize governed release/staging tranche for accepted PRYSM candidate
+
+Date: 2026-09-19
+Status: Active
+
+Decision:
+Authorize one governed release/staging tranche beginning from exact locally accepted application candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. The tranche may push the exact accepted commit chain to the existing repair branch, establish remote identity continuity, create or use a non-production preview/staging deployment, and perform release-quality staging acceptance with direct deployment identity proof. It may not promote, merge, deploy to production, mutate production, run a paid production audit, or change production configuration.
+
+Reason:
+The candidate achieved `LOCAL_ACCEPTANCE_PASS` with final targeted 500/500 PASS, full-worker 1015/1015 PASS, aggregate acceptance 1515 PASS / 0 FAIL, final independent verifier PASS, protected-surface integrity PASS, and 99% confidence. The next risk is no longer local implementation correctness but release-path identity, deployment equivalence, and real staging behavior.
+
+Implication:
+The release tranche must preserve exact candidate identity from local Git through remote branch and deployment revision, capture prospective telemetry, verify no build/deploy transformation changes the accepted behavior, and run staging/preview acceptance. A staging PASS does not authorize production. Stop after staging/preview acceptance and produce release proof in Downloads. Any production promotion remains a separate explicit authorization.
