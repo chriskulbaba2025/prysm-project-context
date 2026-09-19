@@ -581,3 +581,31 @@ The page reached the required client-facing quality threshold while using compet
 
 Implication:
 Do not redesign or add content to Competitor Comparison unless explicitly reopened. Future implementation must preserve named-competitor scope, descriptive non-ranking language, and the distinction between contextual comparison and evidence-backed client action. Production remains frozen. The next presentation-design target is Supporting Detail.
+
+
+---
+
+## Decision: Evidence sufficiency gates narrative state
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Every client-facing PRYSM report page must determine its allowed narrative from both (1) observed condition and (2) evidence sufficiency. A page must not select Strong / Middle / Weak messaging from score, finding count, or severity alone.
+
+The governing sequence is:
+Evidence sufficiency → condition state → allowed narrative state → actions.
+
+At minimum, the renderer must distinguish:
+- Strong condition + sufficient evidence: positive conclusion is allowed.
+- Strong condition + partial evidence: positive signals may be stated, but the page must explicitly limit the conclusion to the reviewed scope.
+- Middle condition + sufficient evidence: state the working foundation and the specific weaknesses that need attention.
+- Weak condition + sufficient evidence: state the material problems established by the evidence and prioritize corrective action.
+- Weak condition + partial evidence: state the material problems established in the reviewed scope, but do not generalize them to the whole site.
+- Insufficient / unavailable evidence: withhold the condition conclusion and state that PRYSM cannot make a reliable judgment yet.
+
+Reason:
+A three-state good / middle / weak system can otherwise turn missing evidence into false praise or false certainty. PRYSM already preserves AVAILABLE, PARTIAL, UNAVAILABLE, and UNKNOWN semantics; those semantics must constrain client-facing language rather than sit only in Supporting Detail.
+
+Implication:
+All frozen report-page designs are decision templates, not fixed narratives. Their shell and information architecture may remain stable, but executive calls, emphasis, recommendations, guardrails, and next-step sequences must change deterministically according to both evidence coverage and condition state. Missing evidence must never be treated as a positive result. Production remains frozen; this rule governs later deterministic implementation and the strong/middle/weak mockup set.
