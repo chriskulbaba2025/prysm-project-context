@@ -694,3 +694,20 @@ PRYSM and GACM need comparable evidence for autonomous-run duration, model effic
 
 Implication:
 Capture timestamps directly from the execution machine in ISO-8601 with timezone offset, using America/Toronto as the human-readable project timezone when useful. Start timing immediately before the first substantive governed action and finish only after the tranche/run verification result and proof artifact are written. Use a monotonic elapsed timer where available in addition to wall-clock timestamps. Never invent unavailable timing, token, cost, or model-duration data; record `NOT_AVAILABLE` instead. Every future Codex/GACM prompt must require this telemetry block in each tranche proof and final report, and materially completed packages must be summarized in `EFFICIENCY_METRICS.md`.
+
+
+---
+
+## Decision: Whole-system reconciliation locally accepted
+
+Date: 2026-09-19
+Status: Active
+
+Decision:
+Accept local application candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427` as the completed PRYSM whole-system reconciliation candidate. The governed local closure produced `LOCAL_ACCEPTANCE_PASS`, final targeted acceptance 500/500 PASS, full-worker 1015/1015 PASS, aggregate final acceptance 1515 PASS / 0 FAIL / 0 SKIP, final independent verifier PASS, protected-surface integrity PASS, and 99% evidence-backed confidence.
+
+Reason:
+The reconciliation reproduced the original eight failures at both the original encyclopedia starting SHA and the pre-reconciliation candidate, proved they were stale test/fixture authorities rather than encyclopedia product defects, grouped them into four root causes, repaired them in bounded local tranches, then detected and repaired one additional stale response-header expectation during fresh whole-system acceptance. No product scoring logic, frozen narrative-state authority, encyclopedia implementation, provider acquisition, auth, n8n, lifecycle, production configuration, or frozen contract was weakened or changed.
+
+Implication:
+The local candidate is accepted for the completed repair scope, but this does not itself authorize push, merge, promotion, deployment, production mutation, or production audit. Any release action is a separate governed tranche. Preserve the exact accepted candidate identity and use the measured 18m25.10s run telemetry as the first prospective autonomous whole-system efficiency baseline.
