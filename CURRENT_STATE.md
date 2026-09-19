@@ -2,48 +2,65 @@
 
 Project: PRYSM
 
-Current objective: The PRYSM Conversion Friction Encyclopedia and Relationship contract is FROZEN. Chris has authorized one locally autonomous GACM-governed Codex implementation run: read-only boundary mapping first, then bounded implementation tranches that independently verify and reach an evidence-backed quality-confidence floor of at least 97% before auto-continuing. Production remains frozen.
+Current objective: The PRYSM Conversion Friction Encyclopedia implementation is complete locally and its exact changed boundary independently PASSes. Whole-system local acceptance remains BLOCKED by eight broader baseline failures outside the modified encyclopedia surfaces. Production remains frozen.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Authoritative audit ID remains `6dca53ed-ae00-484c-bf77-b59c059eef51`.
-- Seven-page narrative-state implementation remains committed at application SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
-- Final seven-page rendered acceptance remains `FINAL_RENDERED_ACCEPTANCE_PASS`.
+- Seven-page narrative-state implementation starting point for the autonomous encyclopedia run was local application SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
+- Final local encyclopedia candidate is `035b9ff6a23446012d2a0104c987a4aa8dde6f4d` on branch `repair/prysm-stage2-candidate-2026-09-18`.
+- Conversion Friction Encyclopedia contract remains frozen at `SPECS/PRYSM_CONVERSION_FRICTION_ENCYCLOPEDIA_CONTRACT_v1.0.md`.
 - Seven-page narrative-state contract remains frozen at `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`.
-- Conversion Friction Encyclopedia contract is frozen at `SPECS/PRYSM_CONVERSION_FRICTION_ENCYCLOPEDIA_CONTRACT_v1.0.md`.
-- Frozen encyclopedia counts: 12 diagnostic areas; 75 canonical problems; 6 relationship types; 4 client-facing friction states.
-- Encyclopedia review gate: original 15/15 core cases PASS; 30 adversarial cases exposed 11 boundary ambiguities; all 11 were corrected at governing-rule level; fresh complete rerun 45/45 PASS; mutation testing 11/11 correctly failed with safeguards removed; restored-contract rerun 45/45 PASS.
-- The encyclopedia is a diagnostic layer only and may not independently select STRONG / MIDDLE / WEAK / INSUFFICIENT_EVIDENCE.
-- Raw findings may not become Priority Fixes directly. They must pass whole-site mapping, relationship review, materiality review, duplicate/dependency review, and challenge, except confirmed critical blockers may be surfaced immediately while discovery continues.
-- A reviewed standalone material finding may become a priority when no legitimate cluster exists and all evidence/materiality/challenge requirements pass.
-- Evidence-lineage rules prevent duplicate or same-source signals from becoming fake independent corroboration.
-- Technical mechanism proof remains separate from business-outcome causation.
-- No application code, production deployment, provider/model call, scoring, evidence acquisition, Writer/Judge, lifecycle, storage, auth, n8n, or orchestration change occurred during contract design/freeze.
-- Production remains frozen and untouched.
+- Autonomous GACM implementation completed T0 through T5 locally.
+- T0 boundary: PASS, 98% confidence.
+- T1 canonical registry: PASS, 98.5%.
+- T2 canonical finding projection: PASS, 98%.
+- T3 relationship engine: PASS, 98%.
+- T4 materiality/challenge/priority units: PASS, 98%.
+- T5 report integration/historical compatibility: PASS with recorded legacy limitations, 97.5%.
+- Final exact-candidate deterministic suite: 243 PASS / 0 FAIL.
+- Final narrative-v2 regression: 166 PASS / 0 FAIL.
+- Final governed changed-boundary acceptance total: 409 PASS / 0 FAIL.
+- Frozen rejection tests: 30/30 PASS.
+- Behavioral fixtures: 41/41 PASS.
+- Canonical structural audit: 12 diagnostic areas / 75 canonical problems / 6 relationships / 4 friction states PASS.
+- Final exact encyclopedia candidate independent verifier: PASS.
+- Unauthorized-change audit: PASS for tracked candidate files; pre-existing untracked user work preserved.
+- Protected `services/worker/src/report-model/narrative-state.js` remained unchanged.
+- No live provider, Writer/Judge, paid call, production mutation, push, merge, deployment, promotion, scoring change, evidence-acquisition change, auth change, n8n change, lifecycle change, or frozen-contract change occurred.
+- Whole-system local acceptance status is `LOCAL_ACCEPTANCE_FAIL` only because eight known broader failures remain outside the modified encyclopedia surfaces:
+  - `WP10-LOCK-01`
+  - `WP10-PAGE-01`
+  - `WP10-GM-01`
+  - one `render-narrative-v2` baseline expectation
+  - four `vantage-score` assessed-weight expectation failures.
+- T5 direct proving also recorded 251 PASS / 3 FAIL for the combined WP10 command; the three failures above were classified as unchanged legacy/protected limitations.
 
 Completed:
-- Seven-page frozen design migration.
-- Shared deterministic narrative-state implementation.
+- Seven-page frozen design migration and narrative-state implementation.
 - Seven-page final rendered acceptance.
-- Conversion Friction Encyclopedia taxonomy and contract design.
-- Multi-pass adversarial review gate.
-- Contract hardening for all material review-gate weaknesses.
-- Freeze of the Conversion Friction Encyclopedia and Relationship Contract v1.0.
+- Conversion Friction Encyclopedia taxonomy and frozen contract.
+- Multi-pass adversarial contract review.
+- Autonomous local GACM implementation of canonical registry, projection, lineage/duplicate controls, six relationship types, materiality/challenge/priority units, report-model integration, and historical compatibility.
+- Independent changed-boundary verification and final exact-candidate acceptance.
 
 In progress:
-- One local autonomous GACM/Codex run is authorized on `repair/prysm-stage2-candidate-2026-09-18`, starting from exact local SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`. Tranche 0 is read-only boundary mapping; later local implementation tranches may auto-continue only after their frozen tests and independent verification PASS and evidence-backed confidence is >=97%.
+- None.
 
 Blocked:
-- No current implementation blocker is known. GitHub remote remains behind the accepted local application SHA, so the autonomous run must use exact local authority and must not push as part of this authorization.
+- Whole-system local acceptance is blocked by eight broader baseline failures outside the changed encyclopedia surfaces.
+- Promotion, push, merge, deployment, or production acceptance is not authorized while this gate remains red.
 
 Important constraints:
-- Do not reopen or modify the completed seven-page narrative-state architecture unless new evidence proves a defect.
-- Do not create a second narrative-state classifier in the encyclopedia implementation.
-- Do not merge or deploy to production during implementation-boundary design.
-- Do not change evidence collection, scoring, Writer/Judge, lifecycle, storage, provider, auth, n8n, or orchestration without a separately proven boundary and explicit authorization.
-- Do not edit application code until autonomous Tranche 0 maps and freezes the implementation boundary, expected file set, dependency impact, and proving test set. Once Tranche 0 independently PASSes at >=97% evidence-backed confidence, Codex may auto-continue locally through the authorized bounded implementation tranches without waiting for another human prompt.
-- All generated PRYSM proof/report artifacts must be written to `C:\Users\kulba\Downloads\` unless Chris explicitly specifies another path.
+- Do not reopen or modify the completed encyclopedia implementation unless evidence from the broader-failure diagnostic proves a causal connection.
+- Do not reopen or modify the frozen seven-page narrative-state architecture unless new evidence proves a defect.
+- Do not treat the eight failing tests as eight independent root causes; diagnose and group them by actual shared cause before repair.
+- Before changing any broader surface, prove whether each failure existed at the starting SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`, whether it is test drift or product defect, and what downstream consumers would be affected.
+- Follow GACM: authority check → bounded diagnosis → root-cause grouping → frozen repair scope → implementation → direct tests → independent verification → affected-scope regression → whole-system rerun.
+- Require independent PASS plus >=97% evidence-backed confidence for each new repair tranche.
+- All generated PRYSM proof/report artifacts must be written to `C:\Users\kulba\Downloads\`.
+- Production remains frozen. No push, merge, deploy, promotion, production mutation, paid/live provider call, or new production audit without separate explicit authorization.
 
-Exact next action: Run the authorized local autonomous GACM/Codex encyclopedia implementation from exact branch `repair/prysm-stage2-candidate-2026-09-18` and exact starting SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`. First complete a read-only boundary tranche and independent verification. If that tranche PASSes with >=97% evidence-backed confidence, continue autonomously through bounded local implementation, testing, challenge, repair, re-verification, and final whole-system acceptance. Write all proof and the final completion report to `C:\Users\kulba\Downloads\`. Do not push, merge, deploy, mutate production, call paid/live providers or models, or start a production audit.
+Exact next action: Run one new local GACM-governed baseline-failure reconciliation on final candidate `035b9ff6a23446012d2a0104c987a4aa8dde6f4d`. First reproduce and compare the eight broader failures against both the starting SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195` and the final candidate without modifying either; classify them into the smallest true root-cause groups; distinguish stale test expectations from real product defects; map dependencies and repair risk; then repair only the proven root causes in bounded autonomous tranches with independent verification and >=97% evidence-backed confidence, followed by a fresh whole-system acceptance run. Stop before push, merge, deploy, promotion, or production action.
 
 Last verified: 2026-09-19 America/Toronto
