@@ -2,66 +2,59 @@
 
 Project: PRYSM
 
-Current objective: The PRYSM Conversion Friction Encyclopedia implementation is complete locally and its exact changed boundary independently PASSes. Whole-system local acceptance remains BLOCKED by eight broader baseline failures outside the modified encyclopedia surfaces. Production remains frozen.
+Current objective: The PRYSM Conversion Friction Encyclopedia remains locally complete. The broader reconciliation run has now repaired the eight originally known stale/legacy failures plus one additional stale response-header scoring expectation found by the first fresh full-worker rerun. The only remaining governed step is a fresh whole-system acceptance rerun against the latest local candidate. Production remains frozen.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Authoritative audit ID remains `6dca53ed-ae00-484c-bf77-b59c059eef51`.
-- Seven-page narrative-state implementation starting point for the autonomous encyclopedia run was local application SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
-- Final local encyclopedia candidate is `035b9ff6a23446012d2a0104c987a4aa8dde6f4d` on branch `repair/prysm-stage2-candidate-2026-09-18`.
+- Encyclopedia implementation starting SHA was `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
+- Accepted encyclopedia candidate before reconciliation was `035b9ff6a23446012d2a0104c987a4aa8dde6f4d`.
+- Current local reconciliation candidate is `d313643d7d49797c433dc60cf630b5bbd3c0d427` on branch `repair/prysm-stage2-candidate-2026-09-18`.
 - Conversion Friction Encyclopedia contract remains frozen at `SPECS/PRYSM_CONVERSION_FRICTION_ENCYCLOPEDIA_CONTRACT_v1.0.md`.
 - Seven-page narrative-state contract remains frozen at `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`.
-- Autonomous GACM implementation completed T0 through T5 locally.
-- T0 boundary: PASS, 98% confidence.
-- T1 canonical registry: PASS, 98.5%.
-- T2 canonical finding projection: PASS, 98%.
-- T3 relationship engine: PASS, 98%.
-- T4 materiality/challenge/priority units: PASS, 98%.
-- T5 report integration/historical compatibility: PASS with recorded legacy limitations, 97.5%.
-- Final exact-candidate deterministic suite: 243 PASS / 0 FAIL.
-- Final narrative-v2 regression: 166 PASS / 0 FAIL.
-- Final governed changed-boundary acceptance total: 409 PASS / 0 FAIL.
-- Frozen rejection tests: 30/30 PASS.
-- Behavioral fixtures: 41/41 PASS.
-- Canonical structural audit: 12 diagnostic areas / 75 canonical problems / 6 relationships / 4 friction states PASS.
-- Final exact encyclopedia candidate independent verifier: PASS.
-- Unauthorized-change audit: PASS for tracked candidate files; pre-existing untracked user work preserved.
-- Protected `services/worker/src/report-model/narrative-state.js` remained unchanged.
-- No live provider, Writer/Judge, paid call, production mutation, push, merge, deployment, promotion, scoring change, evidence-acquisition change, auth change, n8n change, lifecycle change, or frozen-contract change occurred.
-- Whole-system local acceptance status is `LOCAL_ACCEPTANCE_FAIL` only because eight known broader failures remain outside the modified encyclopedia surfaces:
-  - `WP10-LOCK-01`
-  - `WP10-PAGE-01`
-  - `WP10-GM-01`
-  - one `render-narrative-v2` baseline expectation
-  - four `vantage-score` assessed-weight expectation failures.
-- T5 direct proving also recorded 251 PASS / 3 FAIL for the combined WP10 command; the three failures above were classified as unchanged legacy/protected limitations.
+- The original eight broader failures were reproduced unchanged at both `98c5a9d...` and `035b9ff...` and collapsed into four proven non-product root-cause groups:
+  - stale WP10 lock baseline;
+  - stale WP10 cross-report fixtures;
+  - stale narrative-render expectation;
+  - stale Vantage-score assessed-weight expectations.
+- T1 WP10 lock repair: PASS, 99%, local commit `120ad7066c75654bfac0cbfd8299e71cce22ef1e`.
+- T2 WP10 fixture repair: PASS, 99%, local commit `fc1cd73fd41f72e17eae5d2d1a7d9a5144dfd0f8`.
+- T3 narrative expectation repair: PASS, 99%, local commit `8db819861a992838e25203d1c7756dadbca6ccfb`.
+- T4 Vantage-score expectation repair: PASS, 99%, local commit `7391f518bd0ff348ba559271174c3dfe36c8fde4`.
+- The first fresh final acceptance run then passed encyclopedia 243/243, Narrative v2 166/166, narrative render 8/8, WP10 11/11, and Vantage score 71/71, but the full-worker suite exposed one additional pre-existing stale test expectation: `TBK-REPAIR-03`, 75 actual versus stale 94 expected.
+- T5 response-header risk expectation repair classified that escaped failure as `TEST_EXPECTATION_STALE`, changed only `services/worker/src/evidence/response-header-evidence-bridge.test.js`, and passed 34/34 targeted tests with independent verifier PASS and 99% confidence.
+- T5 local commit/current candidate: `d313643d7d49797c433dc60cf630b5bbd3c0d427`.
+- No product scoring logic, scoring version, frozen narrative-state producer, encyclopedia implementation, provider acquisition, auth, n8n, lifecycle, production configuration, or frozen contract was changed by reconciliation.
+- Production was untouched; nothing was pushed, merged, deployed, promoted, or released.
+- Prospective telemetry is now available for this run. Run start: `2026-09-19T08:25:05.8442240-04:00`. T0–T5 contain exact machine timestamps. Model/configuration/reasoning effort remain `NOT_AVAILABLE` because the local Codex environment did not expose them.
+- Through T5 there were 6 recorded tranches, 9 implementation attempts, 3 failed iterations, 3 rework cycles, 5 unique repaired root-cause groups including the escaped T5 expectation, 5 repairs, 6 independent verifier cycles, 0 human interventions, and 0 context-recovery events.
+- The uploaded run-state file is internally stale in two bookkeeping fields: `completionStatus` still says `T0_PASSED_ROOT_CAUSES_GROUPED` and `lastTransitionTimestamp` remains at T0 even though T1–T5 are present. These fields must be corrected during final closure.
 
 Completed:
 - Seven-page frozen design migration and narrative-state implementation.
 - Seven-page final rendered acceptance.
-- Conversion Friction Encyclopedia taxonomy and frozen contract.
-- Multi-pass adversarial contract review.
-- Autonomous local GACM implementation of canonical registry, projection, lineage/duplicate controls, six relationship types, materiality/challenge/priority units, report-model integration, and historical compatibility.
-- Independent changed-boundary verification and final exact-candidate acceptance.
+- Conversion Friction Encyclopedia taxonomy, frozen contract, and autonomous local implementation.
+- Original eight baseline-failure reproduction and root-cause grouping.
+- Bounded local repairs T1 through T5, each with independent verification and >=99% confidence.
 
 In progress:
 - None.
 
 Blocked:
-- Whole-system local acceptance is blocked by eight broader baseline failures outside the changed encyclopedia surfaces.
-- Promotion, push, merge, deployment, or production acceptance is not authorized while this gate remains red.
+- Final whole-system local acceptance is not yet proven because the full acceptance suite has not been rerun after T5.
+- Promotion, push, merge, deployment, or production acceptance remains unauthorized until that final rerun is green and the final completion/efficiency artifacts are written.
 
 Important constraints:
-- Do not reopen or modify the completed encyclopedia implementation unless evidence from the broader-failure diagnostic proves a causal connection.
-- Do not reopen or modify the frozen seven-page narrative-state architecture unless new evidence proves a defect.
-- Do not treat the eight failing tests as eight independent root causes; diagnose and group them by actual shared cause before repair.
-- Before changing any broader surface, prove whether each failure existed at the starting SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`, whether it is test drift or product defect, and what downstream consumers would be affected.
-- Follow GACM: authority check → bounded diagnosis → root-cause grouping → frozen repair scope → implementation → direct tests → independent verification → affected-scope regression → whole-system rerun.
-- Require independent PASS plus >=97% evidence-backed confidence for each new repair tranche.
-- All generated PRYSM proof/report artifacts must be written to `C:\Users\kulba\Downloads\`.
-- Every future tranche proof, repair proof, verification proof, and final completion report must prospectively record machine start/finish timestamps, wall-clock elapsed time, model/configuration, attempts, failed iterations/rework, defect/error counts, repairs, verifier cycles, tests, files changed, and token/cost/model-time data when available. Final reports must aggregate this telemetry and materially completed work packages must be summarized in `EFFICIENCY_METRICS.md`. Never guess missing values.
-- Production remains frozen. No push, merge, deploy, promotion, production mutation, paid/live provider call, or new production audit without separate explicit authorization.
+- Do not reopen or modify the completed encyclopedia implementation unless new final-gate evidence proves a causal defect.
+- Do not reopen or modify frozen narrative-state architecture without direct evidence.
+- Do not modify production scoring logic to satisfy stale tests.
+- If the final rerun finds another failure, first prove whether it is pre-existing or introduced, group by actual root cause, and use a bounded repair tranche.
+- Follow GACM: exact authority → direct reproduction → bounded diagnosis → repair → direct tests → independent verification → affected-scope regression → fresh whole-system acceptance.
+- Require independent PASS plus >=97% evidence-backed confidence for any additional repair tranche.
+- All proof/report artifacts must be written to `C:\Users\kulba\Downloads\`.
+- Final reports must include exact start/finish timestamps, elapsed time, attempts, failed iterations, rework, unique root defects, repairs, verifier cycles, test counts, files changed, and model/token/cost/runtime fields when available. Never guess unavailable values.
+- Production remains frozen. No push, merge, deploy, promotion, production mutation, paid/live provider call, or production audit without separate explicit authorization.
 
-Exact next action: Run one new local GACM-governed baseline-failure reconciliation on final candidate `035b9ff6a23446012d2a0104c987a4aa8dde6f4d`. First reproduce and compare the eight broader failures against both the starting SHA `98c5a9d28be7e8c4ccc7958a697ea71e1defa195` and the final candidate without modifying either; classify them into the smallest true root-cause groups; distinguish stale test expectations from real product defects; map dependencies and repair risk; then repair only the proven root causes in bounded autonomous tranches with independent verification and >=97% evidence-backed confidence, followed by a fresh whole-system acceptance run. Stop before push, merge, deploy, promotion, or production action.
+Exact next action: Resume the existing local reconciliation at exact candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. Run a completely fresh whole-system acceptance after T5, including encyclopedia, narrative-v2, narrative render, WP10, Vantage score, response-header/score-components boundary, full worker suite, unauthorized-change audit, and final independent verifier. If all required tests pass, record `LOCAL_ACCEPTANCE_PASS`, correct the durable run-state completion fields, calculate final run telemetry from the original run start through final closure, and write the required final Markdown report, test-results file, changed-files file, and efficiency CSV to Downloads. Stop before push, merge, deploy, promotion, or production action.
 
 Last verified: 2026-09-19 America/Toronto
