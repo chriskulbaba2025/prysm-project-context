@@ -643,3 +643,20 @@ Without one shared contract, the same audit can produce false certainty, contrad
 
 Implication:
 All seven frozen page templates are decision templates whose shell and information architecture remain unchanged while state-dependent language changes deterministically. INSUFFICIENT_EVIDENCE overrides condition classification when material evidence cannot support a reliable judgment. PARTIAL evidence may support a bounded condition only when scope is explicit. No STRONG/MIDDLE/WEAK page state, score, finding count, severity, or combination thereof automatically authorizes a whole-site rebuild recommendation. Future application work must implement this contract at the report layer only and must pass the 15 false-certainty rejection tests before production consideration. Production remains frozen.
+
+
+---
+
+## Decision: Conversion Friction Encyclopedia v1.0 contract frozen
+
+Date: 2026-09-19
+Status: Active
+
+Decision:
+Freeze `SPECS/PRYSM_CONVERSION_FRICTION_ENCYCLOPEDIA_CONTRACT_v1.0.md` as the governing diagnostic contract for PRYSM's Conversion Friction Encyclopedia and Relationship System. The contract freezes 12 diagnostic areas, 75 canonical problems, six relationship types, four client-facing friction states, evidence-lineage and duplicate controls, friction-cluster and reviewed-standalone priority rules, challenge/falsification, critical-blocker handling, causal guardrails, bounded repair specificity, verification rules, and separation from the frozen seven-page narrative-state classifier.
+
+Reason:
+The contract passed a multi-pass review gate. The original 15 core cases passed; 30 adversarial cases exposed 11 real boundary ambiguities; those governing weaknesses were corrected; the complete suite then passed 45/45 from a clean rerun; and 11/11 mutation tests correctly failed when each new safeguard was removed. The resulting architecture prevents checklist inflation, duplicate counting, pseudo-corroboration, artificial clustering, scope leakage, causal overreach, stale blocker escalation, evidence/measurement confusion, and premature mechanism-specific repair.
+
+Implication:
+Future implementation must conform to the frozen contract and must not create a second narrative-state engine. No raw finding may become a Priority Fix before whole-site mapping, relationship/materiality/duplicate/dependency review, and challenge. Critical blockers remain the explicit immediate-surfacing exception. Production remains frozen. The next governed work is implementation-boundary design only: map existing PRYSM evidence/finding surfaces to the frozen canonical model, identify exact application files and tests that would need change, prove that the seven-page narrative-state contract remains authoritative, and define the smallest coherent implementation tranche before any code is changed.
