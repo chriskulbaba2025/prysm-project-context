@@ -677,3 +677,20 @@ The encyclopedia contract is frozen and has already passed adversarial contract 
 
 Implication:
 Codex may autonomously perform local diagnosis, planning, implementation, local commits, testing, challenge, bounded repair, affected-scope re-verification, and final local whole-system acceptance on the exact PRYSM repair branch. Each tranche must produce evidence and may auto-continue only after independent PASS plus >=97% evidence-backed confidence. Up to three same-root repair attempts are allowed before mandatory diagnostic reset; the run must not game confidence or weaken tests. All generated proof/report artifacts must be written to `C:\Users\kulba\Downloads\`. The run may not push the local-only accepted baseline or implementation commits, merge, deploy, mutate production, call paid/live providers or models, start a production audit, or cross another explicit authorization boundary. Final output is a comprehensive completion report for human review before any promotion/release action.
+
+
+---
+
+## Decision: Every governed run report records execution-efficiency telemetry
+
+Date: 2026-09-19
+Status: Active
+
+Decision:
+Every future PRYSM governed tranche proof, repair proof, verification proof, and final completion report must record machine-measured execution timing and rework data from the start of the run rather than reconstructing it afterward. At minimum each report must include exact start timestamp, exact finish timestamp, wall-clock elapsed time, model identity and reasoning/effort level when available, implementation attempts, failed iterations/rework cycles, defects/errors/problems found, repairs performed, independent-verification cycles, tests run with PASS/FAIL counts, files changed, confidence/result, and any available token/cost/model-execution-time data. Final reports must also aggregate these measures across all tranches in the run.
+
+Reason:
+PRYSM and GACM need comparable evidence for autonomous-run duration, model efficiency, rework burden, error rates, and verification cost. Prior runs often lacked exact timestamps, forcing retrospective estimates and preventing reliable comparison between Luna, Terra, Sol, or other execution configurations.
+
+Implication:
+Capture timestamps directly from the execution machine in ISO-8601 with timezone offset, using America/Toronto as the human-readable project timezone when useful. Start timing immediately before the first substantive governed action and finish only after the tranche/run verification result and proof artifact are written. Use a monotonic elapsed timer where available in addition to wall-clock timestamps. Never invent unavailable timing, token, cost, or model-duration data; record `NOT_AVAILABLE` instead. Every future Codex/GACM prompt must require this telemetry block in each tranche proof and final report, and materially completed packages must be summarized in `EFFICIENCY_METRICS.md`.
