@@ -626,3 +626,20 @@ The page reached the required client-facing quality threshold while providing en
 
 Implication:
 Do not redesign or add content to Supporting Detail unless explicitly reopened. Raw crawl tables, URL dumps, schema dumps, heading-count dumps, and implementation diagnostics remain deeper evidence rather than default client-facing content. Future implementation must preserve PARTIAL / UNAVAILABLE / UNKNOWN semantics and conclusion-to-evidence traceability. Production remains frozen.
+
+
+---
+
+## Decision: Seven-page deterministic narrative-state contract frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md` as the governing narrative-state contract for the seven approved report templates. The only allowed client-facing narrative states are STRONG, MIDDLE, WEAK, and INSUFFICIENT_EVIDENCE. State selection must follow evidence sufficiency → condition state → allowed narrative state → page-specific message → bounded action. Score, finding count, severity, competitor behavior, search demand, or missing evidence may not independently select narrative state.
+
+Reason:
+Without one shared contract, the same audit can produce false certainty, contradictory page messages, positive-by-absence or negative-by-absence conclusions, and unnecessary whole-site rebuild language. The frozen contract makes evidence sufficiency a hard gate and defines report-wide consistency rules before implementation.
+
+Implication:
+All seven frozen page templates are decision templates whose shell and information architecture remain unchanged while state-dependent language changes deterministically. INSUFFICIENT_EVIDENCE overrides condition classification when material evidence cannot support a reliable judgment. PARTIAL evidence may support a bounded condition only when scope is explicit. No STRONG/MIDDLE/WEAK page state, score, finding count, severity, or combination thereof automatically authorizes a whole-site rebuild recommendation. Future application work must implement this contract at the report layer only and must pass the 15 false-certainty rejection tests before production consideration. Production remains frozen.
