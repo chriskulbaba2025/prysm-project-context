@@ -84,3 +84,19 @@ Last verified: 2026-09-19 America/Toronto
 The staging infrastructure preflight stopped safely before mutation. Railway project `GENSEN process` still has only the production environment. The accepted application candidate remains `d313643d7d49797c433dc60cf630b5bbd3c0d427`; no application defect was found and production was untouched.
 
 The next governed staging step is to create an EMPTY Railway `staging` environment inside the existing project rather than duplicating production. Add only isolated staging resources and values: a staging persistence/database target, staging-only object storage credentials/bucket/prefix, staging tenant identity, staging webhook secret, and only the non-production service routing required for deterministic acceptance. Paid/live providers, Writer/Judge, production n8n, production analytics credentials, and production persistence remain disabled. After isolation is proven, deploy the exact accepted candidate, wire Vercel Preview only, perform real-browser acceptance, and stop before production.
+
+
+## Staging infrastructure completion — 2026-09-19
+
+The isolated PRYSM staging path is now provisioned and operational at application candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`.
+
+Verified:
+- Railway staging environment exists and is isolated from production.
+- Staging PostgreSQL is isolated and connected.
+- Staging S3 bucket `prysm-staging-reports-814462560475` in `ca-central-1` is isolated; staging identity can read/write only staging storage and is denied production bucket access.
+- Staging worker service `vantage-platform-staging` is deployed successfully at `https://vantage-platform-staging-staging.up.railway.app` with HTTP 200 health and successful S3/Postgres initialization.
+- Vercel Preview is wired to staging only at `https://prysm-64wnuk3ka-chriskulbabas-projects.vercel.app`.
+- Production Railway, Vercel, database, S3 and provider paths remain unchanged.
+- Paid/live providers remain disabled for staging acceptance.
+
+Current status: `BLOCKED_BROWSER_RUNTIME` only. No application or infrastructure defect is presently known. The final remaining governed action is a real-browser seven-page acceptance against the exact Vercel Preview and staging worker, followed by one independent verifier. HTTP-only checks must not substitute for this gate. Production promotion remains unauthorized until browser acceptance passes.
