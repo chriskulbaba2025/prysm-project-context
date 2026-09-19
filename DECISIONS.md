@@ -479,3 +479,20 @@ Raw acquisition can legitimately encounter infrastructure endpoints such as Clou
 
 Implication:
 Apply this as presentation-layer sanitization only. Do not mutate canonical/raw/normalized evidence to clean the report. Keep regression coverage proving client-facing suppression and non-mutation of the underlying URL evidence.
+
+
+---
+
+## Decision: Executive Scorecard v6 design frozen
+
+Date: 2026-09-18
+Status: Active
+
+Decision:
+Freeze the approved Executive Scorecard presentation represented by `prysm-executive-scorecard-final-language-v6.html`. Preserve the existing PRYSM report shell, sidebar, header, colours, typography, borders, spacing style, navigation, seven-section report structure, and current Executive Scorecard information architecture. The approved executive call remains: “Keep the current site. Fix speed and buyer questions first.”
+
+Reason:
+The approved mockup reached the required client-facing quality threshold after readability polish. Further structural redesign would create unnecessary drift without a demonstrated client-value gain.
+
+Implication:
+Do not add content or redesign the Executive Scorecard. Any later implementation must reproduce the frozen design generically from audit data, without TBK-specific hard-coding. “Rebuild the whole site” must not be triggered casually by a score alone. Production remains frozen. The next presentation-design target is the second report page, Priority Fixes.
