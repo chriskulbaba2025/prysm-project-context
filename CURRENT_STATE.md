@@ -77,3 +77,10 @@ Important constraints:
 Exact next action: Resume the authorized autonomous GACM-governed release/staging tranche from exact candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. First refresh/fetch the existing local governance clone non-destructively from `origin` and prove remote `main` is `30fb9ddd122c66674761a87c4d2adb1429a4592c` with parent/release authorization `75ea96e5dd435cc6ac44d862dcfea1e74a5e219f`. Do not require the stale temporary governance clone HEAD to already equal main before fetching. Once authority is proven, continue the previously authorized release flow: push only the exact accepted application chain to the existing repair branch, verify remote SHA equality, deploy only to non-production preview/staging, prove deployment identity, run release-quality staging/browser acceptance, independently verify the deployed candidate, write all timing/efficiency/release proofs to Downloads, and stop before merge or production promotion.
 
 Last verified: 2026-09-19 America/Toronto
+
+
+## Staging infrastructure blocker — 2026-09-19
+
+The staging infrastructure preflight stopped safely before mutation. Railway project `GENSEN process` still has only the production environment. The accepted application candidate remains `d313643d7d49797c433dc60cf630b5bbd3c0d427`; no application defect was found and production was untouched.
+
+The next governed staging step is to create an EMPTY Railway `staging` environment inside the existing project rather than duplicating production. Add only isolated staging resources and values: a staging persistence/database target, staging-only object storage credentials/bucket/prefix, staging tenant identity, staging webhook secret, and only the non-production service routing required for deterministic acceptance. Paid/live providers, Writer/Judge, production n8n, production analytics credentials, and production persistence remain disabled. After isolation is proven, deploy the exact accepted candidate, wire Vercel Preview only, perform real-browser acceptance, and stop before production.
