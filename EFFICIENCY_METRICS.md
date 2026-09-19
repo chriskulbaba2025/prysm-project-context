@@ -68,3 +68,87 @@ Prospective measurement starts now.
 - Label estimates as estimates.
 - Never convert missing data into zero.
 - At meaningful milestones, compare the latest comparable packages and report both raw metrics and the calculated efficiency improvement.
+
+## Mandatory run telemetry for all future governed reports
+
+Starting with governed work initiated after 2026-09-19, timing and efficiency data must be captured prospectively by the execution environment.
+
+Every tranche proof, repair proof, verification proof, and final completion report must contain this block:
+
+| Metric | Required value |
+|---|---|
+| Run ID | Stable run identifier |
+| Tranche / work-unit ID | Stable tranche identifier |
+| Model | Exact model/configuration used, when exposed |
+| Reasoning / effort level | Exact level when exposed; otherwise `NOT_AVAILABLE` |
+| Start timestamp | Machine-captured ISO-8601 timestamp with timezone offset |
+| Finish timestamp | Machine-captured ISO-8601 timestamp with timezone offset |
+| Wall-clock elapsed | Finish minus start; prefer monotonic timer measurement |
+| Model execution time | Sum of model/runtime execution duration if exposed; otherwise `NOT_AVAILABLE` |
+| Human wait / pause time | Record when measurable; otherwise `NOT_AVAILABLE` |
+| Implementation attempts | Count of distinct implementation attempts |
+| Failed iterations | Count of failing test/verification cycles requiring another change |
+| Rework cycles | Count of repair cycles after an initial implementation attempt |
+| Problems / defects found | Count plus concise categorized list |
+| Repairs performed | Count plus concise categorized list |
+| Independent verifier cycles | Count, with PASS/FAIL/BLOCKED/UNOBSERVABLE outcome |
+| Tests run | Total tests/assertions where available |
+| Test results | PASS / FAIL / SKIP counts |
+| Files changed | Count and paths or linked changed-file artifact |
+| Tokens | Input/output/total when exposed; otherwise `NOT_AVAILABLE` |
+| Model/API cost | Exact measured amount when exposed; otherwise `NOT_AVAILABLE` |
+| Confidence | Evidence-backed confidence when the work unit uses a confidence gate |
+| Final outcome | PASS / FAIL / BLOCKED / UNOBSERVABLE / other governed terminal state |
+
+### Timestamp capture rule
+
+The start timestamp must be captured immediately before the first substantive governed action for that work unit. The finish timestamp must be captured only after tests, independent verification, challenge/falsification, state update, and proof writing for that work unit are complete.
+
+Where the executor can use a monotonic timer, store both:
+- wall-clock start/finish timestamps; and
+- monotonic elapsed duration.
+
+This prevents clock adjustments from corrupting elapsed-time comparisons.
+
+### Error and rework taxonomy
+
+Count and categorize problems consistently:
+
+- `AUTHORITY_ERROR`
+- `SCOPE_ERROR`
+- `IMPLEMENTATION_DEFECT`
+- `TEST_DEFECT`
+- `FIXTURE_DRIFT`
+- `CONTRACT_MISMATCH`
+- `DEPENDENCY_MISS`
+- `VERIFICATION_FAILURE`
+- `ENVIRONMENT_ERROR`
+- `TOOLING/HARNESS_ERROR`
+- `CONTEXT_RECOVERY`
+- `OTHER`
+
+A single root defect causing several test failures counts as one defect plus the affected test-failure count. Do not inflate defect totals by counting every downstream assertion as a separate root problem.
+
+### Final-run aggregation
+
+Every final completion report must include both:
+1. per-tranche telemetry; and
+2. aggregate run telemetry.
+
+Aggregate at minimum:
+- total wall-clock elapsed;
+- sum of measured model execution time;
+- number of tranches;
+- implementation attempts;
+- failed iterations;
+- rework cycles;
+- root defects/problems;
+- repairs;
+- independent-verifier cycles;
+- total PASS/FAIL/SKIP tests;
+- files changed;
+- human interventions;
+- context-recovery events;
+- tokens and cost when available.
+
+These raw measures are the primary comparison data for model and workflow efficiency. The existing weighted burden heuristic remains secondary and must not replace the raw data.
