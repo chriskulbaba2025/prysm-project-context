@@ -156,3 +156,31 @@ Aggregate at minimum:
 - tokens and cost when available.
 
 These raw measures are the primary comparison data for model and workflow efficiency. The existing weighted burden heuristic remains secondary and must not replace the raw data.
+
+
+## PRYSM accepted presentation candidate — staging deployment tranche checkpoint — 2026-09-20
+
+| Metric | Value |
+|---|---|
+| Run ID | PRYSM-STAGING-1CD12498-20260920 |
+| Tranche / work-unit ID | GACM staging publication, deployment identity, smoke, deterministic regression |
+| Model | NOT_AVAILABLE |
+| Reasoning / effort | NOT_AVAILABLE |
+| Start timestamp | 2026-09-20T17:40:58.9172098-04:00 (telemetry start; earlier read-only identity discovery occurred before this timer and is not included) |
+| Finish timestamp | 2026-09-20T17:55:20.8242830-04:00 (checkpoint) |
+| Wall-clock elapsed | 00:14:21.907 (timer started after earlier read-only discovery; this is a partial tranche duration) |
+| Model execution time | NOT_AVAILABLE; no model calls |
+| Human wait / pause | NOT_AVAILABLE |
+| Implementation attempts | 0 application implementation attempts; 2 governance state/document commits |
+| Failed iterations | 0 product/test failures; one unsafe Vercel env-pull attempt was blocked by tool policy before execution |
+| Rework cycles | 0 |
+| Problems / defects found | 1 `DEPENDENCY_MISS`: authenticated staging reviewer credential/session is not available; prior credential proof redacts the temporary password |
+| Repairs performed | 0 application repairs; published exact accepted application branch and staging deployments; synchronized project state |
+| Independent verifier cycles | 0 terminal staging audits; exact provider metadata and deterministic tests were manually cross-checked |
+| Tests run | 1,136 executions across targeted and full-worker commands; suites overlap |
+| Test results | Targeted renderer + false-certainty: 121 PASS / 0 FAIL / 0 SKIP; full worker: 1,015 PASS / 0 FAIL / 0 SKIP |
+| Files changed | Governance `CURRENT_STATE.md`, `DECISIONS.md`, `EFFICIENCY_METRICS.md`; application source unchanged; five staging proof artifacts plus two Chromium screenshots written to Downloads |
+| Monotonic duration | NOT_AVAILABLE; cross-process Stopwatch values did not reconcile with the ISO wall-clock interval, so they are rejected |
+| Tokens / cost | NOT_AVAILABLE |
+| Confidence | No terminal staging confidence assigned; authenticated browser and independent gates remain incomplete |
+| Final outcome | BLOCKED_PENDING_USER_STAGING_REVIEWER_CREDENTIAL_OR_SESSION |
