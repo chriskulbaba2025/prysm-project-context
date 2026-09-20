@@ -2,14 +2,18 @@
 
 Project: PRYSM
 
-Current objective: The PRYSM Conversion Friction Encyclopedia and broader local reconciliation are complete at accepted candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. One governed release/staging tranche is now authorized: push the exact candidate chain to the existing repair branch, prove remote/deployment identity continuity, deploy only to non-production preview/staging, perform real staging acceptance, and stop before production promotion.
+Current objective: Complete governed staging acceptance for the exact locally accepted seven-page presentation candidate `1cd12498c1642c8b2bbb1159971ced580360689d` on `repair/prysm-stage2-candidate-2026-09-18`. Local acceptance is closed; publish the exact candidate, prove remote and deployment identities, exercise the isolated staging browser path, run deterministic regressions and independent verification, and stop before production.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
 - Authoritative audit ID remains `6dca53ed-ae00-484c-bf77-b59c059eef51`.
 - Encyclopedia implementation starting SHA was `98c5a9d28be7e8c4ccc7958a697ea71e1defa195`.
 - Accepted encyclopedia candidate before reconciliation was `035b9ff6a23446012d2a0104c987a4aa8dde6f4d`.
-- Final locally accepted reconciliation candidate is `d313643d7d49797c433dc60cf630b5bbd3c0d427` on branch `repair/prysm-stage2-candidate-2026-09-18`.
+- Final locally accepted reconciliation predecessor is `d313643d7d49797c433dc60cf630b5bbd3c0d427`.
+- Current exact locally accepted seven-page presentation candidate is `1cd12498c1642c8b2bbb1159971ced580360689d` on branch `repair/prysm-stage2-candidate-2026-09-18`; it descends from the prior candidate and includes the governed authority 4.1.2 reconciliation, authoritative local retrieval repair, seven-page presentation migration, and explicit 15-case false-certainty contract suite.
+- Candidate `1cd12498c1642c8b2bbb1159971ced580360689d` passed local acceptance: 15/15 false-certainty cases; renderer 106/106; narrative 17/17; Encyclopedia/report-model 150/150; canonical solution 127/127; authoritative retrieval/recovery 8/8; Writer output safety 46/46; full worker 1015/1015; independent verifier PASS at 97%; authenticated localhost browser acceptance PASS across all seven pages.
+- Local authoritative audit render on the accepted candidate was 176,024 bytes with SHA-256 `0196b33392ecd428133905e35731f1d75f1a9bba62662542daa846623aff551e`; frozen source report SHA-256 remains `8864d5b159500ac6899908dba5a276fecc1a8208055976f6e79c83462464a7a1`.
+- Local application branch is clean at the exact accepted candidate. At staging-tranche start, remote application branch remains at predecessor `d313643d7d49797c433dc60cf630b5bbd3c0d427`; Vercel Preview's latest discovered deployment is also the predecessor. Railway staging service is online, but its latest local-upload deployment lacks native commit SHA metadata. These identities must be advanced/proven before staging acceptance.
 - Conversion Friction Encyclopedia contract remains frozen at `SPECS/PRYSM_CONVERSION_FRICTION_ENCYCLOPEDIA_CONTRACT_v1.0.md`.
 - Seven-page narrative-state contract remains frozen at `SPECS/PRYSM_SEVEN_PAGE_NARRATIVE_STATE_CONTRACT_v1.0.md`.
 - The original eight broader failures were reproduced unchanged at both the original encyclopedia start and pre-reconciliation candidate and collapsed into four proven non-product root-cause groups.
@@ -74,7 +78,7 @@ Important constraints:
 - All proof/report artifacts must be written to `C:\Users\kulba\Downloads\`.
 - Production remains frozen. This tranche may push the exact accepted commit chain to the existing repair branch and deploy only to non-production preview/staging. No merge, production deployment, production promotion, production mutation, paid production audit, or production configuration change is authorized.
 
-Exact next action: Resume the authorized autonomous GACM-governed release/staging tranche from exact candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427`. First refresh/fetch the existing local governance clone non-destructively from `origin` and prove remote `main` is `30fb9ddd122c66674761a87c4d2adb1429a4592c` with parent/release authorization `75ea96e5dd435cc6ac44d862dcfea1e74a5e219f`. Do not require the stale temporary governance clone HEAD to already equal main before fetching. Once authority is proven, continue the previously authorized release flow: push only the exact accepted application chain to the existing repair branch, verify remote SHA equality, deploy only to non-production preview/staging, prove deployment identity, run release-quality staging/browser acceptance, independently verify the deployed candidate, write all timing/efficiency/release proofs to Downloads, and stop before merge or production promotion.
+Historical next-action record from 2026-09-19: staging release tranche for `d313643d7d49797c433dc60cf630b5bbd3c0d427`. Superseded on 2026-09-20 by the current candidate staging tranche above for exact accepted candidate `1cd12498c1642c8b2bbb1159971ced580360689d`.
 
 Last verified: 2026-09-19 America/Toronto
 
@@ -99,4 +103,14 @@ Verified:
 - Production Railway, Vercel, database, S3 and provider paths remain unchanged.
 - Paid/live providers remain disabled for staging acceptance.
 
-Current status: `BLOCKED_BROWSER_RUNTIME` only. No application or infrastructure defect is presently known. The final remaining governed action is a real-browser seven-page acceptance against the exact Vercel Preview and staging worker, followed by one independent verifier. HTTP-only checks must not substitute for this gate. Production promotion remains unauthorized until browser acceptance passes.
+The prior staging browser gate applied to predecessor candidate `d313643d7d49797c433dc60cf630b5bbd3c0d427` and was blocked because a real browser runtime was unavailable. A real local Chromium runtime is now available and completed local acceptance, but staging acceptance for the new exact candidate remains pending. HTTP-only checks must not substitute for the required authenticated staging browser gate. Production promotion remains unauthorized.
+
+## Current candidate staging tranche — 2026-09-20
+
+- Local acceptance is closed at application SHA `1cd12498c1642c8b2bbb1159971ced580360689d`.
+- Current governance HEAD and `origin/main` are both `6a510e00a90b83dec4e721303256cbba1b9fce81`.
+- Existing isolated staging topology was rediscovered read-only: Railway project `GENSEN process`, environment `staging` (`9d541fe0-5103-4134-98dc-332dae65de7b`), service `vantage-platform-staging` (`d8504781-cb85-4b09-8999-19852f39be2b`); Vercel project `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`) under team `team_QupWFSpz8cNhhY8OAySLXC6e`.
+- Current Railway service deployment is `84aac2ca-c392-4690-9b41-c63d36474bb7`, online, but metadata does not prove its commit. Current Vercel Preview deployment is `dpl_DnewdhfGmBmVZsxqEm9fwvtXt4VE` at `prysm-64wnuk3ka-chriskulbabas-projects.vercel.app`, READY, with commit `d313643d7d49797c433dc60cf630b5bbd3c0d427`.
+- Prior staging isolation records show distinct Railway staging environment/database, staging-only tenant and S3 bucket/prefix, separate staging Cognito reviewer identity, and no paid/live providers. Revalidate current staging settings and all relevant path handoffs before release-critical browser execution; prior proof does not prove candidate `1cd12498c1642c8b2bbb1159971ced580360689d` deployment identity.
+- Authorized current action: advance only the existing repair branch to exact candidate `1cd12498c1642c8b2bbb1159971ced580360689d`, prove remote equality, deploy only to Railway staging and Vercel Preview, verify both deployment identities and staging isolation, then run staging smoke/browser/regression/independent checks.
+- Stop before merge, production deployment/promotion, production configuration mutation, production audit, or live/paid provider/model calls. A staging PASS does not authorize production.

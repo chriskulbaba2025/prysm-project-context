@@ -728,3 +728,22 @@ The candidate achieved `LOCAL_ACCEPTANCE_PASS` with final targeted 500/500 PASS,
 
 Implication:
 The release tranche must preserve exact candidate identity from local Git through remote branch and deployment revision, capture prospective telemetry, verify no build/deploy transformation changes the accepted behavior, and run staging/preview acceptance. A staging PASS does not authorize production. Stop after staging/preview acceptance and produce release proof in Downloads. Any production promotion remains a separate explicit authorization.
+
+
+---
+
+## Decision: Accept seven-page local candidate and authorize exact-SHA staging continuation
+
+Date: 2026-09-20
+Status: Active
+
+Decision:
+Accept application candidate `1cd12498c1642c8b2bbb1159971ced580360689d` on `repair/prysm-stage2-candidate-2026-09-18` as the exact local presentation-runtime acceptance candidate. The explicit local 15-case contract suite, renderer/narrative/Encyclopedia/canonical-solution/retrieval/Writer/full-worker regressions, authenticated localhost Chromium acceptance, and independent verification are recorded PASS in the Downloads proof files. Supersede the previously staged predecessor SHA `d313643d7d49797c433dc60cf630b5bbd3c0d427` for the active staging tranche.
+
+Authorize publication of only the exact accepted commit chain to the same existing repair branch, followed by non-production Railway `staging` and Vercel Preview deployment for exact-SHA staging acceptance. Preserve candidate identity from local commit through remote branch, both deployment systems, authenticated browser path, and terminal report artifact. Continue only after staging isolation and production-path-equivalence handoffs are read-only proven. No application `main` merge, production deploy/promotion/mutation/configuration change, production audit, or live/paid provider/model call is authorized. Stop after staging acceptance for separate human authorization before production.
+
+Reason:
+The seven-page presentation candidate adds bounded report presentation and deterministic contract acceptance changes to the previously accepted predecessor without changing protected scoring, evidence, Encyclopedia, narrative-state, provider, auth, lifecycle, persistence, or production surfaces. The exact local candidate passed full local acceptance at 1,015/1,015 worker tests and independent verification (97% confidence); the staging predecessor does not represent this accepted candidate.
+
+Implication:
+All previous staging proof remains evidence only for the exact predecessor and the staging infrastructure configuration it directly observed. It does not prove deployment or browser acceptance of `1cd12498c1642c8b2bbb1159971ced580360689d`. Re-discover current provider identities and verify fresh staging deployment identities before claiming staging PASS.
