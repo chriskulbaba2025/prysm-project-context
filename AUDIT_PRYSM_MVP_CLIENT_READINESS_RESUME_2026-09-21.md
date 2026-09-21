@@ -48,3 +48,17 @@ Verdict: BLOCKED. The exact source candidate and automated tests are available, 
 `MVP_READY_FOR_PRODUCTION_ACTIVATION` is not established. Continue from this exact candidate after the missing Vercel branch binding, Railway digest identity, authorized reviewer browser session, and exact-candidate staging/browser/PDF proofs become available. Production activation remains a separate authorization boundary.
 
 Proof package: `C:\Users\kulba\Downloads\PRYSM-MVP-CLOSURE-2026-09-21\`.
+
+## Runtime continuation — 2026-09-21
+
+This section supersedes the earlier Vercel/Railway/browser observations above for the exact candidate; source and regression evidence remain unchanged.
+
+- Authoritative Vercel `prysm` Preview is READY: deployment `dpl_7VShafwVk4weTJSL473zaFYVvkNh`, exact branch and SHA `bd12a1c7c77ba0e297a8da4c69e331d6456b3748`. Branch Preview metadata confirms the two authorized Vantage variables are present. The staging worker URL is correct; tenant was bound from the authoritative Railway staging service without disclosure.
+- Existing old-branch values for `COGNITO_REGION`, `COGNITO_CLIENT_ID`, `COGNITO_USER_POOL_ID`, and `VANTAGE_WEBHOOK_SECRET` were not copied because the explicit instruction allowed only two variables. Source inspection proves those four are required to execute authenticated browser and worker paths. This is a configuration authorization hold, not a product-code defect.
+- Local Chromium/Playwright reached the exact deployment's `/login` page (200; expected login controls; zero page errors). Authenticated acceptance was not attempted, and no Cognito password reset was performed while Preview auth configuration was incomplete.
+- Exact Railway candidate deployment `95ace217-6c0d-4d65-a42a-209077670b71` is SUCCESS at the exact SHA. Startup shows Postgres initialization, S3 connectivity, worker startup; GET `/health` returned 200. Build manifest `sha256:40f926c14c6e85c3a5c234afaab9a57b5dae60bd004189c1d99209d6e90ac0b8`; image config `sha256:c629ad67e3700711eee02207b0681919bf6d10ff525689ba53420619260a9e2a`. Railway does not expose a separate runtime digest, so no image digest equality is claimed. No Railway redeploy was needed.
+- `Vercel – prysm` GitHub status is successful for the new Preview deployment. The separate `vantage-platform` project remains non-authoritative; its failing status targets an older deployment and was not disconnected. Railway's stale error check references removed predecessor `79fee361-...`; current exact deployment `95ace...` is successful.
+- Seven-page authenticated browser acceptance and fresh PDF are blocked. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`; final independent challenge blocked and zero critical/major not certified.
+- Production remained untouched.
+
+Next action: authorize branch-scoped Preview binding of the four existing staging-only Cognito/webhook settings, then continue authenticated browser/PDF acceptance and final challenge.

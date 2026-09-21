@@ -36,20 +36,17 @@ Current objective: Complete the continuous governed MVP client-readiness closure
 - Railway reports BUILD_IMAGE, PUBLISH_IMAGE, CREATE_CONTAINER and CONFIGURE_NETWORK completed for deployment `95ace...`. This supports deployment continuity at the exact Git SHA but must not be overstated as an independently exposed runtime digest match.
 - No explicit Railway healthcheck path is configured. A HEAD request to `/health` returned 404, so `/health` must not be treated as the application's health contract without source evidence.
 
-## Remaining release gates
+## Runtime closure update — 2026-09-21
 
-- **Closure result: BLOCKED.** Do not claim `MVP_READY_FOR_PRODUCTION_ACTIVATION`.
-- Authoritative Vercel project: `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`), team `chriskulbabas-projects`.
-- Current exact-candidate GitHub statuses still show `Vercel – prysm` and duplicate `Vercel – vantage-platform` failing.
-- Exact-candidate Vercel Preview fails because branch-specific Preview values `VANTAGE_WORKER_API_URL` and `VANTAGE_TENANT_ID` remain scoped only to the old branch. This is Vercel branch/environment configuration, not a product-code defect.
-- The exact staging worker URL is now established as `https://vantage-platform-staging-staging.up.railway.app`. The matching tenant value must be copied secret-safely from the authorized old branch/runtime configuration; do not expose it in proof.
-- Vercel branch-scoped variables should be copied to `repair/prysm-mvp-client-readiness-2026-09-21` for Preview only, then the authoritative `prysm` Preview must be rebuilt and proven READY at exact SHA `bd12a1c...`.
-- Duplicate Vercel project `vantage-platform` is non-authoritative; do not repair product code for that context. Determine whether its GitHub status can be ignored/removed from the MVP release contract or should be disabled separately without touching production.
-- Real authenticated browser acceptance and fresh browser-generated PDF for `bd12a1c...` remain outstanding.
-- Final independent post-run challenge remains outstanding pending Vercel/browser/PDF evidence.
-- PRODUCTION PATH EQUIVALENCE: not yet PASS.
-- PRODUCTION IDENTITY CONTINUITY: exact Git/deployment identity is substantially improved; final closure still requires Vercel/browser/report retrieval continuity.
-- Production remained untouched: no merge to main, production deploy/promotion/alias/configuration change, production audit, production AWS/Cognito/PostgreSQL/S3 mutation, or paid/live Writer/Judge/provider execution.
+- **Closure result: BLOCKED.** `MVP_READY_FOR_PRODUCTION_ACTIVATION` is not established.
+- Authoritative Vercel project `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`, team `chriskulbabas-projects`) now has exact-candidate Preview deployment `dpl_7VShafwVk4weTJSL473zaFYVvkNh`, READY at branch `repair/prysm-mvp-client-readiness-2026-09-21`, SHA `bd12a1c7c77ba0e297a8da4c69e331d6456b3748`. Preview URL: `https://prysm-ahc9jew33-chriskulbabas-projects.vercel.app`.
+- The Preview branch has `VANTAGE_WORKER_API_URL` pointing to the authoritative GENSEN staging URL and the matching staging `VANTAGE_TENANT_ID`. Values were not written to proof. `COGNITO_REGION`, `COGNITO_CLIENT_ID`, `COGNITO_USER_POOL_ID`, and `VANTAGE_WEBHOOK_SECRET` remain scoped only to the old Preview branch. Source inspection confirms the missing values are required for authenticated session and worker paths. They were not changed because the active instruction authorized copying only the two Vantage variables.
+- A real local Chromium/Playwright smoke reached `/login` on the exact Preview (HTTP 200, expected login title/fields, zero page errors). Authenticated reviewer flow, seven report pages, session continuity, and report retrieval are not proven. No fresh PDF was generated.
+- Railway exact staging deployment `95ace217-6c0d-4d65-a42a-209077670b71` remains SUCCESS at the exact SHA. Build manifest `sha256:40f926c14c6e85c3a5c234afaab9a57b5dae60bd004189c1d99209d6e90ac0b8`, config digest `sha256:c629ad67e3700711eee02207b0681919bf6d10ff525689ba53420619260a9e2a`; startup proves PostgreSQL initialization, S3 connectivity, and worker listening. GET `/health` returned 200. Railway does not expose a separate running-container digest; no digest equality is claimed. No redeploy was performed.
+- GitHub `Vercel – prysm` status is success for the new Preview deployment. `Vercel – vantage-platform` remains a failing status pointing to an older deployment; that distinct project is non-authoritative and was not changed or disconnected. Railway's stale error status points to removed predecessor `79fee361-...`; the direct current deployment `95ace...` is successful.
+- **PRODUCTION PATH EQUIVALENCE: BLOCKED. PRODUCTION IDENTITY CONTINUITY: BLOCKED.** The login-to-audit/report/PDF identity path has not traversed authentication and terminal report retrieval.
+- Final independent challenge is BLOCKED; zero critical/major is not certified because the authenticated report/PDF path is unavailable.
+- Production remained untouched: no production aliases, deployments, variables, Cognito, PostgreSQL, S3, audits, or provider calls were changed or run.
 
 ## Governance and proof
 
@@ -70,6 +67,6 @@ Current objective: Complete the continuous governed MVP client-readiness closure
 
 ## Exact next action
 
-On the clean MVP closure worktree, use the Vercel CLI to secret-safely copy only `VANTAGE_WORKER_API_URL` and `VANTAGE_TENANT_ID` from the old branch-specific Preview mapping to `repair/prysm-mvp-client-readiness-2026-09-21`, without printing their values. Redeploy the authoritative `prysm` Preview at exact SHA `bd12a1c...`, prove it targets the exact Railway staging worker, then run the real authenticated seven-page browser/PDF acceptance and final independent challenge.
+Obtain authorization to apply the existing staging-only `COGNITO_REGION`, `COGNITO_CLIENT_ID`, `COGNITO_USER_POOL_ID`, and `VANTAGE_WEBHOOK_SECRET` values to Preview scope for branch `repair/prysm-mvp-client-readiness-2026-09-21`. Then complete authenticated browser/session acceptance, generate and inspect a fresh PDF, run the final independent challenge, and refresh durable state. Production activation requires separate authorization.
 
 Last verified: 2026-09-21 America/Toronto
