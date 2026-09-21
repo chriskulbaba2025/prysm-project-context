@@ -184,3 +184,13 @@ These raw measures are the primary comparison data for model and workflow effici
 | Tokens / cost | NOT_AVAILABLE |
 | Confidence | No terminal staging confidence assigned; authenticated browser and independent gates remain incomplete |
 | Final outcome | BLOCKED_PENDING_USER_STAGING_REVIEWER_CREDENTIAL_OR_SESSION |
+
+## PRYSM staging closure attempt — 2026-09-20
+
+- Candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`; one bounded repair commit, 11 files (+146/-35); three verified root-cause groups.
+- Exact start not reliably captured. First trustworthy continuation timestamp `2026-09-21T02:05:29Z`; lower-bound continuation through initial report draft was 16m50s. Exact full-run elapsed, model/effort, tokens, and cost are `NOT_AVAILABLE`.
+- Recursive worker 2,011/2,011 on final pre-commit source tree; worker package 1,017/1,017; system acceptance 90/90; whole-app P-B01…P-B16 PASS; closure gate PASS.
+- One independent challenge cycle, HOLD. Post-commit recursive rerun blocked before tests by local PostgreSQL TCP bind failure.
+- One staging PostgreSQL credential rotation/direct reconnect; one exact S3 audit artifact retrieval; same-SHA Railway staging redeploy and Vercel Preview observed. Production actions/calls: zero.
+- Fifteen pre-existing untracked workspace items preserved.
+- Full evidence: `C:\Users\kulba\Downloads\PRYSM-STAGING-CLOSURE-2026-09-20\STAGING_CLOSURE_HOLD.md` and `EXECUTION_EFFICIENCY.md`.

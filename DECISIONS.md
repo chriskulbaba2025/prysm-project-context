@@ -747,3 +747,22 @@ The seven-page presentation candidate adds bounded report presentation and deter
 
 Implication:
 All previous staging proof remains evidence only for the exact predecessor and the staging infrastructure configuration it directly observed. It does not prove deployment or browser acceptance of `1cd12498c1642c8b2bbb1159971ced580360689d`. Re-discover current provider identities and verify fresh staging deployment identities before claiming staging PASS.
+
+## Decision: Staging closure held after exact-candidate deployment challenge
+
+Date: 2026-09-20
+Status: HOLD — no release or production authority granted
+
+Decision:
+
+Record application commit `af95823350d580d47027b4ad1e60e98cb08abc0f` as the current exact PRYSM staging candidate on `repair/prysm-stage2-candidate-2026-09-18`. The bounded PLANE34 fixture reconciliation and deterministic tests pass. Staging publication to the existing repair branch, Vercel Preview, and Railway staging occurred under the existing staging-only authorization. Staging PostgreSQL credential rotation/direct reconnect and exact audit S3 artifact retrieval are recorded as partial infrastructure proofs.
+
+Do not claim `STAGING_ACCEPTANCE_PASS`. Hold until Railway staging runtime/domain mapping is resolved and verified as the intended worker; the worker demonstrably consumes the rotated staging PostgreSQL credential; and authenticated Cognito reviewer browser acceptance completes the full dashboard→audit→seven report pages→navigation/content/evidence→print/PDF→refresh/session continuity→dashboard return path. The in-app browser was unavailable and no reviewer credential/session is present in durable proof. Production-path equivalence and production identity continuity are both BLOCKED.
+
+Reason:
+
+The same-SHA Railway deployment metadata identifies the commit, but its build/start logs show a Next.js portal while the source deployment manifest declares the worker, and its URL returned a worker health body. Deployment metadata alone therefore does not prove the served runtime or path. PostgreSQL direct reconnect after rotation succeeded, but the post-rotation service logs do not show that the intended worker consumed it. One exact report-v2 S3 index object was retrieved; that does not prove authenticated report navigation or all seven pages.
+
+Implication:
+
+Preserve production freeze. Do not merge, promote, deploy, configure, audit, or call providers/models in production. Resolve the staging service/runtime path, prove app-level rotated-credential use, then complete browser acceptance and a new independent challenge. Keep exact identities and reports in the PRYSM staging-closure folder under Downloads.
