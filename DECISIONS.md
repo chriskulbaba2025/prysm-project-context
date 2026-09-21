@@ -807,3 +807,16 @@ The fresh independent read-only challenge verified exact application branch/SHA/
 
 Implication:
 Production remains frozen. Do not claim staging acceptance, path equivalence, or identity continuity. Do not issue another credential reset without additional explicit authorization. Resume with an authenticated staging reviewer session or a newly authorized reset, reconcile the Railway digest mapping, complete the full browser acceptance, and then run the post-chain independent challenge. Preserve the final HOLD and all sanitized proof in the existing Downloads closure folder.
+## Decision: Staging login 422 root cause remains unresolved; no reset or code change
+
+Date: 2026-09-21
+Status: Active
+
+Decision:
+Do not perform another Cognito reset or alter application code for the staging login failure on current evidence. The previous HTTP 422 was returned by the required-fields guard before Cognito InitiateAuth. The historical request body was not retained. A read-only Preview replay using dummy values and a local request interceptor delivered nonempty email and password fields under both immediate-fill and hydration-wait sequences; no application network or Cognito call occurred. The exact historical field-loss cause remains unresolved.
+
+Reason:
+The frontend's controlled form constructs `{email,password}` and the route rejects missing values before `provider.authenticate`. Current safe browser replay did not reproduce a missing field. This is insufficient evidence to classify an application defect or assign a precise harness defect.
+
+Implication:
+Keep production frozen and staging closure on HOLD. Preserve the one-reset boundary. Resume only with a newly authorized reviewer session/reset and a controlled browser capture that records field presence without logging values before Cognito is allowed. Apply no application repair until the lost-value boundary is directly proven. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.

@@ -217,3 +217,8 @@ These raw measures are the primary comparison data for model and workflow effici
 - Read-only Railway status/list confirmed deployment 64282042... at exact branch/SHA and Dockerfile path, metadata image digest `1ffb...`; build exporter digest is `006b...`. Exact running image digest continuity unresolved; proof saved as `railway-final-deployment-digest-challenge.json`.
 - Browser auth remains blocked at login POST 422 after one reset; no authenticated flow. Further reset requires explicit user authorization. Production actions and app changes: 0.
 - Manifest was refreshed to 22 files and all hashes independently recomputed by the primary agent: PASS.
+## PRYSM staging login 422 read-only diagnosis - 2026-09-21
+
+- Candidate: `af95823350d580d47027b4ad1e60e98cb08abc0f`. Browser diagnostic artifact interval 2026-09-21T04:01:34Z to 2026-09-21T04:05:13Z (00:03:39 to recorded closeout; read-only source inspection also performed).
+- Synthetic browser submissions: 2, locally intercepted before app network. Request keys had email/password populated in both cases. Cognito calls: 0. Additional credential resets: 0. Application changes: 0. Test suites: 0. Production actions: 0.
+- Root-cause classification: exact historical missing-field point UNRESOLVED; no app defect established. Artifacts preserved in the existing staging-closure folder.

@@ -147,3 +147,11 @@ The prior staging browser gate applied to predecessor candidate `d313643d7d49797
 - The one user-authorized staging Cognito reset is spent; first Preview login POST returned HTTP 422 before Cognito auth and Cognito remains `FORCE_CHANGE_PASSWORD`. Seven report pages, PDF, refresh/session, and dashboard return were not reached. Independent verdict: HOLD; post-chain challenge remains unrun.
 - Production remains frozen. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.
 - Exact next action: make an authenticated staging reviewer session available or explicitly authorize one additional staging-only reset; complete browser acceptance, resolve Railway image digest identity, then run the post-chain independent challenge.
+## Read-only staging login diagnosis — HOLD — 2026-09-21
+
+- Exact application `HEAD` and remote repair ref remain `af95823350d580d47027b4ad1e60e98cb08abc0f`; tracked worktree clean, pre-existing untracked user files preserved.
+- The login page's controlled state builds `{email,password}`. `/api/auth/login` returns 422 if either is missing before `provider.authenticate` invokes Cognito InitiateAuth. The prior browser proof retained status/error, not request payload; which field was absent and where is UNRESOLVED.
+- Two read-only Preview browser replays with dummy values intercepted before application network both produced nonempty email/password payloads, including the previous immediate-fill sequence. No Cognito call occurred; hydration timing was not reproduced as the root cause.
+- One previous temporary-password reset remains spent and reviewer state was last observed as `FORCE_CHANGE_PASSWORD`. This turn performed no authentication attempt, Cognito call/reset, production action, app edit, or suite run.
+- The exact-candidate acceptance remains HOLD; independent post-chain challenge remains unrun. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.
+- Exact next action: preserve read-only boundary until Chris provides another authorized staging reviewer session/reset and, on the next controlled attempt, capture only redacted request-field presence before permitting Cognito auth. Do not modify the app until direct evidence localizes a defect.
