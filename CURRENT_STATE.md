@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Complete authenticated staging browser acceptance for exact candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`; staging runtime, rotated PostgreSQL use, and exact audit-artifact S3 access are proven. Closure remains HOLD at Cognito reviewer authentication. Production remains frozen.
+Current objective: Complete authenticated staging acceptance for exact candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`. Runtime, rotated PostgreSQL use, S3 artifact access, and staging Cognito pool/reviewer identity are verified. One authorized temporary reset was applied, but Preview login stopped at HTTP 422 before Cognito authentication. Production remains frozen.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -66,7 +66,7 @@ In progress:
 - Railway staging worker runtime, rotated PostgreSQL use, exact audit-artifact S3 GET, and exact Vercel Preview deployment identity are proven at candidate af95823350d580d47027b4ad1e60e98cb08abc0f.
 
 Blocked:
-- Staging closure is HOLD because no authorized Cognito reviewer session or credential is available. Local Playwright/Chrome reached the exact Preview app login; authenticated report acceptance is unrun.
+- Staging closure is HOLD: the first browser login POST returned HTTP 422 before Cognito auth; the one authorized reset credential was discarded from memory, and the existing reviewer is in FORCE_CHANGE_PASSWORD. No additional reset is authorized.
 - Production remains frozen and unauthorized.
 
 Important constraints:
@@ -90,12 +90,12 @@ Latest staging closure checkpoint - HOLD - 2026-09-21
 - Staging-only variable `RAILWAY_DOCKERFILE_PATH=services/worker/Dockerfile` repaired the staging build. Railway deployment `64282042-d204-4488-8dc8-9b2929cef0ee` is SUCCESS at exact SHA `af958...`, effective Dockerfile `services/worker/Dockerfile`, running worker instance `41ec5119-f2b1-491c-9ec6-28291375dfa2`. The assigned domain returns the worker HTTP 200 health payload. Startup confirms PostgreSQL connection and S3 artifact-store connectivity.
 - Staging PostgreSQL role and matching Railway variables were rotated; direct TCP reconnect with the current credential and worker startup use are proven. The dedicated staging S3 key was rotated, the prior key revoked, and an exact audit index GET after rotation verified at 176,024 bytes / SHA-256 `0196B33392ECD428133905E35731F1D75F1A9BBA62662542DAA846623AFF551E`. The staging webhook secret was also rotated in Railway and branch-scoped Vercel Preview.
 - Vercel Preview deployment `dpl_6zBC3mrqMmfNH4DjdwoqjR93QcG2` is READY at the exact branch/SHA. Local Playwright/Chrome reached the Preview app `/login` with HTTP 200 and zero page errors using a temporary Vercel share link that was not persisted.
-- Blocker: no authorized Cognito reviewer session/credential is available. The full authenticated flow remains unrun: dashboard -> authoritative audit -> seven report pages -> navigation/content/evidence -> print/PDF -> refresh/session continuity -> dashboard return. No reviewer account was created.
+- Blocker: one staging Cognito temporary-password reset was applied, but the first browser login POST returned HTTP 422 before Cognito authentication. Cognito now reports FORCE_CHANGE_PASSWORD; the credential stayed in memory only and was discarded. The authenticated dashboard/report flow remains unrun.
 - A Railway environment-config diagnostic inadvertently emitted staging DB, S3, and webhook secrets to tool output; no secret values were written to artifacts. DB and webhook credentials were replaced; the old S3 key was revoked. No production resource or credential was involved.
 - The independent exact-candidate challenge is deferred until the authenticated identity chain completes. The prior exact-candidate challenge verdict remains HOLD.
 - `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`. Production remains frozen. No merge, production deploy, mutation, audit, provider call, or model call occurred.
 - Detailed evidence and measured continuation telemetry are in `C:\Users\kulba\Downloads\PRYSM-STAGING-CLOSURE-2026-09-20\STAGING_CLOSURE_HOLD.md`, `EXECUTION_EFFICIENCY.md`, `staging-observations.json`, `railway-runtime-resolution.json`, `vercel-preview-current-identity.json`, `staging-browser-entry-observation.json`, `staging-postgres-rotation-proof.json`, `s3-artifact-after-rotation-proof.json`, `railway-worker-build-final.log`, `railway-worker-startup-final.log`, `railway-worker-health-final.txt`, and `staging-audit-index-from-s3-after-rotation.html`.
-- Exact next action: Chris provides an authorized staging Cognito reviewer session or credential through an approved secret-safe channel; then resume the authenticated browser flow and run the independent exact-candidate challenge.
+- Exact next action: Chris provides an already-authenticated staging reviewer browser session or explicitly authorizes one additional staging-only Cognito reset; then complete the browser flow and independent exact-candidate challenge.
 ## Staging infrastructure blocker — 2026-09-19
 
 The staging infrastructure preflight stopped safely before mutation. Railway project `GENSEN process` still has only the production environment. The accepted application candidate remains `d313643d7d49797c433dc60cf630b5bbd3c0d427`; no application defect was found and production was untouched.
@@ -129,3 +129,13 @@ The prior staging browser gate applied to predecessor candidate `d313643d7d49797
 - Publication/deployment has completed as authorized: local and remote repair branch SHA agree; Vercel Preview and Railway staging build/deployment metadata agree on the exact candidate; worker `/health` and Preview `/login` smoke return HTTP 200; worker logs confirm staging S3 and PostgreSQL initialization. Exact-candidate deterministic checks rerun: worker 1015/1015 and renderer plus 15-case false-certainty contract 121/121.
 - Real Chromium reached the app login through temporary Vercel preview access, and the unauthenticated report URL redirected to that login with zero browser errors. Authenticated page acceptance has not run: the Cognito reviewer password is absent from durable proof (redacted); awaiting a valid staging reviewer credential or signed-in browser session. Do not treat the staging acceptance gate as PASS until the authenticated route, seven pages, and independent verification pass.
 - Stop before merge, production deployment/promotion, production configuration mutation, production audit, or live/paid provider/model calls. A staging PASS does not authorize production.
+
+## Staging Cognito reset continuation — HOLD — 2026-09-21
+
+- Exact app SHA `af95823350d580d47027b4ad1e60e98cb08abc0f`; branch `repair/prysm-stage2-candidate-2026-09-18`; audit `6dca53ed-ae00-484c-bf77-b59c059eef51`.
+- Exact Vercel Preview configuration identifies Cognito pool `us-east-1_ZYZ57LwIX`, named `prysm-stage2-staging-users-2026-09-18`, with tags Application=prysm, Environment=staging, Stage=2. Existing enabled reviewer username/sub `2408e438-0041-70dd-4a37-8709020a8068` and email match the governed Stage 2 identity. The production pool was not touched.
+- Chris authorized one temporary password reset. The reset was applied once. The first browser login POST returned HTTP 422 before Cognito sign-in; the account now reports `FORCE_CHANGE_PASSWORD`. The generated credential remained in process memory only, was neither exposed nor persisted, and was discarded when the run ended.
+- Browser authenticated login, dashboard-to-audit, seven-page navigation/content/evidence, print/PDF, refresh/session continuity, and dashboard return are NOT RUN. The post-chain independent challenge is NOT RUN.
+- `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`. Production remains frozen.
+- Detailed sanitized evidence is in `C:\Users\kulba\Downloads\PRYSM-STAGING-CLOSURE-2026-09-20\authenticated-staging-browser-acceptance.json`, `staging-cognito-one-time-reset-proof.json`, and the appended staging HOLD report.
+- Exact next action: obtain an already-authenticated staging reviewer browser session or Chris's explicit authorization for one additional staging-only reset, then finish authenticated browser acceptance and independent challenge.

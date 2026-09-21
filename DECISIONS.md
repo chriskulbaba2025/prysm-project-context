@@ -781,3 +781,16 @@ The service-instance state, build logs, worker startup logs, and assigned domain
 
 Implication:
 Keep production frozen. Continue only after Chris provides an authorized staging Cognito reviewer session or credential through an approved secret-safe channel. Then exercise dashboard -> audit -> all seven pages -> navigation/content/evidence -> print/PDF -> refresh/session continuity -> dashboard return, followed by a genuinely independent read-only exact-candidate challenge. Preserve staging proof under the existing closure folder. No secret values may enter project memory.
+## Decision: Staging Cognito reset consumed without completing authentication; HOLD
+
+Date: 2026-09-21
+Status: Active
+
+Decision:
+Chris authorized one reset of the existing PRYSM Stage 2 staging Cognito reviewer. The reset was applied once in the staging-tagged pool `us-east-1_ZYZ57LwIX`; no production pool/user/configuration was touched. The generated temporary credential was not exposed or persisted. Preview login returned HTTP 422 before Cognito authentication, and the credential was discarded when the browser process exited. Cognito now reports `FORCE_CHANGE_PASSWORD`. Do not reset again without explicit additional authorization.
+
+Reason:
+The exact Vercel Preview branch settings resolve to the staging-only Stage 2 Cognito pool and existing reviewer identity. Local Chrome/Playwright reached the exact Preview deployment, but the first portal login POST failed its required-fields validation before authentication. The reset credential cannot be recovered and must not be reconstructed or retrieved.
+
+Implication:
+Keep production frozen and staging closure on HOLD. Resume only after an already-authenticated staging reviewer browser session is available or Chris explicitly authorizes one additional staging-only Cognito reset. Then complete dashboard -> authoritative audit -> all seven report pages -> navigation/content/evidence -> print/PDF -> refresh/session continuity -> dashboard return, followed by the independent exact-candidate challenge. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.

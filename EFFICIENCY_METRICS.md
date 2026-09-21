@@ -203,3 +203,11 @@ These raw measures are the primary comparison data for model and workflow effici
 - Proof: worker Dockerfile/runtime and public health PASS; PostgreSQL variable alignment, TCP reconnect, and worker startup PASS; rotated staging IAM principal and exact audit artifact GET PASS; Vercel Preview exact SHA PASS; local Playwright entry to `/login` PASS. Authenticated acceptance BLOCKED at missing Cognito reviewer session. Independent challenge deferred until identity chain completion.
 - Test suites rerun: 0 because no application code changed. Production mutation/deploy/audit/provider/model calls: 0. Secret values recorded: 0. Existing untracked application workspace items preserved.
 - Model, token, cost, and model runtime: `NOT_AVAILABLE`. Full closure: `HOLD`.
+
+## PRYSM staging Cognito reset continuation - 2026-09-21
+
+- Candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`; authoritative audit `6dca53ed-ae00-484c-bf77-b59c059eef51`.
+- Verified exact Preview-to-staging Cognito pool and existing reviewer identity; production Cognito untouched.
+- One authorized temporary reset applied. The login POST returned 422 before Cognito authentication; account status is `FORCE_CHANGE_PASSWORD`. Generated credential values: 0 exposed, 0 persisted.
+- Authenticated acceptance steps completed: 0/8; post-chain independent challenge: NOT RUN. Final result: HOLD.
+- Application source changes: 0. Production actions: 0. Evidence report updated under the existing staging closure folder.
