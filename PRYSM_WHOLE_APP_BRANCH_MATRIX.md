@@ -52,7 +52,7 @@ The complete deterministic replay for audit `688e0cd2-7e09-4b2c-8e20-d05e507f5b7
 
 No P-B16 is opened from this diagnostic.
 
-## Next matrix action
+## Current matrix disposition
 
-P6 adds P-B17 for status-preserving actionability rendering at repair candidate `3fb3042c04d874d44ff7f984bf279fd7b452327c`. Whole-App execution remains P-B01 through P-B16 and the P6 direct branch proof, including the Evidence Appendix escape regression, is separately executed because the controlled Whole-App fixture has all sources available.
+P-B17 is integrated into the Whole-App gate and is VERIFIED at exact candidate `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`. The exact-candidate closure run executes the mapped P-B17 roadmap and assembled approval/reload suites, then reports P-B01 through P-B17 PASS. Earlier per-row SHAs remain the recorded introduction/verification points for those branch scenarios; the final exact-candidate Whole-App result is recorded in `CURRENT_STATE.md` and closure telemetry.
 
