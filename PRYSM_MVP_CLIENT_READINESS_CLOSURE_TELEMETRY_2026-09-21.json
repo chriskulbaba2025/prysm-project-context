@@ -1,0 +1,79 @@
+{
+  "updatedAt": "2026-09-21",
+  "applicationRepository": "chriskulbaba2025/vantage-platform",
+  "branch": "repair/prysm-mvp-client-readiness-2026-09-21",
+  "candidateSha": "bd12a1c7c77ba0e297a8da4c69e331d6456b3748",
+  "localHeadEqualsOrigin": true,
+  "worktreeClean": true,
+  "mainAncestor": {
+    "sha": "0e4a97e68f19b974e7ef3dfdd1480cbc390d090b",
+    "result": "PASS_T6_SATISFIED"
+  },
+  "auditId": "6dca53ed-ae00-484c-bf77-b59c059eef51",
+  "tranches": {
+    "T0_T6": "PASS",
+    "T7_deterministic_and_hosted_regression": "PASS",
+    "T7_staging_deployment": "BLOCKED",
+    "T8_browser_and_pdf": "BLOCKED",
+    "T9_independent_postrun_challenge": "BLOCKED"
+  },
+  "tests": {
+    "localNpmTest": {
+      "status": "PASS",
+      "passed": 1026,
+      "skipped": 0,
+      "durationMs": 18272
+    },
+    "localVerifyPrysmClosure": {
+      "status": "PASS",
+      "includesWholeApp": true
+    },
+    "localPostgres": {
+      "status": "FAIL",
+      "reason": "developer-local postgres role authentication rejected"
+    },
+    "hostedVantageWorkerCi": {
+      "runId": 35572418788,
+      "status": "PASS"
+    },
+    "hostedPrysmMvpVerification": {
+      "runId": 35572418812,
+      "status": "PASS"
+    }
+  },
+  "deployments": {
+    "vercelAuthoritativePreview": {
+      "project": "prysm",
+      "projectId": "prj_o4dQkuESOoTphZkOwVKG49BaLQT9",
+      "candidateBuild": "FAIL",
+      "reason": "branch Preview lacks VANTAGE_WORKER_API_URL and VANTAGE_TENANT_ID"
+    },
+    "vercelDuplicateProject": {
+      "project": "vantage-platform",
+      "candidateBuild": "FAIL",
+      "authoritative": false,
+      "reason": "same missing Preview variables; GitHub status target remains stale"
+    },
+    "railwayStaging": {
+      "authorityCandidate": "GENSEN process / staging / vantage-platform-staging",
+      "deploymentOfCandidate": false,
+      "productionShapedPath": "PostgreSQL and S3",
+      "imageContinuity": "BLOCKED",
+      "metadataDigest": "sha256:1ffbfc72b59accd94cdde192239ade1d79d48bc933da0ffacc66630b63e28d12",
+      "buildExportDigest": "sha256:006b1fd0ed138b4650ba3ca01e0978a89d747237a58173476c39406993070b43"
+    }
+  },
+  "terminalAcceptance": {
+    "managedBrowserAvailable": false,
+    "authorizedReviewerSessionAvailable": false,
+    "browserAcceptance": "BLOCKED",
+    "freshCandidatePdf": "NOT_GENERATED",
+    "productionPathEquivalence": "BLOCKED",
+    "productionIdentityContinuity": "BLOCKED",
+    "independentChallenge": "BLOCKED",
+    "criticalFindings": "NOT_ASSESSED_INDEPENDENTLY",
+    "majorFindings": "NOT_ASSESSED_INDEPENDENTLY"
+  },
+  "production": "UNTOUCHED",
+  "releaseStatus": "BLOCKED_NOT_MVP_READY_FOR_PRODUCTION_ACTIVATION"
+}
