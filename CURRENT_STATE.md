@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Complete authenticated staging acceptance for exact candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`. Runtime, rotated PostgreSQL use, S3 artifact access, and staging Cognito pool/reviewer identity are verified. One authorized temporary reset was applied, but Preview login stopped at HTTP 422 before Cognito authentication. Production remains frozen.
+Current objective: Complete staging acceptance for exact candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`. The one authorized Cognito reset was applied, but Preview login stopped at HTTP 422 before authentication; runtime image digest continuity also remains unresolved. Production remains frozen.
 
 Verified checkpoint:
 - Accepted frozen production baseline remains `60169bf23eec37c29683937d459d7d96f82aba73`.
@@ -63,10 +63,10 @@ Completed:
 - Prospective efficiency telemetry baseline for this autonomous reconciliation run.
 
 In progress:
-- Railway staging worker runtime, rotated PostgreSQL use, exact audit-artifact S3 GET, and exact Vercel Preview deployment identity are proven at candidate af95823350d580d47027b4ad1e60e98cb08abc0f.
+- Railway staging service/SHA/worker startup, rotated PostgreSQL use, S3 artifact access, Preview identity, and Cognito staging pool/reviewer identity are recorded. The independent challenge found Railway deployment metadata digest `1ffb...` differs from final build exporter digest `006b...`; runtime image digest continuity is unresolved.
 
 Blocked:
-- Staging closure is HOLD: the first browser login POST returned HTTP 422 before Cognito auth; the one authorized reset credential was discarded from memory, and the existing reviewer is in FORCE_CHANGE_PASSWORD. No additional reset is authorized.
+- Staging closure is HOLD: the one authorized Cognito reset was applied, Preview login returned 422 before Cognito auth, and the generated temporary credential was discarded; Cognito status is FORCE_CHANGE_PASSWORD. Railway image digest continuity is also unresolved. No additional reset is authorized.
 - Production remains frozen and unauthorized.
 
 Important constraints:
@@ -139,3 +139,11 @@ The prior staging browser gate applied to predecessor candidate `d313643d7d49797
 - `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`. Production remains frozen.
 - Detailed sanitized evidence is in `C:\Users\kulba\Downloads\PRYSM-STAGING-CLOSURE-2026-09-20\authenticated-staging-browser-acceptance.json`, `staging-cognito-one-time-reset-proof.json`, and the appended staging HOLD report.
 - Exact next action: obtain an already-authenticated staging reviewer browser session or Chris's explicit authorization for one additional staging-only reset, then finish authenticated browser acceptance and independent challenge.
+
+## Independent candidate challenge and Railway digest discrepancy — HOLD — 2026-09-21
+
+- Independent read-only reviewer verified application branch/head/tree and recomputed all 21 then-listed proof hashes with zero mismatches. A new sanitized Railway digest comparison is now included in the 22-file verified evidence manifest.
+- Railway's current status/list for staging deployment `64282042-d204-4488-8dc8-9b2929cef0ee` reports exact branch/SHA, Dockerfile worker builder, and image digest `sha256:1ffbfc72b59accd94cdde192239ade1d79d48bc933da0ffacc66630b63e28d12`; the final build export log for the same deployment reports `sha256:006b1fd0ed138b4650ba3ca01e0978a89d747237a58173476c39406993070b43`. The metadata digest also appears for earlier deployment `d4c24fb0-4102-45df-8965-f3ecfe52464d`. Exact running-image digest continuity is UNRESOLVED.
+- The one user-authorized staging Cognito reset is spent; first Preview login POST returned HTTP 422 before Cognito auth and Cognito remains `FORCE_CHANGE_PASSWORD`. Seven report pages, PDF, refresh/session, and dashboard return were not reached. Independent verdict: HOLD; post-chain challenge remains unrun.
+- Production remains frozen. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.
+- Exact next action: make an authenticated staging reviewer session available or explicitly authorize one additional staging-only reset; complete browser acceptance, resolve Railway image digest identity, then run the post-chain independent challenge.

@@ -794,3 +794,16 @@ The exact Vercel Preview branch settings resolve to the staging-only Stage 2 Cog
 
 Implication:
 Keep production frozen and staging closure on HOLD. Resume only after an already-authenticated staging reviewer browser session is available or Chris explicitly authorizes one additional staging-only Cognito reset. Then complete dashboard -> authoritative audit -> all seven report pages -> navigation/content/evidence -> print/PDF -> refresh/session continuity -> dashboard return, followed by the independent exact-candidate challenge. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.
+## Decision: Independent staging challenge HOLDs on reset boundary and Railway image digest
+
+Date: 2026-09-21
+Status: Active
+
+Decision:
+Keep candidate `af95823350d580d47027b4ad1e60e98cb08abc0f` on staging HOLD. The sole authorized temporary Cognito reset was applied to the verified staging reviewer, but portal login returned HTTP 422 before Cognito authentication; the temporary credential was discarded and the reviewer now requires password change. In addition, Railway metadata digest `sha256:1ffbfc72b59accd94cdde192239ade1d79d48bc933da0ffacc66630b63e28d12` for deployment `64282042-d204-4488-8dc8-9b2929cef0ee` differs from that deployment's build-export digest `sha256:006b1fd0ed138b4650ba3ca01e0978a89d747237a58173476c39406993070b43`. Exact runtime image digest continuity is unproven.
+
+Reason:
+The fresh independent read-only challenge verified exact application branch/SHA/tree and recomputed all 21 then-listed evidence hashes without mismatch. It confirmed authenticated acceptance did not begin and identified the Railway digest contradiction; a read-only live Railway status query reproduced the metadata digest.
+
+Implication:
+Production remains frozen. Do not claim staging acceptance, path equivalence, or identity continuity. Do not issue another credential reset without additional explicit authorization. Resume with an authenticated staging reviewer session or a newly authorized reset, reconcile the Railway digest mapping, complete the full browser acceptance, and then run the post-chain independent challenge. Preserve the final HOLD and all sanitized proof in the existing Downloads closure folder.

@@ -211,3 +211,9 @@ These raw measures are the primary comparison data for model and workflow effici
 - One authorized temporary reset applied. The login POST returned 422 before Cognito authentication; account status is `FORCE_CHANGE_PASSWORD`. Generated credential values: 0 exposed, 0 persisted.
 - Authenticated acceptance steps completed: 0/8; post-chain independent challenge: NOT RUN. Final result: HOLD.
 - Application source changes: 0. Production actions: 0. Evidence report updated under the existing staging closure folder.
+## Independent exact-candidate HOLD challenge - 2026-09-21
+
+- Independent reviewer verified exact app HEAD/branch/tree and recomputed all 21 then-current closure hashes with zero mismatches; review returned HOLD.
+- Read-only Railway status/list confirmed deployment 64282042... at exact branch/SHA and Dockerfile path, metadata image digest `1ffb...`; build exporter digest is `006b...`. Exact running image digest continuity unresolved; proof saved as `railway-final-deployment-digest-challenge.json`.
+- Browser auth remains blocked at login POST 422 after one reset; no authenticated flow. Further reset requires explicit user authorization. Production actions and app changes: 0.
+- Manifest was refreshed to 22 files and all hashes independently recomputed by the primary agent: PASS.
