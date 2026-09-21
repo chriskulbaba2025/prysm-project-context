@@ -4,7 +4,7 @@ Project: PRYSM. Updated: 2026-09-21 America/Toronto.
 
 ## Current closure
 
-The runtime/browser/PDF closure gates pass on exact candidate `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`. Final independent read-only reassessment is requested after this state refresh. Production remains frozen.
+STATUS: MVP_READY_FOR_PRODUCTION_ACTIVATION on exact candidate `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`. Final independent read-only challenge PASS; CRITICAL 0, MAJOR 0, open MINOR 0. Production remains frozen.
 
 - Application repository: `chriskulbaba2025/vantage-platform`.
 - Branch: `repair/prysm-mvp-client-readiness-2026-09-21`; local HEAD and origin branch match exactly; worktree clean.
@@ -35,8 +35,13 @@ The runtime/browser/PDF closure gates pass on exact candidate `aa9383bdab9047cfb
 - `PRODUCTION PATH EQUIVALENCE: PASS`. `PRODUCTION IDENTITY CONTINUITY: PASS` on the verified production-shaped staging path from authenticated principal through membership-protected persisted audit/report to terminal browser/PDF result.
 - P-B17 gate coverage drift was repaired in the owning Whole-App verification boundary; no client-report logic was changed. Exact candidate gate output lists P-B01-P-B17.
 
+## Independent challenge and production freeze
+
+- Final read-only exact-candidate challenge: PASS; zero critical, zero major, zero open minor. It verified the refreshed candidate/runtime state, exact identities, regression, Whole-App coverage, browser/PDF acceptance, path equivalence, and identity continuity.
+- Durable closure proof: `AUDIT_PRYSM_MVP_CLIENT_READINESS_FINAL_CLOSURE_2026-09-21.md`; machine-readable execution facts: `PRYSM_MVP_CLIENT_READINESS_CLOSURE_TELEMETRY_2026-09-21.json`.
+
 ## Production freeze and remaining action
 
 Production aliases/deployments, Cognito, Railway production, AWS production, databases, S3, provider credentials, new audits, and paid/live model operations remain untouched. Developer-local PostgreSQL role authentication had previously failed; do not claim local PostgreSQL PASS. Hosted staging PostgreSQL initialization and real application report retrieval are proven.
 
-The proof folder is `C:\Users\kulba\Downloads\PRYSM-MVP-CLOSURE-2026-09-21\`, with numbered closure artifacts 18–24 and exact-candidate build/runtime/test/PDF/browser evidence. Production activation requires separate explicit authorization after final independent reread.
+The proof folder is `C:\Users\kulba\Downloads\PRYSM-MVP-CLOSURE-2026-09-21\`, with numbered closure artifacts 18–24 and exact-candidate build/runtime/test/PDF/browser evidence. PRODUCTION PATH EQUIVALENCE: PASS. PRODUCTION IDENTITY CONTINUITY: PASS. PRODUCTION: UNTOUCHED. Next action: separate explicit authorization to activate this exact frozen candidate in production.
