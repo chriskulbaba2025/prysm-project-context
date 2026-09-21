@@ -766,3 +766,18 @@ The same-SHA Railway deployment metadata identifies the commit, but its build/st
 Implication:
 
 Preserve production freeze. Do not merge, promote, deploy, configure, audit, or call providers/models in production. Resolve the staging service/runtime path, prove app-level rotated-credential use, then complete browser acceptance and a new independent challenge. Keep exact identities and reports in the PRYSM staging-closure folder under Downloads.
+
+
+## Decision: Staging worker runtime restored; authenticated acceptance remains on HOLD
+
+Date: 2026-09-21
+Status: Active
+
+Decision:
+For candidate `af95823350d580d47027b4ad1e60e98cb08abc0f`, resolve Railway staging runtime selection only through staging-scoped configuration. The service `railwayConfigFile` was unset, so the committed `railway.toml` was not applied and Railpack started the root Next.js portal. Setting staging service variable `RAILWAY_DOCKERFILE_PATH=services/worker/Dockerfile` produced the intended worker image at the same exact candidate SHA. Staging PostgreSQL and S3 credentials were rotated after a diagnostic output incident; the previous S3 key was revoked. This supersedes the runtime and PostgreSQL-use blockers in the 2026-09-20 staging hold. Do not claim `STAGING_ACCEPTANCE_PASS` until an authorized Cognito reviewer session completes the full authenticated Preview/browser/report flow and the independent exact-candidate challenge passes.
+
+Reason:
+The service-instance state, build logs, worker startup logs, and assigned domain now establish the actual Railway runtime. Worker startup connected to PostgreSQL using the rotated staging URL, and the exact audit S3 object was fetched using the rotated dedicated staging principal. Browser entry reached the exact Vercel Preview app login, but no authorized reviewer session was available.
+
+Implication:
+Keep production frozen. Continue only after Chris provides an authorized staging Cognito reviewer session or credential through an approved secret-safe channel. Then exercise dashboard -> audit -> all seven pages -> navigation/content/evidence -> print/PDF -> refresh/session continuity -> dashboard return, followed by a genuinely independent read-only exact-candidate challenge. Preserve staging proof under the existing closure folder. No secret values may enter project memory.

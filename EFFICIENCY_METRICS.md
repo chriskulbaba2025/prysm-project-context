@@ -194,3 +194,12 @@ These raw measures are the primary comparison data for model and workflow effici
 - One staging PostgreSQL credential rotation/direct reconnect; one exact S3 audit artifact retrieval; same-SHA Railway staging redeploy and Vercel Preview observed. Production actions/calls: zero.
 - Fifteen pre-existing untracked workspace items preserved.
 - Full evidence: `C:\Users\kulba\Downloads\PRYSM-STAGING-CLOSURE-2026-09-20\STAGING_CLOSURE_HOLD.md` and `EXECUTION_EFFICIENCY.md`.
+
+## PRYSM staging identity continuation - 2026-09-21
+
+- Candidate: `af95823350d580d47027b4ad1e60e98cb08abc0f`; exact interval `2026-09-21T02:43:24Z` to `2026-09-21T03:21:46Z`; elapsed `00:38:22`.
+- Application source changes: 0. Staging-only Railway Dockerfile-path variable: 1. Final successful exact-SHA worker deployment: 1; an additional same-SHA redeploy activated rotated staging variables. Vercel Preview was redeployed once after branch-scoped variable rotation.
+- Rework: one unsuccessful AWS key rotation attempt using a principal without IAM key-management permission; the successful operation used the authorized admin profile, installed the new dedicated staging key, and revoked the old key. Several Railway/PowerShell tunnel and secret-stdin invocation attempts were tooling errors; the final PostgreSQL role password, Railway values, direct TCP reconnect, and app startup proof agree.
+- Proof: worker Dockerfile/runtime and public health PASS; PostgreSQL variable alignment, TCP reconnect, and worker startup PASS; rotated staging IAM principal and exact audit artifact GET PASS; Vercel Preview exact SHA PASS; local Playwright entry to `/login` PASS. Authenticated acceptance BLOCKED at missing Cognito reviewer session. Independent challenge deferred until identity chain completion.
+- Test suites rerun: 0 because no application code changed. Production mutation/deploy/audit/provider/model calls: 0. Secret values recorded: 0. Existing untracked application workspace items preserved.
+- Model, token, cost, and model runtime: `NOT_AVAILABLE`. Full closure: `HOLD`.
