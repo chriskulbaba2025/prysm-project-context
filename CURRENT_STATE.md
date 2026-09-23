@@ -2,6 +2,31 @@
 
 Project: PRYSM. Updated: 2026-09-23 America/Toronto.
 
+## STAGING_READY hosted wiring repair — HOLD
+
+The current application candidate is `83734f413553c98c4f83d95780b0a88c323eb422`
+on `repair/prysm-hybrid-retrieval-decision-routing-2026-09-23`, parent
+`6d1d99d63e607ebf328cfc661391747dee6592ae`. The governed repair adds the
+replaceable OpenAI-compatible embedding adapter and injects it into the real
+worker request listener. Local focused acceptance is 32/32 PASS, full worker
+regression is 1,090/1,090 PASS, and the root/Vercel build is PASS.
+
+Vercel Preview deployment `dpl_6YJyDNMucCk8273XYFtf1HsEyuAP` is READY. Railway
+staging deployment `395eae96-ca3e-4911-a141-fc72363ae1d9` remains INITIALIZING,
+so exact hosted worker identity, runtime pgvector/provider validation,
+authenticated Ask acceptance, Production Path Equivalence, and Production
+Identity Continuity remain BLOCKED. No live embedding call was made and
+production was untouched. A diagnostic Railway variable-list command also
+emitted staging secret values to tool output; values are omitted from durable
+context and were not rotated under the current authorization.
+
+Result: `HOLD`.
+
+Exact next action: Chris must review the staging credential exposure and
+authorize the appropriate security response; after that, rerun Railway
+deployment and the complete exact-head hosted validation from
+`83734f413553c98c4f83d95780b0a88c323eb422`.
+
 ## STAGING_READY embedding-provider diagnosis — HOLD
 
 The exact candidate remains `6d1d99d63e607ebf328cfc661391747dee6592ae` with
@@ -206,9 +231,7 @@ deferred; overall candidate disposition is HOLD. See
 
 ## Exact next action
 
-Keep production frozen. Obtain explicit staging-only authorization if hosted
-validation is required, then run production-path-equivalence and production-
-identity-continuity proof for exact candidate
-`10eafc716284168f222bb5e195b9cba82cd4e421`; otherwise review the local HOLD
-candidate and decide whether to promote this change into a separately governed
-staging tranche.
+Chris must review the staging credential exposure and authorize the appropriate
+security response; after that, rerun Railway deployment and the complete
+exact-head hosted validation from
+`83734f413553c98c4f83d95780b0a88c323eb422`.

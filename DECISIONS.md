@@ -894,3 +894,29 @@ Exact next action: Chris must provide or authorize one existing staging
 the smallest governed adapter/configuration and Preview mapping, push a new
 exact SHA, and rerun the complete hosted tranche. Do not create a new provider
 account or key.
+
+---
+
+## Decision: Hosted wiring repair and staging security HOLD
+
+Date: 2026-09-23
+Status: HOLD
+
+Application candidate `83734f413553c98c4f83d95780b0a88c323eb422` is the exact
+normal child of `6d1d99d63e607ebf328cfc661391747dee6592ae`. The repair adds the
+governed replaceable embedding adapter and injects it into the production-shaped
+Ask PRYSM request listener. Focused local acceptance is 32/32 PASS, full worker
+regression is 1,090/1,090 PASS, and Vercel Preview is READY as
+`dpl_6YJyDNMucCk8273XYFtf1HsEyuAP`.
+
+Railway deployment `395eae96-ca3e-4911-a141-fc72363ae1d9` remains
+INITIALIZING, so hosted worker identity, real semantic validation, authenticated
+Ask acceptance, Production Path Equivalence, and Production Identity Continuity
+are unproven. A diagnostic Railway variable-list command emitted staging secret
+values to tool output. Values are intentionally omitted from durable records and
+were not rotated because rotation is outside this authorization. Production was
+not touched and live embedding calls remain zero.
+
+Exact next action: Chris must review the staging credential exposure and
+authorize the appropriate security response; then rerun the Railway deployment
+and complete exact-head hosted validation from `83734f413553c98c4f83d95780b0a88c323eb422`.
