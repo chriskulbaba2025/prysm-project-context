@@ -1,6 +1,29 @@
 # Current State
 
-Project: PRYSM. Updated: 2026-09-21 America/Toronto.
+Project: PRYSM. Updated: 2026-09-23 America/Toronto.
+
+## Hybrid retrieval decision-routing checkpoint
+
+Application repository `chriskulbaba2025/vantage-platform` has a new pushed
+change-only candidate on branch
+`repair/prysm-hybrid-retrieval-decision-routing-2026-09-23` at exact SHA
+`10eafc716284168f222bb5e195b9cba82cd4e421`, based exactly on
+`4cda78b433de86da53d8bbe5efb8512b4366833c`.
+
+Completed: additive tenant/audit/site-scoped hybrid retrieval contract,
+deterministic/replaceable embedding adapter, PostgreSQL JSONB retrieval index,
+bounded graph expansion, context pack and retrieval trace, Ask PRYSM hybrid
+composition with deterministic fallback, generalized/security coverage, and
+Laya read-only qualification NO-GO. Targeted hybrid suite is 26/26 PASS and
+full worker regression is 1,081/1,081 PASS with zero failures/skips.
+
+Production touched: NO. New paid calls: 0. New provider/account: NO. Report
+design and canonical evidence authority remain protected.
+
+Current disposition: HOLD for release-critical hosted reproof. This change-only
+candidate has not been run through a new staging/browser production-shaped
+path, so production path equivalence and production identity continuity for
+this candidate are not claimed.
 
 ## Production status
 
@@ -113,4 +136,9 @@ deferred; overall candidate disposition is HOLD. See
 
 ## Exact next action
 
-The production activation remains closed and production remains frozen. Resume from the exact candidate for the remaining generalized acceptance and deferred provider/model validation. Durable checkpoints: `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_CANDIDATE_2026-09-22.md` and `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_HOSTED_ACCEPTANCE_2026-09-23.md`.
+Keep production frozen. Obtain explicit staging-only authorization if hosted
+validation is required, then run production-path-equivalence and production-
+identity-continuity proof for exact candidate
+`10eafc716284168f222bb5e195b9cba82cd4e421`; otherwise review the local HOLD
+candidate and decide whether to promote this change into a separately governed
+staging tranche.

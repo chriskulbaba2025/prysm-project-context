@@ -820,3 +820,22 @@ The frontend's controlled form constructs `{email,password}` and the route rejec
 
 Implication:
 Keep production frozen and staging closure on HOLD. Preserve the one-reset boundary. Resume only with a newly authorized reviewer session/reset and a controlled browser capture that records field presence without logging values before Cognito is allowed. Apply no application repair until the lost-value boundary is directly proven. `PRODUCTION PATH EQUIVALENCE: BLOCKED`; `PRODUCTION IDENTITY CONTINUITY: BLOCKED`.
+
+---
+
+## Decision: Hybrid retrieval + decision-routing local checkpoint
+
+Date: 2026-09-23
+Status: HOLD — no hosted release claim
+
+Accept local candidate `10eafc716284168f222bb5e195b9cba82cd4e421` from base
+`4cda78b433de86da53d8bbe5efb8512b4366833c` as the bounded hybrid retrieval
+implementation checkpoint. Targeted hybrid acceptance is 26/26 PASS and full
+worker regression is 1,081/1,081 PASS. Canonical evidence remains authoritative;
+similarity is relevance only. PostgreSQL retrieval storage is additive, no new
+paid provider/account or dependency was introduced, Laya is NO-GO and not
+integrated, and production was untouched.
+
+Do not claim staging/release readiness until exact-candidate production path
+equivalence and production identity continuity are directly re-proven. The
+exact next action is recorded in `CURRENT_STATE.md`.
