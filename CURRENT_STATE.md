@@ -2,6 +2,25 @@
 
 Project: PRYSM. Updated: 2026-09-23 America/Toronto.
 
+## STAGING_READY embedding-provider diagnosis — HOLD
+
+The exact candidate remains `6d1d99d63e607ebf328cfc661391747dee6592ae` with
+parent `10eafc716284168f222bb5e195b9cba82cd4e421`. A second governed,
+read-only STAGING_READY diagnosis confirmed that no authorized staging
+embedding credential is accessible: Railway staging reports
+`PRYSM_LLM_MODE=offline` and has no embedding-provider/model variable; Vercel
+Preview has no embedding credential; and the existing OpenAI references belong
+to narrative/n8n infrastructure rather than a worker embedding adapter.
+
+Result: `HOLD`. No application files changed, no deployment was attempted, no
+live embedding call was made, and production was untouched.
+
+Exact next action: Chris must provide or authorize one existing staging
+`OPENAI_API_KEY` scoped to the worker for the bounded embedding validation.
+Then implement the smallest governed adapter/configuration and candidate-branch
+Preview mapping, push a new exact SHA, and rerun the complete hosted tranche.
+Do not create a new provider account or key.
+
 ## Final hosted semantic validation checkpoint — HOLD
 
 The exact candidate remains `6d1d99d63e607ebf328cfc661391747dee6592ae` on

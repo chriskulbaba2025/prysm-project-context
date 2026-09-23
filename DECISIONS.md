@@ -875,3 +875,22 @@ unproven. No staging deployment, live embedding call, or production mutation
 occurred. Exact next action: provide or authorize an existing governed staging
 embedding provider/configuration, wire the replaceable adapter, then rerun the
 full exact-SHA hosted tranche. Do not create a new paid provider account.
+---
+
+## Decision: STAGING_READY embedding-provider diagnosis HOLD
+
+Date: 2026-09-23
+Status: HOLD
+
+Candidate `6d1d99d63e607ebf328cfc661391747dee6592ae` was not edited or deployed.
+A second governed read-only diagnosis confirmed no authorized staging embedding
+credential is accessible: Railway staging is `PRYSM_LLM_MODE=offline` with no
+embedding configuration; Vercel Preview has no embedding credential; and the
+existing OpenAI references are narrative/n8n infrastructure, not a worker
+embedding adapter. No live embedding call or production mutation occurred.
+
+Exact next action: Chris must provide or authorize one existing staging
+`OPENAI_API_KEY` for the worker's bounded embedding validation. Then implement
+the smallest governed adapter/configuration and Preview mapping, push a new
+exact SHA, and rerun the complete hosted tranche. Do not create a new provider
+account or key.
