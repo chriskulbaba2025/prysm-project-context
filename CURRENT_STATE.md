@@ -2,6 +2,29 @@
 
 Project: PRYSM. Updated: 2026-09-23 America/Toronto.
 
+## Final hosted semantic validation checkpoint — HOLD
+
+The exact candidate remains `6d1d99d63e607ebf328cfc661391747dee6592ae` on
+`repair/prysm-hybrid-retrieval-decision-routing-2026-09-23`, with parent
+`10eafc716284168f222bb5e195b9cba82cd4e421`.
+
+The authorized final hosted-validation run stopped during the read-only
+Production Spine audit before staging mutation. Direct evidence showed that
+the hosted Ask PRYSM route invokes `queryAskPrysm` without an embedding adapter,
+the worker has no configured production embedding provider/model adapter, and
+Railway staging reports `PRYSM_LLM_MODE=offline` with no embedding-related
+configuration. Recent Vercel Preview deployments for the branch were ERROR and
+there was no exact-candidate READY deployment identity.
+
+Result: `HOLD`. No staging deployment, live embedding call, browser acceptance,
+or production mutation occurred in this run. Production Path Equivalence and
+Production Identity Continuity are BLOCKED/unproven.
+
+Exact next action: provide or explicitly authorize an existing governed staging
+embedding provider/model configuration and wire the hosted Ask route to the
+replaceable adapter. Then invalidate this run's hosted evidence and repeat the
+full exact-SHA hosted tranche. Do not create a new paid provider account.
+
 ## Hybrid semantic retrieval repair checkpoint
 
 Application repository `chriskulbaba2025/vantage-platform` has a pushed

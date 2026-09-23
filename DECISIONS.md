@@ -857,3 +857,21 @@ full worker regression is 1,085/1,085 PASS. Production touched: NO; paid/live
 model calls: 0; Laya NO-GO retained. Real model semantic quality, staging,
 production path equivalence, production identity continuity, and real-world
 outcome validation remain unproven and require separate authorization.
+---
+
+## Decision: Hosted hybrid semantic validation HOLD
+
+Date: 2026-09-23
+Status: HOLD
+
+Candidate `6d1d99d63e607ebf328cfc661391747dee6592ae` was not advanced to
+staging mutation because the read-only Production Spine audit found no hosted
+embedding adapter/provider: the Ask route omits `embeddingAdapter`, Railway
+staging is `PRYSM_LLM_MODE=offline` with no embedding configuration, and the
+candidate branch had no Vercel Preview environment mapping while recent branch
+deployments were ERROR. Real semantic retrieval, exact hosted identity,
+Production Path Equivalence, and Production Identity Continuity are therefore
+unproven. No staging deployment, live embedding call, or production mutation
+occurred. Exact next action: provide or authorize an existing governed staging
+embedding provider/configuration, wire the replaceable adapter, then rerun the
+full exact-SHA hosted tranche. Do not create a new paid provider account.
