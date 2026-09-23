@@ -101,4 +101,4 @@ The local proof folder remains:
 
 ## Exact next action
 
-Use/observe production normally. Any new defect should open a new bounded governed change. Do not reopen this closed activation unless production evidence shows a real regression.
+The production activation remains closed and production remains frozen. A new governed post-MVP evidence-intelligence checkpoint is active on application candidate `d4a97fc350441dd1e692e0b0bab60c653019872c`, branch `repair/prysm-post-mvp-evidence-intelligence-2026-09-22`. Resume from that exact candidate to integrate canonical evidence record production into the orchestrator, prove report/Ask shared authority and tenant-scoped end-to-end behavior, and keep `PRODUCTION PATH EQUIVALENCE` and `PRODUCTION IDENTITY CONTINUITY` blocked until directly proven. Durable checkpoint: `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_CHECKPOINT_2026-09-22.md`.
