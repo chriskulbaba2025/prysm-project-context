@@ -2,6 +2,34 @@
 
 Project: PRYSM. Updated: 2026-09-23 America/Toronto.
 
+## Hybrid semantic retrieval repair checkpoint
+
+Application repository `chriskulbaba2025/vantage-platform` has a pushed
+change-only repair candidate on branch
+`repair/prysm-hybrid-retrieval-decision-routing-2026-09-23` at exact SHA
+`6d1d99d63e607ebf328cfc661391747dee6592ae`, based on repair start SHA
+`10eafc716284168f222bb5e195b9cba82cd4e421` and frozen parent
+`4cda78b433de86da53d8bbe5efb8512b4366833c`.
+
+The repair replaces the false-pass application-memory deterministic hash
+semantic label with governed PostgreSQL `pgvector`: `vector(1536)` storage,
+replaceable embedding adapter, SQL tenant/audit/site scope predicates before
+vector candidates are returned, independent lexical retrieval,
+canonical-evidence citation joining, bounded graph expansion, and
+deterministic fallback when vector capability is unavailable. Content hashes
+and embedding identity/version remain persisted metadata; unchanged content
+reuses its embedding and changed content invalidates it.
+
+Isolated pgvector 0.8.6 qualification and assembled acceptance PASS. Focused
+repair suite is 16/16 PASS. Full worker regression is 1,085/1,085 PASS with
+zero failures/skips. Production touched: NO. New paid/live model calls: 0.
+Laya NO-GO remains unchanged and was not reopened.
+
+Disposition: `PRYSM_HYBRID_SEMANTIC_RETRIEVAL_CHANGE_PASS` for the authorized
+local change-only tranche. Real embedding-model semantic quality, staging,
+production path equivalence, production identity continuity, and real-world
+outcome validation remain unproven and must not be claimed.
+
 ## Hybrid retrieval decision-routing checkpoint
 
 Application repository `chriskulbaba2025/vantage-platform` has a new pushed

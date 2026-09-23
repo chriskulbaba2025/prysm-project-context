@@ -839,3 +839,21 @@ integrated, and production was untouched.
 Do not claim staging/release readiness until exact-candidate production path
 equivalence and production identity continuity are directly re-proven. The
 exact next action is recorded in `CURRENT_STATE.md`.
+---
+
+## Decision: Hybrid semantic retrieval contract repair
+
+Date: 2026-09-23
+Status: CHANGE PASS — local change-only tranche; no hosted release claim
+
+Accept application SHA `6d1d99d63e607ebf328cfc661391747dee6592ae` as the bounded
+repair for `SEMANTIC_RETRIEVAL_CONTRACT_FALSE_PASS`. The candidate qualifies
+isolated PostgreSQL `pgvector` 0.8.6, stores `vector(1536)` embeddings behind a
+replaceable adapter, applies tenant/audit/site predicates in SQL before vector
+return, preserves independent lexical/deterministic retrieval, joins vector
+seeds to canonical evidence before citation, and retains bounded graph and
+deterministic fallback semantics. Focused repair acceptance is 16/16 PASS and
+full worker regression is 1,085/1,085 PASS. Production touched: NO; paid/live
+model calls: 0; Laya NO-GO retained. Real model semantic quality, staging,
+production path equivalence, production identity continuity, and real-world
+outcome validation remain unproven and require separate authorization.
