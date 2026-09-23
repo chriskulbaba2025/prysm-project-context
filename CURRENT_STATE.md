@@ -12,19 +12,28 @@ worker request listener. Local focused acceptance is 32/32 PASS, full worker
 regression is 1,090/1,090 PASS, and the root/Vercel build is PASS.
 
 Vercel Preview deployment `dpl_6YJyDNMucCk8273XYFtf1HsEyuAP` is READY. Railway
-staging deployment `395eae96-ca3e-4911-a141-fc72363ae1d9` remains INITIALIZING,
-so exact hosted worker identity, runtime pgvector/provider validation,
-authenticated Ask acceptance, Production Path Equivalence, and Production
-Identity Continuity remain BLOCKED. No live embedding call was made and
-production was untouched. A diagnostic Railway variable-list command also
-emitted staging secret values to tool output; values are omitted from durable
-context and were not rotated under the current authorization.
+staging deployment `395eae96-ca3e-4911-a141-fc72363ae1d9` is now SUCCESS and
+the public health endpoint identifies `prysm-worker`. Startup logs prove
+PostgreSQL lifecycle/identity initialization, staging S3 connectivity, and
+embedding retrieval enabled with `openai-compatible/text-embedding-3-small`.
+The Railway image digest is recorded only in the sanitized closure proof.
+
+Authenticated browser acceptance remains blocked because no connected browser
+was available in the continuation session, and the prior staging reviewer
+session/reset boundary remains unresolved. Exact hosted worker SHA continuity,
+real semantic validation, hosted isolation/fallback, Production Path
+Equivalence, and Production Identity Continuity therefore remain BLOCKED. No
+live embedding call was made and production was untouched. A diagnostic Railway
+variable-list command previously emitted staging secret values to tool output;
+values are omitted from durable context and were not rotated under the current
+authorization.
 
 Result: `HOLD`.
 
 Exact next action: Chris must review the staging credential exposure and
-authorize the appropriate security response; after that, rerun Railway
-deployment and the complete exact-head hosted validation from
+authorize the appropriate security response, then provide an available
+authenticated staging browser session through the approved browser surface for
+complete exact-head hosted validation from
 `83734f413553c98c4f83d95780b0a88c323eb422`.
 
 ## STAGING_READY embedding-provider diagnosis — HOLD
@@ -232,6 +241,6 @@ deferred; overall candidate disposition is HOLD. See
 ## Exact next action
 
 Chris must review the staging credential exposure and authorize the appropriate
-security response; after that, rerun Railway deployment and the complete
-exact-head hosted validation from
-`83734f413553c98c4f83d95780b0a88c323eb422`.
+security response, then provide an available authenticated staging browser
+session through the approved browser surface for complete exact-head hosted
+validation from `83734f413553c98c4f83d95780b0a88c323eb422`.

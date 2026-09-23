@@ -920,3 +920,30 @@ not touched and live embedding calls remain zero.
 Exact next action: Chris must review the staging credential exposure and
 authorize the appropriate security response; then rerun the Railway deployment
 and complete exact-head hosted validation from `83734f413553c98c4f83d95780b0a88c323eb422`.
+
+---
+
+## Decision: Railway success, browser/session boundary remains HOLD
+
+Date: 2026-09-23
+Status: HOLD
+
+The exact candidate `83734f413553c98c4f83d95780b0a88c323eb422` now has a
+SUCCESS Railway staging deployment `395eae96-ca3e-4911-a141-fc72363ae1d9`.
+The authorized worker health endpoint returned `prysm-worker`; startup logs
+proved PostgreSQL lifecycle/identity initialization, staging S3 connectivity,
+and the configured OpenAI-compatible embedding adapter/model. Vercel Preview
+remains READY as `dpl_6YJyDNMucCk8273XYFtf1HsEyuAP`.
+
+The connected browser runtime was unavailable, so authenticated Cognito →
+Preview → worker → Ask PRYSM acceptance and terminal identity continuity could
+not be exercised. No unauthenticated or internal shortcut substitutes for that
+path. Real semantic validation, hosted security/fallback, Production Path
+Equivalence, and Production Identity Continuity remain unproven. The prior
+staging secret-output governance hold remains active; no values are recorded and
+no rotation was performed under this authorization. Production remains frozen.
+
+Exact next action: Chris must review the staging credential exposure and provide
+an available authenticated staging browser session through the approved browser
+surface, then rerun complete exact-head hosted validation from
+`83734f413553c98c4f83d95780b0a88c323eb422`.
