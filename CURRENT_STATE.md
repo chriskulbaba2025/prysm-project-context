@@ -99,6 +99,18 @@ Rollback references:
 The local proof folder remains:
 `C:\Users\kulba\Downloads\PRYSM-MVP-CLOSURE-2026-09-21\`
 
+## Post-MVP hosted acceptance update
+
+The exact candidate `f80b3e3aecba8807d58fdac426232d14052095b9` has now passed
+the authorized staging production-shaped browser path and identity continuity
+through persisted audit reload, seven-page report rendering, and terminal PDF
+generation. Vercel Preview deployment `dpl_7R6UueJYCoCMe361bq6ZDgHQDBBX` and
+Railway staging deployment `2118daeb-15e7-408c-876d-7e8d133b9b6f` were matched
+to the candidate. Production remains untouched. Full arbitrary-site
+generalization, provider/model validation, and longitudinal outcomes remain
+deferred; overall candidate disposition is HOLD. See
+`PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_HOSTED_ACCEPTANCE_2026-09-23.md`.
+
 ## Exact next action
 
-The production activation remains closed and production remains frozen. The governed post-MVP evidence-intelligence candidate is now `f80b3e3aecba8807d58fdac426232d14052095b9`, on branch `repair/prysm-post-mvp-evidence-intelligence-2026-09-22`. URL discovery supplementation, assembled evidence/graph persistence, report projection challenge, grounded Ask PRYSM composition, authenticated tenant-boundary proof, and memory/PostgreSQL read-contract parity are proven locally with the candidate's worker regressions green. Resume from this exact candidate for read-only production-spine/path-equivalence and independent tenant/identity verification. Keep `PRODUCTION PATH EQUIVALENCE` and `PRODUCTION IDENTITY CONTINUITY` blocked until directly proven. Durable checkpoint: `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_CANDIDATE_2026-09-22.md`.
+The production activation remains closed and production remains frozen. Resume from the exact candidate for the remaining generalized acceptance and deferred provider/model validation. Durable checkpoints: `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_CANDIDATE_2026-09-22.md` and `PRYSM_POST_MVP_EVIDENCE_INTELLIGENCE_HOSTED_ACCEPTANCE_2026-09-23.md`.
