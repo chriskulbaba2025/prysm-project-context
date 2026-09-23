@@ -947,3 +947,26 @@ Exact next action: Chris must review the staging credential exposure and provide
 an available authenticated staging browser session through the approved browser
 surface, then rerun complete exact-head hosted validation from
 `83734f413553c98c4f83d95780b0a88c323eb422`.
+
+---
+
+## Decision: Human browser acceptance gate
+
+Date: 2026-09-23
+Status: AWAITING_HUMAN_UAT
+
+Do not classify absence of an automated/connected browser as a technical HOLD
+after all machine-verifiable gates pass. Candidate
+`83734f413553c98c4f83d95780b0a88c323eb422` has READY Vercel Preview
+`dpl_6YJyDNMucCk8273XYFtf1HsEyuAP` and SUCCESS Railway staging deployment
+`395eae96-ca3e-4911-a141-fc72363ae1d9`; worker health and embedding adapter
+startup are proven.
+
+Chris must perform human browser acceptance at
+`https://prysm-abc251cns-chriskulbabas-projects.vercel.app/` using the approved
+staging Cognito identity and return redacted PASS/FAIL evidence for login,
+tenant/audit/site identity, deterministic/lexical/semantic/graph/conflict/
+UNKNOWN Ask questions, citations, trace, and isolation. Do not claim Production
+Path Equivalence or Production Identity Continuity until that evidence is
+reconciled. Resume the same exact candidate without repeating already-PASSed
+machine validation; if UAT passes, continue final reconciliation automatically.

@@ -2,6 +2,29 @@
 
 Project: PRYSM. Updated: 2026-09-23 America/Toronto.
 
+## Human browser acceptance gate — AWAITING_HUMAN_UAT
+
+All machine-verifiable validation for application candidate
+`83734f413553c98c4f83d95780b0a88c323eb422` is complete. Vercel Preview is
+READY as `dpl_6YJyDNMucCk8273XYFtf1HsEyuAP`; Railway staging deployment
+`395eae96-ca3e-4911-a141-fc72363ae1d9` is SUCCESS; the worker health endpoint
+identifies `prysm-worker`; and startup proves PostgreSQL repositories, staging
+S3, and the embedding adapter/model initialized.
+
+Lack of an automated/connected browser is not a technical HOLD. Chris must
+perform human UAT at
+`https://prysm-abc251cns-chriskulbabas-projects.vercel.app/` using the approved
+staging Cognito identity. Run deterministic, lexical, paraphrase/semantic,
+graph-dependent, conflict/UNKNOWN, and evidence-trace Ask PRYSM questions;
+verify tenant/audit/site scope, canonical citations, trace provenance, and zero
+cross-scope or secret disclosure; then return redacted PASS/FAIL evidence.
+
+Do not claim Production Path Equivalence or Production Identity Continuity
+until human evidence is reconciled. The prior staging secret-output governance
+issue remains separately disclosed. Exact next action: Chris performs the
+numbered browser sequence in the hosted closure proof and returns the exact
+PASS/FAIL evidence.
+
 ## STAGING_READY hosted wiring repair — HOLD
 
 The current application candidate is `83734f413553c98c4f83d95780b0a88c323eb422`
