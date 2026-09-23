@@ -5,7 +5,7 @@
 - Application repository: `chriskulbaba2025/vantage-platform`
 - Branch: `repair/prysm-post-mvp-evidence-intelligence-2026-09-22`
 - Frozen starting SHA: `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`
-- Exact candidate SHA: `b3e1afca893b96e5ee3001d9e1f9d7c415de1145`
+- Exact candidate SHA: `f80b3e3aecba8807d58fdac426232d14052095b9`
 - Candidate is pushed to GitHub; no merge or force-push occurred.
 
 ## Built and proven
@@ -17,10 +17,12 @@
 - Ask PRYSM deterministic query contracts remain grounded, conflict-aware, unknown-safe, and fail closed across tenant/audit scope.
 - Existing report-model authority, consistency gate, seven-page/viewer contract, and conversion-first prioritization were independently exercised.
 - Permanent assembled regression proves controlled real adapters → real orchestrator → evidence graph/reconciliation artifact → approved report pages.
+- Authenticated Ask PRYSM tenant-boundary proof exposed and closed a memory/PostgreSQL evidence-row vocabulary escape; memory reads now match the durable row contract.
 
 ## Verification
 
-- Full worker regression: 1057 PASS, 0 FAIL, 0 SKIP.
+- Full worker regression: 1059 PASS, 0 FAIL, 0 SKIP.
+- Focused authenticated Ask/repository contract proof: 17 PASS, 0 FAIL, 0 SKIP.
 - Report/projection/finalization challenge: 152 PASS, 0 FAIL, 0 SKIP.
 - Assembled evidence-path regression: 1 PASS, 0 FAIL, 0 SKIP.
 - Template integrity and syntax checks: PASS.
@@ -40,5 +42,4 @@
 
 ## Exact next action
 
-Continue from `b3e1afca893b96e5ee3001d9e1f9d7c415de1145` with a read-only production-spine/path-equivalence audit and independent tenant/identity boundary verification. Do not deploy, merge, touch production, or claim release readiness while either required continuity proof remains blocked.
-
+Continue from `f80b3e3aecba8807d58fdac426232d14052095b9` with a read-only production-spine/path-equivalence audit and independent tenant/identity boundary verification. Do not deploy, merge, touch production, or claim release readiness while either required continuity proof remains blocked.
