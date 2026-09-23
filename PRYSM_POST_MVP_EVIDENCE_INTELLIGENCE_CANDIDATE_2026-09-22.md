@@ -18,6 +18,7 @@
 - Existing report-model authority, consistency gate, seven-page/viewer contract, and conversion-first prioritization were independently exercised.
 - Permanent assembled regression proves controlled real adapters → real orchestrator → evidence graph/reconciliation artifact → approved report pages.
 - Authenticated Ask PRYSM tenant-boundary proof exposed and closed a memory/PostgreSQL evidence-row vocabulary escape; memory reads now match the durable row contract.
+- Root Next production build passes with `NODE_ENV=production`; the earlier `/404`/`/500` Html prerender failure was an inherited `NODE_ENV=development` execution-environment defect, with no application edit required.
 
 ## Verification
 
@@ -26,6 +27,7 @@
 - Report/projection/finalization challenge: 152 PASS, 0 FAIL, 0 SKIP.
 - Assembled evidence-path regression: 1 PASS, 0 FAIL, 0 SKIP.
 - Template integrity and syntax checks: PASS.
+- Root web build: PASS under the production build environment.
 - Secret scan: PASS.
 - DataForSEO live calls: 0.
 - Model live calls: 0.
