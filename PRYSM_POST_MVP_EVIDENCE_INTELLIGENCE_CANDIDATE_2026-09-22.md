@@ -19,6 +19,7 @@
 - Permanent assembled regression proves controlled real adapters → real orchestrator → evidence graph/reconciliation artifact → approved report pages.
 - Authenticated Ask PRYSM tenant-boundary proof exposed and closed a memory/PostgreSQL evidence-row vocabulary escape; memory reads now match the durable row contract.
 - Root Next production build passes with `NODE_ENV=production`; the earlier `/404`/`/500` Html prerender failure was an inherited `NODE_ENV=development` execution-environment defect, with no application edit required.
+- Local built web boundary starts and independently returns `/login` 200 plus fail-closed 307 redirects for unauthenticated `/` and `/api/audits`; the in-app browser surface was unavailable, so browser acceptance remains deferred.
 
 ## Verification
 
@@ -28,6 +29,7 @@
 - Assembled evidence-path regression: 1 PASS, 0 FAIL, 0 SKIP.
 - Template integrity and syntax checks: PASS.
 - Root web build: PASS under the production build environment.
+- Local HTTP boundary: PASS; browser runtime unavailable in this session.
 - Secret scan: PASS.
 - DataForSEO live calls: 0.
 - Model live calls: 0.
