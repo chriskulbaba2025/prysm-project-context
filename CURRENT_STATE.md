@@ -1,6 +1,48 @@
 # Current State
 
-Project: PRYSM. Updated: 2026-09-23 America/Toronto.
+Project: PRYSM. Updated: 2026-09-24 America/Toronto.
+
+## Emergency rollback freeze — ACTIVE
+
+Production source has been rolled back to the exact historical known-good application tree from commit `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`.
+
+Rollback commit on `main`:
+`a68dd235a3ca09977c84313536b5b884e3694782`
+
+Historical known-good tree:
+`0dc8e2b40ae40909ec0ebc08527307396d78eef3`
+
+Rollback commit tree:
+`0dc8e2b40ae40909ec0ebc08527307396d78eef3`
+
+GitHub compare from historical known-good commit to rollback commit reports 17 commits of history and 0 file differences. The source tree is therefore frozen byte-equivalent to the known-good baseline.
+
+Durable freeze branch:
+`freeze/prysm-known-good-aa9383-20260924`
+
+Vercel production deployment:
+`dpl_BNrya7rMYmdJj8cp9wgufpqQREVB` — READY — source SHA `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Railway production deployment:
+`b3e5b09f-74aa-4316-9534-ae32083f1157` — SUCCESS — source SHA `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Railway startup proved PostgreSQL initialization, production adapters, S3 artifact-store connectivity, governed API initialization, worker listen, and healthcheck success.
+
+Production login returns HTTP 200. An unauthenticated request to the known report route correctly redirects to login, proving the auth gate is active. Authenticated browser/report/PDF continuity still requires a real signed-in browser session and has not been re-proven after rollback.
+
+Important: current persisted production data is newer than the historical baseline. Startup surfaced stranded historical audit recovery errors from current data. Do not treat those as permission to modify the frozen source baseline.
+
+Immediate rule:
+- no new feature work;
+- no CA14 repair yet;
+- no piecemeal production patching;
+- preserve the exact rollback source tree;
+- first re-prove the known-good authenticated production behavior;
+- only after that, open a separate GACM incident for CA14.
+
+Exact next action: complete authenticated production browser acceptance against the frozen rollback deployment, using an existing authorized Prysm account, without changing source or creating a new audit.
+
+---
 
 ## Human browser acceptance gate — AWAITING_HUMAN_UAT
 
