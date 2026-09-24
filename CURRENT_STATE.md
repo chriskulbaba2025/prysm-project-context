@@ -2,9 +2,13 @@
 
 ## Current verified terminal state — evidence-to-score closure PASS
 
-The authoritative current staging candidate is `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d` on `repair/prysm-ca14-gacm-20260924`, starting from `f617e02db587128faf75be14953dc34fbda2f679`. Vercel `dpl_7k7ozNca6iUPUvi3oKP2QugWwN8p` and Railway `bddb0355-8959-4ec9-8c19-8aedda748d50` both run that exact candidate. Final CA14 audit is `44dadb0e-18ca-4b07-94c5-257076a0b1a9`. PageSpeed lab evidence is AVAILABLE and preserved as performance score/dimension `56`; crawl-dependent evidence and CrUX remain UNAVAILABLE; overall numeric score remains correctly withheld at 10% assessed weight. Targeted tests `137/137`, worker tests `1033/1033`, closure and whole-app gates PASS; browser seven-page/PDF PASS. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`. Production Path Equivalence and Production Identity Continuity are PASS. No production promotion is authorized.
+The authoritative current staging candidate is `1d5caaa6ad6ce4badb9c211f3380773eb585737e` on `repair/prysm-ca14-gacm-20260924`, starting from `f617e02db587128faf75be14953dc34fbda2f679`. Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` and Railway `9906c756-1fa9-4100-93c4-758f971e74c2` run the final candidate. Final CA14 audit is `3e0fe2a5-f990-459e-96f3-d634f41ac83c`. PageSpeed lab evidence is AVAILABLE and preserved as performance score/dimension `62`; crawl-dependent evidence and CrUX remain UNAVAILABLE; overall numeric score remains correctly withheld at 10% assessed weight. Worker tests `1034/1034`, Narrative focused tests `47/47`, evidence-to-score/report focused tests `158/158`, closure and whole-app gates PASS; browser seven-page/PDF PASS. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`. Production Path Equivalence and Production Identity Continuity are PASS. No production promotion is authorized.
 
 Earlier closure sections below are historical checkpoints and are superseded by this current terminal state.
+
+Exact next action: retain this candidate as the accepted staging evidence-to-score
+closure; do not promote or mutate production. Any future release work must begin
+from the governed branch/HEAD above and re-prove the same path.
 
 ## CA14 evidence-to-score interpretation audit — AUTHORIZED
 
@@ -79,13 +83,13 @@ technical-performance dimension. The overall score remains withheld because
 only 10% of intended evidence is assessed.
 
 - Branch: `repair/prysm-ca14-gacm-20260924`
-- Final candidate SHA: `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d`
+- Final candidate SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`
 - Starting SHA: `f617e02db587128faf75be14953dc34fbda2f679`
-- Vercel Preview: `dpl_7k7ozNca6iUPUvi3oKP2QugWwN8p` — READY
-- Railway staging: `bddb0355-8959-4ec9-8c19-8aedda748d50` — SUCCESS — exact SHA
-- Final CA14 audit: `44dadb0e-18ca-4b07-94c5-257076a0b1a9` — draft_rendered
+- Vercel Preview: `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` — READY
+- Railway staging: `9906c756-1fa9-4100-93c4-758f971e74c2` — SUCCESS
+- Final CA14 audit: `3e0fe2a5-f990-459e-96f3-d634f41ac83c` — draft_rendered
 - Previous clean CA14 reconstructed: `a7a3664d-9878-4cce-b860-57396866b7d5`
-- Final score proof: PageSpeed score/dimension `56`; performance module and
+- Final score proof: PageSpeed score/dimension `62`; performance module and
   technical-performance dimension eligible; assessed weight `10`; numeric
   overall score correctly suppressed.
 - Capability proof: `13 total / 1 available / 12 unavailable / 1 assessed`;

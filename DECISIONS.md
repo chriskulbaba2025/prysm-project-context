@@ -1016,3 +1016,22 @@ numeric score at 10% assessed weight. Final hosted CA14 audit
 `44dadb0e-18ca-4b07-94c5-257076a0b1a9` proved the same PageSpeed result through
 canonical evidence, ScoreSet, ReportContent, WriterInput, Narrative, seven-page
 report, and PDF. Production remains frozen and is not authorized for promotion.
+
+## Decision: Evidence-to-score final child reconciliation
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The final governed child candidate is `1d5caaa6ad6ce4badb9c211f3380773eb585737e`.
+It preserves the generalized scoring repair and adds a validator repair: bounded
+Writer negation using `by itself` / `on its own` is accepted, while a causal
+certainty counterexample remains rejected. Final hosted CA14 audit
+`3e0fe2a5-f990-459e-96f3-d634f41ac83c` has PageSpeed lab evidence available,
+normalized performance `62`, technical-performance dimension `62`, performance
+eligibility true, CrUX unavailable, and overall numeric score withheld at 10%
+assessed weight. Writer and Judge passed one governed round and the report
+reached `draft_rendered`; browser seven-section and PDF acceptance passed.
+Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` is READY and Railway
+`9906c756-1fa9-4100-93c4-758f971e74c2` is SUCCESS. Worker `1034/1034`, Narrative
+`47/47`, evidence-to-score/report `158/158`, closure, and whole-app gates passed.
+Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
