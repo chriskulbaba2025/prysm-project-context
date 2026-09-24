@@ -970,3 +970,20 @@ UNKNOWN Ask questions, citations, trace, and isolation. Do not claim Production
 Path Equivalence or Production Identity Continuity until that evidence is
 reconciled. Resume the same exact candidate without repeating already-PASSed
 machine validation; if UAT passes, continue final reconciliation automatically.
+
+
+---
+
+## Decision: Authorize CA14 Narrative Writer terminal staging closure pass
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Authorize one bounded GACM / Governed Coding Upgrade STAGING_READY pass on application branch `repair/prysm-ca14-gacm-20260924` beginning from verified SHA `b67d1f979a81d3b20c55fdcde0c64095e300a34a`. The primary diagnostic boundary is the failed CA14 audit `7d286401-b9bf-4297-9a20-25c926160554`, which reached evidence storage, evidence lock, scoring, and `narrative_pending` before Writer pass 1 returned an HTTP 400 provider error. The pass must reconstruct the exact Writer request, compare it against a successful accepted Reboot Writer request, prove the actual provider rejection cause, repair only generalized owning boundaries, and correct the dependent UI failure classification that currently represents every `narrative_failed` state as Judge non-authorization.
+
+Reason:
+Direct lifecycle evidence narrows the observed failure to the Narrative v2 Writer provider-request boundary rather than crawl acquisition or Judge authorization. Current source also proves the admin/client UI hardcodes Judge-exhaustion language for generic `narrative_failed`, which is inaccurate for a Writer transport/provider failure. Repetitive or noisy CA14 content remains only a possible trigger until exact persisted request evidence establishes causality.
+
+Implication:
+Do not spend the pass re-diagnosing CA14 crawlability unless new direct evidence contradicts the established lifecycle. Before editing, establish exact runtime identity, exact persisted failed-request bytes/hashes when available, successful-control request evidence, provider HTTP-400 response metadata/body where retained, request size/token/schema/response-format validity, malformed/null/unexpected values, and escaping/control-character behavior. Freeze all discovered root-cause clusters before Builder edits. Add permanent positive, negative, counterexample, model-bearing, and UI-state regression proof. Preserve accepted Reboot seven-page behavior. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and is not authorized for mutation or promotion. The pass may deploy exact accepted candidates only to existing non-production Preview/Railway staging and may run the required bounded staging model/provider calls and clean CA14 audit needed for acceptance. Temporary access/share tokens must not be persisted. Terminal disposition is only `PRYSM_STAGING_TERMINAL_PASS` or a genuinely external `PRYSM_STAGING_EXTERNAL_BLOCKER`; code, configuration, test, deployment, browser-protection, or ordinary staging defects are work, not external blockers.
