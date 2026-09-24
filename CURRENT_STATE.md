@@ -383,3 +383,14 @@ Last verified: 2026-09-21 America/Toronto
 - Generic authenticated browser smoke and clean CA14 acceptance remain BLOCKED because no browser surface was available. No CA14 audit was created and no model call was made.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-NARRATIVE-V2-GACM-2026-09-24\11-FINAL-GACM-CLOSURE-PROOF.txt`.
 - Exact next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
+
+## Full staging runtime qualification update — 2026-09-24
+
+- Candidate remains `b67d1f979a81d3b20c55fdcde0c64095e300a34a`; no source changes were required.
+- Railway staging deployment `b3e60d9f-07ed-4b27-a4dc-dbc9cbfe6f20` now starts the full WP12 runtime after correcting malformed Narrative price-table JSON.
+- Startup proves S3 connectivity, PostgreSQL lifecycle/identity initialization, production adapters loading, and `WP12 production runtime initialized`.
+- Protected audit routes now reach authentication (401 without auth), not the previous WP11 501.
+- Full machine qualification remains HOLD because staging lacks DataForSEO credentials and a PageSpeed credential. Production credentials were not copied.
+- No browser UAT or CA14 audit was started. Production remains untouched.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-FULL-RUNTIME-GACM-2026-09-24\14-FINAL-STAGING-RUNTIME-CLOSURE-PROOF.txt`.
+- Exact next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
