@@ -53,6 +53,39 @@ Comparison result against prior "0" version:
 
 This accepted Content Opportunities behavior is now frozen. Do not redesign or expand it unless explicitly reopened.
 
+## CA14 GACM repair branch — IN VERIFICATION
+
+Read-only diagnosis against the frozen rollback baseline identified two generalized defects already proven by historical CA14 evidence and still present in the frozen code:
+
+1. sitemap same-site admission treated `www.ca14.biz` and `ca14.biz` as different origins, dropping valid apex sitemap coverage for a www target;
+2. a valid governed zero-findings result was not representable end-to-end because solution/narrative/report contracts required non-empty findings and a non-null rootCauseRuleId.
+
+The later Writer HTTP 400 regression is NOT present in the frozen baseline schema and is not part of this repair.
+
+Governed repair branch:
+`repair/prysm-ca14-gacm-20260924`
+
+Candidate head:
+`64d84cfbaa3c72b55ce1b935e55e8fefe4688d1a`
+
+Draft PR:
+`#82 — GACM: CA14 generalized crawl + zero-findings repair`
+
+Scope:
+- bounded www/apex sitemap normalization only;
+- governed zero-findings support across solution authority, directive, generator, Writer output/schema, prompt, and report view-model;
+- permanent regression tests;
+- no CA14/domain/audit-specific conditionals;
+- production remains frozen at rollback baseline.
+
+Current verification:
+GitHub Actions worker verification is running on the candidate. Vercel feedback check passed. No promotion is authorized until the full closure gate passes.
+
+Exact next action:
+wait for full candidate CI; if green, independently inspect the exact diff and then run a clean CA14 audit on a hosted non-production candidate before any production promotion.
+
+---
+
 ## CA14 incident — ACTIVE GACM DIAGNOSIS
 
 The rollback baseline and accepted Reboot behavior are the frozen authority.
