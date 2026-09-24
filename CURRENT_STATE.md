@@ -53,6 +53,39 @@ Comparison result against prior "0" version:
 
 This accepted Content Opportunities behavior is now frozen. Do not redesign or expand it unless explicitly reopened.
 
+## CA14 Narrative Writer closure pass — AUTHORIZED
+
+Current objective:
+finish PRYSM staging from the verified CA14 candidate by proving and repairing the Narrative v2 Writer HTTP 400 boundary, correcting the dependent misleading Narrative failure UI, and completing hosted CA14 acceptance without changing frozen Reboot behavior.
+
+Verified checkpoint:
+- application branch: `repair/prysm-ca14-gacm-20260924`;
+- verified branch head: `b67d1f979a81d3b20c55fdcde0c64095e300a34a`;
+- failed CA14 audit for forensic reconstruction: `7d286401-b9bf-4297-9a20-25c926160554`;
+- lifecycle reached `evidence_stored → evidence_locked → scored → narrative_pending`;
+- failure: Writer pass 1 provider request returned HTTP 400 before a valid Writer output or Judge authorization;
+- current UI incorrectly maps generic `narrative_failed` to “Judge did not authorize client release”;
+- focused 14/14, Narrative 166/166, closure gate PASS, whole-app gate PASS were reported for the current candidate before this new bounded pass;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Important constraints:
+- do not reopen site acquisition/crawlability as the primary failure without contradictory direct evidence;
+- do not assume repetitive/noisy CA14 content is causal until exact Writer request evidence proves it;
+- compare the exact failed Writer pass-1 request against a successful accepted Reboot Writer pass-1 request;
+- inspect serialized payload/request bytes, token estimate versus provider constraint, schema/response_format, null/unexpected values, escaping/control characters, and provider HTTP-400 response body/metadata where retained;
+- prove the executing staging runtime identity and exact persisted request artifacts before assigning root cause;
+- repair only generalized owning boundaries; no CA14/domain/audit-specific conditionals;
+- correct client/admin failure messaging from actual failure classification rather than treating every `narrative_failed` as Judge exhaustion;
+- permanent regression and negative tests are required;
+- temporary Vercel share/bypass tokens must not be persisted in durable project memory;
+- accepted Reboot seven-page behavior remains frozen;
+- production remains untouched.
+
+Exact next action:
+run one Governed Coding Upgrade / GACM STAGING_READY pass from exact application SHA `b67d1f979a81d3b20c55fdcde0c64095e300a34a`: reconstruct the failed Writer request and successful control, freeze all root-cause clusters before editing, repair the generalized Writer/provider request boundary plus dependent failure classification UI, run model-bearing and whole-app gates, deploy the exact accepted head to non-production staging, execute disposable hosted validation and one new clean CA14 audit, verify all seven report pages plus print/PDF, independently challenge the exact head, and finish only as `PRYSM_STAGING_TERMINAL_PASS` or a genuinely external `PRYSM_STAGING_EXTERNAL_BLOCKER`.
+
+---
+
 ## CA14 GACM repair branch — IN VERIFICATION
 
 Read-only diagnosis against the frozen rollback baseline identified two generalized defects already proven by historical CA14 evidence and still present in the frozen code:
@@ -66,7 +99,7 @@ Governed repair branch:
 `repair/prysm-ca14-gacm-20260924`
 
 Candidate head:
-`64d84cfbaa3c72b55ce1b935e55e8fefe4688d1a`
+`b67d1f979a81d3b20c55fdcde0c64095e300a34a`
 
 Draft PR:
 `#82 — GACM: CA14 generalized crawl + zero-findings repair`
@@ -81,7 +114,7 @@ Scope:
 Current verification:
 GitHub Actions worker verification is running on the candidate. Vercel feedback check passed. No promotion is authorized until the full closure gate passes.
 
-Exact next action:
+Historical next action:
 wait for full candidate CI; if green, independently inspect the exact diff and then run a clean CA14 audit on a hosted non-production candidate before any production promotion.
 
 ---
@@ -98,7 +131,7 @@ Known CA14 failed audits include:
 
 The second audit proved collection/evidence/scoring completed and the then-current Narrative Writer request failed with HTTP 400. Those failures occurred on post-baseline code and must not be assumed to reproduce on the frozen rollback baseline.
 
-Immediate next action:
+Historical immediate next action:
 perform a read-only GACM incident audit of CA14 against the frozen baseline; identify the first CA14-specific or environment/data divergence before making any source change. Then repair only the generalized owning boundary and re-prove with a clean CA14 production audit.
 
 No piecemeal production patching is authorized.
@@ -124,7 +157,7 @@ cross-scope or secret disclosure; then return redacted PASS/FAIL evidence.
 
 Do not claim Production Path Equivalence or Production Identity Continuity
 until human evidence is reconciled. The prior staging secret-output governance
-issue remains separately disclosed. Exact next action: Chris performs the
+issue remains separately disclosed. Historical next action: Chris performs the
 numbered browser sequence in the hosted closure proof and returns the exact
 PASS/FAIL evidence.
 
@@ -156,7 +189,7 @@ authorization.
 
 Result: `HOLD`.
 
-Exact next action: Chris must review the staging credential exposure and
+Historical next action: Chris must review the staging credential exposure and
 authorize the appropriate security response, then provide an available
 authenticated staging browser session through the approved browser surface for
 complete exact-head hosted validation from
@@ -175,7 +208,7 @@ to narrative/n8n infrastructure rather than a worker embedding adapter.
 Result: `HOLD`. No application files changed, no deployment was attempted, no
 live embedding call was made, and production was untouched.
 
-Exact next action: Chris must provide or authorize one existing staging
+Historical next action: Chris must provide or authorize one existing staging
 `OPENAI_API_KEY` scoped to the worker for the bounded embedding validation.
 Then implement the smallest governed adapter/configuration and candidate-branch
 Preview mapping, push a new exact SHA, and rerun the complete hosted tranche.
@@ -199,7 +232,7 @@ Result: `HOLD`. No staging deployment, live embedding call, browser acceptance,
 or production mutation occurred in this run. Production Path Equivalence and
 Production Identity Continuity are BLOCKED/unproven.
 
-Exact next action: provide or explicitly authorize an existing governed staging
+Historical next action: provide or explicitly authorize an existing governed staging
 embedding provider/model configuration and wire the hosted Ask route to the
 replaceable adapter. Then invalidate this run's hosted evidence and repeat the
 full exact-SHA hosted tranche. Do not create a new paid provider account.
@@ -382,7 +415,7 @@ Last verified: 2026-09-21 America/Toronto
 - Machine capability configuration now validates: enabled/live, governed Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, HTTPS provider, valid price table, token limits, and budgets.
 - Generic authenticated browser smoke and clean CA14 acceptance remain BLOCKED because no browser surface was available. No CA14 audit was created and no model call was made.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-NARRATIVE-V2-GACM-2026-09-24\11-FINAL-GACM-CLOSURE-PROOF.txt`.
-- Exact next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
+- Historical next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
 
 ## Full staging runtime qualification update — 2026-09-24
 
@@ -393,4 +426,4 @@ Last verified: 2026-09-21 America/Toronto
 - Full machine qualification remains HOLD because staging lacks DataForSEO credentials and a PageSpeed credential. Production credentials were not copied.
 - No browser UAT or CA14 audit was started. Production remains untouched.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-FULL-RUNTIME-GACM-2026-09-24\14-FINAL-STAGING-RUNTIME-CLOSURE-PROOF.txt`.
-- Exact next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
+- Historical next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
