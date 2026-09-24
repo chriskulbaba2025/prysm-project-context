@@ -62,6 +62,43 @@ run one bounded GACM / Governed Coding Upgrade STAGING_READY pass from exact SHA
 
 Project: PRYSM. Updated: 2026-09-24 America/Toronto.
 
+## 2026-09-24 evidence-to-score closure — TERMINAL PASS
+
+The prior clean CA14 score/report contradiction was traced and repaired on the
+exact governed staging path. The authoritative DataForSEO crawl genuinely
+returned zero decision-bearing pages, so crawl-dependent inputs remain
+UNAVAILABLE. PageSpeed independently returned two live lab results and is now
+preserved through the no-crawl fallback as an eligible performance module and
+technical-performance dimension. The overall score remains withheld because
+only 10% of intended evidence is assessed.
+
+- Branch: `repair/prysm-ca14-gacm-20260924`
+- Final candidate SHA: `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d`
+- Starting SHA: `f617e02db587128faf75be14953dc34fbda2f679`
+- Vercel Preview: `dpl_7k7ozNca6iUPUvi3oKP2QugWwN8p` — READY
+- Railway staging: `bddb0355-8959-4ec9-8c19-8aedda748d50` — SUCCESS — exact SHA
+- Final CA14 audit: `44dadb0e-18ca-4b07-94c5-257076a0b1a9` — draft_rendered
+- Previous clean CA14 reconstructed: `a7a3664d-9878-4cce-b860-57396866b7d5`
+- Final score proof: PageSpeed score/dimension `56`; performance module and
+  technical-performance dimension eligible; assessed weight `10`; numeric
+  overall score correctly suppressed.
+- Capability proof: `13 total / 1 available / 12 unavailable / 1 assessed`;
+  lab performance AVAILABLE; CrUX field performance UNAVAILABLE; crawl source
+  FAILED with zero pages.
+- Provider/model proof: live DataForSEO On-Page/SERP/backlinks, PageSpeed,
+  raw/normalized/canonical artifacts, Writer `gpt-5.6-terra`, Judge pass, and
+  persisted WriterInput/report artifacts.
+- Tests: targeted `137/137`; worker `1033/1033`; closure machine gate PASS;
+  whole-app tranche gate PASS; Vercel build PASS.
+- Browser/report proof: authenticated hosted flow, seven report sections,
+  refresh/reopen, and PDF PASS.
+- Production: frozen SHA `a68dd235a3ca09977c84313536b5b884e3694782`; no
+  production audit or mutation.
+- Production Path Equivalence: PASS.
+- Production Identity Continuity: PASS.
+- Next action: no production promotion; retain this exact staging candidate
+  pending separately authorized promotion.
+
 ## 2026-09-24 autonomous staging closure — TERMINAL PASS
 
 The governed staging candidate completed the real hosted PRYSM path and clean

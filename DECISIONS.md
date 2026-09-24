@@ -999,3 +999,20 @@ clean CA14 audit. The authenticated browser path, provider artifacts, Narrative
 Writer/Judge calls, seven report sections, PDF generation, and production
 isolation were directly verified. This supersedes earlier browser-availability
 holds for this closure run; it does not authorize production promotion.
+
+---
+
+## Decision: Evidence-to-score closure completed
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The exact candidate `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d` passed the
+evidence-to-score closure. The generalized defect was the no-crawl scoring
+fallback dropping independently eligible PageSpeed performance from module and
+dimension eligibility and from the technical-performance dimension output.
+The repair preserves unavailable crawl/CrUX semantics and withholds the overall
+numeric score at 10% assessed weight. Final hosted CA14 audit
+`44dadb0e-18ca-4b07-94c5-257076a0b1a9` proved the same PageSpeed result through
+canonical evidence, ScoreSet, ReportContent, WriterInput, Narrative, seven-page
+report, and PDF. Production remains frozen and is not authorized for promotion.
