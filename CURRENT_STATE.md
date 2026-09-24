@@ -2,6 +2,36 @@
 
 Project: PRYSM. Updated: 2026-09-24 America/Toronto.
 
+## 2026-09-24 autonomous staging closure — TERMINAL PASS
+
+The governed staging candidate completed the real hosted PRYSM path and clean
+CA14 acceptance without production mutation.
+
+- Branch: `repair/prysm-ca14-gacm-20260924`
+- Candidate SHA: `f617e02db587128faf75be14953dc34fbda2f679`
+- Starting SHA: `b67d1f979a81d3b20c55fdcde0c64095e300a34a`
+- PR: `#82`
+- Vercel Preview: `dpl_EWNujuNxmZeqWRZA2gAscd3dmKn2` — READY
+- Railway staging: `e9829404-dbb6-4578-a77a-f64b2090baa6` — SUCCESS — exact SHA
+- Disposable hosted audit: `909429e6-07be-47d7-ada2-462e20453ac2` — draft_rendered
+- Clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5` — draft_rendered
+- CA14 narrative: Writer pass 1 and Judge pass 1 real calls, both validation PASS,
+  orchestration `RELEASE_CANDIDATE`, no revision.
+- CA14 evidence: live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw,
+  normalized, canonical, WriterInput, narrative, and report artifacts persisted.
+- Browser: authenticated hosted Preview path passed dashboard, audit creation,
+  polling, report refresh, seven required report sections, and PDF generation.
+- Production: rollback SHA/deployment/configuration/database/S3 untouched; no
+  production audit launched.
+- Production Path Equivalence: PASS.
+- Production Identity Continuity: PASS.
+- Critical defects: 0. Major defects: 0.
+
+The repaired generalized boundaries are typed Narrative failure artifacts and
+failure classification/UI mapping, tenant propagation into the worker client,
+and validator-safe governed zero-findings language. Accepted Reboot behavior
+remains frozen.
+
 ## Frozen production baseline — VERIFIED
 
 Authoritative historical baseline commit:

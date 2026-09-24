@@ -971,7 +971,6 @@ Path Equivalence or Production Identity Continuity until that evidence is
 reconciled. Resume the same exact candidate without repeating already-PASSed
 machine validation; if UAT passes, continue final reconciliation automatically.
 
-
 ---
 
 ## Decision: Authorize CA14 Narrative Writer terminal staging closure pass
@@ -987,3 +986,16 @@ Direct lifecycle evidence narrows the observed failure to the Narrative v2 Write
 
 Implication:
 Do not spend the pass re-diagnosing CA14 crawlability unless new direct evidence contradicts the established lifecycle. Before editing, establish exact runtime identity, exact persisted failed-request bytes/hashes when available, successful-control request evidence, provider HTTP-400 response metadata/body where retained, request size/token/schema/response-format validity, malformed/null/unexpected values, and escaping/control-character behavior. Freeze all discovered root-cause clusters before Builder edits. Add permanent positive, negative, counterexample, model-bearing, and UI-state regression proof. Preserve accepted Reboot seven-page behavior. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and is not authorized for mutation or promotion. The pass may deploy exact accepted candidates only to existing non-production Preview/Railway staging and may run the required bounded staging model/provider calls and clean CA14 audit needed for acceptance. Temporary access/share tokens must not be persisted. Terminal disposition is only `PRYSM_STAGING_TERMINAL_PASS` or a genuinely external `PRYSM_STAGING_EXTERNAL_BLOCKER`; code, configuration, test, deployment, browser-protection, or ordinary staging defects are work, not external blockers.
+---
+
+## Decision: Autonomous staging closure completed
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The exact candidate `f617e02db587128faf75be14953dc34fbda2f679` on
+`repair/prysm-ca14-gacm-20260924` passed the real hosted disposable audit and
+clean CA14 audit. The authenticated browser path, provider artifacts, Narrative
+Writer/Judge calls, seven report sections, PDF generation, and production
+isolation were directly verified. This supersedes earlier browser-availability
+holds for this closure run; it does not authorize production promotion.
