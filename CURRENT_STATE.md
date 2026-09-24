@@ -1,5 +1,11 @@
 # Current State
 
+## Current verified terminal state — evidence-to-score closure PASS
+
+The authoritative current staging candidate is `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d` on `repair/prysm-ca14-gacm-20260924`, starting from `f617e02db587128faf75be14953dc34fbda2f679`. Vercel `dpl_7k7ozNca6iUPUvi3oKP2QugWwN8p` and Railway `bddb0355-8959-4ec9-8c19-8aedda748d50` both run that exact candidate. Final CA14 audit is `44dadb0e-18ca-4b07-94c5-257076a0b1a9`. PageSpeed lab evidence is AVAILABLE and preserved as performance score/dimension `56`; crawl-dependent evidence and CrUX remain UNAVAILABLE; overall numeric score remains correctly withheld at 10% assessed weight. Targeted tests `137/137`, worker tests `1033/1033`, closure and whole-app gates PASS; browser seven-page/PDF PASS. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`. Production Path Equivalence and Production Identity Continuity are PASS. No production promotion is authorized.
+
+Earlier closure sections below are historical checkpoints and are superseded by this current terminal state.
+
 ## CA14 evidence-to-score interpretation audit — AUTHORIZED
 
 Current objective:
