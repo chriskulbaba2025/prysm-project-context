@@ -11,6 +11,36 @@ Verified checkpoint:
 - clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5`;
 - CA14 provider/artifact proof exists for live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw, normalized, canonical, and source-manifest artifacts;
 - lifecycle reached `draft_rendered`;
+- human review of Executive Scorecard shows `Insufficient Evidence for Overall Score` and multiple dimensions/inputs rendered as `Not available`;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Important constraints:
+- do not assume that existence of provider artifacts proves every report dimension had sufficient eligible evidence;
+- do not assume that the report's `Not available` classifications are correct;
+- trace exact canonical evidence identities and values into scoring eligibility, dimension calculation, score persistence, report view-model projection, and Executive Scorecard rendering;
+- distinguish evidence present-but-ineligible, present-but-unmapped, present-but-dropped, present-but-misclassified, and genuinely unavailable;
+- preserve UNKNOWN/PARTIAL/UNAVAILABLE semantics;
+- repair only generalized owning boundaries;
+- no CA14/domain/audit-specific code;
+- accepted Reboot behavior remains frozen;
+- production remains untouched.
+
+Exact next action:
+run one bounded GACM / Governed Coding Upgrade STAGING_READY pass from exact SHA `f617e02db587128faf75be14953dc34fbda2f679` that performs a read-only evidence-to-score trace for clean CA14 audit `a7a3664d-9878-4cce-b860-57396866b7d5`, freezes all root-cause clusters before editing, repairs the generalized owning boundary if a defect is proven, adds permanent regression/negative tests, reruns only invalidated gates plus required whole-app/model-bearing checks, deploys the exact repaired candidate to non-production staging, reruns one clean hosted CA14 audit, and proves the Executive Scorecard reflects the authoritative evidence correctly before any production promotion.
+
+---
+
+## CA14 evidence-to-score interpretation audit — AUTHORIZED
+
+Current objective:
+determine why the clean CA14 report renders broad `Not available` / `Insufficient Evidence for Overall Score` outcomes despite the same accepted staging run proving live provider acquisition, persisted raw/normalized/canonical artifacts, successful scoring, Writer/Judge execution, seven-page rendering, and PDF generation. Do not assume the report is wrong; trace the exact evidence-to-score-to-view-model handoff and prove where the loss or classification occurs.
+
+Verified checkpoint:
+- application branch: `repair/prysm-ca14-gacm-20260924`;
+- exact accepted staging candidate: `f617e02db587128faf75be14953dc34fbda2f679`;
+- clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5`;
+- CA14 provider/artifact proof exists for live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw, normalized, canonical, and source-manifest artifacts;
+- lifecycle reached `draft_rendered`;
 - human review of Executive Scorecard shows `Insufficient Evidence for Overall Score` and multiple dimensions/inputs rendered as `Not available`, including page content, offer clarity, trust/proof, CTA, conversion path, indexing, redirects, page resources, technical headers, structured data, and real-user performance data;
 - production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
 
