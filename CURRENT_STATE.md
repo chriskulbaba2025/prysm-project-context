@@ -370,3 +370,16 @@ Chris must review the staging credential exposure and authorize the appropriate
 security response, then provide an available authenticated staging browser
 session through the approved browser surface for complete exact-head hosted
 validation from `83734f413553c98c4f83d95780b0a88c323eb422`.
+
+Last verified: 2026-09-21 America/Toronto
+
+## Staging Narrative v2 capability update — 2026-09-24
+
+- Candidate under staging acceptance: `b67d1f979a81d3b20c55fdcde0c64095e300a34a` on `repair/prysm-ca14-gacm-20260924`.
+- Proven staging root cause: Narrative v2 live-binding variables were absent and `PRYSM_LLM_MODE` was `offline`; the worker correctly rejected requested Narrative v2.
+- Staging-only repair applied to Railway environment `9d541fe0-5103-4134-98dc-332dae65de7b`; existing staging OpenAI credential reused without recording its value.
+- Exact redeployment `cc1b4ebb-0958-4b09-a400-512c5faa75a7` is SUCCESS at the candidate SHA. No production configuration, deployment, data, or audit was changed.
+- Machine capability configuration now validates: enabled/live, governed Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, HTTPS provider, valid price table, token limits, and budgets.
+- Generic authenticated browser smoke and clean CA14 acceptance remain BLOCKED because no browser surface was available. No CA14 audit was created and no model call was made.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-NARRATIVE-V2-GACM-2026-09-24\11-FINAL-GACM-CLOSURE-PROOF.txt`.
+- Exact next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
