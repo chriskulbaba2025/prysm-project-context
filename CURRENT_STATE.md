@@ -1,5 +1,42 @@
 # Current State
 
+## 2026-09-24 ServiceMaster finalization-gate incident — ACTIVE INVESTIGATION
+
+Current objective:
+trace and repair the generalized PRYSM Narrative/finalization/correction-routing defect exposed by hosted staging audit `b2524f64-ffc0-4917-9b1e-174ea65849f3` for `https://servicemasterrestore.com/`.
+
+Verified checkpoint:
+- accepted application candidate remains `1d5caaa6ad6ce4badb9c211f3380773eb585737e` on `repair/prysm-ca14-gacm-20260924`;
+- staging persistence/runtime drift was found and repaired before this audit cycle;
+- repaired Railway staging service: `vantage-platform-staging`;
+- repaired Railway deployment: `430428ab-b868-46b1-ad44-949a1ae272d4`;
+- repaired Railway SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`;
+- PostgreSQL is present, initialized, and authoritative; local file-backed persistence is no longer authoritative;
+- repaired Vercel Preview deployment: `dpl_Bt2Q8vyrUwCwVLDofBSAQH14QKgy`;
+- Vercel Preview reaches Railway deployment `430428ab-b868-46b1-ad44-949a1ae272d4`;
+- staging login account `prysm@omnipressence.com` was confirmed present/enabled/CONFIRMED in staging Cognito pool `us-east-1_ZYZ57LwIX`; staging password was reset interactively by the user without persisting the password;
+- ServiceMaster audit lifecycle reached `created → validated → collecting → evidence_stored → evidence_locked → scored → narrative_pending → narrative_ready → render_failed`;
+- exact visible failure reason: `narrative-v2-finalization-gate-failed: Finding VAN-CONTENT-001 converts PARTIAL evidence into an unqualified absence claim.`;
+- the finalization gate blocked rendering after Narrative v2 reached `narrative_ready`;
+- the user was not offered the governed Narrative correction/final-pass path after this post-Judge finalization failure;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and was not touched.
+
+Important constraints:
+- do not weaken or bypass the finalization gate merely to make the report render;
+- prove the exact PARTIAL evidence, Writer sentence, Writer validation, Judge decision, finalization rejection, lifecycle routing, and missing correction-route behavior before editing;
+- freeze all materially distinct root-cause clusters before Builder work;
+- repair only generalized owning boundaries; no ServiceMaster/domain/audit-specific code and no VAN-CONTENT-001-only workaround unless the generalized rule contract is proven defective;
+- preserve AVAILABLE/PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED semantics;
+- renderer must remain fail-closed with zero partial report artifacts after a finalization rejection;
+- preserve governed pass/retry ceilings and prevent retry loops;
+- rerun targeted, full worker, Whole-App, and Model-Bearing gates as applicable;
+- hosted acceptance must use a fresh ServiceMaster audit on exact repaired staging identities;
+- production remains untouched.
+
+Exact next action:
+execute the prepared GACM / Governed Coding Upgrade forensic trace from exact accepted SHA `1d5caaa6ad6ce4badb9c211f3380773eb585737e` for incident audit `b2524f64-ffc0-4917-9b1e-174ea65849f3`, reconstruct persisted evidence through Writer/Judge/finalization/lifecycle/correction routing, freeze all root-cause clusters before editing, implement only the generalized owning-boundary repair, run required deterministic/model-bearing/whole-app verification, deploy the exact repaired candidate to non-production staging, run one fresh hosted ServiceMaster audit, independently challenge the result, and keep production frozen.
+
+
 ## Current verified terminal state — evidence-to-score closure PASS
 
 The authoritative current staging candidate is `1d5caaa6ad6ce4badb9c211f3380773eb585737e` on `repair/prysm-ca14-gacm-20260924`, starting from `f617e02db587128faf75be14953dc34fbda2f679`. Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` and Railway `9906c756-1fa9-4100-93c4-758f971e74c2` run the final candidate. Final CA14 audit is `3e0fe2a5-f990-459e-96f3-d634f41ac83c`. PageSpeed lab evidence is AVAILABLE and preserved as performance score/dimension `62`; crawl-dependent evidence and CrUX remain UNAVAILABLE; overall numeric score remains correctly withheld at 10% assessed weight. Worker tests `1034/1034`, Narrative focused tests `47/47`, evidence-to-score/report focused tests `158/158`, closure and whole-app gates PASS; browser seven-page/PDF PASS. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`. Production Path Equivalence and Production Identity Continuity are PASS. No production promotion is authorized.
