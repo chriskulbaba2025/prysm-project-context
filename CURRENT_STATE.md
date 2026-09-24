@@ -2,45 +2,73 @@
 
 Project: PRYSM. Updated: 2026-09-24 America/Toronto.
 
-## Emergency rollback freeze — ACTIVE
+## Frozen production baseline — VERIFIED
 
-Production source has been rolled back to the exact historical known-good application tree from commit `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`.
+Authoritative historical baseline commit:
+`aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`
 
-Rollback commit on `main`:
+Authoritative historical tree:
+`0dc8e2b40ae40909ec0ebc08527307396d78eef3`
+
+Current rollback commit on `main`:
 `a68dd235a3ca09977c84313536b5b884e3694782`
 
-Historical known-good tree:
+Current rollback tree:
 `0dc8e2b40ae40909ec0ebc08527307396d78eef3`
 
-Rollback commit tree:
-`0dc8e2b40ae40909ec0ebc08527307396d78eef3`
-
-GitHub compare from historical known-good commit to rollback commit reports 17 commits of history and 0 file differences. The source tree is therefore frozen byte-equivalent to the known-good baseline.
+GitHub source equivalence:
+0 file differences between the historical baseline and current rollback tree.
 
 Durable freeze branch:
 `freeze/prysm-known-good-aa9383-20260924`
 
-Vercel production deployment:
-`dpl_BNrya7rMYmdJj8cp9wgufpqQREVB` — READY — source SHA `a68dd235a3ca09977c84313536b5b884e3694782`.
+Vercel production:
+`dpl_BNrya7rMYmdJj8cp9wgufpqQREVB` — READY — rollback SHA.
 
-Railway production deployment:
-`b3e5b09f-74aa-4316-9534-ae32083f1157` — SUCCESS — source SHA `a68dd235a3ca09977c84313536b5b884e3694782`.
+Railway production:
+`b3e5b09f-74aa-4316-9534-ae32083f1157` — SUCCESS — rollback SHA.
 
-Railway startup proved PostgreSQL initialization, production adapters, S3 artifact-store connectivity, governed API initialization, worker listen, and healthcheck success.
+Production smoke:
+login HTTP 200; auth gate active; worker health PASS; PostgreSQL and S3 initialization PASS.
 
-Production login returns HTTP 200. An unauthenticated request to the known report route correctly redirects to login, proving the auth gate is active. Authenticated browser/report/PDF continuity still requires a real signed-in browser session and has not been re-proven after rollback.
+## Reboot Business Coaching baseline acceptance — FROZEN
 
-Important: current persisted production data is newer than the historical baseline. Startup surfaced stranded historical audit recovery errors from current data. Do not treat those as permission to modify the frozen source baseline.
+A clean production audit on the frozen rollback baseline completed far enough to produce the accepted report used for human comparison.
 
-Immediate rule:
-- no new feature work;
-- no CA14 repair yet;
-- no piecemeal production patching;
-- preserve the exact rollback source tree;
-- first re-prove the known-good authenticated production behavior;
-- only after that, open a separate GACM incident for CA14.
+Accepted/frozen audit:
+`77eb823c-91f9-4a79-9865-c79122b84e2b`
 
-Exact next action: complete authenticated production browser acceptance against the frozen rollback deployment, using an existing authorized Prysm account, without changing source or creating a new audit.
+Accepted Content Opportunities output:
+the user-designated "1" version, 7-page output.
+
+Comparison result against prior "0" version:
+- evidence basis comparable;
+- shared buyer questions comparable;
+- shared business goal comparable;
+- shared recommendations materially preserved;
+- evidence guardrails preserved;
+- later opportunity set remains represented in summary/funnel planning;
+- version 1 intentionally ranks/expands the strongest five instead of giving equal detail to all opportunities;
+- no material unexplained analytical drift identified in the compared Content Opportunities page.
+
+This accepted Content Opportunities behavior is now frozen. Do not redesign or expand it unless explicitly reopened.
+
+## CA14 incident — ACTIVE GACM DIAGNOSIS
+
+The rollback baseline and accepted Reboot behavior are the frozen authority.
+
+CA14 is now a separate incident. Do not alter the frozen baseline merely to make one CA14 fixture pass.
+
+Known CA14 failed audits include:
+- `490fe40e-5c7d-428f-a45b-c27b0613f6a4`
+- `6633116f-6d58-4016-bdf0-305094151ac8`
+
+The second audit proved collection/evidence/scoring completed and the then-current Narrative Writer request failed with HTTP 400. Those failures occurred on post-baseline code and must not be assumed to reproduce on the frozen rollback baseline.
+
+Immediate next action:
+perform a read-only GACM incident audit of CA14 against the frozen baseline; identify the first CA14-specific or environment/data divergence before making any source change. Then repair only the generalized owning boundary and re-prove with a clean CA14 production audit.
+
+No piecemeal production patching is authorized.
 
 ---
 
