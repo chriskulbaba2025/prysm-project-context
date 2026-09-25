@@ -1050,3 +1050,26 @@ The governed forensic trace proved the finalization gate correctly rejected the 
 Implication:
 Do not weaken the finalization gate or add a Narrative retry/correction loop for this defect class. Do not reopen the deterministic root cause without new contradictory direct evidence. Release readiness remains on HOLD until the exact repaired candidate completes the applicable Model-Bearing Release Gate, exact deployed-identity proof, one fresh hosted ServiceMaster staging audit, seven-page/PDF acceptance, Production Path Equivalence, and Production Identity Continuity. Production remains frozen.
 
+
+
+---
+
+## Decision: Freeze pre-report-intelligence baseline and authorize Terra-first / Sol-escalation tranche
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Freeze application SHA `80aa279907c7dc6ab0db905d5cf31be618c51b6a` on `freeze/prysm-mvp-pre-report-intelligence-20260924` and perform all report-intelligence improvement work on `repair/prysm-report-intelligence-terra-sol-20260924`, created from the same SHA.
+
+The semantic authority model is:
+- deterministic code owns evidence truth, statuses, measurements, provenance, and fail-closed integrity;
+- Terra is the default model for governed evidence interpretation, materiality, prioritization, reconciliation, and client-language synthesis;
+- Sol is used only for explicit escalation triggers such as material contradiction, competing evidence, unresolved ambiguity, low-confidence interpretation, or whole-report semantic conflict;
+- models may interpret evidence but may not redefine evidence.
+
+Reason:
+Real report comparisons across multiple unrelated sites show that PRYSM's remaining MVP weakness is not insufficient evidence discipline. It is over-constrained semantic interpretation, cross-section non-reconciliation, rigid proof/content classification, and technically valid but commercially weak prioritization. The accepted evidence-integrity controls must remain strict while the semantic layer gains bounded reasoning freedom.
+
+Implication:
+Do not weaken PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED handling or the ServiceMaster finalization repair. Add whole-report reconciliation and usefulness validation. Content opportunities must reconcile against existing assessed content. Technical evidence does not automatically become a client priority. The internal planning assumption for model cost is approximately USD $2 per completed audit. Production remains frozen and requires separate authorization.
