@@ -1,5 +1,50 @@
 # Current State
 
+## 2026-09-24 PRYSM report-intelligence tranche — AUTHORIZED / BASELINE FROZEN
+
+Current objective:
+improve PRYSM report usefulness, semantic coherence, and consultant-quality interpretation without weakening evidence integrity.
+
+Frozen application baseline:
+- repository: `chriskulbaba2025/vantage-platform`;
+- exact frozen SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a`;
+- frozen branch: `freeze/prysm-mvp-pre-report-intelligence-20260924`;
+- authorized working branch: `repair/prysm-report-intelligence-terra-sol-20260924`;
+- both branches were created from the same exact SHA;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and is not authorized for mutation.
+
+Governing specification:
+- `PRYSM_REPORT_INTELLIGENCE_MVP_SPEC_2026-09-24.md`;
+- governing rule: models may interpret evidence, but they may not redefine evidence;
+- Terra is the default semantic interpretation model;
+- Sol is a bounded escalation model for material ambiguity, contradiction, low-confidence interpretation, and final whole-report reconciliation where required;
+- deterministic evidence-state and finalization protections remain fail-closed;
+- internal MVP planning assumption is approximately USD $2 of LLM budget per completed audit.
+
+Primary product defects to address:
+- cross-page and score/narrative contradictions;
+- rigid trust/proof classification;
+- content opportunities that fail to reconcile against existing content;
+- generic/low-value content suggestions;
+- competitor own-site evidence disconnects;
+- technical-hygiene over-prioritization and technical-to-conversion projection;
+- client-facing tracking/provenance contamination;
+- weak finding-specific verification and score interpretability.
+
+Definition of done:
+- no material factual or cross-report contradiction;
+- no unsupported certainty or evidence-state conversion;
+- no recommendation a competent consultant would regard as obviously useless, generic, redundant, or contradicted by existing assessed content;
+- generalized tests and branch coverage pass;
+- model-bearing and independent semantic gates pass where applicable;
+- exact-head audit has zero CRITICAL/MAJOR repository-controlled defects;
+- production untouched.
+
+Exact next action:
+run one long governed autonomous STAGING_READY Codex tranche from `repair/prysm-report-intelligence-terra-sol-20260924`, using the frozen SHA and report-intelligence specification above, to diagnose owning boundaries before editing, implement generalized Terra-first/Sol-escalation report intelligence, add whole-report reconciliation and usefulness validation, prove the generalized benchmark corpus, run all invalidated gates, and stop before any production promotion.
+
+---
+
 ## 2026-09-25 ServiceMaster finalization-gate incident — MODEL GATE PASS / HOSTED ACCEPTANCE EXTERNAL BLOCKER
 
 Current objective:
