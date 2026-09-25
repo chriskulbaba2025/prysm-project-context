@@ -1,45 +1,42 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
-  "status": "PLANE7_FAIL_TENANT_IDENTITY_BOUNDARY",
-  "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-  "plane3": {"status": "PASS"},
-  "plane4": {"status": "PASS"},
-  "plane5": {"status": "PASS"},
-  "plane6": {
+  "checkpoint": "SERVICEMASTER_FINALIZATION_REPAIR_HOSTED_ACCEPTANCE_HOLD",
+  "status": "MODEL_BEARING_HOLD_NO_FRESH_LIVE_PROOF",
+  "applicationCandidateSha": "80aa279907c7dc6ab0db905d5cf31be618c51b6a",
+  "incidentAuditId": "b2524f64-ffc0-4917-9b1e-174ea65849f3",
+  "deterministicRepair": {
     "status": "PASS",
-    "githubSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "vercelDeploymentId": "dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz",
-    "vercelGitSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "railwayDeploymentId": "18397ad7-00f4-4deb-86a1-d987e6915735",
-    "railwayCommitHash": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "health": "PASS_HTTP_200",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol"
+    "targetedTests": "PASS",
+    "fullWorkerRegression": "PASS_1036",
+    "wholeAppGate": "PASS_P-B01_THROUGH_P-B17",
+    "finalizationGate": "PASS",
+    "partialEvidenceSemantics": "PASS",
+    "writerValidation": "PASS",
+    "judgeValidation": "PASS",
+    "correctionRouting": "PASS",
+    "rendererFailClosed": "PASS"
   },
-  "plane7": {
-    "status": "FAIL",
-    "classification": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
-    "auditId": "6c55141f-30e7-41c1-bede-19f7ebd7202b",
-    "executionId": "81b9f7a5-b810-4b41-b7ef-ee6c71f47862",
-    "requestedTenant": "omnipressence",
-    "returnedTenantId": "default",
-    "lastObservedLifecycle": "collecting",
-    "writerCallsObserved": 0,
-    "judgeCallsObserved": 0,
-    "additionalAuditRuns": 0,
-    "repairOrRerun": false,
-    "failure": "Production tenant identity did not hold: x-prysm-tenant=omnipressence resolved to tenantId=default. The audit remained collecting and downstream scoring/Writer/Judge/finalization/rendering were not reached.",
-    "evidencePreservation": "Preserve failed audit as immutable evidence; do not repair or rerun under the expired authorization."
+  "deployment": {
+    "vercelDeploymentId": "dpl_JE1zRNY8ptaJvFKvu74qutbYP2Zu",
+    "railwayDeploymentId": "e2cfd77c-7c9c-4cf0-be78-f10d61574dd8",
+    "postgresAuthority": "PASS"
   },
-  "nextAction": "Diagnose the production tenant identity propagation boundary that maps x-prysm-tenant=omnipressence to persisted/returned tenantId=default, using audit 6c55141f-30e7-41c1-bede-19f7ebd7202b as immutable reproduction evidence. Stop at root-cause proof before any source edit.",
-  "releaseGate": {
-    "plane3": "PASS",
-    "plane4": "PASS",
-    "plane5": "PASS",
-    "plane6": "PASS",
-    "plane7": "FAIL"
+  "modelBearingGate": {
+    "status": "HOLD",
+    "reason": "No fresh live model-bearing proof has been executed on candidate 80aa279907c7dc6ab0db905d5cf31be618c51b6a."
   },
-  "lastVerified": "2026-09-13 America/Toronto"
+  "hostedAcceptance": {
+    "freshServiceMasterAudit": "NOT_RUN",
+    "sevenPageReport": "NOT_VERIFIED",
+    "pdf": "NOT_VERIFIED",
+    "productionPathEquivalence": "BLOCKED",
+    "productionIdentityContinuity": "BLOCKED"
+  },
+  "production": {
+    "touched": false,
+    "frozenSha": "a68dd235a3ca09977c84313536b5b884e3694782"
+  },
+  "nextAction": "Run applicable Model-Bearing Release Gate planes on exact candidate 80aa279907c7dc6ab0db905d5cf31be618c51b6a using frozen production-shaped inputs; independently challenge outputs; prove exact deployed Vercel/Railway/model/contract identities; then run one fresh hosted staging ServiceMaster audit through Writer, Judge, finalization, seven-page render, and PDF. Keep production frozen.",
+  "lastVerified": "2026-09-24 America/Toronto"
 }
