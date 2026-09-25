@@ -222,3 +222,11 @@ These raw measures are the primary comparison data for model and workflow effici
 - Candidate: `af95823350d580d47027b4ad1e60e98cb08abc0f`. Browser diagnostic artifact interval 2026-09-21T04:01:34Z to 2026-09-21T04:05:13Z (00:03:39 to recorded closeout; read-only source inspection also performed).
 - Synthetic browser submissions: 2, locally intercepted before app network. Request keys had email/password populated in both cases. Cognito calls: 0. Additional credential resets: 0. Application changes: 0. Test suites: 0. Production actions: 0.
 - Root-cause classification: exact historical missing-field point UNRESOLVED; no app defect established. Artifacts preserved in the existing staging-closure folder.
+
+## PRYSM report-intelligence tranche — 2026-09-24
+
+- Candidate: `105792ea3eaab4b3032bde69571fd5bb5d2da163`; starting SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a`.
+- Tests: semantic focused PASS; worker `1036/1036`; Whole-App P-B01–P-B17 PASS; Closure Machine Gate PASS; model-bearing harness tests PASS with zero live calls.
+- Live provider/model calls: 0. Model tokens/cost: `NOT_AVAILABLE` for this candidate because exact model-bearing execution was held before paid calls. Planning comparison: no spend to compare against USD $2/audit; the prior USD $2.76 observation belongs to a different candidate.
+- Hosted staging/browser/PDF and Production Path Equivalence / Production Identity Continuity: BLOCKED by unavailable authenticated browser surface.
+- Production mutation: 0. Existing dirty user-owned worktree preserved in the original checkout.

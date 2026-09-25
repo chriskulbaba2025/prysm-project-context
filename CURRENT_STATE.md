@@ -1,5 +1,17 @@
 # Current State
 
+## 2026-09-24 PRYSM report-intelligence tranche — IMPLEMENTED / HOSTED ACCEPTANCE BLOCKED
+
+- starting frozen SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a`
+- final candidate SHA: `105792ea3eaab4b3032bde69571fd5bb5d2da163`
+- branch: `repair/prysm-report-intelligence-terra-sol-20260924`
+- frozen branch remains exactly at the starting SHA; production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+- implementation adds the deterministic semantic ledger at the current-model and Narrative WriterInput boundaries, with proof-form semantics, coverage/action classification, URL normalization, usefulness checks, contradiction records, and observable Terra-default/Sol-escalation routing.
+- focused semantic tests: PASS; full worker regression: PASS 1036/1036; Whole-App P-B01–P-B17: PASS; Closure Machine Gate: PASS; model-bearing harness preflight/tests: PASS with zero live calls.
+- model-bearing exact-candidate execution, hosted seven-page/PDF acceptance, Production Path Equivalence, and Production Identity Continuity remain BLOCKED until the authorized authenticated staging browser surface is available. Direct worker/API substitution is prohibited.
+- staging deployment identities for this candidate: NOT_RUN because hosted acceptance is externally blocked and no deployment identity was established; production untouched.
+- exact next action: provide the authorized authenticated staging browser surface, deploy the exact candidate to existing non-production staging, run the fresh hosted production-shaped audit, then prove Terra/Sol identities, seven pages, PDF, persistence/reload, Production Path Equivalence, and Production Identity Continuity.
+
 ## 2026-09-24 PRYSM report-intelligence tranche — AUTHORIZED / BASELINE FROZEN
 
 Current objective:

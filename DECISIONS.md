@@ -1073,3 +1073,16 @@ Real report comparisons across multiple unrelated sites show that PRYSM's remain
 
 Implication:
 Do not weaken PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED handling or the ServiceMaster finalization repair. Add whole-report reconciliation and usefulness validation. Content opportunities must reconcile against existing assessed content. Technical evidence does not automatically become a client priority. The internal planning assumption for model cost is approximately USD $2 per completed audit. Production remains frozen and requires separate authorization.
+
+## Decision: Accept deterministic report-intelligence ledger candidate pending hosted proof
+
+Date: 2026-09-24
+Status: Active — staging-ready implementation, hosted acceptance blocked
+
+Decision:
+Accept `105792ea3eaab4b3032bde69571fd5bb5d2da163` on `repair/prysm-report-intelligence-terra-sol-20260924` as the exact implementation candidate. The shared model-free ledger is authoritative for semantic reconciliation metadata, usefulness/action classification, proof-form interpretation, URL normalization, and observable Terra-default/Sol-escalation routing. It does not alter immutable evidence, scores, or statuses.
+
+Evidence: semantic focused tests PASS; worker `1036/1036`; Whole-App P-B01–P-B17 PASS; Closure Machine Gate PASS; model-bearing harness tests PASS with zero live calls; exact branch push/readback PASS; production untouched.
+
+Hold:
+Exact-candidate paid/model-bearing execution and hosted seven-page/PDF acceptance remain blocked until the authorized authenticated staging browser surface is available. Direct worker/API substitution cannot prove the claimed browser/session production path.
