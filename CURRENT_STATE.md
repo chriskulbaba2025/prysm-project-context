@@ -1,6 +1,20 @@
 # Current State
 
-Project: PRYSM. Updated: 2026-09-24 America/Toronto.
+Project: PRYSM. Updated: 2026-09-25 America/Toronto.
+
+## Report Intelligence reconciliation — READY FOR HUMAN UAT
+
+Exact candidate: `8d37998fd90db730d5ea238c324e80ee2a2e5aa6`
+
+Branch: `repair/prysm-report-intelligence-reconciliation-20260925`
+
+The deterministic Client Presentation Contract is wired into the current seven-page renderer. Focused report-intelligence/render tests pass 104/104; full worker regression passes 1,036/1,036; the exact-head Whole-App gate passes 90/90 with P-B01 through P-B17; exact-head audit reports 0 CRITICAL and 0 MAJOR repository-controlled defects. No Writer/Judge/Terra/Sol authority changed; model-bearing release gate is `N/A-with-direct-proof`.
+
+Vercel Preview is READY as `dpl_6DAj8sFjCLcX6zp13dJAAhcrXDDt` at `https://vantage-platform-lcf5d5bqs-chriskulbabas-projects.vercel.app`, and its deployment API directly reports the exact candidate SHA. No Railway deployment was performed for this deterministic tranche. Production, AWS, paid provider accounts, and paid provider/model calls remain untouched.
+
+Proof bundle: `C:\Users\kulba\Downloads\PRYSM-REPORT-INTELLIGENCE-RECONCILIATION-2026-09-25\`
+
+Exact next action: Chris performs human seven-page report/UAT review on the Vercel Preview using `/audits/new` or an existing authenticated staging audit at `/audits/<auditId>/report`.
 
 ## Frozen production baseline — VERIFIED
 
