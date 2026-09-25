@@ -698,3 +698,16 @@ Last verified: 2026-09-21 America/Toronto
 - PPE, PIC, model-bearing paid execution, fresh authenticated audit, seven-page report, PDF, persistence/reload, and hosted semantic challenge remain blocked/held before paid execution by the unavailable authenticated browser surface. Direct worker/API substitution is prohibited.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-REPORT-INTELLIGENCE-MVP-2026-09-24\BROWSER_DIAGNOSIS_2026-09-25.md`, `HOSTED_DEPLOYMENTS_2026-09-25.md`, and `CLOSURE_STATUS_2026-09-25.json`.
 - Exact next action: provide an authorized authenticated staging browser surface/session, then run PPE/PIC before the model-bearing gate and complete the fresh hosted audit through report, PDF, persistence/reload, and independent challenge. Production remains untouched.
+
+
+## PRYSM authorization boundary diagnosis — EXTERNAL BLOCKER — 2026-09-25
+
+Application repository exact start was proven on repair/prysm-ca14-gacm-20260924 at 80aa279907c7dc6ab0db905d5cf31be618c51b6a, matching GitHub exactly. The correct Railway staging service is vantage-platform-staging (d8504781-cb85-4b09-8999-19852f39be2b) in staging environment 9d541fe0-5103-4134-98dc-332dae65de7b. Current deployment 4415a5c4-61f7-4c14-80f0-4f88ef8d26ab is SUCCESS and startup proves staging S3, PostgreSQL lifecycle/identity repositories, governed API v1, and worker readiness. Its exact source SHA is not exposed in current deployment metadata; continuity is therefore unproven.
+
+Read-only source audit found the web principal signer and worker verifier contract aligned (same payload ordering, base64url, HMAC-SHA256 hex, seconds, 60-second expiry, headers, and fail-closed handling). No root cause was claimed. The missing production Vercel VANTAGE_TENANT_ID remains a configuration gap but was not treated as proven cause because single-membership auto-resolution exists and the user required direct evidence.
+
+The required hosted trace could not be run: browser control returned "No browser is available" and no authenticated staging browser session was available. No source/test/config/deployment/production change was made. Production remains frozen and untouched. Proof folder: C:\\Users\\kulba\\Downloads\\PRYSM-AUTHORIZATION-BOUNDARY-REPAIR-2026-09-25\\.
+
+PRODUCTION PATH EQUIVALENCE: BLOCKED.
+PRODUCTION IDENTITY CONTINUITY: BLOCKED.
+Exact next action: provide the authorized authenticated staging browser surface, then capture the sanitized auth-stage trace before any generic repair.
