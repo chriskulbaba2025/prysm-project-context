@@ -1,7 +1,7 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
+  "checkpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25",
   "status": "MODEL_BEARING_HELD_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
   "applicationCandidateSha": "105792ea3eaab4b3032bde69571fd5bb5d2da163",
   "incidentAuditId": "b2524f64-ffc0-4917-9b1e-174ea65849f3",
@@ -18,8 +18,8 @@
     "rendererFailClosed": "PASS"
   },
   "deployment": {
-    "vercelDeploymentId": "dpl_JE1zRNY8ptaJvFKvu74qutbYP2Zu",
-    "railwayDeploymentId": "e2cfd77c-7c9c-4cf0-be78-f10d61574dd8",
+    "vercelDeploymentId": "dpl_5eRmxiewrDNKo2fwQAYnHLmDgAKA",
+    "railwayDeploymentId": "4415a5c4-61f7-4c14-80f0-4f88ef8d26ab",
     "postgresAuthority": "PASS"
   },
   "modelBearingGate": {
@@ -29,7 +29,7 @@
     "judgeCalls": 0,
     "actualCostUsd": 0,
     "independentChallenge": "HARNESS_PRECHECK_PASS; SEMANTIC_CHALLENGE_HOSTED_NOT_RUN",
-    "reason": "Exact-candidate model-bearing execution was held before paid calls because the authenticated staging browser surface required for production-path-equivalent acceptance is unavailable."
+    "reason": "Exact-candidate model-bearing execution was held before paid calls because the authenticated staging browser surface required for production-path-equivalent acceptance is unavailable. Local Playwright browser launch passes, but the governed connected browser surface has zero backends and the required authenticated reviewer session is absent."
   },
   "hostedAcceptance": {
     "freshServiceMasterAudit": "NOT_RUN",
@@ -37,7 +37,7 @@
     "pdf": "NOT_VERIFIED",
     "productionPathEquivalence": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
     "productionIdentityContinuity": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
-    "blocker": "No browser is available for the required authenticated Vercel Preview path; direct worker/API substitution is prohibited."
+    "blocker": "The governed connected browser surface has zero backends and no approved authenticated staging reviewer session is available; local Playwright without that session cannot prove the required Vercel Preview path. Direct worker/API substitution is prohibited."
   },
   "production": {
     "touched": false,

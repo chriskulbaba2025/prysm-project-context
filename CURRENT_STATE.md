@@ -664,3 +664,14 @@ Last verified: 2026-09-21 America/Toronto
 - No browser UAT or CA14 audit was started. Production remains untouched.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-FULL-RUNTIME-GACM-2026-09-24\14-FINAL-STAGING-RUNTIME-CLOSURE-PROOF.txt`.
 - Historical next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
+
+## Report Intelligence hosted closure update - 2026-09-25
+
+- Exact candidate `105792ea3eaab4b3032bde69571fd5bb5d2da163` remains on `repair/prysm-report-intelligence-terra-sol-20260924`; local and GitHub branch identities match and production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+- Vercel Preview deployment `dpl_5eRmxiewrDNKo2fwQAYnHLmDgAKA` is READY at `https://prysm-mt4l8sitz-chriskulbabas-projects.vercel.app`; read-back metadata contains both the candidate `gitCommitSha` and `githubCommitSha`, the authorized branch, Preview target, and `STAGING_READY` release intent.
+- Railway staging deployment `4415a5c4-61f7-4c14-80f0-4f88ef8d26ab` is SUCCESS for project `GENSEN process`, staging environment `9d541fe0-5103-4134-98dc-332dae65de7b`, service `vantage-platform-staging`; startup and `/health` prove S3, PostgreSQL, governed API, and worker readiness. Railway local-upload metadata does not expose a Git SHA; the clean candidate checkout and deployment message are recorded without inferring a hosted SHA.
+- Runtime configuration reads back Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, Judge prompt `2.1.0`, Writer contract `1.0.0`, Judge contract `1.1.0`, report view-model `2.0.0`, and semantic ledger `1.0.0`.
+- Local Chrome/Edge Playwright launch smoke passes. The governed connected browser adapter still reports zero browser backends; local unauthenticated access to the Vercel Preview redirects to Vercel login. The approved authenticated staging reviewer session is unavailable, and no Cognito reset was attempted because the durable decision forbids another reset without explicit authorization.
+- PPE, PIC, model-bearing paid execution, fresh authenticated audit, seven-page report, PDF, persistence/reload, and hosted semantic challenge remain blocked/held before paid execution by the unavailable authenticated browser surface. Direct worker/API substitution is prohibited.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-REPORT-INTELLIGENCE-MVP-2026-09-24\BROWSER_DIAGNOSIS_2026-09-25.md`, `HOSTED_DEPLOYMENTS_2026-09-25.md`, and `CLOSURE_STATUS_2026-09-25.json`.
+- Exact next action: provide an authorized authenticated staging browser surface/session, then run PPE/PIC before the model-bearing gate and complete the fresh hosted audit through report, PDF, persistence/reload, and independent challenge. Production remains untouched.
