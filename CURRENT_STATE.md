@@ -1,6 +1,6 @@
 # Current State
 
-## 2026-09-24 ServiceMaster finalization-gate incident — REPAIR PASS / HOSTED ACCEPTANCE HOLD
+## 2026-09-25 ServiceMaster finalization-gate incident — MODEL GATE PASS / HOSTED ACCEPTANCE EXTERNAL BLOCKER
 
 Current objective:
 complete exact-candidate model-bearing and hosted staging acceptance for the generalized ServiceMaster finalization repair.
@@ -19,9 +19,13 @@ Verified checkpoint:
 - finalization gate PASS; PARTIAL evidence semantics PASS; Writer validation PASS; Judge validation PASS; correction-routing behavior PASS; renderer fail-closed PASS;
 - exact non-production deployments: Vercel `dpl_JE1zRNY8ptaJvFKvu74qutbYP2Zu`; Railway `e2cfd77c-7c9c-4cf0-be78-f10d61574dd8`;
 - PostgreSQL authority PASS;
-- Model-Bearing Gate remains HOLD because no new live model-bearing proof was executed on the repaired candidate;
+- Model-Bearing Gate PASS for the available exact current-contract ServiceMaster incident corpus: five independent Writer generations, one complete Writer→Judge orchestration, finalization PASS, renderer PASS, and no unresolved CRITICAL/MAJOR semantic findings;
+- independent semantic challenge PASS on the primary orchestration and two independently selected Writer outputs;
+- exact Railway staging deployment `e2cfd77c-7c9c-4cf0-be78-f10d61574dd8` is SUCCESS at candidate SHA `80aa279907c7dc6ab0db905d5cf31be618c51b6a`; startup proves PostgreSQL lifecycle/identity repositories initialized and staging S3 connectivity;
+- active staging Narrative identity is Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, Judge prompt `2.1.0`, Writer contract `1.0.0`, Judge contract `1.1.0`;
 - no fresh hosted ServiceMaster audit has yet been run on the repaired candidate;
 - seven-page report, PDF, Production Path Equivalence, and Production Identity Continuity are not yet verified for `80aa279907c7dc6ab0db905d5cf31be618c51b6a`;
+- hosted acceptance is externally blocked because the required authenticated in-app browser surface is unavailable (`No browser is available`); direct worker/API substitution is prohibited by the governing path-equivalence contract;
 - production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and was not touched.
 
 Important constraints:
@@ -36,7 +40,7 @@ Important constraints:
 - production remains untouched.
 
 Exact next action:
-from exact candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a`, run the applicable PRYSM Model-Bearing Release Gate planes against frozen production-shaped Narrative inputs, independently challenge the required outputs, prove Vercel/Railway/model/contract deployment identity, then run one fresh hosted staging ServiceMaster audit through Writer → Judge → finalization → seven-page render → PDF and verify PostgreSQL persistence, Production Path Equivalence, and Production Identity Continuity. If any repository-controlled defect appears, repair only its generalized owning boundary and rerun invalidated gates. Keep production frozen.
+provide an authorized authenticated browser surface, then run one fresh hosted staging ServiceMaster audit on exact candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a` through Writer → Judge → finalization → seven-page render → PDF and verify PostgreSQL persistence, Production Path Equivalence, and Production Identity Continuity. Keep production frozen.
 
 
 ## Current verified terminal state — evidence-to-score closure PASS

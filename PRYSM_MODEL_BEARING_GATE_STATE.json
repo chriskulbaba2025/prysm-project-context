@@ -1,8 +1,8 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "SERVICEMASTER_FINALIZATION_REPAIR_HOSTED_ACCEPTANCE_HOLD",
-  "status": "MODEL_BEARING_HOLD_NO_FRESH_LIVE_PROOF",
+  "checkpoint": "SERVICEMASTER_FINALIZATION_REPAIR_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
+  "status": "MODEL_BEARING_PASS_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
   "applicationCandidateSha": "80aa279907c7dc6ab0db905d5cf31be618c51b6a",
   "incidentAuditId": "b2524f64-ffc0-4917-9b1e-174ea65849f3",
   "deterministicRepair": {
@@ -23,20 +23,26 @@
     "postgresAuthority": "PASS"
   },
   "modelBearingGate": {
-    "status": "HOLD",
-    "reason": "No fresh live model-bearing proof has been executed on candidate 80aa279907c7dc6ab0db905d5cf31be618c51b6a."
+    "status": "PASS",
+    "runId": "servicemaster-plane34-20260925-repaired",
+    "writerCalls": 5,
+    "judgeCalls": 1,
+    "actualCostUsd": 2.76,
+    "independentChallenge": "PASS",
+    "reason": "Five independent Writer generations and one complete Writer-Judge orchestration passed the governed exact-candidate proof for the available current-contract incident corpus."
   },
   "hostedAcceptance": {
     "freshServiceMasterAudit": "NOT_RUN",
     "sevenPageReport": "NOT_VERIFIED",
     "pdf": "NOT_VERIFIED",
-    "productionPathEquivalence": "BLOCKED",
-    "productionIdentityContinuity": "BLOCKED"
+    "productionPathEquivalence": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
+    "productionIdentityContinuity": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
+    "blocker": "No browser is available for the required authenticated Vercel Preview path; direct worker/API substitution is prohibited."
   },
   "production": {
     "touched": false,
     "frozenSha": "a68dd235a3ca09977c84313536b5b884e3694782"
   },
-  "nextAction": "Run applicable Model-Bearing Release Gate planes on exact candidate 80aa279907c7dc6ab0db905d5cf31be618c51b6a using frozen production-shaped inputs; independently challenge outputs; prove exact deployed Vercel/Railway/model/contract identities; then run one fresh hosted staging ServiceMaster audit through Writer, Judge, finalization, seven-page render, and PDF. Keep production frozen.",
-  "lastVerified": "2026-09-24 America/Toronto"
+  "nextAction": "Provide an authorized authenticated browser surface, then run one fresh hosted staging ServiceMaster audit on exact candidate 80aa279907c7dc6ab0db905d5cf31be618c51b6a through Writer, Judge, finalization, seven-page render, and PDF; prove PostgreSQL authority, Production Path Equivalence, and Production Identity Continuity. Keep production frozen.",
+  "lastVerified": "2026-09-25 America/Toronto"
 }
