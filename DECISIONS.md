@@ -1035,3 +1035,18 @@ Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` is READY and Railway
 `9906c756-1fa9-4100-93c4-758f971e74c2` is SUCCESS. Worker `1034/1034`, Narrative
 `47/47`, evidence-to-score/report `158/158`, closure, and whole-app gates passed.
 Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+## Decision: ServiceMaster finalization defect owned by deterministic PARTIAL finding producer
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Accept application candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a` as the deterministic repair checkpoint for incident audit `b2524f64-ffc0-4917-9b1e-174ea65849f3`. The generalized root defect is the PARTIAL finding producer emitting unbounded absence language. The finalization gate, Writer validation, Judge validation, correction-routing behavior, and renderer fail-closed behavior are not the owning defect boundaries. PARTIAL findings must use assessed-scope-bounded language, source status must remain explicit, and UNKNOWN must not produce a negative finding.
+
+Reason:
+The governed forensic trace proved the finalization gate correctly rejected the unqualified absence claim and that a Narrative correction pass is not applicable to a deterministic producer defect. Targeted tests, full worker regression (1,036), and Whole-App P-B01 through P-B17 passed on the repaired candidate.
+
+Implication:
+Do not weaken the finalization gate or add a Narrative retry/correction loop for this defect class. Do not reopen the deterministic root cause without new contradictory direct evidence. Release readiness remains on HOLD until the exact repaired candidate completes the applicable Model-Bearing Release Gate, exact deployed-identity proof, one fresh hosted ServiceMaster staging audit, seven-page/PDF acceptance, Production Path Equivalence, and Production Identity Continuity. Production remains frozen.
+
