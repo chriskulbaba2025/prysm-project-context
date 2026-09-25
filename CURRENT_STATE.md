@@ -1,40 +1,42 @@
 # Current State
 
-## 2026-09-24 ServiceMaster finalization-gate incident — ACTIVE INVESTIGATION
+## 2026-09-24 ServiceMaster finalization-gate incident — REPAIR PASS / HOSTED ACCEPTANCE HOLD
 
 Current objective:
-trace and repair the generalized PRYSM Narrative/finalization/correction-routing defect exposed by hosted staging audit `b2524f64-ffc0-4917-9b1e-174ea65849f3` for `https://servicemasterrestore.com/`.
+complete exact-candidate model-bearing and hosted staging acceptance for the generalized ServiceMaster finalization repair.
 
 Verified checkpoint:
-- accepted application candidate remains `1d5caaa6ad6ce4badb9c211f3380773eb585737e` on `repair/prysm-ca14-gacm-20260924`;
-- staging persistence/runtime drift was found and repaired before this audit cycle;
-- repaired Railway staging service: `vantage-platform-staging`;
-- repaired Railway deployment: `430428ab-b868-46b1-ad44-949a1ae272d4`;
-- repaired Railway SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`;
-- PostgreSQL is present, initialized, and authoritative; local file-backed persistence is no longer authoritative;
-- repaired Vercel Preview deployment: `dpl_Bt2Q8vyrUwCwVLDofBSAQH14QKgy`;
-- Vercel Preview reaches Railway deployment `430428ab-b868-46b1-ad44-949a1ae272d4`;
-- staging login account `prysm@omnipressence.com` was confirmed present/enabled/CONFIRMED in staging Cognito pool `us-east-1_ZYZ57LwIX`; staging password was reset interactively by the user without persisting the password;
-- ServiceMaster audit lifecycle reached `created → validated → collecting → evidence_stored → evidence_locked → scored → narrative_pending → narrative_ready → render_failed`;
-- exact visible failure reason: `narrative-v2-finalization-gate-failed: Finding VAN-CONTENT-001 converts PARTIAL evidence into an unqualified absence claim.`;
-- the finalization gate blocked rendering after Narrative v2 reached `narrative_ready`;
-- the user was not offered the governed Narrative correction/final-pass path after this post-Judge finalization failure;
+- incident audit: `b2524f64-ffc0-4917-9b1e-174ea65849f3`;
+- starting application SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`;
+- repaired candidate SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a` on `repair/prysm-ca14-gacm-20260924`;
+- root cause is a deterministic PARTIAL finding producer emitting unbounded absence language; the finalization gate correctly rejected it;
+- Writer validation and Judge validation were correct for the incident path;
+- Narrative correction routing is not the owning repair boundary for this deterministic producer defect;
+- generalized repair bounds PARTIAL findings to assessed scope, preserves source status, emits no negative finding for UNKNOWN, and updates solution-authority wording/regression coverage;
+- targeted tests PASS;
+- full worker regression PASS: 1,036 tests;
+- Whole-App Gate PASS: P-B01 through P-B17;
+- finalization gate PASS; PARTIAL evidence semantics PASS; Writer validation PASS; Judge validation PASS; correction-routing behavior PASS; renderer fail-closed PASS;
+- exact non-production deployments: Vercel `dpl_JE1zRNY8ptaJvFKvu74qutbYP2Zu`; Railway `e2cfd77c-7c9c-4cf0-be78-f10d61574dd8`;
+- PostgreSQL authority PASS;
+- Model-Bearing Gate remains HOLD because no new live model-bearing proof was executed on the repaired candidate;
+- no fresh hosted ServiceMaster audit has yet been run on the repaired candidate;
+- seven-page report, PDF, Production Path Equivalence, and Production Identity Continuity are not yet verified for `80aa279907c7dc6ab0db905d5cf31be618c51b6a`;
 - production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and was not touched.
 
 Important constraints:
-- do not weaken or bypass the finalization gate merely to make the report render;
-- prove the exact PARTIAL evidence, Writer sentence, Writer validation, Judge decision, finalization rejection, lifecycle routing, and missing correction-route behavior before editing;
-- freeze all materially distinct root-cause clusters before Builder work;
-- repair only generalized owning boundaries; no ServiceMaster/domain/audit-specific code and no VAN-CONTENT-001-only workaround unless the generalized rule contract is proven defective;
+- do not weaken or bypass the finalization gate;
+- do not reopen the already-proven root-cause diagnosis unless new direct evidence contradicts it;
 - preserve AVAILABLE/PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED semantics;
-- renderer must remain fail-closed with zero partial report artifacts after a finalization rejection;
-- preserve governed pass/retry ceilings and prevent retry loops;
-- rerun targeted, full worker, Whole-App, and Model-Bearing gates as applicable;
-- hosted acceptance must use a fresh ServiceMaster audit on exact repaired staging identities;
+- preserve renderer fail-closed behavior with zero partial report artifacts after rejection;
+- no ServiceMaster/domain/audit-specific code;
+- no Narrative retry/correction loop may be introduced for deterministic producer defects;
+- model-bearing proof must use the exact repaired candidate and governed frozen production-shaped inputs;
+- hosted acceptance must use one fresh ServiceMaster audit on exact repaired staging identities;
 - production remains untouched.
 
 Exact next action:
-execute the prepared GACM / Governed Coding Upgrade forensic trace from exact accepted SHA `1d5caaa6ad6ce4badb9c211f3380773eb585737e` for incident audit `b2524f64-ffc0-4917-9b1e-174ea65849f3`, reconstruct persisted evidence through Writer/Judge/finalization/lifecycle/correction routing, freeze all root-cause clusters before editing, implement only the generalized owning-boundary repair, run required deterministic/model-bearing/whole-app verification, deploy the exact repaired candidate to non-production staging, run one fresh hosted ServiceMaster audit, independently challenge the result, and keep production frozen.
+from exact candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a`, run the applicable PRYSM Model-Bearing Release Gate planes against frozen production-shaped Narrative inputs, independently challenge the required outputs, prove Vercel/Railway/model/contract deployment identity, then run one fresh hosted staging ServiceMaster audit through Writer → Judge → finalization → seven-page render → PDF and verify PostgreSQL persistence, Production Path Equivalence, and Production Identity Continuity. If any repository-controlled defect appears, repair only its generalized owning boundary and rerun invalidated gates. Keep production frozen.
 
 
 ## Current verified terminal state — evidence-to-score closure PASS
