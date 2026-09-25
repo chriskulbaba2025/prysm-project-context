@@ -970,3 +970,119 @@ UNKNOWN Ask questions, citations, trace, and isolation. Do not claim Production
 Path Equivalence or Production Identity Continuity until that evidence is
 reconciled. Resume the same exact candidate without repeating already-PASSed
 machine validation; if UAT passes, continue final reconciliation automatically.
+
+---
+
+## Decision: Authorize CA14 Narrative Writer terminal staging closure pass
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Authorize one bounded GACM / Governed Coding Upgrade STAGING_READY pass on application branch `repair/prysm-ca14-gacm-20260924` beginning from verified SHA `b67d1f979a81d3b20c55fdcde0c64095e300a34a`. The primary diagnostic boundary is the failed CA14 audit `7d286401-b9bf-4297-9a20-25c926160554`, which reached evidence storage, evidence lock, scoring, and `narrative_pending` before Writer pass 1 returned an HTTP 400 provider error. The pass must reconstruct the exact Writer request, compare it against a successful accepted Reboot Writer request, prove the actual provider rejection cause, repair only generalized owning boundaries, and correct the dependent UI failure classification that currently represents every `narrative_failed` state as Judge non-authorization.
+
+Reason:
+Direct lifecycle evidence narrows the observed failure to the Narrative v2 Writer provider-request boundary rather than crawl acquisition or Judge authorization. Current source also proves the admin/client UI hardcodes Judge-exhaustion language for generic `narrative_failed`, which is inaccurate for a Writer transport/provider failure. Repetitive or noisy CA14 content remains only a possible trigger until exact persisted request evidence establishes causality.
+
+Implication:
+Do not spend the pass re-diagnosing CA14 crawlability unless new direct evidence contradicts the established lifecycle. Before editing, establish exact runtime identity, exact persisted failed-request bytes/hashes when available, successful-control request evidence, provider HTTP-400 response metadata/body where retained, request size/token/schema/response-format validity, malformed/null/unexpected values, and escaping/control-character behavior. Freeze all discovered root-cause clusters before Builder edits. Add permanent positive, negative, counterexample, model-bearing, and UI-state regression proof. Preserve accepted Reboot seven-page behavior. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and is not authorized for mutation or promotion. The pass may deploy exact accepted candidates only to existing non-production Preview/Railway staging and may run the required bounded staging model/provider calls and clean CA14 audit needed for acceptance. Temporary access/share tokens must not be persisted. Terminal disposition is only `PRYSM_STAGING_TERMINAL_PASS` or a genuinely external `PRYSM_STAGING_EXTERNAL_BLOCKER`; code, configuration, test, deployment, browser-protection, or ordinary staging defects are work, not external blockers.
+---
+
+## Decision: Autonomous staging closure completed
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The exact candidate `f617e02db587128faf75be14953dc34fbda2f679` on
+`repair/prysm-ca14-gacm-20260924` passed the real hosted disposable audit and
+clean CA14 audit. The authenticated browser path, provider artifacts, Narrative
+Writer/Judge calls, seven report sections, PDF generation, and production
+isolation were directly verified. This supersedes earlier browser-availability
+holds for this closure run; it does not authorize production promotion.
+
+---
+
+## Decision: Evidence-to-score closure completed
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The exact candidate `c41d6fd38f2005c8ff3eb3141ceac939ccd4f23d` passed the
+evidence-to-score closure. The generalized defect was the no-crawl scoring
+fallback dropping independently eligible PageSpeed performance from module and
+dimension eligibility and from the technical-performance dimension output.
+The repair preserves unavailable crawl/CrUX semantics and withholds the overall
+numeric score at 10% assessed weight. Final hosted CA14 audit
+`44dadb0e-18ca-4b07-94c5-257076a0b1a9` proved the same PageSpeed result through
+canonical evidence, ScoreSet, ReportContent, WriterInput, Narrative, seven-page
+report, and PDF. Production remains frozen and is not authorized for promotion.
+
+## Decision: Evidence-to-score final child reconciliation
+
+Date: 2026-09-24
+Status: TERMINAL PASS
+
+The final governed child candidate is `1d5caaa6ad6ce4badb9c211f3380773eb585737e`.
+It preserves the generalized scoring repair and adds a validator repair: bounded
+Writer negation using `by itself` / `on its own` is accepted, while a causal
+certainty counterexample remains rejected. Final hosted CA14 audit
+`3e0fe2a5-f990-459e-96f3-d634f41ac83c` has PageSpeed lab evidence available,
+normalized performance `62`, technical-performance dimension `62`, performance
+eligibility true, CrUX unavailable, and overall numeric score withheld at 10%
+assessed weight. Writer and Judge passed one governed round and the report
+reached `draft_rendered`; browser seven-section and PDF acceptance passed.
+Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` is READY and Railway
+`9906c756-1fa9-4100-93c4-758f971e74c2` is SUCCESS. Worker `1034/1034`, Narrative
+`47/47`, evidence-to-score/report `158/158`, closure, and whole-app gates passed.
+Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+## Decision: ServiceMaster finalization defect owned by deterministic PARTIAL finding producer
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Accept application candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a` as the deterministic repair checkpoint for incident audit `b2524f64-ffc0-4917-9b1e-174ea65849f3`. The generalized root defect is the PARTIAL finding producer emitting unbounded absence language. The finalization gate, Writer validation, Judge validation, correction-routing behavior, and renderer fail-closed behavior are not the owning defect boundaries. PARTIAL findings must use assessed-scope-bounded language, source status must remain explicit, and UNKNOWN must not produce a negative finding.
+
+Reason:
+The governed forensic trace proved the finalization gate correctly rejected the unqualified absence claim and that a Narrative correction pass is not applicable to a deterministic producer defect. Targeted tests, full worker regression (1,036), and Whole-App P-B01 through P-B17 passed on the repaired candidate.
+
+Implication:
+Do not weaken the finalization gate or add a Narrative retry/correction loop for this defect class. Do not reopen the deterministic root cause without new contradictory direct evidence. Release readiness remains on HOLD until the exact repaired candidate completes the applicable Model-Bearing Release Gate, exact deployed-identity proof, one fresh hosted ServiceMaster staging audit, seven-page/PDF acceptance, Production Path Equivalence, and Production Identity Continuity. Production remains frozen.
+
+
+
+---
+
+## Decision: Freeze pre-report-intelligence baseline and authorize Terra-first / Sol-escalation tranche
+
+Date: 2026-09-24
+Status: Active
+
+Decision:
+Freeze application SHA `80aa279907c7dc6ab0db905d5cf31be618c51b6a` on `freeze/prysm-mvp-pre-report-intelligence-20260924` and perform all report-intelligence improvement work on `repair/prysm-report-intelligence-terra-sol-20260924`, created from the same SHA.
+
+The semantic authority model is:
+- deterministic code owns evidence truth, statuses, measurements, provenance, and fail-closed integrity;
+- Terra is the default model for governed evidence interpretation, materiality, prioritization, reconciliation, and client-language synthesis;
+- Sol is used only for explicit escalation triggers such as material contradiction, competing evidence, unresolved ambiguity, low-confidence interpretation, or whole-report semantic conflict;
+- models may interpret evidence but may not redefine evidence.
+
+Reason:
+Real report comparisons across multiple unrelated sites show that PRYSM's remaining MVP weakness is not insufficient evidence discipline. It is over-constrained semantic interpretation, cross-section non-reconciliation, rigid proof/content classification, and technically valid but commercially weak prioritization. The accepted evidence-integrity controls must remain strict while the semantic layer gains bounded reasoning freedom.
+
+Implication:
+Do not weaken PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED handling or the ServiceMaster finalization repair. Add whole-report reconciliation and usefulness validation. Content opportunities must reconcile against existing assessed content. Technical evidence does not automatically become a client priority. The internal planning assumption for model cost is approximately USD $2 per completed audit. Production remains frozen and requires separate authorization.
+
+## Decision: Accept deterministic report-intelligence ledger candidate pending hosted proof
+
+Date: 2026-09-24
+Status: Active — staging-ready implementation, hosted acceptance blocked
+
+Decision:
+Accept `105792ea3eaab4b3032bde69571fd5bb5d2da163` on `repair/prysm-report-intelligence-terra-sol-20260924` as the exact implementation candidate. The shared model-free ledger is authoritative for semantic reconciliation metadata, usefulness/action classification, proof-form interpretation, URL normalization, and observable Terra-default/Sol-escalation routing. It does not alter immutable evidence, scores, or statuses.
+
+Evidence: semantic focused tests PASS; worker `1036/1036`; Whole-App P-B01–P-B17 PASS; Closure Machine Gate PASS; model-bearing harness tests PASS with zero live calls; exact branch push/readback PASS; production untouched.
+
+Hold:
+Exact-candidate paid/model-bearing execution and hosted seven-page/PDF acceptance remain blocked until the authorized authenticated staging browser surface is available. Direct worker/API substitution cannot prove the claimed browser/session production path.

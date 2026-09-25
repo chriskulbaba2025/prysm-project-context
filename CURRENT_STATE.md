@@ -16,6 +16,242 @@ Proof bundle: `C:\Users\kulba\Downloads\PRYSM-REPORT-INTELLIGENCE-RECONCILIATION
 
 Exact next action: Chris performs human seven-page report/UAT review on the Vercel Preview using `/audits/new` or an existing authenticated staging audit at `/audits/<auditId>/report`.
 
+## 2026-09-24 PRYSM report-intelligence tranche — IMPLEMENTED / HOSTED ACCEPTANCE BLOCKED
+
+- starting frozen SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a`
+- final candidate SHA: `105792ea3eaab4b3032bde69571fd5bb5d2da163`
+- branch: `repair/prysm-report-intelligence-terra-sol-20260924`
+- frozen branch remains exactly at the starting SHA; production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+- implementation adds the deterministic semantic ledger at the current-model and Narrative WriterInput boundaries, with proof-form semantics, coverage/action classification, URL normalization, usefulness checks, contradiction records, and observable Terra-default/Sol-escalation routing.
+- focused semantic tests: PASS; full worker regression: PASS 1036/1036; Whole-App P-B01–P-B17: PASS; Closure Machine Gate: PASS; model-bearing harness preflight/tests: PASS with zero live calls.
+- model-bearing exact-candidate execution, hosted seven-page/PDF acceptance, Production Path Equivalence, and Production Identity Continuity remain BLOCKED until the authorized authenticated staging browser surface is available. Direct worker/API substitution is prohibited.
+- staging deployment identities for this candidate: NOT_RUN because hosted acceptance is externally blocked and no deployment identity was established; production untouched.
+- exact next action: provide the authorized authenticated staging browser surface, deploy the exact candidate to existing non-production staging, run the fresh hosted production-shaped audit, then prove Terra/Sol identities, seven pages, PDF, persistence/reload, Production Path Equivalence, and Production Identity Continuity.
+## 2026-09-24 PRYSM report-intelligence tranche — AUTHORIZED / BASELINE FROZEN
+
+Current objective:
+improve PRYSM report usefulness, semantic coherence, and consultant-quality interpretation without weakening evidence integrity.
+
+Frozen application baseline:
+- repository: `chriskulbaba2025/vantage-platform`;
+- exact frozen SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a`;
+- frozen branch: `freeze/prysm-mvp-pre-report-intelligence-20260924`;
+- authorized working branch: `repair/prysm-report-intelligence-terra-sol-20260924`;
+- both branches were created from the same exact SHA;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and is not authorized for mutation.
+
+Governing specification:
+- `PRYSM_REPORT_INTELLIGENCE_MVP_SPEC_2026-09-24.md`;
+- governing rule: models may interpret evidence, but they may not redefine evidence;
+- Terra is the default semantic interpretation model;
+- Sol is a bounded escalation model for material ambiguity, contradiction, low-confidence interpretation, and final whole-report reconciliation where required;
+- deterministic evidence-state and finalization protections remain fail-closed;
+- internal MVP planning assumption is approximately USD $2 of LLM budget per completed audit.
+
+Primary product defects to address:
+- cross-page and score/narrative contradictions;
+- rigid trust/proof classification;
+- content opportunities that fail to reconcile against existing content;
+- generic/low-value content suggestions;
+- competitor own-site evidence disconnects;
+- technical-hygiene over-prioritization and technical-to-conversion projection;
+- client-facing tracking/provenance contamination;
+- weak finding-specific verification and score interpretability.
+
+Definition of done:
+- no material factual or cross-report contradiction;
+- no unsupported certainty or evidence-state conversion;
+- no recommendation a competent consultant would regard as obviously useless, generic, redundant, or contradicted by existing assessed content;
+- generalized tests and branch coverage pass;
+- model-bearing and independent semantic gates pass where applicable;
+- exact-head audit has zero CRITICAL/MAJOR repository-controlled defects;
+- production untouched.
+
+Exact next action:
+run one long governed autonomous STAGING_READY Codex tranche from `repair/prysm-report-intelligence-terra-sol-20260924`, using the frozen SHA and report-intelligence specification above, to diagnose owning boundaries before editing, implement generalized Terra-first/Sol-escalation report intelligence, add whole-report reconciliation and usefulness validation, prove the generalized benchmark corpus, run all invalidated gates, and stop before any production promotion.
+
+---
+
+## 2026-09-25 ServiceMaster finalization-gate incident — MODEL GATE PASS / HOSTED ACCEPTANCE EXTERNAL BLOCKER
+
+Current objective:
+complete exact-candidate model-bearing and hosted staging acceptance for the generalized ServiceMaster finalization repair.
+
+Verified checkpoint:
+- incident audit: `b2524f64-ffc0-4917-9b1e-174ea65849f3`;
+- starting application SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`;
+- repaired candidate SHA: `80aa279907c7dc6ab0db905d5cf31be618c51b6a` on `repair/prysm-ca14-gacm-20260924`;
+- root cause is a deterministic PARTIAL finding producer emitting unbounded absence language; the finalization gate correctly rejected it;
+- Writer validation and Judge validation were correct for the incident path;
+- Narrative correction routing is not the owning repair boundary for this deterministic producer defect;
+- generalized repair bounds PARTIAL findings to assessed scope, preserves source status, emits no negative finding for UNKNOWN, and updates solution-authority wording/regression coverage;
+- targeted tests PASS;
+- full worker regression PASS: 1,036 tests;
+- Whole-App Gate PASS: P-B01 through P-B17;
+- finalization gate PASS; PARTIAL evidence semantics PASS; Writer validation PASS; Judge validation PASS; correction-routing behavior PASS; renderer fail-closed PASS;
+- exact non-production deployments: Vercel `dpl_JE1zRNY8ptaJvFKvu74qutbYP2Zu`; Railway `e2cfd77c-7c9c-4cf0-be78-f10d61574dd8`;
+- PostgreSQL authority PASS;
+- Model-Bearing Gate PASS for the available exact current-contract ServiceMaster incident corpus: five independent Writer generations, one complete Writer→Judge orchestration, finalization PASS, renderer PASS, and no unresolved CRITICAL/MAJOR semantic findings;
+- independent semantic challenge PASS on the primary orchestration and two independently selected Writer outputs;
+- exact Railway staging deployment `e2cfd77c-7c9c-4cf0-be78-f10d61574dd8` is SUCCESS at candidate SHA `80aa279907c7dc6ab0db905d5cf31be618c51b6a`; startup proves PostgreSQL lifecycle/identity repositories initialized and staging S3 connectivity;
+- active staging Narrative identity is Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, Judge prompt `2.1.0`, Writer contract `1.0.0`, Judge contract `1.1.0`;
+- no fresh hosted ServiceMaster audit has yet been run on the repaired candidate;
+- seven-page report, PDF, Production Path Equivalence, and Production Identity Continuity are not yet verified for `80aa279907c7dc6ab0db905d5cf31be618c51b6a`;
+- hosted acceptance is externally blocked because the required authenticated in-app browser surface is unavailable (`No browser is available`); direct worker/API substitution is prohibited by the governing path-equivalence contract;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782` and was not touched.
+
+Important constraints:
+- do not weaken or bypass the finalization gate;
+- do not reopen the already-proven root-cause diagnosis unless new direct evidence contradicts it;
+- preserve AVAILABLE/PARTIAL/UNKNOWN/UNAVAILABLE/FAILED/NOT_CONNECTED semantics;
+- preserve renderer fail-closed behavior with zero partial report artifacts after rejection;
+- no ServiceMaster/domain/audit-specific code;
+- no Narrative retry/correction loop may be introduced for deterministic producer defects;
+- model-bearing proof must use the exact repaired candidate and governed frozen production-shaped inputs;
+- hosted acceptance must use one fresh ServiceMaster audit on exact repaired staging identities;
+- production remains untouched.
+
+Exact next action:
+provide an authorized authenticated browser surface, then run one fresh hosted staging ServiceMaster audit on exact candidate `80aa279907c7dc6ab0db905d5cf31be618c51b6a` through Writer → Judge → finalization → seven-page render → PDF and verify PostgreSQL persistence, Production Path Equivalence, and Production Identity Continuity. Keep production frozen.
+
+
+## Current verified terminal state — evidence-to-score closure PASS
+
+The authoritative current staging candidate is `1d5caaa6ad6ce4badb9c211f3380773eb585737e` on `repair/prysm-ca14-gacm-20260924`, starting from `f617e02db587128faf75be14953dc34fbda2f679`. Vercel `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` and Railway `9906c756-1fa9-4100-93c4-758f971e74c2` run the final candidate. Final CA14 audit is `3e0fe2a5-f990-459e-96f3-d634f41ac83c`. PageSpeed lab evidence is AVAILABLE and preserved as performance score/dimension `62`; crawl-dependent evidence and CrUX remain UNAVAILABLE; overall numeric score remains correctly withheld at 10% assessed weight. Worker tests `1034/1034`, Narrative focused tests `47/47`, evidence-to-score/report focused tests `158/158`, closure and whole-app gates PASS; browser seven-page/PDF PASS. Production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`. Production Path Equivalence and Production Identity Continuity are PASS. No production promotion is authorized.
+
+Earlier closure sections below are historical checkpoints and are superseded by this current terminal state.
+
+Exact next action: retain this candidate as the accepted staging evidence-to-score
+closure; do not promote or mutate production. Any future release work must begin
+from the governed branch/HEAD above and re-prove the same path.
+
+## CA14 evidence-to-score interpretation audit — AUTHORIZED
+
+Current objective:
+determine why the clean CA14 report renders broad `Not available` / `Insufficient Evidence for Overall Score` outcomes despite the same accepted staging run proving live provider acquisition, persisted raw/normalized/canonical artifacts, successful scoring, Writer/Judge execution, seven-page rendering, and PDF generation. Do not assume the report is wrong; trace the exact evidence-to-score-to-view-model handoff and prove where the loss or classification occurs.
+
+Verified checkpoint:
+- application branch: `repair/prysm-ca14-gacm-20260924`;
+- exact accepted staging candidate: `f617e02db587128faf75be14953dc34fbda2f679`;
+- clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5`;
+- CA14 provider/artifact proof exists for live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw, normalized, canonical, and source-manifest artifacts;
+- lifecycle reached `draft_rendered`;
+- human review of Executive Scorecard shows `Insufficient Evidence for Overall Score` and multiple dimensions/inputs rendered as `Not available`;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Important constraints:
+- do not assume that existence of provider artifacts proves every report dimension had sufficient eligible evidence;
+- do not assume that the report's `Not available` classifications are correct;
+- trace exact canonical evidence identities and values into scoring eligibility, dimension calculation, score persistence, report view-model projection, and Executive Scorecard rendering;
+- distinguish evidence present-but-ineligible, present-but-unmapped, present-but-dropped, present-but-misclassified, and genuinely unavailable;
+- preserve UNKNOWN/PARTIAL/UNAVAILABLE semantics;
+- repair only generalized owning boundaries;
+- no CA14/domain/audit-specific code;
+- accepted Reboot behavior remains frozen;
+- production remains untouched.
+
+Exact next action:
+run one bounded GACM / Governed Coding Upgrade STAGING_READY pass from exact SHA `f617e02db587128faf75be14953dc34fbda2f679` that performs a read-only evidence-to-score trace for clean CA14 audit `a7a3664d-9878-4cce-b860-57396866b7d5`, freezes all root-cause clusters before editing, repairs the generalized owning boundary if a defect is proven, adds permanent regression/negative tests, reruns only invalidated gates plus required whole-app/model-bearing checks, deploys the exact repaired candidate to non-production staging, reruns one clean hosted CA14 audit, and proves the Executive Scorecard reflects the authoritative evidence correctly before any production promotion.
+
+---
+
+## CA14 evidence-to-score interpretation audit — AUTHORIZED
+
+Current objective:
+determine why the clean CA14 report renders broad `Not available` / `Insufficient Evidence for Overall Score` outcomes despite the same accepted staging run proving live provider acquisition, persisted raw/normalized/canonical artifacts, successful scoring, Writer/Judge execution, seven-page rendering, and PDF generation. Do not assume the report is wrong; trace the exact evidence-to-score-to-view-model handoff and prove where the loss or classification occurs.
+
+Verified checkpoint:
+- application branch: `repair/prysm-ca14-gacm-20260924`;
+- exact accepted staging candidate: `f617e02db587128faf75be14953dc34fbda2f679`;
+- clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5`;
+- CA14 provider/artifact proof exists for live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw, normalized, canonical, and source-manifest artifacts;
+- lifecycle reached `draft_rendered`;
+- human review of Executive Scorecard shows `Insufficient Evidence for Overall Score` and multiple dimensions/inputs rendered as `Not available`, including page content, offer clarity, trust/proof, CTA, conversion path, indexing, redirects, page resources, technical headers, structured data, and real-user performance data;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Important constraints:
+- do not assume that existence of provider artifacts proves every report dimension had sufficient eligible evidence;
+- do not assume that the report's `Not available` classifications are correct;
+- trace exact canonical evidence identities and values into scoring eligibility, dimension calculation, score persistence, report view-model projection, and Executive Scorecard rendering;
+- distinguish evidence present-but-ineligible, present-but-unmapped, present-but-dropped, present-but-misclassified, and genuinely unavailable;
+- preserve UNKNOWN/PARTIAL/UNAVAILABLE semantics;
+- repair only generalized owning boundaries;
+- no CA14/domain/audit-specific code;
+- accepted Reboot behavior remains frozen;
+- production remains untouched.
+
+Exact next action:
+run one bounded GACM / Governed Coding Upgrade STAGING_READY pass from exact SHA `f617e02db587128faf75be14953dc34fbda2f679` that performs a read-only evidence-to-score trace for clean CA14 audit `a7a3664d-9878-4cce-b860-57396866b7d5`, freezes all root-cause clusters before editing, repairs the generalized owning boundary if a defect is proven, adds permanent regression/negative tests, reruns only invalidated gates plus required whole-app/model-bearing checks, deploys the exact repaired candidate to non-production staging, reruns one clean hosted CA14 audit, and proves the Executive Scorecard reflects the authoritative evidence correctly before any production promotion.
+
+---
+
+## 2026-09-24 evidence-to-score closure — TERMINAL PASS
+
+The prior clean CA14 score/report contradiction was traced and repaired on the
+exact governed staging path. The authoritative DataForSEO crawl genuinely
+returned zero decision-bearing pages, so crawl-dependent inputs remain
+UNAVAILABLE. PageSpeed independently returned two live lab results and is now
+preserved through the no-crawl fallback as an eligible performance module and
+technical-performance dimension. The overall score remains withheld because
+only 10% of intended evidence is assessed.
+
+- Branch: `repair/prysm-ca14-gacm-20260924`
+- Final candidate SHA: `1d5caaa6ad6ce4badb9c211f3380773eb585737e`
+- Starting SHA: `f617e02db587128faf75be14953dc34fbda2f679`
+- Vercel Preview: `dpl_9GKa497uAMVwSrgcpyqRizgPxDmW` — READY
+- Railway staging: `9906c756-1fa9-4100-93c4-758f971e74c2` — SUCCESS
+- Final CA14 audit: `3e0fe2a5-f990-459e-96f3-d634f41ac83c` — draft_rendered
+- Previous clean CA14 reconstructed: `a7a3664d-9878-4cce-b860-57396866b7d5`
+- Final score proof: PageSpeed score/dimension `62`; performance module and
+  technical-performance dimension eligible; assessed weight `10`; numeric
+  overall score correctly suppressed.
+- Capability proof: `13 total / 1 available / 12 unavailable / 1 assessed`;
+  lab performance AVAILABLE; CrUX field performance UNAVAILABLE; crawl source
+  FAILED with zero pages.
+- Provider/model proof: live DataForSEO On-Page/SERP/backlinks, PageSpeed,
+  raw/normalized/canonical artifacts, Writer `gpt-5.6-terra`, Judge pass, and
+  persisted WriterInput/report artifacts.
+- Tests: targeted `137/137`; worker `1033/1033`; closure machine gate PASS;
+  whole-app tranche gate PASS; Vercel build PASS.
+- Browser/report proof: authenticated hosted flow, seven report sections,
+  refresh/reopen, and PDF PASS.
+- Production: frozen SHA `a68dd235a3ca09977c84313536b5b884e3694782`; no
+  production audit or mutation.
+- Production Path Equivalence: PASS.
+- Production Identity Continuity: PASS.
+- Next action: no production promotion; retain this exact staging candidate
+  pending separately authorized promotion.
+
+## 2026-09-24 autonomous staging closure — TERMINAL PASS
+
+The governed staging candidate completed the real hosted PRYSM path and clean
+CA14 acceptance without production mutation.
+
+- Branch: `repair/prysm-ca14-gacm-20260924`
+- Candidate SHA: `f617e02db587128faf75be14953dc34fbda2f679`
+- Starting SHA: `b67d1f979a81d3b20c55fdcde0c64095e300a34a`
+- PR: `#82`
+- Vercel Preview: `dpl_EWNujuNxmZeqWRZA2gAscd3dmKn2` — READY
+- Railway staging: `e9829404-dbb6-4578-a77a-f64b2090baa6` — SUCCESS — exact SHA
+- Disposable hosted audit: `909429e6-07be-47d7-ada2-462e20453ac2` — draft_rendered
+- Clean CA14 audit: `a7a3664d-9878-4cce-b860-57396866b7d5` — draft_rendered
+- CA14 narrative: Writer pass 1 and Judge pass 1 real calls, both validation PASS,
+  orchestration `RELEASE_CANDIDATE`, no revision.
+- CA14 evidence: live DataForSEO On-Page/SERP/backlinks, PageSpeed, raw,
+  normalized, canonical, WriterInput, narrative, and report artifacts persisted.
+- Browser: authenticated hosted Preview path passed dashboard, audit creation,
+  polling, report refresh, seven required report sections, and PDF generation.
+- Production: rollback SHA/deployment/configuration/database/S3 untouched; no
+  production audit launched.
+- Production Path Equivalence: PASS.
+- Production Identity Continuity: PASS.
+- Critical defects: 0. Major defects: 0.
+
+The repaired generalized boundaries are typed Narrative failure artifacts and
+failure classification/UI mapping, tenant propagation into the worker client,
+and validator-safe governed zero-findings language. Accepted Reboot behavior
+remains frozen.
+
 ## Frozen production baseline — VERIFIED
 
 Authoritative historical baseline commit:
@@ -67,6 +303,39 @@ Comparison result against prior "0" version:
 
 This accepted Content Opportunities behavior is now frozen. Do not redesign or expand it unless explicitly reopened.
 
+## CA14 Narrative Writer closure pass — AUTHORIZED
+
+Current objective:
+finish PRYSM staging from the verified CA14 candidate by proving and repairing the Narrative v2 Writer HTTP 400 boundary, correcting the dependent misleading Narrative failure UI, and completing hosted CA14 acceptance without changing frozen Reboot behavior.
+
+Verified checkpoint:
+- application branch: `repair/prysm-ca14-gacm-20260924`;
+- verified branch head: `b67d1f979a81d3b20c55fdcde0c64095e300a34a`;
+- failed CA14 audit for forensic reconstruction: `7d286401-b9bf-4297-9a20-25c926160554`;
+- lifecycle reached `evidence_stored → evidence_locked → scored → narrative_pending`;
+- failure: Writer pass 1 provider request returned HTTP 400 before a valid Writer output or Judge authorization;
+- current UI incorrectly maps generic `narrative_failed` to “Judge did not authorize client release”;
+- focused 14/14, Narrative 166/166, closure gate PASS, whole-app gate PASS were reported for the current candidate before this new bounded pass;
+- production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+
+Important constraints:
+- do not reopen site acquisition/crawlability as the primary failure without contradictory direct evidence;
+- do not assume repetitive/noisy CA14 content is causal until exact Writer request evidence proves it;
+- compare the exact failed Writer pass-1 request against a successful accepted Reboot Writer pass-1 request;
+- inspect serialized payload/request bytes, token estimate versus provider constraint, schema/response_format, null/unexpected values, escaping/control characters, and provider HTTP-400 response body/metadata where retained;
+- prove the executing staging runtime identity and exact persisted request artifacts before assigning root cause;
+- repair only generalized owning boundaries; no CA14/domain/audit-specific conditionals;
+- correct client/admin failure messaging from actual failure classification rather than treating every `narrative_failed` as Judge exhaustion;
+- permanent regression and negative tests are required;
+- temporary Vercel share/bypass tokens must not be persisted in durable project memory;
+- accepted Reboot seven-page behavior remains frozen;
+- production remains untouched.
+
+Exact next action:
+run one Governed Coding Upgrade / GACM STAGING_READY pass from exact application SHA `b67d1f979a81d3b20c55fdcde0c64095e300a34a`: reconstruct the failed Writer request and successful control, freeze all root-cause clusters before editing, repair the generalized Writer/provider request boundary plus dependent failure classification UI, run model-bearing and whole-app gates, deploy the exact accepted head to non-production staging, execute disposable hosted validation and one new clean CA14 audit, verify all seven report pages plus print/PDF, independently challenge the exact head, and finish only as `PRYSM_STAGING_TERMINAL_PASS` or a genuinely external `PRYSM_STAGING_EXTERNAL_BLOCKER`.
+
+---
+
 ## CA14 GACM repair branch — IN VERIFICATION
 
 Read-only diagnosis against the frozen rollback baseline identified two generalized defects already proven by historical CA14 evidence and still present in the frozen code:
@@ -80,7 +349,7 @@ Governed repair branch:
 `repair/prysm-ca14-gacm-20260924`
 
 Candidate head:
-`64d84cfbaa3c72b55ce1b935e55e8fefe4688d1a`
+`b67d1f979a81d3b20c55fdcde0c64095e300a34a`
 
 Draft PR:
 `#82 — GACM: CA14 generalized crawl + zero-findings repair`
@@ -95,7 +364,7 @@ Scope:
 Current verification:
 GitHub Actions worker verification is running on the candidate. Vercel feedback check passed. No promotion is authorized until the full closure gate passes.
 
-Exact next action:
+Historical next action:
 wait for full candidate CI; if green, independently inspect the exact diff and then run a clean CA14 audit on a hosted non-production candidate before any production promotion.
 
 ---
@@ -112,7 +381,7 @@ Known CA14 failed audits include:
 
 The second audit proved collection/evidence/scoring completed and the then-current Narrative Writer request failed with HTTP 400. Those failures occurred on post-baseline code and must not be assumed to reproduce on the frozen rollback baseline.
 
-Immediate next action:
+Historical immediate next action:
 perform a read-only GACM incident audit of CA14 against the frozen baseline; identify the first CA14-specific or environment/data divergence before making any source change. Then repair only the generalized owning boundary and re-prove with a clean CA14 production audit.
 
 No piecemeal production patching is authorized.
@@ -138,7 +407,7 @@ cross-scope or secret disclosure; then return redacted PASS/FAIL evidence.
 
 Do not claim Production Path Equivalence or Production Identity Continuity
 until human evidence is reconciled. The prior staging secret-output governance
-issue remains separately disclosed. Exact next action: Chris performs the
+issue remains separately disclosed. Historical next action: Chris performs the
 numbered browser sequence in the hosted closure proof and returns the exact
 PASS/FAIL evidence.
 
@@ -170,7 +439,7 @@ authorization.
 
 Result: `HOLD`.
 
-Exact next action: Chris must review the staging credential exposure and
+Historical next action: Chris must review the staging credential exposure and
 authorize the appropriate security response, then provide an available
 authenticated staging browser session through the approved browser surface for
 complete exact-head hosted validation from
@@ -189,7 +458,7 @@ to narrative/n8n infrastructure rather than a worker embedding adapter.
 Result: `HOLD`. No application files changed, no deployment was attempted, no
 live embedding call was made, and production was untouched.
 
-Exact next action: Chris must provide or authorize one existing staging
+Historical next action: Chris must provide or authorize one existing staging
 `OPENAI_API_KEY` scoped to the worker for the bounded embedding validation.
 Then implement the smallest governed adapter/configuration and candidate-branch
 Preview mapping, push a new exact SHA, and rerun the complete hosted tranche.
@@ -213,7 +482,7 @@ Result: `HOLD`. No staging deployment, live embedding call, browser acceptance,
 or production mutation occurred in this run. Production Path Equivalence and
 Production Identity Continuity are BLOCKED/unproven.
 
-Exact next action: provide or explicitly authorize an existing governed staging
+Historical next action: provide or explicitly authorize an existing governed staging
 embedding provider/model configuration and wire the hosted Ask route to the
 replaceable adapter. Then invalidate this run's hosted evidence and repeat the
 full exact-SHA hosted tranche. Do not create a new paid provider account.
@@ -396,7 +665,7 @@ Last verified: 2026-09-21 America/Toronto
 - Machine capability configuration now validates: enabled/live, governed Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, HTTPS provider, valid price table, token limits, and budgets.
 - Generic authenticated browser smoke and clean CA14 acceptance remain BLOCKED because no browser surface was available. No CA14 audit was created and no model call was made.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-NARRATIVE-V2-GACM-2026-09-24\11-FINAL-GACM-CLOSURE-PROOF.txt`.
-- Exact next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
+- Historical next action: connect an authenticated browser surface, run generic disposable staging smoke, then run the clean CA14 acceptance only if that gate passes.
 
 ## Full staging runtime qualification update — 2026-09-24
 
@@ -407,4 +676,15 @@ Last verified: 2026-09-21 America/Toronto
 - Full machine qualification remains HOLD because staging lacks DataForSEO credentials and a PageSpeed credential. Production credentials were not copied.
 - No browser UAT or CA14 audit was started. Production remains untouched.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-STAGING-FULL-RUNTIME-GACM-2026-09-24\14-FINAL-STAGING-RUNTIME-CLOSURE-PROOF.txt`.
-- Exact next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
+- Historical next action: provision staging-owned DataForSEO and PageSpeed credentials through the authorized staging secret path, redeploy, rerun machine readiness, then request one browser smoke.
+
+## Report Intelligence hosted closure update - 2026-09-25
+
+- Exact candidate `105792ea3eaab4b3032bde69571fd5bb5d2da163` remains on `repair/prysm-report-intelligence-terra-sol-20260924`; local and GitHub branch identities match and production remains frozen at `a68dd235a3ca09977c84313536b5b884e3694782`.
+- Vercel Preview deployment `dpl_5eRmxiewrDNKo2fwQAYnHLmDgAKA` is READY at `https://prysm-mt4l8sitz-chriskulbabas-projects.vercel.app`; read-back metadata contains both the candidate `gitCommitSha` and `githubCommitSha`, the authorized branch, Preview target, and `STAGING_READY` release intent.
+- Railway staging deployment `4415a5c4-61f7-4c14-80f0-4f88ef8d26ab` is SUCCESS for project `GENSEN process`, staging environment `9d541fe0-5103-4134-98dc-332dae65de7b`, service `vantage-platform-staging`; startup and `/health` prove S3, PostgreSQL, governed API, and worker readiness. Railway local-upload metadata does not expose a Git SHA; the clean candidate checkout and deployment message are recorded without inferring a hosted SHA.
+- Runtime configuration reads back Writer `gpt-5.6-terra`, Judge `gpt-5.6-sol`, Writer prompt `2.4.0`, Judge prompt `2.1.0`, Writer contract `1.0.0`, Judge contract `1.1.0`, report view-model `2.0.0`, and semantic ledger `1.0.0`.
+- Local Chrome/Edge Playwright launch smoke passes. The governed connected browser adapter still reports zero browser backends; local unauthenticated access to the Vercel Preview redirects to Vercel login. The approved authenticated staging reviewer session is unavailable, and no Cognito reset was attempted because the durable decision forbids another reset without explicit authorization.
+- PPE, PIC, model-bearing paid execution, fresh authenticated audit, seven-page report, PDF, persistence/reload, and hosted semantic challenge remain blocked/held before paid execution by the unavailable authenticated browser surface. Direct worker/API substitution is prohibited.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-REPORT-INTELLIGENCE-MVP-2026-09-24\BROWSER_DIAGNOSIS_2026-09-25.md`, `HOSTED_DEPLOYMENTS_2026-09-25.md`, and `CLOSURE_STATUS_2026-09-25.json`.
+- Exact next action: provide an authorized authenticated staging browser surface/session, then run PPE/PIC before the model-bearing gate and complete the fresh hosted audit through report, PDF, persistence/reload, and independent challenge. Production remains untouched.

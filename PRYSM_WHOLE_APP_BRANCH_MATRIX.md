@@ -56,3 +56,14 @@ No P-B16 is opened from this diagnostic.
 
 P-B17 is integrated into the Whole-App gate and is VERIFIED at exact candidate `aa9383bdab9047cfbaf3316d5dbca5cd2a0cb355`. The exact-candidate closure run executes the mapped P-B17 roadmap and assembled approval/reload suites, then reports P-B01 through P-B17 PASS. Earlier per-row SHAs remain the recorded introduction/verification points for those branch scenarios; the final exact-candidate Whole-App result is recorded in `CURRENT_STATE.md` and closure telemetry.
 
+## Report-intelligence semantic branches — 2026-09-24
+
+| Branch ID | Branch condition | Producer → contract → consumer | Permanent proof | Status |
+|---|---|---|---|---|
+| RI-B01 | ordinary semantic interpretation | deterministic ScoreSet/DecisionEvidence → semantic ledger → Terra default | semantic-ledger routing test | PASS |
+| RI-B02 | material contradiction or generic/redundant suggestion | immutable evidence → ledger contradiction/usefulness record → Sol escalation reason | semantic-ledger escalation test | PASS |
+| RI-B03 | equivalent proof form | observed site evidence → proof semantics → report/Writer typed form and qualifier | semantic-ledger proof test | PASS |
+| RI-B04 | existing, partial, unavailable, or tracking-contaminated content | assessed content → coverage/action classification and URL normalization → Writer/current model | semantic-ledger coverage/URL tests | PASS |
+
+Exact candidate `105792ea3eaab4b3032bde69571fd5bb5d2da163` passed the assembled Whole-App and Closure gates. Hosted production-shaped identity branches remain blocked pending authenticated browser access.
+

@@ -1,45 +1,48 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
-  "status": "PLANE7_FAIL_TENANT_IDENTITY_BOUNDARY",
-  "applicationCandidateSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-  "plane3": {"status": "PASS"},
-  "plane4": {"status": "PASS"},
-  "plane5": {"status": "PASS"},
-  "plane6": {
+  "checkpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25",
+  "status": "MODEL_BEARING_HELD_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
+  "applicationCandidateSha": "105792ea3eaab4b3032bde69571fd5bb5d2da163",
+  "incidentAuditId": "b2524f64-ffc0-4917-9b1e-174ea65849f3",
+  "deterministicRepair": {
     "status": "PASS",
-    "githubSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "vercelDeploymentId": "dpl_CtXShNTn75fW7Uy2FXsJWpvusHYz",
-    "vercelGitSha": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "railwayDeploymentId": "18397ad7-00f4-4deb-86a1-d987e6915735",
-    "railwayCommitHash": "e82f7f1d8ce4ef082a7fc22a72ade8d5755e1065",
-    "health": "PASS_HTTP_200",
-    "writerModel": "gpt-5.6-terra",
-    "judgeModel": "gpt-5.6-sol"
+    "targetedTests": "PASS",
+    "fullWorkerRegression": "PASS_1036",
+    "wholeAppGate": "PASS_P-B01_THROUGH_P-B17",
+    "finalizationGate": "PASS",
+    "partialEvidenceSemantics": "PASS",
+    "writerValidation": "PASS",
+    "judgeValidation": "PASS",
+    "correctionRouting": "PASS",
+    "rendererFailClosed": "PASS"
   },
-  "plane7": {
-    "status": "FAIL",
-    "classification": "PLANE7_FINAL_PRODUCTION_CONFIRMATION_FAIL",
-    "auditId": "6c55141f-30e7-41c1-bede-19f7ebd7202b",
-    "executionId": "81b9f7a5-b810-4b41-b7ef-ee6c71f47862",
-    "requestedTenant": "omnipressence",
-    "returnedTenantId": "default",
-    "lastObservedLifecycle": "collecting",
-    "writerCallsObserved": 0,
-    "judgeCallsObserved": 0,
-    "additionalAuditRuns": 0,
-    "repairOrRerun": false,
-    "failure": "Production tenant identity did not hold: x-prysm-tenant=omnipressence resolved to tenantId=default. The audit remained collecting and downstream scoring/Writer/Judge/finalization/rendering were not reached.",
-    "evidencePreservation": "Preserve failed audit as immutable evidence; do not repair or rerun under the expired authorization."
+  "deployment": {
+    "vercelDeploymentId": "dpl_5eRmxiewrDNKo2fwQAYnHLmDgAKA",
+    "railwayDeploymentId": "4415a5c4-61f7-4c14-80f0-4f88ef8d26ab",
+    "postgresAuthority": "PASS"
   },
-  "nextAction": "Diagnose the production tenant identity propagation boundary that maps x-prysm-tenant=omnipressence to persisted/returned tenantId=default, using audit 6c55141f-30e7-41c1-bede-19f7ebd7202b as immutable reproduction evidence. Stop at root-cause proof before any source edit.",
-  "releaseGate": {
-    "plane3": "PASS",
-    "plane4": "PASS",
-    "plane5": "PASS",
-    "plane6": "PASS",
-    "plane7": "FAIL"
+  "modelBearingGate": {
+    "status": "HELD_BEFORE_PAID_EXECUTION",
+    "runId": "NOT_RUN",
+    "writerCalls": 0,
+    "judgeCalls": 0,
+    "actualCostUsd": 0,
+    "independentChallenge": "HARNESS_PRECHECK_PASS; SEMANTIC_CHALLENGE_HOSTED_NOT_RUN",
+    "reason": "Exact-candidate model-bearing execution was held before paid calls because the authenticated staging browser surface required for production-path-equivalent acceptance is unavailable. Local Playwright browser launch passes, but the governed connected browser surface has zero backends and the required authenticated reviewer session is absent."
   },
-  "lastVerified": "2026-09-13 America/Toronto"
+  "hostedAcceptance": {
+    "freshServiceMasterAudit": "NOT_RUN",
+    "sevenPageReport": "NOT_VERIFIED",
+    "pdf": "NOT_VERIFIED",
+    "productionPathEquivalence": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
+    "productionIdentityContinuity": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
+    "blocker": "The governed connected browser surface has zero backends and no approved authenticated staging reviewer session is available; local Playwright without that session cannot prove the required Vercel Preview path. Direct worker/API substitution is prohibited."
+  },
+  "production": {
+    "touched": false,
+    "frozenSha": "a68dd235a3ca09977c84313536b5b884e3694782"
+  },
+  "nextAction": "Provide an authorized authenticated staging browser surface, deploy exact candidate 105792ea3eaab4b3032bde69571fd5bb5d2da163 to existing non-production staging, then run the fresh hosted audit through Writer, Judge, finalization, seven-page render, PDF, persistence/reload, Production Path Equivalence, and Production Identity Continuity. Keep production frozen.",
+  "lastVerified": "2026-09-24 America/Toronto"
 }
