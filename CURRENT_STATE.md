@@ -2,6 +2,16 @@
 
 Project: PRYSM. Updated: 2026-09-25 America/Toronto.
 
+## PRYSM Run 4 production promotion — HOLD
+
+Frozen Run 4 candidate: `26fb91d29559cb189064c301cdf89ff69f330492` on `freeze/prysm-mvp-run4-20260925`. Candidate ancestry is proven: 30 commits ahead of and 0 behind production baseline `a68dd235a3ca09977c84313536b5b884e3694782`. The original dirty application worktree was preserved; a clean exact-candidate worktree was used.
+
+Staging remained online and unchanged. A new isolated Railway project `prysm-production` (`d6c22df3-c2bb-4375-a063-964ef877bfc0`) was created with `prysm-worker` and a new `/data` volume. The exact-source deployment metadata reports the frozen SHA, but the deployment is `CRASHED` with zero replicas. A local exact-candidate retry failed with Railway `Failed to create code snapshot`. No Vercel production variables, Vercel production deployment, Cognito resources, `main`, legacy worker, or production alias were changed.
+
+Production Path Equivalence: `BLOCKED`. Production Identity Continuity: `BLOCKED`. The current Vercel production environment still lacks `VANTAGE_TENANT_ID`; endpoint/secret continuity to a healthy new worker is unproven. Proof: `C:\Users\kulba\Downloads\PRYSM-RUN4-PRODUCTION-PROMOTION-2026-09-25\`.
+
+Exact next action: repair or authorize the Railway deployment/code-snapshot boundary for the exact frozen candidate, then re-prove the new worker health, persistence, tenant/secret continuity, Vercel environment equivalence, and authenticated production path before any main or Vercel production promotion.
+
 ## Report Intelligence reconciliation — READY FOR HUMAN UAT
 
 Exact candidate: `8d37998fd90db730d5ea238c324e80ee2a2e5aa6`
