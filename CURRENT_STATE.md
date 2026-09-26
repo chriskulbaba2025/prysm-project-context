@@ -80,3 +80,15 @@ Latest readiness result (2026-09-25):
 - The next authorized action is exactly one fresh Bulldog isolated-staging audit using the now-proven provider/runtime configuration.
 - After evidence persistence, continue through evidence-package validation and then produce the client report from the SAME audit.
 - If the known v1 current-to-legacy evidence projection defect blocks rendering, repair that generalized renderer compatibility boundary and rerender the SAME persisted audit. Do not rerun paid providers merely to repair presentation.
+
+Final Bulldog audit closure update (2026-09-26):
+- Exactly one fresh isolated-staging Bulldog audit was created: `3f390f48-3fa3-4a5a-be84-a6c4131c6d80`.
+- Exact audit identity: tenant `prysm-staging`; client `bulldoghomemaintenance.ca-bulldog-hme-maintenance`; execution `c13b4963-3d60-4db6-aa03-dee8d84e9364`.
+- Final isolated deployment identity: application SHA `5b7705717bf4470c55038df60bcdd682268ad65e`; Railway deployment `445bf920-2fff-42cf-9568-69ce94dac997` (`SUCCESS`).
+- The fresh audit reached `DRAFT_RENDERED`; 45 governed objects were read back, including canonical, normalized, raw, manifests, six Playwright screenshots, narrative, report package, manifest, and 16 v1 report pages. Hash, byte-length, scope, and lineage checks passed.
+- DataForSEO OnPage, SERP, and Backlinks were `AVAILABLE`; conversion-path browser evidence persisted six completed pages; GA4 and GSC remained `NOT_CONNECTED`.
+- PageSpeed was `FAILED` from PSI quota HTTP 429 on mobile and desktop plus failed Lighthouse fallback. No performance score was created.
+- Report acceptance failed because the persisted v1 content-opportunity page contained a prohibited public `Pricing page` recommendation. The generalized generator was repaired and tested in application commit `5b77057`, but the audit was already terminal `DRAFT_RENDERED`; no authorized same-audit re-render continuation exists and immutable report artifacts were not overwritten.
+- Final disposition: `PRYSM_BULLDOG_FINAL_FAIL`.
+- Report URL: `https://prysm-worker-production.up.railway.app/api/v1/audits/3f390f48-3fa3-4a5a-be84-a6c4131c6d80/report/index.html?slug=bulldog-hme-maintenance&clientId=bulldoghomemaintenance.ca-bulldog-hme-maintenance` (internal secret boundary required).
+- Proof directory: `C:\Users\kulba\Downloads\PRYSM-BULLDOG-FINAL-REPORT-CLOSURE-2026-09-25`.
