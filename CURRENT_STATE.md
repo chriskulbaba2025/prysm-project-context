@@ -84,6 +84,18 @@ Last verified:
 - Full proof: `C:\Users\kulba\Downloads\PRYSM-GACM-MULTITRANCHE-2026-09-26\`.
 - Production remains untouched.
 
+## Stale-recovery closure checkpoint — 2026-09-26
+
+- PR #5 exact source candidate: `d008727baa4dacbea7915f0e3237b4146597c69b`.
+- Newer accepted `main` lineage `c0eda73a2c741fdafbb71da4bd893e91b6dc0e06` was preserved; no blind merge or rollback occurred.
+- Vercel Preview configuration parity was repaired without changing application code. Exact candidate Preview deployment is READY and returns HTTP 200.
+- First Railway proof deployment logged the expected worker startup and a `PRYSM_DATA_VISIBILITY_SNAPSHOT` showing audit `560f5640-9ff3-4a68-881c-56f4284867e4` at `render_failed`.
+- Subsequent exact-SHA proof deployments unexpectedly ran the root Next.js web app rather than the Worker runtime; the worker audit readback endpoint returned 404. A bounded local exact-worktree Railway upload failed at the Railway API boundary.
+- Terminal disposition: `PRYSM_GACM_STALE_RECOVERY_TRANCHE_BLOCKED`.
+- Work Package 2 was not started.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-GACM-CLOSURE-2026-09-26\`.
+- Production remains untouched.
+
 ## Bulk closure tranche checkpoint — 2026-09-26
 
 - Candidate `c0eda73a2c741fdafbb71da4bd893e91b6dc0e06` on `main`, pushed normally and verified equal to `origin/main`.
