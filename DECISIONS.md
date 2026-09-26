@@ -1194,3 +1194,31 @@ Re-acquiring the same website evidence merely to create a different report waste
 Implication:
 For the current tranche, finish validating the Bulldog evidence package first. Do not redesign report hierarchy or implement report-generation changes until evidence classification and independent second verification are complete. Later upgrades from Snapshot to Full Report should reuse sufficiently fresh persisted evidence and selectively refresh only stale evidence where required.
 
+---
+
+## Decision: Use bounded GACM-style autonomous execution for PRYSM repair tranches
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+For PRYSM governed repair/validation work, prefer one bounded autonomous GACM-style tranche over repeated short stop/start runs when the acceptance contract and authorization boundary are already clear.
+
+Within one tranche the agent may:
+- diagnose the owning generalized defect;
+- make the smallest authorized repair;
+- run focused tests;
+- perform independent challenge/audit;
+- repair newly discovered defects that remain inside the same frozen owning boundary;
+- repeat verification;
+- continue to the next already-authorized validation step.
+
+Limits:
+- Maximum three repair cycles within the same frozen boundary; after that reset/re-diagnose rather than patching indefinitely.
+- Do not cross into paid provider/model calls, live audits, deployments, production mutation, new endpoints, classifier/report redesign, or another authorization boundary unless explicitly authorized.
+- Named fixtures remain regression evidence, never implementation targets.
+- Every long run must write proof and issue the configured desktop + audible completion notification.
+
+Reason:
+Short runs were creating unnecessary handoffs and repeated context recovery. The GACM pattern preserves governance while allowing the agent to carry a bounded problem through diagnosis, repair, retest, challenge, and closure autonomously.
+
