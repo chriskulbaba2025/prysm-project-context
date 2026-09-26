@@ -1171,3 +1171,26 @@ PRYSM should provide decision-useful content strategy rather than generic topic 
 Implication:
 Existing sufficient coverage can produce NO_ACTION; partial related coverage should normally be improved rather than duplicated; unavailable evidence must not create content work by default. Service-sector pricing recommendations are separately prohibited by the active hard constraint.
 
+---
+
+## Decision: Separate evidence acquisition from report products
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+PRYSM should collect and govern website evidence once, then generate multiple report products from the same persisted evidence package rather than treating v1 and v2 as separate audits.
+
+The target product hierarchy is:
+- PRYSM Snapshot: smaller lead-magnet/report view;
+- PRYSM Full Report: paid v2 decision report;
+- future report or monitoring outputs may reuse the same governed evidence package.
+
+The evidence package remains the authority for raw evidence, normalized/canonical evidence, classifications, scores, verification/reconciliation, provenance, and versions. Report generation is a downstream projection over that package.
+
+Reason:
+Re-acquiring the same website evidence merely to create a different report wastes provider cost, creates avoidable drift, and weakens continuity between a lead magnet and paid upgrade.
+
+Implication:
+For the current tranche, finish validating the Bulldog evidence package first. Do not redesign report hierarchy or implement report-generation changes until evidence classification and independent second verification are complete. Later upgrades from Snapshot to Full Report should reuse sufficiently fresh persisted evidence and selectively refresh only stale evidence where required.
+
