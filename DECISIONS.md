@@ -1261,4 +1261,22 @@ Railway private DNS is scoped to Railway's internal network. The prior preflight
 
 Implication:
 Future preflights must test dependencies from the context where they are used and must identify the whole blocker set before failing. Do not require or repair infrastructure that the chosen execution path does not need.
+---
 
+## Decision: Isolated-staging provider failure was environment migration drift
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+The Bulldog provider-readiness failure is classified as environment/configuration migration drift, not a new DataForSEO, PageSpeed, storage, database, or evidence-readback defect.
+
+Evidence:
+- Historical working Railway service `conversion-gap-benchmark-audit-platform` contains `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, and `VANTAGE_PAGESPEED_API_KEY`.
+- Isolated-staging `prysm-worker` contains none of those provider variables.
+- Current PRYSM code reads DataForSEO from `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` and PageSpeed from current names `GOOGLE_PAGESPEED_API_KEY` / `PAGESPEED_API_KEY` (with CrUX fallback), while the historical runtime used `VANTAGE_PAGESPEED_API_KEY`.
+- Isolated staging was therefore operational for database/storage/report lifecycle but was not provider-complete.
+- Conversion-path `NOT_ASSESSED` is downstream of missing OnPage evidence until proven otherwise.
+
+Implication:
+Securely migrate the exact provider secrets with the explicit variable-name mapping, redeploy isolated staging, prove provider authentication and actual Playwright launch, and only then run one fresh Bulldog audit. Future PRYSM environment creation requires a full environment-parity gate before it is considered audit-ready.
