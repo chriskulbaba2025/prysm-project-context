@@ -21,6 +21,8 @@ Verified checkpoint:
 - Exact accepted repair SHA `96d948f956181f09c005bae6289d93ee176a0972` is published on `chriskulbaba2025/prysm-staging-isolated` `main`, and GitHub readback confirms the same SHA.
 - The report-foundation decisions remain active: V1 report before V2 automation; deliberate evidence classification; independent second verification after scoring; real-DFS tuning before classifier implementation; and the 2 TOFU / 2 MOFU / 2 BOFU / 2 Leading Edge content contract.
 - The service-sector no-pricing recommendation rule remains an active hard constraint.
+- Fresh Bulldog isolated-staging audit `560f5640-9ff3-4a68-881c-56f4284867e4` completed evidence collection, evidence lock, scoring, and narrative-ready state on accepted SHA `96d948f956181f09c005bae6289d93ee176a0972`.
+- That Bulldog audit then failed only at v1 page rendering. Railway logs show one shared compatibility-projection defect: the current ScoreSet/decision-evidence path is passed to the legacy v1 renderer without the legacy `model.evidence.site` shape required by pages such as content ideas, trust, CMS, technical SEO, headings, schema, performance, and appendix.
 
 Current environment / branch / version:
 - Working directory: `C:\Users\kulba\Desktop\prysm-staging-isolated`
@@ -40,11 +42,12 @@ Completed:
 
 In progress:
 - No implementation repair is currently in progress.
-- The next validation tranche is one fresh Bulldog isolated-staging audit followed by external classification and a meaningfully independent second verification.
+- The fresh Bulldog audit is complete through evidence/scoring and is now the validation source for external evidence classification and a meaningfully independent second verification.
+- The v1 renderer compatibility defect is recorded but intentionally deferred until after evidence classification/verification.
 
 Blocked:
-- No continuity blocker remains for the accepted raw-evidence repair.
-- The next tranche includes a fresh live Bulldog isolated-staging audit and therefore requires explicit authorization for that bounded live/provider execution before it starts.
+- No evidence-validation blocker is proven. The Bulldog data path completed before the renderer failed.
+- v1 client-report rendering for this audit is blocked by the current-to-legacy report evidence projection defect, but that does not block read-only evidence inspection and classification.
 
 Important constraints:
 - Production remains frozen. No production mutation is authorized.
@@ -55,9 +58,10 @@ Important constraints:
 - Service-sector content recommendations must never recommend publishing specific pricing or a pricing page.
 - Named sites are regression/validation fixtures only.
 - Do not implement the classifier or change report code before the Bulldog evidence has been externally classified and independently second-verified.
+- Do not rerun Bulldog merely to repair presentation; reuse the already-persisted governed evidence from audit `560f5640-9ff3-4a68-881c-56f4284867e4`.
 
 Exact next action:
-Obtain explicit authorization for one fresh Bulldog isolated-staging audit from exact SHA `96d948f956181f09c005bae6289d93ee176a0972`, then run that bounded audit and perform external evidence classification followed by a meaningfully independent second verification before any classifier or report code is changed.
+Perform a read-only extraction and external classification of the persisted governed evidence for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4`, then run a meaningfully independent second verification against the same underlying evidence. Reconcile disagreements or fail closed. Do not rerun providers, change report code, or implement the classifier in this tranche.
 
 Last verified:
 2026-09-25
