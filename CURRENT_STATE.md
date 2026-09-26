@@ -54,3 +54,17 @@ Execute one bounded governed clone-reset tranche: verify both repository identit
 
 Last verified:
 2026-09-25
+
+## Exact clone reset closure — 2026-09-26
+
+- Approved production source: `chriskulbaba2025/vantage-platform@26fb91d29559cb189064c301cdf89ff69f330492`.
+- Restored staging commit: `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
+- Production and staging tracked trees matched exactly before landing-destination review: tree `c65a41686e3d45f77d7f1d937da2ba6a4068c3b8`, 1,110 tracked files, complete path/blob mapping equal.
+- Railway deployment: `f3e520ff-aa41-48cd-8010-c9502c83d257`, SUCCESS, deployed commit exactly `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
+- Vercel deployment: `dpl_6EnFNNH3bw6Q6X8gvfCkVGoEMWXp`, READY, project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, Git SHA exactly `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
+- Exactly one test audit was created: `d0911546-80ea-49d4-94cc-afc5e57892d7`; execution `e047b383-1d0b-4d8c-b12b-09405dc974c4`; terminal lifecycle `draft_rendered`.
+- Readback recovered 44 governed objects. OnPage and Backlinks were available; conversion-path evidence was partial with screenshots. SERP failed because the approved source location resolver could not resolve `London, Ontario`. PageSpeed remained `NOT_CONNECTED` because the approved source execution path required `PAGESPEED_API_KEY` and did not consume the configured staging key path.
+- Per the fail-closed clone-reset boundary, no application repair and no second audit were authorized after these product/configuration defects were exposed.
+- Terminal disposition: `PRYSM_EXACT_CLONE_RESET_BLOCKED`.
+- Full proof: `C:\Users\kulba\Downloads\PRYSM-EXACT-CLONE-RESET-2026-09-26\`.
+- Last verified: 2026-09-26.
