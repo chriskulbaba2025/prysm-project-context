@@ -8,13 +8,14 @@ Purpose: define the evidence required before PRYSM V1 is considered data-complet
 
 Each item must be marked as exactly one of:
 
+- UNVERIFIED — not checked yet; this is not evidence of failure.
 - PRESENT — required evidence was collected and is usable.
 - PARTIAL — some usable evidence exists, but the required evidence contract is incomplete.
 - MISSING — required evidence was expected but was not collected, persisted, or projected.
 - N/A — the evidence class does not apply to the audited business/site.
 - NOT_CONNECTED — optional client-owned integration was not connected.
 
-Default review view: show PARTIAL + MISSING first.
+Default review view: show MISSING + PARTIAL first; UNVERIFIED remains visible until reviewed.
 
 ## Acceptance rule
 
@@ -91,7 +92,7 @@ A site is selected because it can close known checklist gaps, not simply because
 
 After each completed audit:
 1. copy this checklist into the audit-specific checklist;
-2. mark every row;
+2. resolve every row out of UNVERIFIED;
 3. show PARTIAL + MISSING first;
 4. choose the next audit based on remaining unproven rows;
 5. repair only generic owning contracts/pipelines, never the named fixture;
