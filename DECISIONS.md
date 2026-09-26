@@ -1222,3 +1222,19 @@ Limits:
 Reason:
 Short runs were creating unnecessary handoffs and repeated context recovery. The GACM pattern preserves governance while allowing the agent to carry a bounded problem through diagnosis, repair, retest, challenge, and closure autonomously.
 
+---
+
+## Decision: All long PRYSM GACM runs begin with full permission preflight
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+Before a long PRYSM GACM-style autonomous tranche begins substantive work, it must prove all permissions, access paths, runtime identities, credentials, and external dependencies required for the complete planned tranche. Missing access is an immediate fail-closed blocker, not something to discover after analysis has already begun.
+
+Reason:
+Recent PRYSM work lost time because required staging evidence readback access was discovered only after a long classification run. Preflighting the complete execution surface prevents avoidable late blockers and wasted autonomous runtime.
+
+Implication:
+The preflight must cover every applicable local, GitHub, Railway, staging storage/S3, database, Vercel, AWS, provider/model, browser/session, and output-path dependency. Do not expose secret values. Autonomous repair cycles start only after preflight PASS.
+
