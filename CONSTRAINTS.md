@@ -172,3 +172,25 @@ Record hard project boundaries here.
 - If the local notification mechanism fails, report that failure explicitly without changing the technical PASS or FAIL result.
 - Long PRYSM Codex execution prompts must include this completion-notification requirement by default.
 
+## Project-wide GACM preflight permission rule
+
+- Every long-running PRYSM GACM-style/Codex execution must begin with a fail-closed preflight that verifies all access, identity, permission, runtime, and dependency requirements needed for the entire planned tranche before substantive analysis, repair, provider execution, deployment, or artifact readback begins.
+- The preflight must check every applicable surface, including:
+  - local workspace/path availability;
+  - repository identity, branch, exact starting SHA, remotes, and working-tree state;
+  - GitHub read/write permission if the tranche may commit or update durable state;
+  - Railway project, environment, service, CLI/session/authentication, and required command access;
+  - isolated-staging artifact storage/S3 read access when evidence readback is planned;
+  - staging PostgreSQL/database access when lifecycle/audit identity lookup is planned;
+  - Vercel access when deployment/runtime verification is planned;
+  - AWS/storage credentials and region/bucket configuration when required;
+  - provider/model credentials and explicit paid-call authorization when such calls are part of the approved tranche;
+  - browser/session/authentication prerequisites when real browser acceptance is part of the tranche;
+  - local proof/output path write access;
+  - any other prerequisite named by the frozen acceptance contract.
+- Do not print, persist, or copy secret values during preflight. Prove presence/identity/access without exposing credentials.
+- If any required access is missing, expired, ambiguous, or unauthorized, STOP immediately with one explicit preflight blocker. Do not spend time diagnosing downstream code or data paths that depend on the missing access.
+- A preflight PASS must be written into the run proof before substantive work begins.
+- If the planned tranche later expands to require a new system or permission not covered by the original preflight, run an incremental preflight for that new surface before continuing.
+- This rule applies before autonomous repair loops. The three-repair-cycle allowance starts only after preflight PASS.
+
