@@ -74,3 +74,9 @@ Run a single no-cost ALL-PROVIDER-READINESS closure. It must (1) determine/expor
 
 Last verified:
 2026-09-25
+Latest readiness result (2026-09-25):
+- `PRYSM_PROVIDER_READINESS_PASS` reported from the no-cost all-provider-readiness closure.
+- That tranche intentionally did not create a fresh Bulldog audit, so no new report was expected.
+- The next authorized action is exactly one fresh Bulldog isolated-staging audit using the now-proven provider/runtime configuration.
+- After evidence persistence, continue through evidence-package validation and then produce the client report from the SAME audit.
+- If the known v1 current-to-legacy evidence projection defect blocks rendering, repair that generalized renderer compatibility boundary and rerender the SAME persisted audit. Do not rerun paid providers merely to repair presentation.
