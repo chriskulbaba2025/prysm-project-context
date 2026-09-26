@@ -1312,3 +1312,32 @@ The historical `conversion-gap-benchmark-audit-platform` service contains `VANTA
 
 Implication:
 The previously issued long closure prompt is superseded. First run a readiness-only diagnostic/repair tranche with zero paid provider tasks and zero fresh Bulldog audits. If readiness fails, return the complete blocker set and repair only those blockers. The paid audit prompt is generated only after readiness PASS.
+---
+
+## Decision: Provider readiness must validate every DataForSEO surface against Sandbox before paid execution
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+Before any new paid PRYSM audit, the isolated worker must prove the exact DataForSEO credential/runtime integration against DataForSEO's free Sandbox for every provider surface PRYSM intends to use: OnPage, SERP, and Backlinks. Authentication-only `appendix/user_data` is necessary but not sufficient.
+
+Required zero-cost proof:
+- `appendix/user_data` authentication/account response PASS;
+- OnPage Sandbox request/response contract PASS;
+- SERP Sandbox request/response contract PASS;
+- Backlinks Sandbox request/response contract PASS;
+- no secret values printed or persisted;
+- no paid provider task created.
+
+PageSpeed:
+The current worker has a generalized defect: its universal PageSpeed execute path returns `NOT_CONNECTED` before calling PSI when no key is present, even though its lower-level PSI client can construct a request without a key and Google's PSI API supports keyless use for basic access. The readiness closure should remove the unconditional no-key fast-fail, preserve optional-key behavior, and keep CrUX truthfully `NOT_CONNECTED` when no CrUX-capable key is available. This eliminates unnecessary dependence on an uncertain historical PageSpeed secret.
+
+Playwright:
+Runtime readiness requires an actual `railway ssh ... -- <node command>` launch/close proof in the deployed isolated worker after the final redeploy. Package/binary presence alone is insufficient.
+
+Audit-request readiness:
+Before the fresh Bulldog audit, verify the recovered canonical AuditRequest contains the decision-bearing inputs required by the provider plan, including target URL and a non-empty service/business context sufficient for SERP keyword derivation. Do not discover this after paid execution.
+
+Implication:
+Once the readiness-only closure passes these gates, there should be no remaining known infrastructure/provider prerequisite for a single fresh Bulldog evidence run. A later paid failure must then be treated as a runtime/provider defect, not another missing-preflight item.
