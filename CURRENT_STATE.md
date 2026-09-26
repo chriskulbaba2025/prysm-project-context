@@ -15,7 +15,9 @@ Verified checkpoint:
 - The `PRYSM_DFS_RAW_EVIDENCE_GATE` returned FAIL.
 - The generalized owning boundary is the universal DataForSEO adapter raw-evidence return contract before `AuditOrchestrator.processOneSource()`.
 - Independent source inspection confirms `processOneSource()` can persist only adapter-supplied `rawBytes`, while current DataForSEO OnPage, SERP, and Backlinks paths do not guarantee materially sufficient pre-normalization raw evidence plus sanitized request context across failure/partial/not-connected outcomes.
-- Chris explicitly authorized one narrow isolated-staging exception for the generalized DataForSEO raw-evidence contract repair and deterministic tests only. The exception is now recorded in `CONSTRAINTS.md`.
+- Chris explicitly authorized one narrow isolated-staging exception for the generalized DataForSEO raw-evidence contract repair and deterministic tests only. The exception is recorded in `CONSTRAINTS.md`.
+- Chris reported terminal result `PRYSM_DFS_RAW_EVIDENCE_REPAIR_PASS` at 2026-09-25 20:39 local time.
+- GitHub verification immediately afterward found `chriskulbaba2025/prysm-staging-isolated` has only branch `main`, still at `3e14fb869f590f6bcfc8f63f39194b4ca3d95698`; therefore the exact accepted repair candidate SHA is not yet durably published/verified in GitHub.
 - The report-foundation decisions remain active: V1 report before V2 automation; deliberate evidence classification; independent second verification after scoring; real-DFS tuning before classifier implementation; and the 2 TOFU / 2 MOFU / 2 BOFU / 2 Leading Edge content contract.
 - The service-sector no-pricing recommendation rule remains an active hard constraint.
 
@@ -35,12 +37,12 @@ Completed:
 - Independently verified the owning code boundary against isolated-staging source.
 
 In progress:
-- Raw-evidence repair design is frozen at the universal DataForSEO adapter return contract before `AuditOrchestrator.processOneSource()`, covering OnPage, SERP, and Backlinks failure/partial/not-connected branches and complete sanitized request context before normalization.
-- Repair implementation has not started.
+- Raw-evidence repair design remains frozen at the universal DataForSEO adapter return contract before `AuditOrchestrator.processOneSource()`, covering OnPage, SERP, and Backlinks failure/partial/not-connected branches and complete sanitized request context before normalization.
+- The repair is reported PASS locally, but its exact accepted candidate SHA and GitHub publication status remain unresolved.
 
 Blocked:
-- No current technical or governance blocker is proven for the authorized isolated-staging raw-evidence repair.
-- Stop if implementation requires any paid/live provider call, live audit, deployment, production mutation, new endpoint, classifier work, report redesign, or broader scope.
+- Continuity/release-identity blocker: the reported PASS candidate is not yet verified in the authoritative isolated-staging GitHub repository. Do not run Bulldog against the stale remote SHA.
+- No fresh Bulldog audit, paid/live provider call, deployment, production mutation, classifier work, or report redesign may start until the exact accepted repair SHA is reconciled and published to the isolated-staging repository.
 
 Important constraints:
 - Production remains frozen. No production mutation is authorized.
@@ -53,7 +55,7 @@ Important constraints:
 - Named sites are regression/validation fixtures only.
 
 Exact next action:
-Run the governed GCU repair in `C:\Users\kulba\Desktop\prysm-staging-isolated` from exact SHA `3e14fb869f590f6bcfc8f63f39194b4ca3d95698`, limited to the universal DataForSEO raw-evidence return contract before `AuditOrchestrator.processOneSource()` for OnPage, SERP, and Backlinks plus the minimum shared contract/orchestrator/test surfaces. Use deterministic fixtures only; make zero paid/live calls and stop after the exact-head deterministic proof gate.
+Reconcile the reported PASS to the exact accepted local candidate SHA and publish that exact candidate to `chriskulbaba2025/prysm-staging-isolated` without changing it, then verify GitHub readback. Only after that identity gate passes may the next tranche start: one fresh Bulldog isolated-staging audit followed by external classification and independent second verification.
 
 Last verified:
 2026-09-25
