@@ -206,4 +206,22 @@ Record hard project boundaries here.
   5. collect all remaining blockers in one pass rather than returning after the first incidental failure.
 - For isolated-staging evidence readback, direct local PostgreSQL connectivity is not required when the existing authenticated worker audit-status route can resolve audit identity. Prefer the existing worker internal-auth boundary plus Railway-injected S3-compatible storage credentials over local access to Railway private DNS.
 - Do not expose secrets while proving this chain. Environment-backed secrets may be consumed by a local script/process but must never be echoed, written to proof files, or persisted.
+## Authorized exception — isolated-staging provider-readiness closure and one bounded Bulldog rerun
 
+- User authorization granted on 2026-09-25 to close the isolated-staging live evidence-provider readiness gap end-to-end.
+- Authorized scope:
+  - set/update isolated-staging worker variables required for DataForSEO and PageSpeed/CrUX live evidence collection;
+  - securely use DATAFORSEO_LOGIN, DATAFORSEO_PASSWORD, GOOGLE_PAGESPEED_API_KEY, and optionally GOOGLE_CRUX_API_KEY;
+  - trigger the minimum isolated-staging worker redeploy required to apply those variable changes;
+  - perform no-cost/low-cost credential validity checks before the audit;
+  - prove deployed Playwright/Chromium readiness;
+  - run exactly one fresh Bulldog Home Maintenance isolated-staging audit after readiness gates PASS;
+  - permit the bounded paid DataForSEO/provider calls required by that single audit;
+  - recover and validate the resulting governed evidence package;
+  - continue through external classification, independent second verification, reconciliation, and Evidence Package readiness in the same GACM-style tranche.
+- Production remains frozen. No production repo, production Railway project, production Vercel project, production storage, or production credentials may be mutated.
+- Do not copy production secrets into isolated staging automatically.
+- If required provider credentials cannot be found in an already-authorized secure local source, request them once through a secure interactive input step; never print them or write them to proof.
+- Do not run more than one fresh Bulldog audit under this authorization.
+- Do not broaden into classifier implementation, report redesign, or v1 renderer repair unless separately authorized after Evidence Package validation.
+- Existing provider/readback semantics remain fail-closed: UNKNOWN/PARTIAL/UNAVAILABLE/FAILED/NOT_CONNECTED must remain distinct.
