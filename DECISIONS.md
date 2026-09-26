@@ -1341,3 +1341,24 @@ Before the fresh Bulldog audit, verify the recovered canonical AuditRequest cont
 
 Implication:
 Once the readiness-only closure passes these gates, there should be no remaining known infrastructure/provider prerequisite for a single fresh Bulldog evidence run. A later paid failure must then be treated as a runtime/provider defect, not another missing-preflight item.
+
+
+---
+
+## Decision: Restore isolated staging from exact approved production source
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+The current hybrid/repaired staging lineage is superseded as an implementation base. Restore `chriskulbaba2025/prysm-staging-isolated` from the exact approved production source `chriskulbaba2025/vantage-platform@26fb91d29559cb189064c301cdf89ff69f330492`.
+
+The reset is a file-tree reset, not a reconstruction. Preserve repository history; do not force-push or destructively rewrite history. After the exact production file tree is restored, change only staging landing destinations required for isolated PostgreSQL, storage/artifact destination, tenant/namespace, worker/domain, Vercel project/domain, and auth callback/webhook destinations.
+
+Everything else is frozen to the approved production source, including application/worker code, report renderer, provider adapters, DataForSEO, PageSpeed, Playwright/browser runtime, package versions, build/runtime methods, variable names, credentials, auth logic, feature flags, timeouts, and report behavior.
+
+Reason:
+A known-working production system already exists and the original staging initialization was already essentially a direct clone. Continuing to repair the accumulated hybrid staging branch adds drift and obscures causality.
+
+Implication:
+When a working approved system exists, clone/copy that exact source first, change only explicitly authorized boundaries, preserve everything else, and prove parity before any further modification. Do not reconstruct a working system piece by piece.
