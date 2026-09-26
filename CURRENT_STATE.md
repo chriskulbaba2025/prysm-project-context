@@ -68,3 +68,18 @@ Last verified:
 - Terminal disposition: `PRYSM_EXACT_CLONE_RESET_BLOCKED`.
 - Full proof: `C:\Users\kulba\Downloads\PRYSM-EXACT-CLONE-RESET-2026-09-26\`.
 - Last verified: 2026-09-26.
+
+## GACM multi-tranche checkpoint — 2026-09-26
+
+- Application candidate: `0678d77e2633eefda1e44e421b95f30a9b91a48f` on `main`, pushed normally and verified equal to `origin/main`.
+- Railway isolated worker deployment: `f46fe286-a2a2-4bc4-a760-9b6dfc8d9c03`, `SUCCESS`; worker health HTTP 200.
+- Fresh staging audit: `14da9fc6-8d58-4f9b-85bb-f3bfbda1b758`, tenant `prysm-staging`, client `bulldoghomemaintenance.ca-bulldog-hme-maintenance`, terminal `draft_rendered`.
+- Readback: 43 governed objects; required canonical artifacts, raw artifacts, normalized artifacts, source manifests, four conversion screenshots, and 16 report pages recovered with exact hashes.
+- Live evidence: OnPage AVAILABLE; SERP AVAILABLE with local Maps, Business Profile, and Labs evidence; Backlinks AVAILABLE with 12 history periods; PageSpeed AVAILABLE via DataForSEO Lighthouse; CrUX/GA4/GSC NOT_CONNECTED; conversion paths PARTIAL with four screenshots.
+- Worker regression: 1,044 passed, 0 failed.
+- Public staging browser and all 16 served report routes returned HTTP 200 with non-empty content and no observed browser errors.
+- Truth limitations: persisted intake has zero services and empty market; no values were fabricated. PageSpeed diagnostic screenshot persistence reported missing `runId` while score evidence remained available.
+- GACM disposition: `PRYSM GACM MULTI-TRANCHE ACCEPTANCE: BLOCKED`.
+- Blocking gates: required master-checklist seven-page contract is not proven because the current served report has 16 pages; the required eight-site generalization matrix is not complete. Tranche 13 remains dependent on these gates; no whole-system release PASS is claimed.
+- Full proof: `C:\Users\kulba\Downloads\PRYSM-GACM-MULTITRANCHE-2026-09-26\`.
+- Production remains untouched.
