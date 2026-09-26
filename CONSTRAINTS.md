@@ -225,3 +225,34 @@ Record hard project boundaries here.
 - Do not run more than one fresh Bulldog audit under this authorization.
 - Do not broaden into classifier implementation, report redesign, or v1 renderer repair unless separately authorized after Evidence Package validation.
 - Existing provider/readback semantics remain fail-closed: UNKNOWN/PARTIAL/UNAVAILABLE/FAILED/NOT_CONNECTED must remain distinct.
+## Authorized exception — one-time secure provider-secret migration into isolated staging
+
+- User authorization granted on 2026-09-25 to securely migrate the existing PRYSM provider credentials from the historical working Railway service into the isolated-staging worker.
+- Exact source Railway project: `e2318a74-a4f7-4610-9bfc-cbd5a8f54da5` (`conversion-gap-platform-worker`).
+- Exact source environment: `1746a42c-7397-42f9-bf10-7eb78c3a3e2b` (`production`).
+- Exact source service: `f4c77320-cd09-4e8d-ac9e-70474bfe3a6d` (`conversion-gap-benchmark-audit-platform`).
+- Exact target Railway project: `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f` (`prysm-staging-isolated.`).
+- Exact target environment: `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`.
+- Exact target service: `3343e2a8-0472-4780-8536-e8b9667fcc7a` (`prysm-worker`).
+- Authorized mapping only:
+  - source `DATAFORSEO_LOGIN` -> target `DATAFORSEO_LOGIN`;
+  - source `DATAFORSEO_PASSWORD` -> target `DATAFORSEO_PASSWORD`;
+  - source `VANTAGE_PAGESPEED_API_KEY` -> target `GOOGLE_PAGESPEED_API_KEY`.
+- Secret values must be captured only in process memory through the authenticated local Railway CLI and must never be printed, echoed, committed, persisted to proof, written to repository files, or copied through chat.
+- Do not migrate any other source variable.
+- After migration, verify only variable presence and provider authentication, not secret values.
+- This exception supersedes the earlier no-automatic-production-secret-copy restriction only for these three named variables and this exact source/target pair.
+
+## Project-wide environment-parity gate
+
+- Any new PRYSM staging, isolated-staging, replacement worker, or promotion candidate must fail closed before audit execution unless an environment-parity gate has compared:
+  1. the exact runtime variables referenced by the executing code;
+  2. the exact variable names present in the target environment;
+  3. the equivalent variables in the last known working source environment, when one exists;
+  4. renamed/deprecated variable aliases and migration mappings;
+  5. required runtime binaries/dependencies such as Playwright Chromium;
+  6. storage, database, provider, model, browser, and authentication dependencies required by the planned audit/report mode.
+- The gate must distinguish REQUIRED, CONDITIONALLY REQUIRED, OPTIONAL, and INTENTIONALLY NOT CONNECTED dependencies.
+- A target must not be called audit-ready merely because the service is healthy, deploys successfully, or can reach storage/database.
+- Variable-name drift must be treated as a migration defect. In particular, legacy `VANTAGE_PAGESPEED_API_KEY` and current `GOOGLE_PAGESPEED_API_KEY` / `PAGESPEED_API_KEY` must be reconciled explicitly when moving between PRYSM generations.
+- The parity proof must be completed before any paid provider execution.
