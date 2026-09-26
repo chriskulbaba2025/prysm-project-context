@@ -1238,3 +1238,27 @@ Recent PRYSM work lost time because required staging evidence readback access wa
 Implication:
 The preflight must cover every applicable local, GitHub, Railway, staging storage/S3, database, Vercel, AWS, provider/model, browser/session, and output-path dependency. Do not expose secret values. Autonomous repair cycles start only after preflight PASS.
 
+---
+
+## Decision: Evidence-readback preflight uses worker identity route plus Railway-injected storage access
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+For isolated-staging evidence readback, do not require direct local connectivity to Railway PostgreSQL. The preferred no-deploy readback chain is:
+
+1. local Railway-linked process receives the isolated worker environment;
+2. use the existing internal `x-vantage-secret` authorization boundary to call the public worker `GET /api/v1/audits/:auditId` route;
+3. obtain the governed `clientId` from the worker response while the worker resolves tenant/audit identity inside Railway;
+4. use the Railway-injected `VANTAGE_TENANT_ID`, S3 endpoint, bucket, prefix, and credentials locally without printing them;
+5. read and verify the exact governed S3 artifacts through existing artifact-store/key contracts.
+
+Direct `postgres.railway.internal` resolution from Windows is not part of this execution path and must not be treated as a preflight requirement.
+
+Reason:
+Railway private DNS is scoped to Railway's internal network. The prior preflight incorrectly treated local DNS failure as a database-access failure even though the deployed worker was healthy and already connected to PostgreSQL and the artifact store.
+
+Implication:
+Future preflights must test dependencies from the context where they are used and must identify the whole blocker set before failing. Do not require or repair infrastructure that the chosen execution path does not need.
+
