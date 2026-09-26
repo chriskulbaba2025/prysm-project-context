@@ -256,3 +256,19 @@ Record hard project boundaries here.
 - A target must not be called audit-ready merely because the service is healthy, deploys successfully, or can reach storage/database.
 - Variable-name drift must be treated as a migration defect. In particular, legacy `VANTAGE_PAGESPEED_API_KEY` and current `GOOGLE_PAGESPEED_API_KEY` / `PAGESPEED_API_KEY` must be reconciled explicitly when moving between PRYSM generations.
 - The parity proof must be completed before any paid provider execution.
+
+
+---
+
+## Exact-clone staging reset boundary — 2026-09-25
+
+For the active PRYSM staging reset:
+
+- Production is frozen.
+- `chriskulbaba2025/prysm-staging-isolated` is the only staging target; do not create another repository.
+- The approved source is exactly `chriskulbaba2025/vantage-platform@26fb91d29559cb189064c301cdf89ff69f330492`.
+- Current repaired staging code is forensic only and must not be used as the implementation base.
+- Preserve Git history; no force-push or destructive history rewrite.
+- No reconstruction, refactoring, cleanup, provider rewiring, renderer repair, architecture change, variable rename, package change, feature change, timeout change, auth change, or report-behavior change is authorized.
+- Only isolated landing-destination values may differ after clone parity: PostgreSQL destination, S3/artifact destination, staging tenant/namespace where required, staging worker/domain, Vercel project/domain, and callback/webhook destinations required by staging.
+- Fail closed on any unexplained file-tree, runtime, environment-contract, or deployment-identity mismatch.
