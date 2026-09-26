@@ -1280,3 +1280,35 @@ Evidence:
 
 Implication:
 Securely migrate the exact provider secrets with the explicit variable-name mapping, redeploy isolated staging, prove provider authentication and actual Playwright launch, and only then run one fresh Bulldog audit. Future PRYSM environment creation requires a full environment-parity gate before it is considered audit-ready.
+---
+
+## Decision: Separate no-cost runtime readiness from paid audit execution
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+No fresh paid PRYSM audit may be launched as part of the same first-pass prompt that is still discovering whether provider credentials, runtime binaries, variable mappings, or environment dependencies are valid.
+
+The required sequence is now:
+1. NO-COST READINESS CLOSURE;
+2. freeze exact readiness proof;
+3. only after every required gate passes, run the paid audit closure tranche.
+
+Readiness must prove:
+- exact Railway/project/service/deployment identity;
+- environment parity against the executing code and last known working runtime;
+- actual provider credential availability/exportability without revealing secrets;
+- DataForSEO authentication with a no-cost endpoint;
+- PageSpeed execution path actually used by current code;
+- actual Playwright Chromium launch/close in the deployed worker;
+- storage readback;
+- worker health;
+- no hidden dependency on direct local PostgreSQL access;
+- exact variable-name migration map.
+
+Historical clarification:
+The historical `conversion-gap-benchmark-audit-platform` service contains `VANTAGE_PAGESPEED_API_KEY` but its PageSpeed adapter does not read that environment variable directly; it reads Supabase runtime config and can fall back to keyless PSI. The historical `vantage-runner` service is the runtime that directly reads `VANTAGE_PAGESPEED_API_KEY`. Therefore, the previous proposed one-service PageSpeed secret migration is not sufficiently proven and must not be executed blindly.
+
+Implication:
+The previously issued long closure prompt is superseded. First run a readiness-only diagnostic/repair tranche with zero paid provider tasks and zero fresh Bulldog audits. If readiness fails, return the complete blocker set and repair only those blockers. The paid audit prompt is generated only after readiness PASS.
