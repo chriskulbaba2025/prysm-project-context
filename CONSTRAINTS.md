@@ -194,3 +194,16 @@ Record hard project boundaries here.
 - If the planned tranche later expands to require a new system or permission not covered by the original preflight, run an incremental preflight for that new surface before continuing.
 - This rule applies before autonomous repair loops. The three-repair-cycle allowance starts only after preflight PASS.
 
+## Project-wide dependency-closure preflight rule
+
+- A long PRYSM preflight must validate the complete dependency graph for the planned execution path, not every infrastructure component indiscriminately.
+- Every dependency must be tested from the network/runtime context in which the run will actually use it. A Railway private hostname such as `*.railway.internal` failing to resolve from a local Windows process is not evidence that the Railway service is broken.
+- Before declaring PREFLIGHT FAIL, the run must:
+  1. enumerate the exact execution path and required dependencies;
+  2. eliminate dependencies that are not actually required;
+  3. test each required dependency from the correct context;
+  4. try the already-authorized no-mutation alternative path when one exists;
+  5. collect all remaining blockers in one pass rather than returning after the first incidental failure.
+- For isolated-staging evidence readback, direct local PostgreSQL connectivity is not required when the existing authenticated worker audit-status route can resolve audit identity. Prefer the existing worker internal-auth boundary plus Railway-injected S3-compatible storage credentials over local access to Railway private DNS.
+- Do not expose secrets while proving this chain. Environment-backed secrets may be consumed by a local script/process but must never be echoed, written to proof files, or persisted.
+
