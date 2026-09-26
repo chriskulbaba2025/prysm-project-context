@@ -1086,3 +1086,88 @@ Evidence: semantic focused tests PASS; worker `1036/1036`; Whole-App P-B01–P-B
 
 Hold:
 Exact-candidate paid/model-bearing execution and hosted seven-page/PDF acceptance remain blocked until the authorized authenticated staging browser surface is available. Direct worker/API substitution cannot prove the claimed browser/session production path.
+
+---
+
+## Decision: Lock the V1 report foundation before V2 automation
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+PRYSM V1 must first produce a defensible, useful, business-facing single-audit report that is worth paying for without automation. The operating loop for V1 is: run audit -> produce report -> human reviews it -> business makes changes -> human manually reruns the audit. Recurring audits, completion-triggered verification, reminders, longitudinal automation, and automated remediation workflows are V2.
+
+Reason:
+Automation would amplify defects if the evidence, classification, scoring, prioritization, and report contract are not stable first. The report must be useful to a business rather than another technical audit.
+
+Implication:
+Do not spend the current tranche building recurring automation. First prove evidence acquisition and classification, then freeze the report contract, then repair report-generation logic against that contract.
+
+---
+
+## Decision: Evidence classification and dual verification precede client-facing conclusions
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+PRYSM must classify evidence deliberately before it can drive scoring or client-facing conclusions. The target flow is:
+
+acquire -> normalize -> classify -> score -> independent verification -> reconcile -> report.
+
+Each governed evidence record must carry, as applicable: identity, source, method, truth state, sufficiency, scope, domain, buyer relevance, funnel relevance, materiality, meaning, freshness, permitted downstream use, provenance, and relationships to supporting/contradicting/superseding evidence.
+
+The second measurement is not a duplicate rerun of the same classifier. It independently checks whether the underlying evidence supports the classification, score, importance, and downstream report consequence. Disagreement is reconciled or fails closed; results are not averaged.
+
+Deterministic code owns evidence truth, evidence state, permitted use, reconciliation rules, scoring eligibility, and fail-closed behavior. Semantic models may interpret natural language and propose typed observations, but may not redefine stronger observed evidence or silently upgrade uncertainty.
+
+Reason:
+The current report defect class includes technically valid observations being promoted into material findings, buyer-journey friction, or priorities without sufficient business relevance. Measuring twice is intended to catch classification or scoring errors before they become client-facing claims.
+
+Implication:
+Unknown does not become absent; unavailable does not become failure; client-stated does not become verified-observed; model inference cannot override stronger observed evidence; technical evidence cannot become direct buyer friction without an explicit supported relationship; contradictions must be resolved or remain explicit.
+
+---
+
+## Decision: Tune evidence acquisition against real DataForSEO payloads before implementing the classifier
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+Do not finish the evidence-classification architecture only from theory. First prove whether the isolated staging worker preserves materially sufficient raw DataForSEO evidence before destructive normalization. Then use real staging evidence to tune the contract.
+
+DataForSEO capabilities are selected by evidence question, not by provider catalogue breadth: use every capability that closes a defined evidence question and avoid duplicate/no-value acquisition. First-party analytics remain authoritative for facts DataForSEO cannot observe, such as actual user sessions, conversions, or client-owned performance history.
+
+After the raw-evidence gate passes, use Bulldog Home Maintenance as the relatively strong baseline and Reboot Business Coaching as the more complex/weak baseline to challenge the classification rules. These named sites are validation/regression fixtures only, never implementation targets.
+
+Reason:
+Real provider payloads expose missing fields, scope differences, source conflicts, and normalization loss that theoretical schemas can miss.
+
+Implication:
+The immediate gate is read-only/no-paid-call diagnosis of raw DataForSEO preservation in `chriskulbaba2025/prysm-staging-isolated`. Do not run Bulldog or Reboot until that gate passes or the generic storage boundary is repaired.
+
+---
+
+## Decision: Content Opportunities output contract
+
+Date: 2026-09-25
+Status: Active
+
+Decision:
+The client-facing Content Opportunities section should produce up to eight primary evidence-backed ideas:
+- 2 TOFU;
+- 2 MOFU;
+- 2 BOFU;
+- 2 Leading Edge.
+
+Leading Edge means forward-looking opportunities grounded in emerging buyer questions, changing search behaviour, AI-search/entity opportunities, or differentiated expertise; it is not a fourth generic blog bucket.
+
+Every idea must be reconciled against assessed existing content and tied to a buyer question, funnel stage, business relevance, evidence strength, existing coverage state, recommended action, and reason.
+
+Reason:
+PRYSM should provide decision-useful content strategy rather than generic topic generation.
+
+Implication:
+Existing sufficient coverage can produce NO_ACTION; partial related coverage should normally be improved rather than duplicated; unavailable evidence must not create content work by default. Service-sector pricing recommendations are separately prohibited by the active hard constraint.
+
