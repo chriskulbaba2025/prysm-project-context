@@ -83,3 +83,15 @@ Last verified:
 - Blocking gates: required master-checklist seven-page contract is not proven because the current served report has 16 pages; the required eight-site generalization matrix is not complete. Tranche 13 remains dependent on these gates; no whole-system release PASS is claimed.
 - Full proof: `C:\Users\kulba\Downloads\PRYSM-GACM-MULTITRANCHE-2026-09-26\`.
 - Production remains untouched.
+
+## Bulk closure tranche checkpoint — 2026-09-26
+
+- Candidate `c0eda73a2c741fdafbb71da4bd893e91b6dc0e06` on `main`, pushed normally and verified equal to `origin/main`.
+- Railway deployment `a524a41d-199c-4e36-95f0-387561526084`: SUCCESS, exact candidate SHA; health HTTP 200.
+- Vercel staging deployment: READY, exact candidate SHA.
+- Generic intake contract now rejects missing market, primaryGoal, and services for new creation while persisted recovery remains verbatim.
+- PageSpeed universal execution now carries governed screenshot identity into diagnostic persistence; targeted tests 50/50 and full worker regression 1,045/1,045.
+- Bulk proof: `C:\Users\kulba\Downloads\PRYSM-GACM-BULK-CLOSURE-2026-09-26\`.
+- Bulk disposition: `PRYSM_GACM_BULK_CLOSURE_HOLD`.
+- Blocking gates: v1 seven-page migration is not complete; legacy current-model projection fails in controlled report fixtures; final PDF acceptance is not active; generalization matrix lacks e-commerce, multi-location, and service+booking/product closure evidence.
+- Production remains untouched.
