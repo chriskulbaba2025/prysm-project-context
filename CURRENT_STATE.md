@@ -47,7 +47,8 @@ In progress:
 
 Blocked:
 - No evidence-validation blocker is proven. The Bulldog data path completed before the renderer failed.
-- v1 client-report rendering for this audit is blocked by the current-to-legacy report evidence projection defect, but that does not block read-only evidence inspection and classification.
+- v1 client-report rendering for this audit is blocked by the current-to-legacy report evidence projection defect.
+- Evidence classification is additionally blocked by a staging readback-access gap: the exact governed Bulldog package is persisted in isolated-staging S3, but the authorized local analysis surface has no current credentialed readback bridge. This is not presently an evidence-collection failure.
 
 Important constraints:
 - Production remains frozen. No production mutation is authorized.
@@ -61,7 +62,7 @@ Important constraints:
 - Do not rerun Bulldog merely to repair presentation; reuse the already-persisted governed evidence from audit `560f5640-9ff3-4a68-881c-56f4284867e4`.
 
 Exact next action:
-Perform a read-only extraction and external classification of the persisted governed evidence for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4`, then run a meaningfully independent second verification against the same underlying evidence. Reconcile disagreements or fail closed. Do not rerun providers, change report code, or implement the classifier in this tranche.
+Run one bounded GACM-style autonomous tranche that first establishes a safe isolated-staging readback path for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4` without rerunning providers. Prefer a no-deploy local readback using Railway-injected staging environment and the existing governed artifact-store code. Once exact artifact identity/readback is proven, continue in the same tranche through external classification, meaningfully independent second verification, reconciliation, and Evidence Package readiness. Only if the readback boundary cannot be established without code or deployment should the run stop for a new authorization boundary.
 
 Last verified:
 2026-09-25
