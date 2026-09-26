@@ -162,3 +162,13 @@ Record hard project boundaries here.
 - Named sites remain regression/validation fixtures only and must not become implementation targets.
 - This exception ends when the generalized raw-evidence repair and its deterministic proof gate are complete or when a new authorization boundary is reached.
 
+## Project-wide Codex completion notification rule
+
+- For every long-running PRYSM Codex or agent execution, the terminal-disposition step must trigger a local Windows completion notification so Chris does not have to watch the terminal continuously.
+- The completion signal must include both a visible Windows desktop notification and an audible alert.
+- The notification must identify the run and its terminal PASS or FAIL disposition.
+- Use a native local mechanism that does not require a paid service or external account.
+- The notification must occur only after the proof artifact and terminal disposition have been written.
+- If the local notification mechanism fails, report that failure explicitly without changing the technical PASS or FAIL result.
+- Long PRYSM Codex execution prompts must include this completion-notification requirement by default.
+
