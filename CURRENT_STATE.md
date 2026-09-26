@@ -62,7 +62,7 @@ Important constraints:
 - Do not rerun Bulldog merely to repair presentation; reuse the already-persisted governed evidence from audit `560f5640-9ff3-4a68-881c-56f4284867e4`.
 
 Exact next action:
-Run one bounded GACM-style autonomous tranche that first establishes a safe isolated-staging readback path for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4` without rerunning providers. Prefer a no-deploy local readback using Railway-injected staging environment and the existing governed artifact-store code. Once exact artifact identity/readback is proven, continue in the same tranche through external classification, meaningfully independent second verification, reconciliation, and Evidence Package readiness. Only if the readback boundary cannot be established without code or deployment should the run stop for a new authorization boundary.
+Run one bounded GACM-style autonomous tranche beginning with a full fail-closed permission/access preflight across every surface required for the entire planned run. If preflight passes, establish a safe isolated-staging readback path for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4` without rerunning providers, then continue in the same tranche through exact artifact identity/readback, external classification, meaningfully independent second verification, reconciliation, and Evidence Package readiness. Prefer a no-deploy local readback using Railway-injected staging environment and the existing governed artifact-store code. Stop immediately if any required access is missing or if continuation would require a new authorization boundary.
 
 Last verified:
 2026-09-25
