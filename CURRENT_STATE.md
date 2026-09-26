@@ -3,92 +3,54 @@
 Project: PRYSM
 
 Current objective:
-Lock a defensible, useful V1 report foundation by strengthening evidence acquisition, evidence classification, scoring verification, and reconciliation before redesigning or automating the report. Automation and recurring remediation workflows are V2.
+Restore `chriskulbaba2025/prysm-staging-isolated` to a file-for-file copy of known-working production source `chriskulbaba2025/vantage-platform` at exact SHA `26fb91d29559cb189064c301cdf89ff69f330492`, then change only isolated staging landing destinations.
 
 Verified checkpoint:
 - Authoritative durable context repository: `chriskulbaba2025/prysm-project-context`.
-- Active isolated staging repository for this tranche: `chriskulbaba2025/prysm-staging-isolated`.
-- Isolated staging default branch: `main`.
-- Exact isolated staging remote HEAD independently verified on 2026-09-25: `96d948f956181f09c005bae6289d93ee176a0972`.
-- The isolated staging repository was initialized from production snapshot `26fb91d29559cb189064c301cdf89ff69f330492`.
-- `STAGING_ISOLATION.md` marks this repository staging-only and freezes production.
-- The `PRYSM_DFS_RAW_EVIDENCE_GATE` returned FAIL.
-- The generalized owning boundary is the universal DataForSEO adapter raw-evidence return contract before `AuditOrchestrator.processOneSource()`.
-- Independent source inspection confirmed `processOneSource()` could persist only adapter-supplied `rawBytes`, while DataForSEO OnPage, SERP, and Backlinks paths did not guarantee materially sufficient pre-normalization raw evidence plus sanitized request context across failure/partial/not-connected outcomes.
-- Chris explicitly authorized one narrow isolated-staging exception for the generalized DataForSEO raw-evidence contract repair and deterministic tests only. The exception is recorded in `CONSTRAINTS.md`.
-- The governed repair returned `PRYSM_DFS_RAW_EVIDENCE_REPAIR_PASS`.
-- Identity reconciliation returned `PRYSM_DFS_RAW_EVIDENCE_IDENTITY_PASS`.
-- Exact accepted repair SHA `96d948f956181f09c005bae6289d93ee176a0972` is published on `chriskulbaba2025/prysm-staging-isolated` `main`, and GitHub readback confirms the same SHA.
-- The report-foundation decisions remain active: V1 report before V2 automation; deliberate evidence classification; independent second verification after scoring; real-DFS tuning before classifier implementation; and the 2 TOFU / 2 MOFU / 2 BOFU / 2 Leading Edge content contract.
-- The service-sector no-pricing recommendation rule remains an active hard constraint.
-- Fresh Bulldog isolated-staging audit `560f5640-9ff3-4a68-881c-56f4284867e4` completed evidence collection, evidence lock, scoring, and narrative-ready state on accepted SHA `96d948f956181f09c005bae6289d93ee176a0972`.
-- That Bulldog audit then failed only at v1 page rendering. Railway logs show one shared compatibility-projection defect: the current ScoreSet/decision-evidence path is passed to the legacy v1 renderer without the legacy `model.evidence.site` shape required by pages such as content ideas, trust, CMS, technical SEO, headings, schema, performance, and appendix.
+- Working production source repository: `chriskulbaba2025/vantage-platform`.
+- Exact approved production source SHA: `26fb91d29559cb189064c301cdf89ff69f330492`.
+- Existing staging target repository: `chriskulbaba2025/prysm-staging-isolated`; do not create another staging repository.
+- The original staging initialization commit `3e14fb869f590f6bcfc8f63f39194b4ca3d95698` was already essentially a production clone: production had 1,110 file blobs; initialization had 1,109; the only differences were two omitted workflow files and added `STAGING_ISOLATION.md`.
+- The uploaded production source ZIP was independently verified against production SHA `26fb91d29559cb189064c301cdf89ff69f330492`; all 1,110 file blobs matched exactly.
+- Current repaired staging state is superseded for implementation purposes. The previously used staging HEAD `5b7705717bf4470c55038df60bcdd682268ad65e` and later repair lineage are forensic only and must not be used as the cloning base.
+- Production remains frozen.
 
 Current environment / branch / version:
-- Working directory: `C:\Users\kulba\Desktop\prysm-staging-isolated`
-- Repository: `chriskulbaba2025/prysm-staging-isolated`
-- Branch: `main`
-- Remote SHA: `96d948f956181f09c005bae6289d93ee176a0972`
-- Production source snapshot: `26fb91d29559cb189064c301cdf89ff69f330492`
+- Target repository: `chriskulbaba2025/prysm-staging-isolated`
+- Target branch: `main`
+- Production source: `chriskulbaba2025/vantage-platform@26fb91d29559cb189064c301cdf89ff69f330492`
+- Railway project: `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`
+- Railway environment: `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`
+- Railway worker: `3343e2a8-0472-4780-8536-e8b9667fcc7a`
+- Railway Postgres: `23ca9253-9388-45d7-90a5-e441af63083a`
+- Worker domain: `prysm-worker-production.up.railway.app`
+- Vercel staging project ID: `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`
+- Vercel staging URL: `https://prysm-staging-isolated.vercel.app`
 
 Completed:
-- Selected Bulldog Home Maintenance as the relatively strong validation fixture and Reboot Business Coaching as the more complex/weak validation fixture; neither may become an implementation target.
-- Defined the report-foundation sequence: evidence acquisition -> normalization -> classification -> scoring -> independent verification -> reconciliation -> client-facing report.
-- Defined the principle that the second measurement must be meaningfully independent and disagreements must reconcile or fail closed rather than be averaged.
-- Defined the content opportunity target of up to eight primary ideas across TOFU/MOFU/BOFU/Leading Edge.
-- Ran the bounded DataForSEO raw-evidence preservation diagnosis and identified the generalized raw-evidence contract defect.
-- Implemented and proved the generalized DataForSEO raw-evidence repair with deterministic tests only.
-- Published and verified the exact accepted repair candidate at `96d948f956181f09c005bae6289d93ee176a0972`.
+- Identified the exact known-working production source SHA.
+- Verified that the original isolated-staging initialization was already essentially a direct production clone.
+- Verified the uploaded source ZIP matches all 1,110 production file blobs at the approved SHA.
+- Explicitly superseded the hybrid staging repair path.
 
 In progress:
-- No implementation repair is currently in progress.
-- The fresh Bulldog audit is complete through evidence/scoring and is now the validation source for external evidence classification and a meaningfully independent second verification.
-- The v1 renderer compatibility defect is recorded but intentionally deferred until after evidence classification/verification.
+- No code mutation is currently authorized beyond the exact-clone reset and isolated landing-destination changes described below.
 
 Blocked:
-- No evidence-validation blocker is proven. The Bulldog data path completed before the renderer failed.
-- v1 client-report rendering for this audit is blocked by the current-to-legacy report evidence projection defect.
-- Evidence classification remains blocked only until the governed staging readback chain is proven. The exact Bulldog package is persisted in isolated-staging object storage; this is not presently an evidence-collection failure.
-- Preflight on 2026-09-25 initially returned `PRYSM_BULLDOG_PREFLIGHT_FAIL` because the local Railway CLI session could not access the isolated staging project. Chris successfully re-linked the local Railway CLI to the isolated staging project/environment and selected `prysm-worker`; that blocker is cleared.
-- The second preflight failure (`postgres.railway.internal` ENOTFOUND from local Windows) was an invalid preflight requirement, not a broken staging dependency. Railway connector verification shows Postgres is healthy and the worker is already connected to PostgreSQL; Railway documents `railway connect postgres --tunnel-only` for genuine local DB access, but this tranche does not require direct DB access.
-- The preferred readback chain is now frozen: Railway-linked local process -> existing worker `GET /api/v1/audits/:auditId` using `x-vantage-secret` for governed audit/client identity -> Railway-injected tenant/S3 configuration -> exact object-store artifact readback and verification.
-- The full Bulldog evidence readback/classification run completed and returned `PRYSM_BULLDOG_EVIDENCE_PACKAGE_FAIL`. Readback itself PASSed: 21 artifacts recovered; identity, hashes, manifests, and schema checks passed; external classification and independent reconciliation completed.
-- The actual remaining generalized blocker is live evidence-provider configuration: DataForSEO OnPage FAILED because `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` are absent; DataForSEO SERP and Backlinks are `NOT_CONNECTED`; PageSpeed is `NOT_CONNECTED` because no PageSpeed API key is configured. The same DataForSEO credential pair serves OnPage, SERP, and Backlinks. `GOOGLE_PAGESPEED_API_KEY` is the primary PageSpeed key; `GOOGLE_CRUX_API_KEY` is optional because the worker falls back to the PageSpeed key for CrUX.
-- Historical working Railway service `conversion-gap-benchmark-audit-platform` in project `conversion-gap-platform-worker` still has `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, and legacy `VANTAGE_PAGESPEED_API_KEY`. The isolated worker omitted them. Current code renamed the PageSpeed runtime contract to `GOOGLE_PAGESPEED_API_KEY` / `PAGESPEED_API_KEY`. Root cause is now classified as environment migration/config-contract drift.
-- Conversion-path validation is `NOT_ASSESSED` downstream of the failed OnPage crawl because no crawled page set existed for deterministic key-page selection. Do not treat conversion validation as an independent blocker until provider-backed OnPage collection succeeds; then explicitly smoke the Playwright runtime before any paid rerun.
-- GA4 and GSC remain optional first-party integrations and are not required to close the current generalized evidence-package baseline when absent is represented truthfully.
+- No blocker is currently proven.
+- The clone must fail closed if exact source identity, destination identity, environment/runtime parity, or final tree parity cannot be proven.
 
 Important constraints:
-- Production remains frozen. No production mutation is authorized.
-- Work only in the isolated staging repository for this tranche.
-- Preserve provider failure/partial/unavailable/not-connected states; UNKNOWN must never become ABSENT or a negative finding.
-- Preserve secrets/data minimization: raw evidence storage must exclude credentials, authorization headers, tokens, cookies/session secrets, and unnecessary personal information.
-- Data acquisition is driven by defined evidence questions. Use DataForSEO where it closes the evidence question; use first-party sources for facts only first-party systems can establish.
-- Service-sector content recommendations must never recommend publishing specific pricing or a pricing page.
-- Named sites are regression/validation fixtures only.
-- Do not implement the classifier or change report code before the Bulldog evidence has been externally classified and independently second-verified.
-- Do not rerun Bulldog merely to repair presentation; reuse the already-persisted governed evidence from audit `560f5640-9ff3-4a68-881c-56f4284867e4`.
+- Do not reconstruct the application piece by piece.
+- Do not continue from the repaired staging lineage as an implementation base.
+- Preserve application code, worker code, renderer, provider adapters, DataForSEO setup, PageSpeed setup, Playwright/browser runtime, package versions, build method, Railway runtime settings, Vercel build settings, environment variable names, provider credentials, auth logic, feature flags, timeouts, and report behavior exactly.
+- Change only isolated landing-area values: PostgreSQL target; S3 bucket/prefix or artifact destination; staging tenant/namespace where required; staging worker URL/domain; Vercel project/domain references; and auth callback/webhook URLs only where required by the staging destination.
+- No variable renaming, refactoring, provider rewiring, renderer fixes, cleanup, or architecture changes.
+- Preserve Git history; do not force-push or destructively rewrite history. The accepted reset must make the staging file tree match the approved production tree while retaining auditable history.
+- Production remains frozen.
 
 Exact next action:
-Run a single no-cost ALL-PROVIDER-READINESS closure. It must (1) determine/export or securely obtain the existing DataForSEO credential pair; (2) validate DataForSEO authentication plus OnPage, SERP, and Backlinks against DataForSEO Sandbox with zero paid tasks; (3) repair the generalized PageSpeed no-key fast-fail so PSI can run keyless when necessary, with tests; (4) redeploy the exact accepted isolated candidate; (5) prove actual Playwright Chromium launch/close via Railway SSH; (6) re-prove worker/database/storage identity and readback; and (7) verify the recovered Bulldog AuditRequest has the non-empty inputs needed by the provider plan. Return `PRYSM_PROVIDER_READINESS_PASS` only when every item is green. Only then run the separate single paid Bulldog audit. If preflight passes, establish a safe isolated-staging readback path for Bulldog audit `560f5640-9ff3-4a68-881c-56f4284867e4` without rerunning providers, then continue in the same tranche through exact artifact identity/readback, external classification, meaningfully independent second verification, reconciliation, and Evidence Package readiness. Prefer a no-deploy local readback using Railway-injected staging environment and the existing governed artifact-store code. Stop immediately if any required access is missing or if continuation would require a new authorization boundary.
+Execute one bounded governed clone-reset tranche: verify both repository identities and exact source SHA; make `prysm-staging-isolated/main` resolve to a new auditable commit whose file tree is exactly identical to production SHA `26fb91d29559cb189064c301cdf89ff69f330492`; then apply only the explicitly required isolated landing-destination values without renaming variables or altering application behavior; deploy the exact accepted staging commit; prove source/tree/runtime parity; run one test audit; and confirm the report renders. Stop on any parity mismatch or requirement to change application logic.
 
 Last verified:
 2026-09-25
-Latest readiness result (2026-09-25):
-- `PRYSM_PROVIDER_READINESS_PASS` reported from the no-cost all-provider-readiness closure.
-- That tranche intentionally did not create a fresh Bulldog audit, so no new report was expected.
-- The next authorized action is exactly one fresh Bulldog isolated-staging audit using the now-proven provider/runtime configuration.
-- After evidence persistence, continue through evidence-package validation and then produce the client report from the SAME audit.
-- If the known v1 current-to-legacy evidence projection defect blocks rendering, repair that generalized renderer compatibility boundary and rerender the SAME persisted audit. Do not rerun paid providers merely to repair presentation.
-
-Final Bulldog audit closure update (2026-09-26):
-- Exactly one fresh isolated-staging Bulldog audit was created: `3f390f48-3fa3-4a5a-be84-a6c4131c6d80`.
-- Exact audit identity: tenant `prysm-staging`; client `bulldoghomemaintenance.ca-bulldog-hme-maintenance`; execution `c13b4963-3d60-4db6-aa03-dee8d84e9364`.
-- Final isolated deployment identity: application SHA `5b7705717bf4470c55038df60bcdd682268ad65e`; Railway deployment `445bf920-2fff-42cf-9568-69ce94dac997` (`SUCCESS`).
-- The fresh audit reached `DRAFT_RENDERED`; 45 governed objects were read back, including canonical, normalized, raw, manifests, six Playwright screenshots, narrative, report package, manifest, and 16 v1 report pages. Hash, byte-length, scope, and lineage checks passed.
-- DataForSEO OnPage, SERP, and Backlinks were `AVAILABLE`; conversion-path browser evidence persisted six completed pages; GA4 and GSC remained `NOT_CONNECTED`.
-- PageSpeed was `FAILED` from PSI quota HTTP 429 on mobile and desktop plus failed Lighthouse fallback. No performance score was created.
-- Report acceptance failed because the persisted v1 content-opportunity page contained a prohibited public `Pricing page` recommendation. The generalized generator was repaired and tested in application commit `5b77057`, but the audit was already terminal `DRAFT_RENDERED`; no authorized same-audit re-render continuation exists and immutable report artifacts were not overwritten.
-- Final disposition: `PRYSM_BULLDOG_FINAL_FAIL`.
-- Report URL: `https://prysm-worker-production.up.railway.app/api/v1/audits/3f390f48-3fa3-4a5a-be84-a6c4131c6d80/report/index.html?slug=bulldog-hme-maintenance&clientId=bulldoghomemaintenance.ca-bulldog-hme-maintenance` (internal secret boundary required).
-- Proof directory: `C:\Users\kulba\Downloads\PRYSM-BULLDOG-FINAL-REPORT-CLOSURE-2026-09-25`.
