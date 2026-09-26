@@ -142,3 +142,23 @@ Record hard project boundaries here.
 - The manual one-source-file-at-a-time workflow remains mandatory. Begin with `services/worker/src/scoring/score-components.js` bounded to PF-01/PF-02/PF-03, complete the Mandatory Pre-Edit Gate, make the smallest coherent source-file repair, run one highest-information proving test, and stop for the result before moving to another source-file unit.
 - Do not redo the broad preflight investigation unless current source/runtime evidence materially contradicts the frozen PF package.
 - PRYSM SERVICE-SECTOR PRICING RULE: client-facing content opportunities and recommendations must never instruct a service-sector business to publish specific prices or create a pricing page. Cost-related buyer questions may be answered with estimate/quote process, factors that affect scope, what happens before a quote, or similar reassurance, but PRYSM must not invent, expose, or recommend publishing prices.
+
+## Authorized exception — isolated-staging DataForSEO raw-evidence contract repair
+
+- User authorization was granted on 2026-09-25 for one narrow isolated-staging repair tranche only.
+- The authorized repository is `chriskulbaba2025/prysm-staging-isolated`, working copy `C:\Users\kulba\Desktop\prysm-staging-isolated`, beginning from exact SHA `3e14fb869f590f6bcfc8f63f39194b4ca3d95698`.
+- This exception supersedes the generic report-rebuild prohibitions on evidence-collection, provider/adaptor, storage-behavior, and audit-orchestration changes only where strictly required to repair the already-proven universal DataForSEO raw-evidence return contract before `AuditOrchestrator.processOneSource()`.
+- The permitted repair boundary covers the existing OnPage, SERP, and Backlinks adapter paths and the minimum shared contract/orchestrator/test surfaces required to guarantee materially sufficient sanitized pre-normalization raw evidence and request context across success, PARTIAL, FAILED, UNAVAILABLE, and NOT_CONNECTED outcomes.
+- Deterministic tests required to prove that contract are authorized.
+- Zero paid provider calls.
+- Zero live audits, including Bulldog Home Maintenance and Reboot Business Coaching.
+- Zero deployments.
+- Zero production mutation or production credential/infrastructure use.
+- No new DataForSEO endpoints.
+- No classifier implementation.
+- No report redesign.
+- Do not change scoring logic or scoring versions, Writer/Judge governance, authentication, n8n, or unrelated lifecycle/report behavior.
+- Raw evidence must preserve provider failure/partial/unavailable/not-connected semantics and sufficient interpretation context while excluding credentials, Authorization headers, tokens, cookies/session secrets, and unnecessary personal information.
+- Named sites remain regression/validation fixtures only and must not become implementation targets.
+- This exception ends when the generalized raw-evidence repair and its deterministic proof gate are complete or when a new authorization boundary is reached.
+
