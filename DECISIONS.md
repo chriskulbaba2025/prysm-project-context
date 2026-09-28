@@ -1362,3 +1362,26 @@ A known-working production system already exists and the original staging initia
 
 Implication:
 When a working approved system exists, clone/copy that exact source first, change only explicitly authorized boundaries, preserve everything else, and prove parity before any further modification. Do not reconstruct a working system piece by piece.
+
+
+---
+
+## Decision: Snapshot V1 default and Executive Report separation
+
+Date: 2026-09-27
+Status: Active
+
+Decision:
+PRYSM Snapshot V1 is the default client-facing output for new audits. The full PRYSM Executive Report is a separate optional report that must be explicitly run from the same governed audit evidence. Snapshot V1 is frozen as a one-page lead magnet and must not grow into a second teaser page.
+
+Snapshot V1 keeps the approved one-page structure: verified client identity, conversion-readiness summary, dynamic evidence-backed site signals, up to three priority findings, optional competitor signal when supported, one useful immediate fix, strengths, Brad Grant / Omnipressence CTA, a locked Executive Report preview, and a compact "What PRYSM checked" / "Executive Audit unlocks" section. Snapshot V1 does not display price. The deeper report is described as a 7-page Executive Report, and teaser counts must be derived from actual persisted audit evidence.
+
+The permanent client-brand rule is PRYSM-BRAND-IDENTITY-AND-ASSET-GATE: display a client logo only when it is verified first-party evidence for the audited business; otherwise render the verified business name. Never guess, substitute, or externally search for a logo during rendering.
+
+The PRYSM company spelling is permanently "Omnipressence". Brad Grant is the approved human CTA identity for the current Snapshot reference, using the approved booking destination `https://calendly.com/brad-omnipressence/30min`.
+
+Reason:
+The one-page Snapshot is intended to maximize completion, demonstrate that PRYSM reviewed the actual business, provide immediate value, and create curiosity without competing with the deeper Executive Report. Separating the products avoids confusing a lead magnet with a full audit and allows the Executive Report to be redesigned independently. The brand gate prevents a wrong client logo from undermining report credibility.
+
+Implication:
+Future Snapshot work must preserve this frozen V1 structure unless Chris explicitly reopens it. New audits should default to Snapshot V1 with an explicit option to generate the Executive Report. Executive Report redesign work must not alter Snapshot V1. Any logo-rendering implementation must fail closed to a verified business-name fallback when logo verification is unavailable or contradictory.
