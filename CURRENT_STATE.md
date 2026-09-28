@@ -3,7 +3,7 @@
 Project: PRYSM
 
 Current objective:
-Finish Snapshot V1 live visual closure and freeze Snapshot V1 only after authenticated staging acceptance against the approved reference. Then begin a separate Executive Report V2 design tranche with mockups first and no V2 code until page designs are approved.
+Complete Snapshot V1 visual/content closure against the exact approved V8 reference, then obtain Chris's manual browser acceptance. Freeze Snapshot V1 only after that acceptance. Executive Report V2 starts afterward.
 
 Verified checkpoint:
 - Snapshot V1 is implemented as the default one-page report product and is separate from the existing seven-page Executive Report baseline.
@@ -51,6 +51,44 @@ Important constraints:
 - Named fixtures are regression evidence only, never implementation targets.
 - Snapshot must show no price, use exact Omnipresence spelling, preserve the governed Brad Grant CTA, and use only committed first-party assets.
 - Production remains frozen.
+
+Current environment / branch / version:
+- Context repo: `chriskulbaba2025/prysm-project-context`
+- Staging app: `chriskulbaba2025/prysm-staging-isolated`
+- Production app: `chriskulbaba2025/vantage-platform`
+- Branch: `repair/prysm-bulk-closure-20260927`
+- PR: #6
+- Current head: `12e87c192c14be722896ad8a5c8f4045830bc875`
+- Reboot audit: `c11d9781-878b-4236-a72a-16e5d7198843`
+
+Completed:
+- Snapshot routing/default product separation.
+- One-page intent, no-price rule, brand gate, Brad repo asset, Executive Report preview.
+- Generic stale-artifact version/backfill repair.
+- Existing-audit reprojection without provider calls or a new audit.
+- Long-run desktop and audible completion notification requirement is active.
+
+In progress:
+- Full V8 contract extraction.
+- Full V8-vs-current defect register.
+- Generic visual/content/identity/CTA closure.
+- Manual browser acceptance after the next staging deployment.
+
+Blocked:
+- Snapshot V1 cannot be frozen because manual visual review found material V8 differences.
+- Executive Report V2 must not begin until Snapshot V1 is frozen.
+
+Important constraints:
+- V8 is the exact design/content source of truth. Do not approximate, simplify, paraphrase, or reconstruct it.
+- Extract the complete V8 structure/copy/visual/identity/CTA/Executive-preview contract before editing.
+- Fix generic owning boundaries only; Reboot is regression evidence, not an implementation target.
+- Do not create a new audit.
+- Do not use Codex browser acceptance.
+- Preserve governed evidence/state semantics.
+- Existing seven-page Executive Report is baseline/current report, not V2.
+- Executive Report V2 is mockups-first; no V2 code before design approval.
+- Production remains frozen.
+- Every long PRYSM Codex/GACM run must end with desktop and audible notification.
 
 Exact next action:
 Chris manually reviews the existing Reboot Snapshot at `https://prysm-staging-isolated-arvwlxtmz-chriskulbabas-projects.vercel.app/audits/c11d9781-878b-4236-a72a-16e5d7198843/report` against `prysm-snapshot-new-era-reference-v8-no-price.html`. Do not create a new audit, touch production, freeze Snapshot V1, or begin Executive Report V2 until human visual acceptance passes.
