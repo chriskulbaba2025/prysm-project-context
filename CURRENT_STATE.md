@@ -18,7 +18,7 @@ Verified checkpoint:
 - Isolated staging currentness was previously verified at accepted SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
 - Exact staging-to-production source promotion completed: production commit `78795617a9206c62e70eee6d101323d77051f2f0` has the same Git tree object as accepted staging (`f52e29c24a4dac0c5d0fad892086d10261f6f3aa`).
 - Production Vercel deployment `dpl_4AwpRfg8H9TrwGj32W7KGL7WJk6X` is READY and reports GitHub metadata SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
-- Production Railway deployment `6ddf387b-3685-489d-8fcb-fad517ffe9d6` on existing live service `prysm-worker-run4` is SUCCESS/RUNNING with image digest `sha256:0dc2a0a133238beb6da790de57af119ca274e37e529df32069388f17b697290a`; this local-source deployment does not expose a direct Git SHA, so exact Railway SHA equivalence remains unproven.
+- Production Railway provenance-bound deployment `ff176410-9318-4053-aa31-b23d08fca98a` on existing live service `prysm-worker-run4` is SUCCESS/RUNNING and directly reports repository `chriskulbaba2025/vantage-platform`, branch `main`, source SHA `78795617a9206c62e70eee6d101323d77051f2f0`, and image digest `sha256:6f81f9830eb827d0334e6ffe5b82f3ef65aca34e93d9231b434ede321ee89771`.
 - City Media audit `9c975182-6162-40a0-b211-9f917a4a7038` is not acceptance proof: current worker data shows `collecting`, no coherent readable evidence package, and no current Snapshot V1 or Executive V2 outputs; recovery reported conflicting existing canonical evidence bytes.
 - Codex browser/browser-automation acceptance is prohibited. Chris performs final visual acceptance manually in his own signed-in browser.
 - Generalized semantic process repair baseline remains frozen at application SHA `ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01`; accepted candidate is application SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
@@ -46,7 +46,7 @@ Completed:
 
 In progress:
 
-- Production source promotion is complete and live frontend/worker health checks pass, but release currentness is on HOLD until Railway exposes or otherwise proves the deployed source SHA for deployment `6ddf387b-3685-489d-8fcb-fad517ffe9d6`.
+- Production source promotion and Railway source-SHA continuity are complete; live frontend/worker health checks pass. Vercel remains unchanged and READY on production SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
 - Canonical semantic authority tranche is locally accepted, committed, published, and exact-head verified. Staging deployment and human acceptance remain separate authorization boundaries.
 
 Blocked:
@@ -68,7 +68,7 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Authorize one deterministic provenance-bound Railway redeploy of exact production commit `78795617a9206c62e70eee6d101323d77051f2f0` only if exact Railway source/build-input continuity is required; do not redeploy automatically.
+Chris reviews the live PRYSM application. Do not merge PR #6 or make further production changes.
 
 Last verified:
 2026-09-29
@@ -80,4 +80,4 @@ Last verified:
 - Exact promotion validation: root build PASS; worker full regression 1,026/1,026 PASS; semantic authority 13/13 PASS; Narrative V2 170/170 PASS; schemas 15/15 PASS; closure gate 90/90 PASS with P-B01–P-B17 coverage.
 - Production runtime: Vercel `/` returns 307 to `/login`; Railway `/health` returns 200 with `service=prysm-worker`, `version=0.2.0`.
 - Production secrets/environment values and production data were not changed by this promotion; no paid provider/model call or fresh production audit was run.
-- Production exact-currentness remains HOLD: Railway exposes image/runtime identity but no direct Git SHA, source ref, repository, or uploaded-build-input digest for deployment `6ddf387b-3685-489d-8fcb-fad517ffe9d6`; existing deployment source-tree continuity is therefore unprovable at the build-input link.
+- Railway identity continuity PASS: the active deployment reports the exact production repository/main SHA and final image digest; `/health` returns HTTP 200. One explicit `redeploy --from-source` was issued; Railway also created and removed one automatic source-binding deployment. No further redeploy was issued.
