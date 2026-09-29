@@ -3,148 +3,64 @@
 Project: PRYSM
 
 Current objective:
-Complete Snapshot V1 visual/content closure against the exact approved V8 reference, then obtain Chris's manual browser acceptance. Freeze Snapshot V1 only after that acceptance. Executive Report V2 starts afterward.
+Review the current isolated-staging PRYSM application manually with Chris, capture the complete set of product/report changes, then repair them through the governed generalized workflow. Technical staging closure remains incomplete until a current audit can generate current Snapshot V1 and Executive V2 outputs for Chris's manual browser review.
 
 Verified checkpoint:
-- Snapshot V1 is implemented as the default one-page report product and is separate from the existing seven-page Executive Report baseline.
-- The existing seven-page Executive Report is not V2 and must not be called V2.
-- Snapshot routing and report-view navigation have been repaired.
-- The approved Snapshot reference is `C:\Users\kulba\Downloads\prysm-snapshot-new-era-reference-v8-no-price.html`, independently verified SHA-256 `596722ABC71D80576898482DE63BB8FCC0E0C9F0E6CEABEE56A61F17F36A766E`.
-- The malformed 63-character stored digest was reconciled and corrected at this durable context boundary.
-- PR #6 branch head is `da948ba58717fbc54b6919e072532bf86c38329d`, with Snapshot V1 generic V8 contract, identity, CTA, projection, persistence/backfill, and regression repairs.
-- GitHub CI, Vercel, Railway worker, and Railway proof-service statuses are successful for `da948ba58717fbc54b6919e072532bf86c38329d`.
-- Staging Vercel deployment is `dpl_FHRVDQsBbGzY9ZARxfphqzRMznPh` at `https://prysm-staging-isolated-arvwlxtmz-chriskulbabas-projects.vercel.app`.
-- Automated technical closure passed; authenticated human visual acceptance remains pending. Snapshot V1 is not frozen.
-- Production remains frozen and untouched.
+- Context repository: chriskulbaba2025/prysm-project-context.
+- Isolated staging application: chriskulbaba2025/prysm-staging-isolated.
+- Branch: repair/prysm-bulk-closure-20260927.
+- PR #6 is open; GitHub head verified at ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01.
+- Production remains untouched.
+- Snapshot V1 and Executive V2 are the active report products.
+- Retired Vantage/Karen Leslie/approved-report/report-design-v1 products remain retired and must fail closed.
+- The fresh-audit report-design default defect was repaired so current Executive uses designVersion 2.0.0.
+- Existing Burlington audit a493b3d2-5d1b-458f-903a-8bf0d4b71c6e preserves its evidence and reached narrative_ready, but its hosted historical state still shows render_failed with render-retired-report-design-requested; hosted recovery was not completed.
+- Codex browser/browser-automation acceptance is prohibited. Chris performs final visual acceptance manually in his own signed-in browser.
 
 Current environment / branch / version:
-- Authoritative context repository: `chriskulbaba2025/prysm-project-context`
-- Isolated staging application repository: `chriskulbaba2025/prysm-staging-isolated`
-- Production application repository: `chriskulbaba2025/vantage-platform`
-- Branch: `repair/prysm-bulk-closure-20260927`
+- Context repo: chriskulbaba2025/prysm-project-context
+- Staging app: chriskulbaba2025/prysm-staging-isolated
+- Production app: chriskulbaba2025/vantage-platform
+- Branch: repair/prysm-bulk-closure-20260927
 - PR: #6
-- Current branch head: `da948ba58717fbc54b6919e072532bf86c38329d`
-- Reboot audit ID: `c11d9781-878b-4236-a72a-16e5d7198843`
-- Staging deployment URL supplied for acceptance: `https://prysm-staging-isolated-arvwlxtmz-chriskulbabas-projects.vercel.app`
+- GitHub PR head: ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01
+- Existing Burlington audit: a493b3d2-5d1b-458f-903a-8bf0d4b71c6e
+- Report products: Snapshot V1 / Executive V2
+- Required Executive designVersion: 2.0.0
 
 Completed:
-- Snapshot V1 complete approved V8 structure/copy/visual contract is implemented generically over governed audit evidence.
-- Existing-audit reprojection/backfill upgrades stale Snapshot artifacts to `snapshot-v1@1.1.0-v8` without rerunning providers or creating an audit.
-- Generic human-readable display-name precedence, verified-logo gate/fallback, governed Brad CTA, and first-party Brad asset are covered by regression tests.
-- Worker regression (1,077 passed), whole-app branch regression (90 passed), clean build, GitHub CI, Vercel, Railway worker, and Railway proof-service checks are green.
-- Existing Executive Report route remains available and unchanged as the separate seven-page baseline.
+- Legacy report renderer retirement remains enforced.
+- Generic fresh-audit report-design default was repaired away from retired designVersion 1.0.0.
+- Retired and unknown report identifiers remain fail-closed.
+- Local recovery path for the Burlington audit was proven without provider recollection, but hosted recovery was not executed.
+- PR #6 head is verified current at ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01.
+- Production remains untouched.
 
 In progress:
-- Chris's authenticated manual staging review of the existing Reboot Snapshot against the approved V8 reference, including print/reopen visual acceptance.
-- Snapshot V1 freeze decision.
+- Manual review of the current isolated-staging application and reports.
+- Build one complete change/defect register from Chris's review before the next coding tranche.
+- Technical staging closure so a current audit can produce hosted Snapshot V1 and Executive V2 outputs for manual acceptance.
 
 Blocked:
-- Snapshot V1 cannot be frozen until authenticated live browser acceptance verifies the current branch head output closely matches the approved reference.
-- Executive Report V2 redesign must not begin until Snapshot V1 is frozen.
+- The existing Burlington hosted artifact is still historical render_failed and is not acceptance proof.
+- Human visual acceptance cannot occur until current hosted report URLs are available.
+- Codex browser/browser automation may not be used as a substitute for Chris's manual review.
 
 Important constraints:
-- Do not redesign or expand Snapshot V1 during Executive Report V2 work unless Chris explicitly reopens it.
-- Treat Snapshot V1 and Executive Report as separate products/views over the same governed audit evidence.
-- Existing seven-page Executive Report is baseline/current report, not V2.
-- Executive Report V2 redesign is mockups-first and page-by-page; no V2 code before design approval.
-- Preserve UNKNOWN/PARTIAL/UNAVAILABLE/FAILED/NOT_CONNECTED semantics and all governed evidence/state contracts.
-- Named fixtures are regression evidence only, never implementation targets.
-- Snapshot must show no price, use exact Omnipresence spelling, preserve the governed Brad Grant CTA, and use only committed first-party assets.
-- Production remains frozen.
-
-Current environment / branch / version:
-- Context repo: `chriskulbaba2025/prysm-project-context`
-- Staging app: `chriskulbaba2025/prysm-staging-isolated`
-- Production app: `chriskulbaba2025/vantage-platform`
-- Branch: `repair/prysm-bulk-closure-20260927`
-- PR: #6
-- Current head: `12e87c192c14be722896ad8a5c8f4045830bc875`
-- Reboot audit: `c11d9781-878b-4236-a72a-16e5d7198843`
-
-Completed:
-- Snapshot routing/default product separation.
-- One-page intent, no-price rule, brand gate, Brad repo asset, Executive Report preview.
-- Generic stale-artifact version/backfill repair.
-- Existing-audit reprojection without provider calls or a new audit.
-- Long-run desktop and audible completion notification requirement is active.
-
-In progress:
-- Full V8 contract extraction.
-- Full V8-vs-current defect register.
-- Generic visual/content/identity/CTA closure.
-- Manual browser acceptance after the next staging deployment.
-
-Blocked:
-- Snapshot V1 cannot be frozen because manual visual review found material V8 differences.
-- Executive Report V2 must not begin until Snapshot V1 is frozen.
-
-Important constraints:
-- V8 is the exact design/content source of truth. Do not approximate, simplify, paraphrase, or reconstruct it.
-- Extract the complete V8 structure/copy/visual/identity/CTA/Executive-preview contract before editing.
-- Fix generic owning boundaries only; Reboot is regression evidence, not an implementation target.
-- Do not create a new audit.
-- Do not use Codex browser acceptance.
-- Preserve governed evidence/state semantics.
-- Existing seven-page Executive Report is baseline/current report, not V2.
-- Executive Report V2 is mockups-first; no V2 code before design approval.
-- Production remains frozen.
-- Every long PRYSM Codex/GACM run must end with desktop and audible notification.
+- GitHub is authoritative; do not reconstruct current state from chat when GitHub disagrees.
+- Production is read-only unless Chris explicitly authorizes mutation.
+- Fix generalized owning boundaries only; named sites/audits are regression evidence, never implementation targets.
+- Preserve UNKNOWN/PARTIAL/UNAVAILABLE/FAILED/NOT_CONNECTED distinctions and evidence provenance.
+- Do not revive or alias retired report code.
+- Snapshot V1 and Executive V2 remain separate current products over the same governed evidence.
+- Executive V2 must identify as designVersion 2.0.0.
+- Codex browser, browser automation, Playwright-as-human-acceptance, screenshots-as-acceptance, and requests for Chris to connect a browser session to Codex are prohibited.
+- Chris performs final visual/browser acceptance manually in his normal authenticated browser.
+- Long GACM/Codex runs require full preflight, proof under the established Downloads proof-folder rule, and desktop plus audible completion notification.
+- Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Chris manually reviews the existing Reboot Snapshot at `https://prysm-staging-isolated-arvwlxtmz-chriskulbabas-projects.vercel.app/audits/c11d9781-878b-4236-a72a-16e5d7198843/report` against `prysm-snapshot-new-era-reference-v8-no-price.html`. Do not create a new audit, touch production, freeze Snapshot V1, or begin Executive Report V2 until human visual acceptance passes.
+Start the next chat from authoritative GitHub state, review the current isolated-staging app with Chris, capture the full set of desired changes/defects first, and build one governed defect register before making code changes. Do not use Codex browser acceptance and do not touch production.
 
 Last verified:
-2026-09-28
-
-## Exact clone reset closure — 2026-09-26
-
-- Approved production source: `chriskulbaba2025/vantage-platform@26fb91d29559cb189064c301cdf89ff69f330492`.
-- Restored staging commit: `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
-- Production and staging tracked trees matched exactly before landing-destination review: tree `c65a41686e3d45f77d7f1d937da2ba6a4068c3b8`, 1,110 tracked files, complete path/blob mapping equal.
-- Railway deployment: `f3e520ff-aa41-48cd-8010-c9502c83d257`, SUCCESS, deployed commit exactly `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
-- Vercel deployment: `dpl_6EnFNNH3bw6Q6X8gvfCkVGoEMWXp`, READY, project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, Git SHA exactly `af787bbf8ce6019702d2a76b4e82f5d874fb6ad6`.
-- Exactly one test audit was created: `d0911546-80ea-49d4-94cc-afc5e57892d7`; execution `e047b383-1d0b-4d8c-b12b-09405dc974c4`; terminal lifecycle `draft_rendered`.
-- Readback recovered 44 governed objects. OnPage and Backlinks were available; conversion-path evidence was partial with screenshots. SERP failed because the approved source location resolver could not resolve `London, Ontario`. PageSpeed remained `NOT_CONNECTED` because the approved source execution path required `PAGESPEED_API_KEY` and did not consume the configured staging key path.
-- Per the fail-closed clone-reset boundary, no application repair and no second audit were authorized after these product/configuration defects were exposed.
-- Terminal disposition: `PRYSM_EXACT_CLONE_RESET_BLOCKED`.
-- Full proof: `C:\Users\kulba\Downloads\PRYSM-EXACT-CLONE-RESET-2026-09-26\`.
-- Last verified: 2026-09-26.
-
-## GACM multi-tranche checkpoint — 2026-09-26
-
-- Application candidate: `0678d77e2633eefda1e44e421b95f30a9b91a48f` on `main`, pushed normally and verified equal to `origin/main`.
-- Railway isolated worker deployment: `f46fe286-a2a2-4bc4-a760-9b6dfc8d9c03`, `SUCCESS`; worker health HTTP 200.
-- Fresh staging audit: `14da9fc6-8d58-4f9b-85bb-f3bfbda1b758`, tenant `prysm-staging`, client `bulldoghomemaintenance.ca-bulldog-hme-maintenance`, terminal `draft_rendered`.
-- Readback: 43 governed objects; required canonical artifacts, raw artifacts, normalized artifacts, source manifests, four conversion screenshots, and 16 report pages recovered with exact hashes.
-- Live evidence: OnPage AVAILABLE; SERP AVAILABLE with local Maps, Business Profile, and Labs evidence; Backlinks AVAILABLE with 12 history periods; PageSpeed AVAILABLE via DataForSEO Lighthouse; CrUX/GA4/GSC NOT_CONNECTED; conversion paths PARTIAL with four screenshots.
-- Worker regression: 1,044 passed, 0 failed.
-- Public staging browser and all 16 served report routes returned HTTP 200 with non-empty content and no observed browser errors.
-- Truth limitations: persisted intake has zero services and empty market; no values were fabricated. PageSpeed diagnostic screenshot persistence reported missing `runId` while score evidence remained available.
-- GACM disposition: `PRYSM GACM MULTI-TRANCHE ACCEPTANCE: BLOCKED`.
-- Blocking gates: required master-checklist seven-page contract is not proven because the current served report has 16 pages; the required eight-site generalization matrix is not complete. Tranche 13 remains dependent on these gates; no whole-system release PASS is claimed.
-- Full proof: `C:\Users\kulba\Downloads\PRYSM-GACM-MULTITRANCHE-2026-09-26\`.
-- Production remains untouched.
-
-## Stale-recovery closure checkpoint — 2026-09-26
-
-- PR #5 exact source candidate: `d008727baa4dacbea7915f0e3237b4146597c69b`.
-- Newer accepted `main` lineage `c0eda73a2c741fdafbb71da4bd893e91b6dc0e06` was preserved; no blind merge or rollback occurred.
-- Vercel Preview configuration parity was repaired without changing application code. Exact candidate Preview deployment is READY and returns HTTP 200.
-- First Railway proof deployment logged the expected worker startup and a `PRYSM_DATA_VISIBILITY_SNAPSHOT` showing audit `560f5640-9ff3-4a68-881c-56f4284867e4` at `render_failed`.
-- Subsequent exact-SHA proof deployments unexpectedly ran the root Next.js web app rather than the Worker runtime; the worker audit readback endpoint returned 404. A bounded local exact-worktree Railway upload failed at the Railway API boundary.
-- Terminal disposition: `PRYSM_GACM_STALE_RECOVERY_TRANCHE_BLOCKED`.
-- Work Package 2 was not started.
-- Proof: `C:\Users\kulba\Downloads\PRYSM-GACM-CLOSURE-2026-09-26\`.
-- Production remains untouched.
-
-## Bulk closure tranche checkpoint — 2026-09-26
-
-- Candidate `c0eda73a2c741fdafbb71da4bd893e91b6dc0e06` on `main`, pushed normally and verified equal to `origin/main`.
-- Railway deployment `a524a41d-199c-4e36-95f0-387561526084`: SUCCESS, exact candidate SHA; health HTTP 200.
-- Vercel staging deployment: READY, exact candidate SHA.
-- Generic intake contract now rejects missing market, primaryGoal, and services for new creation while persisted recovery remains verbatim.
-- PageSpeed universal execution now carries governed screenshot identity into diagnostic persistence; targeted tests 50/50 and full worker regression 1,045/1,045.
-- Bulk proof: `C:\Users\kulba\Downloads\PRYSM-GACM-BULK-CLOSURE-2026-09-26\`.
-- Bulk disposition: `PRYSM_GACM_BULK_CLOSURE_HOLD`.
-- Blocking gates: v1 seven-page migration is not complete; legacy current-model projection fails in controlled report fixtures; final PDF acceptance is not active; generalization matrix lacks e-commerce, multi-location, and service+booking/product closure evidence.
-- Production remains untouched.
+2026-09-29
