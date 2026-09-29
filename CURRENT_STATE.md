@@ -9,14 +9,14 @@ Verified checkpoint:
 - Context repository: chriskulbaba2025/prysm-project-context.
 - Isolated staging application: chriskulbaba2025/prysm-staging-isolated.
 - Branch: repair/prysm-bulk-closure-20260927.
-- PR #6 is open; GitHub head verified at ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01.
+- PR #6 is open; GitHub head verified at 236a5e78f166d84e4fb59ce8f1f76a027f0f7947.
 - Production remains untouched.
 - Snapshot V1 and Executive V2 are the active report products.
 - Retired Vantage/Karen Leslie/approved-report/report-design-v1 products remain retired and must fail closed.
 - The fresh-audit report-design default defect was repaired so current Executive uses designVersion 2.0.0.
 - Existing Burlington audit a493b3d2-5d1b-458f-903a-8bf0d4b71c6e preserves its evidence and reached narrative_ready, but its hosted historical state still shows render_failed with render-retired-report-design-requested; hosted recovery was not completed.
 - Codex browser/browser-automation acceptance is prohibited. Chris performs final visual acceptance manually in his own signed-in browser.
-- Generalized semantic process repair baseline is frozen at application SHA `ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01`.
+- Generalized semantic process repair baseline remains frozen at application SHA `ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01`; accepted candidate is application SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
 - Governing freeze/tranche decision: `DECISION_PRYSM_GENERALIZED_SEMANTIC_PROCESS_REPAIR_FREEZE_2026-09-29.md`.
 - Named regression sites are fixtures only; implementation must target generalized owning boundaries.
 
@@ -26,7 +26,7 @@ Current environment / branch / version:
 - Production app: chriskulbaba2025/vantage-platform
 - Branch: repair/prysm-bulk-closure-20260927
 - PR: #6
-- GitHub PR head: ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01
+- GitHub PR head: 236a5e78f166d84e4fb59ce8f1f76a027f0f7947
 - Existing Burlington audit: a493b3d2-5d1b-458f-903a-8bf0d4b71c6e
 - Report products: Snapshot V1 / Executive V2
 - Required Executive designVersion: 2.0.0
@@ -36,13 +36,11 @@ Completed:
 - Generic fresh-audit report-design default was repaired away from retired designVersion 1.0.0.
 - Retired and unknown report identifiers remain fail-closed.
 - Local recovery path for the Burlington audit was proven without provider recollection, but hosted recovery was not executed.
-- PR #6 head is verified current at ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01.
+- PR #6 head is verified current at 236a5e78f166d84e4fb59ce8f1f76a027f0f7947.
 - Production remains untouched.
 
 In progress:
-- GACM Tranche G0: read-only map of the full decision pipeline and owning contracts for the frozen process-level defect families P1-P9.
-- Freeze permitted/prohibited boundaries and proving checks before any application edits.
-- Subsequent bounded tranches G1-G7 repair generalized process boundaries; G8 is Chris's manual signed-in staging retest.
+- Canonical semantic authority tranche is locally accepted, committed, published, and exact-head verified. Staging deployment and human acceptance remain separate authorization boundaries.
 
 Blocked:
 - The existing Burlington hosted artifact is still historical render_failed and is not acceptance proof.
@@ -63,7 +61,11 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Run GACM Tranche G0 from the frozen baseline: recover exact application/context state, map Producer -> canonical evidence -> classification -> reconciliation -> score -> prioritization -> Executive/Snapshot projection, identify the owning contracts for P1-P9, and freeze the implementation/test boundary. Make no product code changes in G0 and do not touch production.
+Chris manually retests the exact frozen staging candidate in his signed-in browser. Do not merge PR #6 or touch production.
 
 Last verified:
 2026-09-29
+- Published application commit: `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
+- Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD.
+- Clean full worker regression: 1,791/1,791 PASS; affected semantic/scoring/render suite: 212/212 PASS; production-path subset: 15/15 PASS.
+- Production remains untouched. No staging deployment or human visual acceptance was performed by Codex.
