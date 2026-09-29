@@ -68,7 +68,7 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Obtain a governed direct source-SHA proof for Railway production deployment `6ddf387b-3685-489d-8fcb-fad517ffe9d6`; do not claim unqualified production currentness until it equals `78795617a9206c62e70eee6d101323d77051f2f0`.
+Authorize one deterministic provenance-bound Railway redeploy of exact production commit `78795617a9206c62e70eee6d101323d77051f2f0` only if exact Railway source/build-input continuity is required; do not redeploy automatically.
 
 Last verified:
 2026-09-29
@@ -80,4 +80,4 @@ Last verified:
 - Exact promotion validation: root build PASS; worker full regression 1,026/1,026 PASS; semantic authority 13/13 PASS; Narrative V2 170/170 PASS; schemas 15/15 PASS; closure gate 90/90 PASS with P-B01–P-B17 coverage.
 - Production runtime: Vercel `/` returns 307 to `/login`; Railway `/health` returns 200 with `service=prysm-worker`, `version=0.2.0`.
 - Production secrets/environment values and production data were not changed by this promotion; no paid provider/model call or fresh production audit was run.
-- Production exact-currentness remains HOLD solely because Railway did not expose a direct Git SHA for the local-source deployment.
+- Production exact-currentness remains HOLD: Railway exposes image/runtime identity but no direct Git SHA, source ref, repository, or uploaded-build-input digest for deployment `6ddf387b-3685-489d-8fcb-fad517ffe9d6`; existing deployment source-tree continuity is therefore unprovable at the build-input link.
