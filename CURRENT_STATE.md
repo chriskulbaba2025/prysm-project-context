@@ -15,6 +15,8 @@ Verified checkpoint:
 - Retired Vantage/Karen Leslie/approved-report/report-design-v1 products remain retired and must fail closed.
 - The fresh-audit report-design default defect was repaired so current Executive uses designVersion 2.0.0.
 - Existing Burlington audit a493b3d2-5d1b-458f-903a-8bf0d4b71c6e preserves its evidence and reached narrative_ready, but its hosted historical state still shows render_failed with render-retired-report-design-requested; hosted recovery was not completed.
+- Isolated staging currentness was verified without a new deployment: Vercel deployment `dpl_9AQR3YhjyVboDUNyTw8Fw4QWwd3P` and Railway `prysm-worker` deployment `afb1e734-b6a1-47f8-9e83-463e9db17fe4` both report accepted application SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947` on branch `repair/prysm-bulk-closure-20260927`.
+- City Media audit `9c975182-6162-40a0-b211-9f917a4a7038` is not acceptance proof: current worker data shows `collecting`, no coherent readable evidence package, and no current Snapshot V1 or Executive V2 outputs; recovery reported conflicting existing canonical evidence bytes.
 - Codex browser/browser-automation acceptance is prohibited. Chris performs final visual acceptance manually in his own signed-in browser.
 - Generalized semantic process repair baseline remains frozen at application SHA `ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01`; accepted candidate is application SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
 - Governing freeze/tranche decision: `DECISION_PRYSM_GENERALIZED_SEMANTIC_PROCESS_REPAIR_FREEZE_2026-09-29.md`.
@@ -40,6 +42,8 @@ Completed:
 - Production remains untouched.
 
 In progress:
+
+- Current hosted isolated staging is exact-SHA current and healthy. The specified City Media audit cannot be safely regenerated from its stranded evidence without a separately authorized fresh isolated-staging audit or governed evidence reconciliation.
 - Canonical semantic authority tranche is locally accepted, committed, published, and exact-head verified. Staging deployment and human acceptance remain separate authorization boundaries.
 
 Blocked:
@@ -61,11 +65,13 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Chris manually retests the exact frozen staging candidate in his signed-in browser. Do not merge PR #6 or touch production.
+Explicitly authorize one fresh isolated-staging audit for City Media Collective (or a separately governed evidence-reconciliation action) before generating current Snapshot V1 and Executive V2 outputs. Do not merge PR #6 or touch production.
 
 Last verified:
 2026-09-29
 - Published application commit: `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
 - Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD.
 - Clean full worker regression: 1,791/1,791 PASS; affected semantic/scoring/render suite: 212/212 PASS; production-path subset: 15/15 PASS.
+- Hosted isolated staging currentness: PASS. Vercel deployment `dpl_9AQR3YhjyVboDUNyTw8Fw4QWwd3P`; Railway deployment `afb1e734-b6a1-47f8-9e83-463e9db17fe4`; both exact accepted SHA.
+- City Media audit `9c975182-6162-40a0-b211-9f917a4a7038`: not acceptance proof; no current report URLs; fresh isolated-staging audit remains authorization-gated.
 - Production remains untouched. No staging deployment or human visual acceptance was performed by Codex.
