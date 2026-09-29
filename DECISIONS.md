@@ -1385,3 +1385,20 @@ The one-page Snapshot is intended to maximize completion, demonstrate that PRYSM
 
 Implication:
 Future Snapshot work must preserve this frozen V1 structure unless Chris explicitly reopens it. New audits should default to Snapshot V1 with an explicit option to generate the Executive Report. Executive Report redesign work must not alter Snapshot V1. Any logo-rendering implementation must fail closed to a verified business-name fallback when logo verification is unavailable or contradictory.
+
+
+---
+
+## Decision: Freeze generalized semantic process repair before implementation
+
+Date: 2026-09-29
+Status: Active
+
+Decision:
+Freeze isolated-staging application SHA `ca3dabf0f59f8fe62e4c2a73766d6f12e9999e01` as the before-state for the next repair series. Treat repeated regression findings as generalized PRYSM decision-pipeline defects rather than named-site or report-specific defects. Execute the bounded GACM tranche sequence in `DECISION_PRYSM_GENERALIZED_SEMANTIC_PROCESS_REPAIR_FREEZE_2026-09-29.md` before Chris retests staging.
+
+Reason:
+Regression evidence across multiple materially different sites shows recurring failures in evidence taxonomy, cross-surface reconciliation, existing-content reconciliation, comparative own-site evidence coherence, provenance/action scope, score/label interpretation, priority semantics, business-meaning classification, and client-language QA. Repeated occurrence across unrelated fixtures is evidence of process-level defects, not fixture-specific bugs.
+
+Implication:
+No named-site branching or report-specific patching. G0 is read-only pipeline mapping and scope freeze. G1-G7 repair generalized owning boundaries with full regression/generalization/challenge gates. G8 is manual human acceptance in Chris's signed-in browser. Production remains untouched unless separately authorized.
