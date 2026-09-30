@@ -103,10 +103,10 @@ G2 durable tranche record (2026-09-30):
 - Production untouched; hosted staging not deployed; PR #6 not merged.
 
 G3 durable tranche record (2026-09-30):
-- Accepted G3 application SHA: `ac1591e2cf523daa3098607f79773573b197e5e8`.
-- G3 result: PASS for generalized competitor comparability.
+- Accepted G3 application SHA: `4c4307436d812d71ad1f8ad4c04a02cbeb668e2a`.
+- G3 result: PASS for generalized competitor comparability after adversarial identity/scope re-audit.
 - Proof: `C:\Users\kulba\Downloads\PRYSM-G3-COMPETITOR-COMPARABILITY-2026-09-30\`.
-- Tests: G3 fixtures 18/18, affected targeted suites 125/125, full worker regression 1,044/1,044, whole-app acceptance 90/90, root build PASS.
+- Tests: G3 fixtures 24/24, affected targeted suites 183/183, full worker regression 1,050/1,050, whole-app acceptance 90/90, root build PASS.
 - G1 authority preserved: PASS. G2 authority preserved: PASS.
 - Model-bearing validation remains REQUIRED AND PENDING; no paid provider/model calls were authorized or made.
 - Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
