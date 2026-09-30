@@ -73,8 +73,8 @@ Complete the separately governed model-bearing validation/release gate for the e
 Last verified:
 2026-09-30
 - Published application commit: `42b788e8083c60c0b0a07332b6b0387369943435` (G4 provenance/action-scope continuity and Encyclopedia integration; includes accepted G1/G2/G3).
-- Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`.
-- Clean full worker regression: 1,791/1,791 PASS; affected semantic/scoring/render suite: 212/212 PASS; production-path subset: 15/15 PASS.
+- Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `42b788e8083c60c0b0a07332b6b0387369943435`.
+- Clean current closure evidence: focused 296/296 PASS; full worker regression 1,050/1,050 PASS; persistence/lifecycle/immutability subset 114/114 PASS; whole-app 90/90 PASS; root build PASS.
 - Hosted isolated staging currentness: PASS. Vercel deployment `dpl_9AQR3YhjyVboDUNyTw8Fw4QWwd3P`; Railway deployment `afb1e734-b6a1-47f8-9e83-463e9db17fe4`; both exact accepted SHA.
 - City Media audit `9c975182-6162-40a0-b211-9f917a4a7038`: not acceptance proof; no current report URLs; fresh isolated-staging audit remains authorization-gated.
 - Exact promotion validation: root build PASS; worker full regression 1,026/1,026 PASS; semantic authority 13/13 PASS; Narrative V2 170/170 PASS; schemas 15/15 PASS; closure gate 90/90 PASS with P-B01–P-B17 coverage.
