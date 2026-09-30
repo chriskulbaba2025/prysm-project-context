@@ -9,13 +9,13 @@ Verified checkpoint:
 - Context repository: chriskulbaba2025/prysm-project-context.
 - Isolated staging application: chriskulbaba2025/prysm-staging-isolated.
 - Branch: repair/prysm-bulk-closure-20260927.
-- PR #6 is open; GitHub head verified at 236a5e78f166d84e4fb59ce8f1f76a027f0f7947.
+- PR #6 is open/draft and unmerged; GitHub head verified at `42b788e8083c60c0b0a07332b6b0387369943435`.
 - Production source promotion was explicitly authorized and completed from the accepted isolated-staging source tree; production runtime/configuration/data boundaries were otherwise left unchanged.
 - Snapshot V1 and Executive V2 are the active report products.
 - Retired Vantage/Karen Leslie/approved-report/report-design-v1 products remain retired and must fail closed.
 - The fresh-audit report-design default defect was repaired so current Executive uses designVersion 2.0.0.
 - Existing Burlington audit a493b3d2-5d1b-458f-903a-8bf0d4b71c6e preserves its evidence and reached narrative_ready, but its hosted historical state still shows render_failed with render-retired-report-design-requested; hosted recovery was not completed.
-- Isolated staging currentness was previously verified at accepted SHA `236a5e78f166d84e4fb59ce8f1f76a027f0f7947`.
+- Isolated staging application currentness is verified at accepted deterministic closure SHA `42b788e8083c60c0b0a07332b6b0387369943435`; staging remains undeployed.
 - Exact staging-to-production source promotion completed: production commit `78795617a9206c62e70eee6d101323d77051f2f0` has the same Git tree object as accepted staging (`f52e29c24a4dac0c5d0fad892086d10261f6f3aa`).
 - Production Vercel deployment `dpl_4AwpRfg8H9TrwGj32W7KGL7WJk6X` is READY and reports GitHub metadata SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
 - Production Railway provenance-bound deployment `ff176410-9318-4053-aa31-b23d08fca98a` on existing live service `prysm-worker-run4` is SUCCESS/RUNNING and directly reports repository `chriskulbaba2025/vantage-platform`, branch `main`, source SHA `78795617a9206c62e70eee6d101323d77051f2f0`, and image digest `sha256:6f81f9830eb827d0334e6ffe5b82f3ef65aca34e93d9231b434ede321ee89771`.
@@ -31,7 +31,7 @@ Current environment / branch / version:
 - Production app: chriskulbaba2025/vantage-platform
 - Branch: repair/prysm-bulk-closure-20260927
 - PR: #6
-- GitHub PR head: 4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b
+- GitHub PR head: 42b788e8083c60c0b0a07332b6b0387369943435
 - Existing Burlington audit: a493b3d2-5d1b-458f-903a-8bf0d4b71c6e
 - Report products: Snapshot V1 / Executive V2
 - Required Executive designVersion: 2.0.0
@@ -41,13 +41,13 @@ Completed:
 - Generic fresh-audit report-design default was repaired away from retired designVersion 1.0.0.
 - Retired and unknown report identifiers remain fail-closed.
 - Local recovery path for the Burlington audit was proven without provider recollection, but hosted recovery was not executed.
-- PR #6 head is verified current at 4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b; PR #6 remains unmerged.
+- PR #6 head is verified current at 42b788e8083c60c0b0a07332b6b0387369943435; PR #6 remains unmerged.
 - Production remains free of credential/configuration-value, infrastructure, and data mutations; only application source was promoted.
 
 In progress:
 
 - Production source promotion and Railway source-SHA continuity are complete; live frontend/worker health checks pass. Vercel remains unchanged and READY on production SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
-- G1 canonical business truth remains accepted at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. G2 existing-content reconciliation is accepted at application SHA `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`; deterministic G2 fixtures 16/16, targeted suites 107/107, full worker regression 1,026/1,026, and whole-app gate 90/90 passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
+- G1 canonical business truth remains accepted at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. G2 existing-content reconciliation remains accepted at `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`. G3 competitor comparability remains accepted at `4c4307436d812d71ad1f8ad4c04a02cbeb668e2a`. G4 provenance/action-scope continuity and deterministic Encyclopedia integration are accepted at `42b788e8083c60c0b0a07332b6b0387369943435`; focused closure 296/296, full worker 1,050/1,050, persistence/lifecycle/immutability 114/114, whole-app 90/90, and root build passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
 
 Blocked:
 - The existing Burlington hosted artifact is still historical render_failed and is not acceptance proof.
@@ -68,11 +68,11 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Begin the separately governed G4 business meaning/materiality/action-scope tranche. Do not merge PR #6, deploy staging, or make production changes.
+Complete the separately governed model-bearing validation/release gate for the exact accepted deterministic candidate; do not merge PR #6, deploy staging, or make production changes.
 
 Last verified:
 2026-09-30
-- Published application commit: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b` (G2 existing-content reconciliation; includes accepted G1).
+- Published application commit: `42b788e8083c60c0b0a07332b6b0387369943435` (G4 provenance/action-scope continuity and Encyclopedia integration; includes accepted G1/G2/G3).
 - Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`.
 - Clean full worker regression: 1,791/1,791 PASS; affected semantic/scoring/render suite: 212/212 PASS; production-path subset: 15/15 PASS.
 - Hosted isolated staging currentness: PASS. Vercel deployment `dpl_9AQR3YhjyVboDUNyTw8Fw4QWwd3P`; Railway deployment `afb1e734-b6a1-47f8-9e83-463e9db17fe4`; both exact accepted SHA.
@@ -112,3 +112,12 @@ G3 durable tranche record (2026-09-30):
 - Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
 - Production untouched; hosted staging not deployed; PR #6 not merged by this work.
 - G4 business meaning/materiality/action scope is next. G5-G8 remain later governed work.
+
+G4 and Encyclopedia durable closure record (2026-09-30):
+- Accepted deterministic application SHA: `42b788e8083c60c0b0a07332b6b0387369943435`.
+- G4 result: PASS for generalized provenance/action-scope continuity and commercial placeholder/materiality classification.
+- Encyclopedia result: PASS for frozen registry/projection/relationships/prioritization integration with current report hydration and renderer consumers; no second semantic source was created.
+- Tests: focused G4/Encyclopedia/report/G1-G3 suite 296/296; full worker regression 1,050/1,050; persistence/reopen/tenant/lifecycle/immutability subset 114/114; whole-app acceptance 90/90; root build PASS; zero paid provider/model calls.
+- Model-bearing validation remains REQUIRED AND PENDING; deterministic closure does not claim stochastic Writer/Judge validation.
+- Acquisition/checkpoint and production lifecycle defects remain separately deferred where external authorization or non-deterministic release boundaries apply.
+- Production untouched; staging not deployed; PR #6 remains open/draft/unmerged.

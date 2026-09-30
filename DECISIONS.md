@@ -1402,3 +1402,19 @@ Regression evidence across multiple materially different sites shows recurring f
 
 Implication:
 No named-site branching or report-specific patching. G0 is read-only pipeline mapping and scope freeze. G1-G7 repair generalized owning boundaries with full regression/generalization/challenge gates. G8 is manual human acceptance in Chris's signed-in browser. Production remains untouched unless separately authorized.
+
+---
+
+## Decision: Accept deterministic G4 and Encyclopedia integration checkpoint
+
+Date: 2026-09-30
+Status: Active
+
+Decision:
+Accept application SHA `42b788e8083c60c0b0a07332b6b0387369943435` as the deterministic G4 provenance/action-scope and existing Encyclopedia integration checkpoint for the isolated repair branch. Preserve G1 `b29de0e3dfc82800edf466da0541ef76c3de6374`, G2 `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`, and G3 `4c4307436d812d71ad1f8ad4c04a02cbeb668e2a` as accepted upstream authorities.
+
+Reason:
+The checkpoint supplies one deterministic action-scope continuity boundary, preserves evidence/provenance, keeps placeholder/demo/template commercial meaning bounded, and integrates the already-frozen Encyclopedia registry/projection/relationship/prioritization architecture without making it a narrative source of truth. Focused closure, full worker, persistence/lifecycle/immutability, whole-app, and build evidence passed with zero paid model/provider calls.
+
+Implication:
+The exact next action is the separately governed model-bearing validation/release gate. Do not merge PR #6, deploy staging, or mutate production. G5 and later semantic gates must not begin until separately authorized by the current governed sequence.
