@@ -68,7 +68,7 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Begin the separately governed G3 competitor comparability tranche. Do not merge PR #6, deploy staging, or make production changes.
+Begin the separately governed G4 business meaning/materiality/action-scope tranche. Do not merge PR #6, deploy staging, or make production changes.
 
 Last verified:
 2026-09-30
@@ -101,3 +101,14 @@ G2 durable tranche record (2026-09-30):
 - G3 competitor comparability is next. G4-G8 remain later governed work.
 - Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
 - Production untouched; hosted staging not deployed; PR #6 not merged.
+
+G3 durable tranche record (2026-09-30):
+- Accepted G3 application SHA: `ac1591e2cf523daa3098607f79773573b197e5e8`.
+- G3 result: PASS for generalized competitor comparability.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-G3-COMPETITOR-COMPARABILITY-2026-09-30\`.
+- Tests: G3 fixtures 18/18, affected targeted suites 125/125, full worker regression 1,044/1,044, whole-app acceptance 90/90, root build PASS.
+- G1 authority preserved: PASS. G2 authority preserved: PASS.
+- Model-bearing validation remains REQUIRED AND PENDING; no paid provider/model calls were authorized or made.
+- Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
+- Production untouched; hosted staging not deployed; PR #6 not merged by this work.
+- G4 business meaning/materiality/action scope is next. G5-G8 remain later governed work.
