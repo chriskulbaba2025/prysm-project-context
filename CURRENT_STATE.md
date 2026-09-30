@@ -31,7 +31,7 @@ Current environment / branch / version:
 - Production app: chriskulbaba2025/vantage-platform
 - Branch: repair/prysm-bulk-closure-20260927
 - PR: #6
-- GitHub PR head: b29de0e3dfc82800edf466da0541ef76c3de6374
+- GitHub PR head: 4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b
 - Existing Burlington audit: a493b3d2-5d1b-458f-903a-8bf0d4b71c6e
 - Report products: Snapshot V1 / Executive V2
 - Required Executive designVersion: 2.0.0
@@ -41,13 +41,13 @@ Completed:
 - Generic fresh-audit report-design default was repaired away from retired designVersion 1.0.0.
 - Retired and unknown report identifiers remain fail-closed.
 - Local recovery path for the Burlington audit was proven without provider recollection, but hosted recovery was not executed.
-- PR #6 head is verified current at b29de0e3dfc82800edf466da0541ef76c3de6374; PR #6 remains unmerged.
+- PR #6 head is verified current at 4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b; PR #6 remains unmerged.
 - Production remains free of credential/configuration-value, infrastructure, and data mutations; only application source was promoted.
 
 In progress:
 
 - Production source promotion and Railway source-SHA continuity are complete; live frontend/worker health checks pass. Vercel remains unchanged and READY on production SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
-- G1 canonical business truth is accepted, committed, published, and exact-head verified at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. Deterministic authority tests, generalized fixtures, full worker regression (1,026/1,026), whole-app gate (90/90), and root build passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
+- G1 canonical business truth remains accepted at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. G2 existing-content reconciliation is accepted at application SHA `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`; deterministic G2 fixtures 16/16, targeted suites 107/107, full worker regression 1,026/1,026, and whole-app gate 90/90 passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
 
 Blocked:
 - The existing Burlington hosted artifact is still historical render_failed and is not acceptance proof.
@@ -68,12 +68,12 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Begin the separately governed G2 existing-content reconciliation tranche. Do not merge PR #6, deploy staging, or make production changes.
+Begin the separately governed G3 competitor comparability tranche. Do not merge PR #6, deploy staging, or make production changes.
 
 Last verified:
 2026-09-30
-- Published application commit: `b29de0e3dfc82800edf466da0541ef76c3de6374` (G1 canonical business truth).
-- Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `b29de0e3dfc82800edf466da0541ef76c3de6374`.
+- Published application commit: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b` (G2 existing-content reconciliation; includes accepted G1).
+- Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`.
 - Clean full worker regression: 1,791/1,791 PASS; affected semantic/scoring/render suite: 212/212 PASS; production-path subset: 15/15 PASS.
 - Hosted isolated staging currentness: PASS. Vercel deployment `dpl_9AQR3YhjyVboDUNyTw8Fw4QWwd3P`; Railway deployment `afb1e734-b6a1-47f8-9e83-463e9db17fe4`; both exact accepted SHA.
 - City Media audit `9c975182-6162-40a0-b211-9f917a4a7038`: not acceptance proof; no current report URLs; fresh isolated-staging audit remains authorization-gated.
@@ -89,5 +89,15 @@ G1 durable tranche record (2026-09-30):
 - Tests: generalized authority 13/13, affected semantic suites 68/68, worker regression 1,026/1,026, whole-app acceptance 90/90, root build PASS.
 - Model-bearing validation: REQUIRED AND PENDING; no paid provider/model calls were authorized or made.
 - G2 remains next; G3-G8 remain later governed work.
+- Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
+- Production untouched; hosted staging not deployed; PR #6 not merged.
+
+G2 durable tranche record (2026-09-30):
+- Accepted G2 application SHA: `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`.
+- G2 result: PASS for generalized existing-content reconciliation.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-G2-EXISTING-CONTENT-RECONCILIATION-2026-09-30\`.
+- Tests: G2 fixtures 16/16, targeted suites 107/107, worker regression 1,026/1,026, whole-app acceptance 90/90.
+- G1 authority preserved: PASS. Model-bearing validation remains REQUIRED AND PENDING; no paid provider/model calls were made.
+- G3 competitor comparability is next. G4-G8 remain later governed work.
 - Staging acquisition/checkpoint persistence defect and production lifecycle persistence defect remain separately deferred.
 - Production untouched; hosted staging not deployed; PR #6 not merged.
