@@ -50,7 +50,7 @@ Completed:
 - Production remains free of credential/configuration-value, infrastructure, and data mutations; only application source was promoted.
 
 In progress:
-- AIC-0 is closed PASS. AIC-1 is the only authorized next tranche: project existing Writer `rootCause`, `funnelOpportunities`, `seoSerp`, and `aiSearch` into appropriate v13 client-visible surfaces, with targeted projection/render proof and no new semantic primitives.
+- AIC-0 is closed PASS. AIC-1 is closed PASS at local application candidate `c2d9df50c78b4c254cce9e6624198eae33b5fae6`: existing Writer `rootCause`, `funnelOpportunities`, `seoSerp`, and `aiSearch` are projected into existing v13 client-visible surfaces with no new advisory semantic primitives. Targeted verification: 42/42 PASS. Application push was not performed.
 
 - Production source promotion and Railway source-SHA continuity are complete; live frontend/worker health checks pass. Vercel remains unchanged and READY on production SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
 - G1 canonical business truth remains accepted at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. G2 existing-content reconciliation remains accepted at `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`. G3 competitor comparability remains accepted at `4c4307436d812d71ad1f8ad4c04a02cbeb668e2a`. G4 provenance/action-scope continuity and deterministic Encyclopedia integration are accepted at `42b788e8083c60c0b0a07332b6b0387369943435`; focused closure 296/296, full worker 1,050/1,050, persistence/lifecycle/immutability 114/114, whole-app 90/90, and root build passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
@@ -74,10 +74,15 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Execute AIC-1 only: repair projection of the four already-generated Writer capabilities into appropriate v13 client-visible surfaces, run targeted projection/render verification, preserve unrelated surfaces and the pre-existing dirty `server.js`, then stop for tranche acceptance. Do not add new advisory semantic primitives, deploy, run paid models/providers, or mutate production.
+Stop for AIC-1 tranche acceptance. Do not begin AIC-2, push the application candidate, deploy, run provider/model calls, rerun City Media, or mutate production unless separately authorized.
 
 Last verified:
 2026-10-02
+- AIC-1 local CHANGE_ONLY candidate: `c2d9df50c78b4c254cce9e6624198eae33b5fae6`.
+- AIC-1 targeted verification: 42/42 PASS; syntax and diff checks PASS.
+- AIC-1 proof: `C:\Users\kulba\Downloads\PRYSM-AIC-1-EXISTING-INTELLIGENCE-PROJECTION-2026-10-02\PRYSM-AIC-1-PROOF.txt`.
+- Application branch was not pushed; remote repair branch remains at the previously verified SHA until a later authorized push.
+- Pre-existing local `services/worker/src/server.js` modification remains untouched and uncommitted.
 - AIC-0 PASS at application SHA `4767dc9ec0ddaf2317abca2b172f5a6c6e86bebc`.
 - Human/product acceptance remains fail-closed: tests cannot substitute for the final City Media client-visible comparison against the frozen benchmarks.
 2026-09-30
