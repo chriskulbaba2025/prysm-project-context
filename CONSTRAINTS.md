@@ -272,3 +272,18 @@ For the active PRYSM staging reset:
 - No reconstruction, refactoring, cleanup, provider rewiring, renderer repair, architecture change, variable rename, package change, feature change, timeout change, auth change, or report-behavior change is authorized.
 - Only isolated landing-destination values may differ after clone parity: PostgreSQL destination, S3/artifact destination, staging tenant/namespace where required, staging worker/domain, Vercel project/domain, and callback/webhook destinations required by staging.
 - Fail closed on any unexplained file-tree, runtime, environment-contract, or deployment-identity mismatch.
+
+
+---
+
+## Narrative v2 publication + UX Restoration checkpoint boundary — 2026-10-03
+
+- Exact accepted isolated-staging checkpoint: `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70`.
+- Product-bearing commit inside that checkpoint: `1d70ff95a6173b2fe7f9740d890f5c84ad533308`.
+- Frozen v13 presentation SHA-256: `A7A8F6481318F05A3867F2049BD22FD736C20D0570992B2E62B71E984E830728`.
+- The pre-existing local `services/worker/src/server.js` modification is explicitly excluded from the checkpoint and must not be absorbed into an unrelated release commit.
+- Do not reopen publication or UX product logic during checkpoint integration, currentness verification, or deployment identity work.
+- Any isolated-staging deployment/manual-acceptance run must use the exact accepted checkpoint or a separately authorized superseding checkpoint.
+- Hosted release identity/currentness must be proven before human acceptance.
+- Staging deployment, alias movement, Railway deployment, human acceptance, and production mutation remain separate authorization boundaries.
+- Production remains read-only.

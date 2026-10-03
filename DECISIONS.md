@@ -1418,3 +1418,20 @@ The checkpoint supplies one deterministic action-scope continuity boundary, pres
 
 Implication:
 The exact next action is the separately governed model-bearing validation/release gate. Do not merge PR #6, deploy staging, or mutate production. G5 and later semantic gates must not begin until separately authorized by the current governed sequence.
+
+
+---
+
+## Decision: Accept Narrative v2 publication + UX Restoration checkpoint
+
+Date: 2026-10-03
+Status: Active
+
+Decision:
+Accept isolated-staging application SHA `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` as the governed checkpoint for the completed Narrative v2 client-publication integration and UX Restoration scope. The product-bearing commit is `1d70ff95a6173b2fe7f9740d890f5c84ad533308`; the checkpoint head adds current-state governance only. Release-currentness/identity was verified against the exact pushed checkpoint from a detached clean worktree.
+
+Reason:
+The scoped defect register UX-001 through UX-007 is closed. Exact-head report/publication/UX regression passed 83/83, full worker regression passed 1,131/1,131, Narrative v2 regression passed 233/233, and exact-head browser acceptance passed with zero browser errors for both whole-scope UX and PARTIAL/VERIFY publication behavior. The frozen v13 presentation hash is `A7A8F6481318F05A3867F2049BD22FD736C20D0570992B2E62B71E984E830728`.
+
+Implication:
+Do not reopen the accepted publication/UX logic during release integration. The pre-existing local `services/worker/src/server.js` modification remains outside this checkpoint. Any staging deployment must use this exact checkpoint unless a new governed tranche explicitly supersedes it, and hosted release identity must be proven before Chris performs manual acceptance. Production remains read-only.
