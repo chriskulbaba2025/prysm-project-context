@@ -287,3 +287,19 @@ For the active PRYSM staging reset:
 - Hosted release identity/currentness must be proven before human acceptance.
 - Staging deployment, alias movement, Railway deployment, human acceptance, and production mutation remain separate authorization boundaries.
 - Production remains read-only.
+
+
+---
+
+## Frozen Trust & Credibility presentation authority — 2026-10-03
+
+- Frozen artifact: `prysm-trust-page-governed-mockup-v2.html`.
+- Exact SHA-256: `20E0D7E741DD918012298D0F512B10AB9D5D5577F5443890B2C22214410ADF19`.
+- Exact size: 27,452 bytes; 461 lines.
+- The approved visual format and interaction design are immutable until Chris explicitly reopens them.
+- Implementation must begin from the exact frozen artifact; do not reconstruct it from screenshots, memory, prose, or a later approximation.
+- Dynamic runtime binding is permitted only where needed to replace mockup literals with governed PRYSM values.
+- Existing deterministic scoring and semantic/publication authority remain authoritative over the page's data.
+- The speculative score simulator is explicitly excluded and must not be reintroduced.
+- UNKNOWN/PARTIAL/UNRESOLVED/NOT_ESTABLISHED distinctions must remain intact; do not convert lack of evidence into a negative fact.
+- No Trust page implementation is authorized by this freeze alone. Import/implementation is a separate governed tranche after remaining page mockups are reviewed or Chris explicitly opens implementation.

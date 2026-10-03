@@ -1452,3 +1452,32 @@ Release-currentness and identity had already passed on the exact checkpoint. Ver
 
 Implication:
 Hosted release identity is accepted for isolated staging. Chris's manual visual acceptance is the next boundary. The pre-deployment authoritative audit remains useful regression evidence but is not, by itself, proof that the newly hosted renderer/presentation executed after deployment. Do not start a fresh paid provider/model audit without a separately authorized execution boundary. Production remains untouched.
+
+
+---
+
+## Decision: Freeze Trust & Credibility governed mockup v2 exactly
+
+Date: 2026-10-03
+Status: Active
+
+Decision:
+Freeze the approved Trust & Credibility page mockup artifact `prysm-trust-page-governed-mockup-v2.html` as the exact presentation authority for the future Trust page implementation.
+
+Frozen artifact identity:
+- filename: `prysm-trust-page-governed-mockup-v2.html`
+- SHA-256: `20E0D7E741DD918012298D0F512B10AB9D5D5577F5443890B2C22214410ADF19`
+- byte size: 27,452
+- line count: 461
+
+The visual format, hierarchy, spacing, card system, summary treatment, proof-status presentation, expandable detail pattern, buyer-journey guidance section, bottom-line panels, navigation treatment, governance-toggle behavior, responsive behavior, and interaction pattern are frozen exactly as approved.
+
+The mockup is presentation authority only. Existing PRYSM governed evidence, score authority, publication semantics, UNKNOWN/PARTIAL distinctions, and client-language contracts remain semantic authority. During implementation, dynamic data may replace mockup literals only where required to bind real governed runtime values; the approved format and interaction design must not be redesigned, simplified, expanded, reordered, or substituted without explicit reopening.
+
+The removed speculative score simulator remains excluded. No invented score deltas, unsupported proof claims, or absence laundering may be introduced during implementation.
+
+Reason:
+Human review accepted this exact design as the desired Trust & Credibility experience. The page materially improves scanability and client usefulness while preserving the governed evidence model.
+
+Implication:
+Do not implement from memory or reconstruct the design. Use the exact frozen artifact identity above as the base when the Trust implementation tranche is explicitly opened. Until then, the application remains unchanged.
