@@ -131,3 +131,35 @@ Release readiness remains HOLD. Real artifact replay, authorized model-bearing r
 
 Implication:
 Stop at AIC-4. AIC-5 is the real City Media old/current/candidate benchmark comparison plus manual human acceptance; it remains a separate tranche.
+
+
+## AIC-5 machine/model checkpoint
+
+Date: 2026-10-02
+Status: PASS — machine/model acceptance; HUMAN BROWSER ACCEPTANCE PENDING
+
+Exact local candidate:
+- `70722091842ed278e57e1860aaaab8be1e9bc239`
+- application push/deployment/production mutation: not performed
+- pre-existing local `services/worker/src/server.js` modification remains untouched and uncommitted
+
+City Media acceptance:
+- frozen current audit: `5fb7f234-091d-438a-8596-59ad369b56b5`
+- no provider recollection; exact frozen canonical bytes replayed
+- Terra Writer: PASS, one call
+- Sol Judge: PASS, one call
+- Judge: 98/100; hard gate PASS; evidence fidelity 20/20; no defects; no revision required
+- candidate status: `RELEASE_CANDIDATE`
+- candidate HTML SHA-256: `09b8f7ee119f8a29bb20721e2193bebf6a3384e8d8123cbbb6074f7fd29ee669`
+
+AIC-5 escaped defects repaired:
+1. exact NDP projection validation and direct verification-method lineage;
+2. targeted revision prompt compaction under the 80% token safety ceiling;
+3. deterministic runtime ownership of `ndpProjection` and `ndpFidelity`, removing model authority over the NDP envelope.
+
+Exact-head deterministic proof after Repair 2: 300/300 PASS.
+
+Benchmark result:
+Machine/model comparison against the frozen AIC contract is PASS. The candidate materially changes the client advisory layer versus old/pre-AIC generic state messaging: strategic thesis, buyer self-selection, CTA commitment, offer fit, trust proof taxonomy, problem-led search intent, trade-offs, labelled examples, act-now/can-wait/do-not-overreact sequencing, and closure conditions are all present while uncertainty and no-rebuild restraint remain governed.
+
+Human acceptance remains authoritative. Do not mark AIC-5 fully closed until Chris reviews the exact candidate in a real browser and explicitly accepts it.
