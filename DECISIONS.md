@@ -1435,3 +1435,20 @@ The scoped defect register UX-001 through UX-007 is closed. Exact-head report/pu
 
 Implication:
 Do not reopen the accepted publication/UX logic during release integration. The pre-existing local `services/worker/src/server.js` modification remains outside this checkpoint. Any staging deployment must use this exact checkpoint unless a new governed tranche explicitly supersedes it, and hosted release identity must be proven before Chris performs manual acceptance. Production remains read-only.
+
+
+---
+
+## Decision: Activate exact accepted checkpoint on isolated staging
+
+Date: 2026-10-03
+Status: Active
+
+Decision:
+Activate application checkpoint `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` on the existing isolated-staging targets. Vercel deployment `dpl_BMX3tuQTUNiwb6KuYYTReAuomq6e` is READY and the canonical staging alias `https://prysm-staging-isolated.vercel.app` points directly to that preview deployment. Railway deployment `eadf562c-b08c-4458-962b-484310f16276` is SUCCESS at the exact full application SHA.
+
+Reason:
+Release-currentness and identity had already passed on the exact checkpoint. Vercel build logs identify branch `repair/prysm-bulk-closure-20260927` at commit `99fc3eb`; Railway reports the full exact source SHA and image digest. Frontend login and worker health both return HTTP 200.
+
+Implication:
+Hosted release identity is accepted for isolated staging. Chris's manual visual acceptance is the next boundary. The pre-deployment authoritative audit remains useful regression evidence but is not, by itself, proof that the newly hosted renderer/presentation executed after deployment. Do not start a fresh paid provider/model audit without a separately authorized execution boundary. Production remains untouched.

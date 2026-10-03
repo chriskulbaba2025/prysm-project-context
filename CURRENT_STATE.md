@@ -3,7 +3,7 @@
 Project: PRYSM
 
 Current objective:
-Preserve the accepted Narrative v2 publication + UX Restoration checkpoint and move only through governed release boundaries. Release-currentness/identity is now proven; staging deployment and Chris's manual acceptance remain separate authorization boundaries.
+Preserve the exact hosted Narrative v2 publication + UX Restoration staging release and move only through governed acceptance boundaries. Release-currentness/identity and isolated-staging deployment identity are proven; Chris's manual visual acceptance is now the next boundary.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
@@ -17,6 +17,9 @@ Verified checkpoint:
 - Production was untouched during this publication/UX restoration and checkpoint-integration tranche.
 - Proof directory: `C:\Users\kulba\Downloads\PRYSM-UX-RESTORATION-AUDIT-2026-10-03\`.
 - Final release proof: `RELEASE-CURRENTNESS-AND-IDENTITY-PROOF.md`.
+- Exact Vercel isolated-staging deployment: `dpl_BMX3tuQTUNiwb6KuYYTReAuomq6e`, READY, preview source commit `99fc3eb`, canonical alias `https://prysm-staging-isolated.vercel.app`.
+- Exact Railway isolated-staging worker deployment: `eadf562c-b08c-4458-962b-484310f16276`, SUCCESS, source SHA `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70`, image digest `sha256:f5674e7d26c194f5e112042d21511e71d6dca9a83ca9beba85bf7688cc00b1dc`.
+- Hosted deployment proof: `STAGING-DEPLOYMENT-IDENTITY-PROOF.md`.
 
 Completed:
 - Tranches 4C-4M remain accepted across the NDP spine and migrated client surfaces.
@@ -41,6 +44,11 @@ Completed:
 - Mobile 390px and desktop 1440px audited problem paths have no document overflow.
 - Governance OFF/ON, problem navigation, Action Items, empty-related zero-state, and client impact display all passed on exact pushed HEAD.
 - No live paid provider/model call was made for release-currentness verification.
+- Exact accepted checkpoint is live on the existing isolated-staging Vercel frontend and Railway worker.
+- Canonical isolated-staging alias now resolves to the exact READY Vercel preview deployment for commit `99fc3eb`.
+- Railway worker reports the exact full source SHA `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` and passed HTTP `/health` with status 200.
+- Vercel `/login` passed HTTP 200; protected audit routes correctly redirect unauthenticated requests to login.
+- Production remained untouched during staging deployment.
 
 Known remaining work:
 - Do not freeze Narrative v2 as the production language standard yet.
@@ -50,15 +58,17 @@ Known remaining work:
 - Approved Client Narrative Package should be persisted and hashed before production freeze.
 - Golden Narrative Corpus is not yet built; start with highest-risk real regression cases, then grow toward 30-50 fixtures.
 - Natural-language variability still needs empirical validation.
-- The exact checkpoint `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` has not yet been deployed to isolated staging for fresh hosted acceptance.
 - Chris has not yet performed manual visual acceptance of this exact hosted checkpoint.
+- The authoritative audit `995be6ff-0317-4fef-85df-9dad1ad97b64` predates this hosted release and must not by itself be treated as proof that the new renderer/presentation executed after deployment.
+- Fresh exact-release report acceptance therefore requires either a fresh hosted audit initiated through the application or another explicitly governed re-render path. No paid provider/model audit was started during deployment.
 
 In progress:
-- None. Checkpoint integration and release-currentness/identity verification are closed PASS.
+- None. Checkpoint integration, release-currentness/identity verification, and isolated-staging deployment identity are closed PASS.
 
 Blocked:
 - None externally.
-- Staging deployment was not authorized as part of the checkpoint/currentness tranche and therefore was not performed.
+- Human visual acceptance is pending Chris's review of an exact-release hosted report.
+- A fresh hosted audit may incur provider/model cost and remains a separate execution boundary; no such audit was started during deployment.
 - Production freeze remains on HOLD until remaining narrative-standard amendments, durable publication/versioning work, golden-fixture evidence, natural-language variability evidence, and fresh exact-release acceptance are complete.
 
 Important constraints:
@@ -74,7 +84,7 @@ Important constraints:
 - Staging deployment, canonical alias movement, Railway deployment, manual acceptance, and production mutation are separate boundaries.
 
 Exact next action:
-If Chris authorizes staging deployment, deploy exact checkpoint `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` to the existing isolated-staging targets only, prove hosted release identity/currentness against that exact SHA, and then hand off the exact hosted report to Chris for manual acceptance. Do not mutate production.
+Chris performs manual visual acceptance on the exact hosted release. Use `https://prysm-staging-isolated.vercel.app`. If exact-release report acceptance requires a fresh audit, start it only through a separately authorized paid/provider execution boundary. Do not mutate production.
 
 Last verified:
 2026-10-03
