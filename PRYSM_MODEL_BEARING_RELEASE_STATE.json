@@ -1,12 +1,12 @@
 {
   "gateId": "PRYSM-MODEL-BEARING-RELEASE-GATE-01",
   "updatedAt": "2026-10-02",
-  "objective": "PRYSM Advisory Intelligence Closure — AIC-3 Trust & Credibility depth",
+  "objective": "PRYSM Advisory Intelligence Closure — AIC-4 cross-report advisory specificity and business action-plan coherence",
   "application": {
     "repository": "chriskulbaba2025/prysm-staging-isolated",
     "branch": "repair/prysm-bulk-closure-20260927",
-    "baseSha": "6380baf7286a72418ea4a77d06146034a897e345",
-    "candidateLocalSha": "176c9f2c6eff0b69b02958905fc842f0da96ddcb",
+    "baseSha": "176c9f2c6eff0b69b02958905fc842f0da96ddcb",
+    "candidateLocalSha": "14beb3da36d0d300e959c2035598e2cb370bd25b",
     "pushed": false
   },
   "trancheResult": "PASS_CHANGE_ONLY",
@@ -14,7 +14,7 @@
   "planes": {
     "plane1_deterministic_repository_integrity": {
       "status": "PARTIAL_PASS",
-      "evidence": "Focused AIC-3/Writer/Judge/v13 121/121 PASS; broader Narrative-v2 + render exact-head 266/266 PASS; governed Trust exact-head 243/243 PASS; diff check PASS.",
+      "evidence": "Focused AIC-4 Writer/Judge/v13 114/114 PASS; broader exact-head Narrative-v2 + render + G2 content reconciliation + semantic ledger 291/291 PASS; diff check PASS.",
       "pending": [
         "whole-app branch-complete proof",
         "complete applicable regression/build",
@@ -49,6 +49,6 @@
     "performed": false,
     "productionMutated": false
   },
-  "proofPath": "C:\\Users\\kulba\\Downloads\\PRYSM-AIC-3-TRUST-CREDIBILITY-2026-10-02\\PRYSM-AIC-3-PROOF.txt",
-  "nextAction": "Stop for AIC-3 tranche acceptance. Do not start AIC-4 or cross any push/deploy/model/provider/production boundary without separate authorization."
+  "proofPath": "C:\\Users\\kulba\\Downloads\\PRYSM-AIC-4-ADVISORY-SPECIFICITY-2026-10-02\\PRYSM-AIC-4-PROOF.txt",
+  "nextAction": "Stop for AIC-4 tranche acceptance. AIC-5 remains the real City Media old/current/candidate benchmark comparison and manual human acceptance tranche; do not cross push/deploy/model/provider/production boundaries without separate authorization."
 }
