@@ -1,34 +1,47 @@
 {
   "gateId": "PRYSM-MODEL-BEARING-RELEASE-GATE-01",
   "updatedAt": "2026-10-02",
-  "objective": "PRYSM Advisory Intelligence Closure — AIC-4 cross-report advisory specificity and business action-plan coherence",
+  "objective": "PRYSM Advisory Intelligence Closure — AIC-5 City Media old/current/candidate acceptance",
   "application": {
     "repository": "chriskulbaba2025/prysm-staging-isolated",
     "branch": "repair/prysm-bulk-closure-20260927",
-    "baseSha": "176c9f2c6eff0b69b02958905fc842f0da96ddcb",
-    "candidateLocalSha": "14beb3da36d0d300e959c2035598e2cb370bd25b",
+    "baseSha": "70722091842ed278e57e1860aaaab8be1e9bc239",
+    "candidateLocalSha": "70722091842ed278e57e1860aaaab8be1e9bc239",
     "pushed": false
   },
-  "trancheResult": "PASS_CHANGE_ONLY",
+  "trancheResult": "PASS_MACHINE_MODEL_HUMAN_PENDING",
   "releaseGateStatus": "HOLD",
   "planes": {
     "plane1_deterministic_repository_integrity": {
       "status": "PARTIAL_PASS",
-      "evidence": "Focused AIC-4 Writer/Judge/v13 114/114 PASS; broader exact-head Narrative-v2 + render + G2 content reconciliation + semantic ledger 291/291 PASS; diff check PASS.",
+      "evidence": "AIC-5 Repair 2 exact-head affected deterministic suite 300/300 PASS at 70722091842ed278e57e1860aaaab8be1e9bc239; protected server.js remains uncommitted; application candidate remains local.",
       "pending": [
         "whole-app branch-complete proof",
-        "complete applicable regression/build",
+        "complete applicable full regression/build",
         "local/remote synchronization"
       ]
     },
     "plane2_exact_production_artifact_replay": {
-      "status": "PENDING"
+      "status": "PARTIAL_PASS",
+      "evidence": "City Media audit 5fb7f234 exact frozen canonical evidence was exported read-only and replayed locally with source artifact hashes frozen; no provider recollection. This is an isolated acceptance replay, not deployed production artifact replay.",
+      "pending": [
+        "release-candidate deployed production/staging artifact identity replay"
+      ]
     },
     "plane3_real_model_bearing_robustness": {
-      "status": "PENDING_AUTHORIZATION"
+      "status": "PARTIAL_PASS",
+      "evidence": "Exact-head City Media sample: Terra Writer PASS + Sol Judge PASS in one pass each; Judge decision PASS 98/100, hard gate PASS, evidence fidelity 20/20. One real sample does not close the full governed robustness corpus.",
+      "pending": [
+        "remaining governed model-bearing validation corpus/planes as defined by permanent release gate"
+      ]
     },
     "plane4_five_area_semantic_quality": {
-      "status": "PENDING_AUTHORIZATION"
+      "status": "PARTIAL_PASS",
+      "evidence": "City Media exact-head Judge score 98/100 with all rubric dimensions PASS; Executive Clarity 9/10 and Non-Repetition 3/4. Human browser acceptance remains pending and this single sample does not close the entire release-quality corpus.",
+      "pending": [
+        "human City Media acceptance",
+        "full permanent-gate semantic quality evidence if required"
+      ]
     },
     "plane5_independent_semantic_challenge": {
       "status": "PENDING"
@@ -41,14 +54,14 @@
     }
   },
   "externalCalls": {
-    "liveModelCalls": 0,
-    "paidProviderCalls": 0,
+    "liveModelCalls": 5,
+    "paidProviderCalls": 5,
     "freshAudits": 0
   },
   "deployment": {
     "performed": false,
     "productionMutated": false
   },
-  "proofPath": "C:\\Users\\kulba\\Downloads\\PRYSM-AIC-4-ADVISORY-SPECIFICITY-2026-10-02\\PRYSM-AIC-4-PROOF.txt",
-  "nextAction": "Stop for AIC-4 tranche acceptance. AIC-5 remains the real City Media old/current/candidate benchmark comparison and manual human acceptance tranche; do not cross push/deploy/model/provider/production boundaries without separate authorization."
+  "proofPath": "C:\\Users\\kulba\\Downloads\\PRYSM-AIC-5-CITY-MEDIA-ACCEPTANCE-2026-10-02\\PRYSM-AIC-5-CITY-MEDIA-ACCEPTANCE-PROOF.txt",
+  "nextAction": "Chris performs real-browser review of the exact local City Media candidate 70722091842ed278e57e1860aaaab8be1e9bc239. Do not push, deploy, promote, or claim AIC-5 human acceptance until Chris explicitly accepts it."
 }
