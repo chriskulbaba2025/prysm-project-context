@@ -318,3 +318,19 @@ For the active PRYSM staging reset:
 - Do not add planning/task-state controls unless they are backed by a real persisted governed state.
 - Dynamic runtime binding may replace mockup literals only with governed PRYSM values.
 - No Priority Fixes implementation is authorized by this freeze alone.
+
+
+---
+
+## Frozen Competitor Comparison presentation authority — 2026-10-03
+
+- Frozen artifact: `prysm-competitor-comparison-mockup-v2.html`.
+- Exact HTML SHA-256: `30779992E310035E50CA56114A64495461E6ECEBDDF8748A9B694057FEFB2646`.
+- Exact HTML size: 16,334 bytes; 270 lines.
+- Durable exact package: `frozen-artifacts/prysm-competitor-comparison-mockup-v2-frozen.zip`, SHA-256 `3570D33386EB6D9E9C1DC2C7FC8E560199F56F2F90AF9451017DBFBCABA19664`.
+- Preserve the five-column comparison matrix and stabilized header geometry.
+- Preserve the restrained visual weight: one matrix, three compact takeaways, one action framework, one limitations block.
+- Do not introduce unsupported competitor rankings or unsupported business-performance claims.
+- Preserve insufficient-evidence, partial, unavailable, and comparability distinctions.
+- Sample competitor values in the mockup are illustrative only. Runtime implementation must bind to governed comparison records.
+- No Competitor Comparison implementation is authorized by this freeze alone.

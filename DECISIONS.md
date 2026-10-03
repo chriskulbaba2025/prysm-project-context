@@ -1508,3 +1508,32 @@ The current column layout fragments the priority narrative and strands closure i
 
 Implication:
 Do not reconstruct the design from memory or screenshots. Use this exact artifact identity when the Priority Fixes implementation tranche is explicitly opened. No application implementation is authorized by this freeze alone.
+
+
+---
+
+## Decision: Freeze Competitor Comparison governed mockup v2 exactly
+
+Date: 2026-10-03
+Status: Active
+
+Decision:
+Freeze the approved Competitor Comparison mockup artifact `prysm-competitor-comparison-mockup-v2.html` as the exact presentation authority for the future Competitor Comparison page implementation.
+
+Frozen artifact identity:
+- filename: `prysm-competitor-comparison-mockup-v2.html`
+- SHA-256: `30779992E310035E50CA56114A64495461E6ECEBDDF8748A9B694057FEFB2646`
+- byte size: 16,334
+- line count: 270
+- durable frozen package: `frozen-artifacts/prysm-competitor-comparison-mockup-v2-frozen.zip`
+- package SHA-256: `3570D33386EB6D9E9C1DC2C7FC8E560199F56F2F90AF9451017DBFBCABA19664`
+
+The direct-comparison matrix, fixed column widths, stabilized header row, City Media emphasis, restrained signal pills, three compact learning summaries, Protect / Improve / Differentiate / Ignore framework, limitations block, governance-toggle behavior, responsive handling, spacing, typography, and moderate visual weight are frozen exactly as approved.
+
+The mockup is presentation authority only. Existing PRYSM competitor-comparability records, evidence provenance, own-site truth, publication semantics, source-status distinctions, and client-language contracts remain semantic authority. The sample City Media / Foundery / Sly Fox / Trak values are illustrative layout content only and must be replaced by governed runtime values in implementation.
+
+Reason:
+Side-by-side columns are the clearest representation for this page. The approved version supports comparison without turning the page into another executive dashboard.
+
+Implication:
+Do not reconstruct the design from memory or screenshots. Use the exact frozen artifact above when the Competitor Comparison implementation tranche is explicitly opened. No app implementation is authorized by this freeze alone.
