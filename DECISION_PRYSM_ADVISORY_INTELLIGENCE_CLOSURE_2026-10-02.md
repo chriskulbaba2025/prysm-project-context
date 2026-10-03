@@ -78,3 +78,30 @@ AIC-2 changes Writer prompt/schema/validation and Judge revision authority, so d
 
 Implication:
 Stop at AIC-2. Do not start AIC-3, push the application candidate, deploy, run live Writer/Judge, rerun City Media, or mutate production without the next explicit authorization.
+
+
+## AIC-3 checkpoint
+
+Date: 2026-10-02
+Status: PASS — local CHANGE_ONLY deterministic candidate; model-bearing release gate HOLD
+
+Candidate:
+- Application local commit: `176c9f2c6eff0b69b02958905fc842f0da96ddcb`
+- Base: `6380baf7286a72418ea4a77d06146034a897e345`
+- Push/deployment/model calls/fresh audit/production mutation: not performed
+
+Result:
+AIC-3 projects existing canonical DecisionEvidence trust authority into WriterInput as `deterministicAnalysis.trustAdvisorySource`, then adds governed `trustAdvisory` synthesis and a materially richer Trust & Credibility surface. It distinguishes experience, credentials, completed work, outcomes, testimonials/reviews, independent validation, risk reduction, process transparency, proof placement, preserve guidance, weakness/uncertainty, and evidence that would change the conclusion. No crawler, scoring, Trust-decision, or NDP authority was changed.
+
+Deterministic proof:
+- focused AIC-3/Writer/Judge/v13: 121/121 PASS;
+- broader Narrative-v2 + render exact-head: 266/266 PASS;
+- governed Trust exact-head: 243/243 PASS;
+- diff check PASS;
+- pre-existing local `services/worker/src/server.js` modification remained untouched and outside the commit.
+
+Model-bearing gate:
+Release readiness remains HOLD. Deterministic proof does not replace real artifact replay, authorized model-bearing robustness, semantic scoring/challenge, deployment identity, or final live confirmation.
+
+Implication:
+Stop at AIC-3. AIC-4 remains a separate bounded tranche.
