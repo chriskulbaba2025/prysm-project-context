@@ -51,3 +51,30 @@ The four already-generated Writer capabilities are now projected into existing v
 
 Implication:
 AIC-1 is closed at the local CHANGE_ONLY boundary. Do not start AIC-2 until the AIC-1 tranche is accepted. AIC-1 does not authorize application push, deployment, model/provider calls, City Media rerun, production mutation, or any AIC-2+ semantic primitive.
+
+
+## AIC-2 checkpoint
+
+Date: 2026-10-02
+Status: PASS — local CHANGE_ONLY deterministic candidate; model-bearing release gate HOLD
+
+Candidate:
+- Application local commit: `6380baf7286a72418ea4a77d06146034a897e345`
+- Base: `c2d9df50c78b4c254cce9e6624198eae33b5fae6`
+- Application push: not performed
+- Deployment / production / provider-model calls / fresh audit: not performed
+
+Result:
+AIC-2 adds one governed Writer synthesis section, `executiveAdvisory`, with five evidence-referenced INTERPRETATION primitives: strategic thesis, buyer self-selection, CTA commitment maturity, offer/product fit, and what-would-change-the-conclusion. The Executive v13 surface projects these into client-facing strategic questions. New live Writer schemas require the section; historical persisted Writer outputs remain valid when it is absent. No new observation authority, persona/product invention, universal lower-friction CTA rule, outcome claim, or product-market-fit claim is authorized.
+
+Deterministic proof:
+- focused AIC-2/Writer/Judge/v13: 100/100 PASS;
+- broader Narrative-v2 + render exact-head: 261/261 PASS;
+- diff check PASS;
+- pre-existing local `services/worker/src/server.js` modification remained untouched and outside the commit.
+
+Model-bearing gate:
+AIC-2 changes Writer prompt/schema/validation and Judge revision authority, so deterministic test success is not release closure. `PRYSM_MODEL_BEARING_RELEASE_STATE.json` records release status HOLD: Plane 1 partial PASS only, Planes 2-7 pending as applicable. No live/paid model runs were authorized or made.
+
+Implication:
+Stop at AIC-2. Do not start AIC-3, push the application candidate, deploy, run live Writer/Judge, rerun City Media, or mutate production without the next explicit authorization.
