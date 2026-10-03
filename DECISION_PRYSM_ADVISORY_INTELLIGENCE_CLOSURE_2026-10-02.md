@@ -33,3 +33,21 @@ The City Media comparison proved that substantial governance and narrative-gener
 
 Implication:
 Do not declare narrative migration complete. Do not broaden one AIC tranche into the next. Production remains unchanged unless separately authorized. The exact next action is AIC-1 only, followed by a stop for tranche acceptance.
+
+
+## AIC-1 checkpoint
+
+Date: 2026-10-02
+Status: PASS — local CHANGE_ONLY candidate
+
+Candidate:
+- Application local commit: `c2d9df50c78b4c254cce9e6624198eae33b5fae6`
+- Base: `4767dc9ec0ddaf2317abca2b172f5a6c6e86bebc`
+- Application push: not performed
+- Deployment / production / provider-model calls / fresh audit: not performed
+
+Result:
+The four already-generated Writer capabilities are now projected into existing v13 client surfaces without adding new advisory semantic authority: `rootCause` to Executive, `funnelOpportunities` to Conversion Journey, and `seoSerp` plus `aiSearch` to Content Opportunities. Targeted verification passed 42/42 with zero final failures. The pre-existing local `services/worker/src/server.js` modification remained untouched and outside the commit.
+
+Implication:
+AIC-1 is closed at the local CHANGE_ONLY boundary. Do not start AIC-2 until the AIC-1 tranche is accepted. AIC-1 does not authorize application push, deployment, model/provider calls, City Media rerun, production mutation, or any AIC-2+ semantic primitive.
