@@ -3,7 +3,7 @@
 Project: PRYSM
 
 Current objective:
-Preserve the exact hosted Narrative v2 publication + UX Restoration staging release while completing client-page presentation review through frozen mockups before any new implementation. Trust & Credibility mockup v2, Priority Fixes mockup v1, and Competitor Comparison mockup v2 are now frozen exactly; other requested page changes should be mocked, reviewed, and frozen before import unless Chris explicitly opens an implementation tranche sooner.
+Preserve the exact hosted Narrative v2 publication + UX Restoration staging release while holding the newly frozen seven-page report presentation set as presentation authority before any implementation tranche. Executive Scorecard, Priority Fixes, Conversion Journey, Trust & Credibility, Competitor Comparison, Content Opportunities, and Supporting Detail now have frozen presentation identities.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
@@ -56,6 +56,12 @@ Completed:
 - Competitor Comparison presentation mockup `prysm-competitor-comparison-mockup-v2.html` is frozen as exact presentation authority, SHA-256 `30779992E310035E50CA56114A64495461E6ECEBDDF8748A9B694057FEFB2646`, 16,334 bytes / 270 lines.
 - Durable exact frozen package: `frozen-artifacts/prysm-competitor-comparison-mockup-v2-frozen.zip`, SHA-256 `3570D33386EB6D9E9C1DC2C7FC8E560199F56F2F90AF9451017DBFBCABA19664`.
 - The Competitor Comparison freeze does not alter application code; implementation/import remains a separate governed tranche.
+- Full seven-page presentation set is frozen by exact file identities recorded in `DECISIONS.md`.
+- Integrated review shell: `prysm-full-report-integrated-review-v1.html`, SHA-256 `4CE098D59FD07EECC71DD9412B94BF30DDEC745E2D2999AE673BC96DF57F7193`.
+- Seven-page freeze package: `prysm-seven-page-report-freeze-package.zip`, SHA-256 `6BDEC24CE5E48B865687D0FC62D10BEEAACE24D95FC89ECF5127677E5507018E`.
+- Content Opportunities contains all 13 opportunities and collapses every opportunity tile by default.
+- Supporting Detail is frozen as expandable rows rather than columns.
+- No application code changed during the seven-page presentation freeze.
 
 Known remaining work:
 - Do not freeze Narrative v2 as the production language standard yet.
@@ -91,7 +97,7 @@ Important constraints:
 - Staging deployment, canonical alias movement, Railway deployment, manual acceptance, and production mutation are separate boundaries.
 
 Exact next action:
-Continue presentation review with the next page Chris wants changed. Create a mockup only, review it, and freeze the accepted artifact before implementation. Preserve the frozen Trust, Priority Fixes, and Competitor Comparison mockups exactly and do not import them into the app until their implementation tranche is explicitly opened. Do not mutate production.
+Review the integrated seven-page HTML once as a whole-report presentation check. If Chris identifies no defect in the integrated view, the next governed tranche is implementation/import of the frozen page set into the application. Do not mutate production.
 
 Last verified:
 2026-10-03

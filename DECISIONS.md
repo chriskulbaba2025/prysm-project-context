@@ -1537,3 +1537,46 @@ Side-by-side columns are the clearest representation for this page. The approved
 
 Implication:
 Do not reconstruct the design from memory or screenshots. Use the exact frozen artifact above when the Competitor Comparison implementation tranche is explicitly opened. No app implementation is authorized by this freeze alone.
+
+
+---
+
+## Decision: Freeze the full seven-page PRYSM presentation set
+
+Date: 2026-10-03
+Status: Active
+
+Chris approved the report-page presentation direction as a complete seven-page set.
+
+Frozen page identities:
+1. Executive Scorecard — `01-prysm-executive-scorecard-final.html` — SHA-256 `1F1D36AA0C084C12551C5D61983BE46CE02A0F6B3931C3D5B798D7488ABD5572` — 29,215 bytes.
+2. Priority Fixes — `02-prysm-priority-fixes-final.html` — SHA-256 `E10C3D5BD9F30F83925AF9FEE489CFB02D1380E36D2AC2BE8D844558AA80B681` — 15,596 bytes.
+3. Conversion Journey — `03-prysm-conversion-journey-final.html` — SHA-256 `B86EA0412C7827122FC8D5CD15F916B15F0A4265C51EC57F267ABE2482C1A537` — 7,023 bytes.
+4. Trust & Credibility — `04-prysm-trust-credibility-final.html` — SHA-256 `20E0D7E741DD918012298D0F512B10AB9D5D5577F5443890B2C22214410ADF19` — 27,452 bytes.
+5. Competitor Comparison — `05-prysm-competitor-comparison-final.html` — SHA-256 `30779992E310035E50CA56114A64495461E6ECEBDDF8748A9B694057FEFB2646` — 16,334 bytes.
+6. Content Opportunities — `06-prysm-content-opportunities-final.html` — SHA-256 `E1955A203CF85F5165BB360C995615F57A509420FC27B7E67D694D282902D79E` — 21,389 bytes.
+7. Supporting Detail — `07-prysm-supporting-detail-final.html` — SHA-256 `42BAA2F1D0DF4CBD7358C800822EF00CE462F563F820E57BC9579EB98DF2C196` — 9,253 bytes.
+
+Integrated seven-page review shell:
+- `prysm-full-report-integrated-review-v1.html`
+- SHA-256 `4CE098D59FD07EECC71DD9412B94BF30DDEC745E2D2999AE673BC96DF57F7193`
+- 164,713 bytes.
+
+Freeze package:
+- `prysm-seven-page-report-freeze-package.zip`
+- SHA-256 `6BDEC24CE5E48B865687D0FC62D10BEEAACE24D95FC89ECF5127677E5507018E`.
+
+Presentation decisions:
+- Executive remains the strongest visual summary page.
+- Priority Fixes uses full-width ordered rows.
+- Conversion Journey stays restrained and uses the existing three-stage journey logic without added dashboard weight.
+- Trust & Credibility preserves the approved evidence-map presentation.
+- Competitor Comparison preserves the stabilized direct-comparison matrix.
+- Content Opportunities contains all 13 opportunities and keeps every opportunity tile collapsed by default.
+- Supporting Detail uses expandable rows rather than columns and remains the lightest page.
+
+The Executive final incorporates only the two previously identified semantic wording corrections: the opening lede no longer overstates offer strength, and the causal heading is softened to Potential evaluation friction.
+
+The page set is presentation authority. Existing governed runtime evidence, deterministic scores, publication semantics, source-status distinctions, client-language authority, and evidence provenance remain semantic authority.
+
+No application runtime implementation is authorized by this presentation freeze alone.

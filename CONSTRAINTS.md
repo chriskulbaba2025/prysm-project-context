@@ -334,3 +334,20 @@ For the active PRYSM staging reset:
 - Preserve insufficient-evidence, partial, unavailable, and comparability distinctions.
 - Sample competitor values in the mockup are illustrative only. Runtime implementation must bind to governed comparison records.
 - No Competitor Comparison implementation is authorized by this freeze alone.
+
+
+---
+
+## Frozen seven-page report presentation authority — 2026-10-03
+
+- Preserve the exact seven-page presentation set recorded in DECISIONS.md.
+- Do not redesign, reorder, simplify, expand, or substitute approved page structures during implementation unless Chris explicitly reopens a page.
+- Executive: preserve final semantic-safe lede and Potential evaluation friction heading.
+- Priority Fixes: preserve full-width rows, semantic status pills, blue timing pills, and Do / Keep / Avoid / Check / Done when hierarchy.
+- Conversion Journey: preserve the restrained three-stage journey structure; do not add extra dashboard visual weight.
+- Trust & Credibility: preserve the exact approved governed mockup format and evidence-status semantics.
+- Competitor Comparison: preserve the stabilized comparison matrix and comparability limits; do not introduce unsupported market rankings.
+- Content Opportunities: all 13 opportunities must remain represented; all opportunity tiles are collapsed by default; preserve Create / Check first / Already covered distinctions.
+- Supporting Detail: use expandable rows, not columns; keep this page evidence-focused and visually light.
+- Runtime implementation must replace mockup/sample literals only with governed runtime values. Presentation artifacts must never override evidence authority.
+- The full report presentation freeze does not itself authorize application-code mutation, staging deployment, paid provider calls, or production mutation.
