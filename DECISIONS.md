@@ -1481,3 +1481,30 @@ Human review accepted this exact design as the desired Trust & Credibility exper
 
 Implication:
 Do not implement from memory or reconstruct the design. Use the exact frozen artifact identity above as the base when the Trust implementation tranche is explicitly opened. Until then, the application remains unchanged.
+
+
+---
+
+## Decision: Freeze Priority Fixes governed mockup v1 exactly
+
+Date: 2026-10-03
+Status: Active
+
+Decision:
+Freeze the approved Priority Fixes mockup artifact `prysm-priority-fixes-mockup-v1.html` as the exact presentation authority for the future Priority Fixes page implementation.
+
+Frozen artifact identity:
+- filename: `prysm-priority-fixes-mockup-v1.html`
+- SHA-256: `E10C3D5BD9F30F83925AF9FEE489CFB02D1380E36D2AC2BE8D844558AA80B681`
+- byte size: 15,596
+- line count: 273
+
+The full-width row structure, ordered priority presentation, semantic status pills, blue timing pills, Do / Keep / Avoid / Check / Done when hierarchy, left status accent, governance-toggle behavior, responsive stacking, spacing, typography, and visual weight are frozen exactly as approved.
+
+The artifact is presentation authority only. Existing PRYSM governed evidence, scoring, publication semantics, timing authority, UNKNOWN/PARTIAL distinctions, and client-language contracts remain semantic authority. Runtime values may replace mockup literals only where required to bind real governed data.
+
+Reason:
+The current column layout fragments the priority narrative and strands closure information. The approved row design keeps each priority, guardrails, verification, timing, and closure rule together while remaining less visually heavy than the Executive or Trust pages.
+
+Implication:
+Do not reconstruct the design from memory or screenshots. Use this exact artifact identity when the Priority Fixes implementation tranche is explicitly opened. No application implementation is authorized by this freeze alone.

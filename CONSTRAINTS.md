@@ -303,3 +303,18 @@ For the active PRYSM staging reset:
 - The speculative score simulator is explicitly excluded and must not be reintroduced.
 - UNKNOWN/PARTIAL/UNRESOLVED/NOT_ESTABLISHED distinctions must remain intact; do not convert lack of evidence into a negative fact.
 - No Trust page implementation is authorized by this freeze alone. Import/implementation is a separate governed tranche after remaining page mockups are reviewed or Chris explicitly opens implementation.
+
+
+---
+
+## Frozen Priority Fixes presentation authority — 2026-10-03
+
+- Frozen artifact: `prysm-priority-fixes-mockup-v1.html`.
+- Exact SHA-256: `E10C3D5BD9F30F83925AF9FEE489CFB02D1380E36D2AC2BE8D844558AA80B681`.
+- Exact size: 15,596 bytes; 273 lines.
+- Preserve the full-width row layout and the approved Do / Keep / Avoid / Check / Done when hierarchy.
+- Preserve semantic-status colour separately from timing colour; timing remains a blue informational pill.
+- Preserve FIX versus VERIFY distinctions. Do not convert partial evidence into a prescribed fix.
+- Do not add planning/task-state controls unless they are backed by a real persisted governed state.
+- Dynamic runtime binding may replace mockup literals only with governed PRYSM values.
+- No Priority Fixes implementation is authorized by this freeze alone.

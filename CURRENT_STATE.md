@@ -3,7 +3,7 @@
 Project: PRYSM
 
 Current objective:
-Preserve the exact hosted Narrative v2 publication + UX Restoration staging release while completing client-page presentation review through frozen mockups before any new implementation. Trust & Credibility mockup v2 is now frozen exactly; other requested page changes should be mocked, reviewed, and frozen before import unless Chris explicitly opens an implementation tranche sooner.
+Preserve the exact hosted Narrative v2 publication + UX Restoration staging release while completing client-page presentation review through frozen mockups before any new implementation. Trust & Credibility mockup v2 and Priority Fixes mockup v1 are now frozen exactly; other requested page changes should be mocked, reviewed, and frozen before import unless Chris explicitly opens an implementation tranche sooner.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
@@ -51,6 +51,8 @@ Completed:
 - Production remained untouched during staging deployment.
 - Trust & Credibility presentation mockup `prysm-trust-page-governed-mockup-v2.html` is frozen as exact presentation authority, SHA-256 `20E0D7E741DD918012298D0F512B10AB9D5D5577F5443890B2C22214410ADF19`, 27,452 bytes / 461 lines.
 - The Trust freeze does not alter application code; implementation/import remains a separate governed tranche.
+- Priority Fixes presentation mockup `prysm-priority-fixes-mockup-v1.html` is frozen as exact presentation authority, SHA-256 `E10C3D5BD9F30F83925AF9FEE489CFB02D1380E36D2AC2BE8D844558AA80B681`, 15,596 bytes / 273 lines.
+- The Priority Fixes freeze does not alter application code; implementation/import remains a separate governed tranche.
 
 Known remaining work:
 - Do not freeze Narrative v2 as the production language standard yet.
@@ -86,7 +88,7 @@ Important constraints:
 - Staging deployment, canonical alias movement, Railway deployment, manual acceptance, and production mutation are separate boundaries.
 
 Exact next action:
-Continue presentation review with the next page Chris wants changed. Create a mockup only, review it, and freeze the accepted artifact before implementation. Preserve the frozen Trust mockup exactly and do not import it into the app until the Trust implementation tranche is explicitly opened. Do not mutate production.
+Continue presentation review with the next page Chris wants changed. Create a mockup only, review it, and freeze the accepted artifact before implementation. Preserve the frozen Trust and Priority Fixes mockups exactly and do not import them into the app until their implementation tranche is explicitly opened. Do not mutate production.
 
 Last verified:
 2026-10-03
