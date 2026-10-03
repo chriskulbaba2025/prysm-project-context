@@ -3,9 +3,14 @@
 Project: PRYSM
 
 Current objective:
-Execute the frozen generalized semantic-process repair series defined in `DECISION_PRYSM_GENERALIZED_SEMANTIC_PROCESS_REPAIR_FREEZE_2026-09-29.md`. The repair target is the PRYSM decision pipeline itself—evidence taxonomy, reconciliation, content coverage decisioning, comparative evidence coherence, provenance/action scope, score/label semantics, priority governance, and client-language QA—not any named site or report.
+Execute the frozen PRYSM Advisory Intelligence Closure series defined in `DECISION_PRYSM_ADVISORY_INTELLIGENCE_CLOSURE_2026-10-02.md` as small bounded GACM tranches. The product-level target is materially stronger client-visible advisory intelligence against the three frozen benchmarks, not merely deterministic test closure.
 
 Verified checkpoint:
+- AIC-0 acceptance-contract freeze PASS on 2026-10-02 against committed application SHA `4767dc9ec0ddaf2317abca2b172f5a6c6e86bebc`.
+- AIC-0 identified two owning defect classes: existing Writer intelligence not fully projected to v13, and missing governed advisory primitives that must not be fabricated in the renderer.
+- Frozen AIC decision: `DECISION_PRYSM_ADVISORY_INTELLIGENCE_CLOSURE_2026-10-02.md`.
+- AIC-0 proof: `C:\Users\kulba\Downloads\PRYSM-AIC-0-ACCEPTANCE-CONTRACT-2026-10-02\PRYSM-AIC-0-ACCEPTANCE-CONTRACT.txt`.
+- Local worktree preflight showed a pre-existing modification to `services/worker/src/server.js`; AIC-0 preserved it untouched and used committed SHA content as authority.
 - Context repository: chriskulbaba2025/prysm-project-context.
 - Isolated staging application: chriskulbaba2025/prysm-staging-isolated.
 - Branch: repair/prysm-bulk-closure-20260927.
@@ -45,6 +50,7 @@ Completed:
 - Production remains free of credential/configuration-value, infrastructure, and data mutations; only application source was promoted.
 
 In progress:
+- AIC-0 is closed PASS. AIC-1 is the only authorized next tranche: project existing Writer `rootCause`, `funnelOpportunities`, `seoSerp`, and `aiSearch` into appropriate v13 client-visible surfaces, with targeted projection/render proof and no new semantic primitives.
 
 - Production source promotion and Railway source-SHA continuity are complete; live frontend/worker health checks pass. Vercel remains unchanged and READY on production SHA `78795617a9206c62e70eee6d101323d77051f2f0`.
 - G1 canonical business truth remains accepted at application SHA `b29de0e3dfc82800edf466da0541ef76c3de6374`. G2 existing-content reconciliation remains accepted at `4176e1ba5752a1e95dd2c54c9b875f78dbc59a0b`. G3 competitor comparability remains accepted at `4c4307436d812d71ad1f8ad4c04a02cbeb668e2a`. G4 provenance/action-scope continuity and deterministic Encyclopedia integration are accepted at `42b788e8083c60c0b0a07332b6b0387369943435`; focused closure 296/296, full worker 1,050/1,050, persistence/lifecycle/immutability 114/114, whole-app 90/90, and root build passed. Model-bearing validation remains pending because paid calls were not authorized. Staging deployment and human acceptance remain separate authorization boundaries.
@@ -68,9 +74,12 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Complete the separately governed model-bearing validation/release gate for the exact accepted deterministic candidate; do not merge PR #6, deploy staging, or make production changes.
+Execute AIC-1 only: repair projection of the four already-generated Writer capabilities into appropriate v13 client-visible surfaces, run targeted projection/render verification, preserve unrelated surfaces and the pre-existing dirty `server.js`, then stop for tranche acceptance. Do not add new advisory semantic primitives, deploy, run paid models/providers, or mutate production.
 
 Last verified:
+2026-10-02
+- AIC-0 PASS at application SHA `4767dc9ec0ddaf2317abca2b172f5a6c6e86bebc`.
+- Human/product acceptance remains fail-closed: tests cannot substitute for the final City Media client-visible comparison against the frozen benchmarks.
 2026-09-30
 - Published application commit: `42b788e8083c60c0b0a07332b6b0387369943435` (G4 provenance/action-scope continuity and Encyclopedia integration; includes accepted G1/G2/G3).
 - Local application HEAD == GitHub repair branch HEAD == PR #6 HEAD: `42b788e8083c60c0b0a07332b6b0387369943435`.
