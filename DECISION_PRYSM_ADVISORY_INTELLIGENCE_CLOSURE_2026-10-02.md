@@ -105,3 +105,29 @@ Release readiness remains HOLD. Deterministic proof does not replace real artifa
 
 Implication:
 Stop at AIC-3. AIC-4 remains a separate bounded tranche.
+
+
+## AIC-4 checkpoint
+
+Date: 2026-10-02
+Status: PASS — local CHANGE_ONLY deterministic candidate; model-bearing release gate HOLD
+
+Candidate:
+- Application local commit: `14beb3da36d0d300e959c2035598e2cb370bd25b`
+- Base: `176c9f2c6eff0b69b02958905fc842f0da96ddcb`
+- Push/deployment/model calls/fresh audit/production mutation: not performed
+
+Result:
+AIC-4 adds one governed cross-report `advisorySpecificity` Writer section covering problem-led search intent, objection/trade-off handling, a clearly labelled illustrative example, act-now, can-wait, do-not-overreact, action sequence, and verification rule. The section is projected consistently into Executive, Priority Fixes, and Content Opportunities. It cannot create observations, change NDP order/timing/authority, claim unmeasured traffic or commercial outcomes, invent buyer objections/personas/behavior, or introduce unauthorized work. Concrete examples remain explicitly hypothetical planning guidance.
+
+Deterministic proof:
+- focused Writer/Judge/v13: 114/114 PASS;
+- broader exact-head Narrative-v2 + render + G2 content reconciliation + semantic ledger: 291/291 PASS;
+- diff check PASS;
+- pre-existing local `services/worker/src/server.js` modification remained untouched and outside the commit.
+
+Model-bearing gate:
+Release readiness remains HOLD. Real artifact replay, authorized model-bearing robustness, 97+/100 semantic quality scoring, independent semantic challenge, deployment identity, and final live confirmation remain pending.
+
+Implication:
+Stop at AIC-4. AIC-5 is the real City Media old/current/candidate benchmark comparison plus manual human acceptance; it remains a separate tranche.
