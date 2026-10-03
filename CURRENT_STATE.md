@@ -74,10 +74,21 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Stop for AIC-4 tranche acceptance. AIC-5 is the real City Media old/current/candidate benchmark comparison and manual human acceptance tranche. Do not push the application candidate, deploy, run live Writer/Judge, rerun City Media, or mutate production unless separately authorized.
+Chris reviews the exact local City Media candidate in a real browser and either accepts AIC-5 or identifies a concrete client-facing defect. Do not push, deploy, promote, or claim human acceptance until Chris explicitly accepts it. Permanent model-bearing release state remains HOLD.
 
 Last verified:
 2026-10-02
+- AIC-5 exact local candidate: `70722091842ed278e57e1860aaaab8be1e9bc239`.
+- AIC-5 Repair 2 exact-head deterministic verification: 300/300 PASS.
+- City Media exact frozen source audit: `5fb7f234-091d-438a-8596-59ad369b56b5`; no provider recollection.
+- Exact-head model run: Writer Terra PASS; Judge Sol PASS; Judge 98/100; hard gate PASS; evidence fidelity 20/20; no revision.
+- Candidate HTML: `C:\Users\kulba\Downloads\PRYSM-AIC-5-CITY-MEDIA-ACCEPTANCE-2026-10-02\candidate-7072209-run3\index.html`.
+- Candidate HTML SHA-256: `09b8f7ee119f8a29bb20721e2193bebf6a3384e8d8123cbbb6074f7fd29ee669`.
+- AIC-5 proof: `C:\Users\kulba\Downloads\PRYSM-AIC-5-CITY-MEDIA-ACCEPTANCE-2026-10-02\PRYSM-AIC-5-CITY-MEDIA-ACCEPTANCE-PROOF.txt`.
+- AIC-5 machine/model acceptance: PASS; human browser acceptance: PENDING Chris.
+- Model-bearing release state: HOLD.
+- Application candidate not pushed or deployed; production untouched.
+- Pre-existing local `services/worker/src/server.js` modification remains untouched and uncommitted.
 - AIC-4 local CHANGE_ONLY candidate: `14beb3da36d0d300e959c2035598e2cb370bd25b`.
 - AIC-4 focused verification: 114/114 PASS.
 - AIC-4 broader exact-head Narrative-v2 + render + G2 content reconciliation + semantic ledger: 291/291 PASS.
