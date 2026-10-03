@@ -74,10 +74,17 @@ Important constraints:
 - Maximum three failed repairs in one defect family before diagnosis reset.
 
 Exact next action:
-Stop for AIC-3 tranche acceptance. Do not begin AIC-4, push the application candidate, deploy, run live Writer/Judge, rerun City Media, or mutate production unless separately authorized. Model-bearing release state remains fail-closed HOLD.
+Stop for AIC-4 tranche acceptance. AIC-5 is the real City Media old/current/candidate benchmark comparison and manual human acceptance tranche. Do not push the application candidate, deploy, run live Writer/Judge, rerun City Media, or mutate production unless separately authorized.
 
 Last verified:
 2026-10-02
+- AIC-4 local CHANGE_ONLY candidate: `14beb3da36d0d300e959c2035598e2cb370bd25b`.
+- AIC-4 focused verification: 114/114 PASS.
+- AIC-4 broader exact-head Narrative-v2 + render + G2 content reconciliation + semantic ledger: 291/291 PASS.
+- AIC-4 proof: `C:\Users\kulba\Downloads\PRYSM-AIC-4-ADVISORY-SPECIFICITY-2026-10-02\PRYSM-AIC-4-PROOF.txt`.
+- Model-bearing release state: HOLD.
+- Application candidate was not pushed; no live/paid model call, deployment, fresh audit, or production mutation occurred.
+- Pre-existing local `services/worker/src/server.js` modification remains untouched and uncommitted.
 - AIC-3 local CHANGE_ONLY candidate: `176c9f2c6eff0b69b02958905fc842f0da96ddcb`.
 - AIC-3 focused verification: 121/121 PASS.
 - AIC-3 broader exact-head Narrative-v2 + render verification: 266/266 PASS.
