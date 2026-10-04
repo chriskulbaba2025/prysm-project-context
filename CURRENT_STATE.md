@@ -3,13 +3,16 @@
 Project: PRYSM
 
 Current objective:
-Preserve the exact hosted Narrative v2 publication + UX Restoration staging release while holding the newly frozen seven-page report presentation set as presentation authority before any implementation tranche. Executive Scorecard, Priority Fixes, Conversion Journey, Trust & Credibility, Competitor Comparison, Content Opportunities, and Supporting Detail now have frozen presentation identities.
+Recover G6 from the failed disposable execution without adopting its dirty state. Preserve application branch checkpoint `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5` as the clean authoritative base, then execute G6-01 only from a fresh clean worktree under a frozen literal recipe. Production remains untouched.
 
 Verified checkpoint:
 - Context repository: `chriskulbaba2025/prysm-project-context`.
 - Isolated staging application: `chriskulbaba2025/prysm-staging-isolated`.
 - Application branch: `repair/prysm-bulk-closure-20260927`.
-- Exact pushed checkpoint HEAD: `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70`.
+- Exact authoritative application branch HEAD: `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`.
+- GitHub remote branch `repair/prysm-bulk-closure-20260927` is identical to `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`.
+- This branch is nine commits ahead of the previously recorded `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` checkpoint and includes the seven-page presentation imports plus final regression expectation alignment.
+- Hosted isolated staging remains on the older `99fc3eb97f63a4cc8a37feda7ea2d81a68362a70` deployment; no claim is made that `a36aa47...` is deployed.
 - Integrated product candidate commit: `1d70ff95a6173b2fe7f9740d890f5c84ad533308`.
 - Release-currentness proof: local HEAD == remote branch HEAD == detached clean verification worktree HEAD.
 - Frozen v13 presentation SHA-256: `A7A8F6481318F05A3867F2049BD22FD736C20D0570992B2E62B71E984E830728`.
@@ -27,7 +30,7 @@ Completed:
 - Authoritative human-review audit for this closure: `995be6ff-0317-4fef-85df-9dad1ad97b64`.
 - Publication-contract integration creates one approved client publication package from NDP truth plus Judge-PASS Writer output before downstream surface projection.
 - Non-ESTABLISHED findings cannot publish as FIX.
-- The authoritative FAQ case remains PARTIAL + VERIFY + 14 DAYS with distinct verification and closure semantics.
+- The authoritative FAQ case remains PARTIAL + VERIFY. G6 diagnosis proved that calendar timing is not authorized when the plan timing state is UNASSIGNED; timing repair is G6-01 and is not yet accepted.
 - First five mapped Writer actions are preserved; the FAQ does not invent a Writer action where none exists.
 - Package input snapshots are frozen against later mutation.
 - Read-only browser diagnosis was completed before UX presentation repair.
@@ -62,8 +65,13 @@ Completed:
 - Content Opportunities contains all 13 opportunities and collapses every opportunity tile by default.
 - Supporting Detail is frozen as expandable rows rather than columns.
 - No application code changed during the seven-page presentation freeze.
+- The frozen seven-page presentation set has since been imported on the isolated staging branch through `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`.
+- Read-only G6 recovery diagnosis established that the prior disposable G6 worktree is not an accepted checkpoint: G6-01, G6-02, and G6-03 reached targeted PASS locally but were never committed; G6-04 began on top of their cumulative dirty state and did not reach acceptance.
+- The failed disposable G6 worktree remains forensic evidence only and must not be resumed, selectively adopted, or treated as implementation authority.
 
 Known remaining work:
+- G6-01: remove unauthorized derived calendar timing. Current root cause: NDP `deriveActionTiming` derives 7/14/30-day values by evidence/problem family while the canonical report plan has `timingState = UNASSIGNED` and no governed scheduling contract.
+- G6-02 through G6-08 remain separate later execution boundaries and are not authorized by G6-01.
 - Do not freeze Narrative v2 as the production language standard yet.
 - V2.1 still needs three bounded amendments: explicit rule hierarchy, stronger strategic-synthesis authorization/support record, and preservation of narrative function/meaning rather than fixed phrasing.
 - Runtime prompt modularity should be formalized around a compact Narrative Constitution plus relevant surface/pattern contracts.
@@ -76,11 +84,15 @@ Known remaining work:
 - Fresh exact-release report acceptance therefore requires either a fresh hosted audit initiated through the application or another explicitly governed re-render path. No paid provider/model audit was started during deployment.
 
 In progress:
-- None. Checkpoint integration, release-currentness/identity verification, and isolated-staging deployment identity are closed PASS.
+- G6 recovery only.
+- Discussion-mode diagnosis is complete.
+- G6-01 is the only authorized application tranche.
+- Application mutation must start from a fresh clean worktree at exact base `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`; the failed disposable G6 worktree remains untouched.
 
 Blocked:
-- None externally.
-- Human visual acceptance is pending Chris's review of an exact-release hosted report.
+- No external blocker to G6-01.
+- The prior disposable G6 state is explicitly not a valid continuation checkpoint.
+- Human visual acceptance of the later exact release remains separate and pending.
 - A fresh hosted audit may incur provider/model cost and remains a separate execution boundary; no such audit was started during deployment.
 - Production freeze remains on HOLD until remaining narrative-standard amendments, durable publication/versioning work, golden-fixture evidence, natural-language variability evidence, and fresh exact-release acceptance are complete.
 
@@ -95,9 +107,14 @@ Important constraints:
 - Small GACM-style tranches require explicit scope, Definition of Done, targeted proof, regression, diff review, and browser acceptance where relevant.
 - Do not reopen product logic during release integration/currentness steps.
 - Staging deployment, canonical alias movement, Railway deployment, manual acceptance, and production mutation are separate boundaries.
+- Design top down; build bottom up.
+- Discussion mode permits reasoning, diagnosis, challenge, and creativity. Execution mode follows the approved recipe literally.
+- During execution, do not substitute commands, create workarounds, change dependencies, expand scope, optimize the method, infer missing authority, or invent another route.
+- If execution encounters a condition not covered by the approved recipe, STOP and return to discussion before changing the recipe.
+- One G6 tranche is one execution boundary; do not continue into the next G6 tranche automatically.
 
 Exact next action:
-Review the integrated seven-page HTML once as a whole-report presentation check. If Chris identifies no defect in the integrated view, the next governed tranche is implementation/import of the frozen page set into the application. Do not mutate production.
+Freeze the command-complete G6-01 recipe from exact base `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`, create a fresh clean G6-01 worktree/branch, execute only G6-01, run its frozen targeted proof and bounded regression, then STOP at the G6-01 gate. Do not continue to G6-02 and do not mutate production.
 
 Last verified:
-2026-10-03
+2026-10-04
