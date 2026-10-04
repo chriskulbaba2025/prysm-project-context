@@ -351,3 +351,19 @@ For the active PRYSM staging reset:
 - Supporting Detail: use expandable rows, not columns; keep this page evidence-focused and visually light.
 - Runtime implementation must replace mockup/sample literals only with governed runtime values. Presentation artifacts must never override evidence authority.
 - The full report presentation freeze does not itself authorize application-code mutation, staging deployment, paid provider calls, or production mutation.
+
+
+---
+
+## Discussion / execution mode boundary — 2026-10-04
+
+- Design top down; build bottom up.
+- Discussion mode permits reasoning, diagnosis, challenge, and creativity.
+- Execution mode follows the approved execution recipe literally.
+- Once an execution recipe is approved, do not substitute commands, create workarounds, change dependencies, expand scope, optimize the method, infer missing authority, or invent another route.
+- If execution encounters a condition not covered by the approved recipe, STOP and report the exact discrepancy. Return to discussion before changing the recipe.
+- A failed disposable execution state is not an authoritative continuation checkpoint unless its state was explicitly accepted and frozen.
+- For G6 recovery, authoritative clean base is `chriskulbaba2025/prysm-staging-isolated@a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`.
+- The existing dirty disposable G6 worktree is forensic evidence only. Do not resume it, cherry-pick from it, selectively copy its implementation, or treat targeted local PASS evidence as an accepted tranche.
+- G6-01 is the only currently authorized application tranche. Stop at its acceptance gate; G6-02 and later remain separate execution boundaries.
+- Production remains read-only unless Chris explicitly authorizes mutation.
