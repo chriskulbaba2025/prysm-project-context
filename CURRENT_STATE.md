@@ -1,5 +1,22 @@
 # Current State
 
+## Staging deployment accepted — 2026-10-09 (Vercel only)
+
+**RESULT: PASS — staging frontend redeployed; production untouched.**
+
+- User confirmed the Vercel project `prysm-staging-isolated` production-environment branch tracking was saved to `repair/prysm-audit-intelligence-t1-t3-20261007`. This **Production** environment belongs to the staging-only Vercel project, not `prysm.omnipressence.com`.
+- GitHub exact-branch comparison: `chriskulbaba2025/prysm-staging-isolated` repair branch is identical to `ce003b86d62337f06cb948e74a0eac9244eb2123` (0 ahead/0 behind).
+- Explicitly authorized staging-only Vercel production-target deployment `dpl_BTcpF7BvGjEEkPbZ4ZKk44K2YSJx` from exact GitHub branch/SHA. Vercel state `READY`.
+- Read back `prysm-staging-isolated.vercel.app` alias: exact deployment `dpl_BTcpF7BvGjEEkPbZ4ZKk44K2YSJx`, project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`.
+- Existing isolated staging Railway worker remains source `chriskulbaba2025/prysm-staging-isolated/repair/prysm-audit-intelligence-t1-t3-20261007`, latest service deploy `41190b5a-e59b-45ae-8f0c-b5f55c6da4f1` SUCCESS; no worker deployment was initiated.
+- Read back `prysm.omnipressence.com` alias: unchanged production deployment `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob`, project `prj_o4dQkuESOoTphZkOwVKG49BaLQT9`. No production deployment or alias change.
+- Scope: no source edits, databases, AWS or DataForSEO changes; no paid/model audit. READY + domain binding are **deployment evidence**, not browser functional acceptance.
+- Existing unresolved governance caveat: Vercel production project's legacy `vantage-platform` Git integration remains unchanged; applied ignored-build guard not independently field-read back or negative-tested. Permanent cross-environment no-interference enforcement remains PARTIAL; do not claim global lock PASS.
+- Next action only as separately authorized: verify user-visible staging behavior, and independently close production Git integration/build-guard readback without disturbing production. Automatic future staging branch-push→staging stable URL behavior is set in UI but still awaits the next actual push as evidence.
+
+---
+
+
 ## Deployment guard application — 2026-10-09
 
 **RESULT: PARTIAL (provider accepts build guards; staging alias branch tracking remains unresolved).**
