@@ -367,3 +367,10 @@ For the active PRYSM staging reset:
 - The existing dirty disposable G6 worktree is forensic evidence only. Do not resume it, cherry-pick from it, selectively copy its implementation, or treat targeted local PASS evidence as an accepted tranche.
 - G6-01 is the only currently authorized application tranche. Stop at its acceptance gate; G6-02 and later remain separate execution boundaries.
 - Production remains read-only unless Chris explicitly authorizes mutation.
+
+## Project-wide tool access boundary — 2026-10-09
+
+- The user has confirmed that no PRYSM/GACM operational MCP connection is available for the current workflow. Do not presume a `prysm_gacm` or other local-operation MCP is registered, working, authorized, or available; do not make its use a prerequisite or offer it as an execution route. This does not prohibit use of the separately connected GitHub application for authoritative project-memory reads/updates when specifically authorized.
+- Desktop Commander / Remote Desktop Commander is **not authorized** for PRYSM or GACM work. Never call it, suggest it, route diagnostics or filesystem commands through it, or treat it as a fallback merely because the tool is discoverable. Only Chris can explicitly reverse this prohibition.
+- Codex running in the authorized local workspace/terminal is an acceptable execution route when Chris authorizes it. Codex prompts must follow the GACM-governed outline specified in `WORKFLOW_INSTRUCTIONS.md`, including a fail-closed preflight, exact bounded authority, protected production/staging boundaries, direct evidence, acceptance conditions, and proof. A read-only request does not authorize mutation.
+- These access boundaries apply to the current PRYSM staging-isolation verification and all subsequent PRYSM/GACM instructions until expressly superseded. Do not auto-substitute another remote tool, service, or infrastructure path when access fails.
