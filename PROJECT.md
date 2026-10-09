@@ -4,7 +4,11 @@ Project: PRYSM — governed website conversion-readiness and website decision sy
 
 Authoritative context repository: `chriskulbaba2025/prysm-project-context`
 
-Primary application repository: `chriskulbaba2025/vantage-platform`
+Application repository roles (as recorded for the 2026-10-09 PRD; runtime must still be independently verified):
+- Production frontend source snapshot: `chriskulbaba2025/production-prysm` at `c807a951e17cdaf9fb386c6f7374b66ae8fae487` (historically inspected source, not proof of current running worker).
+- Isolated staging development target: `chriskulbaba2025/prysm-staging-isolated` (branch/SHA only after P0.1 verification).
+- Original/legacy source: `chriskulbaba2025/vantage-platform` (do not equate its branch with a production deployment).
+- **Frozen planning specification:** `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md` — FINAL as a design/reference document, PROPOSED for implementation and not a release/approval certificate. `CURRENT_STATE.md` is the single current next-action authority.
 
 ## Governing files
 
