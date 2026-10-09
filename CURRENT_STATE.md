@@ -1,5 +1,19 @@
 # Current State
 
+## Deployment guard application — 2026-10-09
+
+**RESULT: PARTIAL (provider accepts build guards; staging alias branch tracking remains unresolved).**
+- Applied Vercel `commandForIgnoringBuildStep` and `autoExposeSystemEnvs: true` via provider API to production project `prysm`. The command **builds only** when Git owner=`chriskulbaba2025`, repository=`production-prysm`, ref=`main`; all other combinations request canceled builds. Vercel API returned success and project update time 2026-10-09. Git-link metadata still shows `vantage-platform`; no relink was attempted.
+- Applied the same type of guard to Vercel staging project `prysm-staging-isolated`, allowing builds only from Git owner=`chriskulbaba2025`, repository=`prysm-staging-isolated`, without preventing work on approved feature/repair branches. Vercel API returned success.
+- Important **enforcement limitation**: the connected Vercel read endpoint returns a condensed project object without the ignored-build script or auto-expose setting. API writes succeeded but the exact persisted guard command was **not independently read back**; do not mark end-to-end enforcement PASS. Ignored-build guards are also not global deployment authorization (a privileged redeploy can override them).
+- Post-change non-disruptive checks: `prysm.omnipressence.com` still points to deployment `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob`; staging alias `prysm-staging-isolated.vercel.app` still points to `dpl_6peSfU6g2PFYLmYZnGH5WBJdWDFU`. Production worker `517c9637-edd0-4d91-bf1a-de98b7af9e6a` SUCCESS and staging worker `41190b5a-e59b-45ae-8f0c-b5f55c6da4f1` SUCCESS, unchanged. **No new builds/deployments or domain movements initiated.**
+- **Unfinished staging auto-promotion:** Git pushes to staging repair branches produce preview deployments, but the stable staging alias currently follows a previously promoted production-target deployment and does not automatically track `repair/prysm-audit-intelligence-t1-t3-20261007`. Repo default branch is `main`. Safely configuring Vercel staging Production Environment → Branch Tracking to the accepted staging branch is a **separate pending provider-setting step**; the available connected Vercel API does not expose branch tracking. Do not rewrite `main`, move aliases or trigger deployment as a workaround.
+- **Next action:** Through Vercel project `prysm-staging-isolated` Settings → Environments → Production → Branch Tracking, select the single *approved* ongoing staging release branch (currently Railway staging source `repair/prysm-audit-intelligence-t1-t3-20261007`) without choosing a different project or triggering a deployment. Verify by provider readback/first subsequently approved staging push; keep production project read-only. Separately correct production Git link `vantage-platform` to `production-prysm/main` only under a non-deploying supported procedure.
+- Shared DataForSEO/AWS accepted. Production code, data, worker, domain, infrastructure and staging application code untouched.
+
+---
+
+
 ## Operational priority — PRYSM production/staging deployment isolation (2026-10-09)
 
 **Status:** HOLD — permanent isolation rules frozen in `CONSTRAINTS.md` and `DECISIONS.md`; Vercel production Git/source lock is not yet provider-enforced.
