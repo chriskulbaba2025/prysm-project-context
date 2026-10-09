@@ -1629,3 +1629,20 @@ Next:
 Complete only a safe, provider-supported staging branch-tracking update, and plan a separate non-deploying production Git-source relink. Stop if either operation would trigger builds, move aliases or alter the live application. Keep the 2026-10-09 permanent-isolation decision controlling.
 
 ---
+
+
+## Decision: Offline autonomous coding is not a deployment authorization
+
+Date: 2026-10-09
+Status: Active for tranche PRYSM-GACM-OFFLINE-CLOSURE-20261009-01
+
+Decision:
+The user authorizes preparation of one long sequential GACM/Codex code-only improvement tranche, allowing routine independently verified stage PASS to continue automatically to further preauthorized offline work. The frozen local application baseline is staging repo `chriskulbaba2025/prysm-staging-isolated` branch `repair/prysm-audit-intelligence-t1-t3-20261007` at `d7b76c2402d6d016568e2ce87617cb24c74e9fd6`; actual local state must pass preflight. Change intent is `CHANGE_ONLY`.
+
+Reason:
+After two proven staging UI improvements, the user wants one longer code sequence, avoiding unnecessary handoffs, production interference and repeated costly test audits. Report language will be evaluated later using real historical evidence or one separately authorized staging audit, followed by a ChatGPT mockup/human approval.
+
+Implication:
+Do not use Desktop Commander, browser, extra operational MCP, live model/provider calls, database changes, or production systems. **Do not push the staging branch:** its GitHub push triggers automated Vercel/Railway staging deployments; code-only authority stops at local commits/proof. No audit run, no Vercel/Railway deployment, no production edit. Pending PRD decisions are not silently approved. Follow `PLANS/PRYSM_GACM_SEQUENTIAL_OFFLINE_CODE_2026-10-09.md` with direct stage evidence and long-run ledger under the dedicated Downloads proof folder. A successful local code tranche is not a model-bearing, hosted, browser, production or publication release PASS. The user owns that later review/approval gate.
+
+---
