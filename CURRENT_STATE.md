@@ -1,5 +1,21 @@
 # Current State
 
+## Next authorized work — offline sequential Codex tranche (2026-10-09)
+
+**RESULT: GACM EXECUTION RECIPE PREPARED — NOT EXECUTED.**
+
+- The user requested the longest safely possible **sequential GACM-style coding run**: no Desktop Commander, no browser, no live provider/model work; maximize bounded code completion and direct offline checks before user-led language review using prior authorized audit data or, only after separately approved spending, one isolated-staging audit.
+- Authoritative frozen plan: `PLANS/PRYSM_GACM_SEQUENTIAL_OFFLINE_CODE_2026-10-09.md`, tranche ID `PRYSM-GACM-OFFLINE-CLOSURE-20261009-01`, release intent `CHANGE_ONLY`.
+- Application `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-audit-intelligence-t1-t3-20261007`, exact GitHub starting HEAD `d7b76c2402d6d016568e2ce87617cb24c74e9fd6` as verified 2026-10-09 (0 ahead/0 behind from that SHA). Preflight must separately confirm the local directory, Git remote, exact HEAD and clean worktree.
+- Codex to execute autonomously **within** the frozen offline code boundaries through the last reachable authorized section; direct proof and negative controls between sections; stop at missing policy/fixture/permission, same-root correction limit or human acceptance. Pending PRD decisions D-05, D-11, D-19 and D-06 remain unapproved; do not invent their resolutions. PRD v1.4.3 remains **PROPOSED** design.
+- **No application push** (auto-deploys the connected staging Vercel/Railway), hosting release, infrastructure/configuration change, production mutation, new hosted audit, database migration, paid provider/model calls, or Writer/Judge prompt changes. Local commits and governed offline test/replay are allowed. Current staging frontend READY; its latest UI-only push caused one staging Railway builder failure but the previous worker remained online (see historical checkpoint immediately below). This warning is a qualifying preflight/hosted-release concern, not approval to repair hosting.
+- Required proof folder: `C:\Users\kulba\Downloads\PRYSM-GACM-OFFLINE-CLOSURE-2026-10-09\`, with REPORT.md, STAGE_LEDGER.md, TEST_RESULTS.md, BOUNDARY_MAP.md, DIFF_SUMMARY.md and LANGUAGE_REVIEW_PACKET.md; redact any fixture details.
+- Full Codex execution text was prepared as the user-facing artifact `PRYSM-GACM-SEQUENTIAL-OFFLINE-CODE-TRANCHE-2026-10-09.md`; its instructions may NOT exceed or contradict the GitHub plan, project constraints or authorization. This current-state update is planning-only; no Codex process was started or app source changed in this transaction.
+- **Exact next action:** In the authorized *local staging* Codex session, run the frozen `PRYSM-GACM-OFFLINE-CLOSURE-20261009-01` recipe after confirming exact clean local SHA; continue stage-by-stage until verified code closure or the recorded human/data/decision HOLD. Do not auto-push or deploy. The user will then review the offline language packet with ChatGPT using real saved data.
+
+---
+
+
 ## Improvement 2 — Remove unused competitive audience field (2026-10-09)
 
 **RESULT: STAGING FRONTEND PASS / ISOLATED RAILWAY REBUILD FAIL (previous serving worker remains online).**
