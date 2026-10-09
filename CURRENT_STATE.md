@@ -1,5 +1,35 @@
 # Current State
 
+## Authoritative checkpoint — PRYSM Enterprise PRD v1.4.3 frozen (2026-10-09)
+
+**Project:** PRYSM — governed website conversion advisory.
+**Current objective:** Preserve and hand off the complete Enterprise Improvement PRD v1.4.3 as FINAL for proposal/document review; all product changes remain PROPOSED and NOT IMPLEMENTED. No repair/deployment is approved through this record.
+**Authoritative project repository:** `chriskulbaba2025/prysm-project-context`, `main`.
+**Frozen specification:** `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md` (source blob `d1c3c12835a96f8ca4f1dfc550578c217a9d6705`; SHA-256 `d65ebd985e58ce3277148966ea29d01a3bf2b694012efe9cd69b7751035aaddf`, matched byte-for-byte to the uploaded document).
+**Status:** FINAL PROPOSED PRD; no application or execution-authority change. Informal prior review score 97/100 refers only to specification quality, not product readiness.
+
+**Verified checkpoint:**
+- PRD committed unchanged to GitHub and source-blob SHA verified against the uploaded file.
+- Production frontend source historically identified on Oct 9: `chriskulbaba2025/production-prysm@c807a951e17cdaf9fb386c6f7374b66ae8fae487`, Vercel `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob` READY when inspected. NOT proof of current production runtime health or production worker source.
+- Development implementation target is `chriskulbaba2025/prysm-staging-isolated`. Its current deployed frontend/worker pairing is NOT reverified in this documentation handoff.
+- Railway production **serving worker/source identity remains UNKNOWN**; do not infer it from a frontend ZIP or historical deployment.
+
+**Completed this handoff:** Review of v1.4.3 (97/100 informal specification assessment; diminishing-return changes deferred); preservation of full 1,289-line PRD under `SPECS/`; `PROJECT.md` repository-role clarification; `DECISIONS.md` PRD design-freeze decision. No application code changed, paid/provider/model calls made, hosted deployment or database mutation.
+
+**In progress:** Discussion and explicit approval planning only.
+
+**Blocked / unknown:** Runtime currentness and worker identity; exact current isolated-staging SHAs; availability of Adam's original 14 snapshots and REI/MEC rejected-Judge fixtures; JEV pricing/privacy/API acceptance; independent validation of executable schema and runtime gates. Unknowns do NOT convert to claims of failures or PASS.
+
+**Important active constraints:** GitHub context files govern continuity. PRD does not supersede `CONSTRAINTS.md`, active `DECISIONS.md`, existing evidence/NDP/scoring/truth authority or immutable seven-page report. Production read-only without explicit authorization. Design top down; build bottom up. One user-approved action at a time; no autonomous phase progression, provider calls or deployment. `G1-BOUNDED` is not `G1-COMPLETE`; neither lifts production HOLD.
+
+**Exact next action:** In the new chat, read `PROJECT.md`, this top checkpoint, active `CONSTRAINTS.md` and `DECISIONS.md`, then `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md`. **In discussion mode, present the specific read-only P0.1 currentness/component-identity qualification recipe and ask for explicit approval before running it.** Do not execute P0.1 or any build without authorization.
+
+**Last verified:** 2026-10-09 — GitHub PRD/documentation state only; hosted production/staging identities remain historical/unresolved.
+
+---
+
+## Historical discussion and state records (superseded as current next-action authority)
+
 ## Proposed architecture and external review — 2026-10-09 (documentation only)
 
 Two new discussion-stage documents are now committed:
