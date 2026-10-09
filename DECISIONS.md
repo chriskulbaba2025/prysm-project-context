@@ -1612,3 +1612,20 @@ Implication:
 Before any PRYSM deployment, check that the destination provider project, linked repository, branch, worker, alias, environment and authorization match the policy in `CONSTRAINTS.md`. A mismatch causes HOLD and no deployment. Correct the Vercel `prysm` project's legacy Git linkage to `production-prysm/main` using a supported provider mechanism that does not trigger a deployment; read back the setting. Do not claim the deployment locks installed until enforced restrictions have been verified. Protect production from all staging updates; preserve currently serving frontend/worker while correcting settings.
 
 ---
+
+
+## Decision: Non-deploying Vercel build guards and branch-tracking gap
+
+Date: 2026-10-09
+Status: Active (partial enforcement)
+
+Decision:
+Use non-deploying Vercel ignored-build commands to constrain permitted Git owner/repository on the staging Vercel project, and Git owner/repository plus `main` branch on the production Vercel project. Preserve actual live aliases, workers, and repositories. Do not relink or promote production implicitly.
+
+Evidence / exception:
+Both provider settings updates returned success; deployment and alias IDs remained unchanged. Vercel's available read API does not expose the ignored-build command, so direct field readback and negative-control proof are pending. The staging stable alias is not yet configured to auto-follow the approved repair branch. The production Vercel Git integration remains on legacy `vantage-platform` despite serving `production-prysm/main` code. Recording this is not authority to deploy or force branch movement.
+
+Next:
+Complete only a safe, provider-supported staging branch-tracking update, and plan a separate non-deploying production Git-source relink. Stop if either operation would trigger builds, move aliases or alter the live application. Keep the 2026-10-09 permanent-isolation decision controlling.
+
+---
