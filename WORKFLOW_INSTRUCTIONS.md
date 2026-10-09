@@ -25,6 +25,22 @@ Routine PASS stages auto-continue inside an already authorized boundary. Stop at
 
 When ChatGPT determines that another Codex/agent run is the exact next governed action, include the complete execution-ready next prompt automatically in the same response. Chris must not have to ask for it separately.
 
+## Mandatory GACM format for every Codex prompt
+
+Every PRYSM/GACM Codex instruction, including **read-only diagnostics**, must be framed as a bounded GACM-governed tranche. No ad-hoc, underspecified, or open-ended "go fix it" prompts. Use the following ordered sections:
+
+1. **Objective / RESULT sought:** exact business outcome, read-only vs. change intent (`CHANGE_ONLY`, `STAGING_READY`, or `PRODUCTION_READY` when applicable), and one bounded tranche ID.
+2. **Authority / checkpoint:** authoritative GitHub context; exact application repository role, local path, branch, starting SHA, currentness and dirty-tree preflight; applicable GCU v2.1.0 and active decisions/protocols.
+3. **Permissions / fail-closed preflight:** test only required access, identity and runtime dependencies *before* substantive execution; protect secret values; explicitly state unavailable tools. No operational MCP is assumed connected and Desktop Commander is prohibited unless Chris explicitly reverses that instruction.
+4. **Frozen scope and invariants:** permitted reads/writes, prohibited systems, production/staging isolation, expense/model/provider rules, no unauthorized redirects to alternative methods, and no progression beyond approved scope.
+5. **Evidence and boundary map:** identify actual executing component/producer → contract/persistence → consumer as relevant, verify facts directly, distinguish VERIFIED / UNKNOWN / CONFLICT, and do not infer from historical labels.
+6. **Ordered execution recipe:** exact step order and methods; read-only qualification must make no application, credential, infrastructure, audit, Git, database or deployment mutations. For coding tranches use the governed roles Scout → Plan/Freeze → one Builder → Verify → Challenge → Terminal Machine Gate → independent Exact-Head Audit → Chris/Release Authority. Mark inapplicable stages N/A rather than inventing work.
+7. **Frozen acceptance gates:** evidence-based direct positive checks, negative/false-PASS controls, complete target/connection/identity comparison, precise PASS / HOLD / FAIL criteria and exact stop conditions established before execution.
+8. **Proof, accounting and handoff:** for substantial/long runs, write `REPORT.md` and supporting redacted proof in a dedicated clearly named subfolder under `C:\Users\kulba\Downloads\` (not a repository); include timestamps, exact repository/branch/SHAs, change/no-change status, results, blockers, direct evidence refs, tested boundaries, run/deployment/paid-call counts, and single next action. No secrets in logs/proofs. Include the existing Windows desktop plus audible terminal notification for long Codex runs.
+9. **Terminal status:** report `RESULT`, `BLOCKER`, and `NEXT ACTION` concisely. Stop on discrepancies, missing permissions, contradiction, out-of-scope needs or approval boundaries; do not silently improvise another route.
+
+For the **current staging-isolation task**, Codex may use a locally authenticated Railway CLI for secure, read-only comparison of actual database, storage and tenant targets. Print only SAME / DIFFERENT / UNKNOWN and safe resource identities, never credential values or full connection strings. No repair, production/staging mutation, deployment, live audit or paid provider call is authorized by a verification prompt alone.
+
 ### Manual / direct-chat mode
 
 When Chris explicitly chooses direct manual VS Code editing, the assistant diagnoses, designs, specifies exact edits, and verifies results. Chris applies application-source edits locally unless explicitly authorized otherwise. The manual edit-delivery protocol below governs that mode.
