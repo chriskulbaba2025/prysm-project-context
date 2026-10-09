@@ -1596,3 +1596,19 @@ Implication:
 For PRYSM continuation, read `PROJECT.md`, latest `CURRENT_STATE.md`, `CONSTRAINTS.md`, active `DECISIONS.md` and the frozen PRD. Treat all P0/P1/P2/P3 actions, external provider calls, database changes and deployments as **PROPOSED**, requiring specific explicit approval. First next discussion action is to review a bounded read-only P0.1 component/hosted-currentness qualification recipe before any implementation. Keep the separate `prysm-staging-isolated` development and `production-prysm` frontend-source identities distinct; exact running Railway worker source remains UNVERIFIED.
 
 ---
+
+## Decision: PRYSM deployment source isolation is permanent
+
+Date: 2026-10-09
+Status: Active (policy frozen; full provider enforcement pending)
+
+Decision:
+Staging development and deployment must remain isolated from production by repository, Git branch/source, worker, Vercel project, database, tenant, and deploy/promotion authority. Staging must never deploy or promote to production automatically or through a stale service/source link. Production source authority is `chriskulbaba2025/production-prysm/main`; staging source authority is `chriskulbaba2025/prysm-staging-isolated` on a specifically approved staging branch. Production promotion always requires a separately explicit governed authorization, release identity verification and exact-head proof. The user permits the same DataForSEO account and sharing the same AWS account/artifact storage; those do not waive production access restrictions. Do not rotate/migrate provider or AWS credentials simply to create cosmetic account-level separation.
+
+Reason:
+Earlier PRYSM staging changes affected production and created material disruption. Live Vercel production was found to use a production-prysm code deployment while the project's Git integration was still tied to the legacy vantage-platform repository. The live Railway production worker and staging worker use their separate correct repositories, and staging Vercel is linked to staging correctly. Production must not be inferred from any unused/offline historical Railway project. A direct attempt to apply Vercel Git-source deployment policy to the staging project was rejected with HTTP 404; no lock was established through that API operation.
+
+Implication:
+Before any PRYSM deployment, check that the destination provider project, linked repository, branch, worker, alias, environment and authorization match the policy in `CONSTRAINTS.md`. A mismatch causes HOLD and no deployment. Correct the Vercel `prysm` project's legacy Git linkage to `production-prysm/main` using a supported provider mechanism that does not trigger a deployment; read back the setting. Do not claim the deployment locks installed until enforced restrictions have been verified. Protect production from all staging updates; preserve currently serving frontend/worker while correcting settings.
+
+---
