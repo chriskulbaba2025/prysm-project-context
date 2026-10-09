@@ -25,7 +25,7 @@ Routine PASS stages auto-continue inside an already authorized boundary. Stop at
 
 When ChatGPT determines that another Codex/agent run is the exact next governed action, include the complete execution-ready next prompt automatically in the same response. Chris must not have to ask for it separately.
 
-## Mandatory GACM format for every Codex prompt
+### Mandatory GACM format for every Codex prompt
 
 Every PRYSM/GACM Codex instruction, including **read-only diagnostics**, must be framed as a bounded GACM-governed tranche. No ad-hoc, underspecified, or open-ended "go fix it" prompts. Use the following ordered sections:
 
