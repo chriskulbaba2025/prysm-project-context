@@ -1,5 +1,21 @@
 # Current State
 
+## Improvement 2 — Remove unused competitive audience field (2026-10-09)
+
+**RESULT: STAGING FRONTEND PASS / ISOLATED RAILWAY REBUILD FAIL (previous serving worker remains online).**
+
+- Staging-only app GitHub repository `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-audit-intelligence-t1-t3-20261007`; before SHA `6c77926544e846c0f812efd5056cc2afb8c7ce06`, accepted UI-only change commit `d7b76c2402d6d016568e2ce87617cb24c74e9fd6`.
+- One changed file `app/audits/new/page.tsx`. Removed `AudienceScope` type, unused `audienceScope` React state and unsaved "Competing audience" dropdown. Relabelled the already-persisted market field "Primary market or location" and clarified that it describes where a business serves or competes and drives evidence collection. No market/payload/API/schema/worker/scoring change; no replacement `competitiveMarketScope` field created.
+- Diagnosis: the old selector was not included in `AuditFormInput` or `buildAuditPayload`; worker's persisted `auditRequest` and JSON schema used only `market` and explicit competitor URLs. Removing a field that never persisted avoids misleading user input. Functional standalone market-scope authority, if needed, is a future separately governed intake + consumer tranche, not silently invented now.
+- GitHub exact compare `6c779265`→`d7b76c` confirmed one file changed, 19 lines changed.
+- Vercel staging auto deployment `dpl_6Q7Bd5DbafT6WACh8oJbueoB9rjB`: READY; alias `prysm-staging-isolated.vercel.app` bound to exact deployment. This is hosting/build acceptance, not authenticated browser UI acceptance.
+- Railway staging worker auto build from UI-only push `dbf54cd3-8cc5-488a-a832-bf3b33d0a0fe`: FAILED in BUILD_IMAGE after scheduling metal builder; build logs contained only scheduling message and no app/compiler error; provider diagnosis null. **Do not claim root cause established.** The previous staging worker `0ed273dc-72cf-4f49-9a34-676e299089f8` continues **SUCCESS, online, running 1/1 replica**. The worker has no source-code delta from this improvement; no redeploy/retry or rollback performed. Preserve warning and requalify under a separately approved reliability gate before any whole-system PASS claim.
+- Live production alias `prysm.omnipressence.com` stayed bound to `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob`. No production code, domain, database, worker, AWS, DataForSEO, model or audit call modified.
+- **Next action:** Chris may inspect staging UI (no paid audit needed). After these two bounded UI changes, discuss and freeze the next larger GACM/Codex tranche (suggest P1.2 intake + intent authority, with full end-to-end schema/persistence/projection or explicit stages). Ensure a worker build reliability check or dependency/build-trigger exclusion is part of preflight; no client-facing data claim or release escalation without durable tests and exact hosted proof. No production mutation.
+
+---
+
+
 ## Improvement 1 — Site-specific conversion goal selector (2026-10-09)
 
 **RESULT: DEPLOYMENT PASS / HUMAN UI ACCEPTANCE PENDING.** Scope limited to the New Audit form; production untouched.
