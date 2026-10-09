@@ -1580,3 +1580,19 @@ The Executive final incorporates only the two previously identified semantic wor
 The page set is presentation authority. Existing governed runtime evidence, deterministic scores, publication semantics, source-status distinctions, client-language authority, and evidence provenance remain semantic authority.
 
 No application runtime implementation is authorized by this presentation freeze alone.
+
+## Decision: Freeze PRYSM Enterprise Improvement PRD v1.4.3 as final proposed architecture
+
+Date: 2026-10-09
+Status: Active (specification freeze only; implementation unapproved)
+
+Decision:
+Freeze the complete `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md` as the **FINAL proposed PRD** for architecture/independent-review and future scoped approval. Supersedes v1.3.0–v1.4.2 for this proposal's design and planning only; does not supersede existing governance or frozen application contracts. PRD review score 97/100 is the prior assistant's specification-quality assessment, not independent runtime qualification or a model/release gate PASS.
+
+Reason:
+v1.4.3 integrates prior review corrections for component-specific production/staging identity, authorized priority reasoning and comparable challengers, bounded graph/JEV shadow authority, evidence source statuses, durable-job sequencing, and bounded-versus-complete fixture acceptance. Remaining edge cases are to be covered by governed qualification rather than another PRD rewrite.
+
+Implication:
+For PRYSM continuation, read `PROJECT.md`, latest `CURRENT_STATE.md`, `CONSTRAINTS.md`, active `DECISIONS.md` and the frozen PRD. Treat all P0/P1/P2/P3 actions, external provider calls, database changes and deployments as **PROPOSED**, requiring specific explicit approval. First next discussion action is to review a bounded read-only P0.1 component/hosted-currentness qualification recipe before any implementation. Keep the separate `prysm-staging-isolated` development and `production-prysm` frontend-source identities distinct; exact running Railway worker source remains UNVERIFIED.
+
+---
