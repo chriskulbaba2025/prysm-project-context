@@ -1,5 +1,21 @@
 # Current State
 
+## Improvement 1 — Site-specific conversion goal selector (2026-10-09)
+
+**RESULT: DEPLOYMENT PASS / HUMAN UI ACCEPTANCE PENDING.** Scope limited to the New Audit form; production untouched.
+
+- Staging application repository `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-audit-intelligence-t1-t3-20261007`, approved before SHA `ce003b86d62337f06cb948e74a0eac9244eb2123`; after commit `6c77926544e846c0f812efd5056cc2afb8c7ce06`.
+- Single changed file: `app/audits/new/page.tsx` (one-commit diff). Replaced universal goal options with a `SiteType` keyed list (five existing site types); initial selection blank; reset goal and custom text on site-type changes; `Other` requires custom text; remove fallback “Generate qualified enquiries”; display existing `errors.primaryGoal`. The existing `primaryGoal` string payload and validation/worker/schema/NDP/scoring contracts are unchanged.
+- Exact GitHub diff verified: one application file changed; no other source edit.
+- Automatically triggered staging Vercel deployment `dpl_C3YkBRoX2wa2aaWe2M8qdCR5q1Dv` from commit `6c779265...`: **READY**; Vercel build logs show Next.js build completed with `/audits/new`; stable alias `prysm-staging-isolated.vercel.app` now points to that exact staging deployment.
+- Automatically triggered isolated staging Railway worker deployment `0ed273dc-72cf-4f49-9a34-676e299089f8`: **SUCCESS**; Git source remains `prysm-staging-isolated` on the authorized repair branch. Both GitHub deployment status contexts `success`.
+- Production live alias `prysm.omnipressence.com` remains on Vercel `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob`. No `production-prysm` commit, production build, DB operation, provider/model call, or paid audit was initiated.
+- Caveat: Vercel+Railway provider status/build is **not** authenticated browser functional acceptance; no audit was submitted; do not claim UI/validation workflow E2E PASS until the user checks it. Existing production Vercel legacy Git integration and ignored-build guard readback remain a separate unresolved governance issue.
+- **Next authorized scope:** Chris reviews the New Audit form at `https://prysm-staging-isolated.vercel.app/audits/new`: choose a site type, see matching goals, verify placeholder (no preselected goal), switch type to clear selection, test `Other` required input without creating an audit. If accepted, discuss/authorize Improvement 2 — competitive market scope treatment — as a separate small bounded change before longer Codex tranche.
+
+---
+
+
 ## Staging deployment accepted — 2026-10-09 (Vercel only)
 
 **RESULT: PASS — staging frontend redeployed; production untouched.**
