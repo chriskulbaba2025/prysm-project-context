@@ -1,5 +1,16 @@
 # Current State
 
+## Local S0 checkpoint mismatch — verified recovery path (2026-10-09)
+
+**RESULT: S0 BLOCKED, NO APPLICATION MUTATION.** Offline tranche `PRYSM-GACM-OFFLINE-CLOSURE-20261009-01` did not proceed to S1–S10 because local checkout HEAD `ce003b86d62337f06cb948e74a0eac9244eb2123` differs from the frozen application SHA `d7b76c2402d6d016568e2ce87617cb24c74e9fd6`. Codex reported a clean worktree, missing newer Git object locally, and remote repair branch at the approved SHA; no tests/push/deploy/provider/browser/model calls. Proof: `C:\Users\kulba\Downloads\PRYSM-GACM-OFFLINE-CLOSURE-2026-10-09\REPORT.md` (path supplied by execution log, not independently read).
+
+**Independent read-only GitHub comparison:** `chriskulbaba2025/prysm-staging-isolated`, `ce003b86...` → `repair/prysm-audit-intelligence-t1-t3-20261007` is `ahead by 2, behind by 0`, only `app/audits/new/page.tsx` changed; approved `d7b76c...` → branch is `identical`. The frozen SHA object and commit exist on GitHub.
+
+**Approved remedy proposal (not executed by ChatGPT):** In the existing local staging repository only, verify exact path, Git remote, active branch, clean tree and local HEAD `ce003b86...`. Fetch only the approved branch from `origin`, require `FETCH_HEAD == d7b76c...`, prove ancestor/fast-forward, then `git merge --ff-only FETCH_HEAD` to advance local branch with no rewrite. Require exact new HEAD `d7b76c...` and clean tree. Stop instead of resetting/recloning if any guard fails. No push, no deploy, no production mutation. After local recovery PASS, resume original frozen S0→S10 offline recipe; do not invent a new tranche or change source scope.
+
+---
+
+
 ## Next authorized work — offline sequential Codex tranche (2026-10-09)
 
 **RESULT: GACM EXECUTION RECIPE PREPARED — NOT EXECUTED.**
