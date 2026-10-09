@@ -1,5 +1,15 @@
 # Current State
 
+## Proposed architecture and external review — 2026-10-09 (documentation only)
+
+Two new discussion-stage documents are now committed:
+- `SPECS/PRYSM_JUDGMENT_CLASSIFICATION_GRAPH_JEV_ARCHITECTURE_DISCUSSION_2026-10-09.md` — knowledge graph, JEV.ai advisory classifier, priority adjudication, funnel states, Adam/Gluckstein/Hepburn/Jobber/REI/MEC calibration.
+- `REFERENCE/PRYSM_INDEPENDENT_LLM_ARCHITECTURE_AUDIT_BRIEF_2026-10-09.md` — independent external LLM audit instructions and report format.
+
+**Status:** PROPOSED only. This records discussions, not an approved implementation contract or JEV integration. User explicitly prohibited building at this stage. No source code, provider calls or deployments performed.
+
+**Next action for this thread:** external audit of proposal using the complete project context repository, then discussion of objections and explicit approval of any next tranche. Preserve the older verified checkpoint and unresolved runtime currentness below.
+
 ## Currentness notice — 2026-10-09
 
 Project: PRYSM
