@@ -1,5 +1,32 @@
 # Current State
 
+## Operational priority — PRYSM production/staging deployment isolation (2026-10-09)
+
+**Status:** HOLD — permanent isolation rules frozen in `CONSTRAINTS.md` and `DECISIONS.md`; Vercel production Git/source lock is not yet provider-enforced.
+**Current objective:** Prevent all staging repository updates, staging deployments or stale triggers from affecting production. Preserve deployed production and staging runtimes; no product rewrite or audit is authorized by this checkpoint.
+**Current user authority:** Configure and preserve production-versus-staging deployment locks. Sharing the DataForSEO account and AWS account/artifacts is expressly acceptable; provider credential rotation and AWS migration are not required or authorized by this scope.
+
+**Verified October 9 infrastructure source identities:**
+- Vercel production: project `prysm` (`prj_o4dQkuESOoTphZkOwVKG49BaLQT9`), production READY deployment `dpl_DFP22GBd7eCBz4Hk6y9pHQSgbaob`, Git deployment source `chriskulbaba2025/production-prysm` @ `c807a951e17cdaf9fb386c6f7374b66ae8fae487`; **project's current Git integration is nevertheless linked to `chriskulbaba2025/vantage-platform` (undesired)**.
+- Vercel staging: project `prysm-staging-isolated` (`prj_ys6JNfnwyRow5G3BENFXliU3fIqs`), Git integration `chriskulbaba2025/prysm-staging-isolated`. Main staging alias `prysm-staging-isolated.vercel.app` previously bound to a READY staging deployment of `ce003b86d62337f06cb948e74a0eac9244eb2123`; later preview exists, do not equate preview with main alias.
+- Live Railway production API: `GENSEN process` project `9dfaead1-79d7-4582-9c58-0999a1d07b84`, production service `vantage-platform` (`d6012de3-a174-4a59-bf8f-db4e9b01d91f`), Git source `production-prysm/main`, online SUCCESS deployment `517c9637-edd0-4d91-bf1a-de98b7af9e6a`.
+- Live Railway staging API: project `prysm-staging-isolated.` `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `prysm-worker` `3343e2a8-0472-4780-8536-e8b9667fcc7a`, Git source `prysm-staging-isolated/repair/prysm-audit-intelligence-t1-t3-20261007`, online SUCCESS deployment `41190b5a-e59b-45ae-8f0c-b5f55c6da4f1`.
+- User reports deleting an old `prysm-production` Railway project; do not rely on it, recreate it, or target it.
+- A proposed Vercel `deploymentPolicy.gitSources` update on staging returned HTTP 404 `Deployment Policy not found`; **no successful provider lock resulted**, and no changes to serving infrastructure, repo code, aliases or deployments were made during this operation.
+
+**Completed:** Durable constraint/decision recorded to prevent cross-project deployment and clarify acceptable DataForSEO/AWS sharing. Verified production Vercel Git integration discrepancy and live Railway source identities via connected providers.
+
+**BLOCKER:** No supported non-deploying connector action was available to relink the existing Vercel `prysm` project from legacy `vantage-platform` to `production-prysm/main`. Vercel provider policy attempted on staging was not available. The deployment lock cannot honestly be declared PASS.
+
+**Exact next action:** In the existing Vercel project `prysm` Settings → Git, change its Git repository connection from `chriskulbaba2025/vantage-platform` to `chriskulbaba2025/production-prysm` and ensure the production branch is `main`; do not trigger a new deployment or change the alias. Stop if Vercel requires redeployment or a destructive action. Then read back the project Git connection and confirm it is correct; only then treat the source-link portion of the lock as complete. No application changes, deployments or provider/model calls until separately approved.
+
+**Separate historical scope:** The previously frozen PRD v1.4.3 remains the accepted proposed design. This operational separation checkpoint supersedes the old PRD handoff's *next action only*, not the PRD itself.
+
+**Last verified:** 2026-10-09, connected GitHub/Vercel/Railway metadata.
+
+---
+
+
 ## Authoritative checkpoint — PRYSM Enterprise PRD v1.4.3 frozen (2026-10-09)
 
 **Project:** PRYSM — governed website conversion advisory.
