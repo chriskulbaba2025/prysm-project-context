@@ -1,5 +1,50 @@
 # Current State
 
+## Currentness notice — 2026-10-09
+
+Project: PRYSM
+Status: PARTIAL / NEEDS RECONCILIATION (GitHub code verified, hosted runtime not checked)
+
+Current objective:
+- Preserve current PRYSM status while recording a **discussion-only** proposal for a redesigned New Audit intake, intent intelligence and the "Adam update" Snapshot-quality audit.
+- This memory update does not authorize application implementation, staging deployment or production changes.
+
+Verified checkpoint:
+- Context repository: `chriskulbaba2025/prysm-project-context`, default branch `main`.
+- Staging application repository: `chriskulbaba2025/prysm-staging-isolated`.
+- GitHub code branch inspected: `repair/prysm-audit-intelligence-t1-t3-20261007`, head `ce003b86d62337f06cb948e74a0eac9244eb2123` at the 2026-10-09 read. GitHub head is **not** a verified deployed/runtime SHA.
+- The earlier G6 recovery snapshot below was last verified 2026-10-04 and is **historical only**; do not execute its G6-01 next-action instruction as current authority.
+- Latest current production frontend/worker identity, login/dashboard state, and staging Vercel/Railway currentness were **not verified** in this memory-only operation.
+
+Completed:
+- Read-only inspection of staging New Audit page, web validation/payload, worker intake, AuditRequest schema/persistence, buyer-decision authority, Writer context and Snapshot/action-priority code.
+- Prepared and recorded planning reference `REFERENCE/PRYSM_INTAKE_INTENT_AND_ADAM_DISCUSSION_2026-10-09.md` (contains proposed site-type goal taxonomy, buyer-intent chain, form changes, observed existing boundaries, Adam findings and provisional rapid-delivery estimate).
+- No application changes, fresh audits, tests, paid/provider/model calls, staging operations or production changes for this planning work.
+
+In progress:
+- Design discussion only; **not** an approved execution recipe.
+- Adam findings have not been requalified against fresh staging report outputs.
+
+Blocked / unknown:
+- Production/staging runtime-currentness and any urgent production recovery must be independently established. Missing currentness proof is not a failure claim.
+- Final intake design, field requiredness, scope, acceptance criteria and any implementation tranche require explicit approval.
+
+Important constraints:
+- Preserve production read-only without explicit authorization.
+- Preserve canonical evidence, UNKNOWN/PARTIAL/UNAVAILABLE truth states, deterministic scoring, NDP authority, authorized competitor comparisons, frozen report architecture and approved-report immutability.
+- Design top down; build bottom up; one separately authorized tranche at a time.
+- Estimates are planning forecasts, not verified delivery times or release claims.
+
+Exact next action:
+**In discussion mode, confirm the New Audit intake field design and boundary; before authorizing implementation, reconcile current live/isolated-staging code and deployment identities read-only and approve a single bounded tranche.** Do not resume historical G6 or start Adam repairs from this context update.
+
+Last verified: 2026-10-09 (GitHub/source inspection only; hosted currentness UNKNOWN).
+
+---
+
+## Historical checkpoint — 2026-10-04 (superseded as current authority; retained verbatim for provenance)
+
+
 Project: PRYSM
 
 Current objective:
