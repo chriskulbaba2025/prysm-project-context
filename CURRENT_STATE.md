@@ -1,5 +1,26 @@
 # Current State
 
+## Active handoff checkpoint — PRYSM coding and replay (2026-10-09)
+
+Project: PRYSM Enterprise Improvement PRD v1.4.3.
+Current objective: Continue substantial governed local-only implementation; separately prepare immutable real-production-audit replay and visual HTML review after meaningful code milestones.
+Verified checkpoint: **GitHub read-only check** confirms app remote `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-audit-intelligence-t1-t3-20261007`, remains at `d7b76c2402d6d016568e2ce87617cb24c74e9fd6` (identical comparison). The reported local SHA and tests below have NOT been independently inspected.
+Current environment / branch / version: Local Codex checkout reportedly clean at `16e4a9009a3c919bf5ec41cdf8f521ed4625a804`, not pushed; **local runtime identity UNKNOWN independently**. GitHub context repository is `chriskulbaba2025/prysm-project-context` on `main`.
+Completed (user-supplied Codex reports; LOCAL PASS only):
+- M0–M4: P1.8 helpful-content intelligence, optional P1.2 business context, P1.5 Writer integration and packet-budget safety. Reported local SHA `1f28f228734b109e2977367386687fdabb4fd620`; worker 1,217/1,217, narrative 269/269, schemas 15/15, TS/build PASS; 3 local commits, no pushes.
+- M5–M9: P2.5 deterministic prior-audit comparison, RESOLVED/UNCHANGED/STILL UNKNOWN, date/hash VERIFY; P2.4 typed axe/CTA evidence and mobile/desktop distinction, Writer/report integration. Reported local SHA `16e4a9009a3c919bf5ec41cdf8f521ed4625a804`; worker 1,222/1,222, narrative 276/276, schemas 15/15, TS/build PASS; no pushes/deploys/provider/model calls. Proof reportedly at `C:\Users\kulba\Downloads\PRYSM-PHASE2-INTELLIGENCE-2026-10-09\REPORT.md` (not independently read).
+- Next prepared but **NOT confirmed executed**: one bounded M10–M15 CHANGE_ONLY Codex tranche: P0.2 CI completeness, P2.2 observability, P2.7 security baseline, local adversarial testing and commits.
+- Production S3 read-only folder discovery for three audit IDs: Hepburn Plumbing `3d27b27f-78ce-4376-bbfd-bb32b7b2b4b7`, Gluckstein Lawyers `ef310926-2f73-4b85-93d9-94357c090837`, Addictive Tattoo `458a4a72-4304-445a-975e-4e73319c9a42`. This session included a user-uploaded `PRYSM-REAL-AUDITS-20261009-233222.zip`; whether the user added it to permanent Project Sources is **UNKNOWN**. Never commit raw client data to GitHub.
+In progress: No Codex run confirmed running in this chat. Goal for a **separate future replay workflow**: verify artifact/schema compatibility, use immutable sanitized real-evidence fixtures, run current local code, compare before/after report HTML here. Do not infer that a data ZIP is a validated replay fixture.
+Blocked: Production/staging Vercel/Railway push/deployment isolation not independently proven; application GitHub pushes HOLD. Browser-dependent accessibility qualification HOLD; hosted currentness, independent whole-system/human acceptance and model-bearing stochastic language acceptance remain separate. PRD decisions D-05, D-11, D-19, D-06 are not implied approved.
+Important constraints: Production READ-ONLY; no Desktop Commander; no unauthorized app pushes, deployments, migrations, live audits, paid/provider/model calls, model escalation or parallel agents. One bounded GACM/Codex tranche at a time; do not exceed approved scope. Exact-SHA local preflight and required proof under a dedicated Downloads folder before PASS. Report data must remain private and provenance-preserved.
+Exact next action: **Run the already prepared M10–M15 CHANGE_ONLY Codex tranche in the existing authorized local staging session, first verifying local exact SHA, repository identity, clean tree and prerequisites; stop on mismatch.** Keep audit ZIP extraction/replay preparation separate.
+Last verified: 2026-10-09, GitHub remote branch comparison performed in handoff session. Local results are only user/Codex-reported.
+
+**Authority notice:** The following dated entries are historical checkpoints; this section supersedes their status and next-action wording. Preserve them as provenance, not as competing current instructions.
+
+---
+
 ## Offline GACM tranche execution report — 2026-10-09
 
 **STATUS: CODE VERIFIED / GOVERNANCE HOLD — reported by the user's Codex result; local proof files not independently read.**
