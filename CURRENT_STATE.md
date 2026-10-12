@@ -1,6 +1,33 @@
 # Current State
 
-## Active checkpoint — production protection and offline recovery (2026-10-10)
+## Active checkpoint — isolated-staging Addictive Tattoo Executive Report acceptance (2026-10-12)
+
+Project: PRYSM.
+Current objective: Verify the repaired six-page Executive Report against the existing, completed Addictive Tattoo isolated-staging audit. Snapshot V1 already renders correctly. Preserve canonical evidence and do not start another audit for a viewer defect.
+Verified checkpoint:
+- User-supplied signed-in screenshots show Addictive Tattoo audit `920ec5c0-dadc-4ec9-ae9b-89219bfd7492` (`https://addictivetattoo.com/`, version 13) at `draft_rendered`, and its populated one-page Snapshot V1 (score 61/100). Before the latest fix, Executive HTML served HTTP 200 but the page was blank. Browser console showed `Rendered claim rejected: action-plan 0682a0a7-7b10-4fa1-9336-f432d773fcc0 doneWhen drift`.
+- Root cause: the Executive browser gate incorrectly compared approved client-friendly `clientDoneWhen` / related display variants against canonical-only wording; the rejection stopped rendering. Fixed by binding to the exact approved client wording, without weakening the canonical provenance/integrity gate. A prior 5-second frontend timeout during a report-only retry was diagnosed; the worker nonetheless continued and successfully rendered the draft.
+Current environment / branch / version:
+- Governance repository: `chriskulbaba2025/prysm-project-context/main`. Application repository: `chriskulbaba2025/prysm-staging-isolated` at `fix/prysm-exec-render-recovery-20261012`, SHA `37087be66d70e09c3d0ed7b25338f027273bc0f4`, draft PR #18. No production merge.
+- Isolated staging Railway project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8` (called `production` ONLY inside this separate isolated-staging project). Deployment `dea9648b-b8c3-4ced-8c33-76932bc7786f`, exact SHA, SUCCESS; worker online 1/1, PostgreSQL/S3/API connected. Staging-only `PRYSM_STAGING_PREVIEW_RERENDER=true`.
+- Stable frontend URL `https://prysm-staging-isolated.vercel.app` resolves to Vercel deployment `dpl_GkwsRiS7Jh1JrWQwdt2iDhjzHDxK` (earlier frontend build). DO NOT assert this Vercel frontend is at the new Railway worker SHA.
+Completed:
+- New Audit GA4/GSC fields removed (analytics belongs to separate product for later integration); Site Characteristics alignment fixed and visually confirmed.
+- One user-authorized real Addictive Tattoo audit completed collection/scoring and, after governed repairs, reached `draft_rendered`. No repeat crawl needed. Snapshot V1 visually verified. Executive viewer remained blank before the latest fix.
+- Client scope: Snapshot V1 plus SIX-page Executive Report only; Supporting Detail internal, never seventh client-facing page. Snapshot content frozen for this repair.
+- Executive claim-alias fix plus read-only, in-memory rerender of already-persisted draft Executive HTML; no NDP/evidence/score/report artifact overwrite, no Writer/Judge call for rerender. Existing async retry worker change preserved. Full worker CI run `38232160412` SUCCESS and security run `38232160641` SUCCESS, including real-browser positive/tampering regression.
+- Verified staging narrative budget configuration: hard US$5/audit, hard US$20/day, soft US$2; external provider charges are not covered by verified model caps. US$1–4 quoted estimate was not reconciled with actual billing.
+In progress: None confirmed executing. Human signed-in verification of NEWLY rendered Executive report is outstanding.
+Blocked: Latest Executive page visuals, six-page content/navigation/PDF, and absence of browser console errors remain unverified. Actual audit charges not reconciled. Separate production PostgreSQL backup/restore and evidence-integrity repair remain HOLD and are NOT changed by staging work.
+Important constraints: GPT-5.6 Luna preferred for local Codex, no subagents/escalation, no Desktop Commander, diagnose before edits. No production or separate analytics-system changes. No new audit, recollection, scoring, paid Writer/Judge retry, approval or publication just to test viewer. Preserve immutable governed artifacts and fail-closed claims.
+Exact next action: In the existing authenticated staging browser, open Addictive Tattoo audit `920ec5c0-dadc-4ec9-ae9b-89219bfd7492`, click **View Executive Report** again and verify that the six-page report renders with content, navigation and no `Rendered claim rejected` browser error. If blank, capture the newest console error and diagnose that exact execution path without rerunning the audit.
+Last verified: 2026-10-12 ~10:07 UTC, connected Railway/Vercel/GitHub service identities and passing CI; user screenshots confirmed Snapshot and earlier Executive defect.
+
+**Parallel production work parked:** The 2026-10-10 production-protection checkpoint below is preserved for a separately authorized tranche. Its old next actions are historical/deferred, not authority to replace this staging QA next step.
+
+---
+
+## Separate production-protection checkpoint — parked, historical as of 2026-10-10
 
 Project: PRYSM.
 Current objective: Finish bounded PostgreSQL backup/recovery proof, then close remaining production protection gates and production evidence-integrity repair without crossing authorization boundaries.
@@ -20,7 +47,7 @@ Completed (evidence tiers preserved):
 In progress: None confirmed executing in this chat.
 Blocked: Portable production pg_dump and isolated restore are not yet authorized or performed. Production read-only unless expressly authorized for a separately bounded action; restored database is not alone a complete audit fixture. S3 versioning/retention/recovery, Railway rollback source/target, hosted identity and production evidence-integrity code repair/release remain separate HOLD gates.
 Important constraints: One tranche per execution boundary; GPT-5.6 Luna default; no agents/escalation; no Desktop Commander; no inferred local paths, credentials or source authority; no production code/data mutations or deployment without explicit bounded approval; no provider/model calls or new audits; preserve S3 canonical artifacts. Never claim restore PASS, fixture PASS or production-ready from a completed volume backup alone. Actual audit replay also requires independently qualified canonical evidence and report contracts.
-Exact next action: Review the isolated PostgreSQL provisioning proof and prepare/authorize a separate bounded production READ-ONLY logical pg_dump and RESTORE TO THE VERIFIED LOCAL 127.0.0.1:55432 / prysm_restore_test_20261010 ONLY, with explicit source/destination guardrails, credentials/privacy handling and verification gates. Do not execute dump, tunnel, or restore until that tranche is authorized. Then verify recovery before moving to a new tranche.
+Historical/deferred next action: Review the isolated PostgreSQL provisioning proof and prepare/authorize a separate bounded production READ-ONLY logical pg_dump and RESTORE TO THE VERIFIED LOCAL 127.0.0.1:55432 / prysm_restore_test_20261010 ONLY, with explicit source/destination guardrails, credentials/privacy handling and verification gates. Do not execute dump, tunnel, or restore until that tranche is authorized. Then verify recovery before moving to a new tranche.
 Last verified: 2026-10-10 user-provided Codex PASS for isolated local provisioning. GitHub remote source state checked at start of this handoff.
 
 **Authority notice:** The following dated entries are historical checkpoints; this section supersedes their status and next-action wording. Preserve them as provenance, not as competing current instructions.
@@ -66,7 +93,7 @@ Last verified: 2026-10-10 user-provided Codex PASS for isolated local provisioni
 - **No application push** (auto-deploys the connected staging Vercel/Railway), hosting release, infrastructure/configuration change, production mutation, new hosted audit, database migration, paid provider/model calls, or Writer/Judge prompt changes. Local commits and governed offline test/replay are allowed. Current staging frontend READY; its latest UI-only push caused one staging Railway builder failure but the previous worker remained online (see historical checkpoint immediately below). This warning is a qualifying preflight/hosted-release concern, not approval to repair hosting.
 - Required proof folder: `C:\Users\kulba\Downloads\PRYSM-GACM-OFFLINE-CLOSURE-2026-10-09\`, with REPORT.md, STAGE_LEDGER.md, TEST_RESULTS.md, BOUNDARY_MAP.md, DIFF_SUMMARY.md and LANGUAGE_REVIEW_PACKET.md; redact any fixture details.
 - Full Codex execution text was prepared as the user-facing artifact `PRYSM-GACM-SEQUENTIAL-OFFLINE-CODE-TRANCHE-2026-10-09.md`; its instructions may NOT exceed or contradict the GitHub plan, project constraints or authorization. This current-state update is planning-only; no Codex process was started or app source changed in this transaction.
-- **Exact next action:** In the authorized *local staging* Codex session, run the frozen `PRYSM-GACM-OFFLINE-CLOSURE-20261009-01` recipe after confirming exact clean local SHA; continue stage-by-stage until verified code closure or the recorded human/data/decision HOLD. Do not auto-push or deploy. The user will then review the offline language packet with ChatGPT using real saved data.
+- **Historical/deferred next action:** In the authorized *local staging* Codex session, run the frozen `PRYSM-GACM-OFFLINE-CLOSURE-20261009-01` recipe after confirming exact clean local SHA; continue stage-by-stage until verified code closure or the recorded human/data/decision HOLD. Do not auto-push or deploy. The user will then review the offline language packet with ChatGPT using real saved data.
 
 ---
 
@@ -152,7 +179,7 @@ Last verified: 2026-10-10 user-provided Codex PASS for isolated local provisioni
 
 **BLOCKER:** No supported non-deploying connector action was available to relink the existing Vercel `prysm` project from legacy `vantage-platform` to `production-prysm/main`. Vercel provider policy attempted on staging was not available. The deployment lock cannot honestly be declared PASS.
 
-**Exact next action:** In the existing Vercel project `prysm` Settings → Git, change its Git repository connection from `chriskulbaba2025/vantage-platform` to `chriskulbaba2025/production-prysm` and ensure the production branch is `main`; do not trigger a new deployment or change the alias. Stop if Vercel requires redeployment or a destructive action. Then read back the project Git connection and confirm it is correct; only then treat the source-link portion of the lock as complete. No application changes, deployments or provider/model calls until separately approved.
+**Historical/deferred next action:** In the existing Vercel project `prysm` Settings → Git, change its Git repository connection from `chriskulbaba2025/vantage-platform` to `chriskulbaba2025/production-prysm` and ensure the production branch is `main`; do not trigger a new deployment or change the alias. Stop if Vercel requires redeployment or a destructive action. Then read back the project Git connection and confirm it is correct; only then treat the source-link portion of the lock as complete. No application changes, deployments or provider/model calls until separately approved.
 
 **Separate historical scope:** The previously frozen PRD v1.4.3 remains the accepted proposed design. This operational separation checkpoint supersedes the old PRD handoff's *next action only*, not the PRD itself.
 
@@ -183,7 +210,7 @@ Last verified: 2026-10-10 user-provided Codex PASS for isolated local provisioni
 
 **Important active constraints:** GitHub context files govern continuity. PRD does not supersede `CONSTRAINTS.md`, active `DECISIONS.md`, existing evidence/NDP/scoring/truth authority or immutable seven-page report. Production read-only without explicit authorization. Design top down; build bottom up. One user-approved action at a time; no autonomous phase progression, provider calls or deployment. `G1-BOUNDED` is not `G1-COMPLETE`; neither lifts production HOLD.
 
-**Exact next action:** In the new chat, read `PROJECT.md`, this top checkpoint, active `CONSTRAINTS.md` and `DECISIONS.md`, then `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md`. **In discussion mode, present the specific read-only P0.1 currentness/component-identity qualification recipe and ask for explicit approval before running it.** Do not execute P0.1 or any build without authorization.
+**Historical/deferred next action:** In the new chat, read `PROJECT.md`, this top checkpoint, active `CONSTRAINTS.md` and `DECISIONS.md`, then `SPECS/PRYSM_Enterprise_Improvement_PRD_LLM_v1.4.3.md`. **In discussion mode, present the specific read-only P0.1 currentness/component-identity qualification recipe and ask for explicit approval before running it.** Do not execute P0.1 or any build without authorization.
 
 **Last verified:** 2026-10-09 — GitHub PRD/documentation state only; hosted production/staging identities remain historical/unresolved.
 
@@ -236,7 +263,7 @@ Important constraints:
 - Design top down; build bottom up; one separately authorized tranche at a time.
 - Estimates are planning forecasts, not verified delivery times or release claims.
 
-Exact next action:
+Historical/deferred next action:
 **In discussion mode, confirm the New Audit intake field design and boundary; before authorizing implementation, reconcile current live/isolated-staging code and deployment identities read-only and approve a single bounded tranche.** Do not resume historical G6 or start Adam repairs from this context update.
 
 Last verified: 2026-10-09 (GitHub/source inspection only; hosted currentness UNKNOWN).
@@ -359,7 +386,7 @@ Important constraints:
 - If execution encounters a condition not covered by the approved recipe, STOP and return to discussion before changing the recipe.
 - One G6 tranche is one execution boundary; do not continue into the next G6 tranche automatically.
 
-Exact next action:
+Historical/deferred next action:
 Freeze the command-complete G6-01 recipe from exact base `a36aa47aca8b96ded666fd21d69d373b8bbc0bc5`, create a fresh clean G6-01 worktree/branch, execute only G6-01, run its frozen targeted proof and bounded regression, then STOP at the G6-01 gate. Do not continue to G6-02 and do not mutate production.
 
 Last verified:
