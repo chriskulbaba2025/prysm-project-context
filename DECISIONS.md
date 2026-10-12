@@ -1646,3 +1646,19 @@ Implication:
 Do not use Desktop Commander, browser, extra operational MCP, live model/provider calls, database changes, or production systems. **Do not push the staging branch:** its GitHub push triggers automated Vercel/Railway staging deployments; code-only authority stops at local commits/proof. No audit run, no Vercel/Railway deployment, no production edit. Pending PRD decisions are not silently approved. Follow `PLANS/PRYSM_GACM_SEQUENTIAL_OFFLINE_CODE_2026-10-09.md` with direct stage evidence and long-run ledger under the dedicated Downloads proof folder. A successful local code tranche is not a model-bearing, hosted, browser, production or publication release PASS. The user owns that later review/approval gate.
 
 ---
+
+---
+
+## Decision: Isolated-staging client reports and deferred analytics
+
+Date: 2026-10-12
+Status: Active for isolated-staging PRYSM; not production promotion authorization
+
+Decision:
+Present only Snapshot V1 (one page) and the six-page Executive Report to PRYSM clients. Keep Supporting Detail and canonical supporting evidence available internally, not as an extra client-facing report page, direct link, or PDF section. Remove GA4 and Google Search Console property inputs from New Audit for now; the separate analytics system will be integrated only as a later, separately approved stage. Staging report/viewer repairs must not modify Snapshot V1, canonical scores, NDP/evidence truth, or automatically promote to PRYSM production.
+
+Reason:
+The user explicitly chose two client report products, asked to remove irrelevant analytics inputs, and wants real current audit/report usability without repeated paid crawls. The Addictive Tattoo report exposed a presentation-only claim-alias mismatch despite valid persisted report artifacts.
+
+Implication:
+Use the existing completed Addictive Tattoo audit to verify the repaired Executive renderer, including approved client wording, six-page navigation, printed/PDF layout and no browser console errors. Preserve prior production report freezes and separate release approval; do not treat staging implementation or CI as proof of finished human acceptance.
