@@ -1680,3 +1680,21 @@ The captured Macfarlane audit exposes contradictory evidence-to-finding interpre
 
 Implication:
 Use one bounded, user-approved repair at a time. Start with structured-data normalization only; no automated repair has been authorized at the freeze step. Targeted offline tests and non-mutating impact checks precede any subsequent repair or staging deployment. The 59/100 remains provisional/HOLD. No new audits, paid provider/model calls, production changes, subagents or Desktop Commander. Existing evidence, scoring outputs, NDP, report HTML and report language remain unmodified until separately approved.
+
+
+---
+
+## Decision: Every PRYSM recommendation must be business-applicable and traceable to same-business evidence
+
+Date: 2026-10-13  
+Status: ACTIVE / acceptance-blocking
+
+Decision:
+PRYSM must remain business-agnostic in its implementation: do not tailor scoring, trust, FAQ, policy, compliance, action prioritization, or narrative handling to individual client names or assumed industry defaults. Every finding and action must instead be **business-applicable**, based on the audited business's observed activities, first-party site crawl and supplied authorized business context, and the exact scoped supporting evidence/status. A recommendation that is theoretically sensible for some other industry is a defect when unrelated to this audited business.
+
+The user reports a marketing company received a safety-policy suggestion. Treat that as a high-priority counterexample to **investigate**, not a root cause proven from a named audit. Never adopt “marketing = exclude all safety” or “contractor = always require safety policy.” Public website applicability, site evidence and the customer's actual activities must justify any recommendation. Legal obligations may not be invented. Generic checklists and raw keyword matches cannot establish required policies.
+
+Every eligible recommendation needs inspectable site/audit provenance, business/service relevance, eligible scoring denominator, coverage and confidence status, positive/negative supporting evidence, and valid `FIX`, `VERIFY`, `NOT_APPLICABLE` or `UNAVAILABLE` semantics. It must survive deterministic decision → score → priority → report/Writer gate and cannot be introduced by a free-form generated paragraph without evidence authority. If site evidence is insufficient, do not call the item missing or penalize the site; fail closed. Legitimately broadly applicable technical rules also still require observed evidence.
+
+Implication:
+M12 is now a mandatory cross-business generalization and relevance gate in `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md`. At least six diverse business fixtures and adverse cases must prove both relevant recommendations and the rejection of irrelevant ones end-to-end. Report `M12 HOLD` if the marketing-agency originating audit is unavailable for exact reproduction; synthetic tests alone cannot claim real incident closure. No new audits, provider/model costs, deployments or changes to the frozen PRYSM baseline are authorized by this decision.
