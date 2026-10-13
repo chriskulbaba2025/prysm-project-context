@@ -1,5 +1,27 @@
 # Current State
 
+## Active checkpoint — Correction-02 uploaded proof independently audited (2026-10-13)
+
+**Independent outcome: MACHINE PROOF SUBMITTED / ACCURACY ACCEPTANCE HOLD.** User uploaded actual `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-02-proof.zip` (17 members with 8 full UTF-16 test logs) and prior audit file for rejected older candidate. Full independent written review exists as ChatGPT-generated `PRYSM-EVIDENCE-INTEGRITY-CORRECTION-02-INDEPENDENT-AUDIT.md` (not claimed as a GitHub application file).
+
+SHA identity: GitHub repair branch `repair/prysm-evidence-accuracy-20261013` exactly equals `c8b1605221563866408ca0b4e6036c1d3ed8f9fc`; protected frozen reference still equals baseline `89672525b3151a3fc682036601efed0e171cefbe`. New candidate is two commits ahead of frozen baseline and one ahead of `e9d85bb291d49c57b703fb5e750db2d4040d9f10`.
+
+Proof integrity: Uploaded correction ZIP SHA-256 `0c724a64d19537c6fe7b6ec9d0a741cc27e742289a4d207c4143a795751d5411` independently matches reported hash; ZIP test PASS. Original frozen Macfarlane ZIP SHA `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263` verified, all 29/29 listed object SHA-256 matches, 48 real objects / 6,492,169 bytes. Actual included test logs confirm 214/214 targeted, 1031/1031 deterministic, 15/15 schema, 96/96 scoring-projection, and Whole-App P-B01–P-B17 PASS with no logged failures. This validates reported log contents, not an independent full-repo rerun. Whole-App used a separate report fixture, not a corrected Macfarlane full downstream replay.
+
+**New independently reproduced semantic negative escapes at exact candidate:**
+1. **M02 FAIL**: `detectTrustSignals` accepts any H4 heading ending `?` as FAQ via `faqQuestionCount > 0`. Input H2 `Services`, H4 `What services do you offer?`, no FAQ marker/body produces `faq=true`; generic question headings must not prove explicit FAQ.
+2. **M05 FAIL**: `TEXT_COMPLETED_WORK_RE` retains `projects?\s+(?:include|included|such as|like)`; body `Projects include` with no images/projects/identity sets `completedWork=true`. Prior `Our projects` counterexample was fixed but generic false proof remains.
+Both direct candidate expression branches were independently reproduced with Node; negative tests missing.
+
+**Other gates:** M01 schema PARTIAL/downstream HOLD; M03 certificate/browser HOLD, HTTPS scheme score needs careful bounded semantics; M04/M09 synthetic 4/29 normalized findings improved but Macfarlane 301 redirect is included as a missing-description action and actual offline replay absent; M06 first-party claim recognition improved, client projection unproven; M07 `London Ontario` mocked provider task OFFLINE TARGETED PASS; M08 deterministic projection PARTIAL; M10 deterministic wording PARTIAL / model-bearing HOLD; M11 VISUAL_HOLD. No corrected original Macfarlane score/findings/report artifact was supplied; historical 59/100 remains provisional.
+
+**Next action:** On existing correction branch at exact SHA `c8b1605221563866408ca0b4e6036c1d3ed8f9fc`, write failing red negative controls for generic question H4 and `Projects include`, then bounded generic repairs with positive siblings; resolve 301 SEO metadata actionability and generate **real original-byte offline Macfarlane producer→score/findings→projection** comparisons, without overwriting historical artifacts. Rerun exact-head gates and return next proof ZIP. No staging deployment, model/provider calls, original data writes, fresh audits, production changes or default dirty checkout edits. Final human/browser/model-bearing acceptance HOLD.
+
+Last verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-02 candidate awaiting independent proof (2026-10-13)
 
 Status: **CODE_VERIFIED (Codex-reported) / PRELIMINARY INDEPENDENT ACCEPTANCE HOLD**. The user's second correction checkpoint reports targeted 214/214, deterministic 1,031/1,031, Whole-App P-B01–P-B17 PASS, zero paid calls, and separate M03 certificate-browser, M10 model-bearing, M11 visual/browser/PDF HOLD. The user has not yet uploaded the `CORRECTION-02` `REPORT.md` or proof ZIP to this ChatGPT conversation; test logs and exact proof hashes are **not independently reviewed**. Claimed ZIP hash `0C724A64D19537C6FE7B6EC9D0A741CC27E742289A4D207C4143A795751D5411` is user/Codex-reported, not independently verified.
