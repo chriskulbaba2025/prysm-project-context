@@ -97,3 +97,58 @@ A stage PASS proceeds to the next authorized stage without asking again. A HOLD 
 The explicit user request authorizes **offline source/fixture repairs and audits on the dedicated repair branch** under these boundaries. It does **not** authorize staging deployment, production, new audits, live providers, live model runs, rewriting original persisted evidence or automatic merge. The independent reviewer decides acceptance. The next user action should be to run this exact work package in a single local GPT-5.6 Luna Codex session with access to the frozen ZIP, repository and proof location.
 
 **Status at creation:** planning and package freeze only; no application source changes or tests executed.
+
+
+---
+
+## 2026-10-13 amendment — M12 business-applicability and scrape-grounding gate
+
+**Reason for amendment:** User-reported escape: a marketing-agency audit generated an irrelevant safety-policy recommendation. This account is a reported incident, **not yet reproduced from a named audit and persisted evidence**, and must not be treated as a proven root cause. The repair must be generic across industries, not an exclusion for marketing agencies or an exception for the Macfarlane fixture.
+
+**Mandatory cross-cutting product rule:**
+
+> Every finding, priority, recommendation, action and score must be applicable to the audited business and traceable to relevant evidence from that **same audit's owned target site**, authoritative permitted first-party business context, or explicitly marked external benchmark where appropriate. A generic industry checklist, background assumption, competitor page, unscoped search snippet, or merely absent URL is not evidence of a business-specific deficiency. No recommendation is approved solely because an industry keyword, model prior, or broad template matches.
+
+This is **M12**, an acceptance-blocking criterion for the current evidence-integrity tranche, even if M01–M11 pass. It is an additional gate; do not silently reconstruct or replace any approved earlier contract. Write a separate frozen M12 acceptance addendum on the authorized repair branch before touching code. This is not authority for an unrelated architecture or prompt rewrite.
+
+### M12 required diagnosis and producer→consumer map
+
+1. Search for the actual **marketing-company safety-policy** finding/report instance and preserve audit ID, tenant ID, exact recommendation/finding/score, business classification and underlying first-party scrape evidence. If not available, classify the incident as USER-REPORTED / RUNTIME-ROOT-CAUSE-UNPROVEN. Do not fabricate a reproduction. Continue safely with controlled negative fixtures; do not declare the real incident resolved without exact-artifact proof.
+2. Trace how **intake business context → site/industry classification and scope → raw page evidence → normalization/evidence availability → finding eligibility/semantic applicability → score and priority → deterministic report projection → Writer/Judge and HTML/PDF client rendering** connect. Identify every authority/gate bypass; verify the exact executing source SHA. Track each recommendation's originating rule and whether the source is first-party, supplied client context, cited external context, or unavailable.
+3. Define a deterministic, inspectable **business applicability / evidence support** contract, with at minimum:
+   - audited tenant/audit/site identity, dated source URL(s) or first-party supplied context ID;
+   - observed business activities and profile confidence/status, including multi-service/hybrid/unknown businesses;
+   - specific customer need, conversion decision, technical or commercial problem proposed;
+   - applicable recommendation condition, reason it applies, positive supporting evidence and coverage status;
+   - counterevidence/exceptions; what was not assessed; status `SUPPORTED`, `VERIFY`, `NOT_APPLICABLE`, or `UNAVAILABLE` without manufacturing `ABSENT`;
+   - impact on score eligibility and whether action may enter `FIX`, `VERIFY`, or excluded from client recommendations.
+   The rule may apply universally only if inherently universal **and observed** (e.g. objectively confirmed broken on-site navigation, verified expired certificate); even universal rules must obey sampled scope and verified evidence.
+4. Do **not** use simplistic hardcoded exclusions such as “marketing agencies never need safety policies” or “trades always need safety policies.” A marketing agency may operate workshops, events, field production, or otherwise need safety information; a trades business may need internal statutory safety controls without necessarily needing a public website policy. Only relevant real business context and specific recommendation purpose can establish an actionable **website** recommendation. Legal/regulatory compliance must not be invented from site type.
+5. If classification is unknown, first-party content is partial, evidence is missing, or scope is contradictory, **fail closed**: no scored deficiency, “must implement”, or client-facing fix-first recommendation. Permit narrowly worded `VERIFY` only when its business relevance is itself grounded. Do not increase a score merely because an inapplicable rule has been suppressed; preserve explicit assessed-weight/denominator eligibility.
+6. Require provenance integrity through persisted decision evidence, scoring, report model, priorities and report publication/claim validator. Writer-generated suggestions cannot bypass a deterministic applicability gate or inject a generic/safety/legal claim. If the necessary fix materially changes WriterInput, Writer/Judge prompt/schema or their semantic authority, **STOP at MODEL_BEARING_GATE_HOLD**; no unauthorized model changes or paid calls.
+
+### M12 cross-business regression matrix — fail closed and generalize
+
+At minimum, exercise **six** different site-shaped controlled fixtures, plus real frozen audit artifacts where available. The scenarios must be generic without client/domain literal exceptions:
+
+| Scenario | Required proof |
+|---|---|
+| Marketing/creative agency with only digital strategy, SEO and website services | No public workplace-safety-policy finding or scored deficiency without additional relevant first-party evidence. A stray word “safety” in unrelated copy does not authorize it. |
+| Marketing agency that explicitly offers in-person event production or on-site services | Safety relevance is evaluated from those documented operations, yet still must not assume a public policy is required; show `VERIFY` or supported, narrowly scoped recommendation only if warranted. |
+| Construction, installation or home-service contractor | Detect actual first-party warranty, project, safety or insurance material where available, but do not invent legal website compliance duties, certificates or public-policy absence under partial crawl. |
+| Medical/health services website | Distinguish genuinely applicable care/trust/claims checks from generic construction safety language; support observations with page-specific context and scope; no fabricated clinical proof. |
+| Online retailer or subscription service | Evaluate observed checkout, shipping, returns or subscription terms only when corresponding features are present; do not prescribe unrelated sector-specific policies. |
+| Professional advisory services (law, accounting or consultancy) and/or mixed-service business | Derive applicability from exact marketed services, avoid ungrounded professional/legal obligations and resolve mixed/ambiguous classifications as `VERIFY` or `UNAVAILABLE`. |
+
+Adversarial negatives also required for: no site-body evidence; PARTIAL/FAILED crawl; mismatched tenant/client/scope; external SERP result or competitor mentioning safety; generic footer navigation or topical words without applicable activity; change of industry label alone without changed first-party evidence; false positive generic FAQ question or “projects include” proof; stale/duplicate evidence; relevant first-party *positive* evidence; and legitimately applicable but unverified compliance claims.
+
+**Per-case output:** exact first-party evidence fixture and expected/actual class → eligible finding/scoring rule (and assessed denominator) → priority/action type → rendered user-facing wording, including negative assertion that an irrelevant recommendation is **absent**; record counterexamples with failing red test and green proof. Include at least one real frozen non-Macfarlane, different-sector audit if already available **without** new crawl/provider/model calls, or explicitly `REAL_CROSS_SECTOR_FIXTURE_HOLD`.
+
+### M12 acceptance rule and impact on G0–G5
+
+- Insert M12 in the **next** correction's G0 acceptance freeze. Before changing a source file identify the full owning boundary, permitted file set and evidence lineage. Do not patch an individual forbidden keyword or brand/sector; fix the general applicability authority.
+- On G1/G2/G3, every touched scoring or client-projection rule must demonstrate M12 applicability, including when the finding is an absence claim.
+- G4 must test the six-sector fixtures and negative controls through actual assembled producer→scoring→priority→client projection path, not just leaf regexes. Frozen Macfarlane tests remain regression inputs, not target exceptions.
+- G5 independent audit must inspect false-PASS counterexamples and a per-finding provenance matrix. An unsupported but plausible recommendation is a **FAIL**, not a stylistic issue.
+- Do not call the tranche `CODE_VERIFIED` for M01–M12 until issue-specific direct and negative proof is supplied. Independently retain M03 certificate/browser, M10 model-bearing, and M11 visual/PDF HOLD until their actual proof planes pass.
+- Maintain `CHANGE_ONLY` and all existing immutable-baseline, no-cost, no-deployment, no-production boundaries.
