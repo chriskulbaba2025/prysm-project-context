@@ -1,5 +1,24 @@
 # Current State
 
+## Active checkpoint — Correction-02 candidate awaiting independent proof (2026-10-13)
+
+Status: **CODE_VERIFIED (Codex-reported) / PRELIMINARY INDEPENDENT ACCEPTANCE HOLD**. The user's second correction checkpoint reports targeted 214/214, deterministic 1,031/1,031, Whole-App P-B01–P-B17 PASS, zero paid calls, and separate M03 certificate-browser, M10 model-bearing, M11 visual/browser/PDF HOLD. The user has not yet uploaded the `CORRECTION-02` `REPORT.md` or proof ZIP to this ChatGPT conversation; test logs and exact proof hashes are **not independently reviewed**. Claimed ZIP hash `0C724A64D19537C6FE7B6EC9D0A741CC27E742289A4D207C4143A795751D5411` is user/Codex-reported, not independently verified.
+
+Independent GitHub repo/head comparison PASS: `chriskulbaba2025/prysm-staging-isolated` candidate `c8b1605221563866408ca0b4e6036c1d3ed8f9fc` exactly matches remote `repair/prysm-evidence-accuracy-20261013`. One commit ahead of rejected `e9d85bb291d49c57b703fb5e750db2d4040d9f10`; two commits ahead of frozen baseline `89672525b3151a3fc682036601efed0e171cefbe`. Baseline branch `freeze/prysm-before-evidence-accuracy-repairs-20261013` still equals exact baseline. Independent staging Railway worker and Vercel front end both remain at baseline SHA, no deployment.
+
+Candidate visibly includes additional generic repairs and targeted test file. However **direct static negative controls raise additional issues**:
+- **M02**: `detectTrustSignals` sets `faq=true` whenever any H4 heading ends in `?`, even without FAQ label; ordinary headings like `What services do you offer?` falsely become FAQ. Separately, site-level `trust.faq` still checks body-content availability despite heading evidence. A real frozen producer→site-summarizer→scorer→report replay is needed to prove correct availability and no generic heading false positives.
+- **M05**: `TEXT_COMPLETED_WORK_RE` still accepts `Projects include` as completed-work textual evidence without project provenance; `classifyCompletedWorkEvidence` uses this to set `completedWork=true`. An isolated reproduction of the exact candidate regex confirms this. Current regression only checks `See our projects`.
+- **M03**: historical certificate evidence is now captured, but `scoreRiskReductionV4` still awards scheme points for any `https:` URL independently of certificate validity. Must clarify contract/score semantics and prove security interpretation without treating scheme as valid certificate. No browser certificate proof.
+- M01 schema, M04/M09 metadata, M06 experience, M07 location and M08/M10 report fixes show material source improvements but require uploaded issue-level before/after proof for independent acceptance. M11 remains explicit VISUAL_HOLD.
+
+Exact next action: User uploads `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-02\REPORT.md` and `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-02-proof.zip` to the chat. Verify ZIP SHA-256 and issue-by-issue proof against exact head. Until then no independent `PASS`, staging deployment, model/provider calls, new audits, historical data overwrite, merge or production mutations. If confirmed, use a bounded offline negative-control correction on the SAME repair branch and repeat exact-SHA gates; never alter frozen baseline. Dirty unrelated default checkout remains untouched per user report (not independently examined).
+
+Last checked 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Final independent Evidence Integrity audit FAIL/HOLD (2026-10-13)
 
 **VERDICT: INDEPENDENT ACCEPTANCE FAIL/HOLD.** Reviewed uploaded `REPORT(20261013-184920).md` and complete 8-file `PRYSM-EVIDENCE-INTEGRITY-20261013-01-REDACTED-PROOF.zip`, exact GitHub candidate code, and original frozen Macfarlane audit evidence. Independent final report: `PRYSM-EVIDENCE-INTEGRITY-20261013-INDEPENDENT-AUDIT-FINAL.md` (user-facing downloadable report in current ChatGPT session; not a claim of a GitHub-hosted code file).
