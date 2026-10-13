@@ -1,5 +1,24 @@
 # Current State
 
+## Active checkpoint — Correction-05 source review and evidence-grounding blockers (2026-10-13)
+
+**Independent status: GIT IDENTITY PASS / M05 AND M12 SEMANTIC ACCURACY FAIL / FULL PACKAGE PROOF NOT YET UPLOADED.** Current application repair candidate `4cff7c47c14ee2f78c44c466768552cc5fb2c169` exactly equals `repair/prysm-evidence-accuracy-20261013` remote head (0/0); frozen reference branch exactly equals `89672525b3151a3fc682036601efed0e171cefbe`. Candidate one commit ahead of Correction-04 `dba1d660ec3537375f52cc65887aa42525100945`. Detailed preliminary review generated in chat: `PRYSM-CORRECTION-05-PRELIMINARY-INDEPENDENT-REVIEW-20261013.md` (not a claimed GitHub-hosted file).
+
+User/Codex reported targeted 38/38, regression 1411/1411, deterministic 1034/1034, schemas 15/15, scoring/projection 283/283, Whole-App P-B01–P-B17 PASS. Correction-05 proof ZIP and actual REPORT.md are **not uploaded**, so SHA-256 `0F7F3BFB8F067B9E8BDF99871106B0365102C915C5D4E56EAB3C1883836E5908`, exact log totals, original hashes, current raw-source replay and end-to-end gates **remain independently unverified**. Report path in latest handoff mistakenly points to `...CORRECTION-04/REPORT.md`; request actual Correction-05 report.
+
+Source improvements: `completed-work-evidence.js` adds first-party source, generic text/image filters, and first-party claim metadata; `semantic-ledger.js` adds `applicabilityFor`, `scoreEligible`, and `NO_ACTION` for relevance UNKNOWN; six-label tests cover UNKNOWN safety-topic suppression in semantic ledger. **But generalization escapes survive at exact source**:
+- **M05 FAIL:** Regex `TEXT_PROJECT_LIST_RE` still treats generic `Selected campaigns include More Information`, `Selected campaigns include Contact Us`, `Selected projects include Read More` as named completed-work proof when firstPartySource true, even without attributable project. `Portfolio` with two unrelated `Client portrait` or `Campaign ideas` images still satisfies count+context keyword detection despite no project connection. Independently reproduced from exact expression/boolean branches (not whole-module runtime).
+- **M12 FAIL / production-path HOLD:** `applicabilityFor` accepts any nonempty row audit/tenant/client ID or targetScope as same-business grounding WITHOUT matching current identity; supplied `RELEVANT` sets `scoreEligible=true` even when `grounded=false`; `classifyOpportunity` does not require `grounded` before `CREATE`. Copied-source branch reproductions on digital-marketing site with complete scoped evidence and empty pages still produce `CREATE` for an unrelated workplace-safety-policy topic if supplied `relevanceState=RELEVANT`, including when `auditId` is a different audit. Existing M12 tests only reject relevance UNKNOWN, not falsely supplied RELEVANT/cross-tenant/projection leakage. User-reported original marketing incident unavailable, so real incident closure remains separate HOLD.
+
+**Other planes:** M03 certificate/browser, M10 model-bearing and M11 visual/browser/PDF HOLD. No staging, production, frozen evidence, app code, new audits or paid/provider/model mutations during independent review.
+
+**NEXT ACTION:** User uploads `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-05\REPORT.md` (verify actual path) and `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-05-proof.zip`. Independently verify SHA, actual logs and full pipeline. On existing repair branch, add fail-first M05 provenance negative fixtures and M12 false-RELEVANT/mismatched-tenant/no-grounding tests. Correct owning applicability/evidence boundary generically and prove source→finding/score→priority→client rendering across sectors; **do not** patch forbidden phrases or claim six sector labels alone prove business relevance. Maintain CHANGE_ONLY, no deployments, historical overwrite or unrelated dirty checkout changes.
+
+Last verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-04 uploaded proof independently audited (2026-10-13)
 
 **Independent verdict: TEST/PROOF INTEGRITY PASS; M05 FALSE-POSITIVE FAIL; M12 GOVERNANCE HOLD.** Read actual user-uploaded `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-04-proof.zip` and `REPORT(20261013-204546).md` and original frozen Macfarlane evidence. Detailed written review in chat artifact `PRYSM-CORRECTION-04-INDEPENDENT-AUDIT-20261013.md` (downloadable; not a claimed GitHub source file).
