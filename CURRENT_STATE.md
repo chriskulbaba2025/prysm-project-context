@@ -1,5 +1,26 @@
 # Current State
 
+## Active checkpoint — Correction-06 proof independently reviewed; M05 FAIL / M12 HOLD (2026-10-13)
+
+**Independent outcome:** uploaded `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-06-proof.zip` SHA-256 `512a5bb6814bc0593a610f359b543823b0b55564f02e852ff3d3fddd72ff9967` independently MATCHES reported value; all 23 ZIP entries CRC PASS; 29/29 submitted manifest hashes independently match original frozen Macfarlane archive (frozen original ZIP SHA-256 `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`). Included actual machine logs show targeted 63/63, worker 1414/1414, deterministic 1041/1041, schema 15/15, scoring/projection 283/283, render 52/52 and Whole-App P-B01–P-B17 PASS. Independent full-repository rerun was NOT performed. Whole-App used one generic fixture, not an original Macfarlane-to-client-render end-to-end acceptance.
+
+**Git identity PASS / false blocker corrected:** `repair/prysm-evidence-accuracy-20261013` equals exact candidate `f875626d2279a00009c363ce77dc1ab0a7c3ee88` remotely. Contrary to included Codex `REPORT.md`, direct GitHub Git ref GET shows frozen remote `freeze/prysm-before-evidence-accuracy-repairs-20261013` EXISTS at approved `89672525b3151a3fc682036601efed0e171cefbe`; compare IDENTICAL. Do not recreate/reset/force-push frozen ref.
+
+**M05 remains SOURCE-SEMANTIC FAIL despite green tests:** Candidate `TEXT_PROJECT_LIST_RE` + `attributableName` still treats generic labels `Selected campaigns include Schedule Consultation`, `Selected campaigns include Privacy Policy`, and `Selected projects include Terms and Conditions` as completed-work claims if firstPartySource true, source AVAILABLE. Likewise a `Portfolio` page with two unrelated images alt `Project concept` or `Campaign moodboard` meets project keyword+image-count condition despite no real attributable work. Exact candidate regex/image branches independently reproduced; they are not full imported module runs. Hardcoded non-attributable word lists are still prone to escapes; require actual project-instance/same-source association and source→score→client proof.
+
+**M12 remains PRODUCER/CONSUMER AND REPORT ELIGIBILITY HOLD:** `semantic-ledger.js` requires `page.businessActivities` or `page.observedActivities` and `row.requiredActivities`; inspected real on-page adapter, page extractor, and site crawler do not populate activities in returned page records; synthetic positive tests inject them. This may suppress genuinely relevant recommendations and is not an end-to-end producer contract. `identityMatches` accepts missing row audit/tenant/client identity where site identity exists. Grounding is checked on `CREATE` but not on `IMPROVE`, `CONSOLIDATE`, `REPOSITION_OR_SURFACE`, `EXPAND`. The safety-only VERIFY gate depends on row `recommendationType=SAFETY_POLICY` with no evidence untyped semantically equivalent recommendations receive the same treatment. No saved marketing incident replay or actual full client-report relevance suppression proof. M12 is not accepted on six-sector mocked activity tests alone.
+
+**Other HOLDS:** M03 certificate/browser; M10 Writer/Judge/model-bearing; M11 browser/PDF. Historical client 59/100 remains provisional and frozen; production path equivalence, client acceptance and release NOT authorized.
+
+**Independent report artifact:** `PRYSM-CORRECTION-06-INDEPENDENT-AUDIT-20261013.md` generated for download in this chat (not asserted as a GitHub file). Contains exact negative cases, trace requirements, permitted boundaries and next tranche.
+
+**NEXT ACTION:** Keep exact repair candidate and freeze untouched; before new code trace actual existing scrape producer fields through site/audit identity, semantic opportunity creation, score, findings, priorities and final rendered client output. Add red M05 CTA/project-concept controls and truthful positives, replace generic regex/class counts with concrete attributable project evidence. Add red M12 missing-ID, real-producer-shaped (without manually injected activities), ungrounded IMPROVE/EXPAND/CONSOLIDATE/REPOSITION tests; enforce producer-backed generic applicability through all downstream surfaces and avoid false suppression. Replay saved real/source-shaped evidence end to end, then full exact-head logs, compare derived report HTML, submit independently reviewable proof. No model/provider/paid calls, fresh audits, frozen-evidence writes, deployments, staging/production changes, merge or unrelated dirty-checkout edits.
+
+Verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-06 frozen Git ref PASS; source-level evidence holds (2026-10-13)
 
 **Correction-06 candidate:** `f875626d2279a00009c363ce77dc1ab0a7c3ee88`; GitHub independent compare confirms `repair/prysm-evidence-accuracy-20261013` remote is **IDENTICAL** (0 ahead, 0 behind). Candidate is one commit ahead of Correction-05 `4cff7c47c14ee2f78c44c466768552cc5fb2c169`.
