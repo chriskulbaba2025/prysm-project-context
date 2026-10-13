@@ -1,5 +1,24 @@
 # Current State
 
+## Active checkpoint — Correction-04 independent GitHub review, proof awaiting upload (2026-10-13)
+
+**VERDICT: SOURCE IDENTITY VERIFIED / PRELIMINARY INDEPENDENT ACCEPTANCE HOLD.** Correction-04 user/Codex candidate `dba1d660ec3537375f52cc65887aa42525100945` exactly matches remote `repair/prysm-evidence-accuracy-20261013` (0/0), three commits ahead of Correction-03 `ea76fe0c5e5588047d7f7195370bee8f2f6a21ee`. Frozen reference still exactly equals `89672525b3151a3fc682036601efed0e171cefbe` (0/0). Vercel isolated-staging frontend READY and Railway isolated worker SUCCESS still at frozen SHA, not the candidate. No app modifications or deployments during the independent check.
+
+**Unreviewed Codex-reported gates**: targeted 23/23, full regression 1407/1407, deterministic 1031/1031, schemas 15/15, scoring/projection 295/295, render 52/52, Whole-App P-B01–P-B17 PASS; claims are not independently accepted until local Correction-04 `REPORT.md` and proof ZIP are uploaded. Reported ZIP SHA-256 `57866d0819d7709192036a5d89f2c41e8b12805a2728e990089c9eca1ff2cf86` is NOT independently verified. M01/M02 raw-source replay, M04/M09 authoritative 3/28 replay, and contradictory Correction-03 replay quarantine are also Codex-reported pending artifact checks.
+
+**M05 direct surviving generic false positive at exact candidate:** `services/worker/src/trust/completed-work-evidence.js` combines `TEXT_COMPLETED_WORK_RE` and `TEXT_PROJECT_DETAIL_RE` as unconditional textual proof. The precise copied regexes independently match the generic unproven phrases `Selected projects for Our Clients`, `Recent work for Local Businesses`, `Featured campaigns for Better Results`, and `Recent work — "See more here"`; the classifier therefore returns `completedWork=true` without any actual named project/case/gallery or project provenance. These are source-logic counterexamples despite new green tests for `Selected projects`, `Recent work`, `Featured campaigns` alone. Do not patch only these literals; diagnose provenance/authority and fix generic semantic contract.
+
+**Render snapshot review required:** Of the three new commits, one updates 24 golden hashes in `services/worker/src/report/render-report-v2-conversion.test.js` alongside trust-classifier behavior. Golden refresh does not itself prove approved client text and report integrity; inspect exact before/after rendered text/HTML and protected assertions per changed scenario before acceptance.
+
+**M12 business-agnostic applicability remains HOLD** as user/Codex acknowledged; the current delta has no cross-business relevance gate or six-industry end-to-end negative proof. Reported missing marketing-company original audit is a diagnosed proof blocker, not permission to invent sector exceptions. M03 certificate browser, M10 model-bearing and M11 visual/PDF remain separate HOLD.
+
+**NEXT ACTION:** Upload `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-04\REPORT.md` and `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-04-proof.zip`; then independently verify ZIP hash, source-raw replay, 3/28 output, golden before/after and negative test coverage. No independent PASS, merge, deployment, production edits, paid/model/provider calls, new audits, historical evidence overwrite or unrelated dirty-checkout modification.
+
+Last independently reviewed: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-03 uploaded proof independent audit HOLD (2026-10-13)
 
 **Independent verdict: HOLD / M05 FAIL / M12 NOT PROVEN.** Reviewed uploaded `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-03-proof.zip`, `...-replay-source.json`, `...-Macfarlane-replay.json`, and original frozen raw archive; review artifact generated in current chat `PRYSM-CORRECTION-03-INDEPENDENT-AUDIT-20261013.md` (not represented as a GitHub-hosted file).
