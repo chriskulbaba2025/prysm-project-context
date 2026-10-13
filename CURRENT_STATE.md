@@ -1,5 +1,22 @@
 # Current State
 
+## Active checkpoint — Full evidence-to-report audit authorized and specified (2026-10-13)
+
+**User direction:** Stop serial keyword/example repairs; conduct a **full audit of the real PRYSM evidence-to-client-report system**, diagnose entire producer→consumer chain before new coding, correct grounded root causes only, and test every affected final client-facing output. This is an authorized audit/diagnostic and bounded offline repair plan, NOT permission for new paid audits, live model/provider calls, deployment or production mutation.
+
+**Authoritative frozen execution spec CREATED and readback verified:** `SPECS/PRYSM_FULL_PIPELINE_EVIDENCE_TO_REPORT_AUDIT_20261013.md` on `chriskulbaba2025/prysm-project-context` main, creation commit `144770a7d377afecccad429698c711a333432b37`; file blob `b9bc51cfcd7807d10d8fb9e72adc3577a4e82eaf`. This additive spec preserves older tranche and M12 decisions. Defines G0 exact identity and actual New Audit/report runtime, G1 read-only SYSTEM-FLOW + rule/producer/consumer inventory and failing contracts, G2 pre-scoped root-cause corrections, G3 original raw or producer-shaped source→normalization→decision/capability→classification→scoring/finding→priority→report/HTML trace, G4 branch-wide and Whole-App gates plus adversarial checks, and G5 full Downloads proof handoff for independent review. Includes six-sector negative/positive matrix and report claim-lineage requirements for **all rules**, not just M05/M12. Existing M03/M10/M11 remain separate actual proof HOLDs.
+
+**Starting verified application candidate** `f875626d2279a00009c363ce77dc1ab0a7c3ee88` on `repair/prysm-evidence-accuracy-20261013`; original frozen remote branch `freeze/prysm-before-evidence-accuracy-repairs-20261013` exists at `89672525b3151a3fc682036601efed0e171cefbe` (do not recreate). Re-verify exact heads/dirty state immediately before any Codex run. Correction-06 package machine proofs PASS as logged, but independently observed M05 generic-label/image false positives and M12 missing producer field, identity, non-CREATE action gates remain unresolved. Original user-reported marketing company incident remains unavailable, with runtime cause not independently verified.
+
+**Current execution status:** Governance specification and current-state checkpoint written via GitHub, source-level diagnosis as above. No local Codex, full application runtime tests, new original-to-client replay, repairs, paid calls, new audits, deployment, merge or data mutation executed during this assistant turn. User must start the exact full-audit task in their local Codex environment with repository and saved evidence access. Do not claim the audit completed until Codex returns G0–G5 proof and an independent reviewer checks it.
+
+**NEXT ACTION:** Local Codex reads `CURRENT_STATE.md`, `SPECS/PRYSM_FULL_PIPELINE_EVIDENCE_TO_REPORT_AUDIT_20261013.md`, the earlier tranche/M12 amendment and boundary protocol, then starts READ-ONLY G0/G1. No source edits before complete verified producer/consumer map. Execute bounded M05/M12 repairs only after diagnostic gate, test with real saved or real producer-shaped data through **rendered client HTML**, submit complete proof ZIP and exact head for independent review. No blind regex patches.
+
+Verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-06 proof independently reviewed; M05 FAIL / M12 HOLD (2026-10-13)
 
 **Independent outcome:** uploaded `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-06-proof.zip` SHA-256 `512a5bb6814bc0593a610f359b543823b0b55564f02e852ff3d3fddd72ff9967` independently MATCHES reported value; all 23 ZIP entries CRC PASS; 29/29 submitted manifest hashes independently match original frozen Macfarlane archive (frozen original ZIP SHA-256 `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`). Included actual machine logs show targeted 63/63, worker 1414/1414, deterministic 1041/1041, schema 15/15, scoring/projection 283/283, render 52/52 and Whole-App P-B01–P-B17 PASS. Independent full-repository rerun was NOT performed. Whole-App used one generic fixture, not an original Macfarlane-to-client-render end-to-end acceptance.
