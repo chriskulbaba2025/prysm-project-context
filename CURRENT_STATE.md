@@ -1,5 +1,36 @@
 # Current State
 
+## Active checkpoint — Macfarlane accuracy baseline FROZEN (2026-10-13)
+
+Project: PRYSM — isolated staging. Status: BASELINE FROZEN / NO REPAIR IMPLEMENTED.
+
+Current objective: Preserve the exact deployed application/scoring/report state and the original Macfarlane audit artifacts before bounded evidence-accuracy repairs. This freeze is a baseline preservation action, not approval of new audits, recomputation or deployment.
+
+Verified application repository: `chriskulbaba2025/prysm-staging-isolated`.
+- Frozen original SHA: `89672525b3151a3fc682036601efed0e171cefbe`.
+- Preserved GitHub baseline branch: `freeze/prysm-before-evidence-accuracy-repairs-20261013` — independently compared to the frozen SHA; identical.
+- Separate future-repair branch: `repair/prysm-evidence-accuracy-20261013` — independently compared to the frozen SHA; identical, no code changes.
+- Existing staging deployment source branch: `fix/prysm-exec-render-recovery-20261012` — independently compared to the frozen SHA; identical.
+- Vercel isolated staging: `dpl_GK5RW2fqZniBGfEstrerbTL1Yefm`, READY at frozen SHA.
+- Railway isolated staging project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`; deployment `5dc8dfcd-9c58-42e1-8fe4-23a3172074b1`, SUCCESS at frozen SHA. Its environment is named `production` *inside this isolated project only*. Actual PRYSM production untouched.
+
+Frozen Macfarlane audit evidence:
+- Audit `778e0a77-e488-4d3d-bbdc-91fe7bdb4ab6` (Macfarlane Windows & Doors), tenant `prysm-staging`.
+- The original, read-only user-provided evidence export `original-evidence.zip` was duplicated byte-identically as `PRYSM-MACFARLANE-FROZEN-EVIDENCE-20261013.zip` (chat artifact); SHA-256 `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`. Archive contains 48 exported evidence objects plus the old historical `UNAVAILABLE.md` placeholder. Original local folder is `C:\Users\kulba\Downloads\PRYSM-MACFARLANE-EVIDENCE-REVIEW\original-evidence`; no remote evidence was modified.
+- 2026-10-13 static accuracy diagnosis identifies proven schema and FAQ normalization/recognition failures and other scoring/evidence/projection gaps. The stored 59/100 is provisional and HOLD for client/sales claims pending a separately approved correction and verification. Existing report and all six approved client-facing page structures remain untouched.
+
+Operating boundary: Never modify, force-update, delete, merge, deploy from, or retarget the preserved baseline branch. Treat the exact SHA as the authoritative original. Future fixes must occur only on the separate repair branch after verifying its current SHA and clean/dirty state, and with one user-approved bounded defect at a time. Preserve all original audit evidence, report bytes, scores, Writer/Judge outputs and canonical states unchanged. No new audits, paid provider/model calls, production changes, Desktop Commander, or subagents. Do not promote the repair branch to live isolated staging without explicit approval and targeted regression proof. Earlier presentation-only scope does not authorize collection/scoring changes by itself; evidence-accuracy work is a separate future repair scope.
+
+Completed: Current staging identity verified; exact baseline and separate clean-start repair GitHub branches created and comparison-verified; Macfarlane evidence ZIP copied with matching SHA-256. No source-file changes, no provider calls, no deployments, no existing artifact mutation.
+
+Blocked: No repair authorized or executed. Report score cannot be re-certified from unchanged, contradictory persisted evidence.
+
+Exact next action: Request/confirm authorization to diagnose and repair *only* generic DataForSEO structured-data normalization on `repair/prysm-evidence-accuracy-20261013`, using the immutable Macfarlane evidence as regression input and no provider/model calls; test and report before any next defect or deployment.
+
+Last verified: 2026-10-13.
+
+---
+
 ## Active checkpoint — isolated-staging Addictive Tattoo Executive Report acceptance (2026-10-12)
 
 Project: PRYSM.
