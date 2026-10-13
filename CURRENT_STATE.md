@@ -1,5 +1,22 @@
 # Current State
 
+## Active checkpoint — Independent audit HOLD for Evidence Integrity candidate (2026-10-13)
+
+**Status: INDEPENDENT AUDIT HOLD / GACM FALSE-PASS RISK.** The Codex handoff reported `CODE_VERIFIED` and 1,031/1,031 deterministic PASS plus Whole-App P-B01–P-B17 PASS, but those claims are still **Codex-reported**, not independently accepted. The full `REPORT.md` and redacted proof ZIP have not been uploaded to this conversation as of this checkpoint.
+
+Independent connected-GitHub verification: Candidate `e9d85bb291d49c57b703fb5e750db2d4040d9f10` exactly equals `repair/prysm-evidence-accuracy-20261013` remote head (0/0); preserved `freeze/prysm-before-evidence-accuracy-repairs-20261013` equals frozen baseline `89672525b3151a3fc682036601efed0e171cefbe` (0/0). Candidate is one commit ahead; it changes 5 code/test files and adds 4 governance files. Staging frontend Vercel `dpl_GK5RW2fqZniBGfEstrerbTL1Yefm` remains READY at baseline SHA and isolated-staging Railway worker `5dc8dfcd-9c58-42e1-8fe4-23a3172074b1` remains SUCCESS at baseline SHA. No application/runtime mutation by independent auditor.
+
+**Material verified escape M05:** At the exact candidate in `services/worker/src/trust/completed-work-evidence.js`, `TEXT_COMPLETED_WORK_RE` still matches generic `our projects`; `textualEvidence` unconditionally feeds `established`. The direct counterexample `our projects` therefore still establishes `completedWork=true` without provenance. The acceptance contract explicitly forbids this. Candidate comment claiming that generic language is not enough is contradicted by executing expression. **M05=FAIL** independent static/regular-expression check. This prevents acceptance of whole M01–M11 tranche regardless of existing tests. M01 schema type extraction and one M10 performance sentence received code edits, but downstream exact-artifact/negative proof remains unreviewed. M02, M03, M04, M08, M09 and M11 have no direct corresponding source edits; indirect success must be proven by original-byte replay, not presumed. M11 remains `VISUAL_HOLD`; model-bearing claims remain restricted by explicit no-paid-call scope.
+
+Tranche specification remains `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md`. Independent audit preliminary report exists in ChatGPT session: `PRYSM-EVIDENCE-INTEGRITY-INDEPENDENT-AUDIT-PRELIMINARY.md`. No source code or original evidence modified.
+
+**Exact next action:** User uploads `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01\REPORT.md` and `PRYSM-EVIDENCE-INTEGRITY-20261013-01-REDACTED-PROOF.zip`. Review claimed issue-specific tests and before/after artifacts; resolve confirmed M05 false-PASS via a new bounded no-provider candidate on the **existing repair branch**, with a direct negative regression and exact-SHA machine gates, before any deployment or staging approval. Original 59/100 remains provisional/HOLD. Do not deploy, merge, run new audits or touch production.
+
+Last verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — GACM-style Macfarlane Evidence Integrity tranche ready (2026-10-13)
 
 Tranche: `PRYSM-EVIDENCE-INTEGRITY-20261013-01`; governed specification: `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md` on `chriskulbaba2025/prysm-project-context/main`. Work-package document created and read-back verified. **Status: WORK PACKAGE READY / CODING NOT STARTED.** User explicitly requested a serious GACM-style repair and independent change audit. Release intent `CHANGE_ONLY` (offline source-and-test candidate only).
