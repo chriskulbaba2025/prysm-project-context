@@ -1,5 +1,32 @@
 # Current State
 
+## Active checkpoint — Final independent Evidence Integrity audit FAIL/HOLD (2026-10-13)
+
+**VERDICT: INDEPENDENT ACCEPTANCE FAIL/HOLD.** Reviewed uploaded `REPORT(20261013-184920).md` and complete 8-file `PRYSM-EVIDENCE-INTEGRITY-20261013-01-REDACTED-PROOF.zip`, exact GitHub candidate code, and original frozen Macfarlane audit evidence. Independent final report: `PRYSM-EVIDENCE-INTEGRITY-20261013-INDEPENDENT-AUDIT-FINAL.md` (user-facing downloadable report in current ChatGPT session; not a claim of a GitHub-hosted code file).
+
+Candidate `e9d85bb291d49c57b703fb5e750db2d4040d9f10` is exact remote repair head; frozen baseline remains `89672525b3151a3fc682036601efed0e171cefbe`. Original Macfarlane ZIP hash `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263` verified; 29/29 listed original object hashes matched actual frozen bytes; 48 real objects / 6,492,169 bytes. Package report is byte-identical to independently uploaded REPORT.md. **Identity and preservation PASS.**
+
+**Genuine escaping counterexamples:**
+- **M02 FAIL:** Homepage persisted headings have H2 `Frequently Asked Questions – Buying Doors and Windows` and eight H4 questions; persisted `signals.faq=false`. Candidate FAQ detector still searches only body/title/description, not provider-observed headings, and no FAQ detection edit/test exists.
+- **M05 FAIL:** Exact candidate `TEXT_COMPLETED_WORK_RE` still matches generic `Our projects`; unconditional `|| textualEvidence` yields `completedWork=true` with no identified projects/images/provenance. Exact candidate expression reproduced in Node. Removing `projects` from separate page identity regex did not cure it.
+- **M06 FAIL:** Frozen homepage phrase `We’ve been perfecting our craft for over 20 years, providing high-quality installations you can trust.` fails all unchanged operating-experience regexes; new claim metadata is only emitted when old classifier detects a claim, and no downstream metadata integration is proven. Exact pattern reproduction negative.
+- **M07 original case unresolved:** Frozen input/providerLocation is `London Ontario` and failed resolver; candidate changes only separate bare `London` special case. Original failed form unaddressed; no offline original-case proof.
+- **M04/M09 HOLD:** Normalized missing descriptions 4, canonical finding says 5/29 and lists three URLs. Candidate no changed metadata count/provenance code nor corrected replay proof.
+- **M03 HOLD:** Candidate security/risk scorer still grants HTTPS scheme term based only on URL `https:`; must distinguish certificate validity (historically expired) from scheme and unavailable browser evidence, without fabricating risk certainty.
+- **M01 PARTIAL:** Candidate reads raw `microdata.items[*].inspection_info.types` (credible local source fix), but end-to-end normalized/canonical/scoring/report replay and issue-specific negative tests absent.
+- **M08 HOLD:** Archived HTML includes FAQ/buyer-question contradiction; no independent corrected client-projection proof.
+- **M10 PARTIAL/HOLD:** One empty lab sentence fixed, while historic client HTML/Writer text includes internal `deterministic analysis` / `authorized for consolidation` strings; no new client-surface suppression proof.
+- **M11 VISUAL_HOLD:** no browser/PDF check; report export issues untested.
+
+Candidate diff: one commit, five worker/test files + four governance files. Only existing location-resolver test changed; baseline and candidate both claimed 1,031 deterministic passes. Proof ZIP supplies assertions/summaries, not actual per-issue red→green logs, before/after derived outputs or complete test stdout/exit codes. Whole-App green is Codex-reported and may be valid for its coverage, but does NOT establish M01–M11 completion or independent approval.
+
+**NEXT ACTION:** Execute a follow-up bounded correction on the SAME repair branch from exact `e9d85bb291d49c57b703fb5e750db2d4040d9f10`, adding direct frozen-input negative regressions for M02, M05, M06, M07, M04/M09 before code edits. Trace every corrected producer→normalized contract→scoring→projection claim with real offline before/after artifacts and tests. Restore full test/machine gates, clean exact-head sync and return a new proof ZIP. Keep original evidence, score (59/100), NDP, client report, staging and production untouched; no new audits, live paid/provider/model calls or deployment. Browser/PDF and model-bearing gates remain separate until authorized. No application mutations occurred during independent audit.
+
+Last verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Independent audit HOLD for Evidence Integrity candidate (2026-10-13)
 
 **Status: INDEPENDENT AUDIT HOLD / GACM FALSE-PASS RISK.** The Codex handoff reported `CODE_VERIFIED` and 1,031/1,031 deterministic PASS plus Whole-App P-B01–P-B17 PASS, but those claims are still **Codex-reported**, not independently accepted. The full `REPORT.md` and redacted proof ZIP have not been uploaded to this conversation as of this checkpoint.
