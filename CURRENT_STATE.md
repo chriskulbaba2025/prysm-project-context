@@ -1,5 +1,20 @@
 # Current State
 
+## Active checkpoint — M12 business applicability added to evidence-integrity acceptance (2026-10-13)
+
+**User-directed product requirement:** All PRYSM evidence/scoring/priority/client-report recommendations must be business-agnostic in code and specific to the audited business's scraped evidence and explicit supplied business context. User reports a marketing-agency audit inappropriately recommended a safety policy; originating audit ID/evidence and root cause not yet independently located. Do not claim that specific incident was reproduced or fixed. A generic wrong-industry suggestion is a correctness defect, not a writing improvement.
+
+**Tranche scope expanded by additive acceptance contract M12** in `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md`, appended with a first-party same-audit applicability/provenance gate, six-sector offline fixture matrix, positive and negative controls, score-eligibility and client-projection constraints; `DECISIONS.md` records durable policy. Do NOT assume all marketing businesses lack a safety obligation, or all field-service businesses must display a website safety policy. Require actual client activities, site-crawl evidence, scoped claim and tested actionability. If absent/unavailable, fail closed (no ungrounded score penalty or `FIX`), including when the claim is emitted by Writer text.
+
+**Existing correctness status:** Correction-02 candidate `c8b1605221563866408ca0b4e6036c1d3ed8f9fc` on `repair/prysm-evidence-accuracy-20261013` remains **independent acceptance HOLD** due to M02 generic question false-positive and M05 generic completed-work false-positive plus unclosed M03/M10/M11 planes. The new M12 gate is an additional HOLD until proven end-to-end. Frozen baseline `89672525b3151a3fc682036601efed0e171cefbe` and isolated staging remain unchanged by this governance update.
+
+**Exact next action:** On repair branch only, verify exact head/worktree; add separate M12 frozen acceptance addendum **before code edits**, locate real marketing-company safety-policy report if available; prove exact source→normalization→business classification→finding/score/priority→client report and Writer gate. Build at least six business-diverse offline positive/negative fixtures, including digital-only marketing (no assumed safety-policy obligation) and marketing with actual field/event operations (conditional, evidence-based), before proposing generic applicability-gating correction. Fold into M02/M05 negative-control correction and full original-byte Macfarlane downstream replay. Run exact-head whole-app proofs and separate independent review. No cost, new audits, model changes, deployment, production, persisted-audit overwrite, default dirty checkout mutation or force push.
+
+Last verified: 2026-10-13 (governance only; no app edits).
+
+---
+
+
 ## Active checkpoint — Correction-02 uploaded proof independently audited (2026-10-13)
 
 **Independent outcome: MACHINE PROOF SUBMITTED / ACCURACY ACCEPTANCE HOLD.** User uploaded actual `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-02-proof.zip` (17 members with 8 full UTF-16 test logs) and prior audit file for rejected older candidate. Full independent written review exists as ChatGPT-generated `PRYSM-EVIDENCE-INTEGRITY-CORRECTION-02-INDEPENDENT-AUDIT.md` (not claimed as a GitHub application file).
