@@ -1,5 +1,26 @@
 # Current State
 
+## Active checkpoint — Correction-03 source review and M12 relevance HOLD (2026-10-13)
+
+**Status: CORRECTION-03 SOURCE-LEVEL REVIEW / ACCURACY ACCEPTANCE HOLD.** User reports Codex candidate `ea76fe0c5e5588047d7f7195370bee8f2f6a21ee` with targeted 218/218, deterministic 1031/1031, schema 15/15, scoring/projection 96/96 and Whole-App P-B01–P-B17 PASS. These Correction-03 test and corrected-replay files have not yet been uploaded to the chat; their logs, before/after replay and user-provided proof ZIP SHA-256 `C1FBF4B7F7F651643954ABF1E7F70446836476EC4AF5ECE0E20C12C3C03F42AB` are not independently verified.
+
+GitHub exact identity **PASS**: candidate equals `repair/prysm-evidence-accuracy-20261013` remote head (0/0); frozen reference branch remains at original `89672525b3151a3fc682036601efed0e171cefbe`. Candidate is one commit ahead of correction-02 `c8b1605221563866408ca0b4e6036c1d3ed8f9fc`, modifying five worker/test files.
+
+Independently verified code improvements: M02 FAQ flag now requires explicit FAQ marker, and unrelated H4 question no longer sets FAQ. M05 exact earlier generic phrases `Our projects` and `Projects include` no longer set completed-work flag. M04/M09 assessment excludes 3xx; original frozen Macfarlane normalized pages include 28 HTTP-200 with 3 missing descriptions and one non-actionable HTTP-301 without description, matching corrected `3 of 28` policy. No original audit artifacts were mutated.
+
+**M05 still FAILS negative generalization at this exact candidate:** `services/worker/src/trust/completed-work-evidence.js` recognizes bare `Selected projects`, `Recent work` and `Featured campaigns` as completed-work evidence through `TEXT_COMPLETED_WORK_RE`, with no actual project, customer, example, gallery or provenance. Exact expression reproduced in Node with empty image list. Adding narrowly chosen negative fixtures has not fully enforced the original evidence contract; require generic example/provenance semantics and counterexamples before claiming M05 PASS.
+
+**M12 remains untested/unclosed:** The currently authoritative tranche includes the business-applicability and first-party scrape grounding acceptance amendment. Correction-03 does not change corresponding relevance rules or add six-business cross-sector coverage. The user-reported marketing-agency `safety policy` escape still needs original audit ID/evidence to diagnose; do not invent runtime root cause. M03 historical browser certificate, M10 model-bearing, M11 browser/PDF acceptance remain separately HOLD.
+
+Preliminary independent report: `PRYSM-CORRECTION-03-PRELIMINARY-INDEPENDENT-REVIEW.md` generated in the chat session. This is not final independent audit of the unavailable proof package.
+
+**NEXT ACTION:** User uploads `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-03\REPORT.md`, `...\Macfarlane-corrected-replay.json` and `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-03-proof.zip`. Independently check proof ZIP hash, logs, replay and negative tests. Then bounded repair of generic M05 provenance and M12 same-business relevance on existing repair branch with per-sector counterexamples. No deployment, merge, new audit, paid calls, frozen baseline writes, persisted Macfarlane overwrite, staging/prod writes, or mutation of separate dirty default checkout.
+
+Last verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — M12 business applicability added to evidence-integrity acceptance (2026-10-13)
 
 **User-directed product requirement:** All PRYSM evidence/scoring/priority/client-report recommendations must be business-agnostic in code and specific to the audited business's scraped evidence and explicit supplied business context. User reports a marketing-agency audit inappropriately recommended a safety policy; originating audit ID/evidence and root cause not yet independently located. Do not claim that specific incident was reproduced or fixed. A generic wrong-industry suggestion is a correctness defect, not a writing improvement.
