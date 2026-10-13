@@ -1,5 +1,30 @@
 # Current State
 
+## Active checkpoint — Correction-03 uploaded proof independent audit HOLD (2026-10-13)
+
+**Independent verdict: HOLD / M05 FAIL / M12 NOT PROVEN.** Reviewed uploaded `PRYSM-EVIDENCE-INTEGRITY-20261013-01-CORRECTION-03-proof.zip`, `...-replay-source.json`, `...-Macfarlane-replay.json`, and original frozen raw archive; review artifact generated in current chat `PRYSM-CORRECTION-03-INDEPENDENT-AUDIT-20261013.md` (not represented as a GitHub-hosted file).
+
+GitHub candidate `ea76fe0c5e5588047d7f7195370bee8f2f6a21ee` **exactly** matches `repair/prysm-evidence-accuracy-20261013` remote head (ahead/behind 0/0); freeze branch exactly matches approved baseline `89672525b3151a3fc682036601efed0e171cefbe`. Proof ZIP SHA-256 **PASS** `c1fbf4b7f7f651643954abf1e7f70446836476ec4af5ece0e20c12c3c03f42ab`, ZIP test PASS (15 members). Frozen original ZIP SHA-256 **PASS** `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`; 29/29 manifest object hashes matched; 48 real objects, 6,492,169 bytes.
+
+Independent reading of actual bundled logs: targeted 218/218, deterministic 1,031/1,031, schema 15/15, scoring/projection 96/96, whole-app P-B01–P-B17 **PASS as recorded**; independently rerunning tests was not performed. Whole-App used a separate sample fixture, not original raw Macfarlane source all the way into current report.
+
+**Discrepant uploaded replay artifacts:** Proof ZIP member `Macfarlane-corrected-replay.json` is byte-identical to separately uploaded `...-replay-source.json` (SHA-256 `b03854e61c95516be7b4a77bd906dffcc91999a6b488aecc09a3c71072564fcb`), and shows M04 metadata structured evidence, finding text and 3 affected URLs all **3/28**. Separately uploaded `...-Macfarlane-replay.json` is an actually different UTF-16 artifact (SHA-256 `f05a70f720e8e9f50eb3eb667f6ce53ac6bcd31ccde63eacd102bac89af6756c`) with **3/28 structured evidence and affected URLs but false `VAN-TECH-001.evidenceText='5 of 28 assessed pages'`**. Do not silently equate or discard either: require exact SHA/command/artifact provenance and one reproducible authoritative output before declaring M04/M09 closure.
+
+**M01/M02 downstream HOLD:** Original raw DataForSEO microdata contains recognized JSON-LD schema types, normalized original had `schemaTypes=[]`; original homepage has explicit FAQ H2 and eight H4 buyer questions but `trust.faq=false`. Both submitted “corrected replay” variants retain historical `VAN-SCHEMA-001: No structured data detected` and historical `VAN-CONTENT-002: Explicit FAQ content was not detected` score-bearing canonical findings, with FAQ client projection `PARTIAL/VERIFY`. Replay input is historical `canonical/decision-evidence.json` plus audit request, so **current raw→new adapter→canonical→score→finding→report propagation is not demonstrated**; do not confuse historical artifacts with proven live-candidate outputs.
+
+**M05 additional exact-candidate false positive:** Regex still counts generic `Selected projects`, `Recent work`, `Featured campaigns` text as `ESTABLISHED` completed-work examples via unconditional `|| textualEvidence` without named/attributable proof. Correction-03 fixed previous `Projects include` counterexample but did not establish a generic provenance rule; M05 **FAIL**.
+
+**M12 still HOLD:** No six-sector applicability tests, no same-business evidence-to-recommendation gate proof, no reproduced original marketing-agency safety-policy report (only user-reported). Current candidate does not claim M12 completion and must not be accepted without it.
+
+M03 browser certificate, M10 model-bearing, M11 browser/PDF remain separate HOLD. Historical Macfarlane score 59/100 Provisional remains unchanged and not independently certified. No application code, persisted evidence, report, staging or production modified during audit.
+
+**NEXT ACTION:** The existing repair branch only, exact-SHA preflight. Reconcile two replay JSON variants with command and file provenance; run a **full original-raw-bytes offline source→normalizer→decision→scoring/findings→report projection** for M01/M02/M04 without historical canonical contamination. Add M05 failing generic-description negatives and substantive provenance distinction (not phrase blacklists). Complete M12 industry-agnostic business-activity/same-audit evidence applicability gate with six-sector positive/negative cases; find the user-reported marketing audit if available. Rerun targeted, deterministic, whole-app, exact-head and submit proof; no new audits, provider/model calls, merge, deployment, data writes, default dirty checkout modifications or frozen branch changes. No independent release approval.
+
+Last independently checked 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Correction-03 source review and M12 relevance HOLD (2026-10-13)
 
 **Status: CORRECTION-03 SOURCE-LEVEL REVIEW / ACCURACY ACCEPTANCE HOLD.** User reports Codex candidate `ea76fe0c5e5588047d7f7195370bee8f2f6a21ee` with targeted 218/218, deterministic 1031/1031, schema 15/15, scoring/projection 96/96 and Whole-App P-B01–P-B17 PASS. These Correction-03 test and corrected-replay files have not yet been uploaded to the chat; their logs, before/after replay and user-provided proof ZIP SHA-256 `C1FBF4B7F7F651643954ABF1E7F70446836476EC4AF5ECE0E20C12C3C03F42AB` are not independently verified.
