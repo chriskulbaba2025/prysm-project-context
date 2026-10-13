@@ -1662,3 +1662,21 @@ The user explicitly chose two client report products, asked to remove irrelevant
 
 Implication:
 Use the existing completed Addictive Tattoo audit to verify the repaired Executive renderer, including approved client wording, six-page navigation, printed/PDF layout and no browser console errors. Preserve prior production report freezes and separate release approval; do not treat staging implementation or CI as proof of finished human acceptance.
+
+---
+
+## Decision: Freeze the October 13, 2026 isolated-staging baseline before evidence-accuracy repairs
+
+Date: 2026-10-13
+Status: Active
+
+Decision:
+Preserve PRYSM isolated staging exactly as deployed at application SHA `89672525b3151a3fc682036601efed0e171cefbe`. The dedicated baseline branch is `freeze/prysm-before-evidence-accuracy-repairs-20261013`. Never modify or repoint it; preserve the exact SHA even if a reference moves. All subsequent evidence-accuracy development starts on the separate `repair/prysm-evidence-accuracy-20261013` branch, which was created at the same SHA. Do not make changes to the active staging deployment source branch for these repairs without distinct release approval.
+
+Retain original Macfarlane audit `778e0a77-e488-4d3d-bbdc-91fe7bdb4ab6` stored evidence and six-page Executive Report unchanged as the regression baseline. The read-only export archive `PRYSM-MACFARLANE-FROZEN-EVIDENCE-20261013.zip` is byte-identical to the user-provided original; SHA-256 `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`. This archive exists as a chat artifact, not a claimed GitHub data backup.
+
+Rationale:
+The captured Macfarlane audit exposes contradictory evidence-to-finding interpretation for schema and FAQ coverage and additional issues. Retaining the exact original permits before/after regressions and rollback without changing canonical audit evidence or the accepted six-page presentation while repairs are under review.
+
+Implication:
+Use one bounded, user-approved repair at a time. Start with structured-data normalization only; no automated repair has been authorized at the freeze step. Targeted offline tests and non-mutating impact checks precede any subsequent repair or staging deployment. The 59/100 remains provisional/HOLD. No new audits, paid provider/model calls, production changes, subagents or Desktop Commander. Existing evidence, scoring outputs, NDP, report HTML and report language remain unmodified until separately approved.
