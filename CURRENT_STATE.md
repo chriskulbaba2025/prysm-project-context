@@ -1,5 +1,24 @@
 # Current State
 
+## Active checkpoint — GACM-style Macfarlane Evidence Integrity tranche ready (2026-10-13)
+
+Tranche: `PRYSM-EVIDENCE-INTEGRITY-20261013-01`; governed specification: `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md` on `chriskulbaba2025/prysm-project-context/main`. Work-package document created and read-back verified. **Status: WORK PACKAGE READY / CODING NOT STARTED.** User explicitly requested a serious GACM-style repair and independent change audit. Release intent `CHANGE_ONLY` (offline source-and-test candidate only).
+
+Scope: all eleven documented Macfarlane evidence-accuracy findings M01–M11, grouped into sequential proof gates G0–G5, including source normalization, FAQ presence, SSL/certificate score semantics, completed-work vs unverified experience, metadata counts, location validation, evidence-aware priority language, and browser/print proof. Read `PRYSM-MACFARLANE-ACCURACY-DIAGNOSIS.md` and the frozen raw artifact ZIP before running. Existing 59/100 score remains historical/provisional HOLD, not a verified corrected score.
+
+Application baseline remains exact SHA `89672525b3151a3fc682036601efed0e171cefbe`; immutable reference branch `freeze/prysm-before-evidence-accuracy-repairs-20261013`; dedicated working branch `repair/prysm-evidence-accuracy-20261013`; both comparison-verified identical to baseline at freeze. No source edits committed. Isolated staging deployment source branch `fix/prysm-exec-render-recovery-20261012` and deployed Vercel/Railway not changed by tranche planning. Production untouched.
+
+Execution: single local GPT-5.6 Luna Codex session, no subagents or Desktop Commander. GCU 2.1.0 and PRYSM exact-head/whole-app gate; one bounded defect group and accepted proof before next; no paid provider/model calls, no new audits, no S3/PostgreSQL writes, no deployment, no application-main merge. Original persisted audit evidence, NDP, scores and six client-facing report sections are untouched. Only dedicated repair branch push after gates, without force. Stage HOLD stops advancement; visual/model-bearing planes may remain explicit HOLD without misleading PASS.
+
+Proof location required at execution: `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-INTEGRITY-20261013-01\REPORT.md` with redacted immutable evidence/before-after/test/machine-gate details and proof ZIP. The independent exact-head accuracy audit is a separate human/ChatGPT acceptance after Codex handoff; same Codex self-review is not independent.
+
+**Exact next action:** User launches local Codex with the frozen GitHub work package, original evidence ZIP and diagnosed issue register; Codex performs G0 preflight and proceeds sequentially through approved offline repair gates, stopping on any HOLD. No claim of code/tests PASS until returned real proof is independently examined.
+
+Last verified: 2026-10-13 (governance package creation and read-back). 
+
+---
+
+
 ## Active checkpoint — Macfarlane accuracy baseline FROZEN (2026-10-13)
 
 Project: PRYSM — isolated staging. Status: BASELINE FROZEN / NO REPAIR IMPLEMENTED.
