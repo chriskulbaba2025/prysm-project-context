@@ -1,5 +1,22 @@
 # Current State
 
+## Active checkpoint — Final closure candidate a066 GitHub source reviewed; proof ZIP pending (2026-10-13)
+
+**Candidate identity independently verified:** Application `chriskulbaba2025/prysm-staging-isolated`, `repair/prysm-evidence-accuracy-20261013` exactly equals `a066d024449821469151e759838107ebaff4f1ed` (ahead 0/behind 0). Protected frozen branch still exactly `89672525b3151a3fc682036601efed0e171cefbe`. New candidate is two commits ahead of previous `e9ba61008007e8a5b4764e0ef692a82b4630d769` and changed only report renderer plus report tests (five files in aggregate). No app code changes by independent reviewer.
+
+**Preliminary source verification:** `services/worker/src/report/render-report-v2.js` now constructs one `governedContentIdeas(model)` source and uses its filtered `tofu/mofu/bofu` content in cards, full funnel and hub/spoke; competitor comparison planning also draws from the governed set, and `leading` topics are filtered via the presentation byKey authority. Missing presentation entry and `clientPresentationAuthoritative !== true` now exclude content planning output, correcting the specifically observed previous M12 renderer bypass at source. This is NOT full application/runtime/proof acceptance.
+
+**Self-reported Codex results NOT independently accepted yet:** Final SHA `a066d024449821469151e759838107ebaff4f1ed`. Targeted 85/85; worker 1417/1417; deterministic 1048/1048; schemas 15/15; narrative 279/279; render 36/36; Whole-App P-B01–P-B17 PASS; six complete offline client report HTML outputs; M05 bounded deterministic PASS and M12 renderer source PASS; persisted SourceResult hydration/production path and identity continuity HOLD. Local ZIP declared `PRYSM-EVIDENCE-TO-REPORT-FINAL-CLOSURE-20261013-proof.zip` SHA256 `30eddead859793efba461e5a386e4f3aa5ca933738b55b16d3b0b75ee7aaa9e6` **does not appear among chat-uploaded files** at this turn, so its hash, exact-final-SHA logs, complete HTML outputs, source/persisted replay and negative/positive acceptance cannot be independently verified.
+
+**Additional reviewer qualifications:** M05 production classifier remains a heuristic first-party text/image classifier rather than a demonstrated independent project identity/provenance verifier; Codex correctly claims bounded deterministic scope only. Fixture render golden tests were updated, including substantial automated fixture authority population; inspect actual before/after HTML, not only refreshed golden hashes, when proof ZIP arrives. An explicit `clientPresentationAuthoritative: false` results in no content recommendations by design; check preservation/false-negative impacts at proof review. M03 browser TLS, M10 model-bearing Writer/Judge, M11 browser/PDF, historical marketing incident and production path equivalence/identity continuity remain HOLD until separate real proof. No staging/production/deployment/paid-provider activity authorized.
+
+**NEXT ACTION:** User uploads `C:\Users\kulba\Downloads\PRYSM-EVIDENCE-TO-REPORT-FINAL-CLOSURE-20261013\PRYSM-EVIDENCE-TO-REPORT-FINAL-CLOSURE-20261013-proof.zip` (plus `REPORT.md` only if not included). Reviewer validates declared ZIP hash, manifest integrity, exact-tested Git SHA, machine logs, full six generated HTML reports, M05/M12 substantive positive and rejected-content absence claims, original evidence integrity, preserved approved report language and unchanged frozen branch. Keep governance HOLD; do not ask for another correction or deploy before independent proof review.
+
+Verified preliminary review: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Uploaded full-audit ZIP reviewed; final-SHA test gap and renderer leakage (2026-10-13)
 
 **Uploaded original full-system audit package independently inspected:** `PRYSM-EVIDENCE-TO-REPORT-FULL-AUDIT-20261013-proof-final-02.zip`, ZIP SHA-256 exact match `903695f0bc7ef4177e0e7f2c9767eba3bdabab682935ac8d32a23cbd021bd4a5`, 29 members, CRC clean, 28/28 internal proof-manifest hashes match. ZIP contains `REPORT.md`; a separate REPORT upload is not needed. App candidate `e9ba61008007e8a5b4764e0ef692a82b4630d769` verified on the remote repair branch, frozen baseline unchanged at `89672525b3151a3fc682036601efed0e171cefbe`.
