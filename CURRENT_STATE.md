@@ -1,5 +1,28 @@
 # Current State
 
+## Active checkpoint — Final closure ZIP independently audited; bounded PASS, production HOLD (2026-10-13)
+
+**Independent full proof package audit:** Uploaded `PRYSM-EVIDENCE-TO-REPORT-FINAL-CLOSURE-20261013-proof.zip` SHA-256 independently matches `30eddead859793efba461e5a386e4f3aa5ca933738b55b16d3b0b75ee7aaa9e6`, ZIP 146 files, CRC PASS, **145/145** included `SHA256-MANIFEST.txt` object hashes byte-match. Original Macfarlane archive SHA-256 reverified separately: `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`. Independent audit deliverable in this conversation: `PRYSM-FINAL-CLOSURE-INDEPENDENT-AUDIT-20261013.md` (not a GitHub file).
+
+**Git identity:** `chriskulbaba2025/prysm-staging-isolated` repair branch `repair/prysm-evidence-accuracy-20261013` identical to candidate `a066d024449821469151e759838107ebaff4f1ed` (ahead/behind 0/0); frozen branch `freeze/prysm-before-evidence-accuracy-repairs-20261013` identical to approved original `89672525b3151a3fc682036601efed0e171cefbe` (0/0). No frozen branch repairs necessary.
+
+**Machine logs — FINAL candidate SHA BOUND:** All eight final exact-gate logs record exact `a066d024...`, branch, worktree, timestamps, commands and exit 0. Checked log counts: targeted **85/85**, full worker **1417/1417**, deterministic **1050/1050** (not the 1048 in the user handoff), schema **15/15**, narrative v2 **279/279**, render **36/36**, security-baseline scan PASS and Whole-App **P-B01–P-B17 PASS** (one separate generic replay). Test logs independently parsed, NOT rerun full Windows repository. Historic red renderer test at prior start SHA `e9ba610...` is included; intermediate golden failure is pre-final, while final renderer log passes.
+
+**M12 bounded deterministic FINAL-HTML LEAKAGE: PASS:** Six *complete* offline HTML reports (~139–141KB, 27 report sections each) inspected directly; marketing fixture injected rejected `Workplace safety policy`, ledger `NO_ACTION`/unknown and report HTML has no safety-policy phrase. Other five profile controls also absent; all six retain eleven grounded per-sector topics in HTML, with **VERIFY** actions, not speculative CREATE. Exact GitHub `governedContentIdeas` now applies shared presentation filtering to primary cards, funnels, hubs/spokes, leading topics and competitor planning. In the 27 golden before/after report pairs, 24 add nine explicit `CREATE` action labels, two unchanged, one unassessed adds nine `Not available` action labels; no unrelated line diffs observed. All 27/27 before and after LF hashes verified. After-manifest metadata `applicationSha=WORKING` reflects intermediate generation; final renderer test is separately SHA-bound. Do not reopen this repaired bounded defect without new contradictory evidence.
+
+**M05 bounded deterministic test/scoring: PASS** on source and recorded machine negative/positive tests. Site-claimed work remains distinguished from independent verification. No proof of exhaustive real-world project-identity semantic correctness claimed.
+
+**PERSISTED PRODUCTION PIPELINE STILL HOLD:** ZIP `generate-offline-replay.mjs` invokes controlled HTML `crawlSite` → `scoreAudit` → semantic ledger → presentation → renderer; does NOT run persisted valid `SourceResult` → `buildDecisionEvidence` hydration, production audit/tenant identity continuity or live New Audit orchestration. Each `business-*/source-result.json` is only a ~204–218-byte metadata/hash summary, not actual persisted SourceResult input. Six deterministic HTML reports are real renderer artifacts from controlled data, not saved real client audit reports. Standalone replay script writes assertion booleans but does not itself nonzero-fail on their failure; archived values and actual HTML independently inspect PASS; future replay script could hard-fail. All six positive content recommendations in ledger remain VERIFY; actionable CREATE positive path not established by these six reports. Historical marketing agency incident artifact unavailable, M03 browser/TLS, M10 Writer/Judge live model, M11 browser/PDF and production/client acceptance remain independent HOLDs. Historical scores/evidence untouched.
+
+**NEXT ACTION:** **Do not request another generic M05/M12 renderer correction.** Arrange separately bounded, READ-ONLY existing persisted real-audit `SourceResult`/artifact replay → `buildDecisionEvidence`/validated tenant+audit+site scope → score/finding/priority → current renderer/HTML, preserving original evidence; if unavailable state exact blocker and stop. Then independently handle browser/PDF and authorized Writer/Judge acceptance before staging/release. No new paid/provider/model calls, crawling, deployment, merge, frozen branch or historical data mutation without separate user approval.
+
+**Independent review status: CODE AND BOUNDED OFFLINE RENDERER ACCEPTED / GOVERNANCE & PRODUCTION HOLD.** No application edit or deployment by independent reviewer.
+
+Verified 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Final closure candidate a066 GitHub source reviewed; proof ZIP pending (2026-10-13)
 
 **Candidate identity independently verified:** Application `chriskulbaba2025/prysm-staging-isolated`, `repair/prysm-evidence-accuracy-20261013` exactly equals `a066d024449821469151e759838107ebaff4f1ed` (ahead 0/behind 0). Protected frozen branch still exactly `89672525b3151a3fc682036601efed0e171cefbe`. New candidate is two commits ahead of previous `e9ba61008007e8a5b4764e0ef692a82b4630d769` and changed only report renderer plus report tests (five files in aggregate). No app code changes by independent reviewer.
