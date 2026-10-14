@@ -1,5 +1,28 @@
 # Current State
 
+## Active checkpoint — Full audit candidate source review; final proof awaited (2026-10-13)
+
+**Candidate:** `e9ba61008007e8a5b4764e0ef692a82b4630d769` on app `repair/prysm-evidence-accuracy-20261013`; verified exact remote branch match (ahead/behind 0/0); approved frozen branch still exact `89672525b3151a3fc682036601efed0e171cefbe` (0/0). One new commit from Correction-06; no staging/production mutations authorized.
+
+**Independent status: GIT IDENTITY PASS / SOURCE-LEVEL REPORT M12 LEAK / PROOF ZIP NOT UPLOADED / GOVERNANCE HOLD.** User/Codex reports targeted 47/47, worker 1417/1417, deterministic 1048/1048, schemas 15/15, scoring/projection 283/283, render 52/52, Whole-App P-B01–P-B17 PASS, M05 and M12 offline PASS. At this checkpoint these are **reported outcomes only**; proof ZIP `PRYSM-EVIDENCE-TO-REPORT-FULL-AUDIT-20261013-proof-final-02.zip` not uploaded; reported SHA `903695f0bc7ef4177e0e7f2c9767eba3bdabab682935ac8d32a23cbd021bd4a5` cannot be independently hash-checked.
+
+**Verified code-level client leak:** `services/worker/src/report/render-report-v2.js` `contentOpportunitiesSection()` filters `governedIdeas` using presentation `NO_ACTION` in ranked opportunity cards, but independently generates visible `funnelPlan` from **unfiltered** original `tofu/mofu/bofu` rows and emits the plan in `content-funnel-architecture`. Therefore M12-rejected topics can still enter final visible client planning. Additionally absent presentation matching rows are not rejected by the `governedIdeas` filter (`!idea.presentation`) and `clientPresentationAuthoritative=false` exposes original ideas. This blocks a complete M12 final-report PASS until actual composed HTML absence is proven.
+
+**Full pipeline test coverage is narrower than title:** `services/worker/src/report-intelligence/full-pipeline-accuracy.test.js` runs mocked raw HTML via `crawlSite` then calls `scoreAudit`, `buildSemanticLedger`, `buildClientPresentation`, and `renderReportV2`, but does not traverse original persisted raw SourceResults through `buildDecisionEvidence` or replay saved Macfarlane from original bytes. Its safety negative tests only check presentation `NO_ACTION` after injected rows; no rendered HTML check with the injected forbidden row. Generic fixtures remain valuable as partial composition proof. Independently observed scoring/report-model modules have no direct `scoreEligible`/applicability consumption; scoring impact requires a dedicated rule-by-rule proof, not an inference from a ledger property.
+
+**M05:** Real improvements to producer-shaped extraction and regex gating, but still heuristic; no independently proven project-instance provenance/complete report claim authority. No independent M05 PASS until proof reviewed.
+
+**Explicit continuing HOLDS:** M03 browser TLS; M10 Writer/Judge/model-bearing; M11 browser/PDF; original marketing incident; production path equivalence and identity continuity. Historical frozen audit objects untouched.
+
+**Evidence:** Independent preliminary downloadable analysis `PRYSM-FULL-PIPELINE-20261013-PRELIMINARY-INDEPENDENT-REVIEW.md` generated in chat; it is not represented as a GitHub code artifact.
+
+**NEXT ACTION:** Upload the exact full-audit ZIP and its REPORT.md. Check SHA, logs, manifest, real saved raw replay and final report HTML at exact candidate. The source gap warrants a bounded renderer/presentation negative test proving no rejected content appears anywhere in final client HTML, plus scoring/applicability and status tests—**after** package review. No blind keyword fixes, new audits, paid calls, provider/model calls, merge, deployment, original-object rewrites, frozen branch edits or production mutations.
+
+Verified: 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Full evidence-to-report audit authorized and specified (2026-10-13)
 
 **User direction:** Stop serial keyword/example repairs; conduct a **full audit of the real PRYSM evidence-to-client-report system**, diagnose entire producer→consumer chain before new coding, correct grounded root causes only, and test every affected final client-facing output. This is an authorized audit/diagnostic and bounded offline repair plan, NOT permission for new paid audits, live model/provider calls, deployment or production mutation.
