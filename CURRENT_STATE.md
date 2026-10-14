@@ -1,5 +1,19 @@
 # Current State
 
+## Isolated staging deployed — application 0ad1f183 / Vercel READY / Railway SUCCESS (2026-10-14)
+
+**Application authority:** `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, exact accepted SHA `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`. No application source changes in this deployment transaction.
+
+**Vercel isolated staging:** project `prysm-staging-isolated` (`prj_ys6JNfnwyRow5G3BENFXliU3fIqs`); deployment `dpl_4oTpY8RM8CKB9dUejNuVb7nCVKMg` READY on exact SHA; public alias `https://prysm-staging-isolated.vercel.app` verified to resolve to this deployment. Vercel deployment target is named `production` **inside the isolated staging project**, not the actual `prysm` production Vercel project.
+
+**Railway isolated staging:** project `prysm-staging-isolated.` (`07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`), environment internally named `production` (`b67677ba-4ac1-458f-a6d3-412de5ad9ea8`), service `prysm-worker` (`3343e2a8-0472-4780-8536-e8b9667fcc7a`); exact source SHA pinned, deployment `7bdf5310-863e-4adb-b05b-3da6bcb4e6b0` SUCCESS, online, zero active warnings/critical issues and no recent failures at acceptance check. Changes limited to service Git branch and pinned SHA; staged patch inspected, non-destructive; no variables, Postgres, bucket, or other service changes.
+
+**Isolation check:** actual `prysm` Vercel production project was not modified, and its configured worker endpoint did not equal the isolated staging worker domain at the time of verification. No production deployments authorized or performed by this transaction.
+
+**Acceptance boundaries:** infrastructure staging deployment PASS; historical offline code acceptance remains PASS at this SHA; interactive browser, fresh live audits and independent multi-sector generalization remain HOLD/not run. The Railway and Vercel statuses are deployment/health evidence, not proof of authenticated end-to-end product behavior.
+
+**Next action:** manually check the isolated staging UI and approve a separately scoped fresh audit of a new business model (ideally genuine e-commerce, not another generic lead-generation company). Record exact audit URL, provider spend, evidence provenance and report quality. Do not conflate changing live web evidence with code improvement.
+
 ## Reconciled checkpoint — multi-sector generic repair code acceptance PASS; browser/live-product acceptance HOLD (2026-10-14)
 
 **Application candidate verified:** `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, exact local/remote SHA `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`; starting SHA `14c509ba4eb76e8210af1140e6aa4a675391d279`; frozen baseline `89672525b3151a3fc682036601efed0e171cefbe`. The bounded generic trust, sector-aware recommendation projection, and historical redirect-scope compatibility repair was committed and pushed. No deployment occurred.
