@@ -1,5 +1,19 @@
 # Current State
 
+## Reconciled checkpoint — historical publication compatibility code closure PASS; live-audit product acceptance HOLD (2026-10-14)
+
+**Application candidate verified:** `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, exact local/remote SHA `14c509ba4eb76e8210af1140e6aa4a675391d279`; starting SHA `a066d024449821469151e759838107ebaff4f1ed`; frozen baseline `89672525b3151a3fc682036601efed0e171cefbe`. The bounded historical compatibility repair was committed and pushed. No application files are changed by this governance reconciliation.
+
+**Proof artifact independently verified:** `C:\Users\kulba\Downloads\PRYSM-HISTORICAL-PUBLICATION-COMPATIBILITY-20261014\PRYSM-HISTORICAL-PUBLICATION-COMPATIBILITY-20261014-final-proof.zip`, SHA-256 `bed89179ed5699ae79c8b05962ae9dd3972aaf9b918d98ccd32d74a6fa022a00`; archive opens and lists 24,522 entries. `REPORT.md` separately records the same final SHA, exact candidate, code acceptance, offline report acceptance, and remaining browser/live-audit HOLD. Frozen original evidence SHA-256 remains `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`.
+
+**OFFLINE CODE ACCEPTANCE: PASS.** Existing exact-candidate evidence records persisted SourceResult validation, DecisionEvidence and CapabilityEvidence hydration, audit/tenant/client continuity, unchanged deterministic scoring, four-finding historical-to-current semantic/source identity continuity, publication validation, preserved `UNAVAILABLE`/`PARTIAL`/`FAILED` states, M05/M12 retention, negative mapping controls, and complete six-page static HTML generation. The compatibility mechanism is generic and contains no Macfarlane-specific exception. No provider/model calls, new audits, deployments, production mutations, frozen evidence changes, NDP changes, Writer changes, or scoring changes occurred.
+
+**LIVE-AUDIT PRODUCT ACCEPTANCE: HOLD.** Browser integration was explicitly excluded/unavailable, so interactive navigation and visible DOM acceptance remain unverified. Actual live audits across multiple business sectors remain a separate future authorization boundary and must not be started from this checkpoint. This reconciliation does not claim staging-ready, production-ready, or full product acceptance.
+
+**Decision:** historical publication compatibility code closure is accepted at application SHA `14c509ba4eb76e8210af1140e6aa4a675391d279`; offline persisted-evidence/report proof is retained; live browser and multi-sector product acceptance remain HOLD. Preserve all earlier repairs and constraints below.
+
+**Next action:** wait for a separately authorized live-audit/product-acceptance tranche; do not begin it automatically.
+
 ## Active checkpoint — Macfarlane persisted SourceResult replay PASS to scoring; archived narrative publication HOLD (2026-10-14)
 
 **Independently verified 2026-10-14 proof:** User uploaded `PRYSM-PERSISTED-EVIDENCE-ACCEPTANCE-20261014-RERUN-01-proof-final.zip`, actual SHA-256 `1c36409040e8f7cda895ccc659653f3a885eaf665791e429703c545ca92e93e0`; ZIP 81 members, CRC PASS, 79/79 SHA256-MANIFEST-listed objects byte-hash PASS (UTF-8 BOM accounted for). Archived frozen `original-evidence.zip` SHA-256 independently matched `bc87fbfd876f8e813222f1d24f1de4ca216c13106c754fef0b6efc7b78140263`. `REPORT.md` separately uploaded matches package substantive report. App exact accepted `a066d024449821469151e759838107ebaff4f1ed`, frozen original `89672525b3151a3fc682036601efed0e171cefbe`. No local code edits by reviewer.
