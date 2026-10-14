@@ -1,5 +1,26 @@
 # Current State
 
+## Active checkpoint — Uploaded full-audit ZIP reviewed; final-SHA test gap and renderer leakage (2026-10-13)
+
+**Uploaded original full-system audit package independently inspected:** `PRYSM-EVIDENCE-TO-REPORT-FULL-AUDIT-20261013-proof-final-02.zip`, ZIP SHA-256 exact match `903695f0bc7ef4177e0e7f2c9767eba3bdabab682935ac8d32a23cbd021bd4a5`, 29 members, CRC clean, 28/28 internal proof-manifest hashes match. ZIP contains `REPORT.md`; a separate REPORT upload is not needed. App candidate `e9ba61008007e8a5b4764e0ef692a82b4630d769` verified on the remote repair branch, frozen baseline unchanged at `89672525b3151a3fc682036601efed0e171cefbe`.
+
+**Critical final-SHA proof discrepancy:** `EXACT-CANDIDATE.txt`, `TARGETED-EXACT.log`, `DETERMINISTIC-EXACT-CANDIDATE.log`, `SCHEMA-EXACT-CANDIDATE.log`, `SCORING-PROJECTION-EXACT-CANDIDATE.log`, `RENDER-EXACT-CANDIDATE.log`, `WHOLE-APP-EXACT-CANDIDATE.log` all display **tested SHA `8f721f96c4552107d5ee13b7abfe354d1e44b63c`**, not final GitHub candidate `e9ba61008007e8a5b4764e0ef692a82b4630d769`. Full 1417/1417 worker, 1048/1048 deterministic, schemas 15/15, scoring 283/283, render 52/52 and Whole-App gate PASS are recorded, but **not proven against the final submitted Git SHA**. An earlier full-worker log has exit 1, later `FULL-REGRESSION-EXACT-CANDIDATE.log` has exit 0 but lacks final-SHA binding. Correct by rerunning full exact-head gates after final commit and logging read-only Git SHA/clean state within each run. Do not relabel old logs.
+
+**Client content report M12 bypass independently confirmed at exact source:** `services/worker/src/report/render-report-v2.js` filters primary content cards through `governedIdeas` only when `model.clientPresentationAuthoritative` and a matching row exist, but `funnelPlan` still uses raw unfiltered `tofu/mofu/bofu` rows; missing presentation records can be admitted; supporting `leading` topics/hub copy need verification. Thus an unsupported `NO_ACTION` idea may reach final client-visible funnel planning despite exclusion from ranked cards. Add red integration test injecting a safety-policy `NO_ACTION` into the *actual rendered model*, assert absence throughout full HTML and every dependent planning/priority surface, and preserve known valid ideas.
+
+**Replay is narrower than stated:** New `full-pipeline-accuracy.test.js` uses controlled HTML → `crawlSite` → `scoreAudit` → ledger/presentation → `renderReportV2`, but does not execute original persisted raw SourceResult → `buildDecisionEvidence` or original Macfarlane raw replay. The safety-negative test checks ledger/presentation row but **does not render the model with the injected row**. `RENDERED-CROSS-BUSINESS.html` is a **1436-byte custom summary**, NOT six actual complete client report HTML files (replay JSON lists hypothetical complete report lengths ~139KB per profile). No original-full-client before/after HTML. Full-M12/production-path equivalence remains HOLD.
+
+**M05:** Production source improved but still primarily token/alt-text heuristics; source-linked named actual work and full report claim semantics not independently proven beyond controlled positive/negative. Avoid another phrase blacklist. `CROSS-BUSINESS-REPLAY.json` contains generic-vs-named `trustScore` 25 vs 13 respectively, which requires contextual explanation rather than assuming score monotonicity. Individual previous positives may remain verified; not full semantic acceptance.
+
+**Next strictly bounded action:** No repeat full architecture discovery unless evidence changes. Diagnose/render-fix failed final-report applicability paths and identity/score authority, add red end-to-end client HTML leak tests, verify real positive/negative and unknown/partial with actual producer-shaped persisted evidence, obtain full original offline source→DecisionEvidence→score→priority→HTML replay if feasible, and rerun all acceptance gates **at final exact committed SHA**. Save raw full HTML with SHA/trace alongside report, not a manually assembled summary. Separate M03 browser/TLS, M10 model-bearing, M11 visual/PDF and missing historical marketing incident remain HOLD. No deployments/merges/provider/model/new audit/production edits.
+
+**User deliverable:** complete updated Codex prompt required; user asked whether attachments change it, YES, given evidence above. Governance context only updated; app source not modified by assistant.
+
+Verified 2026-10-13.
+
+---
+
+
 ## Active checkpoint — Full audit candidate source review; final proof awaited (2026-10-13)
 
 **Candidate:** `e9ba61008007e8a5b4764e0ef692a82b4630d769` on app `repair/prysm-evidence-accuracy-20261013`; verified exact remote branch match (ahead/behind 0/0); approved frozen branch still exact `89672525b3151a3fc682036601efed0e171cefbe` (0/0). One new commit from Correction-06; no staging/production mutations authorized.
