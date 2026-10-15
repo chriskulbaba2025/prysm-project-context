@@ -1,5 +1,18 @@
 # Current State
 
+## Active handoff — evidence-first PRYSM closure (2026-10-15)
+
+Project: PRYSM.
+Current objective: Correct data evidence, classification and recommendation accuracy first; improve six-page client report structure/language after the data is trustworthy.
+Verified checkpoint: Isolated staging application chriskulbaba2025/prysm-staging-isolated, branch repair/prysm-evidence-accuracy-20261013, SHA 0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813. GACM controller main af67fa77dfc9441b3f54b513e4689136609bcd07 was user-reported operational; Telegram screenshot verified PRYSM pinned and CLEAN. Read-only whole-system PRYSM audit completed without application changes. Defect register identified nine findings. Source inspection in chat independently confirmed P0-EVID-001, P0-EVID-002, P0-BI-001, P0-SEC-001 and P0-ID-001 at that SHA.
+Completed: Code backup already handled by Chris. Audit evidence in user-provided PRYSM-WHOLE-SYSTEM-AUDIT-001 PROOF.md and REPORT.md; six initial repair areas identified. Existing staged coverage candidate cd61201a3bcdc500aa3292354971d79afe483d6a was reported local-only; audit workspace could not resolve it. Preserve and reconcile it rather than overwrite.
+In progress: No start confirmation or completion proof for PRYSM-DATA-ACCURACY-001 or the earlier proposed security tranche has been supplied. Do not label either running or finished.
+Blocked: Test execution at audit workspace was UNAVAILABLE due to spawn EPERM. Chris-owned interactive visual acceptance outstanding. Security and tenant identity P0 findings remain release blockers, despite data accuracy taking first priority.
+Important constraints: GACM GPT-5.6 Luna, one bounded tranche at a time, diagnose confirmed owning boundary then fix and test in same run; no repeat broad diagnostic-only stages; no subagents, paid/provider/model calls, new audits, pushes, deployments, or production mutations. PRYSM browser/visual tests are exclusively performed by Chris, never by GACM/Codex. Preserve approved report language/layout, evidence, scores, all other code and frozen baselines.
+Exact next action: In GACM Telegram send "status prysm" to verify no active run; if IDLE, start "run prysm PRYSM-DATA-ACCURACY-001 :: Repair P0-EVID-001 and P0-EVID-002 on pinned 0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813. Compare and preserve local candidate cd61201a. Remove false AVAILABLE and false PASS promotion; preserve valid findings in PARTIAL. Execute targeted, cross-industry and downstream regressions. Treat spawn EPERM as HOLD, not PASS. GPT-5.6 Luna, no subagents, provider calls, new audits, pushes, deployments or production changes. Write proof C:\Users\kulba\Downloads\PRYSM-DATA-ACCURACY-001. Stop after these fixes." If another PRYSM run is active, wait for its proof before launching.
+Last verified: 2026-10-15. This section supersedes older dated next actions below; all other historical checkpoints remain preserved.
+
+
 ## Isolated staging deployed — application 0ad1f183 / Vercel READY / Railway SUCCESS (2026-10-14)
 
 **Application authority:** `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, exact accepted SHA `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`. No application source changes in this deployment transaction.
