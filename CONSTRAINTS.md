@@ -394,3 +394,9 @@ For the active PRYSM staging reset:
 - Vercel `prysm-staging-isolated`: provider accepted `autoExposeSystemEnvs:true` and command `if [ "$VERCEL_GIT_REPO_OWNER" = "chriskulbaba2025" ] && [ "$VERCEL_GIT_REPO_SLUG" = "prysm-staging-isolated" ]; then exit 1; else exit 0; fi`. This allows all staging-repo branches to create previews, not automatic alias promotion.
 - The Vercel project read API does not expose these persisted fields. **STATUS PARTIAL: updates accepted but settings not independently read back and behavior not exercised.** Never claim full provider deployment lock enforcement PASS without direct readback and a future safe negative-control test.
 - Existing live aliases and Railway service deployments were confirmed unchanged after these settings writes.
+
+---
+
+## GACM PRYSM human-only visual acceptance (2026-10-15)
+
+For PRYSM tasks routed through GACM/Codex, visual/browser acceptance is reserved exclusively for Chris. Coding agents must not launch browser automation, screenshots, Playwright, Puppeteer or Chromium. The existing GACM USER_ONLY enforcement is an active hard boundary; never bypass it in an execution prompt. Automated code/unit/integration tests without a browser are distinct from Chris's actual UI acceptance.
