@@ -1698,3 +1698,19 @@ Every eligible recommendation needs inspectable site/audit provenance, business/
 
 Implication:
 M12 is now a mandatory cross-business generalization and relevance gate in `SPECS/PRYSM_EVIDENCE_INTEGRITY_REPAIR_TRANCHE_20261013.md`. At least six diverse business fixtures and adverse cases must prove both relevant recommendations and the rejection of irrelevant ones end-to-end. Report `M12 HOLD` if the marketing-agency originating audit is unavailable for exact reproduction; synthetic tests alone cannot claim real incident closure. No new audits, provider/model costs, deployments or changes to the frozen PRYSM baseline are authorized by this decision.
+
+---
+
+## Decision: Evidence accuracy first, report quality second (2026-10-15)
+
+Date: 2026-10-15
+Status: Active
+
+Decision:
+PRYSM completion is measured by accurate, business-applicable evidence/classification, defensible findings, scoring and recommendations, and a useful plain-language six-page Executive Report plus Snapshot V1. Prioritize the previously identified data-evidence defects P0-EVID-001 and P0-EVID-002 before changing report structure. Then correct business-intelligence/industry relevance, report language and presentation, and run full regression and human acceptance. This separately authorized evidence repair does not revoke frozen report presentation or canonical evidence. Existing P0 security and tenant-identity defects remain mandatory closure gates before release.
+
+Reason:
+Avoid repeated broad diagnosis-only stages. Work toward the product outcome, using the completed whole-system audit as a defect register and six initial bounded repair areas, without assuming each is already fixed.
+
+Implication:
+GACM/Codex handles one bounded fix-and-test tranche at a time on verified SHA. The next prepared run is PRYSM-DATA-ACCURACY-001; its start is unverified. Preserve local coverage candidate cd61201a3bcdc500aa3292354971d79afe483d6a until reconciled. No paid calls, live audits, application push, deployment or production mutation absent separate approval. Visual/browser acceptance belongs to Chris, not to GACM/Codex. Failed-to-launch tests (spawn EPERM) are UNAVAILABLE, never PASS.
