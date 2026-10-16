@@ -1,5 +1,22 @@
 # Current State
 
+## Active checkpoint — isolated staging SHA parity established (2026-10-16)
+
+**Outcome:** The existing isolated staging frontend/worker were synchronized to the exact tested PRYSM SHA `c0460142224fd6f9cfd8262dd8816aa6ccd89ac7`, using only existing providers/projects. This current checkpoint supersedes older prerelease holds below; preserve their historical proof. Actual PRYSM production untouched.
+
+**Evidence and current authority:**
+- Application `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, GitHub SHA `c0460142224fd6f9cfd8262dd8816aa6ccd89ac7` confirmed; user-reported local clean committed worktree `C:\g\p\w-33e2aa38fe6ae5889b45` at same SHA. Local acceptance user-reported PASS: worker 1430/1430, other deterministic 791/791, contracts 15/15, replay 11/11, Whole-App and closure 17/17 branches, TypeScript/build PASS. Proof `C:\Users\kulba\Downloads\PRYSM-WHOLE-APP-FIX-001\REPORT.md`. Those logs have not been independently inspected in this chat.
+- Vercel staging project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`: new exact-SHA production-*target within the isolated staging project* deployment `dpl_6qYNFdNE1qbTFDFNdMwb3SSHuY3e`, READY. Alias `https://prysm-staging-isolated.vercel.app` independently read back pointing to that deployment. This is NOT actual PRYSM production.
+- Railway isolated-staging project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8` (internally named production): only source commitSha changed from `0ad1f183...` to `c0460142...`, deployment `d99a6b85-8977-4e23-a2db-d709086feb38` SUCCESS, source SHA read back exact, no staged changes. Worker still explicitly commit-pinned for governed releases. Runtime startup logs noted two stranded audits reclaimed at SCORED; no live provider/model billing check was made.
+- Controller GitHub `chriskulbaba2025/gacm-controller` `src/config.ts` PRYSM authoritativeSha changed and independently read back to `c0460142224fd6f9cfd8262dd8816aa6ccd89ac7`; README updated. **Live local Telegram controller is not yet synchronized or verified**. GitHub config does not modify the executing Windows process. Existing controller GitHub supports one Codex child, not an autonomous multi-child sequence or staging deployment.
+
+**Still HOLD:** Human-only report/browser UAT; the running local Telegram controller authority/root/SHA and durable resume; model ID availability; automatic multi-stage launch/release beyond a single Codex child. Do not claim those accepted. No new audits or paid calls were deliberately launched for staging alignment; no independent runtime billing inspection was performed.
+
+**Next action:** Reconcile the existing local PRYSM checkout and Telegram controller's *executing* config/root/ref/SHA against the GitHub c046 checkpoint, preserving all dirty worktrees and existing C1 controller work. Run in-place local typecheck/status; never create a second controller. Then launch one long, bounded PRYSM work order through Telegram with internal stages business classification, purpose-aware programmatic SEO and evidence-grounded recommendations; require exact-SHA Whole-App PASS and branch matrix before next staging release. Keep user-only browser acceptance and actual production untouched. Do not introduce unavailable models or paid provider calls.
+
+---
+
+
 ## Active state — exact-SHA whole-app gate before further PRYSM promotion (2026-10-16)
 
 **Authority:** Supersedes older checkpoint/next-action sections below; preserve historical evidence. Governing rule: `CONSTRAINTS.md` section "PRYSM exact-SHA whole-app gate and no-drift staging release — 2026-10-16"; single-staging operating decision remains active.
