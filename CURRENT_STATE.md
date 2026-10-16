@@ -1,5 +1,28 @@
 # Current State
 
+## Active state — exact-SHA whole-app gate before further PRYSM promotion (2026-10-16)
+
+**Authority:** Supersedes older checkpoint/next-action sections below; preserve historical evidence. Governing rule: `CONSTRAINTS.md` section "PRYSM exact-SHA whole-app gate and no-drift staging release — 2026-10-16"; single-staging operating decision remains active.
+
+**Current objective:** Improve PRYSM's evidence-grounded, business-purpose-aware audit/report system through bounded GACM work, but require complete exact-SHA Whole-App PASS before any further application push or staging promotion. Keep no more than one unreleased candidate; synchronize the existing Vercel, Railway and accepted Telegram/GACM authority before the next improvement.
+
+**Verified checkpoint:**
+- GitHub application `chriskulbaba2025/prysm-staging-isolated` branch `repair/prysm-evidence-accuracy-20261013` at `a2d2c9cd1e87ece0a69c8a6bbb43bfe4f67dde38`, pushed with Chris's authorization and read back through GitHub. User PowerShell showed parent `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`, clean local state and exactly six expected repair files.
+- Vercel isolated-staging **preview** `dpl_3HAzi775rgn13biFWXyrpcNWiZbk` at `a2d2c9cd...`: READY, not the stable staging deployment. Stable staging Vercel deployment `dpl_4oTpY8RM8CKB9dUejNuVb7nCVKMg` remains at `0ad1f183...`, READY.
+- Isolated-staging Railway worker service `3343e2a8-0472-4780-8536-e8b9667fcc7a` deployment `7bdf5310-863e-4adb-b05b-3da6bcb4e6b0` remains SUCCESS at `0ad1f183...`. Telegram last observed accepted SHA `0ad1f183...` and CLEAN. No controller SHA update authorized.
+- User-reported deterministic downstream regression **610/610 PASS**; this is **not proof of the entire required Whole-App Gate**. Full exact-SHA release gate, hosted parity, user browser/report acceptance remain HOLD.
+
+**In progress:** No new repair tranche confirmed running. Existing six-file candidate is pushed but not accepted as a stable hosted release.
+
+**Blocked:** Further push/promotion until complete exact-SHA Whole-App and applicable gate proof; staging Vercel stable deployment/Railway worker/controller lag the GitHub candidate by one commit. The release gate must not be retroactively called PASS. Production remains read-only; no new audit, paid provider/model call, alternate staging environment, worktree cleanup or unauthorized child runs.
+
+**Exact next action:** Using the preserved worktree `C:\g\p\w-33e2aa38fe6ae5889b45`, perform **one bounded local exact-SHA Whole-App acceptance run** for `a2d2c9cd1e87ece0a69c8a6bbb43bfe4f67dde38` with required branch/contract/build/negative controls and proof in a dedicated Downloads subfolder; do not change code, push, deploy, launch paid calls or advance controller authority. If the existing gate cannot run, report HOLD with the specific blocker; do not substitute the 610 tests. Following documented gate PASS, seek the separately governed staging release and controller-acceptance steps.
+
+**Last verified:** 2026-10-16. GitHub and provider currentness read back in this chat; local test and clean-tree evidence from user's PowerShell.
+
+---
+
+
 ## Active handoff — verified evidence-accuracy LOCAL COMMIT; staging promotion HOLD (2026-10-16)
 
 **Authority:** This is the current checkpoint. It supersedes older dated handoff/next-action sections below without removing historical evidence. Governing operating decision: `DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md`. Existing single-staging, truth-integrity and approval rules remain in force.
