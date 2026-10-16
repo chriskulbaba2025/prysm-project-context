@@ -1714,3 +1714,20 @@ Avoid repeated broad diagnosis-only stages. Work toward the product outcome, usi
 
 Implication:
 GACM/Codex handles one bounded fix-and-test tranche at a time on verified SHA. The next prepared run is PRYSM-DATA-ACCURACY-001; its start is unverified. Preserve local coverage candidate cd61201a3bcdc500aa3292354971d79afe483d6a until reconciled. No paid calls, live audits, application push, deployment or production mutation absent separate approval. Visual/browser acceptance belongs to Chris, not to GACM/Codex. Failed-to-launch tests (spawn EPERM) are UNAVAILABLE, never PASS.
+
+---
+
+## Decision: One PRYSM staging environment with Telegram/GACM execution
+
+Date: 2026-10-16
+Status: Active; implementation gaps tracked in current state
+
+Decision:
+Develop and improve only the existing isolated PRYSM staging application. Actual production remains stable/independent and is not a target of staging work. Telegram is the controller, GACM governs Codex execution, and PRYSM is the product being improved. GACM repairs are justified only when they block the PRYSM task, then work returns to the same PRYSM objective. Do not create a second staging configuration. Test the affected PRYSM path end to end, distinguishing unit tests, offline HTML, live routes, browser review and release evidence. Require exact GitHub and running-process authority alignment before launching work. Every summary/handoff must re-read current GitHub sources and update/verify durable state if materially changed.
+
+Reason:
+Multiple local controller configurations, stale SHAs, dirty workspaces and separate harness experiments created unreliable startups and diverted effort from improving PRYSM's reports.
+
+Implication:
+The full, qualified operating contract, technical targets, blocked controls and exact next action are in `DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md` and the latest `CURRENT_STATE.md`. Existing no-production-change, evidence-truth, paid-call, browser and release approval rules stay active until changed explicitly. A desired GACM capability must not be represented as already implemented.
+
