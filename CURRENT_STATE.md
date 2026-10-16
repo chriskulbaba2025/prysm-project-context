@@ -1,5 +1,29 @@
 # Current State
 
+## Active handoff — single PRYSM staging / Telegram-controlled execution (2026-10-16)
+
+**Operating authority:** [`DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md`](DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md). This dated section supersedes older workflow/next-action statements below where they conflict, without removing their historical proof. Read `PROJECT.md`, active `CONSTRAINTS.md` and `DECISIONS.md` and the GitHub memory protocol first.
+
+**Primary objective:** Improve the **existing** `prysm-staging-isolated` application: reliable evidence and scoring, accurate actionable six-page Executive Report, report access, interface and UX. Use Telegram -> GACM -> Codex for bounded repair/test work. Repair GACM only when it blocks PRYSM, then resume the PRYSM task. **No second staging stack/repository/configuration; actual production remains untouched.**
+
+**GitHub verified 2026-10-16:**
+- PRYSM staging application `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, SHA `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`.
+- PRYSM staging Vercel `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployed same SHA, READY; staging Railway project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker `3343e2a8-0472-4780-8536-e8b9667fcc7a`, same SHA, SUCCESS.
+- GACM controller repository `chriskulbaba2025/gacm-controller` `main` SHA `af67fa77dfc9441b3f54b513e4689136609bcd07` (GitHub source; **not** the identity of running local process).
+- Real production `chriskulbaba2025/production-prysm` `main` SHA `c807a951e17cdaf9fb386c6f7374b66ae8fae487`, actual Vercel `prysm` READY; **no production work authorized**.
+
+**Latest user/local/runtime evidence (not verified as commits in GitHub):** Telegram restarted/responded, but reported an older DIRTY PRYSM checkout. User read running local controller `C:\Users\kulba\Desktop\prysm-gacm-mcp\src\config.ts`: PRYSM root `C:\Users\kulba\Desktop\prysm-staging-isolated`, lacking GitHub-main `C:\g\p001` plus exact ref/SHA pin. An improved isolated harness candidate commit `e627fcaba391661a6332eaa21cf99dbbbafb92a5` is user-reported, not promoted; its real-child test held on missing disposable acceptance harness while reporting ledger/status/lock consistency. PRYSM data-accuracy local patch exists, not accepted. Both Joseph Rodrigues audit report pages returned HTTP 409; user-reported restored-evidence diagnosis: existing decision evidence genuinely insufficient (DataForSEO `Domain Not Found`, zero inspected pages/content); gate must remain intact.
+
+**Gaps:** Local controller startup is not aligned to GitHub; single launcher/source check not proven; historical dirty work and new candidate must be reconciled; exact run workspace/resume authority not verified live; complete browser/report acceptance and automated staging release are **not** implemented/authorized by current controller. Old controller instructions prohibit PRYSM push/deploy and reserve browser acceptance to Chris; do not silently treat desired automation as implemented or approved.
+
+**Exact next action:** Perform one read-only local controller/PRYSM workspace identity and dirty-work audit, then a minimal in-place startup correction of the **existing** Telegram controller, without cloning additional staging or discarding current work. Establish single launcher, pinned staging Git root/origin/ref/SHA, durable-run status and correct Telegram `status prysm` after controlled restart. **No Codex child/model launch or PRYSM audit while authority mismatches.** Once verified, resume/preserve the existing PRYSM-DATA-ACCURACY-001 repair; follow with report evidence/report structure UI work, maintaining the explicit authorizations on live evidence collection and browser/deployment.
+
+**Every handoff/summary:** Re-read current GitHub `PROJECT.md`, current section here, `CONSTRAINTS.md`, `DECISIONS.md`, dated operating decision, controller/app branch heads and relevant files; compare with run logs and deployment identities; record exact checks; update GitHub when state materially changes and verify the commit. Do not treat old summaries as current authority.
+
+**Handoff state:** Operating decision recorded; local controller correction, report restoration and broader tip-to-tail acceptance remain HOLD.
+
+---
+
 ## Active handoff — evidence-first PRYSM closure (2026-10-15)
 
 Project: PRYSM.
