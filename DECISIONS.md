@@ -1731,3 +1731,19 @@ Multiple local controller configurations, stale SHAs, dirty workspaces and separ
 Implication:
 The full, qualified operating contract, technical targets, blocked controls and exact next action are in `DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md` and the latest `CURRENT_STATE.md`. Existing no-production-change, evidence-truth, paid-call, browser and release approval rules stay active until changed explicitly. A desired GACM capability must not be represented as already implemented.
 
+
+---
+
+## Decision: Programmatic SEO is required for PRYSM MVP and must be purpose-aware
+
+Date: 2026-10-16
+Status: Active — MVP requirement, not implementation or release approval
+
+Decision:
+PRYSM MVP must reliably complete an audit and produce a six-page Executive Report that is accurate, useful, business-specific and written as consultant advice. Programmatic SEO assessment is part of MVP, not deferred to later analytics/agent phases. Detect repeated/generated page families as a site characteristic independent of primary business model; examine representative pages and preserved coverage against the site's observed purpose, services, audience, buyer tasks and conversion goals. Evaluate whether those page families offer differentiated, useful content, credible geographic/service fit and appropriate technical/search signals. Produce bounded, evidence-linked improvement recommendations, or explicit verification/insufficient-evidence outcomes rather than generic warnings. Keep raw technical details and representative snapshots internal; only relevant, plain-language conclusions and actions belong in the approved six-page client report. Existing encyclopedia/typed-graph components are to be reused where useful for MVP, not expanded into a separate AI knowledge-platform objective.
+
+Reason:
+The user explicitly requires a convincing, accurate, actionable report for MVP and requires programmatic SEO to judge a site's page-generation strategy against the site's business purpose, regardless of whether the whole site is classified as a directory.
+
+Implication:
+Preserve existing report/evidence/classification architecture and governed truth states. Repair confirmed producer-to-consumer gaps such as profile assessment activation based solely on PROGRAMMATIC_SEO_DIRECTORY primary site type; do not mistake observed structure for defective content. Assess diverse business models, including service businesses with generated location pages and sites without programmatic SEO. No new page, staging project, agent/analytics integration, paid provider/model call, new audit, release, or production mutation is authorized by this decision. Current exact next action remains controller authority alignment, followed by the unfinished evidence-accuracy tranche; programmatic assessment is a subsequent separately bounded MVP repair/test scope.
