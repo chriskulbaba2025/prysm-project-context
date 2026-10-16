@@ -1,6 +1,34 @@
 # Current State
 
-## Active handoff — single PRYSM staging / Telegram-controlled execution (2026-10-16)
+## Active handoff — verified evidence-accuracy LOCAL COMMIT; staging promotion HOLD (2026-10-16)
+
+**Authority:** This is the current checkpoint. It supersedes older dated handoff/next-action sections below without removing historical evidence. Governing operating decision: `DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md`. Existing single-staging, truth-integrity and approval rules remain in force.
+
+**Project:** PRYSM MVP — reliably audit a website and produce truthful, useful, site-purpose-aware Snapshot V1 and six-page client Executive Report. Programmatic SEO assessment across any primary site type is required later in MVP; new agents, analytics integrations and broad knowledge-graph expansion are deferred.
+
+**Current objective:** Preserve the verified evidence-accuracy fix and prepare its separately authorized promotion into the **existing** isolated staging environment. Do not declare it live or browser accepted.
+
+**Verified checkpoint (user-supplied local PowerShell/log evidence, 2026-10-16):**
+- Application `chriskulbaba2025/prysm-staging-isolated`. Existing GitHub remote branch `repair/prysm-evidence-accuracy-20261013` remains at `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813` (reverified from GitHub 2026-10-16). Existing staging deployment was previously verified at that SHA; no new hosted deployment has been verified.
+- Preserved, separately committed **LOCAL-ONLY** six-file repair: `C:\g\p\w-33e2aa38fe6ae5889b45`, branch `g-28815aa49969ca2273dd`, commit `a2d2c9cd1e87ece0a69c8a6bbb43bfe4f67dde38`; user's `git log` and post-commit clean status confirm commit and clean tree. **This commit has not been verified on GitHub and was not pushed.**
+- Changed files: `services/worker/src/evidence/decision-evidence.js`; `decision-evidence.test.js`; `orchestration/audit-orchestrator.js`; `report/snapshot-backfill.test.js`; `scoring/evidence-contracts.js`; **new** `scoring/evidence-contracts-accuracy.test.js`. Exactly six files, no unrelated file modifications. Git diff checks PASS. Other GACM worktrees/dirty controller work and unpromoted harness candidate preserved.
+- Root repair: fail-closed source-result/status and evidence projection, no unsupported AVAILABLE/PASS or fabricated positive evidence, PARTIAL truth retained. Snapshot test fixture updated to supply consistent source artifact identity/runtime evidence without weakening production identity guards.
+- **Local deterministic downstream regression: 610/610 PASS, 0 failures** (`node --test --test-reporter=tap --test-isolation=none src/orchestration/*.test.js src/scoring/*.test.js src/report/*.test.js`). Targeted Snapshot tests 4/4 PASS; earlier repaired coverage 1/1, M12 applicability 14/14 and pipeline accuracy 5/5 PASS. Dependency blockers `ajv`/`cheerio`/`playwright` were overcome in the recovered worktree; no live audit or paid provider/model call involved.
+- Existing Telegram controller `C:\Users\kulba\Desktop\prysm-gacm-mcp`: minimal PRYSM config alignment passed TypeScript check; original live Telegram PID 9612 was stopped and single-instance listener restarted as PID 22420. Telegram `status prysm` showed approved staging SHA `0ad1f183...` and CLEAN. This confirms observed runtime status alignment, **not** a new accepted SHA or proof of durable resume semantics.
+
+**In progress:** None executing was established at handoff; no Codex child authorized by this context update. Local code is tested/committed but not released. One staging application/environment only.
+
+**Blocked / not claimed:** GitHub application push and isolated staging deployment not authorized in this handoff; running controller still pins `0ad1f183...`, so must **not** be silently advanced. Historical candidate `cd61201a...` comparison remains UNAVAILABLE/HOLD (locally absent; GitHub compare against `cd61201` returned not found); do not claim historical equivalence. Browser/visual product acceptance is USER_ONLY (Chris) and remains HOLD; no report-level, hosted or production acceptance is implied by deterministic test PASS. Earlier P0 security/tenant-identity gates, real-case business applicability, business classification and purpose-aware programmatic SEO remain separately unfinished.
+
+**Important constraints:** No Desktop Commander, new staging/controller installation, destructive worktree cleanup, unauthorized subagents or provider/model calls, fresh audits, application pushes, deployments or production mutation. Protect exact remote GitHub authority and all local recovered work. Preserve approved report language, scores, canonical evidence and truth states. GACM/Telegram governs any later Codex execution; Chris performs browser acceptance.
+
+**Exact next action:** Perform a **read-only pre-promotion authority review** for LOCAL `a2d2c9cd1e87ece0a69c8a6bbb43bfe4f67dde38` against the current remote application branch at `0ad1f183d86a0f4b6c066a9ef8f3c96bb8350813`: verify commit parent/lineage, six-file diff and clean source, GitHub branch currentness and staging-only target, then present the minimal safe push/staging release + controller-SHA advancement plan for Chris's separate explicit approval. **Do not push, deploy or change controller authority during the review.**
+
+**Last verified:** 2026-10-16. GitHub context updated only after the source-branch readback; local SHA/tests supplied by user's terminal and not independently fetched from GitHub.
+
+---
+
+## Prior handoff — single PRYSM staging / Telegram-controlled execution (2026-10-16)
 
 **Operating authority:** [`DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md`](DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md). This dated section supersedes older workflow/next-action statements below where they conflict, without removing their historical proof. Read `PROJECT.md`, active `CONSTRAINTS.md` and `DECISIONS.md` and the GitHub memory protocol first.
 
