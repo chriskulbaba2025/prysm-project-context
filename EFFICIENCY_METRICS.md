@@ -252,3 +252,16 @@ These raw measures are the primary comparison data for model and workflow effici
 | Current status | HOLD until the approval/tool preflight is repaired and successfully tested; do not count as development completion |
 | Future closure metrics | Capture end-to-end wall time from actual productive batch start and final PASS/HOLD, active Codex runtime from proof if available, code edits, repair attempts, failed iterations, full tests, affected files, prompt/approval human turns, token/allowance use if observable, and baseline-normalized comparison only if comparable data exists |
 
+
+## PRYSM-MVP-SINGLE-BATCH-20261017-02 — source-classification investigation stalled (2026-10-17)
+
+**Status:** BLOCKED after non-interactive GPT-6 Luna execution. Separate from the prior MCP-approval preflight blocked attempt. Treat as failed implementation attempt and avoid counting output tokens as productive code changes.
+
+- Run ID: `prysm-20261017T171507679Z-PRYSM-MVP-SINGLE-BATCH-20261017-02-a1a329`.
+- Start time inferred from run ID: `2026-10-17T17:15:07.679Z`; Telegram notification: `2026-10-17T17:16:24.276Z`. Proxy notification interval **76.597 seconds**, not precise process execution duration.
+- Model: `gpt-6-luna` as Telegram-reported; stderr reports **74,614 tokens used**. Billing, allowance impact, active model duration not measured.
+- Controller launch and noninteractive MCP preflight: prior approval deadlock bypassed; Codex obtained and read application source.
+- Result reported by Codex: BLOCKED before verifying root cause, owning boundary, required tests, proof artifact, or source edits.
+- Code changes: **0** reported; test executions: **0** reported. No code candidate created; production untouched.
+- Source inspection subsequently identified specific regression-worthy misclassification: `services/worker/src/audit/site-classification.js` treats six `/locations/...` URLs as `PROGRAMMATIC_SEO_DIRECTORY`, and the same URL family produces the `MULTI_LOCATION` modifier, making inference `ESTABLISHED` even without independent business-purpose evidence. Existing `audit-intelligence.test.js` expects directory categorization for this synthetic pattern. This is a source-level diagnosis; no running local reproduction or repair verified yet.
+- Next step: deterministic reproducer against pinned staging SHA, then one narrow owned-boundary repair and targeted negative controls. No new staging, production mutation or unnecessary controller changes.
