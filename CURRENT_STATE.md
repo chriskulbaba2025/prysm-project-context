@@ -1,5 +1,30 @@
 # Current State
 
+## Active checkpoint — GACM reliability handoff after successful PRYSM staging release (2026-10-17)
+
+**Project:** PRYSM product, with GACM/Telegram acting solely as its local coding controller. GitHub project memory: chriskulbaba2025/prysm-project-context.
+
+**Current objective:** Repair reliability and efficiency of the **existing** local GACM controller so one long, governed PRYSM development batch can complete useful work rather than stopping after expensive investigation. NO additional PRYSM staging environments/copies/worktrees or production changes. The full incident ledger, authoritative identities and S0–S5 procedure are in SPECS/GACM_CONTROLLER_RELIABILITY_HANDOFF_20261017.md. The latest dated constraint/decision supersedes earlier temporary-worktree allowances for this repair.
+
+**Verified checkpoint:** One isolated PRYSM staging environment is deployed and functioning (user-reported basic browser smoke), application GitHub SHA 5381eca7a42ae55d436bf351e0fe98bb42deaa89 on branch repair/prysm-evidence-accuracy-20261013. Vercel alias https://prysm-staging-isolated.vercel.app -> deployment dpl_B4QzCegiNqJBVidCwn8rLau9g596 READY; Railway worker deployment d352874b-c058-4942-820f-0df38cf13849 SUCCESS, source pin 5381eca7, no staged changes. Exact GitHub/host identity re-verified 2026-10-17. Actual production not modified.
+
+**Completed:** Manual-guided classification repair: service business with six location paths no longer falsely becomes ESTABLISHED PROGRAMMATIC_SEO_DIRECTORY; conflicting service/directory signals yield SERVICE_LEAD_GEN / PARTIAL. Changed two source/test files, committed/pushed 5381eca7. Worker 1,431/1,431 PASS, deterministic 1,054/1,054 PASS, Whole-App P-B01–P-B17 PASS and Closure Machine Gate PASS on tested pre-commit tree; released to existing Vercel and Railway staging only. User says staging works; full report-level browser/UAT is not independently accepted.
+
+**GACM findings:** Initial unattended batch blocked after ~32-second run-ID-to-notification interval because noninteractive Codex approval_policy=never conflicted with prysm_gacm MCP-tool approvals. Local existing controller source at C:\Users\kulba\Desktop\prysm-gacm-mcp was repaired (prompt tells Codex not to call controller MCP, and Codex arguments disable prysm_gacm MCP only within child), verified TypeScript/telegram selftest and committed locally c64cf8b on c1/status-integrity-20261014 after preserving earlier C1 local commit 4212f43f. This change was not pushed to controller GitHub. Restarted existing Telegram listener, and status prysm earlier returned c046014... CLEAN. The **second** GPT-6 Luna batch ran but reported BLOCKED with **74,614 tokens**, **0 source edits, 0 tests and no proof**. Telegram polling had also reported fetch failed; runtime durability and reliable progress reporting remain unaccepted. Prior generic tests failed from missing locked worker dependencies (cheerio); npm ci of existing worker package restored the 12/12 snapshot suite and enabled passing 1,431/1,431 worker tests. Historic shell-path and UTF-8 encoding mistakes were repaired before c64cf8b commit; no other application changes from failed GACM runs.
+
+**Current environment / branch / version:** Only PRYSM staging checkout C:\g\p001 at application SHA 5381eca7. Controller GitHub chriskulbaba2025/gacm-controller main SHA 6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58 **differs from user-reported locally committed controller** c64cf8b; no controller push/merge authorized. Controller GitHub config's last verified PRYSM source SHA was older c046014...; live local controller config/acceptance after staging advanced to 5381eca7 **must be rechecked**.
+
+**Blocked / open:** Unattended GACM reliability NOT ACCEPTED; single-listener process identity, controller accepted SHA, inexpensive preflight, meaningful progress/stop gate, Telegram polling/recovery, run-specific result/proof and sustainable token use not established. No extended business-purpose/programmatic SEO/recommendation feature batch completed. PRYSM whole-report browser UAT remains separate. No automatically paid PRYSM audits/provider calls or model-bearing changes authorized.
+
+**Important constraints:** Exactly one staging and one actual production; use existing C:\g\p001 and the existing controller directory only. Preserve local controller C1 commit work. No new project, controller install, worktree, app clone, paid call, new audit, additional runtime, subagent or model escalation. Any change must be justified by a diagnosed owning boundary and verified with no-token deterministic tests first. Do not call a Telegram accepted run PASS until real code/result/proof is verified. GitHub is the only durable cross-chat memory; time/efficiency are recorded as raw observed data only.
+
+**Exact next action:** **S0 only — perform one compact read-only inventory and authority reconciliation of the actual local GACM controller/Telegram running process and its live PRYSM source pin against staging SHA 5381eca7; identify a single proven owning-boundary problem before proposing any edit or Codex run.** Then follow stages S1–S5 in SPECS/GACM_CONTROLLER_RELIABILITY_HANDOFF_20261017.md in sequence. Do not perform S1 changes before S0 evidence.
+
+**Last verified:** 2026-10-17 — GitHub app/controller remotes and stable staging Vercel/Railway identities re-read; local controller state after c64cf8b and after staging SHA update is user-reported / not independently inspected.
+
+---
+
+
 ## Active checkpoint — classifier repair deployed to existing staging (2026-10-17)
 
 **Result: CODE VERIFIED / EXISTING STAGING DEPLOYED.** User browser acceptance remains pending. No new staging environment or actual production change.
