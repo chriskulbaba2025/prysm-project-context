@@ -1747,3 +1747,19 @@ The user explicitly requires a convincing, accurate, actionable report for MVP a
 
 Implication:
 Preserve existing report/evidence/classification architecture and governed truth states. Repair confirmed producer-to-consumer gaps such as profile assessment activation based solely on PROGRAMMATIC_SEO_DIRECTORY primary site type; do not mistake observed structure for defective content. Assess diverse business models, including service businesses with generated location pages and sites without programmatic SEO. No new page, staging project, agent/analytics integration, paid provider/model call, new audit, release, or production mutation is authorized by this decision. Current exact next action remains controller authority alignment, followed by the unfinished evidence-accuracy tranche; programmatic assessment is a subsequent separately bounded MVP repair/test scope.
+
+---
+
+## Decision: GACM reliability repair without extra staging copies (2026-10-17)
+
+Date: 2026-10-17
+Status: Active; latest user instruction narrows the temporary-worktree allowance in the October 16 single-staging operating decision.
+
+Decision:
+PRYSM has exactly one existing isolated staging application and one separate actual production. Its current local staging checkout is C:\g\p001; the GACM controller source at C:\Users\kulba\Desktop\prysm-gacm-mcp is a control-plane component, not another PRYSM application environment. Do not create new PRYSM staging environments, repositories, application copies or worktrees for the current GACM reliability repair. Diagnose and repair the existing controller in place, only because its failures are blocking productive PRYSM development. Give the operator short, actionable steps; do not prolong scope with repeated approval/checkpoint ceremonies. Preserve the local C1 controller work and use GitHub project context as durable memory.
+
+Reason:
+The October 17 GACM runs exposed a noninteractive MCP approval conflict and a token-heavy no-edit Codex failure. Manual-guided direct repair of a reproducible PRYSM classifier bug produced verified green gates and a successful single-staging release. Duplicate directories, stale pins, control-process ambiguity and excessive investigative sessions created operator work and destroyed the intended efficiency advantage.
+
+Implication:
+Follow SPECS/GACM_CONTROLLER_RELIABILITY_HANDOFF_20261017.md stages S0-S5, starting with one read-only source/runtime/accepted-SHA check. Do not launch another long or paid Codex task until inexpensive preflight and outcome/proof acceptance are working. Treat local controller c64cf8b and GitHub controller main 6132c1... as different until reconciled; after new PRYSM release, controller pin to 5381eca7 must be checked. Separate component tests, Codex proof, deployment status and human browser acceptance. Do not touch actual production.
