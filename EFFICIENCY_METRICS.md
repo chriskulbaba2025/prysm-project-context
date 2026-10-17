@@ -312,3 +312,8 @@ These raw measures are the primary comparison data for model and workflow effici
 ## GACM S2 committed (user-reported 2026-10-17)
 
 - Local controller source HEAD `82e468af10098372faf56437970904130755132c` reported after the previously tested three-file progress-guard repair. S2 tests reported zero child launches and provider calls. No recorded time or additional token measurement available. No remote controller push/restart. S3 Telegram process/polling recovery and S4 real Codex smoke remain HOLD.
+
+## S3 Telegram recovery source accepted (operator-provided 2026-10-17)
+
+- Controller C1 local SHA `e2a1520846f2bbf1c5a69ce6e68ddee847dedb4a`, two-file atomic/fail-closed Telegram state repair, seven no-model test groups PASS, `providerCalls:0`, `codexLaunches:0`, no additional model calls; elapsed time unavailable. No controller push, listener restart or PRYSM app changes.
+- S4 next: guarded replacement of the existing single Telegram listener and human read-only `status prysm` bot response acceptance, then separately approved governed run. S4 remains HOLD before listener swap/live reply.
