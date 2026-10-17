@@ -292,3 +292,8 @@ These raw measures are the primary comparison data for model and workflow effici
 - Repair scope: `src/core.ts`, `src/workspace-bootstrap.ts`, `src/workspace-bootstrap-selftest.ts`, `src/prysm-authority-selftest.ts`, plus pre-existing local `src/config.ts` accepted SHA alignment. No committed/pushed source, no Telegram listener restart; S2-S4 remain HOLD.
 - New Codex/model runs and Codex tokens during S1 script: **0** by reported script contract; elapsed time exists in local report but not supplied here, so **UNAVAILABLE**. Do not infer 97% acceptance from targeted tests. Earlier 74,614-token failed batch is distinct and not duplicated.
 - Immediate next action: scoped review and one local C1 commit of exactly approved files if the report/scope pass; no remote controller main push without reconciliation.
+
+## GACM controller S1 committed locally (user-reported 2026-10-17)
+
+- Controller local HEAD `44f293096aa701078de1017599c9535e6a9ef8f8` reported by operator after S1 five-test PASS. Not pushed; full diff/clean state not yet independently reviewed. Earlier S1 checks: typecheck, Telegram, result, workspace, direct PRYSM authority PASS; no new Codex tokens during those script checks. Elapsed time NOT AVAILABLE. Do not equate S1 checks with unattended-run acceptance.
+- Next stage S2 alone: bounded no-result progress control and deterministic offline proof before Codex execution. No staging/production changes.
