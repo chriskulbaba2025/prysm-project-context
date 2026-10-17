@@ -408,3 +408,16 @@ For PRYSM tasks routed through GACM/Codex, visual/browser acceptance is reserved
 - Maintain a short, controlled gap: at most **one unreleased candidate** may be ahead of the last accepted staging SHA; do not stack subsequent improvement tranches while that candidate is unresolved or the staging components/authority are drifting. Preserve worktrees and evidence rather than reset or silently merge unrelated commits.
 - Following an exact-SHA gate PASS and separate approval for release, move only that verified commit into the **existing** isolated staging Vercel frontend and Railway worker; read back both deployed SHAs, check that the stable staging URL serves the intended build, preserve rollback identities, and explicitly distinguish deployment readiness from Chris's USER_ONLY browser/report acceptance. A GitHub push or Vercel preview READY alone is not a completed staging update.
 - After the release is verified and accepted, advance the existing Telegram/GACM controller's accepted SHA through its separately approved, exact-identity acceptance step, verify executing-process status, and synchronize the GitHub current-state record before beginning the next improvement. No new staging system, unapproved paid call/audit, or production mutation is authorized by this rule.
+
+---
+
+## October 17 GACM reliability repair — one staging, no extra copies
+
+This user-authorized current boundary supersedes any older permissive wording about creating new temporary PRYSM worktrees for the **current GACM repair**.
+
+- Exactly one PRYSM staging application (chriskulbaba2025/prysm-staging-isolated; existing C:\g\p001 checkout) and one separate actual production. No new PRYSM copies, worktrees, staging repositories, deployment projects, databases or controller installations during GACM repair.
+- The controller repository at C:\Users\kulba\Desktop\prysm-gacm-mcp is a separate control-plane source directory, **not** an additional staging application; keep and repair it in place.
+- Before any new Codex run, verify current staging SHA (5381eca7a42ae55d436bf351e0fe98bb42deaa89 at this checkpoint), controller full local Git identity/clean status, live executing process and approved source pin, one active listener/run, required dependencies and tool permissions. Fail closed without spending a model run when prerequisites fail.
+- Do not push/replace the local controller C1 branch with GitHub main or merge histories without separately reviewed exact-diff authority. Do not mutate actual production, run new audits, make paid PRYSM provider/model calls, escalate model, or launch subagents.
+- Require deterministic acceptance of controller preflight, durable recovery, noninteractive permission, bounded progress and Telegram status reporting before claiming high unattended-run reliability. A run accepted by Telegram is not a Codex outcome.
+- Subsequent application changes remain subject to whole-app/closure proof and explicitly authorized deployment to the **same existing staging** frontend and worker. Browser review remains human-owned.
