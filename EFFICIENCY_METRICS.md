@@ -302,3 +302,9 @@ These raw measures are the primary comparison data for model and workflow effici
 
 - User ran existing `src/status-contract-selftest.ts` under local controller SHA `44f293096aa701078de1017599c9535e6a9ef8f8`; output `pass:true` with SQLite terminal evidence integrity, recovery, immutable identity, corruption failure-mode and authority negative controls. `providerCalls:0`, `productionWrites:0` as test-reported. No new Codex/model usage in this check. Runtime duration and broader reliability confidence not measured.
 - S2 planned script is locally generated and static/pure-unit checked in this chat; **not yet applied to the user's machine**. S2/S3/S4 remain HOLD pending user-local tests and separately authorized live smoke.
+
+## GACM S2 progress guard targeted proof (2026-10-17)
+
+- User-provided S2 installer output: typecheck PASS, Telegram selftest PASS, result selftest PASS, workspace selftest PASS (23 cases), progress-guard selftest PASS (telemetry, no activity, no meaningful activity, malformed failures, meaningful activity allowed). `providerCalls:0`, `childLaunches:0`; installer reported no new Codex/model calls/tokens. Elapsed time not supplied; `UNAVAILABLE` until actual REPORT.md reviewed.
+- Files changed: `src/core.ts` modified, `src/progress-guard.ts` and `src/progress-guard-selftest.ts` untracked. No commit/push/restart. S3 durable recovery and S4 live acceptance remain HOLD; don't call full reliability PASS.
+- One next action: guarded local S2 commit after exact scope/fingerprint checks. Do not launch model session.
