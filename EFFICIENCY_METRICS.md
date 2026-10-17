@@ -265,3 +265,14 @@ These raw measures are the primary comparison data for model and workflow effici
 - Code changes: **0** reported; test executions: **0** reported. No code candidate created; production untouched.
 - Source inspection subsequently identified specific regression-worthy misclassification: `services/worker/src/audit/site-classification.js` treats six `/locations/...` URLs as `PROGRAMMATIC_SEO_DIRECTORY`, and the same URL family produces the `MULTI_LOCATION` modifier, making inference `ESTABLISHED` even without independent business-purpose evidence. Existing `audit-intelligence.test.js` expects directory categorization for this synthetic pattern. This is a source-level diagnosis; no running local reproduction or repair verified yet.
 - Next step: deterministic reproducer against pinned staging SHA, then one narrow owned-boundary repair and targeted negative controls. No new staging, production mutation or unnecessary controller changes.
+
+## PRYSM classifier repair and single-staging release (2026-10-17)
+
+- **Outcome:** local code repair, tests and single existing staging release PASS; larger GACM MVP batch remains incomplete.
+- Application candidate `5381eca7a42ae55d436bf351e0fe98bb42deaa89`; two changed files, one new regression, 34 additions/2 deletions; exact-classification reproducer before change returned `PROGRAMMATIC_SEO_DIRECTORY` / `ESTABLISHED` for a plumbing business with six location URLs.
+- Test verification: worker 1,431/1,431; deterministic 1,054/1,054; Whole-App 17 branch IDs PASS; Closure Machine Gate PASS.
+- Unattended Codex batch separately recorded as BLOCKED with **74,614 tokens**, 0 source edits and 0 tests; do not credit that run with the manually completed repair.
+- **Railway deployment timestamp:** created `2026-10-17T19:03:57.635Z`, SUCCESS updated `2026-10-17T19:06:06.505Z`; approx **2m 08.87s**, provider timestamp interval (not total human labor). Vercel staging deployment created `2026-10-17T19:04:19.405Z`, READY verified after build; exact Vercel ready interval not independently measured.
+- **Complete human-directed repair wall time, edit events including script operations, and manual active time:** NOT_AVAILABLE, must not infer from chat timestamps or equate deployment latency with coding throughput.
+- Model tokens for manual PowerShell repair: 0 Codex calls during the manual repair/testing. Other interaction-model usage unknown. Full GACM methodology efficiency comparison cannot be computed without comparable baselines.
+- Live Vercel alias and Railway worker confirmed exact SHA parity. Browser report UAT pending; actual production not modified.
