@@ -1,5 +1,19 @@
 # Current State
 
+## Active checkpoint — classifier repair deployed to existing staging (2026-10-17)
+
+**Result: CODE VERIFIED / EXISTING STAGING DEPLOYED.** User browser acceptance remains pending. No new staging environment or actual production change.
+
+- Application `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-evidence-accuracy-20261013`, SHA `5381eca7a42ae55d436bf351e0fe98bb42deaa89` pushed and independently read back from GitHub.
+- Repair: prevented six location/service URLs with explicit first-party services from being incorrectly promoted to an established programmatic SEO directory; conflicting service/directory signals return `SERVICE_LEAD_GEN` / `PARTIAL` with `MULTI_LOCATION`. Explicit intake still prevails; regression added. Changed only `services/worker/src/audit/site-classification.js` and `services/worker/src/audit/audit-intelligence.test.js`.
+- User-run tests: worker 1,431/1,431 PASS, deterministic 1,054/1,054 PASS; Whole-App Gate PASS across P-B01–P-B17; Closure Machine Gate PASS; no failures. Tests observed on pre-commit working tree; commit changed those two tested files. Browser and real audit acceptance not run.
+- Existing Vercel isolated-staging project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs` deployment `dpl_B4QzCegiNqJBVidCwn8rLau9g596` READY, production-target **inside the isolated staging project**, verified SHA `5381eca7...`; stable alias `https://prysm-staging-isolated.vercel.app` points to this exact deployment.
+- Existing Railway isolated-staging project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8` (internal environment name `production`, **not actual PRYSM production**). Only staged change was source commit pin to `5381eca7...`. Deployment `d352874b-c058-4942-820f-0df38cf13849` SUCCESS; source pin and deployment SHA read back; no staged changes; startup verified PostgreSQL connected, S3 connected, port 8080 listening. HTTP log showed successful 200 audit API responses; some audit snapshot request 409, which is not a browser/report acceptance PASS.
+- **Still pending:** User browser report/UAT; broader proposed MVP development (business-purpose classification, programmatic SEO, recommendations) remains unfinished and must not be called complete. GACM GPT-6 Luna batch `PRYSM-MVP-SINGLE-BATCH-20261017-02` previously BLOCKED with 74,614 tokens, no edit/proof; recorded separately in `EFFICIENCY_METRICS.md`. No new paid provider audit was deliberately triggered during this release, though staging worker startup reclaimed two prior stranded audits to scored.
+- **Next action:** User reviews the existing staging app in browser. Preserve exact SHA parity, single-staging rule, approved report language, and actual production isolation.
+
+---
+
 ## Active checkpoint — isolated staging SHA parity established (2026-10-16)
 
 **Outcome:** The existing isolated staging frontend/worker were synchronized to the exact tested PRYSM SHA `c0460142224fd6f9cfd8262dd8816aa6ccd89ac7`, using only existing providers/projects. This current checkpoint supersedes older prerelease holds below; preserve their historical proof. Actual PRYSM production untouched.
