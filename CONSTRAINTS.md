@@ -421,3 +421,12 @@ This user-authorized current boundary supersedes any older permissive wording ab
 - Do not push/replace the local controller C1 branch with GitHub main or merge histories without separately reviewed exact-diff authority. Do not mutate actual production, run new audits, make paid PRYSM provider/model calls, escalate model, or launch subagents.
 - Require deterministic acceptance of controller preflight, durable recovery, noninteractive permission, bounded progress and Telegram status reporting before claiming high unattended-run reliability. A run accepted by Telegram is not a Codex outcome.
 - Subsequent application changes remain subject to whole-app/closure proof and explicitly authorized deployment to the **same existing staging** frontend and worker. Browser review remains human-owned.
+
+---
+
+## Operator communication — action-first strict rule (2026-10-17)
+
+- For all PRYSM/GACM work in ChatGPT, **act first** within current authorization, with minimal explanation. Do not substitute discussion, status narration, plans, or repeated permission requests for an available authorized action.
+- Replies must be brief and operational: report only **RESULT**, **BLOCKER** when present, and **NEXT ACTION**. Avoid repeating known background, speculative fixes, multiple alternative steps, or explanations unless explicitly requested or necessary to prevent a material error.
+- Give **one verified, executable next step at a time** when the work must occur on the user's local system; prefer an already validated command over improvisation. When tool access permits direct action, perform it rather than asking the operator to do it.
+- This strict brevity/action rule never overrides proof, scope, production read-only status, model/cost limits, Git authority, or explicit authorization boundaries. If blocked, state the specific blocker and the shortest safe next action.
