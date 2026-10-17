@@ -230,3 +230,25 @@ These raw measures are the primary comparison data for model and workflow effici
 - Live provider/model calls: 0. Model tokens/cost: `NOT_AVAILABLE` for this candidate because exact model-bearing execution was held before paid calls. Planning comparison: no spend to compare against USD $2/audit; the prior USD $2.76 observation belongs to a different candidate.
 - Hosted staging/browser/PDF and Production Path Equivalence / Production Identity Continuity: BLOCKED by unavailable authenticated browser surface.
 - Production mutation: 0. Existing dirty user-owned worktree preserved in the original checkout.
+
+## PRYSM-MVP-SINGLE-BATCH-20261016-01 — first launch blocked at MCP approval preflight (2026-10-17)
+
+**Status:** STARTED then BLOCKED, not a completed development work package. Retain this attempt separately when comparing governed coding efficiency. No code work or tests were performed during this attempt.
+
+| Measure | Observed / qualification |
+|---|---|
+| Run ID | `prysm-20261017T013112432Z-PRYSM-MVP-SINGLE-BATCH-20261016-01-13afb3` |
+| Tranche | `PRYSM-MVP-SINGLE-BATCH-20261016-01` |
+| Controller-issued timestamp (in run ID) | `2026-10-17T01:31:12.432Z` |
+| BLOCKED notification timestamp | `2026-10-17T01:31:44.738Z` |
+| Elapsed proxy | **32.306 seconds** between ID timestamp and notification; not a verified exact process duration or a measure of productive coding time |
+| Model requested / announced | GPT-6 Luna (`gpt-6-luna`); actual tokens and billed/allowance usage **NOT AVAILABLE**, do not assume zero tokens |
+| Source edits / test executions | 0 / 0 as reported by controller |
+| Failed code-test iterations | 0; **1 environment/preflight blocked attempt** |
+| Failure cause | `prysm_gacm` MCP tool access required interactive approval while launched Codex `exec` used `approval_policy="never"`; controller's noninteractive child could not obtain tool approval |
+| Produced code candidate | None; no source tree inspected |
+| Production impact | None reported |
+| Proof directory | `C:\Users\kulba\Downloads\PRYSM-MCP-RUNS\prysm-20261017T013112432Z-PRYSM-MVP-SINGLE-BATCH-20261016-01-13afb3` |
+| Current status | HOLD until the approval/tool preflight is repaired and successfully tested; do not count as development completion |
+| Future closure metrics | Capture end-to-end wall time from actual productive batch start and final PASS/HOLD, active Codex runtime from proof if available, code edits, repair attempts, failed iterations, full tests, affected files, prompt/approval human turns, token/allowance use if observable, and baseline-normalized comparison only if comparable data exists |
+
