@@ -297,3 +297,8 @@ These raw measures are the primary comparison data for model and workflow effici
 
 - Controller local HEAD `44f293096aa701078de1017599c9535e6a9ef8f8` reported by operator after S1 five-test PASS. Not pushed; full diff/clean state not yet independently reviewed. Earlier S1 checks: typecheck, Telegram, result, workspace, direct PRYSM authority PASS; no new Codex tokens during those script checks. Elapsed time NOT AVAILABLE. Do not equate S1 checks with unattended-run acceptance.
 - Next stage S2 alone: bounded no-result progress control and deterministic offline proof before Codex execution. No staging/production changes.
+
+## GACM post-S1 status integrity (2026-10-17)
+
+- User ran existing `src/status-contract-selftest.ts` under local controller SHA `44f293096aa701078de1017599c9535e6a9ef8f8`; output `pass:true` with SQLite terminal evidence integrity, recovery, immutable identity, corruption failure-mode and authority negative controls. `providerCalls:0`, `productionWrites:0` as test-reported. No new Codex/model usage in this check. Runtime duration and broader reliability confidence not measured.
+- S2 planned script is locally generated and static/pure-unit checked in this chat; **not yet applied to the user's machine**. S2/S3/S4 remain HOLD pending user-local tests and separately authorized live smoke.
