@@ -317,3 +317,8 @@ These raw measures are the primary comparison data for model and workflow effici
 
 - Controller C1 local SHA `e2a1520846f2bbf1c5a69ce6e68ddee847dedb4a`, two-file atomic/fail-closed Telegram state repair, seven no-model test groups PASS, `providerCalls:0`, `codexLaunches:0`, no additional model calls; elapsed time unavailable. No controller push, listener restart or PRYSM app changes.
 - S4 next: guarded replacement of the existing single Telegram listener and human read-only `status prysm` bot response acceptance, then separately approved governed run. S4 remains HOLD before listener swap/live reply.
+
+## PRYSM purpose/SEO/recommendation local targeted repair (2026-10-17)
+
+- Existing `C:\g\p001`, original HEAD `5381eca7a42ae55d436bf351e0fe98bb42deaa89` dirty with four controlled source/test paths; first direct run 25/26 (failed service+location regression), surgical repair + regression modernization (two existing files), repeat direct worker test run **26/26 PASS, 0 FAIL, 0 SKIP**, observed Node test duration **276.0212 ms**. Syntax check and diff check PASS; Windows line-ending warnings informational. Additional model/provider calls by direct check: 0 (test-run output does not instrument actual provider execution); source verified deterministic fixtures only. No commit/push/deploy; browser acceptance HUMAN-ONLY.
+- Next no-browser gate verified from application `services/worker/package.json`: `npm run verify:prysm-whole-app`; NOT `verify:prysm-closure` which invokes real Chromium. Elapsed wall-clock and tokens for prior Codex batch not measured, so unavailable. Controller schema defect still separate HOLD.
