@@ -308,3 +308,7 @@ These raw measures are the primary comparison data for model and workflow effici
 - User-provided S2 installer output: typecheck PASS, Telegram selftest PASS, result selftest PASS, workspace selftest PASS (23 cases), progress-guard selftest PASS (telemetry, no activity, no meaningful activity, malformed failures, meaningful activity allowed). `providerCalls:0`, `childLaunches:0`; installer reported no new Codex/model calls/tokens. Elapsed time not supplied; `UNAVAILABLE` until actual REPORT.md reviewed.
 - Files changed: `src/core.ts` modified, `src/progress-guard.ts` and `src/progress-guard-selftest.ts` untracked. No commit/push/restart. S3 durable recovery and S4 live acceptance remain HOLD; don't call full reliability PASS.
 - One next action: guarded local S2 commit after exact scope/fingerprint checks. Do not launch model session.
+
+## GACM S2 committed (user-reported 2026-10-17)
+
+- Local controller source HEAD `82e468af10098372faf56437970904130755132c` reported after the previously tested three-file progress-guard repair. S2 tests reported zero child launches and provider calls. No recorded time or additional token measurement available. No remote controller push/restart. S3 Telegram process/polling recovery and S4 real Codex smoke remain HOLD.
