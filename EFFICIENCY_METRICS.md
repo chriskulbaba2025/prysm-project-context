@@ -276,3 +276,12 @@ These raw measures are the primary comparison data for model and workflow effici
 - **Complete human-directed repair wall time, edit events including script operations, and manual active time:** NOT_AVAILABLE, must not infer from chat timestamps or equate deployment latency with coding throughput.
 - Model tokens for manual PowerShell repair: 0 Codex calls during the manual repair/testing. Other interaction-model usage unknown. Full GACM methodology efficiency comparison cannot be computed without comparable baselines.
 - Live Vercel alias and Railway worker confirmed exact SHA parity. Browser report UAT pending; actual production not modified.
+
+## GACM reliability S0 — controller identity and live listener inventory (2026-10-17)
+
+- **Outcome:** Read-only S0 diagnostic performed with one user-run PowerShell command bundle; single immediate authority discrepancy VERIFIED, controller reliability remains HOLD. This is not an S1 repair or S4 acceptance.
+- **Local Git:** controller `C:\Users\kulba\Desktop\prysm-gacm-mcp` branch `c1/status-integrity-20261014` local HEAD `c64cf8bda99f54d4cf294bbebed6279da67318ce`, CLEAN; staging `C:\g\p001` branch `repair/prysm-evidence-accuracy-20261013` SHA `5381eca7a42ae55d436bf351e0fe98bb42deaa89`, CLEAN. No pull/reset/push.
+- **Failure found:** local controller `src/config.ts` uses `authoritativeSha=c0460142224fd6f9cfd8262dd8816aa6ccd89ac7`, inconsistent with current staged/source SHA `5381eca7...`. Immediate owning config boundary identified; historical costly no-result run's root cause is not yet established.
+- **Live runtime observation:** one listener on `127.0.0.1:49831`, PID `31256`, running from existing `src/telegram-main.ts` process chain; multiple separate historical Codex/MCP processes observed, not proven extra Telegram listeners. Durable recovery/status and effective model override NOT VERIFIED. Run-folder listing yielded no identifiable run names.
+- **Observed S0 effort:** one local read-only command bundle, 0 application/controller code edits, 0 tests, 0 new Codex launches, 0 new Codex tokens, 0 failed repair iterations. Exact diagnostic elapsed time and ChatGPT token usage UNAVAILABLE. Previous separate blocked Codex batch remains **74,614 reported tokens, 0 edits and 0 tests** (already recorded above); do not count it as new S0 usage.
+- **Next action:** only after S1 authorization, use the in-place local controller to reconcile the stale SHA pin through governed accepted-identity controls and prove zero-model-call preflight; no extra staging/worktrees or production changes.
