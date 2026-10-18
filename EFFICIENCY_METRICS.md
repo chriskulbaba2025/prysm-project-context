@@ -327,3 +327,8 @@ These raw measures are the primary comparison data for model and workflow effici
 
 - On pre-commit dirty working tree, `npm.cmd run verify:prysm-whole-app` PASS; declared P-B01–P-B17; offline current-replay 1/1 PASS, Viewer 13.0.0. Local proof: `C:\Users\kulba\Downloads\PRYSM-PURPOSE-SEO-RECS-20261017-01-VERIFICATION\whole-app-20261017-195040.log`. Exact elapsed run wall clock unavailable from tail output; replay shown but whole-app aggregate duration unavailable. No new Codex run or browser integration; no commit/push/deploy.
 - This is pre-commit diagnostic evidence only. Exact clean SHA acceptance, material new branch coverage parity and production UAT remain HOLD. Previous worker targeted tests 26/26 PASS in 276.0212ms.
+
+## GACM controller SQLite launch failure and three-file review (operator 2026-10-17)
+
+- Exact local baseline HEAD `e2a1520846f2bbf1c5a69ce6e68ddee847dedb4a`, controller branch `c1/status-integrity-20261014` not found on GitHub; remote main `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58`. Three dirty local files reviewed. Typecheck PASS, SQLite status contract PASS, workspace 23/23 PASS, result PASS, Telegram PASS, `git diff --check` PASS. Injected-SQLite error against extracted actual persistence-failure branch + inert child PASS (`GACM-LAUNCH-NEGATIVE-20261017-01/RESULT.json`); full integrated launch not run. Provider and production calls in status selftest 0. Local commits and remote pushes: none reported.
+- App branch remote at `5381eca7a42ae55d436bf351e0fe98bb42deaa89` ahead/behind 0/0 before four-file local changes. 27/27 targeted PASS; updated offline whole-app P-B01–P-B17 PASS, replay 1/1 PASS. Exact committed-candidate gate not run. No release, paid calls or Telegram restart requested.
