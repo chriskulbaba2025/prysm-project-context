@@ -1173,3 +1173,12 @@ Freeze the command-complete G6-01 recipe from exact base `a36aa47aca8b96ded666fd
 
 Last verified:
 2026-10-04
+# GACM final closure checkpoint — 2026-10-18
+
+Verified facts from the single governed closure execution:
+- PRYSM staging branch `repair/prysm-evidence-accuracy-20261013` advanced from `e863e35c47c62c883d54d7a62f038e559de27cd0` to `e1b4bf7fbc77b78cafe5a352c8c8cfe745c02541`; the preserved two-file evidence-guidance repair is committed and pushed non-force to `prysm-staging-isolated`.
+- Controller branch `c1/status-integrity-20261014` advanced from `a2b61e382b8f9e31fd8663771a3833b7dd58c58b` to `aaa8608e5e5234b66f0d5cebbad0614a90aa7492`; its accepted PRYSM SHA binding now points to `e1b4bf7fbc77b78cafe5a352c8c8cfe745c02541`, and the commit is pushed non-force to `gacm-controller`.
+- PRYSM targeted report-detail proof: 7/7 PASS. Controller typecheck, test-runner fallback, result-status, workspace-authority, and Telegram self-tests PASS. No production mutation, paid/provider/model call, browser test, subagent, nested Codex child, or force push occurred.
+- Activation remains HOLD: the current Codex session is the active coding child, and the user requires the Telegram singleton activation only after this session exits. No Telegram listener was started or restarted in this session.
+
+Exact post-exit action: run the bounded Telegram command supplied in `C:\Users\kulba\Downloads\GACM-FINAL-CLOSURE-20261018\REPORT.md`, then verify the singleton's actual controller SHA `aaa8608e5e5234b66f0d5cebbad0614a90aa7492`, model `gpt-5.6-luna`, and accepted PRYSM SHA `e1b4bf7fbc77b78cafe5a352c8c8cfe745c02541` before sending the command.
