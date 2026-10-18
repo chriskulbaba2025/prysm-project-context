@@ -1763,3 +1763,20 @@ The October 17 GACM runs exposed a noninteractive MCP approval conflict and a to
 
 Implication:
 Follow SPECS/GACM_CONTROLLER_RELIABILITY_HANDOFF_20261017.md stages S0-S5, starting with one read-only source/runtime/accepted-SHA check. Do not launch another long or paid Codex task until inexpensive preflight and outcome/proof acceptance are working. Treat local controller c64cf8b and GitHub controller main 6132c1... as different until reconciled; after new PRYSM release, controller pin to 5381eca7 must be checked. Separate component tests, Codex proof, deployment status and human browser acceptance. Do not touch actual production.
+
+---
+
+## Decision: Proof-gated progression from small to longer PRYSM GACM runs
+
+Date: 2026-10-18
+Status: Active — operating direction only, not authorization to launch any run
+
+Decision:
+Following verified Telegram/controller activation, prove one small, useful PRYSM development task through the actual live Telegram -> GACM -> GPT-5.6 Luna Codex path before attempting medium or longer bounded work. Each duration/complexity increase is a separately approved execution tranche; do not auto-continue or create worktrees/subagents, escalate models, spend provider/model budgets, push or deploy without distinct authorization. Require exact source/runtime identity, cheap preflight, durable run status and proof, no duplicate children, accurate terminal Telegram feedback, product tests and safe recovery at each step. A Telegram reply, source tests or an inert-child test alone do not prove longer-run reliability.
+
+Reason:
+The October 17–18 activation uncovered stale source pins, launcher-identity assumptions, missing/unreadable historical run status, blocked Node worker spawning, wrong model selection and unsafe interpretations of Telegram response/polling evidence. A small real product run is the shortest valid proof that the now-activated controller can deliver useful work rather than merely pass controller tests.
+
+Implication:
+Use CURRENT_STATE.md for the single exact next action and REFERENCE/GACM_TELEGRAM_ACTIVATION_INCIDENT_REGISTER_20261018.md for incident/proof history. Preserve the single existing isolated staging application, human-only browser UAT, production read-only, proof-gated exact-SHA staging release, one unreleased candidate, no unapproved calls and source-of-truth discipline. The separate GACM governance checkout shown DIRTY must not be reset or assumed ready for its own role.
+
