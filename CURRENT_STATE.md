@@ -1,5 +1,17 @@
 # Current State
 
+## Current GitHub synchronization checkpoint — GACM pushed, PRYSM staging release held
+
+**Verified GitHub code refs (2026-10-17, direct readback):** `chriskulbaba2025/gacm-controller` feature branch `c1/status-integrity-20261014` -> `437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a` EXACT MATCH with operator's clean local controller; remote `main` remains `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58` (unchanged). This branch push did **not** prove active Telegram listener updated or integrated controller launch tested; both remain HOLD.
+
+**PRYSM remote/local difference:** Remote `chriskulbaba2025/prysm-staging-isolated` branch `repair/prysm-evidence-accuracy-20261013` remains `5381eca7a42ae55d436bf351e0fe98bb42deaa89`; operator's clean, offline-verified local candidate in existing `C:\g\p001` is `e863e35c47c62c883d54d7a62f038e559de27cd0`. 27/27 targeted PASS and offline whole-app P-B01–P-B17/replay PASS were proven against exact local candidate SHA; this is **not** a staging deployment, no client-side human browser UAT. Local and remote deliberately differ pending release decision.
+
+**Deployment-link readback:** Vercel project `prysm-staging-isolated`, ID `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, has active GitHub link to `chriskulbaba2025/prysm-staging-isolated`; last observed Vercel deployment `dpl_B4QzCegiNqJBVidCwn8rLau9g596` READY, `target:production` *within isolated staging project only*. Separate actual PRYSM production project `prysm` links to `chriskulbaba2025/production-prysm`; do not confuse targets. Pushing the connected PRYSM application branch can trigger Vercel staging deployment; its Railway worker is separately pinned at old `5381eca7`. A GitHub branch push therefore risks split frontend/worker staging SHA; must treat it as a governed *coordinated isolated-staging release*, not innocent source sync.
+
+**ONE EXACT NEXT ACTION:** Obtain explicit operator authorization for a coordinated isolated-staging PRYSM release/push of exact local `e863e35c47c62c883d54d7a62f038e559de27cd0`, including readiness to update/read-back both existing Vercel and Railway staged SHAs and rollback if drift, with no PRYSM production impact. If not authorized, preserve local PRYSM candidate without pushing. Before push, perform bounded read-only local/remote ancestry/pre-promotion check, stage release plan, and then execute only explicitly approved release. Separately, controller remains on remote feature branch and must pass integrated no-Codex launch test + controlled live Telegram restart before any new autonomous coding. No paid/provider/audit/browser automation.
+
+### Prior alignment notes below — superseded by this exact next action
+
 ## Latest verified GitHub alignment checkpoint — 2026-10-17
 
 **PRYSM candidate:** Local repository `C:\g\p001`, branch `repair/prysm-evidence-accuracy-20261013`, committed HEAD `e863e35c47c62c883d54d7a62f038e559de27cd0` (4 files, 138 additions, 5 deletions). Operator exact-SHA report: RESULT PASS, targeted True (27/27 earlier), offline whole-app True (P-B01–P-B17 and replay 1/1), CLEAN True, UNCHANGED_SHA True, PUSH NOT PERFORMED, DEPLOYMENT NOT PERFORMED. GitHub branch re-read: still `5381eca7a42ae55d436bf351e0fe98bb42deaa89`; no remote code update. Its existing isolated staging Vercel Git connection means pushing the working deployment-linked branch could trigger deployment, so HOLD that push pending explicit staging-safe release decision.
