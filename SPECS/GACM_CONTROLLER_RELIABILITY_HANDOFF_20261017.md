@@ -1,5 +1,8 @@
 # GACM controller reliability — verified incident record and staged repair handoff
 
+> **2026-10-17 currentness note:** This is the historical incident record and remains preserved. For the current exact controller/PRYSM SHAs, staging release, tests, new errors/omissions and ONE next action, read `CURRENT_STATE.md` ACTIVE HANDOFF and `SPECS/GACM_TELEGRAM_ACTIVATION_HANDOFF_20261017.md`. The 5381eca7 staging and unpushed local controller statements below are historical, not current.
+
+
 **Date:** 2026-10-17
 **Authority:** PRYSM GitHub project memory; read PROJECT.md, CURRENT_STATE.md, CONSTRAINTS.md, DECISIONS.md, and DECISION_PRYSM_GACM_SINGLE_STAGING_OPERATING_MODEL_2026-10-16.md first.
 **Status:** GACM controller reliability NOT ACCEPTED; PRYSM single-staging classifier repair DEPLOYED.
