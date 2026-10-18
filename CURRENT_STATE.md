@@ -2,6 +2,11 @@
 
 ## Active synchronization decision — 2026-10-17 (supersedes older next-action text below)
 
+**PRYSM LOCAL COMMIT REPORTED (2026-10-17 operator PowerShell):** Existing isolated staging checkout C:\g\p001 branch repair/prysm-evidence-accuracy-20261013 committed exactly four repair files: new local short SHA `e863e35` (full SHA not yet read), git reported 4 files, 138 insertions, 5 deletions. A subsequent standalone PowerShell `finally { ... }` raised `CommandNotFoundException`; this DOES NOT undo the commit. The compound script's final proof output and exact-HEAD targeted/whole-app tests are **NOT VERIFIED**. Preserve this local commit and previous controller local clean commit `437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a`. GitHub application code still last verified at `5381eca7a42ae55d436bf351e0fe98bb42deaa89` and no code push or deployment reported.
+
+**CURRENT NEXT ACTION (supersedes other listed actions):** Run one short, stand-alone PowerShell block to verify full local PRYSM SHA/branch, clean worktree, 27 targeted tests and zero-cost offline whole-app P-B01–P-B17 plus replay 1/1 against committed candidate; save RESULTS in named Downloads proof folder and report exact SHA. Do not amend/recommit, push, deploy, restart Telegram or launch Codex. Once PASS, reconcile remote GitHub refs and deploy-trigger risk separately; controller remote branch is absent, and controller main must not be overwritten.
+
+
 **GACM LOCAL COMMIT VERIFIED (user report, 2026-10-17):** Controller local branch c1/status-integrity-20261014, SHA 437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a, 3 files committed, local tree clean. Not pushed or restarted; offline tests PASS, integrated launch still unproven.
 
 **CURRENT NEXT ACTION:** Verify existing PRYSM checkout C:\g\p001 is still at SHA 5381eca7a42ae55d436bf351e0fe98bb42deaa89 with exactly four reviewed dirty source/test files. Commit only those four locally; then rerun three targeted test files (27/27 expected) and the offline whole-app gate at the new clean exact HEAD, preserving logs. Do not push, deploy, restart Telegram or launch Codex. Then reconcile both candidate SHAs with GitHub and staging release impact.
