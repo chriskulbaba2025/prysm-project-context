@@ -1,5 +1,19 @@
 # Current State
 
+## ACTIVE — Telegram fetch-failed run identity HOLD; no PRYSM retry (2026-10-18)
+
+**This section supersedes prior ACTIVE sections below.** The user submitted `PRYSM-EVIDENCE-BASELINE-01` for City Media audit `77b14b11-e034-456a-be77-6650cc37cf4a` via Telegram; at 2026-10-18 20:42:22 UTC the n8n/Telegram operator alert reported `Telegram command could not be completed. fetch failed`. **Whether Codex started is UNVERIFIED.** No evidence-accuracy baseline result exists in this conversation; do not resend, restart, launch a duplicate, or classify as audit FAIL.
+
+**Verified code defect:** On controller branch `chriskulbaba2025/gacm-controller` `c1/status-integrity-20261014` at `076db8cc67c36d04804ad9563524ad6e3d825156`, `src/telegram-controller.ts` executes `handleCommand` and `sendTelegram` in the same try/catch. Therefore an outbound Telegram confirmation failure can generate a false command-execution failure *after* Codex has started. This defect exists independently of whether it caused the observed fetch failure. The exact runtime error and run ledger are inaccessible without user-provided local evidence (Desktop Commander remains prohibited).
+
+**Repair candidate available in chat artifact:** A guarded local-only patch separates command, SQLite/state persistence and Telegram reply outcomes; advances the durable update offset before dispatch to avoid automatic duplicate command launch; sends precise n8n fallback; and includes five passing standalone simulated negative/positive controls. **Not applied to local controller or GitHub; not integration-tested or live-accepted.** The repair package contains `Check-GACM-Telegram-Failure.ps1` (read-only) and `Apply-GACM-Telegram-Reliability.ps1` (guarded, local-only, rollback on test failure). Do not claim 100% network availability or exactly-once delivery.
+
+**Authority:** PRYSM application branch `repair/prysm-evidence-accuracy-20261013` HEAD `bda9578029fda428e227bae774defb2e6c9a9809`; existing Vercel isolated staging READY and Railway isolated worker SUCCESS at same SHA as of 2026-10-18 provider checks. Controller GitHub feature branch `076db8cc67c36d04804ad9563524ad6e3d825156` pinned to that PRYSM SHA. Actual PRYSM production untouched. No new audit/provider/Writer calls were started by ChatGPT.
+
+**ONE NEXT ACTION:** In a local PowerShell process outside Telegram and outside Codex, run the read-only `Check-GACM-Telegram-Failure.ps1` from the supplied package and review its redacted report for controller lastRunId, retained PRYSM-EVIDENCE-BASELINE-01 proof folder and singleton status. Only after reconciling whether the run already started should the bounded local controller repair be applied/tested; then separately verify GitHub parity, controlled singleton restart, and a non-mutating live Telegram receipt before releasing new PRYSM work. No automatic retry. Do not replace this with a speculative GitHub Actions migration without testing local runner/fixture access.
+
+---
+
 ## ACTIVE — PRYSM staging synced at bda9578; verify report, then medium tranche (2026-10-18)
 
 **Single current authority / supersedes older ACTIVE sections below.** PRYSM is the product; Telegram/GACM/Codex controls governed changes. No new PRYSM improvement should begin until the deployed report repair is observed. No extra staging project, worktree, new audit, browser automation, paid provider call or actual-production mutation.
