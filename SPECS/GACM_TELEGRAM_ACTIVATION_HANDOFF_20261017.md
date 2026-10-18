@@ -1,5 +1,8 @@
 # GACM / Telegram activation — authoritative next-chat handoff
 
+> **2026-10-18 supersession notice:** This October 17 handoff is preserved as historical evidence, not current activation status or next-action authority. Telegram/controller activation subsequently passed its local safety and user-visible status gates. Controller GitHub feature branch is now 070336bcae754bcde414aacfd896b29cedc79737; PRYSM staging remains e863e35c47c62c883d54d7a62f038e559de27cd0. See the newest top ACTIVE section of CURRENT_STATE.md for one exact next action and REFERENCE/GACM_TELEGRAM_ACTIVATION_INCIDENT_REGISTER_20261018.md for complete errors, repairs, and limits. Do not resurrect this file's old HOLD, old PID, model restrictions as extra authorization, or unexecuted restart instructions.
+
+
 **Date:** 2026-10-17 (local, Ontario)
 **Status:** PRYSM staging RELEASED and aligned; GACM source/GitHub aligned; live Telegram activation **HOLD**.
 **Authority:** `PROJECT.md` + top of `CURRENT_STATE.md` + active `CONSTRAINTS.md` / `DECISIONS.md` + October 16 single-staging decision. This file is the detailed verified handoff; old headings and next actions lower in `CURRENT_STATE.md` are history, NOT current commands.
