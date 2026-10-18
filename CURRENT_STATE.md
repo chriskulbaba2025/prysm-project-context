@@ -2,6 +2,11 @@
 
 ## Active synchronization decision — 2026-10-17 (supersedes older next-action text below)
 
+**GACM LOCAL COMMIT VERIFIED (user report, 2026-10-17):** Controller local branch c1/status-integrity-20261014, SHA 437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a, 3 files committed, local tree clean. Not pushed or restarted; offline tests PASS, integrated launch still unproven.
+
+**CURRENT NEXT ACTION:** Verify existing PRYSM checkout C:\g\p001 is still at SHA 5381eca7a42ae55d436bf351e0fe98bb42deaa89 with exactly four reviewed dirty source/test files. Commit only those four locally; then rerun three targeted test files (27/27 expected) and the offline whole-app gate at the new clean exact HEAD, preserving logs. Do not push, deploy, restart Telegram or launch Codex. Then reconcile both candidate SHAs with GitHub and staging release impact.
+
+
 **Operator authorization:** Reconcile both existing local workspaces, locally commit already reviewed/verified code, and—only after SHA, tests, branch and deployment-impact checks—update their correct GitHub branches. This is **conditional authorization** to prepare safe pushes, not authority to force-push, target controller `main`, trigger uncontrolled staging deployment, launch Codex, restart Telegram, run paid audits/model/providers, or touch PRYSM production. Preserve all evidence, worktrees and existing isolated staging.
 
 **GitHub remote verification now:** `chriskulbaba2025/prysm-staging-isolated` branch `repair/prysm-evidence-accuracy-20261013` exactly equals `5381eca7a42ae55d436bf351e0fe98bb42deaa89` (comparison identical, ahead/behind 0/0); the local checkout `C:\g\p001` has **four reviewed source/test files still uncommitted**, with 27/27 targeted tests and final post-repair deterministic Whole-App P-B01–P-B17 + offline replay 1/1 PASS, but exact clean candidate SHA gate pending. App remote branch is linked to isolated Vercel staging; push may automatically trigger staging deploy; production release not authorized.
