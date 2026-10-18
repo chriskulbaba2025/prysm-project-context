@@ -1,5 +1,17 @@
 # Current State
 
+## Latest verified GitHub alignment checkpoint — 2026-10-17
+
+**PRYSM candidate:** Local repository `C:\g\p001`, branch `repair/prysm-evidence-accuracy-20261013`, committed HEAD `e863e35c47c62c883d54d7a62f038e559de27cd0` (4 files, 138 additions, 5 deletions). Operator exact-SHA report: RESULT PASS, targeted True (27/27 earlier), offline whole-app True (P-B01–P-B17 and replay 1/1), CLEAN True, UNCHANGED_SHA True, PUSH NOT PERFORMED, DEPLOYMENT NOT PERFORMED. GitHub branch re-read: still `5381eca7a42ae55d436bf351e0fe98bb42deaa89`; no remote code update. Its existing isolated staging Vercel Git connection means pushing the working deployment-linked branch could trigger deployment, so HOLD that push pending explicit staging-safe release decision.
+
+**GACM candidate:** Local existing controller repo `C:\Users\kulba\Desktop\prysm-gacm-mcp`, branch `c1/status-integrity-20261014`, committed HEAD `437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a`; three controller files, local tree clean per operator. Offline typecheck/SQLite contract/workspace 23/23/result/Telegram/inert-child extracted-handler negative all PASS; *full integrated controller launch and Telegram runtime acceptance NOT yet proven*. GitHub `gacm-controller/main` remains `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58`; local feature branch not found remotely. No controller code push reported yet.
+
+**Operator direction:** Make PRYSM and GACM/GitHub congruent, preserving historical work and staging/production boundaries. Code pushes require exact-target safeguards and must not create uncontrolled deployments. Project GitHub context is synchronized independently of code.
+
+**ONE NEXT ACTION:** Push only the clean, exact local GACM controller commit `437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a` to newly named GitHub feature branch `c1/status-integrity-20261014` after verifying local branch, HEAD, origin, clean tree, remote feature branch absent and remote main unchanged. No force push, no controller main mutation, no Telegram restart/Codex launch; read back exact feature-branch SHA and remote main. Then update memory and proceed to PRYSM deployment-safe GitHub synchronization (do NOT push deployment-linked PRYSM branch until staging side effects approved and release proof acceptable).
+
+### Older checkpoints (retained for evidence; superseded by the single next action above)
+
 ## Active synchronization decision — 2026-10-17 (supersedes older next-action text below)
 
 **PRYSM LOCAL COMMIT REPORTED (2026-10-17 operator PowerShell):** Existing isolated staging checkout C:\g\p001 branch repair/prysm-evidence-accuracy-20261013 committed exactly four repair files: new local short SHA `e863e35` (full SHA not yet read), git reported 4 files, 138 insertions, 5 deletions. A subsequent standalone PowerShell `finally { ... }` raised `CommandNotFoundException`; this DOES NOT undo the commit. The compound script's final proof output and exact-HEAD targeted/whole-app tests are **NOT VERIFIED**. Preserve this local commit and previous controller local clean commit `437e75c6ce727be3df29cb6e3b1f0bf7e13f5a2a`. GitHub application code still last verified at `5381eca7a42ae55d436bf351e0fe98bb42deaa89` and no code push or deployment reported.
