@@ -1,5 +1,20 @@
 # Current State
 
+## ACTIVE HANDOFF — GACM Telegram activation ONLY (2026-10-17)
+
+**Project:** PRYSM isolated-staging product; GACM/Telegram is the coding controller. **Authoritative detailed record:** `SPECS/GACM_TELEGRAM_ACTIVATION_HANDOFF_20261017.md` (read first with PROJECT.md, current constraints/decisions and 2026-10-16 single-staging decision). This new active section supersedes ALL historical "next action", "current", "HOLD" and SHA statements below; old sections are preserved as evidence only.
+
+**Verified PRYSM staging:** application local checkout `C:\g\p001` clean branch `repair/prysm-evidence-accuracy-20261013`, exact SHA `e863e35c47c62c883d54d7a62f038e559de27cd0`. GitHub branch exact, local targeted 27/27 and whole-app P-B01–P-B17 / replay 1/1 PASS at SHA. Vercel isolated-staging project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs` deployment `dpl_J2CoLnsBFvxbayARbHPprW8TZcYw` READY and public alias `prysm-staging-isolated.vercel.app` read back to exact SHA. Railway isolated-staging worker `3343e2a8-0472-4780-8536-e8b9667fcc7a` deployment `39d24ab6-82fa-4c26-a8e4-fe1ad18b0adc` SUCCESS on exact pinned SHA, last health online. Separate actual PRYSM production untouched. User browser UAT pending; no new audits or model/provider calls.
+
+**Verified GACM code:** local `C:\Users\kulba\Desktop\prysm-gacm-mcp` clean, branch `c1/status-integrity-20261014`, SHA `fbe9f1d04205cdaaf76cddadbea700fd07b0508b` pushed/verified on GitHub feature branch. GitHub controller main remains `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58`. Controller `src/config.ts` accepts current PRYSM exact SHA `e863e35...`. Local typecheck/SQLite contract/workspace 23/23/result/Telegram tests PASS and negative SQLite failure through extracted production handler with inert Node process PASS. **Integrated full `startCodexRun` negative child-process test remains UNPROVEN; do not claim live GACM acceptance.**
+
+**Latest operator live-process preflight:** `LockOwnerCorrect: True`; PID **30892** (`C:\Program Files\nodejs\node.exe`, command contains `telegram-main`) holds singleton listener `127.0.0.1:49831`; last seen parent PID **28464**; **ChildProcesses: 1 — identity/status UNKNOWN**. Controller/Prysm local SHAs exactly as above and CLEAN. Installed `codex exec --help` supports stdin prompt. No Telegram restart performed; controller process source revision **not** independently proven. Crucial omission: Telegram `status prysm` displays PRYSM repo branch/SHA, **not** executing controller build/SHA or its accepted authority pin. Do NOT restart or kill PID until the one child and current run ledger are examined and attributed.
+
+**EXACT NEXT ACTION (ONE):** At the start of the new chat, perform ONE narrowly-scoped, **read-only** PowerShell inventory for live PID 30892, its parent PID 28464, direct child and descendants, sanitized command lines, creation times, singleton lock owner and any active Codex run / persisted Telegram state. Preserve working trees, proof/run folders and polling offset; do not stop anything, launch Codex or test `telegram:locktest` against the occupied port. Report whether it is safe to proceed to a bounded integrated **inert/no-Codex** launch test and later individually authorized, single-instance Telegram restart. Only after restarted bot/source identity and live `status prysm` are verified may governed PRYSM coding resume. No Desktop Commander, subagents, additional worktrees, pushes, deploys, paid calls, new audits or production changes.
+
+### Historical checkpoints below (superseded by active handoff)
+
+
 ## Controller SHA-pin synchronization PASS — GACM live activation pending
 
 ### Telegram singleton PID preactivation evidence
