@@ -1,5 +1,13 @@
 # Current State
 
+## Controller SHA-pin synchronization PASS — GACM live activation pending
+
+**Verified 2026-10-17:** User performed guarded one-file in-place update to existing local GACM checkout `C:\Users\kulba\Desktop\prysm-gacm-mcp`, branch `c1/status-integrity-20261014`; only `src/config.ts` advanced accepted `PROJECTS.prysm.authoritativeSha` from `5381eca7a42ae55d436bf351e0fe98bb42deaa89` to deployed `e863e35c47c62c883d54d7a62f038e559de27cd0`, no other code edits. Local tests (typecheck, workspace/result/Telegram and SQLite contract) PASS; `git diff --check` PASS (CRLF warning only), clean local tree, commit+push feature branch SHA `fbe9f1d04205cdaaf76cddadbea700fd07b0508b`, independently confirmed through GitHub Git ref readback; new `src/config.ts` on remote confirms exact accepted PRYSM SHA, GitHub controller `main` still `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58`. No new Codex/provider calls or Telegram restart. PRYSM isolated staging GitHub, Railway and Vercel already matched `e863e35`, including public staging alias, browser UAT remains user-only.
+
+**ONE EXACT NEXT ACTION:** Read-only local preactivation preflight: identify PID/process command line that owns Telegram singleton TCP lock `127.0.0.1:49831`; confirm existing `C:\Users\kulba\Desktop\prysm-gacm-mcp` clean branch/head `fbe9f1d...`, `C:\g\p001` clean `e863e35...`, locally installed Codex CLI `exec --help` explicitly accepts stdin prompt `-`; do NOT terminate/restart listener or run Codex. Then bound inert integrated `startCodexRun` negative execution test (not just extracted handler) before controlled single-listener restart; verify resumed Telegram `status prysm` on accepted SHA. Keep logs in Downloads and project memory. No live paid/audit/deploy/production actions.
+
+### Prior checkpoint below — included for historical proof
+
 ## Current checkpoint — isolated PRYSM staging release PASS; GACM activation pending (2026-10-17)
 
 ### GACM post-release authority-pin discrepancy — verified from GitHub
