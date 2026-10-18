@@ -1,5 +1,23 @@
 # Current State
 
+## ACTIVE — PRYSM staging synced at bda9578; verify report, then medium tranche (2026-10-18)
+
+**Single current authority / supersedes older ACTIVE sections below.** PRYSM is the product; Telegram/GACM/Codex controls governed changes. No new PRYSM improvement should begin until the deployed report repair is observed. No extra staging project, worktree, new audit, browser automation, paid provider call or actual-production mutation.
+
+**Application checkpoint — GitHub verified:** `chriskulbaba2025/prysm-staging-isolated`, existing branch `repair/prysm-evidence-accuracy-20261013`, exact SHA `bda9578029fda428e227bae774defb2e6c9a9809` (GitHub comparison IDENTICAL). This commit contains the two-file Executive shared-pattern client-language repair. Existing targeted test proof 22/22 PASS; exact-SHA Whole-App Gate P-B01–P-B17 PASS per user-supplied Codex closure. Operator reported clean local `C:\g\p001` and non-force push; no direct local read by ChatGPT.
+
+**Isolated staging deployment — directly provider verified:** Vercel project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`: public alias `prysm-staging-isolated.vercel.app` resolves to deployment `dpl_5Xj1h4QKKrSNyLFgMJ3ETE4HS8yv`, READY, exact GitHub SHA `bda9578029fda428e227bae774defb2e6c9a9809`. Railway isolated staging project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, internal environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8` named production **inside the isolated staging project only**: source was pinned from stale `e863e35...` to `bda9578...` via one staged source change, deployed as `30479a0a-620b-4579-97a1-aa8387141c2f`, SUCCESS. Runtime log confirms worker listening on port 8080, PostgreSQL and staging S3 available. These changes did NOT mutate actual PRYSM production. The deployment restart also reported reclaiming two previously stranded staging audit lifecycle records; no fresh audit was requested.
+
+**Acceptance boundary:** Correct source is deployed to both services; this is NOT independently confirmed visible six-page HTML report content. Real existing-report rendering and human UAT remain pending. No browser automation; do not claim full report PASS until actual report HTML is observed. No fresh audits or paid model/provider calls were made to verify this change.
+
+**Controller source alignment — still OPEN:** Operator reported local controller branch `c1/status-integrity-20261014` committed as `076db8cc67c36d04804ad9563524ad6e3d825156` with `src/config.ts` pin updated to PRYSM `bda9578...`. Connected GitHub feature branch remained at `aaa8608e5e5234b66f0d5cebbad0614a90aa7492` (comparison IDENTICAL) and still pinned older PRYSM `e1b4bf7...`. Therefore no GitHub parity or currently executing Telegram identity may be claimed for controller commit `076db8...`. Preserve the local commit and old ledgers/offsets; synchronize non-force only after exact local SHA/clean verification and restart the singleton using the existing bounded scripts after any Codex session exits. Do not delete unknown processes or reset prior run state.
+
+**ONE NEXT ACTION:** Reconcile and non-force push the already-created controller commit `076db8cc67c36d04804ad9563524ad6e3d825156` on the existing `c1/status-integrity-20261014` feature branch, verify remote HEAD and controlled Telegram singleton restart/current accepted PRYSM `bda9578...`. Then have Chris view an existing six-page Executive Report in `https://prysm-staging-isolated.vercel.app` to confirm the repaired shared-pattern client language is actually rendered. Only after report acceptance launch separately approved `PRYSM-REPORT-MEDIUM-02` via GPT-5.6 Luna; no nested Codex, subagents, browser automation, fresh audits, paid calls or actual-production changes.
+
+**Verification provenance:** GitHub comparison and Vercel/Railway provider evidence read directly on 2026-10-18; controller local commit, 22/22 and Whole-App Gate are operator/Codex-reported, not independently re-run. Older ACTIVE sections below remain historical, not current authority.
+
+---
+
 ## ACTIVE — Telegram/GACM controller activated; progressive PRYSM live-run proof next (2026-10-18)
 
 **Project and authority:** PRYSM is the product; Telegram -> GACM -> Codex is the governed coding controller. This section is the **only active next-action authority** and supersedes all historical "ACTIVE", "current", HOLD, SHA and next-action statements below. Read PROJECT.md, active CONSTRAINTS.md/DECISIONS.md, the October 16 single-staging operating decision, and detailed incident/repair record REFERENCE/GACM_TELEGRAM_ACTIVATION_INCIDENT_REGISTER_20261018.md. Historical source: SPECS/GACM_TELEGRAM_ACTIVATION_HANDOFF_20261017.md.
