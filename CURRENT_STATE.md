@@ -1,5 +1,19 @@
 # Current State
 
+## Active synchronization decision — 2026-10-17 (supersedes older next-action text below)
+
+**Operator authorization:** Reconcile both existing local workspaces, locally commit already reviewed/verified code, and—only after SHA, tests, branch and deployment-impact checks—update their correct GitHub branches. This is **conditional authorization** to prepare safe pushes, not authority to force-push, target controller `main`, trigger uncontrolled staging deployment, launch Codex, restart Telegram, run paid audits/model/providers, or touch PRYSM production. Preserve all evidence, worktrees and existing isolated staging.
+
+**GitHub remote verification now:** `chriskulbaba2025/prysm-staging-isolated` branch `repair/prysm-evidence-accuracy-20261013` exactly equals `5381eca7a42ae55d436bf351e0fe98bb42deaa89` (comparison identical, ahead/behind 0/0); the local checkout `C:\g\p001` has **four reviewed source/test files still uncommitted**, with 27/27 targeted tests and final post-repair deterministic Whole-App P-B01–P-B17 + offline replay 1/1 PASS, but exact clean candidate SHA gate pending. App remote branch is linked to isolated Vercel staging; push may automatically trigger staging deploy; production release not authorized.
+
+**GACM remote verification now:** `chriskulbaba2025/gacm-controller` remote `main` remains `6132c1a22ad3d7b88c2ed36bea3ff5d4e37cfc58`; search for local controller branch `c1/status-integrity-20261014` returned no remote branch. Existing local controller `C:\Users\kulba\Desktop\prysm-gacm-mcp` baseline HEAD `e2a1520846f2bbf1c5a69ce6e68ddee847dedb4a` (operator previously verified); three reviewed dirty files `src/core.ts`, `src/status-contract.ts`, `src/status-contract-selftest.ts`. Typecheck, SQLite selftest, workspace 23/23, result, Telegram tests PASS; extracted real-handler SQLite-failure/inert-child check returned PASS, **not** full integrated live launch acceptance. No remote controller `main` overwrite or automatic Telegram restart.
+
+**Current status:** Two local repair candidates validated offline; no new local code commits, remote application/controller code pushes, staging deployments or Telegram restarts reported. GitHub project-context documentation is being updated separately and does not constitute code synchronization.
+
+**One exact next action:** Perform ONE guarded PowerShell local commit/checkpoint for the **existing GACM controller only** after re-verifying exact baseline `e2a1520846f2bbf1c5a69ce6e68ddee847dedb4a`, correct branch `c1/status-integrity-20261014`, origin `chriskulbaba2025/gacm-controller`, and exactly the three intended dirty files; rerun `npm.cmd run typecheck` and existing offline tests, `git diff --check`, stage only those 3 files and commit locally; verify clean tree, resulting HEAD and GitHub remote main unchanged. **No push/restart/Codex.** Then locally commit PRYSM four-file candidate and rerun its exact-commit-SHA offline gates; compare release side effects before any branch push. Always use existing workspaces, preserve backups and proof.
+
+### Historical checkpoints below — not current operating instructions
+
 ## Active checkpoint — GACM reliability handoff after successful PRYSM staging release (2026-10-17)
 
 **Project:** PRYSM product, with GACM/Telegram acting solely as its local coding controller. GitHub project memory: chriskulbaba2025/prysm-project-context.
