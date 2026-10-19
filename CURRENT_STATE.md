@@ -1,5 +1,19 @@
 # Current State
 
+## ACTIVE — Isolated staging live at verified combined PR #22 SHA (2026-10-19)
+
+**RESULT: STAGING DEPLOYED / PROVIDER HEALTH VERIFIED / BROWSER AND PRODUCT ACCEPTANCE HOLD.** This authorized promotion affects **only the isolated staging Vercel project and isolated staging Railway project**, not real PRYSM production. No application GitHub PR merges, new audit, paid provider/model call, test rerun or PRYSM production changes were performed. Preserve draft PRs #19–#22; the deployed combination is present at PR #22's precise commit.
+
+- **Exact deployed application commit:** `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3`, GitHub branch `fix/prysm-project-discovery-trust-20261018`, draft PR #22 stacked on #20 → #19, carries #21 notification workflow. Five exact-head GitHub Actions checks were already SUCCESS; no checks rerun for deployment.
+- **Isolated Vercel staging frontend:** project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs` (`prysm-staging-isolated`); new deployment `dpl_63WziHUM5h5e7eD8FxjtFZukkTvU` READY, Git SHA exact match. Alias `https://prysm-staging-isolated.vercel.app` independently resolved through Vercel get-deployment and get-alias to the new deployment. Vercel target is named `production` **within this isolated staging project only**.
+- **Isolated Railway staging worker:** project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8` (named `production` **within the isolated staging project only**). Pinned source exactly to same SHA using staged source update and approved accept-deploy after verifying no unrelated pending changes. Deployment `5a0c6dff-1163-41a3-9c60-37714c67cd93` SUCCESS; environment status ONLINE, 1/1 replicas, 0 warnings/criticals, no pending work. Runtime log: PostgreSQL connected, governed API initialized and worker listening on port 8080. Startup also logged automatic recovery of two preexisting stranded audits; it was **not** a requested new audit.
+- **Rollback references:** former Vercel staging deployment `dpl_5Xj1h4QKKrSNyLFgMJ3ETE4HS8yv` READY at prior SHA `bda9578029fda428e227bae774defb2e6c9a9809`; former Railway worker deployment `30479a0a-620b-4579-97a1-aa8387141c2f` SUCCESS at same prior SHA. Preserve rollback ability.
+- **Not verified:** authenticated human browser navigation, responsive reports, frontend↔worker end-to-end business functions, new programmatic-SEO acquisition, full six-page real report, FAQ/Writer consistency, 20-issue report-acceptance matrix. Deployment READY is **not** audit/product acceptance. Browser GET through this assistant's public network tools was unavailable, so no external HTTP-browser PASS is claimed.
+- **ONE NEXT ACTION:** User signs in at `https://prysm-staging-isolated.vercel.app` to verify dashboard/new-audit entry. Once confirmed and costs/scope explicitly agreed, run one bounded fresh audit of Regenerative Revival, then inspect all six generated report pages, especially collection/classification of representative programmatic treatment/location pages and the 20 identified issues. Do not start a live paid audit automatically; do not modify real production.
+
+---
+
+
 ## ACTIVE — Handoff: direct GitHub PRYSM sequential coding, #22 green (2026-10-18)
 
 **Single authoritative next-action checkpoint; supersedes older ACTIVE entries below.** This is a **memory-only handoff** requested by user to preserve state before a shorter follow-on chat. The case-study repair itself is already committed and independently verified in GitHub. No application changes, audit, provider/model calls, workflow reruns, merges or deployments were performed during this handoff.
