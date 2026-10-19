@@ -1780,3 +1780,26 @@ The October 17–18 activation uncovered stale source pins, launcher-identity as
 Implication:
 Use CURRENT_STATE.md for the single exact next action and REFERENCE/GACM_TELEGRAM_ACTIVATION_INCIDENT_REGISTER_20261018.md for incident/proof history. Preserve the single existing isolated staging application, human-only browser UAT, production read-only, proof-gated exact-SHA staging release, one unreleased candidate, no unapproved calls and source-of-truth discipline. The separate GACM governance checkout shown DIRTY must not be reset or assumed ready for its own role.
 
+
+
+## Decision: Direct GitHub sequential PRYSM repair lane with Telegram CI notifications
+
+Date: 2026-10-18
+Status: Active for user-authorized direct-GitHub application repair; not a release authorization
+
+Decision:
+The user explicitly chose ChatGPT's connected GitHub workflow for PRYSM source diagnosis and bounded repairs instead of repeated Telegram/GACM/Codex prompt-and-handoff loops. Each selected problem is handled **one at a time**: consult the authoritative GitHub project context, inspect original inputs and full producer-to-consumer boundary, agree on scope, make one small isolated draft PR on verified Git history, run full relevant exact-head GitHub CI, notify through the existing GitHub Actions -> n8n -> Telegram route when included, and present a short verified result/checkpoint. Save memory before switching chats. A CI notification is not deployment and a code fix is not an accepted client report. Continue to the next problem only with the user's authorization.
+
+Reason:
+Long Codex/GACM execution loops, repeated context reconstruction, and contradictory Git/runtime state obstructed PRYSM progress. Direct-GitHub draft PRs #19–#22 achieved verified exact-head Actions success without application staging/production deployment, while the #21 notifier proved actual Telegram delivery with user-confirmed screenshot. The workflow is empirically usable, but numerical speed-up percentages remain unmeasured.
+
+Implication:
+This **explicit user-selected exception overrides the older Codex-first and manual copy/paste mechanics for these bounded direct-GitHub repairs only**. Do not reinterpret it as general permission to bypass root-cause proof, contract invariants, frozen evidence, GCU when applicable, exact-head tests, model-bearing release proof, production safety, paid-call approval, or the user's human browser/release authority. Keep #19–#22 as draft until independently authorized promotion; do not automatically merge, deploy, launch Telegram/GACM/Codex, create a new staging environment, recrawl, spend on provider/model calls or alter actual production. A GitHub push to an isolated draft branch is not a production launch. For new repairs, first use the latest `CURRENT_STATE.md`, not older ACTIVE headings.
+
+Cost guard:
+User-provided GitHub Free billing screenshot showed usage fully included ($6.04 gross / $6.04 included, $0 net in that snapshot), and Actions paid usage blocked by an account-level $0 budget. Do not initiate paid GitHub upgrades, Codespaces, model usage, or other charges. Included CI runner minutes are still metered and not unlimited.
+
+Next authorized state:
+PR #22 head `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3` 5/5 Actions PASS but remains unmerged and undeployed. Follow-on FAQ/Writer contradiction work is **diagnostic-only until separately authorized**. The active one-step next action is in `CURRENT_STATE.md`.
+
+---
