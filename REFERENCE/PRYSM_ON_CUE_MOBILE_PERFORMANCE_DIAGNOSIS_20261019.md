@@ -21,6 +21,16 @@
 4. `report/v13/build-v13-runtime-data.js` and `prysm-report-v13-pages.js` transform PageSpeed/slow-LCP assertions into plain-language “main content ... taking longer to appear on a phone,” without consistently identifying a **simulated laboratory** test. Risk: a one-time lab outlier reads like the experience of all site visitors.
 5. `orchestration/audit-orchestrator.js` immutably stores `raw/pagespeed-<executionId>.json`, `normalized/pagespeed.json`, `canonical/evidence.json` and the `manifests/source-checkpoint-pagespeed.json` integrity record under `tenants/<tenantId>/clients/<clientId>/audits/<auditId>/...`. The actual IDs must be resolved from authorized audit lifecycle/identity data; do not guess tenant/client or artifact keys. Verify artifact hashes and provenance before attributing a metric.
 
+## Recovery source located, local Codex handoff HOLD (2026-10-19)
+
+The operator's verified read-only `railway run --no-local ... aws s3 ls ... --recursive` output independently locates this audit in **isolated staging S3** (not Downloads and not the local GACM/PRYSM worktree). Bucket `collected-canister-naa-kf`, endpoint `https://t3.storageapi.dev`, bucket key prefix:
+
+`prysm-staging/reports/tenants/prysm-staging/clients/oncueexecutivesolutions.com-on-cue-executive-solutions/audits/43f8912e-3aa4-47fa-9a8d-59441bde1f53/`
+
+Object listing confirms: `canonical/audit-request.json`, `manifests/source-checkpoint-pagespeed.json`, `normalized/pagespeed.json` (172,084 bytes), `raw/pagespeed-91389e79-c216-48ec-9925-eeac7792673a.json` (851 bytes), `canonical/findings.json`, `canonical/scores.json`, and `report-v2/pages/index.html`. The list alone does **not** verify contents or hashes. A later uploaded Codex handoff ZIP contained only `REPORT.md`, result HOLD: Codex looked in `C:\\g\\p001` at `bda9578029fda428e227bae774defb2e6c9a9809`, could not find this context-repo reference, and searched local proof files instead of the known remote S3 keys. No source artifacts were retrieved and no coding occurred.
+
+**Correct next action:** Using the already-validated Railway CLI command and AWS CLI with isolated worker's scoped environment, **copy only the seven named existing S3 objects** to a new Downloads proof directory, verify checkpoint-manifest hashes and metric/provenance, and upload sanitized ZIP for causal diagnosis. No requirement to find the context document in the application worktree; the keys above are the exact recovery inputs. No new audit/provider/model calls, repo modification or deployment.
+
 ## Immediate evidence gate — existing audit only, read-only
 
 Use the existing authorized audit database + governed artifact store access (without revealing credentials or accessing a different tenant) to retrieve **only** the following for exact audit ID `43f8912e-3aa4-47fa-9a8d-59441bde1f53`:
