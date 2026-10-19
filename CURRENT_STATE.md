@@ -1,5 +1,18 @@
 # Current State
 
+## ACTIVE — Existing draft PR #19 read-only merge-readiness review (2026-10-19)
+
+**RESULT: PR #19 SOURCE + EXACT-HEAD CI VERIFIED / MERGE HOLD (HUMAN PRODUCT ACCEPTANCE NOT COMPLETED).** User asked to move to the next PR immediately after receiving the inventory of nine open, unmerged drafts. This was interpreted as reviewing the oldest existing PR before creating more patches or merging. No code changes, merge, deployment, provider/model calls or production changes in this review.
+
+- **Existing [draft PR #19](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/19)** `fix/prysm-content-label-truth-gate-20261018`, exact head **`01ef7f9d1609d4c2f09ebfd49e357f2720ef3ea4`**. Target remains `repair/prysm-evidence-accuracy-20261013`, base `bda9578029fda428e227bae774defb2e6c9a9809`. GitHub reports open, draft, not merged, mergeable; **23 changed files**, materially covering tenant/audit identity binding, scoring/content-state authority, preservation of partial/unknown evidence and negative controls. Explicit PR description says **DRAFT / HOLD / do not merge or deploy until report acceptance**.
+- **Exact-head GitHub Actions: all 5/5 SUCCESS** — Content Fidelity `39177648310`, Security `39177648317`, CR43 Golden Difference `39177648406`, Report Failure Regression `39177648264`, Vantage Worker CI `39177648484`.
+- **Ancestry independently verified:** GitHub compare `01ef7f9d...` → deployed isolated staging `0cd296da969b70dcc5e7e539537cf1944e442d51`: `status=ahead`, `merge_base_commit` exactly PR19 SHA, `ahead_by=28`, `behind_by=0`. Thus PR19 code is already present in the now-verified Vercel/Railway **isolated staging source lineage**, despite the individual PR being unmerged. This does NOT prove historical saved report correctness or human product acceptance.
+- **Release gate:** Do not merge PR19 solely on CI success or because code is in staging. Required client/report review remains HOLD; archived static Regenerative Revival PDF is not updated by renderer code. Existing nine-PR stack includes separate sibling PR21 (Telegram notifier), which is **not** automatically included just because PR20/22–28 descend from PR19. Preserve all branches and draft refs.
+
+**ONE NEXT ACTION:** Obtain human/same-audit staging report acceptance or an authorized governed existing-evidence-only rerender before PR19 merge decision. If the user instead meant “create the next new report-fix PR” (rather than review remaining unmerged drafts), ask to resolve that ambiguity first. No merge or deployment authorized by “go to next PR” alone.
+
+---
+
 ## ACTIVE — PRYSM isolated staging promoted through PR #28 (2026-10-19)
 
 **RESULT: ISOLATED STAGING DEPLOYED / VERCEL AND RAILWAY EXACT-SHA VERIFIED / USER BROWSER AND PRODUCT ACCEPTANCE HOLD.** User explicitly authorized deployment after PR #28 passed all four exact-head GitHub Actions. This update comprises PR #25 Content Opportunities raw stage/topic presentation, PR #26 Priority Fixes per-finding source URLs/conditional per-page lab evidence, and PR #28 regulated medical Trust language and canonical semantic proof-category distinctions, layered on existing accepted isolated staging PR #24. **PR #27 was a duplicate closed unmerged, not included; all remaining draft PRs remain unmerged.** No actual PRYSM production changes, no new paid model/provider calls, no new manually requested audit.
