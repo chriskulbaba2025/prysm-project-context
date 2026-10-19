@@ -1,5 +1,13 @@
 # Current State
 
+## ACTIVE — PRYSM GitHub CI to existing Telegram webhook (2026-10-18)
+
+**Notification-only, not production release.** Draft [PR #21](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/21), branch `chore/prysm-github-telegram-ci-notify-20261018`, candidate SHA `f3d22facc8f1371bafea98ed916c166e5c125642`, stacked on accepted-code candidate PR #19. Added independent `notify-telegram` job to `.github/workflows/worker-ci.yml` after worker `verify`, for same-repository pull requests only. Emits n8n's known `DONE` or `BLOCKED` JSON event with project prysm, PR link, checks URL, source, timestamp, explicit `NOT DEPLOYED`; no code/app changes, no notification on forks. GitHub secret `PRYSM_CI_TELEGRAM_WEBHOOK_URL` is **not configured/verified by chat**: GitHub connector cannot administer Actions secrets, and no webhook URL was added to tracked code. One user setup step: enter the previously working production n8n `codex-message` webhook URL as that repository Actions secret. With no secret, Actions logs a warning and does not POST. Historical n8n `Send Telegram Alert` node has shown Bad Request parameters errors, so **Telegram delivery NOT VERIFIED** until user confirms a real received message. HTTP 2xx only confirms webhook accepted; it does not prove bot delivered. Do not call this integration complete yet.
+
+**Next action:** User adds Actions secret once; then use the latest PR #21 worker CI execution or a controlled re-run to verify POST and Telegram receipt. Preserve PRs #19 (all 5 checks PASS) and #20 (Worker CI / Security / CR43 PASS at SHA `f94809d69d8ce887224fc2dd638f386473126677`) as draft, no merge/deploy. Once notification receiver works, resume small, separately tested PRYSM case-study evidence and FAQ/Writer provenance repairs with user review before release.
+
+---
+
 ## ACTIVE — direct GitHub coding; CTA correction pending full CI (2026-10-18)
 
 **Supersedes older ACTIVE entries below.** User explicitly authorized continuing PRYSM source changes through connected GitHub in brief, check-in-friendly increments, then staging review and separately authorized launch. No Telegram/GACM Codex reruns, fresh audits, paid provider/model/Writer calls, production changes, automatic merges or deployments.
