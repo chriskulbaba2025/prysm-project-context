@@ -1,5 +1,39 @@
 # Current State
 
+## ACTIVE — Handoff: direct GitHub PRYSM sequential coding, #22 green (2026-10-18)
+
+**Single authoritative next-action checkpoint; supersedes older ACTIVE entries below.** This is a **memory-only handoff** requested by user to preserve state before a shorter follow-on chat. The case-study repair itself is already committed and independently verified in GitHub. No application changes, audit, provider/model calls, workflow reruns, merges or deployments were performed during this handoff.
+
+### Exact, verified application authorities
+
+- App: `chriskulbaba2025/prysm-staging-isolated`. Accepted staging **source baseline** (not proof of current runtime): branch `repair/prysm-evidence-accuracy-20261013`, SHA `bda9578029fda428e227bae774defb2e6c9a9809`; latest staging deployment previously observed at this SHA in the older 2026-10-18 checkpoint, **not rechecked now**. Real production unchanged by these PRs.
+- **Draft PR #19**, [authenticated audit scope and truthful content-label eligibility](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/19), base `repair/prysm-evidence-accuracy-20261013`, head `01ef7f9d1609d4c2f09ebfd49e357f2720ef3ea4`. **5/5 exact-head Actions SUCCESS**. Addresses wrong Already Covered labels and incomplete body-text/crawl evidence, scoped tenant/client/audit provenance; governed CR43 diff proof required for golden baseline change.
+- **Draft PR #20**, [visible-CTA-only obstruction attribution](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/20), based on PR #19, head `f94809d69d8ce887224fc2dd638f386473126677`. **3/3 exact-head Actions SUCCESS** (full Worker CI, security, CR43). Prevents hidden CTAs from being called visually obstructed and incorrect fallback to homepage; requires actual affected URLs.
+- **Draft PR #21**, [GitHub Actions → n8n → Telegram notifier](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/21), independently stacked on PR #19, head `f3d22facc8f1371bafea98ed916c166e5c125642`. **2/2 exact-head Actions SUCCESS**. GitHub Actions secret `PRYSM_CI_TELEGRAM_WEBHOOK_URL` was added by user; rerun notification job for run `39184464152`, job `117848057738`, received HTTP 200 from existing n8n webhook; **user confirmed actual Telegram receipt by screenshot**. Never reveal secret or bot credential. A PASS notification means CI PASS, **NOT DEPLOYED**.
+- **Draft PR #22 — latest completed code repair**, [project-page discovery / case-study evidence truth](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/22), branch `fix/prysm-project-discovery-trust-20261018`, **base PR #20**, exact head `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3`. **5/5 exact-head Actions SUCCESS**, including full Worker CI run `39187234049`, report-failure, security, content fidelity, CR43 golden review. Diff independently confirmed: 7 files, one is `.github/workflows/worker-ci.yml` carrying PR #21's notification job. Existing Telegram notifier job `117853318873` SUCCESS with n8n HTTP 200; Telegram receipt of PR #22's particular message not independently established. All these PRs remain DRAFT, UNMERGED and UNDEPLOYED.
+
+### Bounded case-study repair proof
+
+Historical City Media audit `77b14b11-e034-456a-be77-6650cc37cf4a` contains four first-party HTTP 200 `/our-work/...` project pages with named campaign/podcast headings but missing body text. PR #22 now:
+1. preserves source-URL-scoped *discovery* of named project pages without fabricating project completion, case-study detail or client outcomes;
+2. distinguishes `PARTIAL` metadata-only completed-work/detailed-case-study evidence from `UNKNOWN` customer outcomes and independent verification;
+3. reserves at most two already-observed, unparsed first-party project URLs inside the **unchanged** DataForSEO content-parsing cap, and passes actually parsed page text to completed-work classification;
+4. keeps unassessed body/content and historic report unchanged. Unit/adapter/semantic negative tests guard false positives.
+
+The fixed code can assess newly obtained evidence in a **future separately authorized run**. It does NOT retroactively repair the historical exported City Media report, prove any outcome claim, prove full Writer/NDP/client HTML fidelity, or authorize a new crawl. Product acceptance and release remain HOLD.
+
+### Operating agreement and cost guardrails
+
+User-approved workflow: **ChatGPT direct connected GitHub reading/coding → one evidence-bounded draft PR per repair → exact-head CI → existing GitHub Actions/n8n Telegram notification → short user review → separately approved staging promotion / human-only browser acceptance / eventual production release**. Keep changes small, preserve a checkpoint after each step, and avoid long chat threads or handoff-reconstruction. GitHub project context is the durable source, not this chat. Telegram *notification only* does not mean a Codex/GACM code-run requirement; avoid starting Telegram/GACM/Codex or Desktop Commander without separate instruction.
+
+GitHub Free billing screen shown by user: gross metered usage $6.04 was fully offset by $6.04 included usage (net $0 at that snapshot); screenshot also showed **Actions $0 budget / paid usage blocked**. No paid GitHub use, provider/model calls, fresh audits or unapproved deployments. Included Actions minutes may still be consumed by CI; do not claim unlimited free compute or measured speed/quality percentages.
+
+### ONE NEXT ACTION FOR NEXT CHAT
+
+**Stop coding now; handoff is complete.** The next task, **only after user authorizes it**, is a read-only producer→contract→consumer diagnosis of one specific evidenced FAQ/Writer contradiction (prefer preserved City Media existing outputs). Scope the minimal source file(s), frozen input/replay and positive/negative regressions *before* changing code, then make one bounded follow-on draft PR after permission. Preserve #19–#22 and the verified SHA. Separate Writer/NDP/model-bearing release proof, real-client HTML, existing isolated-staging frontend+worker exact SHA, human-only responsive browser review, controller alignment and production approval are not waived by deterministic CI. Do not merge/ship on the strength of green tests alone.
+
+---
+
 ## ACTIVE — PRYSM project-page discovery / trust classifier candidate (2026-10-18)
 
 **One user-approved bounded case-study evidence fix** after PR #19 content-truth (5/5 exact-head PASS), PR #20 CTA attribution (worker, security and golden SUCCESS), and PR #21 notifications (n8n HTTP 200 plus user-confirmed Telegram receipt). App repo `chriskulbaba2025/prysm-staging-isolated`; **draft stacked PR #22** https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/22; branch `fix/prysm-project-discovery-trust-20261018` based directly on PR #20 candidate `f94809d69d8ce887224fc2dd638f386473126677`. Latest candidate **`1f1a7a1cf38666eba013cfc820e33bb0fc413ea3`**, unmerged/undeployed.
