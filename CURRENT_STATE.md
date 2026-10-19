@@ -1,5 +1,20 @@
 # Current State
 
+## ACTIVE — PR32 D2 versioned scoring repair — LOCAL CODE VERIFIED / RELEASE HOLD (2026-10-19)
+
+**RESULT: 226/226 SCOPED PASS / WORKER 918 PASS + 31 DEPENDENCY-LOAD FAIL / WHOLE-APP HOLD / REPORT UAT HOLD / STAGING HOLD.** This is the newest ACTIVE section. The preceding R4 handoff and older ACTIVE sections below are historical. The repair is local only; no application GitHub push or PR32 branch has occurred.
+
+- **Authority and base:** Governance previously `68d2d0b67596d6cd729b9376181904ec9669c178`; application PR31 exact SHA `49e2254514ea9ee443fe7bbc428b2d023e4bd493`; pristine Git tree `14043e2d00df60818cfdde0e6cc004f6e0a28852` independently matched.
+- **Artifact:** ChatGPT-local `PRYSM_PR32_VERSIONED_REPAIR_HOLD_20261019.zip`, SHA256 `5ef8d66f68a78a67e5025e29a59f5081e02eb164d94d24b7d7b19816444d3bc9`; contains 16-file `PR32-VERSIONED-INTEGRATED.patch` SHA256 `e962cfda48773bf7beb35e2cddee9398811ba5110cf0c842ac2630a77c76a89e`, detailed proof and test logs. Archive must be reattached to a new chat; filenames/hashes alone are not source bytes.
+- **D2 root-cause repair:** Default scoring remains 4.1.3 (normalized Funnel Coverage and observed on-site Offer Clarity only), while explicit version selection restores historical 4.1.2 services-union and capped Funnel Coverage semantics for legacy tests/replay. Unsupported versions fail closed. CR43 frozen 27-case hashes and original audited scores remain unchanged. Patch applies cleanly to exact PR31; independent replay 16/16 file hashes match, all JS syntax checks PASS.
+- **Proof:** 226/226 scoring/version/frozen-report tests PASS. Full worker: 918 PASS, 31 file-load FAIL (missing `ajv`, `cheerio`, `playwright`), 949 total, no remaining assertion failures among executing tests. Whole-App failed to start at `ajv`; npm registry DNS unavailable. Full regression is **HOLD**, not PASS.
+- **Buyer/report acceptance:** Persuasive-copy numeric scoring and proposed 40/35/25 weighting are UNIMPLEMENTED/UNASSESSED. Human-first source checks are tested narrowly; seven-page real audit report, offline complete Writer/publication replay, browser/PDF and human acceptance are HOLD. No paid calls, new audits, production changes, pushes, previews or staging deployment.
+- **Release gate:** Application-branch GitHub push/automatic preview needs separate explicit authorization; stable isolated staging needs distinct approval and exact Vercel/Railway SHA parity. No release action authorized by local code repair.
+
+**ONE NEXT ACTION:** Restore locked worker dependencies in a network-enabled, isolated PR31 exact-SHA checkout with this verified candidate patch, then run complete worker and Whole-App regression before any application push or staging approval.
+
+---
+
 ## ACTIVE — PR32 conversion-first scoring and human-first reporting R4 Handoff (2026-10-19)
 
 **RESULT: R4 ZIP CHECKSUM VERIFIED / LOCAL PROVENANCE ADDENDUM 17/17 TARGETED TESTS PASS / NO FULL PR31 INTEGRATION / NO PR32 GITHUB BRANCH / HUMAN REPORT UAT HOLD / STAGING RELEASE HOLD.** This is the newest governing ACTIVE section. Older ACTIVE headings below are historical snapshots, not current next-action instructions. Detailed authority, defects, artifact hashes, approved direction and all gates: `REFERENCE/PRYSM_PR32_CONVERSION_FIRST_HUMAN_FIRST_HANDOFF_20261019.md`.
