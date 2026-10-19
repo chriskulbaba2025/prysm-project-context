@@ -1803,3 +1803,19 @@ Next authorized state:
 PR #22 head `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3` 5/5 Actions PASS but remains unmerged and undeployed. Follow-on FAQ/Writer contradiction work is **diagnostic-only until separately authorized**. The active one-step next action is in `CURRENT_STATE.md`.
 
 ---
+
+## Decision: Conversion-first product scoring and human-first report standard (PR32)
+
+Date: 2026-10-19
+Status: Active as product direction and authorized bounded code-only research/repair; NOT approval of new quantitative scoring model or staging release
+
+Decision:
+PRYSM's central purpose is to determine how effectively a website helps an interested visitor become a confident potential buyer. Every material recommendation and the report as a whole must distinguish observed action mechanics from the ability of on-page copy, evidence and the buyer journey to explain customer problems, meaningful value, relevant proof, objections, choice and an appropriate next step. Report explanations must be practical and understandable to nontechnical business owners. Each material finding should answer: what we found, why it matters to enquiries, what to do, how to verify, and what remains unknown. Technical evidence and exact provenance remain available in optional supporting detail; the first explanation must not lead with unexplained technical terms.
+
+Reason:
+The frozen On Cue audit gave Conversion Path 100 from 90/90 assessed structural points (90/100 of rule weight checked), even though buyer persuasion and trust placement were unverified. Funnel Coverage earned 115/125 yet the historical module capped to 100, and the report used unhelpful lab-data caveats. These prove that correct CTA mechanics and client-facing persuasion effectiveness are different constructs; unchecked buyer decision factors must not be implied established.
+
+Implication:
+Keep the original historical audit immutable and version new scores. Repair the proven scoring arithmetic and evidence-coverage display; label the existing mechanical module 'Action access only'. Make source-supported buyer-problem/value/outcome/differentiation/proof assessment a **report-wide** requirement, with UNKNOWN/NOT_ASSESSED where the evidence cannot prove persuasion. Do not count supplied services as proof that the assessed pages explain them. The proposed allocation of copy/persuasion 40%, trust/buyer journey 35%, mechanics 25% is a DESIGN PROPOSAL, not an operative or validated formula. Establish and test a source-linked evidence contract, sample/coverage rules, positive/negative examples and cross-industry generalization BEFORE numeric persuasion scoring. An illustrative On Cue ~81/100 is not a valid replacement score. Do not rewrite canonical Writer evidence, change historical assets, weaken human/UAT/CI gates, or infer actual sales outcomes from on-page signals. The PR32 R4 zip is a provisional local artifact, not a remotely verified PR, accepted code or release. Release, GitHub push and cost approvals remain independent. The detailed ledger is REFERENCE/PRYSM_PR32_CONVERSION_FIRST_HUMAN_FIRST_HANDOFF_20261019.md.
+
+---
