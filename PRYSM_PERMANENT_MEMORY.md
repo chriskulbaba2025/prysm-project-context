@@ -11,6 +11,13 @@ This file is an index of durable operating memory. Detailed source-of-truth rule
 - New chats and agents must read `PROJECT.md`, this file, `CURRENT_STATE.md`, `CONSTRAINTS.md`, `DECISIONS.md`, and the active governing protocols before substantive work.
 - Do not reconstruct current PRYSM state from old chat memory when GitHub is available.
 
+## Direct-GitHub sequential PRYSM workflow (user selection, 2026-10-18)
+
+- For the current user-approved bounded PRYSM repair series, the **direct connected GitHub draft-PR lane** is authorized instead of repeating Telegram/GACM/Codex launches or manual VS Code handoffs. This is an exception to those execution mechanics only, not to safety/verification rules. The specific authority is the most recent direct-GitHub decision in `DECISIONS.md`; the current exact branch/commit and one next action are **only** in the top of `CURRENT_STATE.md`.
+- Restore state by reading GitHub before each new chat; keep responses short, work only one problem at a time, commit/report a verified checkpoint before proceeding, and obtain separate user authorization for the next source-code repair or any merge/staging/production promotion.
+- Existing PRs #19, #20, #21, #22 are draft/unmerged/undeployed. The #21 GitHub Actions -> existing n8n -> Telegram notification path was user-verified end-to-end, and the workflow is incorporated into #22. A PASS alert is **not** application release acceptance.
+- Keep GitHub costs at $0; user showed Actions paid-usage blocked by a $0 budget. Included CI minutes are limited. No new audits, paid provider/model/Writer calls, production changes, automatic merges/deployments or Desktop Commander. Real client output / model-bearing release proof and human-only browser UAT remain separately gated.
+
 ## Permanent single-authority gate rule
 
 - The deterministic PRYSM launcher is the sole authority for machine-verifiable Git/manifest/current-state/candidate facts.
