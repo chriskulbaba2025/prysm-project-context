@@ -1,5 +1,19 @@
 # PRYSM — On Cue Executive Solutions mobile-speed finding integrity review
 
+## Verified resolution — saved On Cue evidence and source repair (2026-10-19)
+
+**Evidence status: PASS for hash-verified stored audit artifacts; original underlying full-provider Lighthouse JSON NOT included.** User provided `PRYSM-ONCUE-EVIDENCE-DIRECT.zip` with `REPORT.md` and seven S3 objects. Independently recomputed:
+- `normalized/pagespeed.json` (172,084 bytes) SHA-256 `a7586834e29554c4e2466125bb17f1969998a6c47d25726ecfbd668957612d09` — matches source checkpoint.
+- `raw/pagespeed-91389e79-c216-48ec-9925-eeac7792673a.json` (851 bytes) SHA-256 `130fe09df00447ed9f4e8c3fb6c7a3b06f4fec039bbd37dc628be0ad4aee227d` — matches source checkpoint. This object contains **compact scores and metrics**, not the full provider Lighthouse JSON/LCP element breakdown.
+
+Mobile, same audited homepage `https://oncueexecutivesolutions.com/`, measured **DataForSEO Lighthouse lab LCP 23,777.134 ms = 23.777134 seconds**, FCP 2,193.092 ms, Speed Index 3,539.103 ms, mobile score 63/100, desktop score 77/100; combined performance score **70/100 (correct average)**. HTTP 200, source and mobile AVAILABLE, fallback false, original provider task reference `dataforseo://lighthouse/10191432-1281-0324-0000-a5101957ddf0`, field/CrUX phone data NOT_CONNECTED. Overall conversion readiness 79/100. The recorded **23.8-second single lab LCP is genuinely present in immutable stored PRYSM evidence**; it is not a field/user load time. It is not possible from this archive to determine which exact image/content element appeared late or independently recompute the provider's LCP from its full Lighthouse trace. No repeated run or source-provider request was authorized or made.
+
+**Confirmed bug:** canonical `VAN-PERF-001` evidence incorrectly says provider `pagespeed-insights`, with `artifactRef` pointing to the **site on-page scan**, not the actual DataForSEO Lighthouse test. The normalized root `performance.mobile` summary drops `source`/`rawArtifactRef`; `performance.pageResults[].mobile` retains the accurate source, status, tested page, LCP and Lighthouse task. Existing slow LCP >=4 sec deterministic severity is not inherently false, but must be explicitly bounded to the saved **one lab test** and assigned to its actual source/page.
+
+**Draft repair:** [PR #31](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/31), stacked on draft PR30, exact HEAD `49e2254514ea9ee443fe7bbc428b2d023e4bd493`. Four narrowly changed code/test files; scoring uses page-matched viable laboratory result when present and correct provider/artifact, rejects wrong-page/failed/field-only evidence, preserves 23.8s raw value and 70/100 performance score; client report explicitly says one simulated phone test measures when its **largest content element appeared**, not whole page load or typical user experience. Synthetic regression for the actual On Cue-shaped 23,777.134ms measurement and three negative variants. One initial exact-head Worker run failed **only** a newly added regex test assertion (1454 others passed), subsequently corrected on final head; **final head all four GitHub workflows SUCCESS**: Security `39289449596`, Content Fidelity `39289449639`, CR43 `39289449800`, Worker CI `39289449487`. No merge/deployment/browser UAT/new report generation; original client report remains frozen. A source-code test PASS does not prove what visitors see or why LCP was high. **Next release step requires separate isolated-staging approval and human existing-report visual acceptance.**
+
+---
+
 **Date:** 2026-10-19  
 **Status:** DIAGNOSIS IN PROGRESS / SOURCE ARTIFACT ACCESS HOLD / NO APPLICATION CHANGE  
 **Audit:** `43f8912e-3aa4-47fa-9a8d-59441bde1f53`  
