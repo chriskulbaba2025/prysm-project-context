@@ -1,5 +1,21 @@
 # Current State
 
+## ACTIVE — Content Opportunities north–south layout, PR #23 CI in progress (2026-10-19)
+
+**RESULT: ONE BOUNDED DRAFT CODE REPAIR COMMITTED / 3 EXACT-HEAD CI GATES PASS / WORKER CI IN PROGRESS.** User authorized moving to the next update item; this was the explicitly requested north–south visual layout defect in the new Regenerative Revival report. Application repository `chriskulbaba2025/prysm-staging-isolated`, draft stacked PR [#23](https://github.com/chriskulbaba2025/prysm-staging-isolated/pull/23) branch `fix/prysm-content-opportunities-stack-20261019` based exactly on draft PR #22 SHA `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3`, exact PR #23 HEAD `48361de824e56c8a931d9a2919414dcd041c6772`.
+
+Only two expected files changed:
+- `services/worker/src/report/v13/prysm-report-v13-pages.js`: scoped `r6` CSS `.co6-detail-grid` changed from 1.2fr/.8fr side-by-side to one `minmax(0,1fr)` column. Both already-ordered cards therefore flow vertically: **What we found** followed by **Where we checked**. Evidence URLs now wrap rather than ellipsize.
+- `services/worker/src/report/render-report-v13-content-opportunities-presentation.test.js`: added focused static renderer regression asserting single column, URL wrapping, preserved evidence-first card order and removal of two-column/ellipsis CSS.
+
+No report data, narrative, evidence, score, label, model, auth, crawl, provider, Writer/Judge, tenant, artifact or lifecycle code changed. No report was rerendered; frozen Regenerative Revival audit `f874121b-507d-4b19-b4ca-a3fe45e22f95` remains unchanged. No actual production OR isolated-staging deployment, PR merge, paid call or new audit. Existing staging remains deployed at `1f1a7a1...` and **will not show layout fix until separately approved promotion**.
+
+Exact-head PR #23 GitHub Actions as of last check: PRYSM Content Fidelity Fast Gate **SUCCESS** run `39197143151`; Security Baseline **SUCCESS** run `39197143153`; CR43 Golden Difference Review **SUCCESS** run `39197143160`; Vantage Worker CI run `39197143205` **IN PROGRESS** (Playwright Chromium installation; no failure reported yet). Existing PR #22 and its accepted staging remain intact. GitHub CI notification job may send a Telegram result after worker CI; no independent message delivery claimed.
+
+**ONE NEXT ACTION:** Confirm Vantage Worker CI exact-head result for `48361de...`. On failure inspect exact job logs before repair; on PASS stop CODE VERIFIED and request approval before promoting this UI-only change to isolated staging for human visual browser acceptance. Separately, RR report evidence-level correctness remains HOLD and needs same-audit governed evidence ZIP or expanded reports; do not treat this layout PR as fixing the 20 quality findings.
+
+---
+
 ## ACTIVE — Isolated staging live at verified combined PR #22 SHA (2026-10-19)
 
 **RESULT: STAGING DEPLOYED / PROVIDER HEALTH VERIFIED / BROWSER AND PRODUCT ACCEPTANCE HOLD.** This authorized promotion affects **only the isolated staging Vercel project and isolated staging Railway project**, not real PRYSM production. No application GitHub PR merges, new audit, paid provider/model call, test rerun or PRYSM production changes were performed. Preserve draft PRs #19–#22; the deployed combination is present at PR #22's precise commit.
