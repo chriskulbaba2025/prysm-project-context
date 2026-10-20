@@ -1,5 +1,19 @@
 # Current State
 
+## ACTIVE — PR32 D4 exact solution-authority version repair — LOCAL TARGETED PASS / RELEASE HOLD (2026-10-19)
+
+**RESULT: WINDOWS WORKER 1484/1485 PASS / ONE PROVEN VERSION-AUTHORITY FAIL / D4 LOCAL 109/109 TARGETED PASS / POST-D4 WINDOWS FULL REGRESSION HOLD / STAGING HOLD.** This is the newest governing ACTIVE section; prior sections below are historical checkpoints.
+
+- **Windows exact-source proof:** V3 `C:\Users\kulba\Downloads\PRYSM-PR32-REGRESSION-20261019-190527` verified original PR31 Git SHA `49e2254514ea9ee443fe7bbc428b2d023e4bd493`, tree `14043e2d00df60818cfdde0e6cc004f6e0a28852`, PR32 candidate 16/16 SHA256; `npm ci` and Playwright Chromium PASS. Full worker `npm test`: **1484 PASS / 1 FAIL**, failing DE-16 exact governed `VAN-CONTENT-001@4.1.3` authority lookup (`AUTHORITY-VERSION`), not missing npm dependencies. Source logs: uploaded `v3-worker-npm-test.log` and `REPORT-V3.md`.
+- **Root cause and owning boundary:** PR32 legitimately emits finding version 4.1.3, while static `solution-authority-provider.js` registered 19 solution definitions only for 4.1.2. Exact fail-closed lookup prevents the real mocked-adapter-to-report flow from rendering. Downstream NDP authority registry also assumes a single old version; both registries must be reconciled, with no fallback from unknown rule versions.
+- **D4 local repair:** Four-file additive patch extends exact authority registrations for **both** 4.1.2/4.1.3 with identical solution meaning; retains historical version, NDP one-label-per-rule, disallows unsupported versions and unknown rule IDs; includes parity and negative tests. No score, Writer/Judge, canonical evidence, report layout, golden, or frozen audit edit. Source-only **109/109 dependency-independent targeted PASS**; independent patch preflight/replay **4/4 file SHA256 PASS**. Orchestration test requiring `ajv` cannot run here and remains Windows **HOLD**.
+- **Artifact:** `PRYSM_PR32_D4_AUTHORITY_REPAIR_20261019.zip` SHA256 `7501bb2b6882ebcc4984d8ec1a44d4a74c2a44edb3b666ea050ac68e73b9b8d6`, contains `PR32-D4-AUTHORITY-PAIRING.patch` SHA256 `e9767653fb44a5db352d7687ac6948bf4d9c3d2ebb61136c1c2a860f6787b4aa` and guarded `Run-PR32-D4-Authority-Repair.ps1`; reattach ZIP for new runtime. Runner has not been Windows-executed. No app push, staging deploy, production changes or paid/provider/model calls.
+- **Remaining gates:** Resume V3 isolated checkout without reclone/reinstall, independently verify candidate identity, apply D4, run targeted DE-16+authority then full worker/Whole-App/closure. Real PostgreSQL, complete frozen On Cue audit/Writer replay, buyer-focused numeric validity, client report/PDF browser UAT, application GitHub push and stable staging promotion remain distinct HOLD. Production remains untouched.
+
+**ONE NEXT ACTION:** Run the D4 guarded PowerShell repair runner from its extracted ZIP in the existing verified PR31/PR32 Downloads checkout, then review `REPORT-D4.md` and any failing gate log before further changes or staging release.
+
+---
+
 ## ACTIVE — PR32 D2 versioned scoring repair — LOCAL CODE VERIFIED / RELEASE HOLD (2026-10-19)
 
 **RESULT: 226/226 SCOPED PASS / WORKER 918 PASS + 31 DEPENDENCY-LOAD FAIL / WHOLE-APP HOLD / REPORT UAT HOLD / STAGING HOLD.** This is the newest ACTIVE section. The preceding R4 handoff and older ACTIVE sections below are historical. The repair is local only; no application GitHub push or PR32 branch has occurred.
