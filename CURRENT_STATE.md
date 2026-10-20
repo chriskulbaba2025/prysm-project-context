@@ -1,5 +1,19 @@
 # Current State
 
+## ACTIVE — PR32 D4 local PASS / On Cue baseline independently verified / FULL REPLAY HOLD (2026-10-20)
+
+**RESULT: LOCAL PR32 D4 WINDOWS GATES REPORTED PASS; IMMUTABLE ON CUE BASELINE ZIP VERIFIED; COMPLETE OFFLINE 4.1.3 REPLAY, DATABASE, HUMAN REPORT/PDF AND STAGING STILL HOLD.** Newest active section. Earlier sections remain historical.
+
+- **Actual user-uploaded baseline:** `PRYSM-ONCUE-EVIDENCE-DIRECT(2).zip`, SHA256 `0e0b6dd9b9ed709d8577854d9682b6c3ca7649b988cd56e10a0461b586a1a348`, 108735 bytes, ZIP integrity PASS; eight entries (`REPORT.md`, `audit-request.json`, `source-checkpoint-pagespeed.json`, `pagespeed.json`, compact `pagespeed-91389e79-c216-48ec-9925-eeac7792673a.json`, `findings.json`, `scores.json`, `index.html`). Content confirms audit `43f8912e-3aa4-47fa-9a8d-59441bde1f53` and historic v4.1.2 scores: readiness 79, Conversion Paths mechanical 100, Offer Clarity 78, Funnel Coverage 100, performance 70, assessed weight 89. Two normalized/raw PageSpeed file hashes AND byte counts match the enclosed source checkpoint; 23.777134s mobile LCP is a single simulated lab observation, not field speed.
+- **Verified boundaries:** This bundle contains original rendered HTML and scores, but **NOT** the complete `canonical/evidence.json`, all normalized source observations/identity manifests, governed NDP/solution/review publication outputs or saved Writer/Judge inputs/outputs needed to regenerate the complete current version 4.1.3 client report without fresh model/provider calls. ZIP baseline integrity PASS is not a full replay PASS. Prior isolated-staging object listing documented only seven source/report objects at the known On Cue prefix. Do not assume missing files exist at that prefix or substitute another audit.
+- **D4 Windows proof:** user submitted `REPORT-D4.md` text recording PR31 and PR32 candidate 16/16 identity, D4 authority patch 4/4 postimage hashes, targeted authority/full worker/deterministic/schemas/template/security/Whole-App/closure **PASS**; individual logs not independently read in this chat. No application GitHub push or stable staging deployment. Production, frozen audits and approved layouts unchanged.
+- **Single immediate decision path:** Perform **read-only** inventory of existing same-audit PostgreSQL lifecycle, persisted artifact manifests and any separately stored Writer/NDP/report inputs through authorized isolated-staging access. If complete replay inputs are found, checksum/copy sanitized artifacts for offline acceptance; if not, explicitly mark full same-audit replay impossible without a separate authorization (do not call Writer/providers). In parallel a **historical** report can undergo static copy review but cannot stand in for updated PR32 browser/PDF UAT.
+- **Separate release gates:** real PostgreSQL integration/identity, 4.1.3 buyer-copy/uncertainty acceptance, actual updated six-page client + Supporting Detail + print/PDF visual review, independently reviewed tests, explicit application push authorization (preview may auto-build) and separately authorized isolated-staging frontend/worker SHA parity. No production changes, new audits or paid/model calls.
+
+**ONE NEXT ACTION:** Inventory ONLY the existing On Cue audit lifecycle/manifests and separately stored complete publication + Writer/NDP artifacts using authorized read-only isolated-staging access. Confirm whether a full no-provider/no-model 4.1.3 replay is possible; report exact missing artifacts. Do not perform a new audit, code push or deployment.
+
+---
+
 ## ACTIVE — PR32 D4 Windows report reviewed / full local gates reported PASS / FROZEN REPLAY HOLD (2026-10-19)
 
 **RESULT: D4 LOCAL REGRESSION GATES PASS AS RECORDED BY WINDOWS RUNNER / REAL AUDIT REPLAY HOLD / POSTGRESQL HOLD / BROWSER-PDF UAT HOLD / GITHUB APP PUSH AND STAGING RELEASE HOLD.** This section is the newest ACTIVE checkpoint; older sections are provenance, not instructions to repeat closed repairs.
