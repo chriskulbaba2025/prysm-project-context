@@ -1,5 +1,19 @@
 # Current State
 
+## ACTIVE — PR32 D4 Windows regression reported PASS / report proof pending / RELEASE HOLD (2026-10-19)
+
+**RESULT: USER-REPORTED LOCAL REGRESSION PASS / INDEPENDENT LOG REVIEW PENDING / FROZEN REPLAY & REPORT UAT HOLD / STAGING HOLD.** This is the newest ACTIVE section; prior D4 runner and scorecard records below remain historical.
+
+- **Exact source identity reported PASS:** Windows proof root `C:\Users\kulba\Downloads\PRYSM-PR32-REGRESSION-20261019-190527\proof\D4-20261019-231729\`; PR31 base `49e2254514ea9ee443fe7bbc428b2d023e4bd493` plus PR32 candidate 16/16 hashes PASS; original four authority file preimages backed up and D4 patch/postimages 4/4 PASS.
+- **User-provided console output:** `targeted-authority`, `worker-npm-test`, `worker-deterministic`, `worker-schemas`, `worker-template`, `worker-security`, `worker-whole-app`, `worker-closure` all reported PASS by Windows PowerShell runner. No individual suite counts provided; do not infer exact counts from prior failing run. Log files have not been attached/reviewed here. Runner: `RESULT: LOCAL TEST GATES PASS. RELEASE HOLD`.
+- **Proof to review:** `REPORT-D4.md` and optionally `worker-npm-test.log` plus `worker-whole-app.log` under above run folder, followed by saved artifact hash/dirty-state/zero paid calls checks. Do not claim independent full acceptance before receiving proof.
+- **Distinct remaining gates:** immutable On Cue full offline evidence + complete Writer report replay; real PostgreSQL; buyer-focused scoring validation (mechanical-path score does not establish persuasion); review of six client-facing pages plus internal Supporting Detail and print/PDF in real browser; independent review; separate application GitHub push approval (possible automatic preview builds); separate isolated staging deployment approval with Vercel/Railway exact SHA parity. Production remains untouched.
+- **No authorized release:** Do not push application commits, merge, redeploy staging, trigger paid external provider/model audits or alter frozen artifacts based solely on runner PASS.
+
+**ONE NEXT ACTION:** Collect/review Windows D4 `REPORT-D4.md` (and failing/critical logs as needed), then inventory existing frozen On Cue audit + Writer/replay bytes without executing model/provider calls; determine whether complete offline browser/PDF acceptance is possible. Keep staging HOLD.
+
+---
+
 ## ACTIVE — PR32 D4 exact solution-authority version repair — LOCAL TARGETED PASS / RELEASE HOLD (2026-10-19)
 
 **RESULT: WINDOWS WORKER 1484/1485 PASS / ONE PROVEN VERSION-AUTHORITY FAIL / D4 LOCAL 109/109 TARGETED PASS / POST-D4 WINDOWS FULL REGRESSION HOLD / STAGING HOLD.** This is the newest governing ACTIVE section; prior sections below are historical checkpoints.
