@@ -1,5 +1,18 @@
 # Current State
 
+## ACTIVE — PR32 D4 Windows report reviewed / full local gates reported PASS / FROZEN REPLAY HOLD (2026-10-19)
+
+**RESULT: D4 LOCAL REGRESSION GATES PASS AS RECORDED BY WINDOWS RUNNER / REAL AUDIT REPLAY HOLD / POSTGRESQL HOLD / BROWSER-PDF UAT HOLD / GITHUB APP PUSH AND STAGING RELEASE HOLD.** This section is the newest ACTIVE checkpoint; older sections are provenance, not instructions to repeat closed repairs.
+
+- **Supplied D4 proof:** User supplied complete `REPORT-D4.md` text timestamped `2026-10-19T23:20:14.4602639-04:00` for `C:\Users\kulba\Downloads\PRYSM-PR32-REGRESSION-20261019-190527\proof\D4-20261019-231729\`, based on PR31 `49e2254514ea9ee443fe7bbc428b2d023e4bd493`, PR32 candidate archive SHA256 `5ef8d66f68a78a67e5025e29a59f5081e02eb164d94d24b7d7b19816444d3bc9`, D4 patch SHA256 `e9767653fb44a5db352d7687ac6948bf4d9c3d2ebb61136c1c2a860f6787b4aa`. Exact identity, original four-file backup, patch-check and apply, final 4/4 file hashes all reported PASS.
+- **Reported PASS gates:** targeted-authority; worker-npm-test; worker-deterministic; worker-schemas; worker-template; worker-security; worker-whole-app; worker-closure. Windows runner final: `RESULT: LOCAL TEST GATES PASS`. Test logs/aggregate counts were not uploaded with the text, so these are explicit *runner-reported* PASS states, not independently inspected log contents. Previous Windows regression before D4 failed only `VAN-CONTENT-001@4.1.3` authority; D4 closes that authority registration boundary according to new test-gate result.
+- **Frozen On Cue acceptance preflight:** no `PRYSM-ONCUE-EVIDENCE-DIRECT(1).zip` or complete corresponding persisted evidence/Writer publication artifacts are mounted in this chat. Local uploaded `PRYSM-REAL-AUDITS-20261009-233222.zip` contains unrelated client data; `PRYSM-AUDIT-97d6b2c7-03b9-4530-8ea7-16557502c638.zip` is a different audit. Do NOT substitute. Historical On Cue audit ID `43f8912e-3aa4-47fa-9a8d-59441bde1f53` and reference diagnosis remain authoritative as previously recorded; full offline current-version replay cannot PASS from file names/summary alone.
+- **Safety:** No user-reported app GitHub write, deployment, production mutation or paid provider/model call. Frozen audits and approved report designs unchanged. Browser/PDF client review, buyer-focused credibility, real PostgreSQL and independent full replay remain HOLD. A release/preview GitHub push requires its own approval; isolated staging deploy requires separate approval and frontend/worker exact-SHA parity.
+
+**ONE NEXT ACTION:** Obtain the immutable On Cue audit archive `PRYSM-ONCUE-EVIDENCE-DIRECT(1).zip` plus any separately stored complete canonical artifacts and Writer/NDP publication inputs for audit `43f8912e-3aa4-47fa-9a8d-59441bde1f53`; verify their contents/checksums and offline replay sufficiency before any report rendering. Do not perform model/provider calls, production changes, app pushes or staging deployment.
+
+---
+
 ## ACTIVE — PR32 D4 Windows regression reported PASS / report proof pending / RELEASE HOLD (2026-10-19)
 
 **RESULT: USER-REPORTED LOCAL REGRESSION PASS / INDEPENDENT LOG REVIEW PENDING / FROZEN REPLAY & REPORT UAT HOLD / STAGING HOLD.** This is the newest ACTIVE section; prior D4 runner and scorecard records below remain historical.
