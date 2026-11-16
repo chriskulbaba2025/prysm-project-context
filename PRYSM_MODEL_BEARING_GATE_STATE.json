@@ -1,26 +1,65 @@
 {
   "version": 1,
   "project": "PRYSM",
-  "checkpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25",
-  "status": "MODEL_BEARING_HELD_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER",
-  "applicationCandidateSha": "105792ea3eaab4b3032bde69571fd5bb5d2da163",
-  "incidentAuditId": "b2524f64-ffc0-4917-9b1e-174ea65849f3",
+  "checkpoint": "WRITER_CONCISION_OFFLINE_CANDIDATE_2026-11-16",
+  "status": "MODEL_BEARING_HELD_BEFORE_LIVE_ACCEPTANCE",
+  "applicationCandidateSha": "24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a",
+  "candidateIdentity": {
+    "status": "CODEX_REPORTED_LOCAL_ONLY_NOT_INDEPENDENTLY_VERIFIED",
+    "applicationRepository": "chriskulbaba2025/prysm-staging-isolated",
+    "branch": "repair/prysm-staging-writer-20261115",
+    "baselineSha": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
+    "remoteBranchStillAtBaseline": true,
+    "protectiveTag": "prysm-writer-pre-concision-20261116-f7436fb",
+    "tagObjectSha": "9bce687628a99d3246866f6248834f33596d9593",
+    "tagTargetSha": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
+    "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
+    "source": "Codex closure report; candidate tree/diff unavailable in this review"
+  },
+  "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
-    "status": "PASS",
-    "targetedTests": "PASS",
-    "fullWorkerRegression": "PASS_1036",
-    "wholeAppGate": "PASS_P-B01_THROUGH_P-B17",
-    "finalizationGate": "PASS",
-    "partialEvidenceSemantics": "PASS",
-    "writerValidation": "PASS",
-    "judgeValidation": "PASS",
-    "correctionRouting": "PASS",
-    "rendererFailClosed": "PASS"
+    "status": "CODEX_REPORTED_PASS_NOT_INDEPENDENTLY_REPRODUCED",
+    "targetedTests": "REPORTED_PASS_120_OF_120",
+    "narrativeV2": "REPORTED_PASS_325_OF_325",
+    "fullWorkerRegression": "REPORTED_PASS_1489_OF_1489",
+    "deterministicTests": "REPORTED_PASS_1070_OF_1070",
+    "wholeAppGate": "REPORTED_PASS",
+    "closureGate": "REPORTED_PASS",
+    "typecheck": "REPORTED_PASS",
+    "build": "REPORTED_PASS",
+    "negativeControls": "REPORTED_PASS",
+    "exactCandidateSourceAndCleanTree": "NOT_INDEPENDENTLY_VERIFIED",
+    "rawRegressionLogs": "NOT_AVAILABLE_IN_PROOF_FOLDER"
+  },
+  "offlineInputTokenEstimate": {
+    "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
+    "baseline": 86325,
+    "repaired": 26600,
+    "savings": 59725,
+    "savingsPercent": 69.19,
+    "outputTokens": "NOT_MEASURED",
+    "dollarSavings": "NOT_MEASURED"
+  },
+  "trustFailureReplay": {
+    "auditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
+    "section": "trust",
+    "call": 5,
+    "model": "claude-opus-5-5 (as recorded in failure summary)",
+    "stopReason": "max_tokens",
+    "configuredOutputCap": 3500,
+    "recordedInputUsage": 28777,
+    "recordedOutputUsage": 3500,
+    "recordedStatusConflict": "limitations[4]: AVAILABLE / UNAVAILABLE",
+    "exactResponseBytes": "UNAVAILABLE",
+    "exactReplay": "UNAVAILABLE",
+    "causalLinkBetweenTruncationAndStatusConflict": "UNRESOLVED"
   },
   "deployment": {
-    "vercelDeploymentId": "dpl_5eRmxiewrDNKo2fwQAYnHLmDgAKA",
-    "railwayDeploymentId": "4415a5c4-61f7-4c14-80f0-4f88ef8d26ab",
-    "postgresAuthority": "PASS"
+    "applicationBranchHead": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
+    "railwayDeploymentId": "c57d6c82-8e8d-4f2b-881a-d21ff2977fda",
+    "vercelDeploymentId": "dpl_99JTJbRz6A1sjeS5XSY552qQZutQ",
+    "status": "PRE_TRANCHE_IDENTITIES_ONLY_NO_CANDIDATE_DEPLOYMENT",
+    "postgresAuthority": "NOT_RECHECKED_IN_THIS_REVIEW"
   },
   "modelBearingGate": {
     "status": "HELD_BEFORE_PAID_EXECUTION",
@@ -28,21 +67,30 @@
     "writerCalls": 0,
     "judgeCalls": 0,
     "actualCostUsd": 0,
-    "independentChallenge": "HARNESS_PRECHECK_PASS; SEMANTIC_CHALLENGE_HOSTED_NOT_RUN",
-    "reason": "Exact-candidate model-bearing execution was held before paid calls because the authenticated staging browser surface required for production-path-equivalent acceptance is unavailable. Local Playwright browser launch passes, but the governed connected browser surface has zero backends and the required authenticated reviewer session is absent."
+    "usageEvidence": "Codex-reported no provider calls/$0; no provider receipt independently inspected",
+    "offlineIndependentChallenge": "CODEX_REPORTED_PASS_NOT_INDEPENDENTLY_REPRODUCED",
+    "liveSemanticChallenge": "NOT_RUN",
+    "reason": "This tranche was offline-only. Deterministic/offline reports do not establish stochastic Writer/Judge reliability or live Anthropic behavior."
   },
   "hostedAcceptance": {
     "freshServiceMasterAudit": "NOT_RUN",
-    "sevenPageReport": "NOT_VERIFIED",
-    "pdf": "NOT_VERIFIED",
-    "productionPathEquivalence": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
-    "productionIdentityContinuity": "BLOCKED_EXTERNAL_BROWSER_UNAVAILABLE",
-    "blocker": "The governed connected browser surface has zero backends and no approved authenticated staging reviewer session is available; local Playwright without that session cannot prove the required Vercel Preview path. Direct worker/API substitution is prohibited."
+    "judge": "NOT_RUN_LIVE",
+    "editorial": "NOT_RUN",
+    "sixPageCityMediaReport": "INCOMPLETE",
+    "offlineHistoricalViewerPdfGate": "CODEX_REPORTED_PASS_NOT_SIX_PAGE_CLIENT_ACCEPTANCE",
+    "livePdf": "NOT_VERIFIED",
+    "browserAcceptance": "HOLD",
+    "productionPathEquivalence": "BLOCKED",
+    "productionIdentityContinuity": "BLOCKED",
+    "blocker": "No candidate deployment or authenticated live acceptance occurred; exact candidate/runtime identities and the accepted client report are not established."
   },
   "production": {
     "touched": false,
-    "frozenSha": "a68dd235a3ca09977c84313536b5b884e3694782"
+    "runtimeChecked": false,
+    "frozenSha": "NOT_RECHECKED",
+    "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Provide an authorized authenticated staging browser surface, deploy exact candidate 105792ea3eaab4b3032bde69571fd5bb5d2da163 to existing non-production staging, then run the fresh hosted audit through Writer, Judge, finalization, seven-page render, PDF, persistence/reload, Production Path Equivalence, and Production Identity Continuity. Keep production frozen.",
-  "lastVerified": "2026-09-24 America/Toronto"
+  "nextAction": "Independently verify the exact local candidate checkout, diff, clean-tree state, and raw final-regression/gate logs. Do not push, deploy, or call providers; any staging release/live acceptance requires separate authorization.",
+  "lastVerified": "2026-11-16 America/Toronto",
+  "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }

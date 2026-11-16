@@ -1799,8 +1799,8 @@ This **explicit user-selected exception overrides the older Codex-first and manu
 Cost guard:
 User-provided GitHub Free billing screenshot showed usage fully included ($6.04 gross / $6.04 included, $0 net in that snapshot), and Actions paid usage blocked by an account-level $0 budget. Do not initiate paid GitHub upgrades, Codespaces, model usage, or other charges. Included CI runner minutes are still metered and not unlimited.
 
-Next authorized state:
-PR #22 head `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3` 5/5 Actions PASS but remains unmerged and undeployed. Follow-on FAQ/Writer contradiction work is **diagnostic-only until separately authorized**. The active one-step next action is in `CURRENT_STATE.md`.
+Historical next-state note (2026-10-18):
+At that checkpoint, PR #22 head `1f1a7a1cf38666eba013cfc820e33bb0fc413ea3` had 5/5 Actions PASS and remained unmerged/undeployed. This is historical, not the current next action. Current authorization and the single next action are maintained only in `CURRENT_STATE.md`. This decision still governs the direct-GitHub repair lane and grants no push, merge, deployment, or provider-call authority by itself.
 
 ---
 

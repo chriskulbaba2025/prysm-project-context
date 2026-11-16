@@ -72,6 +72,33 @@ Prospective measurement starts now.
 
 | PRYSM-WRITER-CONCISION-OFFLINE-2026-11-16 | 2026-11-16 | Five-section Writer concision/token-efficiency/status-boundary offline tranche | 12m33 (Codex-reported; not independently timed) | NOT_RELIABLY_MEASURED | NOT_RELIABLY_MEASURED | NOT_RELIABLY_MEASURED | NOT_RELIABLY_MEASURED | 3 files (Codex-reported): `live-binding.js`; `writer-prompt.js`; `writer-prompt-limitation-status.test.js` | Codex-reported: targeted Narrative 120/120; Narrative v2 325/325; worker 1489/1489; deterministic 1070/1070; Whole-App/closure, typecheck, build PASS. Raw logs/diff absent from proof folder; local candidate SHA not independently reproduced from connected workspace. | Yes | NOT_CALCULABLE | Estimated input reduction 59,725 / 69.19% on one controlled fixture; output and dollar savings NOT_MEASURED; no provider calls/cost reported; live acceptance HOLD. |
 
+## PRYSM Writer concision offline tranche — telemetry (2026-11-16)
+
+| Metric | Value |
+|---|---|
+| Run ID | NOT_AVAILABLE in the saved receipt |
+| Tranche / work-unit ID | PRYSM-WRITER-CONCISION-OFFLINE-2026-11-16 |
+| Model | GPT-5.6 Luna Medium was specified; actual executor model is NOT_AVAILABLE in saved proof |
+| Reasoning / effort | Medium was specified; actual executor telemetry is NOT_AVAILABLE |
+| Start timestamp | NOT_AVAILABLE |
+| Finish timestamp | User-supplied run footer displayed 8:38 AM; date/timezone not embedded in the report |
+| Wall-clock elapsed | 12m33, Codex-reported; not independently timed |
+| Model execution time | NOT_AVAILABLE |
+| Human wait / pause time | NOT_AVAILABLE |
+| Implementation attempts | NOT_AVAILABLE |
+| Failed iterations | NOT_AVAILABLE |
+| Rework cycles | NOT_AVAILABLE |
+| Problems / defects found | Two reported: repeated full prompt per section; Trust truncation/status conflict (causal link unresolved without exact response bytes) |
+| Repairs performed | Three source/test files changed, Codex-reported |
+| Independent verifier cycles | Codex reports one offline adversarial PASS; this review held exact candidate verification |
+| Tests run | Codex-reported targeted Narrative 120/120; Narrative v2 325/325; worker 1489/1489; deterministic 1070/1070; Whole-App/closure, typecheck/build PASS. Counts may overlap; raw logs absent |
+| Test results | Reported PASS; fail/skip counts not independently available |
+| Files changed | `services/worker/src/narrative-v2/live-binding.js`; `writer-prompt.js`; `writer-prompt-limitation-status.test.js` (Codex-reported) |
+| Tokens | Local input estimates only: 86,325 baseline / 26,600 repaired / 59,725 estimated reduction; provider input/output usage NOT_AVAILABLE |
+| Model/API cost | $0 new cost and zero new provider calls reported; provider usage receipts NOT_AVAILABLE |
+| Confidence | NOT_ASSIGNED |
+| Final outcome | OFFLINE PASS REPORTED; exact candidate independently unverified; live model-bearing acceptance HOLD |
+
 ## Update discipline
 
 - Update this file at every materially completed governed work package.
