@@ -16,7 +16,7 @@
     "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
     "source": "Codex closure report; candidate tree/diff unavailable in this review",
     "sessionVerification": "PASS_CANDIDATE_IDENTITY_ANCESTRY_CLEAN_TREE_AND_3_FILE_DIFF_VERIFIED",
-    "governedEvidenceRecovery": "HOLD_REGISTERED_MCP_PROCESS_STALE_RESTART_REQUIRED",
+    "governedEvidenceRecovery": "READY_CURRENT_MCP_LAUNCHER_SMOKE_PASS_NO_REAL_CODEX_RUN_YET",
     "launcherIdentityRepair": "VERIFIED_REPORT_PRYSM_LAUNCHER_IDENTITY_PREFLIGHT_20261116",
     "exactDiff": {
       "files": 3,
@@ -28,7 +28,8 @@
         "services/worker/src/narrative-v2/writer-prompt-limitation-status.test.js"
       ],
       "proof": "PRYSM-OFFLINE-CANDIDATE-EVIDENCE-RECOVERY/REPORT.md"
-    }
+    },
+    "mcpCurrentness": "VERIFIED_SMOKE_PASS_PRYSM_MCP_RUN_20261116T165153905Z"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -104,7 +105,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Restart configured prysm_gacm MCP server to load verified launcher repair, then rerun one bounded read-only offline evidence-recovery request to verify governed launch behavior and raw regression/gate-log availability. Candidate remains local/unpushed; no application edit, deployment, or provider calls.",
+  "nextAction": "Separately authorize one real bounded governed Codex execution for offline evidence recovery only: inspect already verified local candidate and report raw final-regression/gate-log availability through current launcher. Candidate remains local/unpushed; no application edit, deployment, or provider calls.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
