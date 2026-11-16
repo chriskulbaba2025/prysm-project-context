@@ -2,7 +2,7 @@
 
 Project: PRYSM
 
-Current objective: Independently verify the offline five-section Writer concision candidate and its regression evidence before considering a staging release. The City Media report remains incomplete.
+Current objective: Preserve the failed fresh exact-candidate offline-test evidence and hold the five-section Writer concision candidate pending a separately authorized lifecycle/state-transition diagnosis and repair. The City Media report remains incomplete.
 
 Verified checkpoint:
 - Project-context source before this canonical update: `chriskulbaba2025/prysm-project-context` main at `b784ab77ebdc0d5b6c86562cf3ef068d481b8631`.
@@ -30,6 +30,14 @@ Verification result (2026-11-16):
 - Exact-candidate test tranche `prysm-20261116T173234634Z-PRYSM_WRITER_CONCISION_EXACT_CANDIDATE_OFFLINE_TESTS_2026111-23c6c7` was BLOCKED before any test command because the original launcher bound all PRYSM runs to `C:\g\p001`.
 - The controller repair is VERIFIED from `C:\Users\kulba\Downloads\PRYSM-CANDIDATE-BINDING-REPAIR-20261116\REPORT.md`. It adds fixed read-only binding `prysm_candidate_offline_test` for `C:\Users\kulba\Downloads\PRYSM-STAGING-WRITER-REPAIR` at `repair/prysm-staging-writer-20261115` / `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`; normal `prysm` remains bound to clean `C:\g\p001` / `bda9578029fda428e227bae774defb2e6c9a9809`. Controller typecheck and binding, authority, workspace, status-contract, and selftests PASS. Candidate tests were not run.
 - The registered MCP tool schema remains pre-repair: `project_status` rejects `prysm_candidate_offline_test`, and `run_codex` under normal `prysm` rejects the candidate branch/SHA. This is a runtime-currentness issue; no candidate test command started. Restart the configured MCP server to load the verified binding repair.
+
+Fresh exact-candidate offline result (2026-11-16):
+- Candidate identity: `repair/prysm-staging-writer-20261115` / `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`; worktree clean at preflight and final read-only check.
+- `npm --offline run test:narrative-v2` PASS, 325/325, including limitation-status coverage.
+- `npm --offline run test:deterministic` FAIL at `PRYSM-CLOSE-14` in `services/worker/src/application/publication-path.test.js:137`: expected `draft_rendered`, received `collecting`. The runner also emitted related `PRYSM-CLOSE-10c` at `services/worker/src/application/stranded-audit-recovery.test.js:261` with the same mismatch.
+- Worker regression, typecheck, and build are NOT RUN because this stop-on-first-failure tranche stopped at deterministic regression. The deterministic wrapper exit code is UNAVAILABLE because its process was terminated after the failure observation.
+- Raw captures and report: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-REPAIR-offline-proof-24a1a82\\REPORT.md`, `01-narrative-v2.raw.txt`, and `02-deterministic.raw.txt`.
+- No source files, dependencies, budgets, models, providers, deployments, remotes, commits, merges, or production state changed; no provider calls were intentionally made.
 
 Blocked:
 - Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
