@@ -16,7 +16,7 @@
     "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
     "source": "Codex closure report; candidate tree/diff unavailable in this review",
     "sessionVerification": "PASS_CANDIDATE_IDENTITY_ANCESTRY_CLEAN_TREE_AND_3_FILE_DIFF_VERIFIED",
-    "governedEvidenceRecovery": "READY_CURRENT_MCP_LAUNCHER_SMOKE_PASS_NO_REAL_CODEX_RUN_YET",
+    "governedEvidenceRecovery": "PASS_IDENTITY_ANCESTRY_CLEAN_TREE_UPSTREAM_AND_EXACT_DIFF; HISTORICAL_TEST_EVIDENCE_MIXED",
     "launcherIdentityRepair": "VERIFIED_REPORT_PRYSM_LAUNCHER_IDENTITY_PREFLIGHT_20261116",
     "exactDiff": {
       "files": 3,
@@ -29,11 +29,12 @@
       ],
       "proof": "PRYSM-OFFLINE-CANDIDATE-EVIDENCE-RECOVERY/REPORT.md"
     },
-    "mcpCurrentness": "VERIFIED_SMOKE_PASS_PRYSM_MCP_RUN_20261116T165153905Z"
+    "mcpCurrentness": "VERIFIED_SMOKE_PASS_PRYSM_MCP_RUN_20261116T165153905Z",
+    "evidenceRecoveryRunId": "prysm-20261116T171308082Z-PRYSM_WRITER_CONCISION_OFFLINE_EVIDENCE_RECOVERY_FINAL_20261-421f0b"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
-    "status": "CODEX_REPORTED_PASS_NOT_INDEPENDENTLY_REPRODUCED",
+    "status": "HOLD_FRESH_EXACT_CANDIDATE_TESTS_REQUIRED",
     "targetedTests": "REPORTED_PASS_120_OF_120",
     "narrativeV2": "REPORTED_PASS_325_OF_325",
     "fullWorkerRegression": "REPORTED_PASS_1489_OF_1489",
@@ -44,7 +45,8 @@
     "build": "REPORTED_PASS",
     "negativeControls": "REPORTED_PASS",
     "exactCandidateSourceAndCleanTree": "INDEPENDENTLY_VERIFIED_CLEAN_DIRECT_BASE_ANCESTRY_AND_3_FILE_DIFF",
-    "rawRegressionLogs": "UNAVAILABLE_NOT_FOUND_IN_CANDIDATE_PROOF_OR_SEPARATE_PERSISTED_ARTIFACT"
+    "rawRegressionLogs": "HISTORICAL_LOCAL_ARTIFACTS_FOUND_MIXED_PASS_AND_FAILURE_NOT_FRESH_CANDIDATE_EVIDENCE",
+    "freshTestsThisTranche": "NOT_RUN"
   },
   "offlineInputTokenEstimate": {
     "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
@@ -105,7 +107,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Separately authorize one real bounded governed Codex execution for offline evidence recovery only: inspect already verified local candidate and report raw final-regression/gate-log availability through current launcher. Candidate remains local/unpushed; no application edit, deployment, or provider calls.",
+  "nextAction": "Separately authorize a fresh exact-candidate offline test tranche: run approved targeted and regression commands against 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a, preserve raw logs with candidate identity, stop without source edits/push/deployment/provider calls/production access. Until then staging/release acceptance HOLD.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
