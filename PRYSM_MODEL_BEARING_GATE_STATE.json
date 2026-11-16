@@ -32,8 +32,9 @@
     "mcpCurrentness": "VERIFIED_SMOKE_PASS_PRYSM_MCP_RUN_20261116T165153905Z",
     "evidenceRecoveryRunId": "prysm-20261116T171308082Z-PRYSM_WRITER_CONCISION_OFFLINE_EVIDENCE_RECOVERY_FINAL_20261-421f0b",
     "exactCandidateTestRunId": "prysm-20261116T173234634Z-PRYSM_WRITER_CONCISION_EXACT_CANDIDATE_OFFLINE_TESTS_2026111-23c6c7",
-    "exactCandidateTestBinding": "VERIFIED_FIXED_READ_ONLY_BINDING_PRYSM_CANDIDATE_OFFLINE_TEST",
-    "candidateBindingRepair": "VERIFIED_REPORT_PRYSM_CANDIDATE_BINDING_REPAIR_20261116"
+    "exactCandidateTestBinding": "VERIFIED_SOURCE_REPAIR; REGISTERED_MCP_SCHEMA_STALE_RESTART_REQUIRED",
+    "candidateBindingRepair": "VERIFIED_REPORT_PRYSM_CANDIDATE_BINDING_REPAIR_20261116",
+    "candidateBindingRuntimeCurrentness": "BLOCKED_REGISTERED_TOOL_SCHEMA_DOES_NOT_EXPOSE_PRYSM_CANDIDATE_OFFLINE_TEST"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -110,7 +111,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Separately authorize one fresh offline test run through prysm_candidate_offline_test: focused Narrative v2 tests, deterministic/worker regressions, configured typecheck/build checks, raw logs tied to candidate 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a; stop on failure; no source edits/push/deployment/providers/production.",
+  "nextAction": "Restart configured MCP server from C:\\Users\\kulba\\Desktop\\prysm-gacm-mcp so registered schema loads prysm_candidate_offline_test; then run already authorized fresh offline candidate-test tranche with raw logs.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }

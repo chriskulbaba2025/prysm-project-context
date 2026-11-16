@@ -29,6 +29,7 @@ Verification result (2026-11-16):
 - The registered `prysm_gacm` MCP process is current and independently smoke-tested from `C:\Users\kulba\Downloads\PRYSM-MCP-RUNS\prysm-20261116T165153905Z-PRYSM-LAUNCHER-SMOKE-READONLY-73eca9\REPORT.md`. Exact identity gate PASS and child-launch seam PASS; the inert Node child generated no Codex telemetry, so its post-seam BLOCKED state was expected. Codex/provider calls, application edits, deployments, crawls, rescoring, commits, pushes, and production access were all zero.
 - Exact-candidate test tranche `prysm-20261116T173234634Z-PRYSM_WRITER_CONCISION_EXACT_CANDIDATE_OFFLINE_TESTS_2026111-23c6c7` was BLOCKED before any test command because the original launcher bound all PRYSM runs to `C:\g\p001`.
 - The controller repair is VERIFIED from `C:\Users\kulba\Downloads\PRYSM-CANDIDATE-BINDING-REPAIR-20261116\REPORT.md`. It adds fixed read-only binding `prysm_candidate_offline_test` for `C:\Users\kulba\Downloads\PRYSM-STAGING-WRITER-REPAIR` at `repair/prysm-staging-writer-20261115` / `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`; normal `prysm` remains bound to clean `C:\g\p001` / `bda9578029fda428e227bae774defb2e6c9a9809`. Controller typecheck and binding, authority, workspace, status-contract, and selftests PASS. Candidate tests were not run.
+- The registered MCP tool schema remains pre-repair: `project_status` rejects `prysm_candidate_offline_test`, and `run_codex` under normal `prysm` rejects the candidate branch/SHA. This is a runtime-currentness issue; no candidate test command started. Restart the configured MCP server to load the verified binding repair.
 
 Blocked:
 - Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
@@ -41,6 +42,6 @@ Important constraints:
 - Earlier state history is retained in Git commit history; this file is the sole current-state summary.
 
 Exact next action:
-- Separately authorize one fresh offline test run through `prysm_candidate_offline_test`. Run the focused Narrative v2 tests, deterministic/worker regressions, configured typecheck/build checks, and preserve raw logs tied to candidate SHA `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`. Stop on any failure; do not edit source, push, deploy, call providers, or access production.
+- Restart the configured MCP server from `C:\Users\kulba\Desktop\prysm-gacm-mcp` so the registered tool schema loads `prysm_candidate_offline_test`. Then run the already authorized fresh offline candidate-test tranche with raw logs.
 
 Last verified: 2026-11-16 America/Toronto
