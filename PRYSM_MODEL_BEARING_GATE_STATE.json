@@ -16,7 +16,8 @@
     "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
     "source": "Codex closure report; candidate tree/diff unavailable in this review",
     "sessionVerification": "BLOCKED_CANDIDATE_CHECKOUT_AND_RAW_LOGS_NOT_ACCESSIBLE_TO_CURRENT_GOVERNED_WORKSPACE",
-    "governedEvidenceRecovery": "BLOCKED_GOVERNED_LAUNCHER_REJECTED_TWO_REQUESTS_BEFORE_EXECUTION_DESPITE_VERIFIED_CLEAN_WORKSPACE"
+    "governedEvidenceRecovery": "READY_LAUNCHER_PREFLIGHT_VERIFIED_NO_REAL_CODEX_RUN_YET",
+    "launcherIdentityRepair": "VERIFIED_REPORT_PRYSM_LAUNCHER_IDENTITY_PREFLIGHT_20261116"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -92,7 +93,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Repair governed launcher source-identity validation against the already verified clean checkout repair/prysm-evidence-accuracy-20261013/bda9578029fda428e227bae774defb2e6c9a9809 without application changes; then perform offline candidate evidence recovery and independent verification only. Candidate remains unpushed; no deployment or provider calls.",
+  "nextAction": "Separately authorize one real bounded governed Codex execution for offline candidate evidence recovery only: locate or report absent candidate repair/prysm-staging-writer-20261115 at 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a, exact diff, clean-tree evidence, and raw gate logs; independently verify; keep candidate unpushed; no deployment or provider calls.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
