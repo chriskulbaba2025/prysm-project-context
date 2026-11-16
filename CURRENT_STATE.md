@@ -50,6 +50,6 @@ Important constraints:
 - Earlier state history is retained in Git commit history; this file is the sole current-state summary.
 
 Exact next action:
-- Restart the configured MCP server from `C:\Users\kulba\Desktop\prysm-gacm-mcp` so the registered tool schema loads `prysm_candidate_offline_test`. Then run the already authorized fresh offline candidate-test tranche with raw logs.
+- Separately authorize one bounded offline diagnosis/repair tranche for the owning lifecycle/state-transition boundary exposed by `PRYSM-CLOSE-14` / `PRYSM-CLOSE-10c`; preserve the exact candidate and baseline, make no provider/deployment/push/production change, use targeted proof, then stop.
 
 Last verified: 2026-11-16 America/Toronto
