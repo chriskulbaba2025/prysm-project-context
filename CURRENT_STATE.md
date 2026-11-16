@@ -1,5 +1,18 @@
 # Current State
 
+## Latest authorized staging-release tranche — 2026-11-16
+
+- Exact application SHA: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
+- Application branch `repair/prysm-staging-writer-20261115` was pushed to the approved isolated GitHub repository; local and remote branch SHA match and the local worktree is clean.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `prysm-worker` (`3343e2a8-0472-4780-8536-e8b9667fcc7a`), deployment `2cd56e51-0643-4d07-bce4-d226f5f8c1b2`, SUCCESS, one running replica, no reported issues, source branch and commit metadata match the exact SHA.
+- Vercel isolated staging Preview: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_5fiUPZ2oRbUKQW8YsiJrnmBhWQas`, READY, Git metadata matches the exact SHA.
+- Railway health returned HTTP 200. Production was not accessed or changed.
+- Live acceptance is HOLD/UNVERIFIED: the authenticated reviewer session was unavailable; direct protected staging diagnostics returned HTTP 401; the Computer Use bridge failed to initialize. No controlled audit was started.
+- Writer calls: 0. Judge calls: 0. Provider calls: 0. Tranche actual cost: $0. Budgets/models were not changed.
+- Report and raw evidence: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-RELEASE-LIVE-ACCEPTANCE-20261116\\REPORT.md`.
+
+Exact next action: stop this tranche. A new bounded tranche is required after the approved authenticated staging reviewer/browser path is restored; then verify the six-section report, lifecycle/status/scores/evidence, browser/PDF rendering, and provider usage/cost receipts with one controlled audit only.
+
 Project: PRYSM
 
 Current objective: Complete the one authorized commit-and-context-update workflow for the verified offline lifecycle repair, then stop before any staging release or live acceptance.
