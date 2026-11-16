@@ -2,54 +2,49 @@
 
 Project: PRYSM
 
-Current objective: Preserve the failed fresh exact-candidate offline-test evidence and hold the five-section Writer concision candidate pending a separately authorized lifecycle/state-transition diagnosis and repair. The City Media report remains incomplete.
+Current objective: Complete the one authorized commit-and-context-update workflow for the verified offline lifecycle repair, then stop before any staging release or live acceptance.
 
 Verified checkpoint:
-- Project-context source before this canonical update: `chriskulbaba2025/prysm-project-context` main at `b784ab77ebdc0d5b6c86562cf3ef068d481b8631`.
-- Application remote baseline: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, SHA `f7436fb0a9ed541ade976ee59eecba0dcda64e88`.
-- Protective annotated tag `prysm-writer-pre-concision-20261116-f7436fb`, tag object `9bce687628a99d3246866f6248834f33596d9593`, points to baseline `f7436fb0...` (GitHub verified).
-- Existing staging identities from the pre-tranche checkpoint: Railway `c57d6c82-8e8d-4f2b-881a-d21ff2977fda`; Vercel `dpl_99JTJbRz6A1sjeS5XSY552qQZutQ`. No candidate deployment is reported.
+- Application repository: `chriskulbaba2025/prysm-staging-isolated`.
+- Application branch: `repair/prysm-staging-writer-20261115`.
+- Application commit: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
+- Application commit parent / pre-repair candidate: `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`.
+- Baseline: `f7436fb0a9ed541ade976ee59eecba0dcda64e88`.
+- Protective tag `prysm-writer-pre-concision-20261116-f7436fb` peels to the baseline.
+- Application worktree is clean after the local commit. The application repair branch remains unpushed.
 
 Current environment / branch / version:
-- Application branch remains at baseline `f7436fb0...`; no application branch push occurred.
-- Local candidate is independently verified from `C:\Users\kulba\Downloads\PRYSM-OFFLINE-CANDIDATE-EVIDENCE-RECOVERY\REPORT.md`: branch `repair/prysm-staging-writer-20261115`, clean SHA `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`, with direct parent/baseline `f7436fb0a9ed541ade976ee59eecba0dcda64e88`. It remains one commit ahead of origin and unpushed.
-- The connected PRYSM execution workspace reports a different checkout: `repair/prysm-evidence-accuracy-20261013` at `bda9578029fda428e227bae774defb2e6c9a9809`. It cannot verify the reported candidate.
+- Local application candidate is committed at the exact application SHA above.
+- No application branch push, merge, deployment, staging change, production access/change, provider/model call, crawl, audit, rescore, or paid usage occurred.
+- Context repository is `chriskulbaba2025/prysm-project-context`, authoritative branch `main`.
 
 Completed:
-- The offline Codex receipt reports changes in `live-binding.js`, `writer-prompt.js`, and `writer-prompt-limitation-status.test.js`; targeted Narrative 120/120, Narrative v2 325/325, worker 1489/1489, deterministic 1070/1070, Whole-App/closure, typecheck, build, and offline adversarial checks PASS. The 20 Markdown files in the Downloads proof folder are summaries; raw logs, source diff, and candidate tree/hash manifest are absent. These outcomes remain CODEX-REPORTED, not independently reproduced.
-- Reported input estimates sum correctly: 86,325 → 26,600, a reduction of 59,725 / 69.19% for one controlled fixture. This is a local estimate, not provider token usage. Output-token and dollar savings are NOT MEASURED.
-- RED_QUEEN_CHALLENGE is PASS for offline scope per Codex; TOKEN_EFFICIENCY is PASS for measured input estimates only. Neither was independently rerun in this review.
+- Diagnosed the lifecycle failure as shared-process interference from concurrent deterministic test files, not a missing production lifecycle transition. The two lifecycle failures passed in isolation and as a pair; the exact deterministic suite passed serially.
+- Repaired the owning test-runner boundary by adding `--test-concurrency=1` to worker `test:deterministic`.
+- Added `services/worker/scripts/deterministic-runner-config.test.js` to lock the serialized runner contract.
+- Preserved the Writer concision repair, contracts, budgets, scores, application baseline/history, and unrelated files.
+- Verified targeted lifecycle and runner-contract tests: PASS.
+- Verified deterministic regression: 1070/1070 PASS.
+- Verified worker regression: 1489/1489 PASS.
+- Verified root typecheck `npx --no-install tsc --noEmit`: PASS.
+- Verified root build `npm --offline run build`: PASS.
+- Durable proof report and raw captures: `C:\\Users\\kulba\\Downloads\\PRYSM-LIFECYCLE-REPAIR-20261116\\REPORT.md` and the command capture files in the same folder.
+- The exact application commit contains only the two authorized repair files: `services/worker/package.json` and `services/worker/scripts/deterministic-runner-config.test.js`.
 
-Verification result (2026-11-16):
-- The governed PRYSM workspace is clean at `repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`. It is not the reported candidate branch or SHA.
-- GitHub lookup for candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a` returns no commit. This is consistent with the report that it is local-only; it does not prove that the local commit is absent from the original machine.
-- Governed offline evidence-recovery run `prysm-20261116T171308082Z-PRYSM_WRITER_CONCISION_OFFLINE_EVIDENCE_RECOVERY_FINAL_20261-421f0b` independently verified the local candidate checkout, direct-base ancestry, clean-tree state, upstream state, and exact diff: exactly three files, 65 insertions, and 11 deletions. The candidate is one commit ahead of origin and remains unpushed.
-- Raw local artifacts were located. They are historical and mixed: files include whole-app/worker/acceptance PASS outputs and `T0-recovered-repair-proof.txt` with 8 passing and 2 failing tests (`NV2-PROD-07`, `NV2-PROD-08`). No tests ran in the recovery tranche. Therefore neither the historical PASS artifacts nor the historical failures are current test evidence for the candidate.
-- The governed launcher identity repair is VERIFIED from `C:\Users\kulba\Downloads\PRYSM-LAUNCHER-IDENTITY-PREFLIGHT\REPORT.md`. Root cause was divergent identity sources: `run_codex` checked controller `process.cwd()`, while `project_status` checked configured PRYSM root `C:\g\p001`. The repaired shared trimmed Git identity reader validates the configured PRYSM root for PRYSM launches; non-PRYSM launch protection remains controller-root based. Typecheck, PRYSM authority selftest, status-contract selftest, MCP protocol test, and `git diff --check` PASS. A no-edit test reached the inert local child-launch seam with exact identity `repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`; no Codex/provider call or application mutation occurred.
-- The registered `prysm_gacm` MCP process is current and independently smoke-tested from `C:\Users\kulba\Downloads\PRYSM-MCP-RUNS\prysm-20261116T165153905Z-PRYSM-LAUNCHER-SMOKE-READONLY-73eca9\REPORT.md`. Exact identity gate PASS and child-launch seam PASS; the inert Node child generated no Codex telemetry, so its post-seam BLOCKED state was expected. Codex/provider calls, application edits, deployments, crawls, rescoring, commits, pushes, and production access were all zero.
-- Exact-candidate test tranche `prysm-20261116T173234634Z-PRYSM_WRITER_CONCISION_EXACT_CANDIDATE_OFFLINE_TESTS_2026111-23c6c7` was BLOCKED before any test command because the original launcher bound all PRYSM runs to `C:\g\p001`.
-- The controller repair is VERIFIED from `C:\Users\kulba\Downloads\PRYSM-CANDIDATE-BINDING-REPAIR-20261116\REPORT.md`. It adds fixed read-only binding `prysm_candidate_offline_test` for `C:\Users\kulba\Downloads\PRYSM-STAGING-WRITER-REPAIR` at `repair/prysm-staging-writer-20261115` / `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`; normal `prysm` remains bound to clean `C:\g\p001` / `bda9578029fda428e227bae774defb2e6c9a9809`. Controller typecheck and binding, authority, workspace, status-contract, and selftests PASS. Candidate tests were not run.
-- The registered MCP tool schema remains pre-repair: `project_status` rejects `prysm_candidate_offline_test`, and `run_codex` under normal `prysm` rejects the candidate branch/SHA. This is a runtime-currentness issue; no candidate test command started. Restart the configured MCP server to load the verified binding repair.
-
-Fresh exact-candidate offline result (2026-11-16):
-- Candidate identity: `repair/prysm-staging-writer-20261115` / `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`; worktree clean at preflight and final read-only check.
-- `npm --offline run test:narrative-v2` PASS, 325/325, including limitation-status coverage.
-- `npm --offline run test:deterministic` FAIL at `PRYSM-CLOSE-14` in `services/worker/src/application/publication-path.test.js:137`: expected `draft_rendered`, received `collecting`. The runner also emitted related `PRYSM-CLOSE-10c` at `services/worker/src/application/stranded-audit-recovery.test.js:261` with the same mismatch.
-- Worker regression, typecheck, and build are NOT RUN because this stop-on-first-failure tranche stopped at deterministic regression. The deterministic wrapper exit code is UNAVAILABLE because its process was terminated after the failure observation.
-- Raw captures and report: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-REPAIR-offline-proof-24a1a82\\REPORT.md`, `01-narrative-v2.raw.txt`, and `02-deterministic.raw.txt`.
-- No source files, dependencies, budgets, models, providers, deployments, remotes, commits, merges, or production state changed; no provider calls were intentionally made.
+In progress:
+- None within this authorized tranche.
 
 Blocked:
-- Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
-- Live Writer/Judge acceptance, editorial, authenticated browser acceptance, live billing, production path equivalence, and production identity continuity are not established. The completed City Media six-page report/PDF is NOT AVAILABLE; the reported offline PDF gate covers the historical viewer regression contract, not this client's accepted report.
-- Production runtime was not checked. Prior City Media spend figures (actual $1.382845; conservative $3.988645; reported headroom $1.011355) remain user-reported and unreconciled. The offline receipt reports no new provider calls and $0 new cost; no usage receipt was independently checked.
+- No application repair blocker remains for this tranche.
+- Staging release, live acceptance, production access/change, application-branch push, merge, deployment, provider/model usage, crawl, audit, and rescoring remain unauthorized and unperformed.
 
 Important constraints:
-- No paid provider/model calls, new audit, recrawl, rescore, application push, merge, deployment, production mutation, model change, budget change, or token-ceiling increase is authorized by this checkpoint.
-- Keep the application candidate local and unpushed. Any staging release and bounded live acceptance require separate authorization.
-- Earlier state history is retained in Git commit history; this file is the sole current-state summary.
+- Keep the application repair branch unpushed.
+- Preserve the Writer concision repair, contracts, budgets, scores, baseline, protective tag, and unrelated files.
+- Do not begin staging release or live acceptance from this checkpoint.
+- Treat the test proof as offline/local proof only; it is not deployment or production-readiness evidence.
 
 Exact next action:
-- Separately authorize one bounded offline diagnosis/repair tranche for the owning lifecycle/state-transition boundary exposed by `PRYSM-CLOSE-14` / `PRYSM-CLOSE-10c`; preserve the exact candidate and baseline, make no provider/deployment/push/production change, use targeted proof, then stop.
+- Stop after this context update. Any application push, staging release/change, live acceptance, production action, provider/model call, crawl, audit, rescore, or further source/context change requires separate authorization.
 
 Last verified: 2026-11-16 America/Toronto
