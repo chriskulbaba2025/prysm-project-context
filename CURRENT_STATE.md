@@ -25,6 +25,7 @@ Verification result (2026-11-16):
 - GitHub lookup for candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a` returns no commit. This is consistent with the report that it is local-only; it does not prove that the local commit is absent from the original machine.
 - The current session cannot access the reported local candidate checkout, its full diff, or raw regression logs. The existing Downloads proof folder contains summaries only.
 - Therefore candidate identity, clean-tree state, source changes, and reported gates remain CODEX-REPORTED and NOT INDEPENDENTLY VERIFIED.
+- On 2026-11-16, two governed offline evidence-recovery run requests were rejected before execution with `Controller source identity failure: source must have a named branch, valid HEAD SHA, and clean worktree.` The second request explicitly supplied the verified clean branch `repair/prysm-evidence-accuracy-20261013` and SHA `bda9578029fda428e227bae774defb2e6c9a9809`. This is a governed-launcher/controller defect; no application process started and no application state changed.
 
 Blocked:
 - Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
@@ -37,6 +38,6 @@ Important constraints:
 - Earlier state history is retained in Git commit history; this file is the sole current-state summary.
 
 Exact next action:
-- Make the exact local candidate checkout (branch `repair/prysm-staging-writer-20261115`, commit `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`), complete source diff, clean-tree evidence, and raw final-regression/gate logs accessible to the governed PRYSM verification workspace. Then independently verify them. Keep the candidate unpushed; do not deploy or call providers. If these artifacts are unavailable, this offline tranche remains unverified and must not be represented as complete.
+- Repair the governed launcher’s source-identity validation using the already verified clean checkout identity (`repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`) without changing application source. Then run the bounded offline evidence-recovery verification: make the exact local candidate checkout (branch `repair/prysm-staging-writer-20261115`, commit `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`), complete source diff, clean-tree evidence, and raw final-regression/gate logs accessible to the governed workspace and independently verify them. Keep the candidate unpushed; do not deploy or call providers.
 
 Last verified: 2026-11-16 America/Toronto
