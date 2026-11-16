@@ -5,7 +5,7 @@
   "status": "MODEL_BEARING_HELD_BEFORE_LIVE_ACCEPTANCE",
   "applicationCandidateSha": "24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a",
   "candidateIdentity": {
-    "status": "CODEX_REPORTED_LOCAL_ONLY_NOT_INDEPENDENTLY_VERIFIED",
+    "status": "IDENTITY_ANCESTRY_CLEAN_TREE_AND_EXACT_DIFF_INDEPENDENTLY_VERIFIED_LOCAL_UNPUSHED",
     "applicationRepository": "chriskulbaba2025/prysm-staging-isolated",
     "branch": "repair/prysm-staging-writer-20261115",
     "baselineSha": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
@@ -15,9 +15,20 @@
     "tagTargetSha": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
     "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
     "source": "Codex closure report; candidate tree/diff unavailable in this review",
-    "sessionVerification": "BLOCKED_CANDIDATE_CHECKOUT_AND_RAW_LOGS_NOT_ACCESSIBLE_TO_CURRENT_GOVERNED_WORKSPACE",
-    "governedEvidenceRecovery": "READY_LAUNCHER_PREFLIGHT_VERIFIED_NO_REAL_CODEX_RUN_YET",
-    "launcherIdentityRepair": "VERIFIED_REPORT_PRYSM_LAUNCHER_IDENTITY_PREFLIGHT_20261116"
+    "sessionVerification": "PASS_CANDIDATE_IDENTITY_ANCESTRY_CLEAN_TREE_AND_3_FILE_DIFF_VERIFIED",
+    "governedEvidenceRecovery": "HOLD_REGISTERED_MCP_PROCESS_STALE_RESTART_REQUIRED",
+    "launcherIdentityRepair": "VERIFIED_REPORT_PRYSM_LAUNCHER_IDENTITY_PREFLIGHT_20261116",
+    "exactDiff": {
+      "files": 3,
+      "insertions": 65,
+      "deletions": 11,
+      "paths": [
+        "services/worker/src/narrative-v2/live-binding.js",
+        "services/worker/src/narrative-v2/writer-prompt.js",
+        "services/worker/src/narrative-v2/writer-prompt-limitation-status.test.js"
+      ],
+      "proof": "PRYSM-OFFLINE-CANDIDATE-EVIDENCE-RECOVERY/REPORT.md"
+    }
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -31,8 +42,8 @@
     "typecheck": "REPORTED_PASS",
     "build": "REPORTED_PASS",
     "negativeControls": "REPORTED_PASS",
-    "exactCandidateSourceAndCleanTree": "NOT_INDEPENDENTLY_VERIFIED_CANDIDATE_CHECKOUT_UNAVAILABLE",
-    "rawRegressionLogs": "NOT_ACCESSIBLE_TO_CURRENT_REVIEW"
+    "exactCandidateSourceAndCleanTree": "INDEPENDENTLY_VERIFIED_CLEAN_DIRECT_BASE_ANCESTRY_AND_3_FILE_DIFF",
+    "rawRegressionLogs": "UNAVAILABLE_NOT_FOUND_IN_CANDIDATE_PROOF_OR_SEPARATE_PERSISTED_ARTIFACT"
   },
   "offlineInputTokenEstimate": {
     "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
@@ -93,7 +104,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Separately authorize one real bounded governed Codex execution for offline candidate evidence recovery only: locate or report absent candidate repair/prysm-staging-writer-20261115 at 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a, exact diff, clean-tree evidence, and raw gate logs; independently verify; keep candidate unpushed; no deployment or provider calls.",
+  "nextAction": "Restart configured prysm_gacm MCP server to load verified launcher repair, then rerun one bounded read-only offline evidence-recovery request to verify governed launch behavior and raw regression/gate-log availability. Candidate remains local/unpushed; no application edit, deployment, or provider calls.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }

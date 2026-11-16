@@ -12,7 +12,7 @@ Verified checkpoint:
 
 Current environment / branch / version:
 - Application branch remains at baseline `f7436fb0...`; no application branch push occurred.
-- Codex reports local candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`, clean after commit, on `repair/prysm-staging-writer-20261115`. This SHA is not on GitHub, as expected for the reported local-only candidate, and is not independently verified here.
+- Local candidate is independently verified from `C:\Users\kulba\Downloads\PRYSM-OFFLINE-CANDIDATE-EVIDENCE-RECOVERY\REPORT.md`: branch `repair/prysm-staging-writer-20261115`, clean SHA `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`, with direct parent/baseline `f7436fb0a9ed541ade976ee59eecba0dcda64e88`. It remains one commit ahead of origin and unpushed.
 - The connected PRYSM execution workspace reports a different checkout: `repair/prysm-evidence-accuracy-20261013` at `bda9578029fda428e227bae774defb2e6c9a9809`. It cannot verify the reported candidate.
 
 Completed:
@@ -24,8 +24,9 @@ Verification result (2026-11-16):
 - The governed PRYSM workspace is clean at `repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`. It is not the reported candidate branch or SHA.
 - GitHub lookup for candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a` returns no commit. This is consistent with the report that it is local-only; it does not prove that the local commit is absent from the original machine.
 - The current session cannot access the reported local candidate checkout, its full diff, or raw regression logs. The existing Downloads proof folder contains summaries only.
-- Therefore candidate identity, clean-tree state, source changes, and reported gates remain CODEX-REPORTED and NOT INDEPENDENTLY VERIFIED.
+- Candidate identity, direct-base ancestry, clean-tree state, and exact diff are independently verified: exactly three files, 65 insertions, and 11 deletions. The exact changed paths are `services/worker/src/narrative-v2/live-binding.js`, `services/worker/src/narrative-v2/writer-prompt.js`, and `services/worker/src/narrative-v2/writer-prompt-limitation-status.test.js`. Raw final-regression/gate logs remain UNAVAILABLE, so reported test outcomes remain CODEX-REPORTED only.
 - The governed launcher identity repair is VERIFIED from `C:\Users\kulba\Downloads\PRYSM-LAUNCHER-IDENTITY-PREFLIGHT\REPORT.md`. Root cause was divergent identity sources: `run_codex` checked controller `process.cwd()`, while `project_status` checked configured PRYSM root `C:\g\p001`. The repaired shared trimmed Git identity reader validates the configured PRYSM root for PRYSM launches; non-PRYSM launch protection remains controller-root based. Typecheck, PRYSM authority selftest, status-contract selftest, MCP protocol test, and `git diff --check` PASS. A no-edit test reached the inert local child-launch seam with exact identity `repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`; no Codex/provider call or application mutation occurred.
+- The registered `prysm_gacm` MCP process is stale: a real `run_codex` request still returned the old identity error after the verified launcher repair. No Codex child started. Restart the registered MCP server before retrying the governed request.
 
 Blocked:
 - Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
@@ -38,6 +39,6 @@ Important constraints:
 - Earlier state history is retained in Git commit history; this file is the sole current-state summary.
 
 Exact next action:
-- Separately authorize one real, bounded governed Codex execution for offline candidate evidence recovery only. It must locate or report absent the local candidate checkout (branch `repair/prysm-staging-writer-20261115`, commit `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`), complete source diff, clean-tree evidence, and raw final-regression/gate logs; independently verify them; keep the candidate unpushed; and do not deploy or call providers.
+- Restart the configured `prysm_gacm` MCP server to load the verified launcher repair. Then rerun one bounded read-only evidence-recovery request to verify the candidate through the governed path and report raw regression/gate-log availability. Keep the candidate unpushed; do not edit application source, deploy, or call providers.
 
 Last verified: 2026-11-16 America/Toronto
