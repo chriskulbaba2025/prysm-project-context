@@ -2,7 +2,7 @@
 
 ## ACTIVE — Offline Writer concision candidate recorded; independent review HOLD (2026-11-16)
 
-**RESULT: OFFLINE CODEX RECEIPT REPORTS PASS; BASELINE AND PROTECTIVE TAG REMOTELY VERIFIED; LOCAL CANDIDATE/REGRESSION NOT INDEPENDENTLY REPRODUCED; LIVE ACCEPTANCE HOLD.**
+**RESULT: OFFLINE CODEX RECEIPT REPORTS PASS; BASELINE AND PROTECTIVE TAG REMOTELY VERIFIED; LOCAL CANDIDATE/REGRESSION NOT INDEPENDENTLY REPRODUCED; LIVE ACCEPTANCE HOLD.** Older checkpoint sections below are historical and do not supersede this state.
 
 ### Verified application baseline
 
@@ -13,7 +13,7 @@
 ### Offline candidate — Codex-reported, not independently reproduced here
 
 - The Codex receipt and `C:\Users\kulba\Downloads\PRYSM-WRITER-CONCISION-CLOSURE\` report a clean local candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`, three changed source/test files, 120/120 targeted Narrative tests, 325/325 Narrative v2, 1489/1489 worker, 1070/1070 deterministic, Whole-App/closure, typecheck, and build PASS. The reported candidate is local-only by design; GitHub cannot resolve it because the application branch was not pushed.
-- The proof directory contains 19 Markdown summaries, but no raw test logs, source diff, or candidate tree/hash manifest. The connected PRYSM execution workspace still reports a different branch/SHA (`repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`); it does not independently verify the candidate. Therefore the code identity, clean local tree, and test results remain Codex-reported, not independently reproduced in this checkpoint.
+- The proof directory contains 20 Markdown files (19 numbered notes plus REPORT.md), but no raw test logs, source diff, or candidate tree/hash manifest. The connected PRYSM execution workspace still reports a different branch/SHA (`repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`); it does not independently verify the candidate. Therefore the code identity, clean local tree, and test results remain Codex-reported, not independently reproduced in this checkpoint.
 - The input-token matrix arithmetic is consistent: estimated fixture inputs 86,325 → 26,600 (59,725 / 69.19%). These are local estimator values, not provider receipts. Output-token and dollar savings remain NOT MEASURED.
 - Failure metadata records City Media audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, Trust call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE, and whether truncation caused the status conflict is not established.
 - The offline report says no provider calls/cost, no app push/deployment, and no evidence/score/audit/production mutation. These remain execution-reported. It reports offline tests and PDF/viewer gates, but the cited PDF gate covers the historical seven-conceptual-page viewer contract; it is not an accepted City Media six-page report/PDF artifact.
