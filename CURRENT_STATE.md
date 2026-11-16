@@ -1,43 +1,39 @@
 # Current State
 
-## ACTIVE — City Media Claude Writer staging HOLD / freeze-concision next (2026-11-16)
+## ACTIVE — Offline Writer concision candidate recorded; independent review HOLD (2026-11-16)
 
-**RESULT: APPLICATION STAGING SHA PARITY VERIFIED / CITY MEDIA EXECUTIVE REPORT INCOMPLETE / OFFLINE FREEZE-AND-CONCISION TRANCHE AUTHORIZED BUT NOT EXECUTED.** This is the newest checkpoint. Earlier `ACTIVE` sections below concern historical work (including On Cue / PR32) and must not be treated as the next PRYSM action.
+**RESULT: OFFLINE CODEX RECEIPT REPORTS PASS; BASELINE AND PROTECTIVE TAG REMOTELY VERIFIED; LOCAL CANDIDATE/REGRESSION NOT INDEPENDENTLY REPRODUCED; LIVE ACCEPTANCE HOLD.**
 
-### Independently verified staging authority (2026-11-16)
+### Verified application baseline
 
-- **Application repository/branch:** `chriskulbaba2025/prysm-staging-isolated` / `repair/prysm-staging-writer-20261115`.
-- **GitHub branch HEAD:** `f7436fb0a9ed541ade976ee59eecba0dcda64e88`.
-- **Railway isolated staging worker:** project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`; service `3343e2a8-0472-4780-8536-e8b9667fcc7a`; deployment `c57d6c82-8e8d-4f2b-881a-d21ff2977fda` **SUCCESS**, matching `f7436fb0...`. Previous deployment `bed29896-3d92-47c6-bc6d-09cfd49681ec` reported **REMOVED**, not an active rollback target.
-- **Vercel isolated staging:** `https://prysm.staging.omnipressence.com`, alias points to `dpl_99JTJbRz6A1sjeS5XSY552qQZutQ`, READY, Git SHA `f7436fb0...`. GitHub / Railway / Vercel SHA parity verified.
-- **Production:** no production changes authorized in this session. Production runtime was not independently checked; do not infer its live status from staging.
+- Application repo/branch: `chriskulbaba2025/prysm-staging-isolated` / `repair/prysm-staging-writer-20261115`; remote branch remains at `f7436fb0a9ed541ade976ee59eecba0dcda64e88`.
+- Protective annotated tag: `prysm-writer-pre-concision-20261116-f7436fb`; tag object `9bce687628a99d3246866f6248834f33596d9593` points to baseline `f7436fb0...` (GitHub verified).
+- Existing Railway deployment `c57d6c82-8e8d-4f2b-881a-d21ff2977fda` and Vercel deployment `dpl_99JTJbRz6A1sjeS5XSY552qQZutQ` remain the prior staging identities; this tranche reports no deployment.
 
-### Last real report recovery — user-supplied Codex receipt (not independently replayed here)
+### Offline candidate — Codex-reported, not independently reproduced here
 
-- **Business/audit/tenant:** City Media Collective / `726cc5ad-925f-469d-984f-ab590f1d74ba` / `prysm-staging`.
-- **Writer/Judge:** `claude-opus-5-5` / existing `gpt-5.6-sol`; configured budgets reported `$2` soft, `$5` per-audit hard, `$20` daily hard. Models and budgets are frozen for the next tranche.
-- Current commit reportedly uses native Anthropic text streaming; the earlier deeply nested provider grammar HTTP 400 is no longer the reported stopping point. This does **not** establish overall Writer acceptance.
-- One governed City Media recovery was run with no retry and **failed in the Trust Writer section**: provider response ended at `max_tokens`, and local validation rejected conflicting `AVAILABLE`/`UNAVAILABLE` limitation evidence. Do not assume both states cannot legitimately coexist for **different** source/capability identities. Verify exact failed bytes and scope before repairing.
-- **Judge:** NOT RUN. **Editorial:** NOT RUN. **Client report:** INCOMPLETE; **six pages/HTML/PDF:** no accepted publication artifact or report URL. **Browser acceptance:** HOLD; reported helper unavailable.
-- **Cost (user-reported):** actual recorded `$1.382845`, conservative `$3.988645`; reported remaining per-audit headroom `$1.011355`. Unresolved actual charges remain UNKNOWN. These are historical receipts, not a fresh authenticated spend reconciliation. **No additional paid calls are approved** for the next offline tranche.
-- **Prior Codex evidence path (not inspected here):** `C:\Users\kulba\Downloads\PRYSM-FINAL-REPORT-CLOSURE\REPORT.md`. User-reported Red Queen challenge HOLD, token efficiency HOLD, production path equivalence BLOCKED, production identity continuity BLOCKED; do not silently promote any of these to PASS.
+- The Codex receipt and `C:\Users\kulba\Downloads\PRYSM-WRITER-CONCISION-CLOSURE\` report a clean local candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`, three changed source/test files, 120/120 targeted Narrative tests, 325/325 Narrative v2, 1489/1489 worker, 1070/1070 deterministic, Whole-App/closure, typecheck, and build PASS. The reported candidate is local-only by design; GitHub cannot resolve it because the application branch was not pushed.
+- The proof directory contains 19 Markdown summaries, but no raw test logs, source diff, or candidate tree/hash manifest. The connected PRYSM execution workspace still reports a different branch/SHA (`repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`); it does not independently verify the candidate. Therefore the code identity, clean local tree, and test results remain Codex-reported, not independently reproduced in this checkpoint.
+- The input-token matrix arithmetic is consistent: estimated fixture inputs 86,325 → 26,600 (59,725 / 69.19%). These are local estimator values, not provider receipts. Output-token and dollar savings remain NOT MEASURED.
+- Failure metadata records City Media audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, Trust call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE, and whether truncation caused the status conflict is not established.
+- The offline report says no provider calls/cost, no app push/deployment, and no evidence/score/audit/production mutation. These remain execution-reported. It reports offline tests and PDF/viewer gates, but the cited PDF gate covers the historical seven-conceptual-page viewer contract; it is not an accepted City Media six-page report/PDF artifact.
+- Judge, editorial, completed six-page City Media report, authenticated browser acceptance, live Anthropic behavior/billing, and live PDF acceptance remain NOT RUN / HOLD as applicable. Production was not checked or changed.
 
-### Next authorized single offline tranche — approved plan, NOT started
+### Hard boundary and exact next action
 
-**Scope:** One sequential GPT-5.6 Luna Medium Codex execution, no subagents/model escalation. Begin with a mandatory **Freeze Gate** before code edits:
+No application push, merge, deployment, provider call, audit/recrawl/rescore, or production mutation is authorized by this checkpoint. Keep the candidate unpushed and all live acceptance gates HOLD.
 
-1. Verify exact clean local/remote application baseline and create/verify **one new non-force protective tag** `prysm-writer-pre-concision-20261116-f7436fb0` pointing to `f7436fb0...` (only this tag may be pushed in this offline tranche). Record Railway/Vercel identities, valid rollback candidates, immutable audit/evidence/score contracts, existing section artifacts and cost reservations. Do not assume the tag already exists or that a historical Railway deployment remains available.
-2. Independently inspect real failed Trust Writer input/output, `max_tokens` cause, required-field and JSON token overhead; diagnose status-identity contradiction separately. Mark original replay UNAVAILABLE if original bytes cannot be accessed; do not substitute synthetic data as exact replay.
-3. Audit **all five Writer sections** (Executive, Conversion-content, Funnel, Search, Trust). Repair generic shared concise-writing instructions and minimum-sufficient input projections; remove repetition and filler while preserving every required field, evidence, scores, uncertainty, approved six-page report and model/Judge contracts. Do not increase tokens, models, budgets, or change scope.
-4. Measure **input and output** token estimates per section against identical frozen inputs, JSON overhead, available output allocation and safe completion margin; distinguish estimates from actual Anthropic receipts. Require demonstrable savings without losing mandated content or weakening semantics.
-5. Repair the generic evidence-status **source/capability-scoped** projection/prompt/validation boundary, preserve legitimate mixed statuses, and fail closed on contradictions; verify already validated sections can be durably reused without paid regeneration or duplicate reservations.
-6. Run real-boundary targeted tests, independent negative/mutation controls, complete controlled offline five-section Writer → Judge → editorial → six-page HTML → persistence/reload → browser/print path, mandatory Whole-App and branch-coverage gates, complete applicable **final exact-SHA regression**, and a separate sequential adversarial audit. If a material edit follows the regression, repeat mandatory regression on the final SHA. After three failed repairs in one defect family, reset diagnosis.
-7. Commit verified coherent candidate **locally only**; keep application branch unpushed and staging/production untouched. Save full proof in `C:\Users\kulba\Downloads\PRYSM-WRITER-CONCISION-CLOSURE\`. Provider acceptance and live report completion remain HOLD until separately authorized staging release and bounded live acceptance.
+**ONE NEXT ACTION:** Independently verify the exact local candidate checkout, diff, clean-tree state, and raw final-regression/gate logs from the Codex execution environment. If those artifacts cannot be supplied or accessed, retain the candidate and test outcomes as Codex-reported only. Any later staging release and bounded live-provider acceptance require separate authorization.
 
-**Hard limits:** No paid Anthropic/OpenAI/provider calls, no audit/recrawl/rescore, no deployment, no production mutation, no application branch push, no model/budget/token-ceiling increase, no background agents, no autonomous second tranche. Do not infer release readiness or 98% reliability from offline tests. Preserve previous approved work and rollback evidence.
+---
 
-**ONE NEXT ACTION:** Execute the already-approved **offline Freeze Gate + five-section Writer concision/token-efficiency/status-boundary repair tranche**, beginning with exact source and protective-tag verification; stop if mandatory freeze authority or protection cannot be verified. Do **not** execute another paid City Media recovery in this tranche.
+## HISTORICAL — Pre-execution Freeze/Concision authorization (2026-11-16, superseded)
 
+The preceding checkpoint authorized the offline Freeze Gate and five-section Writer concision tranche from baseline `f7436fb0...`. The reported run has now occurred. Its independent verification limits and remaining live gates are recorded above.
+
+---
+
+## HISTORICAL — PR32 D4 local PASS / On Cue baseline independently verified / FULL REPLAY HOLD (2026-10-20)
 ---
 
 ## ACTIVE — PR32 D4 local PASS / On Cue baseline independently verified / FULL REPLAY HOLD (2026-10-20)
