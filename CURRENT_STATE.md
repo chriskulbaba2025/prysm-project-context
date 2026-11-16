@@ -20,8 +20,11 @@ Completed:
 - Reported input estimates sum correctly: 86,325 → 26,600, a reduction of 59,725 / 69.19% for one controlled fixture. This is a local estimate, not provider token usage. Output-token and dollar savings are NOT MEASURED.
 - RED_QUEEN_CHALLENGE is PASS for offline scope per Codex; TOKEN_EFFICIENCY is PASS for measured input estimates only. Neither was independently rerun in this review.
 
-In progress:
-- Independently verify the exact candidate checkout/SHA, clean-tree state, complete diff, and raw final-regression/gate logs from the Codex execution environment.
+Verification result (2026-11-16):
+- The governed PRYSM workspace is clean at `repair/prysm-evidence-accuracy-20261013` / `bda9578029fda428e227bae774defb2e6c9a9809`. It is not the reported candidate branch or SHA.
+- GitHub lookup for candidate `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a` returns no commit. This is consistent with the report that it is local-only; it does not prove that the local commit is absent from the original machine.
+- The current session cannot access the reported local candidate checkout, its full diff, or raw regression logs. The existing Downloads proof folder contains summaries only.
+- Therefore candidate identity, clean-tree state, source changes, and reported gates remain CODEX-REPORTED and NOT INDEPENDENTLY VERIFIED.
 
 Blocked:
 - Trust failure metadata reports audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE and the causal link between truncation and the status conflict is UNRESOLVED.
@@ -34,6 +37,6 @@ Important constraints:
 - Earlier state history is retained in Git commit history; this file is the sole current-state summary.
 
 Exact next action:
-- Independently verify the exact local candidate checkout, diff, clean-tree state, and raw final-regression/gate logs. If those artifacts cannot be accessed, preserve candidate/test claims as CODEX-REPORTED only. Do not push, deploy, or call providers during this verification.
+- Make the exact local candidate checkout (branch `repair/prysm-staging-writer-20261115`, commit `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`), complete source diff, clean-tree evidence, and raw final-regression/gate logs accessible to the governed PRYSM verification workspace. Then independently verify them. Keep the candidate unpushed; do not deploy or call providers. If these artifacts are unavailable, this offline tranche remains unverified and must not be represented as complete.
 
 Last verified: 2026-11-16 America/Toronto

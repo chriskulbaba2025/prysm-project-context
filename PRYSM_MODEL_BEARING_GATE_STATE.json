@@ -14,7 +14,8 @@
     "tagObjectSha": "9bce687628a99d3246866f6248834f33596d9593",
     "tagTargetSha": "f7436fb0a9ed541ade976ee59eecba0dcda64e88",
     "githubCandidateCommitLookup": "NOT_FOUND_EXPECTED_LOCAL_ONLY",
-    "source": "Codex closure report; candidate tree/diff unavailable in this review"
+    "source": "Codex closure report; candidate tree/diff unavailable in this review",
+    "sessionVerification": "BLOCKED_CANDIDATE_CHECKOUT_AND_RAW_LOGS_NOT_ACCESSIBLE_TO_CURRENT_GOVERNED_WORKSPACE"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -28,8 +29,8 @@
     "typecheck": "REPORTED_PASS",
     "build": "REPORTED_PASS",
     "negativeControls": "REPORTED_PASS",
-    "exactCandidateSourceAndCleanTree": "NOT_INDEPENDENTLY_VERIFIED",
-    "rawRegressionLogs": "NOT_AVAILABLE_IN_PROOF_FOLDER"
+    "exactCandidateSourceAndCleanTree": "NOT_INDEPENDENTLY_VERIFIED_CANDIDATE_CHECKOUT_UNAVAILABLE",
+    "rawRegressionLogs": "NOT_ACCESSIBLE_TO_CURRENT_REVIEW"
   },
   "offlineInputTokenEstimate": {
     "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
@@ -90,7 +91,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Independently verify the exact local candidate checkout, diff, clean-tree state, and raw final-regression/gate logs. Do not push, deploy, or call providers; any staging release/live acceptance requires separate authorization.",
+  "nextAction": "Expose exact local candidate checkout repair/prysm-staging-writer-20261115 at 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a, complete source diff, clean-tree evidence, and raw final-regression/gate logs to governed PRYSM verification workspace; independently verify offline claims only. Keep candidate unpushed; no deployment or provider calls.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
