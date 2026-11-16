@@ -32,7 +32,8 @@
     "mcpCurrentness": "VERIFIED_SMOKE_PASS_PRYSM_MCP_RUN_20261116T165153905Z",
     "evidenceRecoveryRunId": "prysm-20261116T171308082Z-PRYSM_WRITER_CONCISION_OFFLINE_EVIDENCE_RECOVERY_FINAL_20261-421f0b",
     "exactCandidateTestRunId": "prysm-20261116T173234634Z-PRYSM_WRITER_CONCISION_EXACT_CANDIDATE_OFFLINE_TESTS_2026111-23c6c7",
-    "exactCandidateTestBinding": "BLOCKED_FIXED_PRYSM_WORKSPACE_HEAD_BDA9578_DOES_NOT_MATCH_SEPARATE_CANDIDATE_SHA"
+    "exactCandidateTestBinding": "VERIFIED_FIXED_READ_ONLY_BINDING_PRYSM_CANDIDATE_OFFLINE_TEST",
+    "candidateBindingRepair": "VERIFIED_REPORT_PRYSM_CANDIDATE_BINDING_REPAIR_20261116"
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
@@ -48,7 +49,7 @@
     "negativeControls": "REPORTED_PASS",
     "exactCandidateSourceAndCleanTree": "INDEPENDENTLY_VERIFIED_CLEAN_DIRECT_BASE_ANCESTRY_AND_3_FILE_DIFF",
     "rawRegressionLogs": "HISTORICAL_LOCAL_ARTIFACTS_FOUND_MIXED_PASS_AND_FAILURE_NOT_FRESH_CANDIDATE_EVIDENCE",
-    "freshTestsThisTranche": "NOT_RUN_WORKSPACE_BINDING_MISMATCH"
+    "freshTestsThisTranche": "NOT_RUN_AWAITING_SEPARATE_CANDIDATE_TEST_AUTHORIZATION"
   },
   "offlineInputTokenEstimate": {
     "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
@@ -109,7 +110,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Establish isolated governed candidate-workspace binding for C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-REPAIR at repair/prysm-staging-writer-20261115/24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a; do not repoint or checkout C:\\g\\p001. Independently test binding, then rerun exact-candidate offline tests with raw logs.",
+  "nextAction": "Separately authorize one fresh offline test run through prysm_candidate_offline_test: focused Narrative v2 tests, deterministic/worker regressions, configured typecheck/build checks, raw logs tied to candidate 24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a; stop on failure; no source edits/push/deployment/providers/production.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
