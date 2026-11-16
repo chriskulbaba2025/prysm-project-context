@@ -15,7 +15,7 @@ Exact next action: stop this tranche. A new bounded tranche is required after th
 
 Project: PRYSM
 
-Current objective: Complete the one authorized commit-and-context-update workflow for the verified offline lifecycle repair, then stop before any staging release or live acceptance.
+Current objective: Preserve the exact staged application deployment and stop at the live-acceptance hold until the approved authenticated reviewer/browser path is restored.
 
 Verified checkpoint:
 - Application repository: `chriskulbaba2025/prysm-staging-isolated`.
@@ -24,11 +24,11 @@ Verified checkpoint:
 - Application commit parent / pre-repair candidate: `24a1a82fb9a8a4ab48e819079b7eec8dc07f9c5a`.
 - Baseline: `f7436fb0a9ed541ade976ee59eecba0dcda64e88`.
 - Protective tag `prysm-writer-pre-concision-20261116-f7436fb` peels to the baseline.
-- Application worktree is clean after the local commit. The application repair branch remains unpushed.
+- Application worktree is clean after the local commit. The application repair branch is pushed to the approved isolated staging path at the exact SHA above.
 
 Current environment / branch / version:
 - Local application candidate is committed at the exact application SHA above.
-- No application branch push, merge, deployment, staging change, production access/change, provider/model call, crawl, audit, rescore, or paid usage occurred.
+- The exact application branch push and isolated staging deployment occurred in this tranche; no merge, production access/change, crawl, audit, rescore, or provider/model call occurred.
 - Context repository is `chriskulbaba2025/prysm-project-context`, authoritative branch `main`.
 
 Completed:
@@ -49,15 +49,15 @@ In progress:
 
 Blocked:
 - No application repair blocker remains for this tranche.
-- Staging release, live acceptance, production access/change, application-branch push, merge, deployment, provider/model usage, crawl, audit, and rescoring remain unauthorized and unperformed.
+- Staging release is complete at the exact SHA above. Live acceptance is held solely by unavailable authenticated reviewer/browser access; no controlled audit or provider/model usage occurred.
 
 Important constraints:
-- Keep the application repair branch unpushed.
+- Preserve the exact pushed application branch and isolated staging deployment; do not touch production.
 - Preserve the Writer concision repair, contracts, budgets, scores, baseline, protective tag, and unrelated files.
-- Do not begin staging release or live acceptance from this checkpoint.
+- Do not begin live acceptance from this checkpoint without a new bounded tranche after authenticated reviewer/browser access is restored.
 - Treat the test proof as offline/local proof only; it is not deployment or production-readiness evidence.
 
 Exact next action:
-- Stop after this context update. Any application push, staging release/change, live acceptance, production action, provider/model call, crawl, audit, rescore, or further source/context change requires separate authorization.
+- Stop after this context update. Live acceptance requires a new bounded tranche after the approved authenticated reviewer/browser path is restored.
 
 Last verified: 2026-11-16 America/Toronto
