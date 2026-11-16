@@ -18,6 +18,7 @@
 - Failure metadata records City Media audit `726cc5ad-925f-469d-984f-ab590f1d74ba`, Trust call 5, `stop_reason=max_tokens`, 3,500 output tokens at the 3,500 cap, and a conflicting status pair in `limitations[4]`. Exact response bytes are unavailable; exact replay is UNAVAILABLE, and whether truncation caused the status conflict is not established.
 - The offline report says no provider calls/cost, no app push/deployment, and no evidence/score/audit/production mutation. These remain execution-reported. It reports offline tests and PDF/viewer gates, but the cited PDF gate covers the historical seven-conceptual-page viewer contract; it is not an accepted City Media six-page report/PDF artifact.
 - Judge, editorial, completed six-page City Media report, authenticated browser acceptance, live Anthropic behavior/billing, and live PDF acceptance remain NOT RUN / HOLD as applicable. Production was not checked or changed.
+- Gate labels from the Codex receipt: RED_QUEEN_CHALLENGE PASS for offline scope (reported, not independently re-run); TOKEN_EFFICIENCY PASS for the measured input estimate only; PRODUCTION PATH EQUIVALENCE BLOCKED and PRODUCTION IDENTITY CONTINUITY BLOCKED for live release.
 
 ### Hard boundary and exact next action
 
