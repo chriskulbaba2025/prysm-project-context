@@ -38,19 +38,33 @@
   },
   "incidentAuditId": "726cc5ad-925f-469d-984f-ab590f1d74ba",
   "deterministicRepair": {
-    "status": "HOLD_FRESH_EXACT_CANDIDATE_TESTS_REQUIRED",
+    "status": "FAIL_FRESH_EXACT_CANDIDATE_PRYSM_CLOSE_14",
     "targetedTests": "REPORTED_PASS_120_OF_120",
-    "narrativeV2": "REPORTED_PASS_325_OF_325",
-    "fullWorkerRegression": "REPORTED_PASS_1489_OF_1489",
-    "deterministicTests": "REPORTED_PASS_1070_OF_1070",
+    "narrativeV2": "FRESH_PASS_325_OF_325_LIMITATION_STATUS_COVERAGE_INCLUDED",
+    "fullWorkerRegression": "NOT_RUN_STOPPED_AFTER_DETERMINISTIC_FAILURE",
+    "deterministicTests": "FRESH_FAIL_PRYSM_CLOSE_14_EXPECTED_DRAFT_RENDERED_OBSERVED_COLLECTING",
     "wholeAppGate": "REPORTED_PASS",
     "closureGate": "REPORTED_PASS",
-    "typecheck": "REPORTED_PASS",
-    "build": "REPORTED_PASS",
+    "typecheck": "NOT_RUN_STOPPED_AFTER_DETERMINISTIC_FAILURE",
+    "build": "NOT_RUN_STOPPED_AFTER_DETERMINISTIC_FAILURE",
     "negativeControls": "REPORTED_PASS",
     "exactCandidateSourceAndCleanTree": "INDEPENDENTLY_VERIFIED_CLEAN_DIRECT_BASE_ANCESTRY_AND_3_FILE_DIFF",
     "rawRegressionLogs": "HISTORICAL_LOCAL_ARTIFACTS_FOUND_MIXED_PASS_AND_FAILURE_NOT_FRESH_CANDIDATE_EVIDENCE",
-    "freshTestsThisTranche": "NOT_RUN_AWAITING_SEPARATE_CANDIDATE_TEST_AUTHORIZATION"
+    "freshTestsThisTranche": "NARRATIVE_V2_FRESH_PASS_325_OF_325; DETERMINISTIC_FRESH_FAIL_PRYSM_CLOSE_14",
+    "freshExactCandidateEvidence": {
+      "proof": "C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-REPAIR-offline-proof-24a1a82\\REPORT.md",
+      "deterministicFailure": {
+        "primaryTest": "PRYSM-CLOSE-14",
+        "primaryPath": "services/worker/src/application/publication-path.test.js:137",
+        "relatedTest": "PRYSM-CLOSE-10c",
+        "relatedPath": "services/worker/src/application/stranded-audit-recovery.test.js:261",
+        "expected": "draft_rendered",
+        "observed": "collecting",
+        "wrapperExitCode": "UNAVAILABLE_PROCESS_TERMINATED_AFTER_FAILURE_OBSERVED"
+      },
+      "sourceOrExternalMutation": "NONE_REPORTED",
+      "providerCalls": "NONE_INTENTIONALLY_MADE"
+    }
   },
   "offlineInputTokenEstimate": {
     "method": "Repository cost-preflight estimator; local estimate, not provider receipt",
@@ -111,7 +125,7 @@
     "frozenSha": "NOT_RECHECKED",
     "status": "NO_PRODUCTION_MUTATION_REPORTED; RUNTIME_NOT_CHECKED"
   },
-  "nextAction": "Restart configured MCP server from C:\\Users\\kulba\\Desktop\\prysm-gacm-mcp so registered schema loads prysm_candidate_offline_test; then run already authorized fresh offline candidate-test tranche with raw logs.",
+  "nextAction": "Separately authorize one bounded offline diagnosis/repair tranche for the owning lifecycle/state-transition boundary exposed by PRYSM-CLOSE-14 / PRYSM-CLOSE-10c; preserve candidate/baseline and make no provider, deployment, push, or production change.",
   "lastVerified": "2026-11-16 America/Toronto",
   "priorGateStateCheckpoint": "REPORT_INTELLIGENCE_TERRA_SOL_HOSTED_ACCEPTANCE_EXTERNAL_BLOCKER_2026-09-25"
 }
