@@ -1,5 +1,19 @@
 # Current State
 
+## Latest authorized offline live-truncation diagnosis/repair tranche — 2026-11-16
+
+- Audit under diagnosis: `224a4be0-fb54-448d-8b26-3117bf1bff9b`.
+- Exact staging/application SHA preserved: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
+- Application branch: `repair/prysm-staging-writer-20261115`; local HEAD unchanged; worktree is dirty only by the targeted regression test listed below. No application commit or push was made.
+- Failure evidence preserved: Writer pass 1 reached `narrative_failed` with `WRITER_EXECUTION_FAILED`; technical message `Anthropic Writer response was truncated at max_tokens`.
+- Root cause: the Writer concision repair shortened repeated prompt input only. The Anthropic section path still uses the legacy six-group output allocation whenever the configured Writer ceiling is not exactly 24,000. That legacy path has no governed shared-reserve continuation; a `max_tokens` response is durably recorded as `WRITER_TRUNCATED` and propagates to `WRITER_EXECUTION_FAILED`.
+- The protected staging diagnostics route was read-only inspected through Railway HTTP logs but returned HTTP 401; exact audit-specific persisted request/reservation metadata was unavailable from this session. No live audit evidence or scores were changed.
+- Targeted coverage added locally: `services/worker/src/narrative-v2/writer-structured-output.test.js`, `WRITER-STRUCT-05`, locking that shared-reserve continuation cannot be inferred for the legacy 12,000-token ceiling and remains tied to the 24,000-token plan.
+- Targeted Narrative v2 tests before and after the coverage change: PASS. Raw stdout/stderr and report: `C:\\Users\\kulba\\Downloads\\PRYSM-LIVE-TRUNCATION-REPAIR-20261116\\REPORT.md`.
+- No provider/model calls, retries, deployment, push, rescore, crawl, production access/change, budget change, or model change occurred.
+- Result: HOLD. A runtime repair requires an approved output-plan/configuration decision that is outside this tranche's no-budget-increase/no-provider-call limits.
+- Exact next action: obtain a new bounded authorization for the output-plan/configuration repair and authenticated audit-diagnostics access; re-prove offline before any separate release/live tranche. Stop here.
+
 ## Latest authorized staging-release tranche — 2026-11-16
 
 - Exact application SHA: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
