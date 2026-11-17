@@ -1,3 +1,14 @@
+## Latest authorized Oakville GPT report recovery attempt — 2026-11-17
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; no audit retry or provider call was made.
+- Authority was re-read before action, including project memory, constraints, decisions, diagnostics/repair boundary, model-bearing release, and post-run protocols.
+- Current application/staging identity remains `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`; Railway `20e28b7d-6031-42bc-8c89-5e0170ad70ef` is SUCCESS and Vercel `dpl_BbQnwGWbdZf9eS2bmDdmcANjMEpX` is READY. Local worktree is clean.
+- The available Railway read exposes only redacted variable names, so the exact previously working GPT Writer/Judge model/provider identity cannot be verified. The available PRYSM MCP binding points to stale checkout `C:\\g\\p001` at `bda9578029fda428e227bae774defb2e6c9a9809`; it was not used for application execution.
+- No signed-in staging reviewer session or approved target-audit API execution path was available. No guessing, auth bypass, config mutation, deployment, crawl, rescore, evidence/score/lifecycle mutation, GPT/Judge/Anthropic call, or production action occurred.
+- Result: HOLD. Existing audit data, scores, prior report artifacts, and lifecycle history remain unchanged. Actual provider usage/cost: none.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-OAKVILLE-REPORT-RECOVERY-HOLD-20261117\\REPORT.md`; SHA-256 `883FBF04D1E8382AFA48A7CFF999D468C288A3AADBF9DC4E034E2EB4E244F7EF`.
+- Exact next action: restore one approved authenticated staging execution path exposing target-audit metadata and permitting the single governed recovery, or verify the GPT Writer/Judge identity through the existing authorization boundary; then run the recovery once and retain the GPT report if Anthropic polish fails.
+
 ## Latest authorized PRYSM Anthropic transport repair — 2026-11-17
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. Start application SHA `4ffff9c938878bd46cd0e0c578a78733e7673502`; verified application commit `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`.
