@@ -1,3 +1,18 @@
+## Latest authorized PRYSM GPT report + Anthropic language-polish implementation — 2026-11-17
+
+- Target audit preserved: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. No Oakville recovery, audit retry, crawl, rescore, evidence mutation, score mutation, or provider call was made in this tranche.
+- Application: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, start SHA `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`, verified application commit `452b7262af1f06865476d81927f5743e24e39b3b`. The worktree was clean at start; no unrelated WRITER-STRUCT-05 change was present.
+- Workflow implemented generically: accepted GPT Writer/Judge orchestration is persisted as `narrative-v2/orchestration-gpt.json`; then five core report sections are offered to Anthropic `claude-opus-5-5` sequentially through strict per-section JSON envelopes. Only editable prose fields with stable field IDs are sent; structured/factual fields are immutable. Exact field coverage, protected-value preservation, and envelope validation fail closed.
+- GPT fallback: editor disabled/unavailable, timeout, truncation, invalid JSON/envelope, semantic/protected-field drift, deterministic editorial HOLD, final validation failure, or budget exhaustion leaves the accepted GPT section/report canonical. Final GPT Judge runs validation-only after an edited candidate; report publication does not depend on Anthropic acceptance.
+- Configuration boundary: staging-isolated Railway variables set without exposing secrets: Writer provider/model `openai`/`gpt-5.6-terra`, Judge provider/model `openai`/`gpt-5.6-sol`, editor model `claude-opus-5-5`, Anthropic editor enabled. Existing report caps, reserve, budgets, and the $20 recovery authority were not increased.
+- Tests: targeted editor/live-binding and parser suite `24/24 PASS`; Narrative v2 `347/347 PASS`; deterministic regression `1074/1074 PASS`; worker regression `1489/1489 PASS`; root typecheck PASS; root Next build PASS. No provider calls occurred in tests.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`, deployment `dbe3f7c8-41f3-4dfb-8a9c-9089ca626da3`, SUCCESS; commit metadata matches `452b7262af1f06865476d81927f5743e24e39b3b`.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_DvYGdc3upevH4u9Bm4GeM8nNzTZj`, READY; Git SHA matches. Custom domain `prysm.staging.omnipressence.com` was reassigned from `dpl_BbQnwGWbdZf9eS2bmDdmcANjMEpX` to `dpl_DvYGdc3upevH4u9Bm4GeM8nNzTZj`; alias readback verified.
+- Signed-in Oakville recovery remains HOLD/NOT STARTED because no authenticated reviewer session/API path is available to initiate the one governed recovery. The exact manual action is one click: while signed in, open `https://prysm.staging.omnipressence.com/audits/224a4be0-fb54-448d-8b26-3117bf1bff9b` and click `Retry Report Wording` once. Stop if it fails; do not click again.
+- Provider usage/cost: no live provider calls in this tranche; actual cost `$0`. Recovery receipts remain unavailable because recovery was not initiated.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-GPT-ANTHROPIC-POLISH-IMPLEMENTATION-20261117\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / OAKVILLE RECOVERY HOLD pending the single authorized signed-in reviewer action.
+
 ## Latest authorized Oakville GPT report recovery attempt — 2026-11-17
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; no audit retry or provider call was made.
