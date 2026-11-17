@@ -1,3 +1,13 @@
+## Latest authorized staging deployment — 2026-11-17
+
+- Application repository: `chriskulbaba2025/prysm-staging-isolated`; branch `repair/prysm-staging-writer-20261115`; baseline `fc125f7a82a960164fa0e316fa715ca09265de47`; verified application SHA `b1b131350d9be80b14bb10f50a13f66c817c3563`.
+- This deployment contains only the previously verified offline Writer contract repair. No additional source repair, model/provider substitution, budget/cap/report-contract/evidence/score change, Oakville retry, audit mutation, paid provider call, or production action occurred.
+- GitHub branch readback now matches the exact SHA after a normal fast-forward push.
+- Railway isolated staging service `prysm-worker`: deployment `709ec2d0-e94b-41dd-bacc-4606da6ef6b6`, SUCCESS; Railway commit metadata matches the exact SHA; worker health returned HTTP 200 with `{"status":"ok","service":"prysm-worker","version":"0.2.0"}`.
+- Vercel isolated staging Preview: deployment `dpl_3jnZuE6LiXTx93DfnzodwFLCWv9n`, READY; Git SHA metadata matches; branch alias `prysm-staging-isolated-git-repair-3108e9-chriskulbabas-projects.vercel.app` resolves to that deployment. Unauthenticated route inspection reaches Vercel SSO with HTTP 302; signed-in content and report acceptance are not claimed.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-DEPLOY-20261117-B1B1313\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / OAKVILLE RETRY NOT RUN / REPORT ACCEPTANCE NOT CLAIMED.
+
 ## Latest authorized PRYSM strict Writer schema repair — 2026-11-17
 
 - Screenshot evidence showed the deployed full-report OpenAI request failing HTTP 400 because the strict schema included `technical` and `performanceUx` in `properties` while omitting them from `required`.
