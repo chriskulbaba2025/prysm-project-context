@@ -1,5 +1,19 @@
 # Current State
 
+## Latest authorized PRYSM Writer contract-and-observability repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. Exact third-response bytes remain unavailable and were not inferred.
+- Verified generic defects: Anthropic section requests omitted native `output_config.format` and retry execution namespaces were not indexed by staging diagnostics. Repair is generic and preserves section contracts, strict validators, Trust evidence validation, caps, shared reserve, continuation, budgets, and fail-closed refusal/truncation/schema/API/malformed-envelope/usage/parser/validation behavior.
+- Anthropic request contract: every active sanitized section schema is generated from the authoritative PRYSM section contract, passed as `output_config.format = { type: "json_schema", schema }`, and persisted by safe schema ID/hash with plan version, prompt hash, section, cap, model, stop reason, usage, parser stage, and validation/failure classification. Raw prompts/responses/credentials/secrets are not exposed.
+- Execution index: tenant/audit-scoped durable start/outcome artifacts cover initial execution and every retry/resume/recovery execution with execution ID, attempt number, timestamps, lifecycle outcome, artifact namespace, deployed SHA, Writer/Judge metadata, provider, and plan family. Diagnostics enumerates indexed namespaces and keeps legacy unavailable explicit.
+- Diagnostics/UI behavior: overlapping call numbers are resolved within their execution namespace; each execution is rendered separately. Historical attempts without recoverable indexed metadata render an explicit unavailable state. Existing ownership/authentication, cross-tenant 404, redaction, and secret exclusions remain unchanged.
+- Application: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, start SHA `5656ed4e7049a305228a8e46b92d769873d0bfe2`, application SHA `1d4e48de4c12e17c86ea39b4aa14952beb52437e`; GitHub branch readback matches.
+- Tests: targeted Writer/Anthropic/execution-index/diagnostics/view `66/66 PASS`; Narrative v2 `341/341 PASS`; deterministic `1073/1073 PASS`; worker `1489/1489 PASS`; root typecheck PASS; root build PASS. No provider calls, audit retry, crawl, rescore, evidence/score/lifecycle mutation, model/budget/cap change, or production action occurred.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`, deployment `b04b0a56-eef6-4098-a5f9-47bcb9a5c353`, SUCCESS, commit metadata matches `1d4e48de4c12e17c86ea39b4aa14952beb52437e`.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_GmKWvtXfajkYFhg3iD27ypvDeMf1`, READY, Git SHA matches. Custom-domain alias before `dpl_CFWZvaYbTgUmtjqmSpqh3APTiV1q`; after `dpl_GmKWvtXfajkYFhg3iD27ypvDeMf1`; alias readback verified `prysm.staging.omnipressence.com` on the after deployment.
+- Signed-in custom-domain UI verification is UNAVAILABLE because the authorized computer-use browser bridge failed initialization. Direct unauthenticated access reached Vercel SSO only; no live card-content claim is made.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-WRITER-CONTRACT-OBSERVABILITY-REPAIR-20261116\\REPORT.md`; SHA-256 `640669545EB10D7BDDA9B31D47BDB8254B0112269E4CAB087FB81EDFAEB114CF`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / SIGNED-IN UI VERIFICATION HOLD. Exact next action: restore the approved signed-in staging reviewer/browser path and perform one read-only target-page verification; do not retry the audit or call a provider.
 
 ## Latest authorized read-only Oakville diagnostic reset — 2026-11-16
 
