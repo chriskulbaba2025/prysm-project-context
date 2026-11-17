@@ -1,3 +1,13 @@
+## Latest authorized staging runtime-authority repair — 2026-11-17
+
+- Root cause: the GPT-first staging configuration was live, but `narrative-v2-provider-authority.json` still declared the older Anthropic Writer identity. Production runtime initialization therefore failed closed with `MODEL_PROVIDER_IDENTITY_MISMATCH`; the prior deployment also exposed a missing GPT model price-table entry.
+- Repair: staging authority now coherently declares OpenAI-compatible GPT Writer `gpt-5.6-terra` and GPT Judge `gpt-5.6-sol`, with Anthropic `claude-opus-5-5` retained only as the separate sequential language-polish editor. The exact approved Railway model price entries were restored; no budget, cap, score, evidence, or production setting was changed.
+- Application commit: `694cbc51ee955b3c47cd3ac2731569294cd2c790` on `repair/prysm-staging-writer-20261115`; exactly two files changed: provider authority JSON and its regression test. Branch ref was updated from `452b7262af1f06865476d81927f5743e24e39b3b` with a fast-forward.
+- Railway staging: deployment `073d0b2e-c5c6-4888-aaf0-b95bf6f8fc9e`, SUCCESS, exact commit metadata matches. Startup logs show PostgreSQL, artifact store, governed API, and worker listening on :8080; no provider-authority or price-table initialization error remains.
+- Frontend access: unauthenticated request to the custom domain reaches Vercel SSO with HTTP 302; signed-in content is not claimed from that request.
+- Oakville audit `224a4be0-fb54-448d-8b26-3117bf1bff9b`: unchanged. No retry, crawl, rescore, evidence/score/lifecycle mutation, or provider call was made.
+- Result: CODE VERIFIED / STAGING WORKER HEALTHY / OAKVILLE RECOVERY NOT STARTED. Exact next action: while signed in, hard-refresh the Oakville page and click `Retry Report Wording` exactly once. Stop if it fails; do not click again.
+
 ## Latest authorized PRYSM GPT report + Anthropic language-polish implementation — 2026-11-17
 
 - Target audit preserved: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. No Oakville recovery, audit retry, crawl, rescore, evidence mutation, score mutation, or provider call was made in this tranche.
