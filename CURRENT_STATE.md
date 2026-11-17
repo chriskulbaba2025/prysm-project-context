@@ -1,5 +1,19 @@
 # Current State
 
+## Latest authorized staging diagnostics-visibility repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; prior live failure `narrative_failed` / `WRITER_EXECUTION_FAILED`; staging source SHA before repair: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
+- Owning boundary repaired: the staging diagnostics route now reuses signed-principal/session `authorizeAuditAccess`, enforces tenant/audit ownership, returns non-disclosing cross-tenant 404, and preserves the internal-secret path. No auth bypass or auth mechanism change.
+- The audit-detail page exposes only Writer section identifier, mode, prompt hash, configured output cap, input/output usage, stop reason, attempt identifier, and validation/failure classification. Raw prompts, raw model responses, credentials/API keys, and unrelated audits are excluded.
+- Application commit: `9cb7123ed3123e09a85ee2cfb8915914dfd7af4b` on `repair/prysm-staging-writer-20261115`; only four repair files committed. Pre-existing uncommitted `WRITER-STRUCT-05` remains preserved and excluded.
+- Tests: targeted diagnostics/auth tests PASS 5/5; deterministic worker regression PASS 1072/1072; root typecheck PASS; offline root build PASS.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, deployment `4d137905-2d9e-47bb-8144-db60d18eaafa`, SUCCESS, source branch and commit metadata match `9cb7123ed3123e09a85ee2cfb8915914dfd7af4b`.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_5TwaGmwqzjySDzcEheSRGc6rMoCq`, READY, Git SHA matches `9cb7123ed3123e09a85ee2cfb8915914dfd7af4b`.
+- Live unauthenticated diagnostics request returned HTTP 401. Positive hosted reviewer-session visibility is HOLD/UNAVAILABLE because no authorized staging reviewer session was available; local permitted/denied tests are not a substitute for that live proof.
+- No provider calls, audit retry, crawl, rescore, model/budget/token-cap change, production access/change, or evidence/score/lifecycle-history mutation occurred.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-DIAGNOSTICS-VISIBILITY-20261116\\REPORT.md`.
+- Result: HOLD only for positive hosted visibility proof. Exact next action: an authorized staging reviewer must open the target audit-detail page while signed in and confirm the Writer Diagnostics card; stop after that verification.
+
 ## Latest authorized authenticated-metadata HOLD tranche — 2026-11-16
 
 - Audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; deployed/application SHA preserved: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
