@@ -1,5 +1,20 @@
 # Current State
 
+## Latest authorized staging diagnostics-card repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; observed signed-in reviewer page showed no Writer Diagnostics card. Prior deployed SHA: `9cb7123ed3123e09a85ee2cfb8915914dfd7af4b`.
+- Verified source cause: the audit-detail page called the diagnostics API through the existing signed-principal client, but rendered the card only when `diagnosticCalls.length > 0`. Empty/unavailable legacy diagnostics were silently hidden.
+- Repair: staging-only card now renders the bounded metadata table when persisted Writer calls exist, or `Diagnostics unavailable for this legacy attempt` when no persisted Writer attempt metadata exists or the diagnostics request fails. No metadata is fabricated. Tenant ownership, session authorization, secret exclusion, and raw prompt/response redaction are preserved.
+- Application commit: `e90007ced8ffaf1526312218ba11a19cad47423e` on `repair/prysm-staging-writer-20261115`; only page/helper/tests changed. Pre-existing uncommitted `WRITER-STRUCT-05` remains untouched and excluded.
+- Tests: rendering model 3/3 PASS; diagnostics/auth 5/5 PASS; deterministic worker regression 1072/1072 PASS; root typecheck PASS; offline build PASS.
+- GitHub branch resolves to `e90007ced8ffaf1526312218ba11a19cad47423e`.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, deployment `d88cf1e3-7f4e-4780-9e2e-db2571fcc552`, SUCCESS, source SHA matches.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_QxrtHRyQMC4jdZ4eMWGgn8sPtCiD`, READY, Git SHA matches.
+- Direct retrieval of the deployed audit's persisted payload and positive signed-reviewer browser verification were UNAVAILABLE in this run because no reusable authorized reviewer session was available. This is not evidence that metadata is absent; the UI now displays the explicit legacy-unavailable state when the API confirms absence.
+- No provider calls, audit retry, crawl, rescore, model/budget/cap change, production access/change, or audit evidence mutation occurred.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-DIAGNOSTICS-CARD-REPAIR-20261116\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED; HOLD only for final signed-reviewer visibility confirmation. Exact next action: authorized reviewer hard-refreshes the final preview audit-detail page for the target audit and confirms the table or explicit unavailable message.
+
 ## Latest authorized staging diagnostics-visibility repair — 2026-11-16
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; prior live failure `narrative_failed` / `WRITER_EXECUTION_FAILED`; staging source SHA before repair: `8ef3e1f892014c368ad2de12723653fd6020f77f`.
