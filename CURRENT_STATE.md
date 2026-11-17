@@ -1,5 +1,15 @@
 # Current State
 
+## Latest authorized Anthropic compatibility preflight — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; target execution: `7c7f90cf-ba4d-4872-809c-daaa2d8df795`; deployed/application SHA preserved: `1d4e48de4c12e17c86ea39b4aa14952beb52437e`.
+- Read-only source inspection verified that protected response artifacts contain bounded Anthropic `providerError` fields and that `buildStagingDiagnostics()` currently omits those safe provider-rejection fields from call records.
+- Required exact artifact read is UNAVAILABLE: Railway logs expose only request/status timing; the available `prysm_gacm` project binding resolves to stale workspace `C:\\g\\p001` at SHA `bda9578029fda428e227bae774defb2e6c9a9809`; no approved reviewer/session, diagnostics credential, or artifact-read capability was available for the target execution.
+- Exact HTTP status, Anthropic error type, parameter, message, and provider request ID remain UNAVAILABLE. The schema rejection and repair remain UNRESOLVED. No provider preflight, source edit, audit retry, push, deployment, production action, or audit mutation occurred; no inference was made from local fixtures.
+- Local application worktree remained clean at `1d4e48de4c12e17c86ea39b4aa14952beb52437e`.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-ANTHROPIC-COMPATIBILITY-PREFLIGHT-HOLD-20261116\\REPORT.md`; SHA-256 `34709DFAF987E95C93EF95656D89FA452A6A9E6A8EADC221E621A87D365F24A0`.
+- Result: HOLD. Exact next action: restore the approved authenticated artifact-read path, then start a new bounded tranche; do not edit or call Anthropic before the exact rejection is read.
+
 ## Latest authorized PRYSM Writer contract-and-observability repair — 2026-11-16
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. Exact third-response bytes remain unavailable and were not inferred.
