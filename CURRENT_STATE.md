@@ -1,5 +1,17 @@
 # Current State
 
+## Latest authorized staging diagnostics-evidence repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; indexed execution `7c7f90cf-ba4d-4872-809c-daaa2d8df795`; starting SHA `1d4e48de4c12e17c86ea39b4aa14952beb52437e`; final application SHA `4ffff9c938878bd46cd0e0c578a78733e7673502`.
+- Repair: `buildStagingDiagnostics()` reads each indexed response artifact through the existing authorized artifact-store boundary and reuses the bounded Anthropic error/request-ID parsers. Failed calls expose only HTTP status, error type, parameter, bounded message, request ID, and explicit recorded/unavailable classification. The raw top-level `calls` projection now uses safe records rather than internal artifact objects.
+- UI: failed Writer calls render safe provider rejection fields; successful calls remain unchanged; execution grouping and legacy-unavailable state remain; `narrative_failed` retry messaging no longer implies active report construction.
+- Tests: targeted diagnostics/view/auth `10/10 PASS`; deterministic worker `1074/1074 PASS`; root typecheck PASS; root build PASS. No provider calls, Oakville retry, crawl, rescore, evidence/score/lifecycle mutation, model/budget/cap/output-plan change, or production action occurred.
+- GitHub branch resolves to `4ffff9c938878bd46cd0e0c578a78733e7673502`.
+- Railway staging deployment `62e3817f-4250-4215-bdbb-acde14b9f23d`, SUCCESS, commit metadata matches. Vercel deployment `dpl_DErPoD46YZybNG1GnqRdeWL3zNwd`, READY, Git SHA matches. Custom domain moved from `dpl_GmKWvtXfajkYFhg3iD27ypvDeMf1` to `dpl_DErPoD46YZybNG1GnqRdeWL3zNwd`; alias readback verified.
+- Signed-in Oakville page verification is UNAVAILABLE because the computer-use browser host is unavailable. No exact target rejection fields are claimed as visually observed.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-DIAGNOSTICS-EVIDENCE-REPAIR-20261116\\REPORT.md`; SHA-256 `12CA9E7A0B663C83E1C2B4D39E3E4C09DF5F9DD2408EC20527D56B4B81FD0501`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / SIGNED-IN PAGE VERIFICATION HOLD. Exact next action: restore the approved signed-in browser path and perform one read-only target-page verification; do not retry the audit or call a provider.
+
 ## Latest authorized Anthropic compatibility preflight — 2026-11-16
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; target execution: `7c7f90cf-ba4d-4872-809c-daaa2d8df795`; deployed/application SHA preserved: `1d4e48de4c12e17c86ea39b4aa14952beb52437e`.
