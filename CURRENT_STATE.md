@@ -125,3 +125,19 @@ Exact next action:
 - Stop after this context update. Live acceptance requires a new bounded tranche after the approved authenticated reviewer/browser path is restored.
 
 Last verified: 2026-11-16 America/Toronto
+
+
+## Latest authorized staging Writer output-plan repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; observed evidence was Search `3000/3000` and Trust `3500/3500` truncated at `max_tokens`, while Executive `5488/6500`, Conversion `3331/4000`, and Funnel `2642/3500` passed. A separate legacy Search attempt passed at `6500`, exposing divergent plan families.
+- Root cause: the active five-section plan had Search and Trust caps below their validated minimum completion usages, while non-24000 positive ceilings silently used an unversioned legacy weighted allocation without an explicit continuation policy. The failure boundary was generic Writer section planning, not the Oakville fixture.
+- Repair: added explicit `WRITER_SECTION_OUTPUT_PLAN_MATRIX` and versioned `getWriterSectionOutputPlanForCeiling`; active plan v2 is Executive `6000`, Conversion/Content `3500`, Funnel `3000`, Search `4000`, Trust `4000`, plus the existing `3500` shared reserve under the unchanged `24000` ceiling. Legacy plans are explicit, non-continuable, and fail closed when a validated active-section minimum would be violated.
+- Continuity: every section attempt now persists the plan version and section detail; request caps are derived from one section-specific plan, preventing cross-section budget leakage. Existing strict incomplete/invalid output, Trust evidence-status, reserve-exhaustion, missing-section, and report assembly validation remain fail-closed.
+- Regression coverage: targeted Writer/live-binding `41/41 PASS`; deterministic worker `1072/1072 PASS`; worker regression `1489/1489 PASS`; root `npx tsc --noEmit PASS`; root `npm run build PASS`. Controlled continuation asserts request caps `[6000, 9500, 3500, 3000, 4000, 4000]`; below-minimum legacy ceiling rejection is covered.
+- Application: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, commit `28049629c5c90efd787cf684b6e3cf3837372128`; GitHub branch and commit resolved to this SHA. The pre-existing unstaged `WRITER-STRUCT-05` test hunk remains preserved and excluded.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, deployment `2a6c5ed4-e5b1-4aa1-8692-743b01bdd2ec`, `SUCCESS`, commit metadata exactly matches.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_D9ZCRMwFQVw3BFuqsWxYiA9ta4VK`, `READY`, Git SHA exactly matches.
+- Custom-domain routing: before `prysm.staging.omnipressence.com` resolved to `dpl_91Ye9Sg3rLW8aBXDMPJo3WTzTjQe`; it was assigned to `dpl_D9ZCRMwFQVw3BFuqsWxYiA9ta4VK`, and a subsequent alias read verified the new deployment ID.
+- No provider/model calls, audit retry, crawl, rescore, production access/change, evidence/score/lifecycle mutation, budget increase, or token-ceiling increase occurred. Signed-in audit content was not independently opened in this tranche because no reusable reviewer/browser session was available; deployment and alias identity are verified, not UI-content proof.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-OUTPUT-PLAN-REPAIR-20261116\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED; live audit execution and further Writer tuning are outside this tranche and require new authorization.
