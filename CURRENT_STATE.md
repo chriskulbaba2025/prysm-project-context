@@ -1,3 +1,15 @@
+## Latest authorized PRYSM strict Writer schema repair — 2026-11-17
+
+- Screenshot evidence showed the deployed full-report OpenAI request failing HTTP 400 because the strict schema included `technical` and `performanceUx` in `properties` while omitting them from `required`.
+- Generic owning boundary repaired: `buildWriterStructuredResponseFormat()` now derives a provider-only strict schema from the authoritative local schema, retaining all required provider fields and omitting only the intentionally optional technical/performance addendum fields. The authoritative PRYSM validator and local contract remain unchanged.
+- Application repository: `chriskulbaba2025/prysm-staging-isolated`; branch `repair/prysm-staging-writer-20261115`; application SHA `bc30cabdbb94cc7d7fc5e53f4be0c861e8916249`.
+- Tests: targeted Writer/contract/live-binding `47/47 PASS`; full Narrative v2 `348/348 PASS`; root typecheck PASS; root Next build PASS. No provider call or Oakville retry occurred.
+- Railway isolated staging deployment `e3da54ce-2589-4413-8bda-a82343497c28`: SUCCESS; commit metadata matches `bc30cabdbb94cc7d7fc5e53f4be0c861e8916249`.
+- Vercel isolated staging deployment `dpl_6JzDDuijeuzVzEv52TbMzHqzxp1k`: READY; Git SHA matches. Custom domain `prysm.staging.omnipressence.com` reassigned from `dpl_DvYGdc3upevH4u9Bm4GeM8nNzTZj` to `dpl_6JzDDuijeuzVzEv52TbMzHqzxp1k`; alias readback verified.
+- Oakville audit, evidence, scores, and lifecycle history remain unchanged. Recovery remains unrun and requires separate authorization.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STRICT-WRITER-SCHEMA-REPAIR-20261117\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / OAKVILLE RETRY NOT RUN.
+
 ## Latest authorized staging runtime-authority repair — 2026-11-17
 
 - Root cause: the GPT-first staging configuration was live, but `narrative-v2-provider-authority.json` still declared the older Anthropic Writer identity. Production runtime initialization therefore failed closed with `MODEL_PROVIDER_IDENTITY_MISMATCH`; the prior deployment also exposed a missing GPT model price-table entry.
