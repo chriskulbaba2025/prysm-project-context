@@ -1,3 +1,14 @@
+## Latest authorized staging report-only restart release — 2026-11-17
+
+- User approved one staging-only release tranche: push and deploy the exact verified offline report-only restart candidate; staging PostgreSQL migration and exact-SHA proof permitted. No Oakville execution, paid Writer/Judge calls, recrawl, rescore, publication, or production application change authorized.
+- Application repo `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`. Local clean commit `265b41f516c7dec3bbfbb8fd112428a8e9c3911e` (parent `b1b131350d9be80b14bb10f50a13f66c817c3563`) was pushed by normal fast-forward. GitHub branch readback matched exact SHA.
+- Railway **isolated staging** project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, worker service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`: new source-based deployment `45a969c0-6232-4e7c-8e49-97cbd32b2aa8` **SUCCESS**, Git SHA metadata exact match. Worker startup logs showed PostgreSQL/repository and governed API initialized; `/health` HTTP 200 with `{"status":"ok","service":"prysm-worker","version":"0.2.0"}`.
+- Migration `005_report_only_restart.sql` was included by existing startup migration list and Docker build; a read-only query from the deployed worker returned `MIGRATION_005_TABLE_PRESENT` for `prysm.narrative_report_only_restarts` in isolated staging PostgreSQL. Migration only creates dedicated table and index with `IF NOT EXISTS`; no existing audit data rewrites.
+- Vercel isolated staging project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`: deployment `dpl_6kKU8rHo3DZuFxqTqynp5c973A6x` **READY**, exact Git SHA. Custom domain `prysm.staging.omnipressence.com` reassigned to this deployment; independent readback matches new SHA. Unauthenticated Oakville page returned HTTP 302 to Vercel SSO. **Signed-in UI verification UNAVAILABLE**, not implied by the 302.
+- Non-secret Railway budget configuration showed unchanged `hardUsd=5`, `dailyHardUsd=20`, `softUsd=2`; no actual spend was inferred. No provider call, Oakville restart, recrawl, rescore, publication, or production mutation was made in this tranche. Report acceptance remains **HOLD**.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-REPORT-ONLY-RESTART-STAGING-20261117-265B41F\\REPORT.md`.
+- **Result: CODE VERIFIED (prior offline) / STAGING DEPLOYED / MIGRATION VERIFIED / EXACT-SHA PASS / SIGNED-IN REPORT ACCEPTANCE HOLD.** Next action: separate authorization for one staging-only Oakville report-only restart execution, preceded by read-only authenticated eligibility/duplicate/budget preflight. Never interpret release as authority to run or publish.
+
 ## Latest authorized staging deployment — 2026-11-17
 
 - Application repository: `chriskulbaba2025/prysm-staging-isolated`; branch `repair/prysm-staging-writer-20261115`; baseline `fc125f7a82a960164fa0e316fa715ca09265de47`; verified application SHA `b1b131350d9be80b14bb10f50a13f66c817c3563`.
