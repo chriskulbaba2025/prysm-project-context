@@ -1,3 +1,16 @@
+## Latest authorized PRYSM Anthropic transport repair — 2026-11-17
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. Start application SHA `4ffff9c938878bd46cd0e0c578a78733e7673502`; verified application commit `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`.
+- Root cause repaired generically: the full repeated nested Executive grammar remained provider-facing and Anthropic rejected it with HTTP 400 `invalid_request_error` / “The compiled grammar is too large.” The adapter now sends a versioned strict `json-field-envelope-v1` per section. Required section fields are carried losslessly as JSON-encoded strings, decoded strictly, then passed through the unchanged authoritative PRYSM normalization/validator and deterministic assembly. No required business/report fields are dropped, fabricated, or weakened.
+- Transport complexity evidence: Executive `8326` bytes / `34` repeated object constraints before repair; compact transport schemas are Executive `578`, Conversion/content `262`, Funnel `242`, Search `258`, Trust `334` bytes. Persisted attempt metadata includes transport contract version, schema hash/ID, section, prompt hash, cap/plan, model, usage, stop reason, validation result, and safe provider failure fields.
+- Local tests: targeted transport/Writer/live binding `58/58 PASS`; Narrative v2 `343/343 PASS`; deterministic regression `1074/1074 PASS`; root typecheck PASS; root build PASS. No provider call or Oakville mutation occurred locally.
+- GitHub application branch `repair/prysm-staging-writer-20261115` pushed at `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`.
+- Railway staging deployment `20e28b7d-6031-42bc-8c89-5e0170ad70ef`, SUCCESS, commit metadata matches `a4d6abdc1f639b4248059b3b2ff9cad2ad34e7d8`.
+- Vercel staging deployment `dpl_BbQnwGWbdZf9eS2bmDdmcANjMEpX`, READY, Git SHA matches. Custom domain `prysm.staging.omnipressence.com` was reassigned from `dpl_DErPoD46YZybNG1GnqRdeWL3zNwd` to `dpl_BbQnwGWbdZf9eS2bmDdmcANjMEpX`; alias readback verified. Direct unauthenticated custom-domain retrieval returned login/SSO and its Next assets identify the new deployment; signed-in browser verification is unavailable because the computer-use browser host is unavailable.
+- Live five-schema Anthropic compatibility preflight: HOLD/NOT RUN. No existing authorized staging endpoint or available signed-in browser session could execute the five synthetic provider calls through the deployed Worker without adding a new access path; no credentials were exposed or guessed. Oakville recovery was therefore not started, preserving the exact one-retry authorization and all audit evidence/scores/lifecycle history.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-ANTHROPIC-TRANSPORT-REPAIR-20261117\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / LIVE PREFLIGHT HOLD. Exact next action: provide or restore one approved authenticated staging preflight execution path; then run exactly the five-schema preflight, stopping on first rejection, before any Oakville Retry Report Wording action.
+
 # Current State
 
 ## Latest authorized staging diagnostics-evidence repair — 2026-11-16
