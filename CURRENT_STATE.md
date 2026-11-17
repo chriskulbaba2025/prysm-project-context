@@ -1,5 +1,22 @@
 # Current State
 
+
+
+## Latest authorized offline Writer response-shape repair — 2026-11-16
+
+- Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; live retry evidence was `Narrative v2 writer content was not a JSON object` on pass 1. No raw provider response was accessed or copied in this tranche.
+- Owning boundary: Anthropic transport extracted text, then the shared invocation path performed unclassified `JSON.parse` and collapsed malformed JSON, fenced text, scalar/array JSON, and other non-object shapes into one generic error. This is a provider-response parsing boundary, not an Oakville fixture or Writer output-plan defect.
+- Response contract: exactly one non-empty Anthropic text block; surrounding whitespace accepted; text must be valid JSON whose top-level value is one object. Fences, empty/non-string content, arrays, scalars, malformed JSON, missing text, and ambiguous multiple text blocks fail closed.
+- Repair: added provider-neutral strict object parsing, Anthropic content-block ambiguity checks, and safe failure diagnostics. Persisted diagnostics contain only section identifier, content type, content-shape classification, parser stage, and validation/failure classification. Raw prompts, raw responses, credentials, API keys, and response text are excluded. Existing output plans, reserve/continuation behavior, Trust validation, budgets, report contracts, and protected response artifacts remain unchanged.
+- Application: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, commit `5656ed4e7049a305228a8e46b92d769873d0bfe2`; GitHub branch resolves to this SHA. Pre-existing dirty `WRITER-STRUCT-05` remains preserved and excluded.
+- Tests: targeted shape/transport/live-binding `47/47 PASS`; Narrative v2 `340/340 PASS`; deterministic `1072/1072 PASS`; worker regression `1489/1489 PASS`; root typecheck PASS; root build PASS. Negative coverage includes malformed, fenced, empty, scalar, array, non-string, missing/multiple Anthropic text blocks, and no-raw-diagnostics persistence.
+- Railway isolated staging: project `07f1a0a3-a657-4a24-9ecb-56ba667cfc3f`, service `3343e2a8-0472-4780-8536-e8b9667fcc7a`, environment `b67677ba-4ac1-458f-a6d3-412de5ad9ea8`, deployment `c11af9bc-ce6c-4b7c-ad08-d6be50b3bd23`, SUCCESS, commit metadata matches.
+- Vercel isolated staging: project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`, deployment `dpl_CFWZvaYbTgUmtjqmSpqh3APTiV1q`, READY, Git SHA matches.
+- Custom domain `prysm.staging.omnipressence.com`: before alias deployment `dpl_D9ZCRMwFQVw3BFuqsWxYiA9ta4VK`; after alias deployment `dpl_CFWZvaYbTgUmtjqmSpqh3APTiV1q`. Alias read verified the after identity.
+- No provider calls, audit retry, crawl, rescore, production access/change, model/budget/token-cap change, or audit evidence/score/lifecycle mutation occurred. Full live Oakville behavior remains intentionally unexercised under this offline tranche.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-WRITER-RESPONSE-SHAPE-REPAIR-20261116\\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED. Exact next action: stop this tranche; a separately authorized audit retry is required for full provider-path validation.
+
 ## Latest authorized staging-alias repair — 2026-11-16
 
 - Custom domain: `prysm.staging.omnipressence.com`; project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`.
