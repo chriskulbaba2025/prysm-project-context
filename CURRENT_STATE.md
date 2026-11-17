@@ -294,3 +294,17 @@ Last verified: 2026-11-16 America/Toronto
 - Proof: `C:\Users\kulba\Downloads\PRYSM-FINAL-PASS-LEDGER-REPAIR-20261117\REPORT.md`.
 - Result: CODE VERIFIED / STAGING DEPLOYED. The final Oakville report pass remains unrun because it incurs governed GPT Writer/Judge provider calls. Exact next action: obtain one explicit authorization for the final pass only; it will reuse the locked audit data and correct the Judge's targeted limitation defect.
 
+## Latest authorized PRYSM final-review details handoff repair — 2026-11-17
+
+- Target audit preserved: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. The final governed pass already completed and left `narrative_failed` / `HUMAN_REVIEW_REQUIRED`; no provider call, audit retry, crawl, rescore, evidence mutation, score mutation, or production action occurred in this repair.
+- Verified root cause: `continueNarrativeV2FinalPass()` received the safe `humanReview` summary from the Narrative orchestrator but returned only `finalState` and `error`. The signed-in page therefore received no review details and fell back to the generic no-report state.
+- Generic repair: the application wrapper now passes through only an object-shaped `humanReview` summary already produced by the governed Narrative path. No raw prompts, raw responses, credentials, secrets, or audit data were added to the response.
+- Application: `chriskulbaba2025/prysm-staging-isolated`, branch `repair/prysm-staging-writer-20261115`, start SHA `b5d9f85f74ed5f9e8fea8fabb8c0df463a5d29ff`, verified commit `fc125f7a82a960164fa0e316fa715ca09265de47`, message `Return final narrative review details`. Exactly two application files changed; the worktree was clean after commit.
+- Regression: new final-pass runtime regression reproduces the wrapper boundary and asserts `HUMAN_REVIEW_REQUIRED`, pass 3, `judgeRan`, `finalPassAvailable`, and defect details.
+- Tests: focused production path `21/21 PASS`; Narrative v2 `350/350 PASS`; deterministic regression `1076/1076 PASS`; worker regression `1489/1489 PASS`; root typecheck PASS; root build PASS; `git diff --check` PASS.
+- Railway isolated staging deployment `f7e4c65c-df69-40fd-a8ab-f2ba8a77ac11`: SUCCESS; exact commit metadata matches `fc125f7a82a960164fa0e316fa715ca09265de47`.
+- Vercel isolated staging deployment `dpl_BTKPz2QYx44mpcq2SbamfYCWYMwe`: READY; Git SHA matches. Before promotion, custom domain `prysm.staging.omnipressence.com` pointed to `dpl_4Km2fB6fC9ksWjswdQj3wJQWQ8KW`; it was reassigned to `dpl_BTKPz2QYx44mpcq2SbamfYCWYMwe`, and alias readback verified.
+- Signed-in staging browser verification: target page now renders `Review details` and the expandable `Technical details` control under `The report review did not approve the draft.`; lifecycle remains `narrative_failed` and no report was published.
+- Proof: `C:\Users\kulba\Downloads\PRYSM-FINAL-REVIEW-DETAILS-REPAIR-20261117\REPORT.md`.
+- Result: CODE VERIFIED / STAGING DEPLOYED / SIGNED-IN REVIEW DETAILS VISIBLE / OAKVILLE DATA UNCHANGED.
+
