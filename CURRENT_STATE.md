@@ -1,6 +1,20 @@
 # Current State
 
 
+## Latest authorized read-only Oakville diagnostic reset — 2026-11-16
+
+- Audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`. No application source, audit state, evidence, scores, lifecycle history, provider call, retry, crawl, rescore, push, deployment, or production action occurred.
+- Exact 9:49–9:51 p.m. Toronto Railway HTTP evidence: GET audit 200 at `02:49:50Z`; diagnostics GET 200 at `02:49:54Z`; resume POST 202 at `02:49:58Z`; repeated diagnostics GETs through `02:51:44Z`. This proves a retry request and reads, not the asynchronous execution result.
+- Executing deployment identity: Railway deployment `c11af9bc-ce6c-4b7c-ad08-d6be50b3bd23`, SUCCESS, source SHA `5656ed4e7049a305228a8e46b92d769873d0bfe2`. Exact retry execution ID, Writer model, prompt hash, section plan, cap, usage, stop reason, response hash, and parser stage were not exposed by logs.
+- Owning boundary: retries register a new `executionId`/live namespace and persist `report-v2/narrative-v2/live-usage/{execution}/call-XX-*`; `buildStagingDiagnostics()` scans only the unnamespaced path for calls 1–14. The page/API has no six-call slice. This explains the generic retry-visibility defect, subject to live payload confirmation.
+- Protected response artifacts and exact third-failure replay were UNAVAILABLE: the authorized browser bridge failed initialization and no reusable approved diagnostics credential was present. Raw bytes were not accessed or exposed. Do not treat unavailable target replay as negative evidence.
+- Offline schema check: active five-section provider schemas generated successfully and passed local sanitizer/parameter checks; current Anthropic request intentionally omits `output_config` and uses text JSON, so native grammar was not exercised. No provider call was made.
+- Offline tests: targeted Anthropic/Writer/live-binding/response-shape suite `65/65 PASS`. Existing dirty `WRITER-STRUCT-05` remained untouched.
+- Repair design only, not implemented: persist an execution/attempt index, enumerate tenant-owned execution namespaces, keep reserve accounting execution-scoped, retain strict parser/validator fail-closed behavior, and show explicit unavailable state for legacy attempts without metadata.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-OAKVILLE-DIAGNOSTIC-RESET-20261116\\REPORT.md`; SHA-256 `AE2BD920B33D15506DD6F7F43ABDB1DA0B135CD4E0DD3DA154B75CF6502A22BE`.
+- Result: HOLD. Exact next action: restore the approved authenticated read-only artifact/session path and authorize a new diagnostic tranche before repair or retry.
+
+
 
 ## Latest authorized offline Writer response-shape repair — 2026-11-16
 
