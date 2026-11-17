@@ -1,5 +1,16 @@
 # Current State
 
+## Latest authorized staging-alias repair — 2026-11-16
+
+- Custom domain: `prysm.staging.omnipressence.com`; project `prj_ys6JNfnwyRow5G3BENFXliU3fIqs`.
+- Before: alias resolved to Vercel deployment `dpl_99JTJbRz6A1sjeS5XSY552qQZutQ`, READY, Git SHA `f7436fb0a9ed541ade976ee59eecba0dcda64e88`. Project-domain metadata was verified but pointed at stale Git branch `feature/prysm-claude-writer-20261113`.
+- Required verified deployment: `dpl_QxrtHRyQMC4jdZ4eMWGgn8sPtCiD`, READY, Git SHA `e90007ced8ffaf1526312218ba11a19cad47423e`.
+- Change: Vercel alias assignment only; `prysm.staging.omnipressence.com` now resolves to `dpl_QxrtHRyQMC4jdZ4eMWGgn8sPtCiD`. Vercel reported old deployment ID `dpl_99JTJbRz6A1sjeS5XSY552qQZutQ`.
+- Direct unauthenticated request to the custom URL reached Vercel and returned SSO HTTP 302. Signed-in page-content verification was UNAVAILABLE because the Computer Use browser access host was unavailable; do not treat the unauthenticated response as card proof.
+- No source, Railway, provider, audit, model/budget/cap, production, or other routing change occurred.
+- Proof: `C:\\Users\\kulba\\Downloads\\PRYSM-STAGING-ALIAS-REPAIR-20261116\\REPORT.md`.
+- Result: STAGING ALIAS REPAIRED; HOLD only for signed-in content verification. Exact next action: authorized reviewer opens the custom-domain audit URL while signed in and confirms Writer Diagnostics or `Diagnostics unavailable for this legacy attempt`.
+
 ## Latest authorized staging diagnostics-card repair — 2026-11-16
 
 - Target audit: `224a4be0-fb54-448d-8b26-3117bf1bff9b`; observed signed-in reviewer page showed no Writer Diagnostics card. Prior deployed SHA: `9cb7123ed3123e09a85ee2cfb8915914dfd7af4b`.
